@@ -1,0 +1,36 @@
+[project]
+name = "ccrcc-graphrag"
+version = "0.1.0"
+description = "Multi-omics GraphRAG for clear cell renal cell carcinoma (CPTAC bulk + PubTator3 literature + external knowledge via MCP)"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "pandas>=2.2",
+    "pyarrow>=17",
+    "duckdb>=1.1",
+    "scipy>=1.14",
+    "statsmodels>=0.14",
+    "networkx>=3.3",
+    "requests>=2.32",
+    "pydantic>=2.8",
+    "mcp>=1.2",
+    "jinja2>=3.1",
+    "plotly>=5.24",
+    "rank-bm25>=0.2.2",
+    "pyyaml>=6.0",
+    "pytest>=8.3",
+]
+
+[project.scripts]
+ccrcc = "ccrcc.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ccrcc"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["network: tests that call external APIs (cached on disk after first run)"]
