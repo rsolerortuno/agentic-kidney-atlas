@@ -1,0 +1,12 @@
+[
+{"id":"q01","answer":"Chromosome arm 3p is the most frequently lost (about 79-81% of tumors for VHL, PBRM1, SETD2, BAP1)."},
+{"id":"q02","answer":"CA9 protein is increased in tumors versus matched normal (log2FC +2.27, padj 9.9e-43)."},
+{"id":"q03","answer":"Girentuximab (CHEMBL1743027) reached phase 3."},
+{"id":"q04","answer":"VHL has the highest Open Targets association score (0.6466)."},
+{"id":"q05","answer":"No, EGLN3 is not measured in the proteome (only RNA data exist for it)."},
+{"id":"q06","answer":"0.79 (VHL loss frequency 0.791, 3p, n=110 tumors)."},
+{"id":"q07","answer":"Belzutifan (CHEMBL4585668) is the approved drug targeting EPAS1."},
+{"id":"q08","answer":"EGFR ranks first (score 3.87)."},
+{"id":"q09","answer":"UMOD protein is decreased in tumors versus matched normal (log2FC -2.24, padj 3.2e-33)."},
+{"id":"q10","answer":"EPAS1 (HIF-2alpha; STRING score 0.923); HIF1A (0.972) is also a partner."}
+]

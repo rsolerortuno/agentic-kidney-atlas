@@ -1,0 +1,269 @@
+{
+ "recall": {
+  "top_n": 100,
+  "known": 23,
+  "universe": 19161,
+  "recall": 0.21739130434782608,
+  "recall_without_open_targets_stream": 0.043478260869565216,
+  "recall_at": {
+   "50": 0.17391304347826086,
+   "100": 0.21739130434782608,
+   "200": 0.34782608695652173,
+   "500": 0.5217391304347826,
+   "1000": 0.7391304347826086
+  },
+  "median_rank": 309.0,
+  "random_expected_recall": 0.005218934293617243,
+  "fold_enrichment": 41.654347826086955,
+  "genes": [
+   {
+    "gene": "VHL",
+    "source": "curated",
+    "rank": 67,
+    "in_top": true,
+    "in_top_without_ot": false
+   },
+   {
+    "gene": "PBRM1",
+    "source": "curated",
+    "rank": 188,
+    "in_top": false,
+    "in_top_without_ot": false
+   },
+   {
+    "gene": "SETD2",
+    "source": "curated",
+    "rank": 205,
+    "in_top": false,
+    "in_top_without_ot": false
+   },
+   {
+    "gene": "BAP1",
+    "source": "curated",
+    "rank": 203,
+    "in_top": false,
+    "in_top_without_ot": false
+   },
+   {
+    "gene": "KDM5C",
+    "source": "curated",
+    "rank": 546,
+    "in_top": false,
+    "in_top_without_ot": false
+   },
+   {
+    "gene": "EPAS1",
+    "source": "curated",
+    "rank": 38,
+    "in_top": true,
+    "in_top_without_ot": false
+   },
+   {
+    "gene": "CA9",
+    "source": "curated",
+    "rank": 10,
+    "in_top": true,
+    "in_top_without_ot": true
+   },
+   {
+    "gene": "VEGFA",
+    "source": "curated",
+    "rank": 1355,
+    "in_top": false,
+    "in_top_without_ot": false
+   },
+   {
+    "gene": "MTOR",
+    "source": "curated",
+    "rank": 301,
+    "in_top": false,
+    "in_top_without_ot": false
+   },
+   {
+    "gene": "HIF1A",
+    "source": "curated",
+    "rank": 1406,
+    "in_top": false,
+    "in_top_without_ot": false
+   },
+   {
+    "gene": "AKT1",
+    "source": "open_targets_top20",
+    "rank": 309,
+    "in_top": false,
+    "in_top_without_ot": false
+   },
+   {
+    "gene": "HNF1A",
+    "source": "open_targets_top20",
+    "rank": 814,
+    "in_top": false,
+    "in_top_without_ot": false
+   },
+   {
+    "gene": "TP53",
+    "source": "open_targets_top20",
+    "rank": 199,
+    "in_top": false,
+    "in_top_without_ot": false
+   },
+   {
+    "gene": "HNF1B",
+    "source": "open_targets_top20",
+    "rank": 7806,
+    "in_top": false,
+    "in_top_without_ot": false
+   },
+   {
+    "gene": "PTEN",
+    "source": "open_targets_top20",
+    "rank": 581,
+    "in_top": false,
+    "in_top_without_ot": false
+   },
+   {
+    "gene": "KDR",
+    "source": "open_targets_top20",
+    "rank": 21,
+    "in_top": true,
+    "in_top_without_ot": false
+   },
+   {
+    "gene": "SPDL1",
+    "source": "open_targets_top20",
+    "rank": 107,
+    "in_top": false,
+    "in_top_without_ot": false
+   },
+   {
+    "gene": "FLT4",
+    "source": "open_targets_top20",
+    "rank": 702,
+    "in_top": false,
+    "in_top_without_ot": false
+   },
+   {
+    "gene": "PIGR",
+    "source": "open_targets_top20",
+    "rank": 5,
+    "in_top": true,
+    "in_top_without_ot": false
+   },
+   {
+    "gene": "TERT",
+    "source": "open_targets_top20",
+    "rank": 516,
+    "in_top": false,
+    "in_top_without_ot": false
+   },
+   {
+    "gene": "FLCN",
+    "source": "open_targets_top20",
+    "rank": 1475,
+    "in_top": false,
+    "in_top_without_ot": false
+   },
+   {
+    "gene": "KMT2C",
+    "source": "open_targets_top20",
+    "rank": 1425,
+    "in_top": false,
+    "in_top_without_ot": false
+   },
+   {
+    "gene": "ATM",
+    "source": "open_targets_top20",
+    "rank": 1519,
+    "in_top": false,
+    "in_top_without_ot": false
+   }
+  ]
+ },
+ "qa": {
+  "model": "interim: Claude Sonnet 5.5 subagent via MCP tool functions (claude -p pending login)",
+  "correct": 10,
+  "total": 10,
+  "results": [
+   {
+    "id": "q01",
+    "question": "Which chromosome arm is most frequently lost in the CPTAC ccRCC tumors?",
+    "expected": "3p",
+    "answer": "Chromosome arm 3p is the most frequently lost (about 79-81% of tumors for VHL, PBRM1, SETD2, BAP1).",
+    "correct": true,
+    "error": null
+   },
+   {
+    "id": "q02",
+    "question": "Is CA9 protein increased or decreased in ccRCC tumors compared with matched normal kidney in CPTAC?",
+    "expected": "increased",
+    "answer": "CA9 protein is increased in tumors versus matched normal (log2FC +2.27, padj 9.9e-43).",
+    "correct": true,
+    "error": null
+   },
+   {
+    "id": "q03",
+    "question": "Which antibody targeting CA9 reached phase 3 according to Open Targets?",
+    "expected": "girentuximab",
+    "answer": "Girentuximab (CHEMBL1743027) reached phase 3.",
+    "correct": true,
+    "error": null
+   },
+   {
+    "id": "q04",
+    "question": "Which gene has the highest Open Targets association score with clear cell renal carcinoma?",
+    "expected": "VHL",
+    "answer": "VHL has the highest Open Targets association score (0.6466).",
+    "correct": true,
+    "error": null
+   },
+   {
+    "id": "q05",
+    "question": "Is EGLN3 measured in the CPTAC ccRCC proteome used in this project?",
+    "expected": "no",
+    "answer": "No, EGLN3 is not measured in the proteome (only RNA data exist for it).",
+    "correct": true,
+    "error": null
+   },
+   {
+    "id": "q06",
+    "question": "In what fraction of CPTAC ccRCC tumors is VHL affected by copy-number loss (to two decimals)?",
+    "expected": "0.79",
+    "answer": "0.79 (VHL loss frequency 0.791, 3p, n=110 tumors).",
+    "correct": true,
+    "error": null
+   },
+   {
+    "id": "q07",
+    "question": "Which approved drug targets EPAS1 (HIF-2alpha) according to Open Targets?",
+    "expected": "belzutifan",
+    "answer": "Belzutifan (CHEMBL4585668) is the approved drug targeting EPAS1.",
+    "correct": true,
+    "error": null
+   },
+   {
+    "id": "q08",
+    "question": "Which gene ranks first in this project's deterministic convergence ranking?",
+    "expected": "EGFR",
+    "answer": "EGFR ranks first (score 3.87).",
+    "correct": true,
+    "error": null
+   },
+   {
+    "id": "q09",
+    "question": "Is UMOD protein increased or decreased in ccRCC tumors versus matched normal kidney in CPTAC?",
+    "expected": "decreased",
+    "answer": "UMOD protein is decreased in tumors versus matched normal (log2FC -2.24, padj 3.2e-33).",
+    "correct": true,
+    "error": null
+   },
+   {
+    "id": "q10",
+    "question": "Name a high-confidence STRING interaction partner of CA9 that is a HIF alpha transcription factor.",
+    "expected": "HIF1A or EPAS1",
+    "answer": "EPAS1 (HIF-2alpha; STRING score 0.923); HIF1A (0.972) is also a partner.",
+    "correct": true,
+    "error": null
+   }
+  ]
+ }
+}

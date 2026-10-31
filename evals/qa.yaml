@@ -1,0 +1,43 @@
+# Known-answer questions. Expected answers were checked against the project's own data/tools
+# (CPTAC results, Open Targets/STRING cache, convergence run). Graded by regex on the agent's answer.
+- id: q01
+  question: "Which chromosome arm is most frequently lost in the CPTAC ccRCC tumors?"
+  expected: "3p"
+  pattern: "\\b3p\\b"
+- id: q02
+  question: "Is CA9 protein increased or decreased in ccRCC tumors compared with matched normal kidney in CPTAC?"
+  expected: "increased"
+  pattern: "(increas|up-?regulat|higher|elevat|overexpress)"
+- id: q03
+  question: "Which antibody targeting CA9 reached phase 3 according to Open Targets?"
+  expected: "girentuximab"
+  pattern: "girentuximab"
+- id: q04
+  question: "Which gene has the highest Open Targets association score with clear cell renal carcinoma?"
+  expected: "VHL"
+  pattern: "\\bVHL\\b"
+- id: q05
+  question: "Is EGLN3 measured in the CPTAC ccRCC proteome used in this project?"
+  expected: "no"
+  pattern: "(not (measured|present|detected|available|quantified)|no[t ]|absent|missing)"
+- id: q06
+  question: "In what fraction of CPTAC ccRCC tumors is VHL affected by copy-number loss (to two decimals)?"
+  expected: "0.79"
+  pattern: "(0\\.79|79(\\.1)? ?%)"
+- id: q07
+  question: "Which approved drug targets EPAS1 (HIF-2alpha) according to Open Targets?"
+  expected: "belzutifan"
+  pattern: "belzutifan"
+- id: q08
+  question: "Which gene ranks first in this project's deterministic convergence ranking?"
+  # key updated with scoring v2 (EGFR); under v1 it was CA9 - see evals/history.md
+  expected: "EGFR"
+  pattern: "\\bEGFR\\b"
+- id: q09
+  question: "Is UMOD protein increased or decreased in ccRCC tumors versus matched normal kidney in CPTAC?"
+  expected: "decreased"
+  pattern: "(decreas|down-?regulat|lower|reduc|loss)"
+- id: q10
+  question: "Name a high-confidence STRING interaction partner of CA9 that is a HIF alpha transcription factor."
+  expected: "HIF1A or EPAS1"
+  pattern: "\\b(HIF1A|HIF-1α|HIF-1alpha|EPAS1|HIF-2α|HIF2A)\\b"
