@@ -16,11 +16,13 @@ if __name__ == "__main__":
         rep = verify_agents(d)
         for name, r in rep["agents"].items():
             print(f"{name}: {r}" if r.get("missing") else
-                  f"{name}: submitted={r['submitted']} kept={r['kept']} dropped={r['dropped']} ids_removed={r['ids_removed']}")
+                  f"{name}: submitted={r['submitted']} kept={r['kept']} dropped={r['dropped']} ids_removed={r['ids_removed']} "
+                  f"semantic_failures={r.get('semantic_failures', 0)}")
     else:
         rep = verify_final(d / "findings.json")
         print(f"statements checked: {rep['statements']}")
-        print(f"unsupported claims: {rep['unsupported']}")
+        print(f"unsupported claims: {rep['unsupported']} (of which semantic: numbers or direction not matching the "
+              f"cited evidence: {rep.get('semantic_failures', 0)})")
         if rep["unsupported"]:
             print(json.dumps(rep["detail"][:10], indent=1))
             sys.exit(1)

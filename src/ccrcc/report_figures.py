@@ -20,7 +20,8 @@ SEQ = ["#cde2fb", "#9ec5f4", "#6da7ec", "#3987e5", "#256abf", "#184f95", "#0d366
 DIV = [[0, "#184f95"], [0.25, "#6da7ec"], [0.5, "#f0efec"], [0.75, "#ee8f8e"], [1, "#c03130"]]
 GRAY = "#898781"
 TRACK_COLOR = {"tumor": CAT[0], "stroma": CAT[1], "immune": CAT[2]}
-STREAM_COLOR = {"omics": CAT[0], "cnv": CAT[1], "literature": CAT[2], "genetics": CAT[3], "tractability": CAT[4]}
+STREAM_COLOR = {"omics": CAT[0], "cnv": CAT[1], "literature": CAT[2], "genetics": CAT[3], "tractability": CAT[4],
+                "dependency": CAT[5], "replication": CAT[6]}
 COMPONENT_COLOR = {"omics": CAT[0], "cell_specificity": CAT[1], "understudied": CAT[2], "undrugged": CAT[3],
                    "druggable": CAT[4], "safety": CAT[5], "aggressiveness": CAT[6]}
 # cell groups displayed in stacked bars: fixed colour per entity, the rest folds into "other"
@@ -110,9 +111,9 @@ def stream_stack(ranking: list[dict], weights: dict) -> str:
     return _html(fig, 640, "What drives each candidate's score? (top 25)")
 
 
-def component_heatmap(ranking: list[dict]) -> str:
+def component_heatmap(ranking: list[dict], keys: list[str] | None = None) -> str:
     rows = ranking[:25]
-    keys = list(rows[0]["components"])
+    keys = keys or list(rows[0]["components"])   # convergence streams only (rows also carry profile components)
     z = [[r["components"][k] for k in keys] for r in rows]
     fig = go.Figure(go.Heatmap(z=z, x=keys, y=[r["gene"] for r in rows], colorscale=[[i / 6, c] for i, c in enumerate(SEQ)],
                                zmin=0, zmax=1, colorbar=dict(title="component", thickness=12),
@@ -403,3 +404,155 @@ def drug_stage(ranking: list[dict]) -> str:
                                    hovertemplate="%{y} · %{x}: %{z} drugs<extra></extra>"))
         fig.update_yaxes(autorange="reversed")
     return _html(fig, max(320, 22 * len(rows) + 110), "Known drugs by maximum clinical stage (top-25 candidates)")
+
+
+# ------------------------------------------------------------------------------------------ M13: validation layers
+def rank_intervals(name: str, n: int = 25) -> str | None:
+    p = PROCESSED / f"sensitivity_{name}.parquet"
+    if not p.exists():
+        return None
+    d = pd.read_parquet(p).head(n).iloc[::-1]
+    fig = go.Figure(go.Scatter(
+        x=d["rank_median"], y=d["gene"], mode="markers", marker=dict(color=CAT[0], size=8),
+        error_x=dict(type="data", symmetric=False, array=d["rank_p95"] - d["rank_median"],
+                     arrayminus=d["rank_median"] - d["rank_p05"], color=CAT[0], thickness=1.4, width=3),
+        customdata=np.c_[d["p_top10"], d["p_top25"], d["base_rank"]],
+        hovertemplate="%{y}: median rank %{x}<br>P(top 10) %{customdata[0]:.2f} · P(top 25) %{customdata[1]:.2f}"
+                      "<br>rank with configured weights %{customdata[2]}<extra></extra>"))
+    fig.update_xaxes(title="rank under 1,000 random re-weightings (median, 5th–95th percentile)", type="log",
+                     tickvals=[1, 2, 5, 10, 20, 50, 100, 200, 500, 1000], ticktext=["1", "2", "5", "10", "20", "50", "100",
+                                                                                   "200", "500", "1000"])
+    return _html(fig, max(420, 19 * len(d) + 120), f"How stable is the {name} ranking?", showlegend=False)
+
+
+def mutation_recurrence(n_label: int = 10) -> str | None:
+    p = PROCESSED / "layer_mutations.parquet"
+    if not p.exists():
+        return None
+    d = pd.read_parquet(p)
+    d = d[d["mutated"] >= 3].copy()
+    d["mlog"] = -np.log10(d["padj"].clip(lower=1e-300))
+    sig = d["padj"] < 0.05
+    fig = go.Figure()
+    fig.add_trace(go.Scattergl(x=d.loc[~sig, "obs_exp"], y=d.loc[~sig, "mlog"], mode="markers", name="not recurrent",
+                               marker=dict(color=GRAY, size=4, opacity=.45), text=d.loc[~sig, "gene"],
+                               hovertemplate="%{text}: obs/exp %{x:.2f}<extra></extra>"))
+    s = d[sig]
+    fig.add_trace(go.Scatter(x=s["obs_exp"], y=s["mlog"], mode="markers+text", name="recurrent (BH < 0.05)",
+                             marker=dict(color=CAT[1], size=9), text=s["gene"].where(s.index.isin(s.head(n_label).index), ""),
+                             textposition="top center", customdata=np.c_[s["mutated"], s["patients"]],
+                             hovertemplate="%{text}: %{customdata[0]}/%{customdata[1]} tumours, obs/exp %{x:.1f}<extra></extra>"))
+    fig.update_xaxes(title="observed / expected mutated tumours (coding-length background)", type="log",
+                     tickvals=[0.1, 0.3, 1, 3, 10, 30, 100, 300], ticktext=["0.1", "0.3", "1", "3", "10", "30", "100", "300"])
+    fig.update_yaxes(title="−log10 q (capped at 300)")
+    return _html(fig, 430, "Somatic recurrence, CPTAC + TCGA-KIRC (511 tumours)")
+
+
+def dependency_scatter(highlight: set[str]) -> str | None:
+    p = PROCESSED / "layer_dependency.parquet"
+    if not p.exists():
+        return None
+    d = pd.read_parquet(p).dropna(subset=["mean_effect_ccrcc", "mean_effect_other"])
+    d = d[d["n_ccrcc_lines"] >= 10]
+    sel = (d["padj"] < 0.1) & (d["selectivity"] > 0.3) & (d["frac_ccrcc_dependent"] >= 0.25) & ~d["common_essential"]
+    lab = d[sel].nlargest(8, "selectivity")
+    fig = go.Figure()
+    fig.add_trace(go.Scattergl(x=d["mean_effect_other"], y=d["mean_effect_ccrcc"], mode="markers", name="genes",
+                               marker=dict(color=GRAY, size=3, opacity=.35), text=d["gene"],
+                               hovertemplate="%{text}: other %{x:.2f}, ccRCC %{y:.2f}<extra></extra>"))
+    fig.add_trace(go.Scatter(x=d.loc[sel, "mean_effect_other"], y=d.loc[sel, "mean_effect_ccrcc"], mode="markers",
+                             name="selective ccRCC dependency", marker=dict(color=CAT[1], size=7), text=d.loc[sel, "gene"],
+                             hovertemplate="%{text}<extra></extra>"))
+    h = d[d["gene"].isin(highlight)]
+    fig.add_trace(go.Scatter(x=h["mean_effect_other"], y=h["mean_effect_ccrcc"], mode="markers", name="report candidates (hover)",
+                             marker=dict(color=CAT[0], size=8, symbol="diamond"), text=h["gene"],
+                             hovertemplate="%{text}: other %{x:.2f}, ccRCC %{y:.2f}<extra></extra>"))
+    fig.add_trace(go.Scatter(x=lab["mean_effect_other"], y=lab["mean_effect_ccrcc"], mode="text", text=lab["gene"],
+                             textposition="bottom left", showlegend=False, hoverinfo="skip"))
+    lo = float(min(d["mean_effect_other"].min(), d["mean_effect_ccrcc"].min()))
+    fig.add_trace(go.Scatter(x=[lo, 1], y=[lo, 1], mode="lines", line=dict(color=GRAY, dash="dot"), showlegend=False,
+                             hoverinfo="skip"))
+    fig.update_xaxes(title="mean Chronos effect, other lines")
+    fig.update_yaxes(title="mean Chronos effect, ccRCC lines (lower = more essential)")
+    return _html(fig, 470, "DepMap 26Q1: what do ccRCC lines need more than other lines?")
+
+
+def tcga_replication(highlight: set[str]) -> str | None:
+    p = PROCESSED / "layer_tcga.parquet"
+    if not p.exists():
+        return None
+    t = pd.read_parquet(p).set_index("gene")
+    de = pd.read_parquet(PROCESSED / "de_results.parquet")
+    c = de[(de.layer == "rna")].dropna(subset=["hgnc_symbol"]).drop_duplicates("hgnc_symbol").set_index("hgnc_symbol")
+    j = c[["log2fc", "padj"]].join(t[["log2fc", "padj"]], rsuffix="_tcga", how="inner").dropna()
+    rho = float(j["log2fc"].corr(j["log2fc_tcga"], method="spearman"))
+    sample = j.sample(min(len(j), 6000), random_state=1)
+    fig = go.Figure(go.Scattergl(x=sample["log2fc"], y=sample["log2fc_tcga"], mode="markers", name="genes",
+                                 marker=dict(color=GRAY, size=3, opacity=.35), text=sample.index,
+                                 hovertemplate="%{text}: CPTAC %{x:.2f}, TCGA %{y:.2f}<extra></extra>"))
+    h = j[j.index.isin(highlight)]
+    fig.add_trace(go.Scatter(x=h["log2fc"], y=h["log2fc_tcga"], mode="markers+text", name="report candidates",
+                             marker=dict(color=CAT[0], size=8), text=h.index, textposition="top center",
+                             hovertemplate="%{text}<extra></extra>"))
+    fig.update_xaxes(title="CPTAC RNA log2FC (tumour vs normal, 75 pairs)")
+    fig.update_yaxes(title="TCGA-KIRC RNA log2FC (72 pairs)")
+    return _html(fig, 450, f"External replication in TCGA-KIRC (Spearman ρ = {rho:.2f} over {len(j):,} genes)")
+
+
+def purity_shift(genes: list[str]) -> str | None:
+    p = PROCESSED / "layer_purity.parquet"
+    if not p.exists():
+        return None
+    pu = pd.read_parquet(p).dropna(subset=["hgnc_symbol"]).drop_duplicates("hgnc_symbol").set_index("hgnc_symbol")
+    de = pd.read_parquet(PROCESSED / "de_results.parquet")
+    rna = de[de.layer == "rna"].dropna(subset=["hgnc_symbol"]).drop_duplicates("hgnc_symbol").set_index("hgnc_symbol")["log2fc"]
+    rows = [(g, rna.get(g), pu.loc[g, "rna_lfc_at_purity1"], pu.loc[g, "rna_lfc_at_purity1_se"]) for g in genes
+            if g in pu.index and pd.notna(rna.get(g)) and pd.notna(pu.loc[g, "rna_lfc_at_purity1"])]
+    if not rows:
+        return None
+    d = pd.DataFrame(rows, columns=["gene", "bulk", "pure", "se"]).sort_values("pure")
+    fig = go.Figure()
+    for r in d.itertuples():
+        fig.add_trace(go.Scatter(x=[r.bulk, r.pure], y=[r.gene, r.gene], mode="lines", line=dict(color=GRAY, width=1.5),
+                                 showlegend=False, hoverinfo="skip"))
+    fig.add_trace(go.Scatter(x=d["bulk"], y=d["gene"], mode="markers", name="bulk tumour vs normal",
+                             marker=dict(color=GRAY, size=8), hovertemplate="%{y}: bulk %{x:.2f}<extra></extra>"))
+    fig.add_trace(go.Scatter(x=d["pure"], y=d["gene"], mode="markers", name="extrapolated to purity 1",
+                             marker=dict(color=CAT[0], size=9), error_x=dict(type="data", array=1.96 * d["se"], color=CAT[0]),
+                             hovertemplate="%{y}: pure tumour %{x:.2f}<extra></extra>"))
+    fig.update_xaxes(title="RNA log2FC (tumour − normal)")
+    return _html(fig, max(380, 22 * len(d) + 120), "Infiltration or tumour cells? Bulk log2FC vs log2FC at purity 1 (ESTIMATE)")
+
+
+def kinase_bars(n: int = 10) -> str | None:
+    p = PROCESSED / "layer_kinase_activity.parquet"
+    if not p.exists():
+        return None
+    k = pd.read_parquet(p)
+    d = pd.concat([k.head(n), k.tail(n)]).drop_duplicates("gene").sort_values("z")
+    col = [CAT[1] if (z > 0 and q < 0.1) else CAT[0] if (z < 0 and q < 0.1) else GRAY for z, q in zip(d["z"], d["padj"])]
+    fig = go.Figure(go.Bar(x=d["z"], y=d["gene"], orientation="h", marker_color=col,
+                           customdata=np.c_[d["n_substrate_sites"], d["padj"]],
+                           hovertemplate="%{y}: z %{x:.2f}, %{customdata[0]} sites, q %{customdata[1]:.3g}<extra></extra>"))
+    fig.update_xaxes(title="KSEA z (protein-adjusted site log2FC; coloured: BH < 0.1)")
+    return _html(fig, max(380, 20 * len(d) + 110), "Kinase activity in tumours vs normal (CPTAC phosphosites)", showlegend=False)
+
+
+def outcome_auroc(outcomes: dict | None) -> str | None:
+    if not outcomes:
+        return None
+    fig = go.Figure()
+    sets = [("clinical_targets", "RCC clinical targets"), ("temporal_holdout", "Holdout (first trial ≥ 2016)"),
+            ("clearcode34", "ClearCode34 (prognostic)")]
+    # ablation rows exist only for some gold sets; plot the labels every set has
+    labels = [lab for lab in outcomes["clinical_targets"] if all(lab in outcomes[s[0]] for s in sets)]
+    for i, lab in enumerate(labels):
+        x = [s[1] for s in sets]
+        y = [outcomes[s[0]][lab]["auroc"] for s in sets]
+        lo = [outcomes[s[0]][lab]["auroc"] - outcomes[s[0]][lab]["auroc_ci95"][0] for s in sets]
+        hi = [outcomes[s[0]][lab]["auroc_ci95"][1] - outcomes[s[0]][lab]["auroc"] for s in sets]
+        fig.add_trace(go.Bar(x=x, y=y, name=lab, marker_color=CAT[i % len(CAT)],
+                             error_y=dict(type="data", symmetric=False, array=hi, arrayminus=lo, color="#555")))
+    fig.add_hline(y=0.5, line=dict(color=GRAY, dash="dot"))
+    fig.update_yaxes(title="AUROC over the gene universe (95 % CI)", range=[0.3, 1])
+    return _html(fig, 430, "Do the scores rank genes the clinic later used? (0.5 = random)", barmode="group")

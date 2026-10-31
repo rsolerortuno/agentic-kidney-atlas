@@ -40,6 +40,10 @@ def collect_ids(f: dict) -> list[str]:
     for r in f["convergence"]["ranking"][:25]:
         for v in r["evidence_ids"].values():
             ids += v
+    for rows in (f["convergence"].get("profiles") or {}).values():
+        for r in rows[:25]:
+            for v in r["evidence_ids"].values():
+                ids += v[:6]
     for block in (f.get("cell_context") or {}).values():
         if isinstance(block, list):
             for row in block:
@@ -121,6 +125,35 @@ def evidence_view(e: dict) -> dict:
                   f"{e['n_known_residues']} experimentally ligand-bound residues from {e['n_ligands']} ligands "
                   f"(top pockets alone: {e['recall_in_top_pockets']}); best-matching cavity ranked "
                   f"{e['best_cavity_rank']} of {e['n_cavities']} by the MGD score")
+    elif t == "somatic_recurrence":
+        detail = (f"{e['gene']}: nonsynonymous mutation in {e['mutated_patients']}/{e['patients']} tumours "
+                  f"(CPTAC {e['cptac_mutated']}, TCGA {e['tcga_mutated']}); observed/expected {e['obs_exp']} for "
+                  f"{e['cds_bp']} coding bp, q {e['padj']}")
+    elif t == "cis_dosage":
+        detail = (f"{e['gene']} ({e.get('arm') or 'NA'}): copy number vs RNA ρ {e.get('rna_rho')} (q {e.get('rna_padj')}), "
+                  f"vs protein ρ {e.get('protein_rho')} (q {e.get('protein_padj')}); loss {e.get('loss_freq')}, "
+                  f"gain {e.get('gain_freq')}")
+    elif t == "depmap_dependency":
+        detail = (f"{e['gene']}: mean Chronos effect {e['mean_effect_ccrcc']} in {e['n_ccrcc_lines']} ccRCC lines vs "
+                  f"{e['mean_effect_other']} in other lines (selectivity {e['selectivity']}, q {e['padj']}); "
+                  f"{e['frac_ccrcc_dependent']} of ccRCC lines < −0.5; common essential: {e['common_essential']} "
+                  f"({e['release']})")
+    elif t == "tcga_de":
+        detail = (f"{e['gene']} TCGA-KIRC: log2FC {e['log2fc']} (q {e['padj']}, {e['n_pairs']} tumour–normal pairs, "
+                  f"{e['unit']})")
+    elif t == "tcga_survival":
+        detail = (f"{e['gene']} TCGA-KIRC overall survival: HR {e['hr_per_sd']} per SD of expression (log HR "
+                  f"{e['log_hr_per_sd']}, q {e['padj']}, n={e['n']}; {e['direction']})")
+    elif t == "kinase_activity":
+        detail = (f"{e['gene']}: KSEA z {e['ksea_z']} (q {e['padj']}) over {e['n_substrate_sites']} substrate sites, "
+                  f"protein-adjusted")
+    elif t == "phosphosite_de":
+        detail = (f"{e['gene']} {e['site']}: log2FC {e['log2fc']} (protein-adjusted {e.get('protein_adjusted_log2fc')}), "
+                  f"q {e['padj']}, {e['n_pairs']} pairs")
+    elif t == "purity":
+        detail = (f"{e['gene']}: tumour RNA vs ESTIMATE purity ρ {e.get('rna_purity_rho')}; RNA log2FC at purity 1 "
+                  f"{e.get('rna_lfc_at_purity1')} ± {e.get('rna_lfc_at_purity1_se')} (protein "
+                  f"{e.get('protein_lfc_at_purity1')}), {e['n_tumors']} tumours")
     return {"id": e["evidence_id"], "anchor": anchor(e["evidence_id"]), "type": t, "label": label,
             "link": link, "detail": detail}
 
@@ -195,7 +228,7 @@ def render(findings_path: Path, out: Path | None = None) -> Path:
     sw = f["convergence"]["config"]["stream_weights"]
     lit1, lit2 = F.literature_charts()
     figs = {
-        "stream_stack": F.stream_stack(ranking, sw), "component_heatmap": F.component_heatmap(ranking),
+        "stream_stack": F.stream_stack(ranking, sw), "component_heatmap": F.component_heatmap(ranking, list(sw)),
         "volcano_rna": F.volcano("rna", set(top_genes)), "volcano_protein": F.volcano("protein", set(top_genes)),
         "rna_vs_protein": F.rna_vs_protein(set(top_genes)), "arm_loss": F.arm_loss(),
         "dotplot": F.celltype_dotplot(dotplot_genes, labels), "share_stack": F.share_stack(report_genes),
@@ -209,6 +242,20 @@ def render(findings_path: Path, out: Path | None = None) -> Path:
         "grade": F.grade_correlation(top_genes[:12] + [r["gene"] for r in cell["discovery_cards"] if r["track"] == "tumor"]),
         "lit_relations": lit1, "lit_years": lit2, "drug_stage": F.drug_stage(ranking),
     }
+    # ---- M13: validation layers, profiles, robustness, evaluation
+    evals_p = PROCESSED.parents[1] / "evals" / "results.json"
+    evals = json.loads(evals_p.read_text(encoding="utf-8")) if evals_p.exists() else {}
+    cand = list(dict.fromkeys([t["gene"] for t in f.get("targets", [])] + top_genes[:10]))
+    profiles = f["convergence"].get("profiles") or {}
+    figs.update({
+        "rank_conv": F.rank_intervals("convergence"), "rank_target": F.rank_intervals("target"),
+        "rank_biomarker": F.rank_intervals("biomarker"), "mutations": F.mutation_recurrence(),
+        "dependency": F.dependency_scatter(set(cand)), "tcga": F.tcga_replication(set(cand)),
+        "purity": F.purity_shift(list(dict.fromkeys(cand + [r["gene"] for r in profiles.get("target", [])[:8]]))),
+        "kinases": F.kinase_bars(), "outcomes": F.outcome_auroc(evals.get("outcomes")),
+    })
+    layers_p = PROCESSED / "layers_summary.json"
+    layers = json.loads(layers_p.read_text()) if layers_p.exists() else {}
     pockets = pd.read_parquet(PROCESSED / "structure_pockets.parquet")
     best = pockets[pockets["rank"] == 1].sort_values("mgd_score", ascending=False).reset_index(drop=True)
     controls_view = []
@@ -240,6 +287,7 @@ def render(findings_path: Path, out: Path | None = None) -> Path:
         plotly_js=get_plotlyjs(), cytoscape_js=(ASSETS / "cytoscape.min.js").read_text(encoding="utf-8"),
         verification=json.loads(vpath.read_text(encoding="utf-8")) if vpath.exists() else None,
         graph_stats=json.loads((PROCESSED / "graph_stats.json").read_text()),
+        profiles=profiles, profile_weights=f["convergence"].get("profile_weights") or {}, evals=evals, layers=layers,
     )
     out = out or REPORTS / "ccrcc_report.html"
     out.write_text(html_out, encoding="utf-8")

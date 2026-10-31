@@ -34,14 +34,51 @@ convergence:
   # genetics datatypes, because the overall score also contains literature/expression evidence that the
   # other streams already measure (double counting); literature also takes Open Targets text-mining into
   # account to correct the selection bias of the local PubMed corpus (searched only for top omics genes).
+  # v3 (M13, after the v2 review): continuous omics, copy number x cis effect, measured somatic recurrence instead of
+  # the uniform Open Targets somatic score, tractability for every gene, DepMap dependency and TCGA replication.
+  # Weights of the v2 streams are unchanged; the two new streams get 1.0. Decided before measuring (evals/history.md).
+  version: 3
+  omics_caps: {rna: 4.0, protein: 2.0, phospho: 2.0}   # |log2FC| at which a significant layer reaches 1
+  cis_rho_saturation: 0.5            # copy-number -> product Spearman rho at which the cis factor reaches 1
+  mutation_log10q_saturation: 10     # somatic recurrence: -log10(q) at which the component reaches 1
+  prognosis_log_hr_saturation: 0.5   # |log HR per SD| (TCGA overall survival)
+  kinase_z_saturation: 4.0           # KSEA z-score
+  grade_rho_saturation: 0.4          # |Spearman rho| with grade or stage
+  rna_protein_rho_saturation: 0.6
+  dependency: {min_lines: 10, padj: 0.1, selectivity_saturation: 0.5, fraction_saturation: 0.5}
   stream_weights:
-    omics: 2.0         # CPTAC tumor-vs-normal expression evidence (above)
-    cnv: 0.5           # max(loss, gain) frequency in CPTAC tumors
+    omics: 2.0         # CPTAC tumor-vs-normal expression, continuous (above)
+    cnv: 0.5           # max(loss, gain) frequency x cis effect on protein (or RNA)
     literature: 1.0    # max(min(1, validated local relations / 3), Open Targets literature datatype)
-    genetics: 2.0      # max(Open Targets genetic_association, somatic_mutation) for ccRCC
-    tractability: 0.5  # 1 approved/clinical drug, 0.5 tractable modality only, 0 otherwise (enriched genes)
+    genetics: 2.0      # max(Open Targets germline genetic association, somatic recurrence CPTAC + TCGA-KIRC)
+    tractability: 0.5  # 1 clinical-stage drug (any indication), 0.5 predicted SM/AB tractable, 0 otherwise (all genes)
+    dependency: 1.0    # DepMap 26Q1 selective dependency of ccRCC lines
+    replication: 1.0   # same-direction change in TCGA-KIRC tumor vs adjacent normal
   top_n_report: 25
   top_n_eval: 100
+
+# Two question-specific scores (M13). They leave out literature and clinical-drug history on purpose, so they can be
+# evaluated against clinical outcomes without circularity (evals/results.md). Weights decided before measuring.
+profiles:
+  target:
+    omics_up: 2.0                 # tumour-up expression (down-regulated genes score 0)
+    tumor_intrinsic: 1.0          # RNA up-regulation that survives extrapolation to purity 1
+    dependency: 1.5               # selective DepMap dependency
+    genetics: 1.0                 # somatic driver / germline association
+    kinase: 0.5                   # protein-adjusted kinase activity
+    tractability_predicted: 1.0   # predicted SM / AB tractability (or clinical precedence elsewhere)
+  biomarker:
+    omics: 2.0                    # change in either direction
+    replication: 1.5              # TCGA-KIRC same direction
+    prognosis: 1.0                # TCGA overall survival (Cox)
+    grade: 0.5                    # CPTAC grade / stage association
+    measurable: 0.5               # RNA-protein agreement across tumours
+    cnv: 0.5                      # cis copy-number effect
+
+sensitivity:
+  draws: 1000
+  kappa: 20        # Dirichlet concentration around the configured weights (larger = smaller perturbations)
+  seed: 11
 
 cell_context:
   # Single-cell and spatial context for the report candidates (narrative targets + top-25 convergence of the

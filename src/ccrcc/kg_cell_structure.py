@@ -71,6 +71,8 @@ def load(store: GraphStore | None = None) -> dict:
                                     pct_expressing=round(float(r.pct_expressing), 1),
                                     mean_lognorm=round(float(r.mean_lognorm), 3),
                                     share_of_tumor_transcripts=round(float(r.share_of_tissue_transcripts), 3),
+                                    pseudobulk_cpm=None if pd.isna(r.pseudobulk_cpm) else round(float(r.pseudobulk_cpm), 1),
+                                    cpm_share=None if pd.isna(getattr(r, "cpm_share", None)) else round(float(r.cpm_share), 3),
                                     n_cells=int(r.n_cells), n_donors=int(r.n_donors))
             store.add_claim(gid, "expressed_in", cid, ev)
             counts["celltype_expression"] += 1

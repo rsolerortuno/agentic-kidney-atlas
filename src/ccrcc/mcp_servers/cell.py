@@ -43,7 +43,10 @@ def celltype_expression(gene: str, tissue: str = "tumor", n: int = 6) -> list[di
     tissue: 'tumor', 'interface' (tumour-normal) or 'normal'. Returns, per cell group ranked by mean
     log-normalized expression: % of cells with >= 1 UMI, donor-averaged pseudobulk CPM, and the group's share of
     all transcripts of that gene in the tissue — the last one answers whether a bulk signal is tumor-intrinsic
-    or contributed by infiltrating cells. evidence_id is present for groups loaded into the graph."""
+    or contributed by infiltrating cells. cpm_share is the abundance-independent version (per-cell level of the
+    group relative to the other groups): use it to say which cell type expresses the gene most per cell, since
+    transcript shares also depend on how many cells of each type were captured. evidence_id is present for groups
+    loaded into the graph."""
     g = canonical_gene(gene)
     d = _ct()
     sub = d[(d["hgnc_symbol"] == g) & (d["tissue"] == tissue)]
@@ -55,6 +58,7 @@ def celltype_expression(gene: str, tissue: str = "tumor", n: int = 6) -> list[di
                    "mean_lognorm": round(float(r.mean_lognorm), 3),
                    "pseudobulk_cpm": None if pd.isna(r.pseudobulk_cpm) else round(float(r.pseudobulk_cpm), 1),
                    "share_of_tissue_transcripts": round(float(r.share_of_tissue_transcripts), 3),
+                   "cpm_share": None if pd.isna(getattr(r, "cpm_share", None)) else round(float(r.cpm_share), 3),
                    "n_cells": int(r.n_cells), "n_donors": int(r.n_donors),
                    "evidence_id": existing(evidence_id("sc_expr", g, r.cell_group)) if tissue == "tumor" else None})
             for r in sub.itertuples()]

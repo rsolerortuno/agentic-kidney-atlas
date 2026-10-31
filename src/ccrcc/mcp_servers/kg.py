@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import os
 
 from mcp.server.fastmcp import FastMCP
 
@@ -79,13 +80,48 @@ def get_evidence(ids: list[str]) -> list[dict]:
     return clean(store().get_evidence(ids[:50]))
 
 
-@mcp.tool()
-def convergence_ranking(n: int = 25) -> list[dict]:
-    """Deterministic convergence ranking from the latest scripts/integrate.py run (if any)."""
+def _latest_convergence() -> dict | None:
+    from ..integrate import run_dir
+    if os.environ.get("CCRCC_RUN_DIR") and (run_dir() / "convergence.json").exists():
+        return json.loads((run_dir() / "convergence.json").read_text())
     runs = sorted(p for p in RUNS.glob("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/convergence.json"))
-    if not runs:
+    return json.loads(runs[-1].read_text()) if runs else None
+
+
+@mcp.tool()
+def convergence_ranking(n: int = 25, profile: str = "convergence") -> list[dict]:
+    """Deterministic ranking from the latest scripts/integrate.py run.
+
+    profile: 'convergence' (all evidence streams, including literature and drugs), 'target' (tumour-up expression,
+    purity-robust tumour-intrinsic signal, selective DepMap dependency, driver status, kinase activity, predicted
+    tractability) or 'biomarker' (change in either direction, TCGA replication, prognosis, grade, RNA-protein
+    agreement). Profiles leave out literature and drug history. Each row carries its components, the M13 values
+    (mutation, DepMap, TCGA, purity, kinase) and `rank_interval_90`: 5th-95th percentile rank and probability of
+    staying in the top 10/25/100 when the weights are randomly perturbed (robustness)."""
+    conv = _latest_convergence()
+    if not conv:
         return [{"message": "no convergence run yet; the orchestrator runs scripts/integrate.py"}]
-    return json.loads(runs[-1].read_text())["ranking"][:n]
+    if profile == "convergence":
+        return conv["ranking"][:n]
+    rows = (conv.get("profiles") or {}).get(profile)
+    if rows is None:
+        return [{"message": f"unknown profile '{profile}'; use convergence, target or biomarker"}]
+    return rows[:n]
+
+
+@mcp.tool()
+def gene_scores(gene: str) -> dict:
+    """Where one gene sits in the convergence ranking and in the target / biomarker profiles (rank, score,
+    components, robustness interval). Returns only what the latest run computed; absent = outside the stored top."""
+    conv = _latest_convergence()
+    if not conv:
+        return {"message": "no convergence run yet"}
+    g = canonical_gene(gene)
+    out = {"gene": g}
+    for name, rows in [("convergence", conv["ranking"])] + list((conv.get("profiles") or {}).items()):
+        hit = next((r for r in rows if r["gene"] == g), None)
+        out[name] = hit if hit else "not in the stored top of this ranking"
+    return clean(out)
 
 
 if __name__ == "__main__":

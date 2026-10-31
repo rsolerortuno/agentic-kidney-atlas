@@ -1,0 +1,132 @@
+{
+ "agent": "agente-omico",
+ "findings": [
+  {
+   "gene": "SCARB1",
+   "role": "target_and_biomarker",
+   "statement": "SCARB1 is top of the target ranking: RNA log2FC 2.974 and protein log2FC 1.837 in tumor vs normal, TCGA-KIRC tumor-vs-normal log2FC 3.989, and the RNA change extrapolated to purity 1 is 3.762, so it is tumor-intrinsic. It is not prognostic (Cox log HR -0.038).",
+   "evidence_ids": [
+    "EV:omics_de:36b227bd1fb6",
+    "EV:tcga_de:2d66f8e78d0c",
+    "EV:purity:2d66f8e78d0c"
+   ]
+  },
+  {
+   "gene": "CA9",
+   "role": "target_and_biomarker",
+   "statement": "CA9 is up at RNA log2FC 6.312 and protein log2FC 2.269. It replicates in TCGA (log2FC 9.712) and persists at purity 1 (7.787). Girentuximab (PHASE_3) targets it, so it is a validated tissue and imaging biomarker and target. It is not prognostic in TCGA (log HR -0.009).",
+   "evidence_ids": [
+    "EV:omics_de:b269736afdb0",
+    "EV:tcga_de:225a767ebcb5",
+    "EV:purity:225a767ebcb5",
+    "EV:open_targets_drug:e1e0c664ada3"
+   ]
+  },
+  {
+   "gene": "SLC16A3",
+   "role": "target",
+   "statement": "SLC16A3 (MCT4, a membrane lactate transporter) is up at RNA log2FC 3.435 and protein log2FC 2.279. TCGA log2FC is 3.291 and the purity-1 RNA log2FC is 3.821. Its CNV-RNA cis rho is 0.258.",
+   "evidence_ids": [
+    "EV:omics_de:545c6eb28bce",
+    "EV:tcga_de:11298113327b",
+    "EV:cis_dosage:11298113327b"
+   ]
+  },
+  {
+   "gene": "NNMT",
+   "role": "target_and_biomarker",
+   "statement": "NNMT is up at RNA log2FC 4.67 and protein log2FC 2.709. TCGA log2FC is 4.685 and higher expression predicts worse survival (log HR 0.301, padj 0.00479). It ranks 2nd in the biomarker profile.",
+   "evidence_ids": [
+    "EV:omics_de:aefc373d6072",
+    "EV:tcga_de:7dbf93860d9f",
+    "EV:tcga_survival:7dbf93860d9f"
+   ]
+  },
+  {
+   "gene": "CD70",
+   "role": "target",
+   "statement": "CD70 is up at RNA log2FC 4.464 and protein log2FC 2.421. TCGA log2FC is 7.09 and the purity-1 RNA log2FC is 4.278. Clinical-stage CD70-directed agents exist (cusatuzumab PHASE_2, vorsetuzumab mafodotin PHASE_1), which makes it a surface antigen candidate.",
+   "evidence_ids": [
+    "EV:omics_de:97c97f6d7d62",
+    "EV:tcga_de:908e84663f6a",
+    "EV:open_targets_drug:fcadbe214e8c"
+   ]
+  },
+  {
+   "gene": "ENPP3",
+   "role": "target",
+   "statement": "ENPP3 is up at RNA log2FC 3.895 and protein log2FC 1.544. TCGA log2FC is 5.557 and the purity-1 RNA log2FC is 5.278. The antibody-drug conjugate AGS-16C3F reached PHASE_2. CNV loss frequency is 0.182.",
+   "evidence_ids": [
+    "EV:omics_de:d540450c23e1",
+    "EV:tcga_de:d5aee88146ed",
+    "EV:open_targets_drug:49872cd86a77"
+   ]
+  },
+  {
+   "gene": "FABP6",
+   "role": "biomarker",
+   "statement": "FABP6 is up at RNA log2FC 4.006 and protein log2FC 1.921. TCGA log2FC is 6.431. CNV gain frequency is 0.573 and the CNV-RNA cis rho is 0.309, which suggests a real dosage effect of gain.",
+   "evidence_ids": [
+    "EV:omics_de:0ea3d10905b2",
+    "EV:omics_cnv:52f5e4eeb4a8",
+    "EV:cis_dosage:52f5e4eeb4a8"
+   ]
+  },
+  {
+   "gene": "PSAT1",
+   "role": "biomarker",
+   "statement": "PSAT1 is down in tumor, with RNA log2FC -3.867 and protein log2FC -1.963. TCGA log2FC is -2.974. Higher expression is associated with worse survival (log HR 0.43), so it is a biomarker rather than a target. It tops the biomarker ranking.",
+   "evidence_ids": [
+    "EV:omics_de:fe09b800ea76",
+    "EV:tcga_de:58119698ea36",
+    "EV:tcga_survival:58119698ea36"
+   ]
+  },
+  {
+   "gene": "ALDH6A1",
+   "role": "biomarker",
+   "statement": "ALDH6A1 is down, with RNA log2FC -3.399 and protein log2FC -1.925. CNV loss frequency is 0.355 and the CNV-RNA cis rho is 0.525, so loss has a real dosage effect. TCGA Cox log HR is -0.554, so low expression is associated with worse survival. This fits loss of proximal tubule identity.",
+   "evidence_ids": [
+    "EV:omics_de:1c73c0e9eeb3",
+    "EV:omics_cnv:df75d3108dd0",
+    "EV:cis_dosage:df75d3108dd0",
+    "EV:tcga_survival:df75d3108dd0"
+   ]
+  },
+  {
+   "gene": "HSD11B2",
+   "role": "biomarker",
+   "statement": "HSD11B2 is down, with RNA log2FC -3.618 and protein log2FC -1.715. TCGA log2FC is -4.456 and the TCGA Cox log HR is -0.356. Carbenoxolone is an approved HSD11B2 inhibitor, but loss of the enzyme makes it a biomarker rather than a target.",
+   "evidence_ids": [
+    "EV:omics_de:eb37edc0c198",
+    "EV:tcga_de:82a4f6572710",
+    "EV:open_targets_drug:b391d2d31592"
+   ]
+  },
+  {
+   "gene": "SLC22A8",
+   "role": "biomarker",
+   "statement": "SLC22A8 (OAT3) is strongly down, with RNA log2FC -6.715 and protein log2FC -2.264. TCGA log2FC is -6.154. This reflects loss of tubule identity and is a diagnostic biomarker.",
+   "evidence_ids": [
+    "EV:omics_de:f6425bf6fff5",
+    "EV:tcga_de:de6aa3b720b1"
+   ]
+  },
+  {
+   "gene": "ALDOB",
+   "role": "biomarker",
+   "statement": "ALDOB is down, with RNA log2FC -7.028 and protein log2FC -2.273. TCGA log2FC is -4.741 and the purity-1 RNA log2FC is -6.302. CNV loss frequency is 0.164 and the cis rho is 0.331.",
+   "evidence_ids": [
+    "EV:omics_de:1f7150068d77",
+    "EV:tcga_de:a46f337f2987",
+    "EV:cis_dosage:a46f337f2987"
+   ]
+  }
+ ],
+ "caveats": [
+  "Targets were ranked mainly on up-regulation, replication and tractability. No DepMap dependency (mean effect near 0) supports most of the top targets, so they are antigen or biomarker candidates rather than essential genes.",
+  "Down-regulated genes such as PSAT1, ALDH6A1, HSD11B2, SLC22A8 and ALDOB mainly reflect loss of normal tubule identity.",
+  "Values were taken from the convergence_ranking rows. I did not run get_de_results, rna_protein_correlation or mutation_recurrence for each gene.",
+  "Immune-cell-linked genes (FCGR3A, FCER1G) were not reported because their signal is partly infiltration."
+ ]
+}

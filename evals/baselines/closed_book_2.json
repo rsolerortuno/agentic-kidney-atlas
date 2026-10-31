@@ -1,0 +1,57 @@
+{
+ "run": 2,
+ "model": "claude-sonnet-5-5",
+ "raw": "{\"candidates\": [{\"gene\": \"VHL\", \"role\": \"target_and_biomarker\", \"rationale\": \"Biallelic inactivation by mutation, deletion or methylation occurs in about 80-90% of ccRCC and is the founding event; loss drives HIF stabilization and defines the pathway that belzutifan targets.\"}, {\"gene\": \"EPAS1\", \"role\": \"target_and_biomarker\", \"rationale\": \"HIF-2α is the key oncogenic driver downstream of VHL loss, and belzutifan (a HIF-2α inhibitor) produced about 49% objective response in VHL-disease RCC and about 22-25% in pretreated sporadic ccRCC (LITESPARK-005, which improved PFS over everolimus).\"}, {\"gene\": \"VEGFA\", \"role\": \"target_and_biomarker\", \"rationale\": \"HIF-driven VEGF overexpression underlies the angiogenic phenotype, and VEGFR TKIs (sunitinib, pazopanib, axitinib, cabozantinib, lenvatinib) are standard of care; an angiogenesis gene signature predicts sunitinib response in IMmotion150/151.\"}, {\"gene\": \"PDCD1\", \"role\": \"target\", \"rationale\": \"PD-1 blockade (nivolumab, pembrolizumab) with ipilimumab or TKIs raises overall survival in first-line advanced RCC (CheckMate 214, KEYNOTE-426, CheckMate 9ER, CLEAR).\"}, {\"gene\": \"CD274\", \"role\": \"target_and_biomarker\", \"rationale\": \"PD-L1 expression is a target and an enriching but imperfect biomarker, because benefit from immune checkpoint inhibitors occurs regardless of PD-L1 status in most trials (CheckMate 214 favored PD-L1 ≥1% for ORR).\"}, {\"gene\": \"PBRM1\", \"role\": \"biomarker\", \"rationale\": \"The second most frequently mutated gene (about 40%), its loss is linked to a lower angiogenesis signature and better response to VEGF TKIs, and it has conflicting associations with ICI response (Miao 2018 vs. Braun 2020).\"}, {\"gene\": \"BAP1\", \"role\": \"biomarker\", \"rationale\": \"Mutated in about 10-15% of ccRCC and mutually exclusive with PBRM1, its loss is a reproducible marker of aggressive disease and worse survival.\"}, {\"gene\": \"SETD2\", \"role\": \"biomarker\", \"rationale\": \"Mutated in about 10-15% of ccRCC, its loss causes loss of H3K36me3 and is associated with poor prognosis and relapse.\"}, {\"gene\": \"MET\", \"role\": \"target\", \"rationale\": \"MET is targeted by cabozantinib, which improved PFS and OS versus everolimus in METEOR (median PFS 7.4 vs 3.8 months) and was also active in MET-driven papillary RCC.\"}, {\"gene\": \"MTOR\", \"role\": \"target\", \"rationale\": \"mTOR inhibitors (everolimus, temsirolimus) are approved in later lines, and mTOR is activated through PI3K/AKT/MTOR pathway mutations (MTOR, PIK3CA, PTEN, TSC1/2 in about 10-15% of tumors), though with modest benefit (RECORD-1 PFS 4.9 months).\"}]}",
+ "candidates": [
+  {
+   "gene": "VHL",
+   "role": "target_and_biomarker",
+   "rationale": "Biallelic inactivation by mutation, deletion or methylation occurs in about 80-90% of ccRCC and is the founding event; loss drives HIF stabilization and defines the pathway that belzutifan targets."
+  },
+  {
+   "gene": "EPAS1",
+   "role": "target_and_biomarker",
+   "rationale": "HIF-2α is the key oncogenic driver downstream of VHL loss, and belzutifan (a HIF-2α inhibitor) produced about 49% objective response in VHL-disease RCC and about 22-25% in pretreated sporadic ccRCC (LITESPARK-005, which improved PFS over everolimus)."
+  },
+  {
+   "gene": "VEGFA",
+   "role": "target_and_biomarker",
+   "rationale": "HIF-driven VEGF overexpression underlies the angiogenic phenotype, and VEGFR TKIs (sunitinib, pazopanib, axitinib, cabozantinib, lenvatinib) are standard of care; an angiogenesis gene signature predicts sunitinib response in IMmotion150/151."
+  },
+  {
+   "gene": "PDCD1",
+   "role": "target",
+   "rationale": "PD-1 blockade (nivolumab, pembrolizumab) with ipilimumab or TKIs raises overall survival in first-line advanced RCC (CheckMate 214, KEYNOTE-426, CheckMate 9ER, CLEAR)."
+  },
+  {
+   "gene": "CD274",
+   "role": "target_and_biomarker",
+   "rationale": "PD-L1 expression is a target and an enriching but imperfect biomarker, because benefit from immune checkpoint inhibitors occurs regardless of PD-L1 status in most trials (CheckMate 214 favored PD-L1 ≥1% for ORR)."
+  },
+  {
+   "gene": "PBRM1",
+   "role": "biomarker",
+   "rationale": "The second most frequently mutated gene (about 40%), its loss is linked to a lower angiogenesis signature and better response to VEGF TKIs, and it has conflicting associations with ICI response (Miao 2018 vs. Braun 2020)."
+  },
+  {
+   "gene": "BAP1",
+   "role": "biomarker",
+   "rationale": "Mutated in about 10-15% of ccRCC and mutually exclusive with PBRM1, its loss is a reproducible marker of aggressive disease and worse survival."
+  },
+  {
+   "gene": "SETD2",
+   "role": "biomarker",
+   "rationale": "Mutated in about 10-15% of ccRCC, its loss causes loss of H3K36me3 and is associated with poor prognosis and relapse."
+  },
+  {
+   "gene": "MET",
+   "role": "target",
+   "rationale": "MET is targeted by cabozantinib, which improved PFS and OS versus everolimus in METEOR (median PFS 7.4 vs 3.8 months) and was also active in MET-driven papillary RCC."
+  },
+  {
+   "gene": "MTOR",
+   "role": "target",
+   "rationale": "mTOR inhibitors (everolimus, temsirolimus) are approved in later lines, and mTOR is activated through PI3K/AKT/MTOR pathway mutations (MTOR, PIK3CA, PTEN, TSC1/2 in about 10-15% of tumors), though with modest benefit (RECORD-1 PFS 4.9 months)."
+  }
+ ]
+}

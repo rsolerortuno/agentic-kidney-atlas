@@ -1,7 +1,8 @@
 """Command line entry point: `uv run ccrcc <command>`.
 
-run-all rebuilds every deterministic artifact from scratch (data -> omics -> literature tables and validation
--> external enrichment -> graph -> convergence -> assembly -> verification -> HTML -> validation). LLM steps
+run-all rebuilds every deterministic artifact from scratch (data -> omics -> clinical/HPA -> M13 extra layers ->
+literature tables and validation -> external enrichment -> graph -> cell/structure/discovery layers -> convergence v3,
+profiles and sensitivity -> assembly -> semantic verification -> HTML -> validation). LLM steps
 (relation extraction, agent analyses, narrative) are not re-run: their saved, verified outputs are reused, and
 `claude -p "/informe"` (scripts/run_informe.ps1) regenerates them.
 """
@@ -36,14 +37,23 @@ def run_all(fresh: bool = True) -> int:
         GRAPH_DB.unlink(missing_ok=True)
         for f in ("publications.parquet", "annotations.parquet", "chunks.parquet", "relations.parquet"):
             (LITERATURE / f).unlink(missing_ok=True)
+    from . import extra_download, kg_layers, layers, safety_clinical
     _step("M1 download (verifies sha256 manifest)", download.download_all)
     _step("M11 download single-cell / spatial h5ad (cached)", download.download_singlecell)
+    _step("M13 download extra layers (mutations, DepMap, TCGA, phosphosites, purity, OT bulk; cached)",
+          extra_download.download_extra)
     _step("M2 omics analysis", omics.run)
+    # HPA normal tissue + CPTAC grade/stage association: needed by M12 discovery and the v3 biomarker profile.
+    # (Before M13 run-all never ran this step, so a clean run failed at M12 unless the files were already there.)
+    _step("M12 HPA vital-organ expression + clinical association", safety_clinical.run)
+    print("    layers:", {k: v for k, v in _step("M13 extra layers (mutations, cis dosage, DepMap, TCGA, kinases, purity)",
+                                               layers.run).items() if k in ("mutations", "tcga", "purity")})
     _step("M3 literature ingestion (PubTator3, frozen PMID lists)", literature.ingest)
     _step("M3 rebuild extraction batches (deterministic)", literature.write_extraction_batches)
     print("    relations:", _step("M3 validate extracted relations", literature.validate_extractions))
     _step("M5 external enrichment (cached)", enrich.run)
     _step("M4 knowledge graph", kg_build.build)
+    print("    M13 claims:", _step("M13 load extra layers into the graph", kg_layers.load_layers)["claims_added"])
     from . import discovery, kg_cell_structure, singlecell, spatial, structure
     _step("M11 single-cell cell-type expression", singlecell.run)
     print("    discovery:", {k: v for k, v in _step("M12 target discovery (Europe PMC, Open Targets, UniProt)",
@@ -59,7 +69,7 @@ def run_all(fresh: bool = True) -> int:
         print("No saved agent run (runs/<date>/narrative.json). Run scripts/run_informe.ps1 first.")
         return 1
     run = runs[-1]
-    _step("convergence", integrate.write, day=run.name)
+    _step("convergence v3 + target / biomarker profiles + weight sensitivity", integrate.write, day=run.name)
     print("    agents:", {k: (v.get("kept"), v.get("dropped")) for k, v in
                           _step("verify agents", verify_agents, run)["agents"].items()})
     _step("assemble findings.json", assemble, run)
@@ -78,7 +88,8 @@ def main(argv=None) -> int:
     ra = sub.add_parser("run-all", help="rebuild everything deterministic from scratch and render the report")
     ra.add_argument("--keep", action="store_true", help="do not delete processed data / graph first")
     for name in ("download", "omics", "literature", "validate-relations", "enrich", "graph", "integrate", "eval",
-                 "singlecell", "spatial", "structure", "cell-graph", "discovery"):
+                 "singlecell", "spatial", "structure", "cell-graph", "discovery", "layers", "layers-graph",
+                 "download-extra", "safety-clinical", "baselines"):
         sub.add_parser(name)
     ev = sub.choices["eval"]
     ev.add_argument("--qa", action="store_true", help="also run the known-answer questions with claude -p")
@@ -122,14 +133,38 @@ def main(argv=None) -> int:
     elif args.cmd == "cell-graph":
         from .kg_cell_structure import load as load_cs
         print(json.dumps(load_cs(), indent=1))
+    elif args.cmd == "download-extra":
+        from .extra_download import download_extra
+        print(json.dumps(download_extra(), indent=1))
+    elif args.cmd == "safety-clinical":
+        from .safety_clinical import run
+        print(json.dumps(run(), indent=1))
+    elif args.cmd == "layers":
+        from .layers import run
+        print(json.dumps(run(), indent=1, default=float))
+    elif args.cmd == "layers-graph":
+        from .kg_layers import load_layers
+        print(json.dumps(load_layers(), indent=1))
+    elif args.cmd == "baselines":
+        from .baselines import run
+        print(json.dumps(run(), indent=1, default=str))
     elif args.cmd == "integrate":
         from .integrate import write
         print(json.dumps(write(), indent=1))
     elif args.cmd == "eval":
-        from .evaluate import grade_answers, recall, run_qa, write_results
+        from .evaluate import EVALS, grade_answers, recall, run_qa, write_results
+        from .integrate import compute
+        from .outcomes import run as outcome_eval
         rec = recall()
         qa = run_qa() if args.qa else (grade_answers(args.answers, args.answers_model) if args.answers else None)
-        print(write_results(rec, qa))
+        if qa is None and (EVALS / "results.json").exists():   # keep the last QA run unless asked to re-run it
+            qa = json.loads((EVALS / "results.json").read_text(encoding="utf-8")).get("qa")
+        outc = outcome_eval(compute())
+        sens_p = PROCESSED / "sensitivity_summary.json"
+        sens = json.loads(sens_p.read_text()) if sens_p.exists() else None
+        base_p = EVALS / "baselines" / "baselines.json"
+        base = json.loads(base_p.read_text(encoding="utf-8")) if base_p.exists() else None
+        print(write_results(rec, qa, outc, base, sens))
         print(f"recall@{rec['top_n']}: {rec['recall']:.0%}" + (f" | QA {qa['correct']}/{qa['total']}" if qa else ""))
     return 0
 

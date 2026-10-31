@@ -1,0 +1,57 @@
+{
+ "run": 1,
+ "model": "claude-sonnet-5-5",
+ "raw": "{\"candidates\": [{\"gene\": \"VHL\", \"role\": \"target_and_biomarker\", \"rationale\": \"Biallelic inactivation occurs in about 80-90% of ccRCC (mutation, deletion or methylation), driving constitutive HIF stabilization and defining the disease's core dependency.\"}, {\"gene\": \"EPAS1\", \"role\": \"target_and_biomarker\", \"rationale\": \"HIF-2α is the key oncogenic driver downstream of VHL loss, and the inhibitor belzutifan produced about 49% ORR in VHL-disease RCC and improved PFS and ORR in pretreated advanced ccRCC (LITESPARK-005).\"}, {\"gene\": \"VEGFA\", \"role\": \"target_and_biomarker\", \"rationale\": \"HIF-driven VEGF underlies the hypervascular phenotype, and VEGF/VEGFR blockade (bevacizumab, sunitinib, axitinib, cabozantinib) is the long-standing backbone of therapy.\"}, {\"gene\": \"KDR\", \"role\": \"target\", \"rationale\": \"VEGFR2 is the main target of TKIs such as axitinib, sunitinib, pazopanib, lenvatinib and cabozantinib, which give ORR around 25-55% in the first line, especially in combinations.\"}, {\"gene\": \"CD274\", \"role\": \"target_and_biomarker\", \"rationale\": \"PD-L1 and PD-1 blockade (nivolumab, pembrolizumab) improves overall survival in combinations, but PD-L1 expression is only weakly predictive of benefit in ccRCC.\"}, {\"gene\": \"PBRM1\", \"role\": \"biomarker\", \"rationale\": \"Truncating mutations occur in about 40% of ccRCC and are associated with response to anti-angiogenic therapy (IMmotion150) and with possible resistance to ICI in some cohorts, though results are inconsistent.\"}, {\"gene\": \"BAP1\", \"role\": \"biomarker\", \"rationale\": \"Mutated in about 10-15% of ccRCC, BAP1 loss is associated with high grade and worse survival and is mutually exclusive with PBRM1 loss.\"}, {\"gene\": \"SETD2\", \"role\": \"biomarker\", \"rationale\": \"Mutated in about 10-15% of ccRCC, SETD2 loss is associated with H3K36me3 depletion, genomic instability and poorer outcomes, and may confer vulnerability to WEE1 inhibition.\"}, {\"gene\": \"CA9\", \"role\": \"target_and_biomarker\", \"rationale\": \"A HIF target expressed in more than 90% of ccRCC, CAIX is a diagnostic and imaging marker (girentuximab PET/CT, with about 85% sensitivity and 87% specificity in ZIRCON) and a therapeutic antibody target.\"}, {\"gene\": \"MET\", \"role\": \"target\", \"rationale\": \"MET is a target of cabozantinib, which improved PFS and OS versus everolimus (METEOR) and is also part of the combinations with nivolumab (CheckMate 9ER) and pembrolizumab/lenvatinib.\"}]}",
+ "candidates": [
+  {
+   "gene": "VHL",
+   "role": "target_and_biomarker",
+   "rationale": "Biallelic inactivation occurs in about 80-90% of ccRCC (mutation, deletion or methylation), driving constitutive HIF stabilization and defining the disease's core dependency."
+  },
+  {
+   "gene": "EPAS1",
+   "role": "target_and_biomarker",
+   "rationale": "HIF-2α is the key oncogenic driver downstream of VHL loss, and the inhibitor belzutifan produced about 49% ORR in VHL-disease RCC and improved PFS and ORR in pretreated advanced ccRCC (LITESPARK-005)."
+  },
+  {
+   "gene": "VEGFA",
+   "role": "target_and_biomarker",
+   "rationale": "HIF-driven VEGF underlies the hypervascular phenotype, and VEGF/VEGFR blockade (bevacizumab, sunitinib, axitinib, cabozantinib) is the long-standing backbone of therapy."
+  },
+  {
+   "gene": "KDR",
+   "role": "target",
+   "rationale": "VEGFR2 is the main target of TKIs such as axitinib, sunitinib, pazopanib, lenvatinib and cabozantinib, which give ORR around 25-55% in the first line, especially in combinations."
+  },
+  {
+   "gene": "CD274",
+   "role": "target_and_biomarker",
+   "rationale": "PD-L1 and PD-1 blockade (nivolumab, pembrolizumab) improves overall survival in combinations, but PD-L1 expression is only weakly predictive of benefit in ccRCC."
+  },
+  {
+   "gene": "PBRM1",
+   "role": "biomarker",
+   "rationale": "Truncating mutations occur in about 40% of ccRCC and are associated with response to anti-angiogenic therapy (IMmotion150) and with possible resistance to ICI in some cohorts, though results are inconsistent."
+  },
+  {
+   "gene": "BAP1",
+   "role": "biomarker",
+   "rationale": "Mutated in about 10-15% of ccRCC, BAP1 loss is associated with high grade and worse survival and is mutually exclusive with PBRM1 loss."
+  },
+  {
+   "gene": "SETD2",
+   "role": "biomarker",
+   "rationale": "Mutated in about 10-15% of ccRCC, SETD2 loss is associated with H3K36me3 depletion, genomic instability and poorer outcomes, and may confer vulnerability to WEE1 inhibition."
+  },
+  {
+   "gene": "CA9",
+   "role": "target_and_biomarker",
+   "rationale": "A HIF target expressed in more than 90% of ccRCC, CAIX is a diagnostic and imaging marker (girentuximab PET/CT, with about 85% sensitivity and 87% specificity in ZIRCON) and a therapeutic antibody target."
+  },
+  {
+   "gene": "MET",
+   "role": "target",
+   "rationale": "MET is a target of cabozantinib, which improved PFS and OS versus everolimus (METEOR) and is also part of the combinations with nivolumab (CheckMate 9ER) and pembrolizumab/lenvatinib."
+  }
+ ]
+}

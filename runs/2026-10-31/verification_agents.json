@@ -1,43 +1,62 @@
 {
  "agents": {
   "agent_omics.json": {
-   "submitted": 15,
-   "kept": 15,
-   "dropped": 0,
-   "dropped_detail": [],
-   "ids_removed": 0
-  },
-  "agent_literature.json": {
-   "submitted": 14,
-   "kept": 13,
-   "dropped": 1,
-   "dropped_detail": [
-    {
-     "text": "MET has strong tractability (savolitinib Phase 3) and omics support, but literature in this corpus is thin: PMID:36816976 mentions MET alterations in papillary ",
-     "gene": "MET",
-     "cited": 2,
-     "nonexistent": [],
-     "not_linked_to_gene": [
-      "EV:chunk:a31c8aca1021",
-      "EV:chunk:e36f5a9a412b"
-     ],
-     "kept": false
-    }
-   ],
-   "ids_removed": 3
-  },
-  "agent_external.json": {
    "submitted": 13,
    "kept": 13,
    "dropped": 0,
    "dropped_detail": [],
-   "ids_removed": 1
+   "semantic_failures": 0,
+   "ids_removed": 0
   },
-  "agent_cells.json": {
-   "submitted": 18,
-   "kept": 18,
+  "agent_literature.json": {
+   "submitted": 13,
+   "kept": 13,
    "dropped": 0,
    "dropped_detail": [],
+   "semantic_failures": 0,
+   "ids_removed": 2
+  },
+  "agent_external.json": {
+   "submitted": 12,
+   "kept": 12,
+   "dropped": 0,
+   "dropped_detail": [],
+   "semantic_failures": 0,
+   "ids_removed": 0
+  },
+  "agent_cells.json": {
+   "submitted": 19,
+   "kept": 17,
+   "dropped": 2,
+   "dropped_detail": [
+    {
+     "text": "In Visium, the high-CA9 spots are surrounded by RCC (log2 enrichment 0.377, padj 0.00173) and the RCC composition-corrected share is 0.998. Macrophage neighbor ",
+     "gene": "CA9",
+     "cited": 2,
+     "nonexistent": [],
+     "not_linked_to_gene": [],
+     "kept": false,
+     "unmatched_numbers": [
+      "0.084"
+     ],
+     "direction_contradiction": null,
+     "semantic_failure": true
+    },
+    {
+     "text": "KDR has the second-highest MGD site score in the ranking (0.841, pocket 361.1 A3, 7 accessible lysines, pLDDT 71.12), but the target cell is endothelial.",
+     "gene": "KDR",
+     "cited": 1,
+     "nonexistent": [],
+     "not_linked_to_gene": [],
+     "kept": false,
+     "unmatched_numbers": [
+      "71.12"
+     ],
+     "direction_contradiction": null,
+     "semantic_failure": true
+    }
+   ],
+   "semantic_failures": 2,
    "ids_removed": 0
   }
  }

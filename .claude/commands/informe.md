@@ -26,7 +26,7 @@ Follow these steps exactly. All numbers come from tools/scripts; you never compu
 
    ```json
    {"summary":  [{"text": "...", "evidence_ids": ["..."]}],
-    "sections": {"omics": [...], "literature": [...], "external": [...], "cells": [...], "spatial": [...], "structure": [...], "discovery": [...], "integration": [...]},
+    "sections": {"omics": [...], "literature": [...], "external": [...], "cells": [...], "spatial": [...], "structure": [...], "discovery": [...], "validation": [...], "robustness": [...], "integration": [...]},
     "targets":  [{"gene": "CA9", "category": "target|biomarker|target_and_biomarker",
                   "rationale": "...", "evidence_ids": ["..."]}],
     "limitations": [{"text": "..."}]}
@@ -38,8 +38,19 @@ Follow these steps exactly. All numbers come from tools/scripts; you never compu
    - `discovery` (2–3 paragraphs) comes from the `role: "discovery"` findings of `agent_cells.verified.json`: the most promising
      under-studied, undrugged candidates per track, what makes them novel, and the caveat that they are data-ranked hypotheses
      (no dependency or functional evidence).
+   - `validation` (2–3 paragraphs, M13): what the independent layers say about the candidates — external replication
+     in TCGA-KIRC and prognosis, somatic driver status, selective DepMap dependency, protein-adjusted kinase activity,
+     and the purity check (does a bulk change survive extrapolation to a pure tumour or is it infiltration?). Name the
+     candidates these layers strengthen and the ones they weaken.
+   - `robustness` (1–2 paragraphs): read `profiles.target` and `profiles.biomarker` and every row's
+     `rank_interval_90` in `convergence.json`. Separate the candidates whose position survives random re-weighting
+     (high `p_top10` / `p_top25`, narrow interval) from those that depend on the chosen weights.
    - 2–4 summary paragraphs; 1–3 paragraphs per section; 8–12 entries in `targets` ordered by your judgment of
-     strength (you may depart from the numeric ranking, but say why in `rationale`).
+     strength (you may depart from the numeric ranking, but say why in `rationale`). Use the target profile for
+     target calls and the biomarker profile for biomarker calls; the overall convergence score mixes both.
+   - Numbers are checked automatically against the evidence each paragraph cites (and that gene's rows in
+     `convergence.json`): copy values exactly, cite the evidence of every value you quote, and do not put one
+     gene's numbers in a paragraph tagged with another gene.
    - Every summary/section paragraph and every target MUST cite evidence ids copied from the verified agent files
      or from `convergence.json`. A paragraph that discusses one specific gene should carry `"gene": "<symbol>"`
      and cite only that gene's evidence. Limitations need no ids.

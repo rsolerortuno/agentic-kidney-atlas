@@ -92,5 +92,134 @@ def cnv_frequency(gene: str) -> dict:
                   "arm": r["arm"], "n_tumors": r["n_tumor"], "evidence_id": existing(evidence_id("omics_cnv", g))})
 
 
+# ---------------------------------------------------------------- M13 layers
+def _layer(name: str, col: str = "gene") -> pd.DataFrame:
+    p = PROCESSED / name
+    if not p.exists():
+        return pd.DataFrame()
+    return pd.read_parquet(p)
+
+
+def _one(df: pd.DataFrame, g: str, col: str = "gene"):
+    if df.empty:
+        return None
+    sub = df[df[col] == g]
+    return None if sub.empty else sub.iloc[0]
+
+
+def _num(x, nd=3):
+    if x is None or pd.isna(x):
+        return None
+    return float(f"{x:.3g}") if abs(x) < 1e-3 and x != 0 else round(float(x), nd)
+
+
+@mcp.tool()
+def mutation_recurrence(gene: str) -> dict:
+    """Somatic nonsynonymous mutation recurrence in ccRCC (CPTAC discovery patients + TCGA-KIRC, 511 tumours),
+    tested against a background rate scaled by the gene's coding length (so long genes such as TTN are not called
+    drivers). Returns mutated patients, frequency, observed/expected and BH q-value, with the evidence_id."""
+    g = canonical_gene(gene)
+    r = _one(_layer("layer_mutations.parquet"), g)
+    if r is None:
+        return {"gene": g, "message": "no nonsynonymous mutation in either cohort (or no coding length)"}
+    return clean({"gene": g, "mutated_patients": int(r["mutated"]), "patients": int(r["patients"]),
+                  "freq": _num(r["freq"]), "cptac_mutated": int(r["cptac_mutated"]), "tcga_mutated": int(r["tcga_mutated"]),
+                  "obs_exp": _num(r["obs_exp"]), "padj": _num(r["padj"]), "recurrent": bool(r["padj"] < 0.05),
+                  "evidence_id": existing(evidence_id("somatic_recurrence", g))})
+
+
+@mcp.tool()
+def cis_copy_number(gene: str) -> dict:
+    """Does the gene's copy-number change move its own RNA / protein in CPTAC tumours? Spearman rho and BH q for
+    copy number vs RNA and vs protein. A frequent loss with a positive cis effect (e.g. 3p genes) is a real dosage
+    effect; a frequent loss without one is a passenger of the arm-level event."""
+    g = canonical_gene(gene)
+    r = _one(_layer("layer_cis_dosage.parquet"), g)
+    if r is None:
+        return {"gene": g, "message": "not in copy-number data"}
+    return clean({"gene": g, "rna_rho": _num(r["rna_rho"]), "rna_padj": _num(r["rna_padj"]),
+                  "protein_rho": _num(r["protein_rho"]), "protein_padj": _num(r["protein_padj"]),
+                  "evidence_id": existing(evidence_id("cis_dosage", g))})
+
+
+@mcp.tool()
+def depmap_dependency(gene: str) -> dict:
+    """DepMap Public 26Q1 CRISPR (Chronos) dependency: mean gene effect in clear cell RCC lines vs all other lines
+    (more negative = more essential), fraction of ccRCC lines with effect < -0.5, selectivity (other - ccRCC),
+    Welch BH q-value and whether the gene is a common essential (dependent in >= 90 % of all lines: toxicity risk)."""
+    g = canonical_gene(gene)
+    r = _one(_layer("layer_dependency.parquet"), g)
+    if r is None:
+        return {"gene": g, "message": "not screened in DepMap 26Q1"}
+    return clean({"gene": g, "n_ccrcc_lines": int(r["n_ccrcc_lines"]), "mean_effect_ccrcc": _num(r["mean_effect_ccrcc"]),
+                  "mean_effect_other": _num(r["mean_effect_other"]), "selectivity": _num(r["selectivity"]),
+                  "frac_ccrcc_dependent": _num(r["frac_ccrcc_dependent"]), "padj": _num(r["padj"]),
+                  "common_essential": bool(r["common_essential"]),
+                  "evidence_id": existing(evidence_id("depmap_dependency", g))})
+
+
+@mcp.tool()
+def tcga_replication(gene: str) -> dict:
+    """External replication in TCGA-KIRC: paired tumour vs adjacent normal RNA (72 pairs; log2FC, BH q) and
+    univariate Cox regression of overall survival on standardized tumour expression (log HR per SD, BH q).
+    Positive log HR = higher expression, worse survival."""
+    g = canonical_gene(gene)
+    r = _one(_layer("layer_tcga.parquet"), g)
+    if r is None:
+        return {"gene": g, "message": "not in TCGA-KIRC RNA-seq"}
+    return clean({"gene": g, "log2fc": _num(r["log2fc"]), "padj": _num(r["padj"]), "n_pairs": _num(r["n_pairs"], 0),
+                  "cox_log_hr_per_sd": _num(r["cox_log_hr_per_sd"]), "cox_padj": _num(r["cox_padj"]),
+                  "n_survival": _num(r["n_survival"], 0),
+                  "evidence_id_de": existing(evidence_id("tcga_de", g)),
+                  "evidence_id_survival": existing(evidence_id("tcga_survival", g))})
+
+
+@mcp.tool()
+def purity_effect(gene: str) -> dict:
+    """Tumour purity (ESTIMATE) check: Spearman of tumour expression with purity (negative = comes with stroma /
+    immune cells) and the paired log2FC extrapolated to a pure tumour (purity = 1) with its standard error, for RNA
+    and protein. A large bulk log2FC that shrinks towards 0 at purity 1 is infiltration, not tumour-cell expression."""
+    g = canonical_gene(gene)
+    df = _layer("layer_purity.parquet")
+    r = _one(df, g, col="hgnc_symbol")
+    if r is None:
+        return {"gene": g, "message": "not in CPTAC RNA / protein"}
+    keys = ["rna_purity_rho", "rna_purity_padj", "rna_lfc_at_purity1", "rna_lfc_at_purity1_se",
+            "protein_purity_rho", "protein_purity_padj", "protein_lfc_at_purity1", "protein_lfc_at_purity1_se"]
+    return clean({"gene": g, **{k: _num(r[k]) for k in keys}, "evidence_id": existing(evidence_id("purity", g))})
+
+
+@mcp.tool()
+def phosphosites(gene: str, n: int = 10) -> list[dict]:
+    """Site-level tumour vs normal phosphorylation for one gene (CPTAC BCM pipeline, paired t-test, BH), with the
+    site change adjusted for the protein's own change. evidence_id exists for sites with BH < 0.05 and |log2FC| >= 1."""
+    g = canonical_gene(gene)
+    df = _layer("layer_phosphosite.parquet")
+    sub = df[df["gene"] == g].sort_values("padj").head(min(n, 30)) if not df.empty else df
+    if sub.empty:
+        return [{"gene": g, "message": "no quantified phosphosite"}]
+    return [clean({"gene": g, "site": r["site"], "log2fc": _num(r["log2fc"]),
+                   "protein_adjusted_log2fc": _num(r.get("protein_adjusted_log2fc")), "padj": _num(r["padj"]),
+                   "n_pairs": int(r["n_pairs"]), "evidence_id": existing(evidence_id("phosphosite_de", r["site_id"]))})
+            for _, r in sub.iterrows()]
+
+
+@mcp.tool()
+def kinase_activity(gene: str | None = None, n: int = 15) -> list[dict]:
+    """Inferred kinase activity in tumours vs normal (KSEA on protein-adjusted phosphosite changes, OmniPath
+    kinase-substrate relations). With gene: that kinase only; without: the top n by z (activated first)."""
+    df = _layer("layer_kinase_activity.parquet")
+    if df.empty:
+        return [{"message": "kinase activity not computed"}]
+    if gene:
+        df = df[df["gene"] == canonical_gene(gene)]
+        if df.empty:
+            return [{"gene": canonical_gene(gene), "message": "fewer than 5 quantified substrate sites"}]
+    return [clean({"gene": r["gene"], "ksea_z": _num(r["z"]), "padj": _num(r["padj"]),
+                   "n_substrate_sites": int(r["n_substrate_sites"]),
+                   "evidence_id": existing(evidence_id("kinase_activity", r["gene"]))})
+            for _, r in df.head(min(n, 50)).iterrows()]
+
+
 if __name__ == "__main__":
     mcp.run()

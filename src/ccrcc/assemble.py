@@ -26,7 +26,7 @@ def assemble(run_dir: Path) -> dict:
         if p.exists():
             agents[name.removeprefix("agent_").removesuffix(".json")] = json.loads(p.read_text(encoding="utf-8"))
 
-    v = Verifier()
+    v = Verifier(conv_path=run_dir / "convergence.json")
     narrative_path = run_dir / "narrative.json"
     narrative = json.loads(narrative_path.read_text(encoding="utf-8")) if narrative_path.exists() else {}
     dropped = []
@@ -53,7 +53,9 @@ def assemble(run_dir: Path) -> dict:
         "datasets": [{k: f[k] for k in ("file", "url", "downloaded_utc", "sha256", "rows", "columns")}
                      for f in manifest["files"] + json.loads((RAW / "singlecell" / "manifest.json").read_text())["files"]],
         "convergence": {"universe_size": conv["universe_size"], "config": conv["config"],
-                        "ranking": conv["ranking"]},
+                        "ranking": conv["ranking"], "profiles": conv.get("profiles", {}),
+                        "profile_weights": conv.get("profile_weights", {}),
+                        "sensitivity_summary": conv.get("sensitivity_summary", {})},
         "cell_context": cell_context.build(),
         "agent_findings": agents,
         "narrative": narrative_v,

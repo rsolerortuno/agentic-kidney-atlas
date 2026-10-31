@@ -1,0 +1,14 @@
+The omics agent is done. I'm waiting on the literature, external and cell agents.
+
+Literature and cell agents are done. Only the external agent is still running.
+
+The report is ready: `/home/claude/ccrcc-agentic-multiomics-graphrag/reports/ccrcc_report.html`. The final check passed with 0 unsupported claims out of 94 statements. The agent check removed two invalid evidence ids from the literature agent and dropped no findings.
+
+1. **CA9 has the strongest convergent evidence of any candidate.** It is up in tumour (RNA log2FC 6.312, protein 2.269) and replicates in TCGA-KIRC. RCC cells carry 0.976 of its transcripts, and it has a phase 3 antibody (girentuximab). It is the only gene that stays in the overall top 10 when the weights are randomly changed (0.894 of draws). It does not predict survival and tumours do not depend on it, so it suits antibody, radioligand and imaging approaches.
+2. **CD70 and NNMT are the next best.** CD70 is a tumour-intrinsic surface antigen with antibodies up to phase 2, and literature describes it as a HIF target. NNMT is both a target and a biomarker: it is tumour-intrinsic and predicts worse survival (Cox log HR 0.301), but it has no clinical drug yet.
+3. **SCARB1 is the most stable call in the target profile (p_top10 0.968), but rests on data alone.** It has no ccRCC literature in the corpus and no drug. SLC16A3, ENPP3 and HK2 are also tumour-up and replicate, but have little prior knowledge behind them.
+4. **The biomarkers are mostly kidney-tubule genes that tumours lose.** PSAT1, ALDH6A1 and NNMT are the stable biomarker calls. ALDOB and SLC22A8 rank high overall, but their positions depend heavily on the chosen weights.
+5. **Main caveat: tumours don't depend on any of the top expression-based targets in DepMap cell-line screens.** EPAS1 (HIF-2α, approved drug belzutifan) is the only one with a selective signal, and it is borderline (padj 0.061). EPAS1 also ranks low on expression and its RNA is mostly in blood-vessel cells in the single-cell data.
+
+The render step crashed at first, so I made a one-line fix in `src/ccrcc/report_figures.py`. The outcome plot was asking for comparison rows that exist for only some of the reference gene sets; it now plots only the rows every set has. That file is changed in your working tree and not committed.
+EXIT 0

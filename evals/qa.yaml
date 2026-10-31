@@ -30,9 +30,9 @@
   pattern: "belzutifan"
 - id: q08
   question: "Which gene ranks first in this project's deterministic convergence ranking?"
-  # key updated with scoring v2 (EGFR); under v1 it was CA9 - see evals/history.md
-  expected: "EGFR"
-  pattern: "\\bEGFR\\b"
+  # key follows the scoring version: v1 CA9, v2 EGFR, v3 CA9 - see evals/history.md
+  expected: "CA9"
+  pattern: "\\bCA9\\b"
 - id: q09
   question: "Is UMOD protein increased or decreased in ccRCC tumors versus matched normal kidney in CPTAC?"
   expected: "decreased"
