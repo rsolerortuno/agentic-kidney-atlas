@@ -1,0 +1,140 @@
+{
+ "agent": "agente-externo",
+ "findings": [
+  {
+   "gene": "CA9",
+   "role": "target_and_biomarker",
+   "statement": "Convergence rank 1 (score 4.5279, 5 streams). Open Targets ccRCC association 0.3088 (rank 79/1998). Modalities AB, PR, SM (AB: Advanced Clinical). Drugs: GIRENTUXIMAB PHASE_3, IODINE I 124 GIRENTUXIMAB PHASE_2, SULTHIAME PHASE_4, ETHOXZOLAMIDE WITHDRAWAL. Cell membrane (microvillus), UniProt; HIF pathway. Untested-in-kg as systemic drug target but strongest surface biomarker/imaging target.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:dcacc6a531bf",
+    "EV:open_targets_tract:225a767ebcb5",
+    "EV:open_targets_drug:646a0aec5b64",
+    "EV:open_targets_drug:7ed1f57af7b2",
+    "EV:uniprot:93360ddb9195"
+   ]
+  },
+  {
+   "gene": "FLT1",
+   "role": "target",
+   "statement": "Convergence rank 2 (3.9864). Association 0.3566 (rank 39/1998). Modalities AB, OC, PR, SM. Drugs: PAZOPANIB HYDROCHLORIDE APPROVAL (established ccRCC VEGFR TKI), LUCITANIB PHASE_3, TELBERMIN PHASE_2. Cell membrane/secreted.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:a61d3e57c628",
+    "EV:open_targets_tract:f114f7e793d0",
+    "EV:open_targets_drug:d6e14d0e5ffb",
+    "EV:open_targets_drug:cbe1ea54b109",
+    "EV:uniprot:67fcd909c711"
+   ]
+  },
+  {
+   "gene": "KDR",
+   "role": "target",
+   "statement": "Open Targets ccRCC association 0.4566 (rank 13/1998). Modalities AB, OC, PR, SM. Drugs as returned: RIVOCERANIB MESYLATE APPROVAL, VATALANIB PHASE_3, XL-820 PHASE_2 (drug ids null, not cited). Established ccRCC VEGFR target; cell membrane/secreted.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:07cfe399d2b3"
+   ]
+  },
+  {
+   "gene": "MET",
+   "role": "target",
+   "statement": "Convergence rank 3 (3.8304). Association 0.389 (rank 30/1998). Modalities AB, OC, PR, SM. Drugs: SAVOLITINIB PHASE_3, TELISOTUZUMAB VEDOTIN PHASE_3, FORETINIB PHASE_2, SGX-523 PHASE_1. Membrane/secreted. Tractable and clinically advanced; MET inhibition is a known papillary/ccRCC strategy.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:f7461651ef5d",
+    "EV:open_targets_tract:8314520758de",
+    "EV:open_targets_drug:cb8b66153e41",
+    "EV:open_targets_drug:1f109fa4640d",
+    "EV:uniprot:2989e431fa06"
+   ]
+  },
+  {
+   "gene": "MTOR",
+   "role": "target",
+   "statement": "Open Targets association 0.525 (rank 6/1998; ccRCC top-target list). Modalities AB, PR, SM. Drugs as returned: GEDATOLISIB PHASE_3, CC-115 PHASE_2 (drug ids null). Established ccRCC mTOR axis; cytoplasmic/lysosomal.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:900f88933f86"
+   ]
+  },
+  {
+   "gene": "EPAS1",
+   "role": "target",
+   "statement": "Open Targets association 0.4871 (rank 9/1998). Modalities PR, SM. BELZUTIFAN APPROVAL (HIF-2a inhibitor, established ccRCC target). Nuclear localisation, so not antibody-accessible.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:61983038a898"
+   ]
+  },
+  {
+   "gene": "CXCR4",
+   "role": "target",
+   "statement": "Convergence rank 4 (3.7983, 5 streams). Association 0.3017 (rank 100/1998). Modalities AB, OC, PR, SM. Drugs: PLERIXAFOR APPROVAL, MAVORIXAFOR APPROVAL, MOTIXAFORTIDE APPROVAL, BURIXAFOR PHASE_2. Cell membrane GPCR; tractable but untested in ccRCC (repurposing candidate).",
+   "evidence_ids": [
+    "EV:open_targets_assoc:38756b21a30a",
+    "EV:open_targets_tract:a804b568bd15",
+    "EV:open_targets_drug:08c2d0c42fd9",
+    "EV:open_targets_drug:7ecac06517a2",
+    "EV:uniprot:86297350cabc"
+   ]
+  },
+  {
+   "gene": "CD70",
+   "role": "target_and_biomarker",
+   "statement": "Convergence rank 24 (3.4049, 5 streams). Weak Open Targets association 0.0572 (rank 955/1998) but strong omics convergence. Modalities AB, OC, PR. Drugs: CUSATUZUMAB PHASE_2, VORSETUZUMAB MAFODOTIN PHASE_1, MDX-1411 PHASE_1. Cell membrane: antibody/ADC/CAR-T accessible. Tractable, association-poor.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:255532a611b4",
+    "EV:open_targets_tract:908e84663f6a",
+    "EV:open_targets_drug:0a02c566ec75",
+    "EV:open_targets_drug:289429f80a55",
+    "EV:uniprot:e21e5815e1a4"
+   ]
+  },
+  {
+   "gene": "PIGR",
+   "role": "biomarker",
+   "statement": "Convergence rank 5 (3.6925). Downregulated (RNA log2FC -3.824, protein -1.235). Association 0.4532 (rank 16/1998). Modalities AB, SM; no drugs listed. Cell membrane and secreted: candidate tissue/fluid loss-of-expression biomarker, not a drug target.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:1170ea2f4d6c",
+    "EV:open_targets_tract:6d388106d837",
+    "EV:uniprot:3e621c5515b1"
+   ]
+  },
+  {
+   "gene": "CD74",
+   "role": "target_and_biomarker",
+   "statement": "Convergence rank 7 (3.6541). Association 0.282 (rank 197/1998). Modalities AB, PR, SM. Drugs: MILATUZUMAB PHASE_1_2 (REPOTRECTINIB APPROVAL listed, likely non-specific kinase activity). Membrane/secreted.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:e91b5227f1e3",
+    "EV:open_targets_tract:ee059aa145d0",
+    "EV:open_targets_drug:ed338d838953",
+    "EV:uniprot:598cef54c320"
+   ]
+  },
+  {
+   "gene": "EGFR",
+   "role": "target",
+   "statement": "Convergence rank 8 (3.5702). Association 0.3049 (rank 90/1998). Modalities AB, OC, PR, SM. Drugs: CETUXIMAB SAROTALOCAN APPROVAL, AFATINIB PHASE_4, RUSERONTINIB PHASE_3. Tractable; no ccRCC-specific approval implied.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:796599138e4a",
+    "EV:open_targets_tract:6bce27c2d6df",
+    "EV:open_targets_drug:cb5e3c98e714",
+    "EV:open_targets_drug:68cc17e89c54",
+    "EV:uniprot:d86debc16d33"
+   ]
+  },
+  {
+   "gene": "PDGFRA",
+   "role": "target",
+   "statement": "Convergence rank 14 (3.4946). Association 0.3098 (rank 77/1998). Modalities AB, OC, PR, SM. Drugs: CEDIRANIB APPROVAL, FAMITINIB PHASE_3, SU-014813 PHASE_2. Membrane RTK; multi-kinase TKI target.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:a59d74246f54",
+    "EV:open_targets_tract:be31f2a723b4",
+    "EV:open_targets_drug:30937b1d044a",
+    "EV:open_targets_drug:4e72ef99ee03",
+    "EV:uniprot:44c8873bf8e7"
+   ]
+  }
+ ],
+ "caveats": [
+  "Open Targets scores for MTOR, KDR, EPAS1 returned drugs without evidence ids; those drug names are not cited.",
+  "Association score reflects genetic/literature support, not drug efficacy; low-association genes (CD70, ACY1, ALDOB) rely on omics convergence.",
+  "Drug stages are as returned by Open Targets for any indication, not specific to ccRCC.",
+  "STRING interactions not queried (call budget); only the 12 genes above were profiled."
+ ]
+}

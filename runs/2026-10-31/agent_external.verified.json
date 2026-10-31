@@ -1,0 +1,123 @@
+{
+ "agent": "agente-externo",
+ "findings": [
+  {
+   "gene": "EPAS1",
+   "role": "target",
+   "statement": "Open Targets association with ccRCC 0.4871 (rank 9 of 1998). Tractability: PR and SM (SM: Approved Drug). Drug: BELZUTIFAN (APPROVAL). Nuclear transcription factor (HIF-2alpha), regulates VEGF; Reactome HIF regulation and PD-L1 transcription. Convergence rank 38 (5 streams, ot_genetic_association 0.57, ot_somatic_mutation 0.46). Established ccRCC drug target.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:61983038a898",
+    "EV:open_targets_tract:6a657326c9fd",
+    "EV:open_targets_drug:199c475802ce",
+    "EV:uniprot:d332bcfb6c96"
+   ]
+  },
+  {
+   "gene": "KDR",
+   "role": "target",
+   "statement": "Open Targets association 0.4566 (rank 13 of 1998). Tractability AB/OC/PR/SM, AB and SM Approved Drug. Many drugs incl. AXITINIB, CABOZANTINIB, PAZOPANIB, SORAFENIB, TIVOZANIB, LENVATINIB (APPROVAL/late stage), RAMUCIRUMAB (APPROVAL). Cell membrane receptor for VEGFA; angiogenesis. Convergence rank 21 (5 streams). Established ccRCC target (VEGFR).",
+   "evidence_ids": [
+    "EV:open_targets_assoc:07cfe399d2b3",
+    "EV:open_targets_tract:fd47891e1c7f",
+    "EV:open_targets_drug:ebf79c04555c",
+    "EV:open_targets_drug:def468ad5e65",
+    "EV:uniprot:03a0601281b2"
+   ]
+  },
+  {
+   "gene": "MTOR",
+   "role": "target",
+   "statement": "Open Targets association 0.525 (rank 6 of 1998). Tractability AB/PR/SM (SM: Approved Drug). Drugs include RIDAFOROLIMUS (APPROVAL), GEDATOLISIB (PHASE_3), DACTOLISIB (PHASE_3), SAPANISERTIB (PHASE_2). Central regulator of growth; mTORC1 signalling. Established ccRCC target (mTOR inhibitors).",
+   "evidence_ids": [
+    "EV:open_targets_assoc:900f88933f86",
+    "EV:open_targets_tract:95bc7fa85685",
+    "EV:open_targets_drug:5e12506a2e98",
+    "EV:uniprot:5349773f2963"
+   ]
+  },
+  {
+   "gene": "CA9",
+   "role": "target_and_biomarker",
+   "statement": "Open Targets overall association 0.3088 (rank 79 of 1998), no genetic/somatic score (ot_genetic 0.0, somatic 0.0), so support is omics/tractability driven; convergence rank 10 (4 streams). Tractability AB (Advanced Clinical), PR, SM. Drugs: GIRENTUXIMAB (PHASE_3), IODINE I 124 GIRENTUXIMAB (PHASE_2), SULTHIAME (PHASE_4), ETHOXZOLAMIDE (WITHDRAWAL). Cell membrane/microvillus membrane (antibody-accessible); HIF pathway; STRING partners HIF1A 0.972, EPAS1 0.923, ARNT 0.898. Strong imaging/antibody target and HIF-axis biomarker.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:dcacc6a531bf",
+    "EV:open_targets_tract:225a767ebcb5",
+    "EV:open_targets_drug:646a0aec5b64",
+    "EV:open_targets_drug:7ed1f57af7b2",
+    "EV:uniprot:93360ddb9195",
+    "EV:string:9e9468e265e0",
+    "EV:string:4d5b50de268a"
+   ]
+  },
+  {
+   "gene": "MET",
+   "role": "target",
+   "statement": "Open Targets association 0.389 (rank 30 of 1998); convergence rank 6 (5 streams, somatic 0.42). Tractability AB/OC/PR/SM. Drugs: CABOZANTINIB (APPROVAL), TEPOTINIB (APPROVAL), CAPMATINIB (PHASE_4), SAVOLITINIB (PHASE_3), TELISOTUZUMAB VEDOTIN (PHASE_3). Membrane receptor; PI3K/AKT and RAS signalling. Cabozantinib-class MET/VEGFR inhibition is established in ccRCC; MET itself partly tested.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:f7461651ef5d",
+    "EV:open_targets_tract:8314520758de",
+    "EV:open_targets_drug:eed7c1230a3b",
+    "EV:open_targets_drug:cb8b66153e41",
+    "EV:uniprot:2989e431fa06"
+   ]
+  },
+  {
+   "gene": "EGFR",
+   "role": "target",
+   "statement": "Top of convergence ranking (rank 1, score 3.87, 5 streams; RNA log2FC 1.461, protein log2FC 1.062, CNV gain freq 0.255). Open Targets association 0.3049 (rank 90 of 1998), somatic 0.456. Drugs: AFATINIB (PHASE_4), RUSERONTINIB (PHASE_3), TESEVATINIB (PHASE_3), CETUXIMAB SAROTALOCAN (APPROVAL). Cell membrane. Tractable and druggable, but not an established ccRCC drug target (tractable-but-untested).",
+   "evidence_ids": [
+    "EV:open_targets_assoc:796599138e4a",
+    "EV:open_targets_tract:6bce27c2d6df",
+    "EV:open_targets_drug:6a980760ce7b",
+    "EV:uniprot:d86debc16d33",
+    "EV:omics_de:a35ae1101e15"
+   ]
+  },
+  {
+   "gene": "CXCR4",
+   "role": "target",
+   "statement": "Convergence rank 4 (score 3.8042, 5 streams). Open Targets association 0.3017 (rank 100 of 1998), somatic 0.46. Drugs: PLERIXAFOR and MAVORIXAFOR (APPROVAL), BURIXAFOR (PHASE_2). Cell membrane chemokine receptor. Tractable, ccRCC use untested.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:38756b21a30a",
+    "EV:uniprot:86297350cabc"
+   ]
+  },
+  {
+   "gene": "TNFRSF10B",
+   "role": "target",
+   "statement": "Convergence rank 11 (5 streams). Open Targets association 0.4265 (rank 23 of 1998), genetic 0.56. Tractability AB (Advanced Clinical), OC. Drugs: DULANERMIN, DROZITUMAB, TIGATUZUMAB, LEXATUMUMAB, CONATUMUMAB (all PHASE_2). Membrane death receptor (TRAIL-R2). Tractable but untested in ccRCC.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:b068a7e57ee2",
+    "EV:open_targets_drug:702284ac8646",
+    "EV:open_targets_drug:f3f3d25531ab",
+    "EV:uniprot:4beb991d0277"
+   ]
+  },
+  {
+   "gene": "PIGR",
+   "role": "biomarker",
+   "statement": "Convergence rank 5 (score 3.7768, 5 streams). Open Targets association 0.4532 (rank 16 of 1998), genetic component 0.73. Tractability AB and SM (High-Quality Pocket), no clinical drug. Cell membrane and secreted (accessible for antibody and biomarker use). Association-driven candidate, not drugged.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:1170ea2f4d6c",
+    "EV:open_targets_tract:6d388106d837",
+    "EV:uniprot:3e621c5515b1"
+   ]
+  },
+  {
+   "gene": "SCARB1",
+   "role": "biomarker",
+   "statement": "Convergence rank 16 (5 streams). Open Targets association 0.4049 (rank 24 of 1998), genetic 0.52. Tractability AB/PR/SM (Druggable Family, High-Quality Ligand), no clinical drug. Cell membrane/caveola; HDL clearance and class B scavenger pathways (lipid handling). Tractable but untested.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:ee2e17841173",
+    "EV:open_targets_tract:2d66f8e78d0c",
+    "EV:uniprot:e11b444a7dbb"
+   ]
+  }
+ ],
+ "caveats": [
+  "Open Targets overall score does not equal the genetics datatype used in the ranking; many top-ranked omics genes (CA9, CD74, FAS) have ot_genetic_association 0.",
+  "Drug stages are as returned by Open Targets and are not ccRCC-specific (e.g. EGFR, CXCR4 drugs are approved for other indications).",
+  "Some tractability or association evidence ids were not retrieved for EGFR drug beyond one id; STRING only run for CA9.",
+  "Evidence ids not verified with check_evidence_ids prior to this step beyond tool-returned values."
+ ]
+}

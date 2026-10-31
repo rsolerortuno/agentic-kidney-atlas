@@ -1,0 +1,172 @@
+{
+ "agent": "agente-literatura",
+ "findings": [
+  {
+   "gene": "CA9",
+   "role": "target_and_biomarker",
+   "statement": "CA9 is preferentially enriched in ccRCC tumor cells with low background in normal kidney (PMID:42473996); CA9-targeted PET gives proof-of-concept noninvasive discrimination of ccRCC and associates with PBRM1 loss and angiogenic activity, warranting prospective validation. Chunks report CA9 in circulating large extracellular vesicles for diagnosis/prognosis (PMID:33783991), CA9 immunostain for margin assessment (PMID:40012266), and CA9 among the most validated single markers in a review (PMID:33996558). Also upregulated in HIV-associated kidney cancer (PMID:35795483). Strongest imaging/diagnostic literature support.",
+   "evidence_ids": [
+    "EV:literature:534430b0156d",
+    "EV:literature:7f2628a50d15",
+    "EV:literature:687723b4e539",
+    "EV:literature:e80ed5d1f9d6",
+    "EV:chunk:a20e72eae62c",
+    "EV:chunk:33714c25561b",
+    "EV:chunk:4c832a1dbd79"
+   ]
+  },
+  {
+   "gene": "CD70",
+   "role": "target_and_biomarker",
+   "statement": "CD70 is commonly overexpressed in RCC and minimally expressed in normal tissue, making it a potential therapeutic target (PMID:38195301); high specific ccRCC expression makes it a potential diagnostic and therapeutic target, with 68Ga-labelled CD70 single-domain antibody radiotracers developed (PMID:39510586). CD70 correlates with hypoxia pathway proteins and with overall survival. Chunks show CD70-targeted allogeneic CAR T-cell therapy for ccRCC (PMID:40803958, PMID:38735819), i.e. clinical-stage targeting.",
+   "evidence_ids": [
+    "EV:literature:92dc16d8b33c",
+    "EV:literature:3db6a5b218c7",
+    "EV:literature:453d456e73e3",
+    "EV:literature:e23d2f8cb981",
+    "EV:literature:012242579349",
+    "EV:chunk:71aa24ad9e3e"
+   ]
+  },
+  {
+   "gene": "COXFA4L2",
+   "role": "target_and_biomarker",
+   "statement": "COXFA4L2 (NDUFA4L2) is overexpressed in over 90% of ccRCCs (PMID:36722045), induced by HIF-1alpha, predicts poor survival and supports proliferation (PMID:34970493), increases glycolysis (PMID:36722045), and suppresses mitochondria-associated ferroptosis with LDHB; targeting the NDUFA4L2/LDHB axis is proposed as therapeutic (PMID:42331208). Mechanistic plus prognostic support, preclinical only.",
+   "evidence_ids": [
+    "EV:literature:ec673e405bc1",
+    "EV:literature:1741cd200f2a",
+    "EV:literature:5722b2746d48",
+    "EV:literature:1f4e8bd4d272",
+    "EV:literature:fddf853d5604",
+    "EV:literature:533012368b9c"
+   ]
+  },
+  {
+   "gene": "ENO2",
+   "role": "target_and_biomarker",
+   "statement": "ENO2 is proposed as a diagnostic biomarker and independent prognostic predictor of ccRCC (PMID:37760940), promotes ccRCC via glycolysis/Warburg effect, and its knockdown inhibits glycolysis and promotes ferroptosis (PMID:39091581). Serum NSE was an independent risk factor for intraocular metastasis (PMID:34467977). A chunk links AXL and ENO2 to TKI (lenvatinib/cabozantinib) resistance (PMID:42869109). Mostly single-study/bioinformatic plus cell-line evidence.",
+   "evidence_ids": [
+    "EV:literature:cfa400884c1b",
+    "EV:literature:26df25eedf25",
+    "EV:literature:3b3e46e581b5",
+    "EV:literature:078ba2a5ff38",
+    "EV:chunk:23100d36e975"
+   ]
+  },
+  {
+   "gene": "ALDOB",
+   "role": "biomarker",
+   "statement": "ALDOB is reported as a prognostic biomarker and potential immunotherapy target in ccRCC (PMID:40852386; PMID:38655323), lowly expressed in ccRCC versus adjacent normal by IHC, and associated with Treg/Th17/neutrophil infiltration. Evidence is bioinformatic with IHC confirmation; pan-cancer analysis also proposes it as a predictive biomarker (PMID:37083815).",
+   "evidence_ids": [
+    "EV:literature:f834882a57a7",
+    "EV:literature:dd489b3df02e",
+    "EV:literature:c73e5613ede3",
+    "EV:literature:58d7b6f6e786",
+    "EV:literature:efeabd6a5a0a"
+   ]
+  },
+  {
+   "gene": "HILPDA",
+   "role": "target_and_biomarker",
+   "statement": "HILPDA was postulated as a specific ccRCC biomarker from tumor versus healthy renal tissue (PMID:38335255) and identified as key driver of MYC-driven lipid droplet accumulation, with tumor growth dependent on it; also upregulated in tumors (PMID:41399267). Single-group mechanistic plus tissue-profiling evidence.",
+   "evidence_ids": [
+    "EV:literature:9b19b1358d92",
+    "EV:literature:df7bcc5d951d",
+    "EV:literature:70a193fc9239"
+   ]
+  },
+  {
+   "gene": "PFKP",
+   "role": "biomarker",
+   "statement": "PFKP is highly expressed in ccRCC (PMID:34321910); glycolysis/hypoxia-related biomarkers including PFKP, PDK1 and SLC2A1 showed diagnostic and prognostic potential (PMID:40341002), and it is among the most consistently upregulated genes in a ccRCC meta-analysis (PMID:36901940). Contradiction: low PFKP expression was correlated with poor 5/10-year OS in PMID:34321910, so prognostic direction is unclear.",
+   "evidence_ids": [
+    "EV:literature:2fceed76c9b4",
+    "EV:literature:a55b9a38e327",
+    "EV:literature:292de8367805",
+    "EV:literature:fa5e4add4a84"
+   ]
+  },
+  {
+   "gene": "MT1G",
+   "role": "mechanism",
+   "statement": "MT1G: reports are partly contradictory. PMID:36204178 finds it downregulated in ccRCC tissue yet a negative regulator of ferroptosis and a biomarker of poor prognosis; PMID:38906969 finds low expression in tissue but high expression correlated with advanced stage and poorer prognosis, promoting growth and metastasis via CPT1B inhibition and lipid droplet accumulation. SAP30 inhibits MT1G transcription impairing zinc delivery to p53 (PMID:40247376).",
+   "evidence_ids": [
+    "EV:literature:f6c45de2c4dd",
+    "EV:literature:01828633a99d",
+    "EV:literature:de9d334b7b1c",
+    "EV:literature:0a8bb8c4711b",
+    "EV:literature:347e445b0c25",
+    "EV:literature:84b4bf458a59"
+   ]
+  },
+  {
+   "gene": "MT1X",
+   "role": "biomarker",
+   "statement": "MT1X is described as an oncogene indicating prognosis in ccRCC; high expression is linked to worse prognosis bioinformatically and knockdown inhibits growth and induces apoptosis (PMID:36149322). Contradictory: PMID:40802017 reports MT1X is low-expressed in RCC and that its knockdown promotes migration/invasion via ROS and EMT.",
+   "evidence_ids": [
+    "EV:literature:ffb234d55a57",
+    "EV:literature:d433d99f355b",
+    "EV:literature:a030f0e6283c",
+    "EV:literature:8d66721bd093"
+   ]
+  },
+  {
+   "gene": "FCER1G",
+   "role": "biomarker",
+   "statement": "FCER1G is abundantly expressed in tumors, positively related to macrophage infiltration and T cell suppression, and contributes to unfavorable prognosis; combined with CD68 it may be a postoperative prognostic index. It was prognostic in nivolumab-treated patients but not in those treated with everolimus (PMID:35120484), suggesting an immunotherapy-context marker. Single study.",
+   "evidence_ids": [
+    "EV:literature:d1d97e1a9042",
+    "EV:literature:f2ede5da8622",
+    "EV:literature:bf184fc9a3bd",
+    "EV:literature:4acd42679460"
+   ]
+  },
+  {
+   "gene": "ABAT",
+   "role": "biomarker",
+   "statement": "ABAT is significantly underexpressed in KIRC and shows high diagnostic accuracy (AUC >0.8 in 5 cancers) and predicts poor prognosis in KIRC among others in a pan-cancer study (PMID:41158242); mechanistically it interacts with PRMT5 and enhances interferon/cGAS-STING signaling and suppresses tumor growth (PMID:41813748). ccRCC-specific functional data are limited.",
+   "evidence_ids": [
+    "EV:literature:22349683c148",
+    "EV:literature:6295ed0b0e37",
+    "EV:literature:5f35843a9307",
+    "EV:literature:24b33107cb4e"
+   ]
+  },
+  {
+   "gene": "CXCR4",
+   "role": "biomarker",
+   "statement": "CXCR4 is overexpressed in ccRCC and linked to prognosis from database integration; authors conclude C3 and CXCR4 are candidate biomarkers and potential therapeutic targets (PMID:34266404). A review lists CXCR4 among the most validated single prognostic markers (with KI67, BIRC5, TP53, CA9; PMID:33996558); also screened as survival-relevant in PMID:35546701. Largely bioinformatic.",
+   "evidence_ids": [
+    "EV:literature:6fb1ac12a544",
+    "EV:chunk:1ae385158674",
+    "EV:chunk:4c832a1dbd79",
+    "EV:chunk:ae117cb3fabf"
+   ]
+  },
+  {
+   "gene": "FLT1",
+   "role": "target",
+   "statement": "FLT1 is the top omics/tractability candidate (pazopanib approved), yet the corpus has only one relation: FLT1 correlated with overall survival of ccRCC in a bioinformatic screen (PMID:37657024). Corpus chunks discuss VEGF-targeted and HIF-2alpha-targeted therapy generally but not FLT1 specifically.",
+   "evidence_ids": [
+    "EV:literature:1ef410bb3b0c"
+   ]
+  },
+  {
+   "gene": "PLIN2",
+   "role": "biomarker",
+   "statement": "PLIN2 is among the most consistently upregulated genes in ccRCC (PMID:36901940), and its diagnostic potential for renal neoplasms was validated by IHC on tissue microarrays (128 samples; PMID:34482820); expression relates to prognosis in survival analysis (PMID:35314744).",
+   "evidence_ids": [
+    "EV:literature:dbfbe45c8391",
+    "EV:literature:e3ae1997555f",
+    "EV:literature:821636f02856"
+   ]
+  }
+ ],
+ "caveats": [
+  "MET, EGFR, PIGR, CD74, SCARB1, PDGFRA and several other top-ranked genes have zero literature relations in this corpus; the MET/cabozantinib searches returned only general guideline-style chunks, not gene-specific findings. Absence is a corpus gap, not evidence against.",
+  "CA9 and CD70 have the most direct translational literature (PET imaging, CAR T), but the sentences cited are proof-of-concept or preclinical and the cited CA9 PET paper calls for prospective validation.",
+  "Most metabolic gene claims (ALDOB, ENO2, PFKP, MT1G, MT1X, ABAT, FCER1G) rest on single bioinformatic or single-lab studies; few are clinically validated.",
+  "Contradictions: MT1G and MT1X are reported as downregulated in tissue yet associated with worse prognosis or oncogenic function; PFKP shows high expression in tumors but low expression linked to poor OS.",
+  "Corpus covers ~320 abstracts; the FLT1 and CXCR4 evidence is thin relative to their clinical (VEGFR TKI) importance."
+ ]
+}

@@ -140,6 +140,13 @@ def build(store: GraphStore | None = None) -> dict:
                                     TODAY, pmid=int(r.pmid), ncbi_gene=str(r.identifier), mention=r.text)
             store.add_claim(pid, "mentions", gid, ev)
 
+        # gene mentions per publication (PubTator-normalized): mention text -> gene node id
+        mentions_by_pmid: dict[int, dict[str, str]] = {}
+        for r in genes_ann.itertuples():
+            sym = next((by_entrez.get(i.strip()) for i in str(r.identifier).split(";") if by_entrez.get(i.strip())), None)
+            if sym and sym in by_symbol.index and isinstance(r.text, str) and len(r.text) >= 2:
+                mentions_by_pmid.setdefault(int(r.pmid), {})[r.text] = gene_node_id(by_symbol.loc[sym, "hgnc_id"])
+
         chunks = pd.read_parquet(LITERATURE / "chunks.parquet")
         for r in chunks.itertuples():
             pid = publication(int(r.pmid))
@@ -148,6 +155,9 @@ def build(store: GraphStore | None = None) -> dict:
             ev = store.add_evidence(evidence_id("chunk", r.chunk_id), "provenance", "PubTator3 abstract", TODAY,
                                     pmid=int(r.pmid))
             store.add_claim(cid, "part_of", pid, ev)
+            for mention, gid in mentions_by_pmid.get(int(r.pmid), {}).items():
+                if re.search(rf"(?<![A-Za-z0-9]){re.escape(mention)}(?![A-Za-z0-9])", r.text):
+                    store.add_claim(cid, "mentions", gid, ev)
 
         # ---------------------------------------------------------- external (M5 cache)
         ot = pd.read_parquet(PROCESSED / "external_ot_associations.parquet")
@@ -157,6 +167,9 @@ def build(store: GraphStore | None = None) -> dict:
                 continue
             ev = store.add_evidence(evidence_id("open_targets_assoc", r.ensembl), "open_targets_association",
                                     "Open Targets Platform", TODAY, score=round(r.score, 4), ensembl=r.ensembl,
+                                    gene=r.symbol, genetic_association=round(r.dt_genetic_association, 4),
+                                    somatic_mutation=round(r.dt_somatic_mutation, 4),
+                                    literature=round(r.dt_literature, 4), known_drug=round(r.dt_known_drug, 4),
                                     disease=cfg["disease"]["open_targets_id"],
                                     url=f"https://platform.opentargets.org/evidence/{r.ensembl}/{cfg['disease']['open_targets_id']}")
             store.add_claim(gid, "associated_with", DISEASE, ev)

@@ -56,7 +56,10 @@ def _ot(query: str, variables: dict) -> dict:
 
 # ---------------------------------------------------------------- Open Targets
 _ASSOC_Q = """query($id:String!,$index:Int!,$size:Int!){ disease(efoId:$id){ id name
-  associatedTargets(page:{index:$index,size:$size}){ count rows{ score target{ id approvedSymbol } } } } }"""
+  associatedTargets(page:{index:$index,size:$size}){ count rows{ score target{ id approvedSymbol }
+  datatypeScores{ id score } } } } }"""
+OT_DATATYPES = ("genetic_association", "somatic_mutation", "known_drug", "literature", "rna_expression",
+                "animal_model", "affected_pathway")
 
 _TARGET_Q = """query($id:String!){ target(ensemblId:$id){ id approvedSymbol approvedName
   tractability{ label modality value }
@@ -71,8 +74,10 @@ def ot_disease_associations(n: int | None = None) -> list[dict]:
     for index in range(0, (n + size - 1) // size):
         res = _ot(_ASSOC_Q, {"id": cfg["open_targets_id"], "index": index, "size": size})
         page = res["data"]["disease"]["associatedTargets"]["rows"]
-        rows += [{"ensembl": r["target"]["id"], "symbol": r["target"]["approvedSymbol"], "score": r["score"]}
-                 for r in page]
+        for r in page:
+            dt = {d["id"]: d["score"] for d in r.get("datatypeScores") or []}
+            rows.append({"ensembl": r["target"]["id"], "symbol": r["target"]["approvedSymbol"], "score": r["score"],
+                         **{f"dt_{k}": float(dt.get(k, 0.0)) for k in OT_DATATYPES}})
         if len(page) < size:
             break
     return rows[:n]

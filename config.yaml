@@ -22,15 +22,23 @@ literature:
   extraction_batch_size: 25
 
 convergence:
-  # score = sum(weight * component); every component is in [0, 1]
-  weights:
+  # Convergence = agreement of INDEPENDENT evidence streams. Each stream is a component in [0, 1];
+  # score = sum(stream_weight * component). Omics layers are combined into ONE stream so that
+  # differential expression alone (thousands of genes) cannot dominate the ranking.
+  omics_layer_weights:   # within-stream weights, normalized by their sum
     rna: 1.0           # significant & above fold-change threshold in RNA
     protein: 1.5       # significant & above threshold in protein (closer to function)
     phospho: 0.5       # significant phospho change (gene level)
-    concordance: 0.5   # RNA and protein agree in direction
-    cnv: 0.5           # gene's loss or gain frequency in tumors (frequency itself)
-    literature: 1.0    # min(1, supporting validated relations / 3)
-    open_targets: 1.0  # Open Targets association score with the disease
-    tractability: 0.5  # 1 if Open Targets reports a known drug or tractable modality
+    concordance: 0.5   # RNA and protein significant in the same direction
+  # v2 (after evaluation v1, see evals/results.md): the Open Targets overall score was replaced by its
+  # genetics datatypes, because the overall score also contains literature/expression evidence that the
+  # other streams already measure (double counting); literature also takes Open Targets text-mining into
+  # account to correct the selection bias of the local PubMed corpus (searched only for top omics genes).
+  stream_weights:
+    omics: 2.0         # CPTAC tumor-vs-normal expression evidence (above)
+    cnv: 0.5           # max(loss, gain) frequency in CPTAC tumors
+    literature: 1.0    # max(min(1, validated local relations / 3), Open Targets literature datatype)
+    genetics: 2.0      # max(Open Targets genetic_association, somatic_mutation) for ccRCC
+    tractability: 0.5  # 1 approved/clinical drug, 0.5 tractable modality only, 0 otherwise (enriched genes)
   top_n_report: 25
   top_n_eval: 100
