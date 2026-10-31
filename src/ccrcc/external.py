@@ -32,7 +32,13 @@ def _cached(source: str, key: str, fetch):
 
 def _request(method: str, url: str, **kw) -> requests.Response:
     for attempt in range(5):
-        r = requests.request(method, url, timeout=60, **kw)
+        try:
+            r = requests.request(method, url, timeout=60, **kw)
+        except (requests.ConnectionError, requests.Timeout):
+            if attempt == 4:
+                raise
+            time.sleep(2 ** attempt)
+            continue
         if r.status_code == 429 or r.status_code >= 500:
             time.sleep(2 ** attempt)
             continue
@@ -54,6 +60,7 @@ _ASSOC_Q = """query($id:String!,$index:Int!,$size:Int!){ disease(efoId:$id){ id 
 
 _TARGET_Q = """query($id:String!){ target(ensemblId:$id){ id approvedSymbol approvedName
   tractability{ label modality value }
+  pathways{ pathwayId pathway topLevelTerm }
   drugAndClinicalCandidates{ count rows{ maxClinicalStage drug{ id name } } } } }"""
 
 
@@ -85,14 +92,23 @@ def ot_target(ensembl_id: str) -> dict | None:
                                              for d in drugs),
         "drugs": [{"chembl": d["drug"]["id"], "name": d["drug"]["name"], "max_stage": d["maxClinicalStage"]}
                   for d in drugs],
+        "pathways": [{"reactome": p["pathwayId"], "name": p["pathway"], "top_level": p["topLevelTerm"]}
+                     for p in (t.get("pathways") or [])],
     }
 
 
 # ---------------------------------------------------------------- STRING
 def string_partners(symbol: str, limit: int = 10, min_score: float = 0.7) -> list[dict]:
     params = {"identifiers": symbol, "species": 9606, "limit": limit, "caller_identity": "ccrcc-graphrag"}
-    data = _cached("string", json.dumps(params, sort_keys=True),
-                   lambda: _request("GET", STRING_URL, params=params).json())["data"]
+    def fetch():
+        try:
+            return _request("GET", STRING_URL, params=params).json()
+        except requests.HTTPError as e:
+            if e.response is not None and e.response.status_code in (400, 404):  # identifier unknown to STRING
+                return []
+            raise
+
+    data = _cached("string", json.dumps(params, sort_keys=True), fetch)["data"]
     if isinstance(data, dict):  # error payload
         return []
     return [{"partner": r["preferredName_B"], "score": r["score"], "experimental": r["escore"],
