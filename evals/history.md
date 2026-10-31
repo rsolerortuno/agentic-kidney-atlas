@@ -33,3 +33,22 @@ The ranking still enriches the known genes strongly: 42× over random at top 100
 - Score genes against two separate questions, "driver/mechanism" and "expression-level target or biomarker",
   instead of one convergence score. The evaluation list mixes both.
 - Down-weight non-specific Open Targets evidence (uniform pan-cancer somatic scores).
+
+## M11: single-cell, spatial and structure layers (2026-10-31)
+
+These layers **annotate** candidates; they do not change the convergence score, so recall@100 (22 %) is unchanged by
+construction. Decisions taken before looking at results:
+
+- Datasets: Li et al. 2022 (*Cancer Cell*) as curated by CZ CELLxGENE Discover: scRNA-seq (270,855 cells, 12 donors;
+  178,817 used after excluding blood, adrenal, fat, oncocytoma and the authors' "MHCII" RCC sub-cluster, which
+  CELLxGENE annotated as monocytes) and 23 Visium sections (38,836 spots) from tumour core and tumour-normal interface.
+- Cell-type attribution uses raw UMI pseudobulks (donor × tissue × group), not single cells, so p-values are over donors.
+- Spatial deconvolution excludes the candidate genes from the marker sets; correlations of CA9/KDR/CD74/PTPRC with the
+  matching deconvolved cell share are therefore a held-out check (all positive, tested in `tests/test_cell_structure.py`).
+- Neighbour enrichment is observed/expected against section-matched random spots, so abundant cell types are not favoured.
+
+**Design flaw found and fixed in the MGD score.** First run: the lysine component saturated at 4 accessible lysines and
+80 % of pockets reached 1.0, so it carried no information (the ranking was effectively confidence × geometry). Fixed by
+saturating at 8 (`structure.lysine_saturation`), a change made from the component's distribution, not from any gene's
+rank. Remaining caveat: the score is a heuristic prioritization of sites with no ground truth for glue degraders; the only
+validation available is whether detected cavities recover experimentally ligand-bound residues (PDBe-KB).

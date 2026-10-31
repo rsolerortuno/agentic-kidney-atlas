@@ -55,6 +55,7 @@ footer{padding:40px 16px 60px;color:var(--muted);font:.8rem system-ui,sans-serif
   <nav>
     <a href="#summary">Summary</a><a href="#targets">Prioritized candidates</a><a href="#convergence">Convergence table</a>
     <a href="#omics">Omics</a><a href="#literature">Literature</a><a href="#external">Druggability</a>
+    <a href="#cells">Cell types</a><a href="#spatialsec">Spatial</a><a href="#structure">Structure &amp; MGD</a>
     <a href="#integration">Integration</a><a href="#network">Network</a><a href="#provenance">Provenance</a>
     <a href="#limitations">Limitations</a><a href="#evidence">Evidence</a>
   </nav>
@@ -129,6 +130,84 @@ Universe: {{ "{:,}".format(f.convergence.universe_size) }} genes.</p>
 {% for x in f.agent_findings.external.findings %}
 <p class="claim" data-evidence="{{ x.evidence_ids | evattr }}"><strong>{{ x.gene }}</strong> <span class="tag">{{ x.role | replace("_"," ") }}</span> {{ x.statement }} {{ x.evidence_ids | cite | safe }}</p>
 {% endfor %}{% endif %}
+
+<h2 id="cells">Cell types expressing each candidate (scRNA-seq)</h2>
+<p class="small">Li et al. 2022 ccRCC scRNA-seq via CZ CELLxGENE Discover: {{ "{:,}".format(cell.sc.cells_used) }} cells,
+{{ cell.sc.donors }} donors, {{ cell.sc.cells_by_tissue.tumor }} from tumour tissue. “Share of tumour transcripts” is the fraction of
+all transcripts of that gene in the tumour compartment contributed by each cell group — it separates tumour-intrinsic targets from
+signal donated by infiltrating cells. Tumour cell vs proximal tubule is a donor-paired pseudobulk comparison against the cell of origin
+({{ cell.sc.tumor_vs_pt_donors }} donors with both).</p>
+{% for p in f.narrative.sections.cells or [] %}
+<p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
+{% endfor %}
+<div class="table-wrap"><table>
+<thead><tr><th>Gene</th><th>Main expressing cell type</th><th>% cells</th><th>Share of tumour transcripts</th>
+<th>Tumour-cell share</th><th>τ specificity</th><th>Tumour cell vs proximal tubule</th><th>Evidence</th></tr></thead>
+<tbody>
+{% for t in cell.cell_rows %}
+<tr class="claim" data-evidence="{{ t.evidence_ids | evattr }}">
+<td><strong>{{ t.gene }}</strong></td>
+<td>{{ t.top_label }} <span class="small">({{ t.top_group }})</span></td>
+<td class="num">{{ t.top_pct }}</td><td class="num">{{ t.top_share }}</td>
+<td class="num">{{ t.tumor_cell_share | fmt }}</td><td class="num">{{ t.tau | fmt }}</td>
+<td class="num">{% if t.tvp %}log2FC {{ t.tvp.log2fc }} (padj {{ t.tvp.padj }}){% else %}—{% endif %}</td>
+<td>{{ t.evidence_ids[:4] | cite | safe }}</td>
+</tr>
+{% endfor %}
+</tbody></table></div>
+
+<h2 id="spatialsec">Spatial context: in situ expression and weighted neighbourhoods (10x Visium)</h2>
+<p class="small">{{ "{:,}".format(cell.spatial.spots) }} spots, {{ cell.spatial.sections }} sections, {{ cell.spatial.donors }} donors.
+Spot composition by non-negative least squares against the study's own scRNA-seq profiles; candidate genes are excluded from the marker
+sets, so their agreement with the deconvolved cell shares is an independent check
+(CA9–tumour ρ {{ cell.spatial.validation.spearman_CA9_vs_RCC }}, KDR–endothelium ρ {{ cell.spatial.validation.spearman_KDR_vs_Endothelial }},
+CD74–macrophage ρ {{ cell.spatial.validation.spearman_CD74_vs_Macrophage }}, PTPRC–T cell ρ {{ cell.spatial.validation.spearman_PTPRC_vs_T_cell }}).
+Neighbour enrichment compares the ring-1 neighbours (~100 µm) of each gene's top-decile spots with section-matched random spots, so it is
+a proportion relative to how abundant each cell type already is; 1000 permutations per section, Benjamini-Hochberg over all genes × cell types.</p>
+{% for p in f.narrative.sections.spatial or [] %}
+<p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
+{% endfor %}
+<div class="table-wrap"><table>
+<thead><tr><th>Gene</th><th>In situ expresser (NNLS)</th><th>Composition-corrected source</th>
+<th>High spots</th><th>Enriched neighbours (log₂ observed/expected, padj &lt; 0.05)</th><th>Evidence</th></tr></thead>
+<tbody>
+{% for t in cell.spatial_rows %}
+<tr class="claim" data-evidence="{{ t.evidence_ids | evattr }}">
+<td><strong>{{ t.gene }}</strong></td><td>{{ t.top_expresser | fmt }}</td><td>{{ t.corrected | fmt }}</td>
+<td class="num">{{ t.n_high }}</td>
+<td>{% for e in t.neighbors %}{{ e.cell_group }} {{ "%+.2f"|format(e.log2_enrichment) }}{% if not loop.last %} · {% endif %}{% endfor %}{% if not t.neighbors %}—{% endif %}</td>
+<td>{{ t.evidence_ids[:4] | cite | safe }}</td>
+</tr>
+{% endfor %}
+</tbody></table></div>
+<div class="grid"><div class="card">{{ spatial_figure | safe }}</div><div class="card">{{ cells_figure | safe }}</div></div>
+
+<h2 id="structure">Structure and molecular glue degrader (MGD) sites</h2>
+<p class="small">AlphaFold DB models (residues below pLDDT {{ cell.structure.config.min_plddt_keep }} removed), cavities by
+{{ cell.structure.tool }}. The MGD site score in [0, 1] weights model confidence {{ cell.structure.config.mgd_weights.confidence }},
+pocket geometry {{ cell.structure.config.mgd_weights.geometry }}, solvent-accessible lysines within
+{{ cell.structure.config.lysine_radius }} Å {{ cell.structure.config.mgd_weights.lysines }} (an E2~ubiquitin needs an acceptor lysine) and an
+exposed non-helical loop or hairpin nearby {{ cell.structure.config.mgd_weights.degron }} (the shape of known glue degrons such as the IMiD
+zinc-finger G-loop and the CK1α/GSPT1 β-hairpin). Validation uses experimentally ligand-bound residues from PDBe-KB and separates two questions: does the cavity detector cover them (recall over all cavities), and does the MGD score rank them highly (recall in the top 3 pockets shown, and the rank of the best-matching cavity). These are sites worth a
+chemistry campaign, not evidence that a degrader exists.</p>
+{% for p in f.narrative.sections.structure or [] %}
+<p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
+{% endfor %}
+<div class="table-wrap"><table>
+<thead><tr><th>Gene</th><th>UniProt</th><th>Mean pLDDT</th><th>Pocket</th><th>Volume (Å³)</th><th>Depth (Å)</th>
+<th>Lys ≤ {{ cell.structure.config.lysine_radius }} Å</th><th>Loop run</th><th>MGD score</th>
+<th>Ligand-site recall (all cavities / top 3)</th><th>Evidence</th></tr></thead>
+<tbody>
+{% for r in cell.pocket_rows %}
+<tr class="claim" data-evidence="{{ r.evidence_ids | evattr }}">
+<td><strong>{{ r.gene }}</strong></td><td><a href="https://www.uniprot.org/uniprotkb/{{ r.uniprot }}">{{ r.uniprot }}</a></td>
+<td class="num">{{ r.mean_plddt }}</td><td class="num">{{ r.rank }}</td><td class="num">{{ r.volume_a3 }}</td>
+<td class="num">{{ r.max_depth_a }}</td><td class="num">{{ r.n_lysines }}</td><td class="num">{{ r.loop_run }}</td>
+<td class="num"><span class="bar" style="width:{{ (r.mgd_score * 80) | round(0) | int }}px"></span> {{ r.mgd_score }}</td>
+<td class="num">{{ r.recall | fmt }} / {{ r.recall_top | fmt }}</td><td>{{ r.evidence_ids[:3] | cite | safe }}</td>
+</tr>
+{% endfor %}
+</tbody></table></div>
 
 <h2 id="integration">Integration</h2>
 {% for p in f.narrative.sections.integration or [] %}

@@ -36,7 +36,8 @@ CREATE INDEX IF NOT EXISTS ix_nodes_name ON nodes(name);
 CREATE INDEX IF NOT EXISTS ix_nodes_type ON nodes(type);
 """
 
-NODE_TYPES = {"Gene", "Protein", "Pathway", "Drug", "Disease", "Dataset", "Publication", "Chunk", "Concept"}
+NODE_TYPES = {"Gene", "Protein", "Pathway", "Drug", "Disease", "Dataset", "Publication", "Chunk", "Concept",
+              "CellType", "Pocket"}
 
 
 def evidence_id(ev_type: str, *parts) -> str:

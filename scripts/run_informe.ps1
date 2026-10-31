@@ -13,5 +13,5 @@ if (-not $claude) {
 }
 if (-not $claude) { throw "Claude Code CLI not found" }
 # On Windows Claude Code runs shell commands through the PowerShell tool, so allow both shells.
-$allowed = "mcp__omics-mcp,mcp__kg-mcp,mcp__external-mcp,Bash(uv run python scripts/*),PowerShell(uv run python scripts/*),Read,Write,Edit,Agent,Task"
+$allowed = "mcp__omics-mcp,mcp__kg-mcp,mcp__external-mcp,mcp__cell-mcp,Bash(uv run python scripts/*),PowerShell(uv run python scripts/*),Read,Write,Edit,Agent,Task"
 & $claude -p "/informe" --model claude-opus-5-5 --mcp-config .mcp.json --allowedTools $allowed

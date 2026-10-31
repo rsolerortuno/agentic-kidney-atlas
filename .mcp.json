@@ -14,6 +14,11 @@
       "type": "stdio",
       "command": "uv",
       "args": ["run", "--quiet", "python", "-m", "ccrcc.mcp_servers.external"]
+    },
+    "cell-mcp": {
+      "type": "stdio",
+      "command": "uv",
+      "args": ["run", "--quiet", "python", "-m", "ccrcc.mcp_servers.cell"]
     }
   }
 }

@@ -41,6 +41,10 @@ def collect_ids(f: dict) -> list[str]:
     for r in f["convergence"]["ranking"][:25]:
         for v in r["evidence_ids"].values():
             ids += v
+    for block in (f.get("cell_context") or {}).values():
+        if isinstance(block, list):
+            for row in block:
+                ids += row.get("evidence_ids", [])
     return list(dict.fromkeys(ids))
 
 
@@ -77,6 +81,40 @@ def evidence_view(e: dict) -> dict:
     elif t == "pathway_membership":
         link = f"https://reactome.org/content/detail/{e['reactome']}"
         detail = f"{e['gene']} in {e['reactome']}"
+    elif t == "sc_celltype_expression":
+        detail = (f"{e['gene']} in {e['cell_group']} ({e['cell_ontology']}, {e['tissue']}): {e['pct_expressing']} % of "
+                  f"{e['n_cells']} cells expressing, mean log-norm {e['mean_lognorm']}, "
+                  f"{e['share_of_tumor_transcripts']} of the gene's tumour transcripts ({e['n_donors']} donors)")
+    elif t == "sc_tumor_vs_pt":
+        detail = (f"{e['gene']}: tumour cells vs proximal tubule log2FC {e['log2fc']} (padj {e['padj']}, "
+                  f"{e['n_donors']} paired donors; log2 CPM {e['mean_log2cpm_tumor']} vs {e['mean_log2cpm_pt']})")
+    elif t == "spatial_expresser":
+        detail = (f"{e['gene']} in situ: {e['cell_group']} explains {e['in_situ_contribution']} of spot expression "
+                  f"(β {e['in_situ_beta_cpm']} CPM per unit share, Spearman {e['spearman_with_share']}; "
+                  f"composition-corrected share {e['composition_corrected_share']})")
+    elif t == "spatial_neighborhood":
+        detail = (f"{e['gene']}-high spots are surrounded by {e['cell_group']}: observed "
+                  f"{e['observed_neighbor_share']} vs expected {e['expected_neighbor_share']} "
+                  f"(log2 {e['log2_enrichment']}, padj {e['padj']}, {e['n_high_spots']} spots, "
+                  f"{e['n_sections']} sections)")
+    elif t == "alphafold_model":
+        link = e.get("url")
+        detail = (f"{e['gene']} ({e['accession']}) AlphaFold {e['model']} v{e['version']}: mean pLDDT "
+                  f"{e['mean_plddt']}, {e['fraction_confident_residues']} of {e['length']} residues confident")
+    elif t == "mgd_site":
+        link = f"https://alphafold.ebi.ac.uk/entry/{e['accession']}"
+        c = e["components"]
+        detail = (f"{e['gene']} pocket {e['rank']} ({e['cavity']}): {e['volume_a3']} Å³, depth {e['max_depth_a']} Å, "
+                  f"mean pLDDT {e['mean_plddt']}, {len(e['accessible_lysines'])} accessible lysines, exposed loop run "
+                  f"{e['exposed_loop_run']} → MGD score {e['mgd_score']} (confidence {c['confidence']}, geometry "
+                  f"{c['geometry']}, lysines {c['lysines']}, degron {c['degron']}); residues "
+                  f"{', '.join(map(str, e['residues'][:10]))}")
+    elif t == "ligand_site_validation":
+        link = e.get("url")
+        detail = (f"{e['gene']} ({e['accession']}): the {e['n_cavities']} detected cavities cover {e['recall']} of "
+                  f"{e['n_known_residues']} experimentally ligand-bound residues from {e['n_ligands']} ligands "
+                  f"(top pockets alone: {e['recall_in_top_pockets']}); best-matching cavity ranked "
+                  f"{e['best_cavity_rank']} of {e['n_cavities']} by the MGD score")
     return {"id": e["evidence_id"], "anchor": anchor(e["evidence_id"]), "type": t, "label": label,
             "link": link, "detail": detail}
 
@@ -98,6 +136,42 @@ def volcano(layer: str, highlight: set[str]) -> str:
     fig.update_layout(title=f"{layer.upper()}: tumor vs normal (paired)", xaxis_title="log2 fold change",
                       yaxis_title="-log10 adjusted p", height=460, margin=dict(l=50, r=20, t=50, b=50),
                       legend=dict(orientation="h", y=-0.2), template="plotly_white")
+    return fig.to_html(full_html=False, include_plotlyjs=False, config={"displaylogo": False})
+
+
+def cells_figure(cell: dict) -> str:
+    """Stacked bars: which cell groups hold each candidate's transcripts in the tumour compartment."""
+    ct = pd.read_parquet(PROCESSED / "sc_celltype_expression.parquet")
+    genes = [r["gene"] for r in cell["cell_rows"]]
+    d = ct[(ct["tissue"] == "tumor") & ct["hgnc_symbol"].isin(genes)]
+    order = d[d["cell_group"] == "RCC"].set_index("hgnc_symbol")["share_of_tissue_transcripts"].reindex(genes).fillna(0)
+    genes = list(order.sort_values(ascending=False).index)
+    fig = go.Figure()
+    for grp, label in cell["cell_groups"].items():
+        s = d[d["cell_group"] == grp].set_index("hgnc_symbol")["share_of_tissue_transcripts"].reindex(genes).fillna(0)
+        if s.max() < 0.02:
+            continue
+        fig.add_trace(go.Bar(y=genes, x=s.values, name=label, orientation="h",
+                             hovertemplate="%{y}: %{x:.1%} in " + label))
+    fig.update_layout(barmode="stack", title="Share of each gene's tumour transcripts by cell type (scRNA-seq)",
+                      xaxis=dict(tickformat=".0%", range=[0, 1]), height=760, template="plotly_white",
+                      yaxis=dict(autorange="reversed"), margin=dict(l=80, r=20, t=50, b=40),
+                      legend=dict(font=dict(size=9)))
+    return fig.to_html(full_html=False, include_plotlyjs=False, config={"displaylogo": False})
+
+
+def spatial_figure() -> str:
+    """Heatmap: abundance-weighted enrichment of cell groups around each gene's high-expression spots."""
+    nb = pd.read_parquet(PROCESSED / "spatial_neighbors.parquet")
+    z = nb.pivot(index="gene", columns="cell_group", values="log2_enrichment")
+    p = nb.pivot(index="gene", columns="cell_group", values="padj").reindex(index=z.index, columns=z.columns)
+    text = z.round(2).astype(str).where(p < 0.05, "")
+    fig = go.Figure(go.Heatmap(z=z.values, x=list(z.columns), y=list(z.index), zmid=0, colorscale="RdBu_r",
+                               zmin=-1, zmax=1, text=text.values, texttemplate="%{text}", textfont=dict(size=8),
+                               colorbar=dict(title="log2 obs/exp"),
+                               hovertemplate="%{y} high spots · neighbours %{x}<br>log2 obs/exp %{z:.2f}"))
+    fig.update_layout(title="Cell groups around target-high spots (labelled: padj < 0.05)", height=760,
+                      template="plotly_white", margin=dict(l=80, r=20, t=50, b=60))
     return fig.to_html(full_html=False, include_plotlyjs=False, config={"displaylogo": False})
 
 
@@ -159,6 +233,7 @@ def render(findings_path: Path, out: Path | None = None) -> Path:
     tpl = env.get_template("report.html.j2")
     html_out = tpl.render(
         f=f, top25=top25, evidence=ev_views,
+        cell=f["cell_context"], cells_figure=cells_figure(f["cell_context"]), spatial_figure=spatial_figure(),
         volcano_rna=volcano("rna", set(top_genes)), volcano_protein=volcano("protein", set(top_genes)),
         network_json=json.dumps(network(top_genes, store)),
         plotly_js=get_plotlyjs(), cytoscape_js=(ASSETS / "cytoscape.min.js").read_text(encoding="utf-8"),

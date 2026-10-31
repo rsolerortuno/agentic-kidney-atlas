@@ -6,13 +6,13 @@
   "open_targets_id": "MONDO_0005005",
   "open_targets_top": 2000
  },
- "generated_utc": "2026-10-31T00:54:32+00:00",
+ "generated_utc": "2026-10-31T08:19:56+00:00",
  "models": {
   "orchestrator": "Claude Opus 5.5 (effort medium) — Claude Code main session",
-  "agents": "Claude Sonnet 5.5 — Claude Code subagents (agente-omico, agente-literatura, agente-externo)",
+  "agents": "Claude Sonnet 5.5 — Claude Code subagents (agente-omico, agente-literatura, agente-externo, agente-celular)",
   "relation_extraction": "Claude Sonnet 5.5 — extractor-relaciones subagent"
  },
- "config_sha256": "0c8afeeb304f864f5b06a9d91a16cbacceadb654d0cde3520390ddf42746542a",
+ "config_sha256": "c696b6628aa5f1f2a9791a99ddd30df6a63b3355110c027c5bfbf6b4a2c36008",
  "datasets": [
   {
    "file": "HS_CPTAC_CCRCC_CLI.tsi",
@@ -85,6 +85,30 @@
    "sha256": "d93ce6b22d01dc1e1ded28857246951d605ead47ed17ef973ad1142b1d13bed0",
    "rows": 45289,
    "columns": 52
+  },
+  {
+   "file": "li2022_scrna.h5ad",
+   "url": "https://datasets.cellxgene.cziscience.com/8784de63-bec2-49ae-b147-8f16108cecce.h5ad",
+   "downloaded_utc": "2026-10-31T07:35:22+00:00",
+   "sha256": "f121de13e43f86c64f30611ac83446bd5d7b586fbf6d7de286fa018ed64d9606",
+   "rows": 270855,
+   "columns": 19322
+  },
+  {
+   "file": "li2022_visium_core.h5ad",
+   "url": "https://datasets.cellxgene.cziscience.com/339480f8-4f4f-450d-b475-8963163396d1.h5ad",
+   "downloaded_utc": "2026-10-31T07:35:23+00:00",
+   "sha256": "45b42890371274fccd0a8ef3ed4fa2c1fdba386e4bdc3e4ed641570eb86a2d34",
+   "rows": 10924,
+   "columns": 35469
+  },
+  {
+   "file": "li2022_visium_interface.h5ad",
+   "url": "https://datasets.cellxgene.cziscience.com/8ed77943-b258-4fca-887b-2a309cde0535.h5ad",
+   "downloaded_utc": "2026-10-31T07:35:23+00:00",
+   "sha256": "4de0920b97e72549841ba851812ccc29fc215da723a43d78bc777cbf36f0b4a4",
+   "rows": 27912,
+   "columns": 35469
   }
  ],
  "convergence": {
@@ -4893,6 +4917,3366 @@
     }
    }
   ]
+ },
+ "cell_context": {
+  "sc": {
+   "cells_used": 178817,
+   "cells_by_group": {
+    "CD8_T": 76853,
+    "NK": 23328,
+    "Macrophage": 19802,
+    "CD4_T": 17886,
+    "RCC": 12169,
+    "T_other": 8347,
+    "Treg": 4197,
+    "cDC": 3150,
+    "Endothelial": 3009,
+    "Epi_other": 2231,
+    "B": 2193,
+    "PT": 1854,
+    "Monocyte": 1489,
+    "Fibroblast": 1017,
+    "Plasma": 567,
+    "Mast": 474,
+    "pDC": 251
+   },
+   "cells_by_tissue": {
+    "tumor": 146558,
+    "interface": 20443,
+    "normal": 11816
+   },
+   "donors": 12,
+   "tumor_vs_pt_donors": 6,
+   "targets": [
+    {
+     "gene": "CA9",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "RCC",
+       "label": "ccRCC tumor cell",
+       "mean_lognorm": 1.145,
+       "pct_expressing": 54.7,
+       "share_of_tumor_transcripts": 0.976
+      },
+      {
+       "cell_group": "Epi_other",
+       "label": "other renal epithelial cell",
+       "mean_lognorm": 0.555,
+       "pct_expressing": 33.3,
+       "share_of_tumor_transcripts": 0.001
+      },
+      {
+       "cell_group": "PT",
+       "label": "proximal tubule epithelial cell",
+       "mean_lognorm": 0.043,
+       "pct_expressing": 2.6,
+       "share_of_tumor_transcripts": 0.0
+      }
+     ],
+     "expressing_groups": [
+      "RCC",
+      "Epi_other"
+     ],
+     "tumor_cell_share": 0.976,
+     "tau": 0.963,
+     "tumor_vs_pt": {
+      "log2fc": 7.739,
+      "padj": 0.0189,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "EPAS1",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "Endothelial",
+       "label": "endothelial cell",
+       "mean_lognorm": 2.209,
+       "pct_expressing": 81.3,
+       "share_of_tumor_transcripts": 0.365
+      },
+      {
+       "cell_group": "Fibroblast",
+       "label": "fibroblast / pericyte",
+       "mean_lognorm": 1.567,
+       "pct_expressing": 70.3,
+       "share_of_tumor_transcripts": 0.081
+      },
+      {
+       "cell_group": "PT",
+       "label": "proximal tubule epithelial cell",
+       "mean_lognorm": 0.168,
+       "pct_expressing": 10.3,
+       "share_of_tumor_transcripts": 0.0
+      }
+     ],
+     "expressing_groups": [
+      "Endothelial",
+      "Fibroblast",
+      "PT"
+     ],
+     "tumor_cell_share": 0.051,
+     "tau": 0.933,
+     "tumor_vs_pt": {
+      "log2fc": 0.589,
+      "padj": 0.665,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "MET",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "RCC",
+       "label": "ccRCC tumor cell",
+       "mean_lognorm": 0.605,
+       "pct_expressing": 35.2,
+       "share_of_tumor_transcripts": 0.935
+      },
+      {
+       "cell_group": "Epi_other",
+       "label": "other renal epithelial cell",
+       "mean_lognorm": 0.418,
+       "pct_expressing": 22.2,
+       "share_of_tumor_transcripts": 0.001
+      },
+      {
+       "cell_group": "Endothelial",
+       "label": "endothelial cell",
+       "mean_lognorm": 0.206,
+       "pct_expressing": 12.0,
+       "share_of_tumor_transcripts": 0.03
+      }
+     ],
+     "expressing_groups": [
+      "RCC",
+      "Epi_other",
+      "Endothelial"
+     ],
+     "tumor_cell_share": 0.935,
+     "tau": 0.926,
+     "tumor_vs_pt": {
+      "log2fc": 5.237,
+      "padj": 0.069,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "KDR",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "Endothelial",
+       "label": "endothelial cell",
+       "mean_lognorm": 0.839,
+       "pct_expressing": 40.5,
+       "share_of_tumor_transcripts": 0.951
+      },
+      {
+       "cell_group": "pDC",
+       "label": "plasmacytoid dendritic cell",
+       "mean_lognorm": 0.017,
+       "pct_expressing": 1.1,
+       "share_of_tumor_transcripts": 0.002
+      },
+      {
+       "cell_group": "T_other",
+       "label": "other T cell (MAIT, gamma-delta)",
+       "mean_lognorm": 0.002,
+       "pct_expressing": 0.1,
+       "share_of_tumor_transcripts": 0.009
+      }
+     ],
+     "expressing_groups": [
+      "Endothelial"
+     ],
+     "tumor_cell_share": 0.002,
+     "tau": 0.998,
+     "tumor_vs_pt": {
+      "log2fc": -0.191,
+      "padj": 0.646,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "EGFR",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "RCC",
+       "label": "ccRCC tumor cell",
+       "mean_lognorm": 0.502,
+       "pct_expressing": 29.7,
+       "share_of_tumor_transcripts": 0.948
+      },
+      {
+       "cell_group": "Epi_other",
+       "label": "other renal epithelial cell",
+       "mean_lognorm": 0.361,
+       "pct_expressing": 22.2,
+       "share_of_tumor_transcripts": 0.001
+      },
+      {
+       "cell_group": "PT",
+       "label": "proximal tubule epithelial cell",
+       "mean_lognorm": 0.275,
+       "pct_expressing": 15.4,
+       "share_of_tumor_transcripts": 0.002
+      }
+     ],
+     "expressing_groups": [
+      "RCC",
+      "Epi_other",
+      "PT"
+     ],
+     "tumor_cell_share": 0.948,
+     "tau": 0.896,
+     "tumor_vs_pt": {
+      "log2fc": 4.748,
+      "padj": 0.0714,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "COXFA4L2",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "RCC",
+       "label": "ccRCC tumor cell",
+       "mean_lognorm": 3.463,
+       "pct_expressing": 92.0,
+       "share_of_tumor_transcripts": 0.963
+      },
+      {
+       "cell_group": "PT",
+       "label": "proximal tubule epithelial cell",
+       "mean_lognorm": 2.928,
+       "pct_expressing": 84.6,
+       "share_of_tumor_transcripts": 0.002
+      },
+      {
+       "cell_group": "Fibroblast",
+       "label": "fibroblast / pericyte",
+       "mean_lognorm": 2.315,
+       "pct_expressing": 73.6,
+       "share_of_tumor_transcripts": 0.021
+      }
+     ],
+     "expressing_groups": [
+      "RCC",
+      "PT",
+      "Fibroblast",
+      "Epi_other"
+     ],
+     "tumor_cell_share": 0.963,
+     "tau": 0.867,
+     "tumor_vs_pt": {
+      "log2fc": 11.487,
+      "padj": 0.0122,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "ENO2",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "RCC",
+       "label": "ccRCC tumor cell",
+       "mean_lognorm": 0.656,
+       "pct_expressing": 37.7,
+       "share_of_tumor_transcripts": 0.369
+      },
+      {
+       "cell_group": "Epi_other",
+       "label": "other renal epithelial cell",
+       "mean_lognorm": 0.272,
+       "pct_expressing": 16.7,
+       "share_of_tumor_transcripts": 0.0
+      },
+      {
+       "cell_group": "Mast",
+       "label": "mast cell",
+       "mean_lognorm": 0.258,
+       "pct_expressing": 16.3,
+       "share_of_tumor_transcripts": 0.005
+      }
+     ],
+     "expressing_groups": [
+      "RCC",
+      "Epi_other",
+      "Mast"
+     ],
+     "tumor_cell_share": 0.369,
+     "tau": 0.873,
+     "tumor_vs_pt": {
+      "log2fc": 6.862,
+      "padj": 0.0122,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "PLIN2",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "PT",
+       "label": "proximal tubule epithelial cell",
+       "mean_lognorm": 2.162,
+       "pct_expressing": 71.8,
+       "share_of_tumor_transcripts": 0.002
+      },
+      {
+       "cell_group": "RCC",
+       "label": "ccRCC tumor cell",
+       "mean_lognorm": 2.006,
+       "pct_expressing": 76.0,
+       "share_of_tumor_transcripts": 0.435
+      },
+      {
+       "cell_group": "Mast",
+       "label": "mast cell",
+       "mean_lognorm": 1.294,
+       "pct_expressing": 61.0,
+       "share_of_tumor_transcripts": 0.006
+      }
+     ],
+     "expressing_groups": [
+      "PT",
+      "RCC",
+      "Mast",
+      "Macrophage",
+      "Monocyte",
+      "Endothelial",
+      "Epi_other",
+      "CD4_T",
+      "NK",
+      "Treg",
+      "T_other",
+      "CD8_T",
+      "cDC",
+      "Fibroblast",
+      "B"
+     ],
+     "tumor_cell_share": 0.435,
+     "tau": 0.753,
+     "tumor_vs_pt": {
+      "log2fc": 1.613,
+      "padj": 0.208,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "CXCR4",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "CD4_T",
+       "label": "CD4 T cell",
+       "mean_lognorm": 2.35,
+       "pct_expressing": 87.8,
+       "share_of_tumor_transcripts": 0.176
+      },
+      {
+       "cell_group": "B",
+       "label": "B cell",
+       "mean_lognorm": 2.091,
+       "pct_expressing": 82.7,
+       "share_of_tumor_transcripts": 0.014
+      },
+      {
+       "cell_group": "pDC",
+       "label": "plasmacytoid dendritic cell",
+       "mean_lognorm": 2.074,
+       "pct_expressing": 82.8,
+       "share_of_tumor_transcripts": 0.002
+      }
+     ],
+     "expressing_groups": [
+      "CD4_T",
+      "B",
+      "pDC",
+      "T_other",
+      "CD8_T",
+      "Treg",
+      "NK",
+      "Macrophage",
+      "Monocyte",
+      "cDC",
+      "PT",
+      "Plasma",
+      "Epi_other",
+      "Endothelial",
+      "RCC"
+     ],
+     "tumor_cell_share": 0.005,
+     "tau": 0.586,
+     "tumor_vs_pt": {
+      "log2fc": 2.356,
+      "padj": 0.286,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "CD74",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "cDC",
+       "label": "conventional dendritic cell",
+       "mean_lognorm": 6.114,
+       "pct_expressing": 100.0,
+       "share_of_tumor_transcripts": 0.114
+      },
+      {
+       "cell_group": "Macrophage",
+       "label": "macrophage (TAM)",
+       "mean_lognorm": 5.39,
+       "pct_expressing": 99.5,
+       "share_of_tumor_transcripts": 0.436
+      },
+      {
+       "cell_group": "pDC",
+       "label": "plasmacytoid dendritic cell",
+       "mean_lognorm": 5.31,
+       "pct_expressing": 100.0,
+       "share_of_tumor_transcripts": 0.003
+      }
+     ],
+     "expressing_groups": [
+      "cDC",
+      "Macrophage",
+      "pDC",
+      "B",
+      "Monocyte",
+      "CD8_T",
+      "Endothelial",
+      "Treg",
+      "T_other",
+      "Plasma",
+      "Epi_other",
+      "RCC",
+      "PT",
+      "NK",
+      "CD4_T",
+      "Mast",
+      "Fibroblast"
+     ],
+     "tumor_cell_share": 0.023,
+     "tau": 0.518,
+     "tumor_vs_pt": {
+      "log2fc": 0.941,
+      "padj": 0.285,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "PIGR",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "RCC",
+       "label": "ccRCC tumor cell",
+       "mean_lognorm": 0.094,
+       "pct_expressing": 5.5,
+       "share_of_tumor_transcripts": 0.864
+      },
+      {
+       "cell_group": "Epi_other",
+       "label": "other renal epithelial cell",
+       "mean_lognorm": 0.078,
+       "pct_expressing": 5.6,
+       "share_of_tumor_transcripts": 0.001
+      },
+      {
+       "cell_group": "Mast",
+       "label": "mast cell",
+       "mean_lognorm": 0.006,
+       "pct_expressing": 0.2,
+       "share_of_tumor_transcripts": 0.002
+      }
+     ],
+     "expressing_groups": [],
+     "tumor_cell_share": 0.864,
+     "tau": 0.937,
+     "tumor_vs_pt": {
+      "log2fc": -3.654,
+      "padj": 0.22,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "ACY1",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "PT",
+       "label": "proximal tubule epithelial cell",
+       "mean_lognorm": 0.342,
+       "pct_expressing": 10.3,
+       "share_of_tumor_transcripts": 0.003
+      },
+      {
+       "cell_group": "RCC",
+       "label": "ccRCC tumor cell",
+       "mean_lognorm": 0.175,
+       "pct_expressing": 11.0,
+       "share_of_tumor_transcripts": 0.238
+      },
+      {
+       "cell_group": "Epi_other",
+       "label": "other renal epithelial cell",
+       "mean_lognorm": 0.169,
+       "pct_expressing": 11.1,
+       "share_of_tumor_transcripts": 0.0
+      }
+     ],
+     "expressing_groups": [
+      "PT",
+      "RCC",
+      "Epi_other"
+     ],
+     "tumor_cell_share": 0.238,
+     "tau": 0.844,
+     "tumor_vs_pt": {
+      "log2fc": -4.697,
+      "padj": 0.0252,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "FAS",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "Treg",
+       "label": "regulatory T cell",
+       "mean_lognorm": 0.529,
+       "pct_expressing": 32.0,
+       "share_of_tumor_transcripts": 0.068
+      },
+      {
+       "cell_group": "CD8_T",
+       "label": "CD8 T cell",
+       "mean_lognorm": 0.308,
+       "pct_expressing": 19.5,
+       "share_of_tumor_transcripts": 0.659
+      },
+      {
+       "cell_group": "CD4_T",
+       "label": "CD4 T cell",
+       "mean_lognorm": 0.257,
+       "pct_expressing": 15.9,
+       "share_of_tumor_transcripts": 0.114
+      }
+     ],
+     "expressing_groups": [
+      "Treg",
+      "CD8_T",
+      "CD4_T",
+      "Epi_other",
+      "T_other"
+     ],
+     "tumor_cell_share": 0.049,
+     "tau": 0.801,
+     "tumor_vs_pt": {
+      "log2fc": 1.877,
+      "padj": 0.0764,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "GRAMD4",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "Epi_other",
+       "label": "other renal epithelial cell",
+       "mean_lognorm": 0.087,
+       "pct_expressing": 5.6,
+       "share_of_tumor_transcripts": 0.0
+      },
+      {
+       "cell_group": "Mast",
+       "label": "mast cell",
+       "mean_lognorm": 0.055,
+       "pct_expressing": 3.7,
+       "share_of_tumor_transcripts": 0.004
+      },
+      {
+       "cell_group": "CD8_T",
+       "label": "CD8 T cell",
+       "mean_lognorm": 0.052,
+       "pct_expressing": 3.5,
+       "share_of_tumor_transcripts": 0.603
+      }
+     ],
+     "expressing_groups": [],
+     "tumor_cell_share": 0.071,
+     "tau": 0.66,
+     "tumor_vs_pt": {
+      "log2fc": 2.189,
+      "padj": 0.121,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "ERBB2",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "PT",
+       "label": "proximal tubule epithelial cell",
+       "mean_lognorm": 0.113,
+       "pct_expressing": 5.1,
+       "share_of_tumor_transcripts": 0.002
+      },
+      {
+       "cell_group": "RCC",
+       "label": "ccRCC tumor cell",
+       "mean_lognorm": 0.091,
+       "pct_expressing": 5.8,
+       "share_of_tumor_transcripts": 0.453
+      },
+      {
+       "cell_group": "NK",
+       "label": "natural killer cell",
+       "mean_lognorm": 0.036,
+       "pct_expressing": 2.1,
+       "share_of_tumor_transcripts": 0.271
+      }
+     ],
+     "expressing_groups": [],
+     "tumor_cell_share": 0.453,
+     "tau": 0.887,
+     "tumor_vs_pt": {
+      "log2fc": -0.227,
+      "padj": 0.801,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "TNFRSF10B",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "Endothelial",
+       "label": "endothelial cell",
+       "mean_lognorm": 0.127,
+       "pct_expressing": 7.9,
+       "share_of_tumor_transcripts": 0.017
+      },
+      {
+       "cell_group": "RCC",
+       "label": "ccRCC tumor cell",
+       "mean_lognorm": 0.117,
+       "pct_expressing": 7.3,
+       "share_of_tumor_transcripts": 0.158
+      },
+      {
+       "cell_group": "Macrophage",
+       "label": "macrophage (TAM)",
+       "mean_lognorm": 0.101,
+       "pct_expressing": 6.9,
+       "share_of_tumor_transcripts": 0.206
+      }
+     ],
+     "expressing_groups": [],
+     "tumor_cell_share": 0.158,
+     "tau": 0.623,
+     "tumor_vs_pt": {
+      "log2fc": 3.045,
+      "padj": 0.113,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "ATP1A1",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "Epi_other",
+       "label": "other renal epithelial cell",
+       "mean_lognorm": 0.858,
+       "pct_expressing": 33.3,
+       "share_of_tumor_transcripts": 0.001
+      },
+      {
+       "cell_group": "Endothelial",
+       "label": "endothelial cell",
+       "mean_lognorm": 0.572,
+       "pct_expressing": 31.6,
+       "share_of_tumor_transcripts": 0.015
+      },
+      {
+       "cell_group": "RCC",
+       "label": "ccRCC tumor cell",
+       "mean_lognorm": 0.52,
+       "pct_expressing": 30.4,
+       "share_of_tumor_transcripts": 0.123
+      }
+     ],
+     "expressing_groups": [
+      "Epi_other",
+      "Endothelial",
+      "RCC",
+      "CD4_T",
+      "Monocyte",
+      "cDC",
+      "Macrophage",
+      "Treg",
+      "Fibroblast",
+      "T_other",
+      "PT",
+      "pDC",
+      "CD8_T",
+      "B",
+      "Mast",
+      "NK"
+     ],
+     "tumor_cell_share": 0.123,
+     "tau": 0.593,
+     "tumor_vs_pt": {
+      "log2fc": -1.181,
+      "padj": 0.2,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "PTPRC",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "Treg",
+       "label": "regulatory T cell",
+       "mean_lognorm": 2.233,
+       "pct_expressing": 89.3,
+       "share_of_tumor_transcripts": 0.042
+      },
+      {
+       "cell_group": "NK",
+       "label": "natural killer cell",
+       "mean_lognorm": 2.079,
+       "pct_expressing": 84.9,
+       "share_of_tumor_transcripts": 0.147
+      },
+      {
+       "cell_group": "CD8_T",
+       "label": "CD8 T cell",
+       "mean_lognorm": 1.996,
+       "pct_expressing": 86.3,
+       "share_of_tumor_transcripts": 0.574
+      }
+     ],
+     "expressing_groups": [
+      "Treg",
+      "NK",
+      "CD8_T",
+      "T_other",
+      "CD4_T",
+      "Monocyte",
+      "B",
+      "Macrophage",
+      "pDC",
+      "cDC",
+      "Mast",
+      "PT",
+      "Epi_other"
+     ],
+     "tumor_cell_share": 0.002,
+     "tau": 0.557,
+     "tumor_vs_pt": {
+      "log2fc": -0.943,
+      "padj": 0.523,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "PDGFRA",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "Fibroblast",
+       "label": "fibroblast / pericyte",
+       "mean_lognorm": 0.027,
+       "pct_expressing": 1.5,
+       "share_of_tumor_transcripts": 0.471
+      },
+      {
+       "cell_group": "cDC",
+       "label": "conventional dendritic cell",
+       "mean_lognorm": 0.0,
+       "pct_expressing": 0.0,
+       "share_of_tumor_transcripts": 0.059
+      },
+      {
+       "cell_group": "Macrophage",
+       "label": "macrophage (TAM)",
+       "mean_lognorm": 0.0,
+       "pct_expressing": 0.0,
+       "share_of_tumor_transcripts": 0.294
+      }
+     ],
+     "expressing_groups": [],
+     "tumor_cell_share": 0.118,
+     "tau": 0.998,
+     "tumor_vs_pt": {
+      "log2fc": 0.072,
+      "padj": 0.372,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "FHIT",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "PT",
+       "label": "proximal tubule epithelial cell",
+       "mean_lognorm": 0.224,
+       "pct_expressing": 10.3,
+       "share_of_tumor_transcripts": 0.002
+      },
+      {
+       "cell_group": "Mast",
+       "label": "mast cell",
+       "mean_lognorm": 0.116,
+       "pct_expressing": 7.6,
+       "share_of_tumor_transcripts": 0.009
+      },
+      {
+       "cell_group": "RCC",
+       "label": "ccRCC tumor cell",
+       "mean_lognorm": 0.103,
+       "pct_expressing": 6.5,
+       "share_of_tumor_transcripts": 0.205
+      }
+     ],
+     "expressing_groups": [
+      "PT"
+     ],
+     "tumor_cell_share": 0.205,
+     "tau": 0.791,
+     "tumor_vs_pt": {
+      "log2fc": -1.574,
+      "padj": 0.117,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "SCARB1",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "Endothelial",
+       "label": "endothelial cell",
+       "mean_lognorm": 0.529,
+       "pct_expressing": 24.5,
+       "share_of_tumor_transcripts": 0.116
+      },
+      {
+       "cell_group": "RCC",
+       "label": "ccRCC tumor cell",
+       "mean_lognorm": 0.258,
+       "pct_expressing": 15.5,
+       "share_of_tumor_transcripts": 0.336
+      },
+      {
+       "cell_group": "Macrophage",
+       "label": "macrophage (TAM)",
+       "mean_lognorm": 0.187,
+       "pct_expressing": 12.5,
+       "share_of_tumor_transcripts": 0.384
+      }
+     ],
+     "expressing_groups": [
+      "Endothelial",
+      "RCC",
+      "Macrophage",
+      "pDC"
+     ],
+     "tumor_cell_share": 0.336,
+     "tau": 0.896,
+     "tumor_vs_pt": {
+      "log2fc": 3.528,
+      "padj": 0.124,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "AGMAT",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "PT",
+       "label": "proximal tubule epithelial cell",
+       "mean_lognorm": 0.485,
+       "pct_expressing": 23.1,
+       "share_of_tumor_transcripts": 0.005
+      },
+      {
+       "cell_group": "RCC",
+       "label": "ccRCC tumor cell",
+       "mean_lognorm": 0.073,
+       "pct_expressing": 4.3,
+       "share_of_tumor_transcripts": 0.2
+      },
+      {
+       "cell_group": "Treg",
+       "label": "regulatory T cell",
+       "mean_lognorm": 0.039,
+       "pct_expressing": 2.8,
+       "share_of_tumor_transcripts": 0.039
+      }
+     ],
+     "expressing_groups": [
+      "PT"
+     ],
+     "tumor_cell_share": 0.2,
+     "tau": 0.967,
+     "tumor_vs_pt": {
+      "log2fc": -4.548,
+      "padj": 0.0316,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "GPC3",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "Epi_other",
+       "label": "other renal epithelial cell",
+       "mean_lognorm": 0.078,
+       "pct_expressing": 5.6,
+       "share_of_tumor_transcripts": 0.023
+      },
+      {
+       "cell_group": "PT",
+       "label": "proximal tubule epithelial cell",
+       "mean_lognorm": 0.069,
+       "pct_expressing": 2.6,
+       "share_of_tumor_transcripts": 0.047
+      },
+      {
+       "cell_group": "Fibroblast",
+       "label": "fibroblast / pericyte",
+       "mean_lognorm": 0.052,
+       "pct_expressing": 2.8,
+       "share_of_tumor_transcripts": 0.605
+      }
+     ],
+     "expressing_groups": [],
+     "tumor_cell_share": 0.14,
+     "tau": 0.899,
+     "tumor_vs_pt": {
+      "log2fc": -0.608,
+      "padj": 0.525,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "IKZF1",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "CD4_T",
+       "label": "CD4 T cell",
+       "mean_lognorm": 0.829,
+       "pct_expressing": 46.7,
+       "share_of_tumor_transcripts": 0.176
+      },
+      {
+       "cell_group": "pDC",
+       "label": "plasmacytoid dendritic cell",
+       "mean_lognorm": 0.823,
+       "pct_expressing": 51.7,
+       "share_of_tumor_transcripts": 0.002
+      },
+      {
+       "cell_group": "NK",
+       "label": "natural killer cell",
+       "mean_lognorm": 0.741,
+       "pct_expressing": 39.9,
+       "share_of_tumor_transcripts": 0.177
+      }
+     ],
+     "expressing_groups": [
+      "CD4_T",
+      "pDC",
+      "NK",
+      "T_other",
+      "Treg",
+      "B",
+      "CD8_T",
+      "Mast",
+      "Monocyte",
+      "cDC",
+      "Macrophage"
+     ],
+     "tumor_cell_share": 0.002,
+     "tau": 0.621,
+     "tumor_vs_pt": {
+      "log2fc": 0.358,
+      "padj": 0.827,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "DDC",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "PT",
+       "label": "proximal tubule epithelial cell",
+       "mean_lognorm": 0.257,
+       "pct_expressing": 10.3,
+       "share_of_tumor_transcripts": 0.005
+      },
+      {
+       "cell_group": "RCC",
+       "label": "ccRCC tumor cell",
+       "mean_lognorm": 0.23,
+       "pct_expressing": 13.6,
+       "share_of_tumor_transcripts": 0.963
+      },
+      {
+       "cell_group": "Monocyte",
+       "label": "monocyte",
+       "mean_lognorm": 0.001,
+       "pct_expressing": 0.1,
+       "share_of_tumor_transcripts": 0.001
+      }
+     ],
+     "expressing_groups": [
+      "PT",
+      "RCC"
+     ],
+     "tumor_cell_share": 0.963,
+     "tau": 0.942,
+     "tumor_vs_pt": {
+      "log2fc": -3.293,
+      "padj": 0.0669,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "TNFAIP3",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "Treg",
+       "label": "regulatory T cell",
+       "mean_lognorm": 1.718,
+       "pct_expressing": 71.7,
+       "share_of_tumor_transcripts": 0.053
+      },
+      {
+       "cell_group": "CD4_T",
+       "label": "CD4 T cell",
+       "mean_lognorm": 1.712,
+       "pct_expressing": 68.2,
+       "share_of_tumor_transcripts": 0.226
+      },
+      {
+       "cell_group": "Mast",
+       "label": "mast cell",
+       "mean_lognorm": 1.401,
+       "pct_expressing": 54.6,
+       "share_of_tumor_transcripts": 0.006
+      }
+     ],
+     "expressing_groups": [
+      "Treg",
+      "CD4_T",
+      "Mast",
+      "T_other",
+      "CD8_T",
+      "NK",
+      "PT",
+      "Macrophage",
+      "Endothelial",
+      "B",
+      "cDC",
+      "Monocyte",
+      "pDC",
+      "Plasma"
+     ],
+     "tumor_cell_share": 0.005,
+     "tau": 0.65,
+     "tumor_vs_pt": {
+      "log2fc": 2.85,
+      "padj": 0.197,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "CARD11",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "pDC",
+       "label": "plasmacytoid dendritic cell",
+       "mean_lognorm": 0.538,
+       "pct_expressing": 36.2,
+       "share_of_tumor_transcripts": 0.007
+      },
+      {
+       "cell_group": "NK",
+       "label": "natural killer cell",
+       "mean_lognorm": 0.2,
+       "pct_expressing": 11.8,
+       "share_of_tumor_transcripts": 0.2
+      },
+      {
+       "cell_group": "B",
+       "label": "B cell",
+       "mean_lognorm": 0.136,
+       "pct_expressing": 9.4,
+       "share_of_tumor_transcripts": 0.012
+      }
+     ],
+     "expressing_groups": [
+      "pDC",
+      "NK"
+     ],
+     "tumor_cell_share": 0.004,
+     "tau": 0.881,
+     "tumor_vs_pt": {
+      "log2fc": 1.405,
+      "padj": 0.172,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "NDRG1",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "RCC",
+       "label": "ccRCC tumor cell",
+       "mean_lognorm": 1.438,
+       "pct_expressing": 66.7,
+       "share_of_tumor_transcripts": 0.65
+      },
+      {
+       "cell_group": "PT",
+       "label": "proximal tubule epithelial cell",
+       "mean_lognorm": 1.324,
+       "pct_expressing": 53.8,
+       "share_of_tumor_transcripts": 0.002
+      },
+      {
+       "cell_group": "Epi_other",
+       "label": "other renal epithelial cell",
+       "mean_lognorm": 0.492,
+       "pct_expressing": 33.3,
+       "share_of_tumor_transcripts": 0.0
+      }
+     ],
+     "expressing_groups": [
+      "RCC",
+      "PT",
+      "Epi_other",
+      "Endothelial",
+      "Treg",
+      "pDC"
+     ],
+     "tumor_cell_share": 0.65,
+     "tau": 0.841,
+     "tumor_vs_pt": {
+      "log2fc": 2.299,
+      "padj": 0.0563,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "MT1G",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "PT",
+       "label": "proximal tubule epithelial cell",
+       "mean_lognorm": 1.278,
+       "pct_expressing": 48.7,
+       "share_of_tumor_transcripts": 0.006
+      },
+      {
+       "cell_group": "RCC",
+       "label": "ccRCC tumor cell",
+       "mean_lognorm": 0.706,
+       "pct_expressing": 26.8,
+       "share_of_tumor_transcripts": 0.862
+      },
+      {
+       "cell_group": "Epi_other",
+       "label": "other renal epithelial cell",
+       "mean_lognorm": 0.152,
+       "pct_expressing": 5.6,
+       "share_of_tumor_transcripts": 0.0
+      }
+     ],
+     "expressing_groups": [
+      "PT",
+      "RCC"
+     ],
+     "tumor_cell_share": 0.862,
+     "tau": 0.951,
+     "tumor_vs_pt": {
+      "log2fc": -6.64,
+      "padj": 0.0759,
+      "n_donors": 6
+     }
+    }
+   ]
+  },
+  "spatial": {
+   "spots": 38836,
+   "sections": 16,
+   "donors": 8,
+   "groups": [
+    "RCC",
+    "PT",
+    "Epi_other",
+    "Endothelial",
+    "Fibroblast",
+    "Macrophage",
+    "Monocyte",
+    "DC",
+    "Mast",
+    "T_cell",
+    "NK",
+    "B",
+    "Plasma"
+   ],
+   "markers": {
+    "RCC": 40,
+    "PT": 40,
+    "Epi_other": 40,
+    "Endothelial": 40,
+    "Fibroblast": 40,
+    "Macrophage": 40,
+    "Monocyte": 40,
+    "DC": 40,
+    "Mast": 40,
+    "T_cell": 40,
+    "NK": 40,
+    "B": 40,
+    "Plasma": 40
+   },
+   "validation": {
+    "mean_share_core": {
+     "RCC": 0.57,
+     "PT": 0.029,
+     "Epi_other": 0.009,
+     "Endothelial": 0.059,
+     "Fibroblast": 0.035,
+     "Macrophage": 0.178,
+     "Monocyte": 0.016,
+     "DC": 0.023,
+     "Mast": 0.012,
+     "T_cell": 0.007,
+     "NK": 0.022,
+     "B": 0.007,
+     "Plasma": 0.019
+    },
+    "mean_share_interface": {
+     "RCC": 0.284,
+     "PT": 0.033,
+     "Epi_other": 0.066,
+     "Endothelial": 0.1,
+     "Fibroblast": 0.233,
+     "Macrophage": 0.125,
+     "Monocyte": 0.015,
+     "DC": 0.023,
+     "Mast": 0.015,
+     "T_cell": 0.006,
+     "NK": 0.013,
+     "B": 0.011,
+     "Plasma": 0.064
+    },
+    "spearman_CA9_vs_RCC": 0.281,
+    "spearman_KDR_vs_Endothelial": 0.217,
+    "spearman_CD74_vs_Macrophage": 0.334,
+    "spearman_PTPRC_vs_T_cell": 0.165
+   }
+  },
+  "structure": {
+   "config": {
+    "min_plddt_keep": 50,
+    "pocket_volume": [
+     150,
+     1500
+    ],
+    "lysine_radius": 20,
+    "mgd_weights": {
+     "confidence": 0.3,
+     "geometry": 0.3,
+     "lysines": 0.25,
+     "degron": 0.15
+    }
+   },
+   "tool": "pyKVFinder (SES surface, probe_in 1.4 A, probe_out 4.0 A, step 0.6 A)"
+  },
+  "cell_rows": [
+   {
+    "gene": "CA9",
+    "top_group": "RCC",
+    "top_label": "ccRCC tumor cell",
+    "top_pct": 54.7,
+    "top_share": 0.976,
+    "tumor_cell_share": 0.976,
+    "tau": 0.963,
+    "tvp": {
+     "log2fc": 7.739,
+     "padj": 0.0189,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:0a2a3feea401",
+     "EV:sc_expr:35b84fee998f",
+     "EV:sc_tvp:225a767ebcb5"
+    ]
+   },
+   {
+    "gene": "EPAS1",
+    "top_group": "Endothelial",
+    "top_label": "endothelial cell",
+    "top_pct": 81.3,
+    "top_share": 0.365,
+    "tumor_cell_share": 0.051,
+    "tau": 0.933,
+    "tvp": {
+     "log2fc": 0.589,
+     "padj": 0.665,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:7a7d0640d3ac",
+     "EV:sc_expr:81bab9647804",
+     "EV:sc_expr:d00e4a293c7f",
+     "EV:sc_tvp:6a657326c9fd"
+    ]
+   },
+   {
+    "gene": "MET",
+    "top_group": "RCC",
+    "top_label": "ccRCC tumor cell",
+    "top_pct": 35.2,
+    "top_share": 0.935,
+    "tumor_cell_share": 0.935,
+    "tau": 0.926,
+    "tvp": {
+     "log2fc": 5.237,
+     "padj": 0.069,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:114c287fd103",
+     "EV:sc_expr:85bb3b08ae7b",
+     "EV:sc_expr:c5d3f61ecb68",
+     "EV:sc_tvp:8314520758de"
+    ]
+   },
+   {
+    "gene": "KDR",
+    "top_group": "Endothelial",
+    "top_label": "endothelial cell",
+    "top_pct": 40.5,
+    "top_share": 0.951,
+    "tumor_cell_share": 0.002,
+    "tau": 0.998,
+    "tvp": {
+     "log2fc": -0.191,
+     "padj": 0.646,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:801fa5377cb7",
+     "EV:sc_tvp:fd47891e1c7f"
+    ]
+   },
+   {
+    "gene": "EGFR",
+    "top_group": "RCC",
+    "top_label": "ccRCC tumor cell",
+    "top_pct": 29.7,
+    "top_share": 0.948,
+    "tumor_cell_share": 0.948,
+    "tau": 0.896,
+    "tvp": {
+     "log2fc": 4.748,
+     "padj": 0.0714,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:232cf512ce32",
+     "EV:sc_expr:3609db3e336c",
+     "EV:sc_expr:a6560ec8eceb",
+     "EV:sc_tvp:6bce27c2d6df"
+    ]
+   },
+   {
+    "gene": "COXFA4L2",
+    "top_group": "RCC",
+    "top_label": "ccRCC tumor cell",
+    "top_pct": 92.0,
+    "top_share": 0.963,
+    "tumor_cell_share": 0.963,
+    "tau": 0.867,
+    "tvp": {
+     "log2fc": 11.487,
+     "padj": 0.0122,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:2ad6aaf9bb05",
+     "EV:sc_expr:d39b1500b0b2",
+     "EV:sc_expr:fe611da31820",
+     "EV:sc_tvp:f0a8d64901b6"
+    ]
+   },
+   {
+    "gene": "ENO2",
+    "top_group": "RCC",
+    "top_label": "ccRCC tumor cell",
+    "top_pct": 37.7,
+    "top_share": 0.369,
+    "tumor_cell_share": 0.369,
+    "tau": 0.873,
+    "tvp": {
+     "log2fc": 6.862,
+     "padj": 0.0122,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:0c06e15cc6ab",
+     "EV:sc_expr:0e86defbf2b2",
+     "EV:sc_expr:54abc66fd6fb",
+     "EV:sc_tvp:6df1d3d7f245"
+    ]
+   },
+   {
+    "gene": "PLIN2",
+    "top_group": "PT",
+    "top_label": "proximal tubule epithelial cell",
+    "top_pct": 71.8,
+    "top_share": 0.002,
+    "tumor_cell_share": 0.435,
+    "tau": 0.753,
+    "tvp": {
+     "log2fc": 1.613,
+     "padj": 0.208,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:48beb6d82333",
+     "EV:sc_expr:dd2cd4abefd6",
+     "EV:sc_expr:de4db956264b",
+     "EV:sc_tvp:d1a8a0cd4e0e"
+    ]
+   },
+   {
+    "gene": "CXCR4",
+    "top_group": "CD4_T",
+    "top_label": "CD4 T cell",
+    "top_pct": 87.8,
+    "top_share": 0.176,
+    "tumor_cell_share": 0.005,
+    "tau": 0.586,
+    "tvp": {
+     "log2fc": 2.356,
+     "padj": 0.286,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:1a23487b2865",
+     "EV:sc_expr:4e0010bd69bf",
+     "EV:sc_expr:911eff0ff054",
+     "EV:sc_tvp:a804b568bd15"
+    ]
+   },
+   {
+    "gene": "CD74",
+    "top_group": "cDC",
+    "top_label": "conventional dendritic cell",
+    "top_pct": 100.0,
+    "top_share": 0.114,
+    "tumor_cell_share": 0.023,
+    "tau": 0.518,
+    "tvp": {
+     "log2fc": 0.941,
+     "padj": 0.285,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:095e86414820",
+     "EV:sc_expr:a2ae18752f02",
+     "EV:sc_expr:ac7135874929",
+     "EV:sc_tvp:ee059aa145d0"
+    ]
+   },
+   {
+    "gene": "PIGR",
+    "top_group": "RCC",
+    "top_label": "ccRCC tumor cell",
+    "top_pct": 5.5,
+    "top_share": 0.864,
+    "tumor_cell_share": 0.864,
+    "tau": 0.937,
+    "tvp": {
+     "log2fc": -3.654,
+     "padj": 0.22,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:c9ace5074574",
+     "EV:sc_tvp:6d388106d837"
+    ]
+   },
+   {
+    "gene": "ACY1",
+    "top_group": "PT",
+    "top_label": "proximal tubule epithelial cell",
+    "top_pct": 10.3,
+    "top_share": 0.003,
+    "tumor_cell_share": 0.238,
+    "tau": 0.844,
+    "tvp": {
+     "log2fc": -4.697,
+     "padj": 0.0252,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:c567d156544a",
+     "EV:sc_expr:da974b266011",
+     "EV:sc_expr:f2ca831cbc6a",
+     "EV:sc_tvp:eac880ece0df"
+    ]
+   },
+   {
+    "gene": "FAS",
+    "top_group": "Treg",
+    "top_label": "regulatory T cell",
+    "top_pct": 32.0,
+    "top_share": 0.068,
+    "tumor_cell_share": 0.049,
+    "tau": 0.801,
+    "tvp": {
+     "log2fc": 1.877,
+     "padj": 0.0764,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:16635c39d38d",
+     "EV:sc_expr:abff6d3da2f0",
+     "EV:sc_expr:ea7b22a762b0",
+     "EV:sc_tvp:49ba41290f01"
+    ]
+   },
+   {
+    "gene": "GRAMD4",
+    "top_group": "Epi_other",
+    "top_label": "other renal epithelial cell",
+    "top_pct": 5.6,
+    "top_share": 0.0,
+    "tumor_cell_share": 0.071,
+    "tau": 0.66,
+    "tvp": {
+     "log2fc": 2.189,
+     "padj": 0.121,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:862d89421349",
+     "EV:sc_tvp:e1c7a07d509f"
+    ]
+   },
+   {
+    "gene": "ERBB2",
+    "top_group": "PT",
+    "top_label": "proximal tubule epithelial cell",
+    "top_pct": 5.1,
+    "top_share": 0.002,
+    "tumor_cell_share": 0.453,
+    "tau": 0.887,
+    "tvp": {
+     "log2fc": -0.227,
+     "padj": 0.801,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:c49dd48a16d8",
+     "EV:sc_expr:deea479b9089",
+     "EV:sc_tvp:659ba3482762"
+    ]
+   },
+   {
+    "gene": "TNFRSF10B",
+    "top_group": "Endothelial",
+    "top_label": "endothelial cell",
+    "top_pct": 7.9,
+    "top_share": 0.017,
+    "tumor_cell_share": 0.158,
+    "tau": 0.623,
+    "tvp": {
+     "log2fc": 3.045,
+     "padj": 0.113,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:5e5bac960cdf",
+     "EV:sc_expr:f16b976c6f75",
+     "EV:sc_tvp:2145dbb7594a"
+    ]
+   },
+   {
+    "gene": "ATP1A1",
+    "top_group": "Epi_other",
+    "top_label": "other renal epithelial cell",
+    "top_pct": 33.3,
+    "top_share": 0.001,
+    "tumor_cell_share": 0.123,
+    "tau": 0.593,
+    "tvp": {
+     "log2fc": -1.181,
+     "padj": 0.2,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:2bf5fc3d85cb",
+     "EV:sc_expr:68a6888a4017",
+     "EV:sc_expr:cde638432975",
+     "EV:sc_tvp:9dbe57f962e4"
+    ]
+   },
+   {
+    "gene": "PTPRC",
+    "top_group": "Treg",
+    "top_label": "regulatory T cell",
+    "top_pct": 89.3,
+    "top_share": 0.042,
+    "tumor_cell_share": 0.002,
+    "tau": 0.557,
+    "tvp": {
+     "log2fc": -0.943,
+     "padj": 0.523,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:7eee60164813",
+     "EV:sc_expr:a8be8fbcbfac",
+     "EV:sc_expr:d2534e9a1f13",
+     "EV:sc_tvp:efa44dd2cc48"
+    ]
+   },
+   {
+    "gene": "PDGFRA",
+    "top_group": "Fibroblast",
+    "top_label": "fibroblast / pericyte",
+    "top_pct": 1.5,
+    "top_share": 0.471,
+    "tumor_cell_share": 0.118,
+    "tau": 0.998,
+    "tvp": {
+     "log2fc": 0.072,
+     "padj": 0.372,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:452c15eadc31",
+     "EV:sc_expr:6df497b4cfd9",
+     "EV:sc_expr:f6f527a48ff6",
+     "EV:sc_tvp:be31f2a723b4"
+    ]
+   },
+   {
+    "gene": "FHIT",
+    "top_group": "PT",
+    "top_label": "proximal tubule epithelial cell",
+    "top_pct": 10.3,
+    "top_share": 0.002,
+    "tumor_cell_share": 0.205,
+    "tau": 0.791,
+    "tvp": {
+     "log2fc": -1.574,
+     "padj": 0.117,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:a49ce424eea7",
+     "EV:sc_expr:b59dad4f7ffa",
+     "EV:sc_tvp:403265251a4c"
+    ]
+   },
+   {
+    "gene": "SCARB1",
+    "top_group": "Endothelial",
+    "top_label": "endothelial cell",
+    "top_pct": 24.5,
+    "top_share": 0.116,
+    "tumor_cell_share": 0.336,
+    "tau": 0.896,
+    "tvp": {
+     "log2fc": 3.528,
+     "padj": 0.124,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:189beb2f1a3d",
+     "EV:sc_expr:7469f2ef52df",
+     "EV:sc_expr:e78b045bd1fa",
+     "EV:sc_tvp:2d66f8e78d0c"
+    ]
+   },
+   {
+    "gene": "AGMAT",
+    "top_group": "PT",
+    "top_label": "proximal tubule epithelial cell",
+    "top_pct": 23.1,
+    "top_share": 0.005,
+    "tumor_cell_share": 0.2,
+    "tau": 0.967,
+    "tvp": {
+     "log2fc": -4.548,
+     "padj": 0.0316,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:5302e1592e7c",
+     "EV:sc_expr:620e20307a66",
+     "EV:sc_tvp:ce13ef1f53fc"
+    ]
+   },
+   {
+    "gene": "GPC3",
+    "top_group": "Epi_other",
+    "top_label": "other renal epithelial cell",
+    "top_pct": 5.6,
+    "top_share": 0.023,
+    "tumor_cell_share": 0.14,
+    "tau": 0.899,
+    "tvp": {
+     "log2fc": -0.608,
+     "padj": 0.525,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:5eebad822f17",
+     "EV:sc_tvp:f46cde066db9"
+    ]
+   },
+   {
+    "gene": "IKZF1",
+    "top_group": "CD4_T",
+    "top_label": "CD4 T cell",
+    "top_pct": 46.7,
+    "top_share": 0.176,
+    "tumor_cell_share": 0.002,
+    "tau": 0.621,
+    "tvp": {
+     "log2fc": 0.358,
+     "padj": 0.827,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:642f3f84133b",
+     "EV:sc_expr:721ea49273d9",
+     "EV:sc_expr:f9d1b6c53d8d",
+     "EV:sc_tvp:0dda65f424a9"
+    ]
+   },
+   {
+    "gene": "DDC",
+    "top_group": "PT",
+    "top_label": "proximal tubule epithelial cell",
+    "top_pct": 10.3,
+    "top_share": 0.005,
+    "tumor_cell_share": 0.963,
+    "tau": 0.942,
+    "tvp": {
+     "log2fc": -3.293,
+     "padj": 0.0669,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:026789d1638e",
+     "EV:sc_expr:8d4f5914527f",
+     "EV:sc_tvp:8907c6b6a163"
+    ]
+   },
+   {
+    "gene": "TNFAIP3",
+    "top_group": "Treg",
+    "top_label": "regulatory T cell",
+    "top_pct": 71.7,
+    "top_share": 0.053,
+    "tumor_cell_share": 0.005,
+    "tau": 0.65,
+    "tvp": {
+     "log2fc": 2.85,
+     "padj": 0.197,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:27ef868fcced",
+     "EV:sc_expr:500fecd82fad",
+     "EV:sc_expr:bc6a5676eebd",
+     "EV:sc_tvp:bcc25ff59417"
+    ]
+   },
+   {
+    "gene": "CARD11",
+    "top_group": "pDC",
+    "top_label": "plasmacytoid dendritic cell",
+    "top_pct": 36.2,
+    "top_share": 0.007,
+    "tumor_cell_share": 0.004,
+    "tau": 0.881,
+    "tvp": {
+     "log2fc": 1.405,
+     "padj": 0.172,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:bc65e1124e27",
+     "EV:sc_expr:d20246802902",
+     "EV:sc_tvp:6bbcc2de2635"
+    ]
+   },
+   {
+    "gene": "NDRG1",
+    "top_group": "RCC",
+    "top_label": "ccRCC tumor cell",
+    "top_pct": 66.7,
+    "top_share": 0.65,
+    "tumor_cell_share": 0.65,
+    "tau": 0.841,
+    "tvp": {
+     "log2fc": 2.299,
+     "padj": 0.0563,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:34e8f6f99fda",
+     "EV:sc_expr:5ba3d6a81a7f",
+     "EV:sc_expr:7a07bb9b4b93",
+     "EV:sc_tvp:416c1037b27c"
+    ]
+   },
+   {
+    "gene": "MT1G",
+    "top_group": "PT",
+    "top_label": "proximal tubule epithelial cell",
+    "top_pct": 48.7,
+    "top_share": 0.006,
+    "tumor_cell_share": 0.862,
+    "tau": 0.951,
+    "tvp": {
+     "log2fc": -6.64,
+     "padj": 0.0759,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:2577a5b44e3b",
+     "EV:sc_expr:d34a61d4a7d8",
+     "EV:sc_tvp:b7c6013f9825"
+    ]
+   }
+  ],
+  "spatial_rows": [
+   {
+    "gene": "CA9",
+    "top_expresser": "RCC",
+    "corrected": "RCC",
+    "n_high": 3592,
+    "neighbors": [
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.37,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "NK",
+      "log2_enrichment": 0.087,
+      "padj": 0.02
+     },
+     {
+      "cell_group": "Macrophage",
+      "log2_enrichment": 0.084,
+      "padj": 0.00167
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:35b84fee998f",
+     "EV:spatial_nb:35b84fee998f",
+     "EV:spatial_nb:8d41f48f7297",
+     "EV:spatial_nb:c163f3f28053"
+    ]
+   },
+   {
+    "gene": "EPAS1",
+    "top_expresser": "Fibroblast",
+    "corrected": "Endothelial",
+    "n_high": 3765,
+    "neighbors": [
+     {
+      "cell_group": "Fibroblast",
+      "log2_enrichment": 0.327,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Endothelial",
+      "log2_enrichment": 0.267,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Monocyte",
+      "log2_enrichment": 0.111,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Plasma",
+      "log2_enrichment": 0.104,
+      "padj": 0.00326
+     },
+     {
+      "cell_group": "Mast",
+      "log2_enrichment": 0.087,
+      "padj": 0.0471
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:7a7d0640d3ac",
+     "EV:spatial_expr:d00e4a293c7f",
+     "EV:spatial_nb:7a7d0640d3ac",
+     "EV:spatial_nb:8c9a0f7b831b",
+     "EV:spatial_nb:93744f932a11",
+     "EV:spatial_nb:a2ce9480bb16",
+     "EV:spatial_nb:d00e4a293c7f"
+    ]
+   },
+   {
+    "gene": "MET",
+    "top_expresser": "RCC",
+    "corrected": "RCC",
+    "n_high": 3686,
+    "neighbors": [
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.203,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "NK",
+      "log2_enrichment": 0.17,
+      "padj": 0.00167
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:114c287fd103",
+     "EV:spatial_nb:114c287fd103",
+     "EV:spatial_nb:2f2654fa3dc9"
+    ]
+   },
+   {
+    "gene": "KDR",
+    "top_expresser": "Endothelial",
+    "corrected": "Endothelial",
+    "n_high": 2783,
+    "neighbors": [
+     {
+      "cell_group": "Endothelial",
+      "log2_enrichment": 0.286,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.211,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Macrophage",
+      "log2_enrichment": 0.049,
+      "padj": 0.00636
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:801fa5377cb7",
+     "EV:spatial_nb:7c63784c88a6",
+     "EV:spatial_nb:801fa5377cb7",
+     "EV:spatial_nb:9b21831ddf47"
+    ]
+   },
+   {
+    "gene": "EGFR",
+    "top_expresser": "RCC",
+    "corrected": "RCC",
+    "n_high": 3759,
+    "neighbors": [
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.263,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Macrophage",
+      "log2_enrichment": 0.036,
+      "padj": 0.02
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:232cf512ce32",
+     "EV:spatial_nb:232cf512ce32",
+     "EV:spatial_nb:82e18d93a036"
+    ]
+   },
+   {
+    "gene": "COXFA4L2",
+    "top_expresser": "RCC",
+    "corrected": "RCC",
+    "n_high": 3892,
+    "neighbors": [
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.358,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Endothelial",
+      "log2_enrichment": 0.118,
+      "padj": 0.00167
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:d39b1500b0b2",
+     "EV:spatial_nb:2bdd62fc6761",
+     "EV:spatial_nb:d39b1500b0b2"
+    ]
+   },
+   {
+    "gene": "ENO2",
+    "top_expresser": "RCC",
+    "corrected": "RCC",
+    "n_high": 3636,
+    "neighbors": [
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.253,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "NK",
+      "log2_enrichment": 0.174,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Endothelial",
+      "log2_enrichment": 0.079,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Macrophage",
+      "log2_enrichment": 0.076,
+      "padj": 0.00167
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:0e86defbf2b2",
+     "EV:spatial_nb:0e86defbf2b2",
+     "EV:spatial_nb:1ef8d1d87dfb",
+     "EV:spatial_nb:ae241b501990",
+     "EV:spatial_nb:b97544089595"
+    ]
+   },
+   {
+    "gene": "PLIN2",
+    "top_expresser": "RCC",
+    "corrected": "RCC",
+    "n_high": 3892,
+    "neighbors": [
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.377,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Macrophage",
+      "log2_enrichment": 0.066,
+      "padj": 0.00167
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:48beb6d82333",
+     "EV:spatial_nb:48beb6d82333",
+     "EV:spatial_nb:f5141b707dde"
+    ]
+   },
+   {
+    "gene": "CXCR4",
+    "top_expresser": "Fibroblast",
+    "corrected": "Macrophage",
+    "n_high": 3892,
+    "neighbors": [
+     {
+      "cell_group": "B",
+      "log2_enrichment": 0.292,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "T_cell",
+      "log2_enrichment": 0.273,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Plasma",
+      "log2_enrichment": 0.205,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Macrophage",
+      "log2_enrichment": 0.133,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "DC",
+      "log2_enrichment": 0.128,
+      "padj": 0.00167
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:1de67e491478",
+     "EV:spatial_expr:72dfcac399a5",
+     "EV:spatial_nb:1a23487b2865",
+     "EV:spatial_nb:1de67e491478",
+     "EV:spatial_nb:2042d9be2189",
+     "EV:spatial_nb:2362ef63838d",
+     "EV:spatial_nb:26ab18894f64",
+     "EV:spatial_nb:5eafd98409fc",
+     "EV:spatial_nb:72dfcac399a5"
+    ]
+   },
+   {
+    "gene": "CD74",
+    "top_expresser": "RCC",
+    "corrected": "Macrophage",
+    "n_high": 3892,
+    "neighbors": [
+     {
+      "cell_group": "T_cell",
+      "log2_enrichment": 0.407,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Macrophage",
+      "log2_enrichment": 0.235,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "DC",
+      "log2_enrichment": 0.162,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Plasma",
+      "log2_enrichment": 0.127,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.056,
+      "padj": 0.00167
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:57b5025c7100",
+     "EV:spatial_expr:a2ae18752f02",
+     "EV:spatial_nb:2c1dc80a8fdf",
+     "EV:spatial_nb:57b5025c7100",
+     "EV:spatial_nb:a2ae18752f02",
+     "EV:spatial_nb:dc6a77013f1a",
+     "EV:spatial_nb:f23f7b6ca669"
+    ]
+   },
+   {
+    "gene": "PIGR",
+    "top_expresser": "Epi_other",
+    "corrected": "RCC",
+    "n_high": 2915,
+    "neighbors": [
+     {
+      "cell_group": "Epi_other",
+      "log2_enrichment": 1.315,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "PT",
+      "log2_enrichment": 1.145,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Plasma",
+      "log2_enrichment": 0.431,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Mast",
+      "log2_enrichment": 0.415,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Fibroblast",
+      "log2_enrichment": 0.326,
+      "padj": 0.00167
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:8e7291d410e8",
+     "EV:spatial_nb:0e2f8d08ebdd",
+     "EV:spatial_nb:14a6bd0fabf7",
+     "EV:spatial_nb:2bdcd573c734",
+     "EV:spatial_nb:52ae4ff61adc",
+     "EV:spatial_nb:6c447b3e0ee3",
+     "EV:spatial_nb:8e7291d410e8",
+     "EV:spatial_nb:94b50aa6d98f",
+     "EV:spatial_nb:cfff57b5ce0d",
+     "EV:spatial_nb:e034826a97e1"
+    ]
+   },
+   {
+    "gene": "ACY1",
+    "top_expresser": "RCC",
+    "corrected": "PT",
+    "n_high": 3086,
+    "neighbors": [
+     {
+      "cell_group": "PT",
+      "log2_enrichment": 0.75,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Epi_other",
+      "log2_enrichment": 0.302,
+      "padj": 0.00167
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:c567d156544a",
+     "EV:spatial_expr:da974b266011",
+     "EV:spatial_nb:c567d156544a",
+     "EV:spatial_nb:f2ca831cbc6a"
+    ]
+   },
+   {
+    "gene": "FAS",
+    "top_expresser": "RCC",
+    "corrected": "RCC",
+    "n_high": 2235,
+    "neighbors": [
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.204,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Macrophage",
+      "log2_enrichment": 0.057,
+      "padj": 0.00167
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:e88f6185d04e",
+     "EV:spatial_nb:e88f6185d04e",
+     "EV:spatial_nb:fac4b6a6fe72"
+    ]
+   },
+   {
+    "gene": "GRAMD4",
+    "top_expresser": "RCC",
+    "corrected": "RCC",
+    "n_high": 2690,
+    "neighbors": [
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.196,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Macrophage",
+      "log2_enrichment": 0.122,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Endothelial",
+      "log2_enrichment": 0.071,
+      "padj": 0.00167
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:d1768bbc23ae",
+     "EV:spatial_nb:3a413a6ce59a",
+     "EV:spatial_nb:a170b29675af",
+     "EV:spatial_nb:d1768bbc23ae"
+    ]
+   },
+   {
+    "gene": "ERBB2",
+    "top_expresser": "Epi_other",
+    "corrected": "RCC",
+    "n_high": 3303,
+    "neighbors": [
+     {
+      "cell_group": "Epi_other",
+      "log2_enrichment": 0.942,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "PT",
+      "log2_enrichment": 0.546,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Mast",
+      "log2_enrichment": 0.198,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Plasma",
+      "log2_enrichment": 0.185,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Fibroblast",
+      "log2_enrichment": 0.176,
+      "padj": 0.00167
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:a5c39bc2ef3a",
+     "EV:spatial_expr:deea479b9089",
+     "EV:spatial_nb:47e2b2276f9c",
+     "EV:spatial_nb:9b1dd1c22734",
+     "EV:spatial_nb:a5c39bc2ef3a",
+     "EV:spatial_nb:b3034fb8f17a",
+     "EV:spatial_nb:f2ef0d919a6b"
+    ]
+   },
+   {
+    "gene": "TNFRSF10B",
+    "top_expresser": "RCC",
+    "corrected": "RCC",
+    "n_high": 3145,
+    "neighbors": [
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.161,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "NK",
+      "log2_enrichment": 0.138,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Macrophage",
+      "log2_enrichment": 0.08,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Endothelial",
+      "log2_enrichment": 0.048,
+      "padj": 0.00326
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:5e5bac960cdf",
+     "EV:spatial_nb:179b0ffe6b7b",
+     "EV:spatial_nb:5c59b0e85b43",
+     "EV:spatial_nb:5e5bac960cdf",
+     "EV:spatial_nb:f16b976c6f75"
+    ]
+   },
+   {
+    "gene": "ATP1A1",
+    "top_expresser": "Epi_other",
+    "corrected": "RCC",
+    "n_high": 3891,
+    "neighbors": [
+     {
+      "cell_group": "Epi_other",
+      "log2_enrichment": 1.366,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "PT",
+      "log2_enrichment": 0.643,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Mast",
+      "log2_enrichment": 0.281,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Fibroblast",
+      "log2_enrichment": 0.229,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Plasma",
+      "log2_enrichment": 0.193,
+      "padj": 0.00167
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:2bf5fc3d85cb",
+     "EV:spatial_expr:cde638432975",
+     "EV:spatial_nb:366f067a5af5",
+     "EV:spatial_nb:3fd8d91f5121",
+     "EV:spatial_nb:430abb69b63a",
+     "EV:spatial_nb:4b25a04cb541",
+     "EV:spatial_nb:adaee92c092f",
+     "EV:spatial_nb:cde638432975"
+    ]
+   },
+   {
+    "gene": "PTPRC",
+    "top_expresser": "Macrophage",
+    "corrected": "Macrophage",
+    "n_high": 3659,
+    "neighbors": [
+     {
+      "cell_group": "T_cell",
+      "log2_enrichment": 0.307,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Macrophage",
+      "log2_enrichment": 0.174,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Plasma",
+      "log2_enrichment": 0.171,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "B",
+      "log2_enrichment": 0.145,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "DC",
+      "log2_enrichment": 0.069,
+      "padj": 0.0392
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:50c3cb69912e",
+     "EV:spatial_nb:051c537fb995",
+     "EV:spatial_nb:40038ffe48c3",
+     "EV:spatial_nb:50c3cb69912e",
+     "EV:spatial_nb:68a217fd1843",
+     "EV:spatial_nb:f2ec54b66310"
+    ]
+   },
+   {
+    "gene": "PDGFRA",
+    "top_expresser": "Fibroblast",
+    "corrected": "Fibroblast",
+    "n_high": 2106,
+    "neighbors": [
+     {
+      "cell_group": "Epi_other",
+      "log2_enrichment": 0.561,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Plasma",
+      "log2_enrichment": 0.528,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Fibroblast",
+      "log2_enrichment": 0.477,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Mast",
+      "log2_enrichment": 0.371,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "B",
+      "log2_enrichment": 0.264,
+      "padj": 0.00167
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:f6f527a48ff6",
+     "EV:spatial_nb:3f067c253795",
+     "EV:spatial_nb:4a385160de30",
+     "EV:spatial_nb:6eaabf8d7d87",
+     "EV:spatial_nb:904781e8a3b0",
+     "EV:spatial_nb:c456243a5dba",
+     "EV:spatial_nb:f6f527a48ff6"
+    ]
+   },
+   {
+    "gene": "FHIT",
+    "top_expresser": "RCC",
+    "corrected": "RCC",
+    "n_high": 1246,
+    "neighbors": [
+     {
+      "cell_group": "PT",
+      "log2_enrichment": 0.376,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.119,
+      "padj": 0.00167
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:a49ce424eea7",
+     "EV:spatial_nb:a49ce424eea7",
+     "EV:spatial_nb:b59dad4f7ffa"
+    ]
+   },
+   {
+    "gene": "SCARB1",
+    "top_expresser": "RCC",
+    "corrected": "RCC",
+    "n_high": 3637,
+    "neighbors": [
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.232,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "NK",
+      "log2_enrichment": 0.156,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Endothelial",
+      "log2_enrichment": 0.141,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Macrophage",
+      "log2_enrichment": 0.115,
+      "padj": 0.00167
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:e78b045bd1fa",
+     "EV:spatial_nb:189beb2f1a3d",
+     "EV:spatial_nb:6b858be49c6f",
+     "EV:spatial_nb:7469f2ef52df",
+     "EV:spatial_nb:e78b045bd1fa"
+    ]
+   },
+   {
+    "gene": "AGMAT",
+    "top_expresser": "RCC",
+    "corrected": "RCC",
+    "n_high": 2375,
+    "neighbors": [
+     {
+      "cell_group": "PT",
+      "log2_enrichment": 0.742,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.111,
+      "padj": 0.00167
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:620e20307a66",
+     "EV:spatial_nb:5302e1592e7c",
+     "EV:spatial_nb:620e20307a66"
+    ]
+   },
+   {
+    "gene": "GPC3",
+    "top_expresser": "Epi_other",
+    "corrected": "Fibroblast",
+    "n_high": 1481,
+    "neighbors": [
+     {
+      "cell_group": "Epi_other",
+      "log2_enrichment": 1.178,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Plasma",
+      "log2_enrichment": 0.56,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "PT",
+      "log2_enrichment": 0.536,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Mast",
+      "log2_enrichment": 0.41,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Fibroblast",
+      "log2_enrichment": 0.337,
+      "padj": 0.00167
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:5eebad822f17",
+     "EV:spatial_expr:dd7524ed9e85",
+     "EV:spatial_nb:5eebad822f17",
+     "EV:spatial_nb:9284500dfa17",
+     "EV:spatial_nb:b3462d28067b",
+     "EV:spatial_nb:dd7524ed9e85",
+     "EV:spatial_nb:f2550f8e7cb0"
+    ]
+   },
+   {
+    "gene": "IKZF1",
+    "top_expresser": "Macrophage",
+    "corrected": "Macrophage",
+    "n_high": 2214,
+    "neighbors": [
+     {
+      "cell_group": "T_cell",
+      "log2_enrichment": 0.321,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "B",
+      "log2_enrichment": 0.231,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Macrophage",
+      "log2_enrichment": 0.228,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Plasma",
+      "log2_enrichment": 0.187,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.044,
+      "padj": 0.00636
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:65cd53c3498f",
+     "EV:spatial_nb:0e29dc2e8046",
+     "EV:spatial_nb:181dcd5e63f6",
+     "EV:spatial_nb:65cd53c3498f",
+     "EV:spatial_nb:9092a25e03f6",
+     "EV:spatial_nb:9c4836ffef64"
+    ]
+   },
+   {
+    "gene": "DDC",
+    "top_expresser": "RCC",
+    "corrected": "RCC",
+    "n_high": 2242,
+    "neighbors": [
+     {
+      "cell_group": "PT",
+      "log2_enrichment": 0.6,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.212,
+      "padj": 0.00167
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:026789d1638e",
+     "EV:spatial_nb:026789d1638e",
+     "EV:spatial_nb:8d4f5914527f"
+    ]
+   },
+   {
+    "gene": "TNFAIP3",
+    "top_expresser": "RCC",
+    "corrected": "Macrophage",
+    "n_high": 3305,
+    "neighbors": [
+     {
+      "cell_group": "Macrophage",
+      "log2_enrichment": 0.202,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.153,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "T_cell",
+      "log2_enrichment": 0.148,
+      "padj": 0.00636
+     },
+     {
+      "cell_group": "Endothelial",
+      "log2_enrichment": 0.071,
+      "padj": 0.00167
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:5c433e4ac48e",
+     "EV:spatial_expr:ee9a20cdcf9f",
+     "EV:spatial_nb:5c433e4ac48e",
+     "EV:spatial_nb:6ff3f73b0d77",
+     "EV:spatial_nb:ee9a20cdcf9f",
+     "EV:spatial_nb:fb0a25a109b1"
+    ]
+   },
+   {
+    "gene": "CARD11",
+    "top_expresser": "RCC",
+    "corrected": "Macrophage",
+    "n_high": 1469,
+    "neighbors": [
+     {
+      "cell_group": "T_cell",
+      "log2_enrichment": 0.343,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Macrophage",
+      "log2_enrichment": 0.213,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "NK",
+      "log2_enrichment": 0.13,
+      "padj": 0.0119
+     },
+     {
+      "cell_group": "DC",
+      "log2_enrichment": 0.12,
+      "padj": 0.0119
+     },
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.1,
+      "padj": 0.00167
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:5ea207a0f021",
+     "EV:spatial_expr:6507124b51ea",
+     "EV:spatial_nb:175adc330cde",
+     "EV:spatial_nb:5c8b3e3f03e4",
+     "EV:spatial_nb:5ea207a0f021",
+     "EV:spatial_nb:6507124b51ea",
+     "EV:spatial_nb:d20246802902"
+    ]
+   },
+   {
+    "gene": "NDRG1",
+    "top_expresser": "RCC",
+    "corrected": "RCC",
+    "n_high": 3891,
+    "neighbors": [
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.357,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Endothelial",
+      "log2_enrichment": 0.065,
+      "padj": 0.00167
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:7a07bb9b4b93",
+     "EV:spatial_nb:309e1630b8c6",
+     "EV:spatial_nb:7a07bb9b4b93"
+    ]
+   },
+   {
+    "gene": "MT1G",
+    "top_expresser": "Fibroblast",
+    "corrected": "PT",
+    "n_high": 3380,
+    "neighbors": [
+     {
+      "cell_group": "PT",
+      "log2_enrichment": 1.034,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Epi_other",
+      "log2_enrichment": 0.676,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Mast",
+      "log2_enrichment": 0.19,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Fibroblast",
+      "log2_enrichment": 0.175,
+      "padj": 0.00167
+     },
+     {
+      "cell_group": "Macrophage",
+      "log2_enrichment": 0.064,
+      "padj": 0.00167
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:2577a5b44e3b",
+     "EV:spatial_expr:5d38ec2813f0",
+     "EV:spatial_nb:0fd6f0fd3eb0",
+     "EV:spatial_nb:2577a5b44e3b",
+     "EV:spatial_nb:46f3de0dc5f7",
+     "EV:spatial_nb:5d38ec2813f0",
+     "EV:spatial_nb:df6d508a0dea"
+    ]
+   }
+  ],
+  "pocket_rows": [
+   {
+    "gene": "PTPRC",
+    "uniprot": "P08575",
+    "mean_plddt": 76.06,
+    "rank": 1,
+    "volume_a3": 1142.4,
+    "max_depth_a": 14.95,
+    "n_lysines": 5,
+    "loop_run": 3,
+    "mgd_score": 0.8462,
+    "recall": 0.184,
+    "recall_top": 0.0,
+    "evidence_ids": [
+     "EV:alphafold:97670d2d5434",
+     "EV:ligand_sites:124722c33a36",
+     "EV:mgd_site:4410fd4dd31b"
+    ]
+   },
+   {
+    "gene": "KDR",
+    "uniprot": "P35968",
+    "mean_plddt": 71.12,
+    "rank": 1,
+    "volume_a3": 361.1,
+    "max_depth_a": 7.47,
+    "n_lysines": 7,
+    "loop_run": 5,
+    "mgd_score": 0.841,
+    "recall": 0.4,
+    "recall_top": 0.2,
+    "evidence_ids": [
+     "EV:alphafold:81956e9ebf17",
+     "EV:ligand_sites:03a0601281b2",
+     "EV:mgd_site:baece750032d"
+    ]
+   },
+   {
+    "gene": "TNFAIP3",
+    "uniprot": "P21580",
+    "mean_plddt": 73.75,
+    "rank": 1,
+    "volume_a3": 252.7,
+    "max_depth_a": 8.18,
+    "n_lysines": 7,
+    "loop_run": 1,
+    "mgd_score": 0.7941,
+    "recall": 0.436,
+    "recall_top": 0.182,
+    "evidence_ids": [
+     "EV:alphafold:59ca8e34e0c3",
+     "EV:ligand_sites:55c2cadd08a9",
+     "EV:mgd_site:f729ecd97877"
+    ]
+   },
+   {
+    "gene": "FHIT",
+    "uniprot": "P49789",
+    "mean_plddt": 95.25,
+    "rank": 1,
+    "volume_a3": 323.6,
+    "max_depth_a": 6.21,
+    "n_lysines": 5,
+    "loop_run": 6,
+    "mgd_score": 0.7925,
+    "recall": 0.774,
+    "recall_top": 0.71,
+    "evidence_ids": [
+     "EV:alphafold:64b15166b4eb",
+     "EV:ligand_sites:84565bbf55c8",
+     "EV:mgd_site:d50663fb5d24"
+    ]
+   },
+   {
+    "gene": "ERBB2",
+    "uniprot": "P04626",
+    "mean_plddt": 74.0,
+    "rank": 1,
+    "volume_a3": 415.6,
+    "max_depth_a": 8.03,
+    "n_lysines": 6,
+    "loop_run": 4,
+    "mgd_score": 0.7821,
+    "recall": 0.566,
+    "recall_top": 0.206,
+    "evidence_ids": [
+     "EV:alphafold:580b6463ed49",
+     "EV:ligand_sites:27e6b3c2444e",
+     "EV:mgd_site:754babeb5af8"
+    ]
+   },
+   {
+    "gene": "CARD11",
+    "uniprot": "Q9BXL7",
+    "mean_plddt": 71.19,
+    "rank": 1,
+    "volume_a3": 176.9,
+    "max_depth_a": 8.53,
+    "n_lysines": 3,
+    "loop_run": 3,
+    "mgd_score": 0.7396,
+    "recall": 0.0,
+    "recall_top": 0.0,
+    "evidence_ids": [
+     "EV:alphafold:4d3d8ab84995",
+     "EV:ligand_sites:342106f0c8d5",
+     "EV:mgd_site:fff748e3da82"
+    ]
+   },
+   {
+    "gene": "ATP1A1",
+    "uniprot": "P05023",
+    "mean_plddt": 88.69,
+    "rank": 1,
+    "volume_a3": 444.3,
+    "max_depth_a": 8.69,
+    "n_lysines": 5,
+    "loop_run": 2,
+    "mgd_score": 0.7337,
+    "recall": 0.443,
+    "recall_top": 0.031,
+    "evidence_ids": [
+     "EV:alphafold:ee8ef060f442",
+     "EV:ligand_sites:9abd933df11e",
+     "EV:mgd_site:968385531298"
+    ]
+   },
+   {
+    "gene": "EGFR",
+    "uniprot": "P00533",
+    "mean_plddt": 75.94,
+    "rank": 1,
+    "volume_a3": 189.9,
+    "max_depth_a": 5.13,
+    "n_lysines": 6,
+    "loop_run": 4,
+    "mgd_score": 0.7304,
+    "recall": 0.375,
+    "recall_top": 0.11,
+    "evidence_ids": [
+     "EV:alphafold:490c201374c5",
+     "EV:ligand_sites:d86debc16d33",
+     "EV:mgd_site:8866d65b0347"
+    ]
+   },
+   {
+    "gene": "GPC3",
+    "uniprot": "P51654",
+    "mean_plddt": 75.06,
+    "rank": 1,
+    "volume_a3": 185.3,
+    "max_depth_a": 4.33,
+    "n_lysines": 7,
+    "loop_run": 5,
+    "mgd_score": 0.7232,
+    "recall": 0.3,
+    "recall_top": 0.0,
+    "evidence_ids": [
+     "EV:alphafold:456fbee3ae7e",
+     "EV:ligand_sites:91e2b6d01489",
+     "EV:mgd_site:358aaa5b64b2"
+    ]
+   },
+   {
+    "gene": "CXCR4",
+    "uniprot": "P61073",
+    "mean_plddt": 82.25,
+    "rank": 1,
+    "volume_a3": 1149.5,
+    "max_depth_a": 8.51,
+    "n_lysines": 1,
+    "loop_run": 4,
+    "mgd_score": 0.7066,
+    "recall": 0.462,
+    "recall_top": 0.325,
+    "evidence_ids": [
+     "EV:alphafold:a8634a0013f0",
+     "EV:ligand_sites:86297350cabc",
+     "EV:mgd_site:09198c3e9eb1"
+    ]
+   },
+   {
+    "gene": "SCARB1",
+    "uniprot": "Q8WTV0",
+    "mean_plddt": 83.38,
+    "rank": 1,
+    "volume_a3": 1932.5,
+    "max_depth_a": 16.02,
+    "n_lysines": 4,
+    "loop_run": 1,
+    "mgd_score": 0.6858,
+    "recall": null,
+    "recall_top": null,
+    "evidence_ids": [
+     "EV:alphafold:24c7e26b11d8",
+     "EV:mgd_site:316781261031"
+    ]
+   },
+   {
+    "gene": "PDGFRA",
+    "uniprot": "P16234",
+    "mean_plddt": 72.69,
+    "rank": 1,
+    "volume_a3": 421.2,
+    "max_depth_a": 6.95,
+    "n_lysines": 6,
+    "loop_run": 5,
+    "mgd_score": 0.6802,
+    "recall": 0.521,
+    "recall_top": 0.197,
+    "evidence_ids": [
+     "EV:alphafold:9cb206ece8e2",
+     "EV:ligand_sites:44c8873bf8e7",
+     "EV:mgd_site:7c082aff456e"
+    ]
+   },
+   {
+    "gene": "MET",
+    "uniprot": "P08581",
+    "mean_plddt": 79.25,
+    "rank": 1,
+    "volume_a3": 27.6,
+    "max_depth_a": 1.7,
+    "n_lysines": 8,
+    "loop_run": 9,
+    "mgd_score": 0.6789,
+    "recall": 0.439,
+    "recall_top": 0.095,
+    "evidence_ids": [
+     "EV:alphafold:8c1eefcf7fa3",
+     "EV:ligand_sites:2989e431fa06",
+     "EV:mgd_site:2545bd364550"
+    ]
+   },
+   {
+    "gene": "EPAS1",
+    "uniprot": "Q99814",
+    "mean_plddt": 58.56,
+    "rank": 1,
+    "volume_a3": 408.2,
+    "max_depth_a": 4.24,
+    "n_lysines": 3,
+    "loop_run": 5,
+    "mgd_score": 0.6709,
+    "recall": 0.735,
+    "recall_top": 0.0,
+    "evidence_ids": [
+     "EV:alphafold:eab0cf4336e1",
+     "EV:ligand_sites:d332bcfb6c96",
+     "EV:mgd_site:64fb28deaeab"
+    ]
+   },
+   {
+    "gene": "GRAMD4",
+    "uniprot": "Q6IC98",
+    "mean_plddt": 66.75,
+    "rank": 1,
+    "volume_a3": 12.3,
+    "max_depth_a": 0.0,
+    "n_lysines": 10,
+    "loop_run": 4,
+    "mgd_score": 0.6683,
+    "recall": null,
+    "recall_top": null,
+    "evidence_ids": [
+     "EV:alphafold:e828867b4da4",
+     "EV:mgd_site:a9414eb635dd"
+    ]
+   },
+   {
+    "gene": "DDC",
+    "uniprot": "P20711",
+    "mean_plddt": 96.81,
+    "rank": 1,
+    "volume_a3": 58.5,
+    "max_depth_a": 3.7,
+    "n_lysines": 8,
+    "loop_run": 2,
+    "mgd_score": 0.6259,
+    "recall": 0.378,
+    "recall_top": 0.0,
+    "evidence_ids": [
+     "EV:alphafold:03ea86100551",
+     "EV:ligand_sites:18a51da8f5a8",
+     "EV:mgd_site:62481134930c"
+    ]
+   },
+   {
+    "gene": "NDRG1",
+    "uniprot": "Q92597",
+    "mean_plddt": 78.0,
+    "rank": 1,
+    "volume_a3": 77.1,
+    "max_depth_a": 2.94,
+    "n_lysines": 4,
+    "loop_run": 8,
+    "mgd_score": 0.6098,
+    "recall": 1.0,
+    "recall_top": 0.0,
+    "evidence_ids": [
+     "EV:alphafold:a8f457630540",
+     "EV:ligand_sites:f3c7b436a678",
+     "EV:mgd_site:423ecd5bae28"
+    ]
+   },
+   {
+    "gene": "ACY1",
+    "uniprot": "Q03154",
+    "mean_plddt": 96.44,
+    "rank": 1,
+    "volume_a3": 20.3,
+    "max_depth_a": 1.34,
+    "n_lysines": 5,
+    "loop_run": 6,
+    "mgd_score": 0.6062,
+    "recall": 1.0,
+    "recall_top": 1.0,
+    "evidence_ids": [
+     "EV:alphafold:b7e608e8404c",
+     "EV:ligand_sites:3ad63ce50e59",
+     "EV:mgd_site:b64800bb51c0"
+    ]
+   },
+   {
+    "gene": "FAS",
+    "uniprot": "P25445",
+    "mean_plddt": 77.88,
+    "rank": 1,
+    "volume_a3": 24.6,
+    "max_depth_a": 0.0,
+    "n_lysines": 10,
+    "loop_run": 2,
+    "mgd_score": 0.6018,
+    "recall": 0.0,
+    "recall_top": 0.0,
+    "evidence_ids": [
+     "EV:alphafold:600eb7671c6f",
+     "EV:ligand_sites:ab303a7a27be",
+     "EV:mgd_site:9bcf0ac89f30"
+    ]
+   },
+   {
+    "gene": "PIGR",
+    "uniprot": "P01833",
+    "mean_plddt": 76.69,
+    "rank": 1,
+    "volume_a3": 260.7,
+    "max_depth_a": 5.4,
+    "n_lysines": 3,
+    "loop_run": 2,
+    "mgd_score": 0.5849,
+    "recall": 0.31,
+    "recall_top": 0.103,
+    "evidence_ids": [
+     "EV:alphafold:2c7f7e41cb03",
+     "EV:ligand_sites:3e621c5515b1",
+     "EV:mgd_site:990229ea4143"
+    ]
+   },
+   {
+    "gene": "ENO2",
+    "uniprot": "P09104",
+    "mean_plddt": 97.06,
+    "rank": 1,
+    "volume_a3": 66.1,
+    "max_depth_a": 4.07,
+    "n_lysines": 6,
+    "loop_run": 2,
+    "mgd_score": 0.5785,
+    "recall": 0.719,
+    "recall_top": 0.094,
+    "evidence_ids": [
+     "EV:alphafold:1d7003952938",
+     "EV:ligand_sites:2b19e59e9224",
+     "EV:mgd_site:e9dd0f226c2c"
+    ]
+   },
+   {
+    "gene": "CD74",
+    "uniprot": "P04233",
+    "mean_plddt": 69.94,
+    "rank": 1,
+    "volume_a3": 127.9,
+    "max_depth_a": 2.08,
+    "n_lysines": 4,
+    "loop_run": 5,
+    "mgd_score": 0.5656,
+    "recall": 0.167,
+    "recall_top": 0.167,
+    "evidence_ids": [
+     "EV:alphafold:b515555548db",
+     "EV:ligand_sites:598cef54c320",
+     "EV:mgd_site:7240178602d9"
+    ]
+   },
+   {
+    "gene": "TNFRSF10B",
+    "uniprot": "O14763",
+    "mean_plddt": 71.19,
+    "rank": 1,
+    "volume_a3": 157.2,
+    "max_depth_a": 2.47,
+    "n_lysines": 4,
+    "loop_run": 2,
+    "mgd_score": 0.5502,
+    "recall": 0.0,
+    "recall_top": 0.0,
+    "evidence_ids": [
+     "EV:alphafold:b5b1902d2001",
+     "EV:ligand_sites:4beb991d0277",
+     "EV:mgd_site:a45cabb867d2"
+    ]
+   },
+   {
+    "gene": "PLIN2",
+    "uniprot": "Q99541",
+    "mean_plddt": 64.19,
+    "rank": 1,
+    "volume_a3": 73.0,
+    "max_depth_a": 0.0,
+    "n_lysines": 9,
+    "loop_run": 2,
+    "mgd_score": 0.549,
+    "recall": null,
+    "recall_top": null,
+    "evidence_ids": [
+     "EV:alphafold:df7f67368530",
+     "EV:mgd_site:336ee4f68a32"
+    ]
+   },
+   {
+    "gene": "CA9",
+    "uniprot": "Q16790",
+    "mean_plddt": 76.56,
+    "rank": 1,
+    "volume_a3": 126.8,
+    "max_depth_a": 2.55,
+    "n_lysines": 1,
+    "loop_run": 5,
+    "mgd_score": 0.546,
+    "recall": 0.5,
+    "recall_top": 0.221,
+    "evidence_ids": [
+     "EV:alphafold:6b2a466ed88e",
+     "EV:ligand_sites:93360ddb9195",
+     "EV:mgd_site:cacfae1940f6"
+    ]
+   },
+   {
+    "gene": "AGMAT",
+    "uniprot": "Q9BSE5",
+    "mean_plddt": 91.81,
+    "rank": 1,
+    "volume_a3": 52.3,
+    "max_depth_a": 1.34,
+    "n_lysines": 3,
+    "loop_run": 8,
+    "mgd_score": 0.5454,
+    "recall": null,
+    "recall_top": null,
+    "evidence_ids": [
+     "EV:alphafold:4f66b265ad9e",
+     "EV:mgd_site:e978d5befc0b"
+    ]
+   },
+   {
+    "gene": "COXFA4L2",
+    "uniprot": "Q9NRX3",
+    "mean_plddt": 84.75,
+    "rank": 1,
+    "volume_a3": 32.2,
+    "max_depth_a": 0.85,
+    "n_lysines": 6,
+    "loop_run": 8,
+    "mgd_score": 0.5165,
+    "recall": null,
+    "recall_top": null,
+    "evidence_ids": [
+     "EV:alphafold:85ad94eff0a3",
+     "EV:mgd_site:ed7a7a40cf78"
+    ]
+   },
+   {
+    "gene": "IKZF1",
+    "uniprot": "Q13422",
+    "mean_plddt": 47.75,
+    "rank": 1,
+    "volume_a3": 46.4,
+    "max_depth_a": 1.9,
+    "n_lysines": 4,
+    "loop_run": 7,
+    "mgd_score": 0.3735,
+    "recall": 0.0,
+    "recall_top": 0.0,
+    "evidence_ids": [
+     "EV:alphafold:cee03bb97c85",
+     "EV:ligand_sites:bdd83eb73a16",
+     "EV:mgd_site:ace6789560a9"
+    ]
+   }
+  ],
+  "cell_groups": {
+   "RCC": "ccRCC tumor cell",
+   "PT": "proximal tubule epithelial cell",
+   "Epi_other": "other renal epithelial cell",
+   "Endothelial": "endothelial cell",
+   "Fibroblast": "fibroblast / pericyte",
+   "Macrophage": "macrophage (TAM)",
+   "Monocyte": "monocyte",
+   "cDC": "conventional dendritic cell",
+   "pDC": "plasmacytoid dendritic cell",
+   "Mast": "mast cell",
+   "CD8_T": "CD8 T cell",
+   "CD4_T": "CD4 T cell",
+   "Treg": "regulatory T cell",
+   "T_other": "other T cell (MAIT, gamma-delta)",
+   "NK": "natural killer cell",
+   "B": "B cell",
+   "Plasma": "plasma cell"
+  }
  },
  "agent_findings": {
   "omics": {

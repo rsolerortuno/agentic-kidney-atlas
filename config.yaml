@@ -42,3 +42,33 @@ convergence:
     tractability: 0.5  # 1 approved/clinical drug, 0.5 tractable modality only, 0 otherwise (enriched genes)
   top_n_report: 25
   top_n_eval: 100
+
+cell_context:
+  # Single-cell and spatial context for the report candidates (narrative targets + top-25 convergence of the
+  # 2026-10-31 run). It annotates candidates; it does NOT change the convergence score (evaluated in M8).
+  targets: [CA9, EPAS1, MET, KDR, EGFR, COXFA4L2, ENO2, PLIN2, CXCR4, CD74, PIGR, ACY1, FAS, GRAMD4, ERBB2,
+            TNFRSF10B, ATP1A1, PTPRC, PDGFRA, FHIT, SCARB1, AGMAT, GPC3, IKZF1, DDC, TNFAIP3, CARD11, NDRG1, MT1G]
+  scrna:
+    tissues: {Tumour: tumor, Tumour-normal: interface, "Normal kidney": normal}
+    exclude_disease: [kidney oncocytoma, kidney benign neoplasm]   # same study, not ccRCC
+    min_cells_pseudobulk: 20      # donor x cell group pseudobulks below this are not used
+    expressing_min_pct: 10        # a cell group "expresses" a gene if >= 10 % of its tumor cells have >= 1 UMI
+  spatial:
+    markers_per_group: 40         # deconvolution reference genes per cell group (targets are excluded)
+    min_marker_cpm: 20
+    high_quantile: 0.9            # target-high spots: top 10 % of a section (with >= 1 UMI)
+    min_high_spots: 20
+    permutations: 1000
+    seed: 7
+
+structure:
+  # AlphaFold DB model + pocket detection (pyKVFinder) + molecular-glue-degrader (MGD) site scoring.
+  min_plddt_keep: 50             # residues below are removed before cavity detection (disordered "spaghetti")
+  confident_plddt: 70
+  pocket_volume: [150, 1500]     # A^3 window typical of small-molecule / glue pockets
+  lysine_radius: 20              # A from pocket centroid: surface lysines an E2~Ub could reach
+  lysine_saturation: 8           # lysines at which the component reaches 1 (first version used 4: saturated in 80 % of pockets)
+  lysine_min_rsa: 0.25           # relative solvent accessibility of the lysine side chain
+  hairpin_radius: 15             # A: G-loop-like beta-hairpin degron near the pocket
+  mgd_weights: {confidence: 0.3, geometry: 0.3, lysines: 0.25, degron: 0.15}
+  top_pockets: 3

@@ -7,12 +7,13 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
+from . import cell_context
 from .config import load
 from .paths import CONFIG, RAW
 from .verify import AGENT_FILES, Verifier
 
 MODELS = {"orchestrator": "Claude Opus 5.5 (effort medium) — Claude Code main session",
-          "agents": "Claude Sonnet 5.5 — Claude Code subagents (agente-omico, agente-literatura, agente-externo)",
+          "agents": "Claude Sonnet 5.5 — Claude Code subagents (agente-omico, agente-literatura, agente-externo, agente-celular)",
           "relation_extraction": "Claude Sonnet 5.5 — extractor-relaciones subagent"}
 
 
@@ -50,9 +51,10 @@ def assemble(run_dir: Path) -> dict:
         "models": MODELS,
         "config_sha256": hashlib.sha256(CONFIG.read_bytes()).hexdigest(),
         "datasets": [{k: f[k] for k in ("file", "url", "downloaded_utc", "sha256", "rows", "columns")}
-                     for f in manifest["files"]],
+                     for f in manifest["files"] + json.loads((RAW / "singlecell" / "manifest.json").read_text())["files"]],
         "convergence": {"universe_size": conv["universe_size"], "config": conv["config"],
                         "ranking": conv["ranking"]},
+        "cell_context": cell_context.build(),
         "agent_findings": agents,
         "narrative": narrative_v,
         "targets": targets,

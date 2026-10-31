@@ -95,7 +95,8 @@ Relation extraction (M3) is an LLM step done once with the `extractor-relaciones
 | `src/ccrcc/omics.py` | Paired tumor-vs-normal DE, CNV frequencies, RNA–protein correlation, HGNC mapping |
 | `src/ccrcc/literature.py` | PubTator3 ingestion, extraction batches, verbatim validation |
 | `src/ccrcc/graph.py` / `kg_build.py` | `GraphStore` (SQLite + NetworkX) and graph construction |
-| `src/ccrcc/mcp_servers/` | `omics-mcp`, `kg-mcp`, `external-mcp` (FastMCP) |
+| `src/ccrcc/mcp_servers/` | `omics-mcp`, `kg-mcp`, `external-mcp`, `cell-mcp` (FastMCP) |
+| `src/ccrcc/singlecell.py` · `spatial.py` · `structure.py` · `kg_cell_structure.py` · `cell_context.py` | M11 cell-type, spatial and MGD layers |
 | `src/ccrcc/integrate.py` · `verify.py` · `assemble.py` · `render.py` | Convergence, verification, findings assembly, HTML |
 | `.claude/agents/*.md` · `.claude/commands/informe.md` | Subagents (Sonnet 5.5) and orchestrator command |
 | `config.yaml` | Thresholds and convergence weights (v2) |
@@ -108,16 +109,41 @@ Only `GraphStore` touches storage. Implement the same methods (`add_node`, `add_
 Evidence as nodes, claims as `(:Entity)-[:SUBJECT_OF]->(:Claim {predicate})-[:OBJECT]->(:Entity)` with
 `(:Claim)-[:SUPPORTED_BY]->(:Evidence)`. Agents, MCP servers and the report do not change.
 
-## Adding single-cell and spatial data (next step)
+## Cell-type, spatial and structural context (M11)
 
-Checked as downloadable: Li et al. 2022 (*Cancer Cell*) scRNA-seq + Visium h5ad on Mendeley Data (`g67bkbnhhg`);
-GSE175540 (Visium, processed); GSE156632 (scRNA-seq, 7 tumor/normal pairs). Wu et al. 2023 snRNA/snATAC (CPTAC) is
-dbGaP-controlled. Suggested integration: cell-type marker and proportion evidence as new Evidence types
-(`CellType` nodes with Cell Ontology ids) and a cell-type specificity stream in the convergence score.
+Added after the first full run, as annotation layers: they do **not** enter the convergence score (so recall@100 is unchanged
+by construction, see `evals/history.md`). Data: Li et al. 2022 (*Cancer Cell*) via CZ CELLxGENE Discover, 178,817 scRNA-seq
+cells (12 donors) and 38,836 Visium spots (23 sections); AlphaFold DB models; PDBe-KB ligand sites.
+
+| Question | Method (`src/ccrcc/`) | Output |
+|---|---|---|
+| Which cell type expresses the target? Is the bulk signal tumor-intrinsic? | `singlecell.py`: donor x tissue x cell-group UMI pseudobulks streamed from the 1.6 GB h5ad; share of the gene's tumour transcripts per group; tumour cells vs normal proximal tubule, donor-paired t-test + BH | `sc_*.parquet` |
+| Where is it expressed in situ and what surrounds it, weighted by abundance? | `spatial.py`: NNLS deconvolution with the study's own profiles (targets excluded from markers); NNLS of target CPM on cell shares; ring-1 neighbours of top-decile spots, observed/expected vs section-matched random spots, 1000 permutations, BH | `spatial_*.parquet` |
+| Where could a molecular glue degrader bind? | `structure.py`: AlphaFold model trimmed at pLDDT 50, pyKVFinder cavities, MGD site score = confidence, pocket geometry, solvent-accessible lysines within 20 A (acceptor for E2~Ub), exposed non-helical loop (degron shape) | `structure_*` |
+
+What the layers say (details and evidence ids in the report):
+
+- **CA9** is tumour-intrinsic (97.6 % of its tumour transcripts come from tumour cells; log2FC 7.7 vs proximal tubule). **EGFR and MET** too.
+- **KDR** is endothelial (95 % of its tumour transcripts); **CD74, CXCR4, PTPRC** are immune. Candidates ranked high by bulk expression that are
+  not tumour-cell targets are now identified from data instead of suspected.
+- **EPAS1** (HIF-2a) transcripts in this dataset are mostly endothelial and fibroblast (5 % tumour cells): interpret it as a pathway target (belzutifan), not as a tumour-cell expression marker.
+- Spatial deconvolution is checked with held-out genes: CA9 vs tumour share rho 0.28, KDR vs endothelium 0.22, CD74 vs macrophage 0.33, positive but moderate.
+
+**MGD scores are a prioritization of sites, not evidence that a degrader exists.** Honest validation against 23 proteins with experimental
+ligand complexes: the cavity detector covers a median 44 % of ligand-bound residues; the score places the best-matching cavity first
+in 11 of 23, but the top 3 pockets cover a median of only 10 %. A first version had a saturated lysine component (80 % of pockets at 1.0),
+fixed from the component's distribution before interpreting any gene. No protein-specific E3 compatibility, ternary complex or
+degron-sequence modelling is done; glue-degrader chemistry would need docking / cryo-EM follow-up.
+
+New MCP server `cell-mcp` (celltype_expression, tumor_cell_vs_proximal_tubule, spatial_context, structure_pockets, mgd_ranking) and a
+fourth subagent, `agente-celular` (Sonnet 5.5). Not used: Wu et al. 2023 snRNA/snATAC (dbGaP-controlled); GSE175540 / GSE156632 / Mendeley
+`g67bkbnhhg` were checked as alternatives, but the CELLxGENE-curated copy of Li 2022 has harmonized Cell Ontology labels.
 
 ## Limitations
 
-Single discovery cohort without external validation; bulk tissue (immune genes may reflect infiltration);
+Single discovery cohort without external validation; bulk tissue (immune genes may reflect infiltration, now quantified by scRNA-seq);
+scRNA-seq / Visium come from a different cohort than CPTAC (12 donors; dissociation bias favours immune cells; Visium spots hold several cells);
+MGD sites are heuristic and weakly validated (see above);
 mutation data out of scope; literature corpus limited and biased toward omics-selected genes; Open Targets
 evidence includes non-specific pan-cancer scores; LLM steps are not bit-reproducible (their outputs are saved and
 verified). Not medical advice.
