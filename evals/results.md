@@ -35,21 +35,21 @@
 
 ## (b) Known-answer questions (`claude -p` + project MCP servers)
 
-- Model: interim: Claude Sonnet 5.5 subagent via MCP tool functions (claude -p pending login)
+- Model: claude-sonnet-5-5
 - **Correct: 10/10**
 
 | ID | Question | Expected | Correct | Answer / error |
 |---|---|---|---|---|
-| q01 | Which chromosome arm is most frequently lost in the CPTAC ccRCC tumors? | 3p | ✅ | Chromosome arm 3p is the most frequently lost (about 79-81% of tumors for VHL, PBRM1, SETD2, BAP1). |
-| q02 | Is CA9 protein increased or decreased in ccRCC tumors compared with matched normal kidney in CPTAC? | increased | ✅ | CA9 protein is increased in tumors versus matched normal (log2FC +2.27, padj 9.9e-43). |
-| q03 | Which antibody targeting CA9 reached phase 3 according to Open Targets? | girentuximab | ✅ | Girentuximab (CHEMBL1743027) reached phase 3. |
-| q04 | Which gene has the highest Open Targets association score with clear cell renal carcinoma? | VHL | ✅ | VHL has the highest Open Targets association score (0.6466). |
-| q05 | Is EGLN3 measured in the CPTAC ccRCC proteome used in this project? | no | ✅ | No, EGLN3 is not measured in the proteome (only RNA data exist for it). |
-| q06 | In what fraction of CPTAC ccRCC tumors is VHL affected by copy-number loss (to two decimals)? | 0.79 | ✅ | 0.79 (VHL loss frequency 0.791, 3p, n=110 tumors). |
-| q07 | Which approved drug targets EPAS1 (HIF-2alpha) according to Open Targets? | belzutifan | ✅ | Belzutifan (CHEMBL4585668) is the approved drug targeting EPAS1. |
-| q08 | Which gene ranks first in this project's deterministic convergence ranking? | EGFR | ✅ | EGFR ranks first (score 3.87). |
-| q09 | Is UMOD protein increased or decreased in ccRCC tumors versus matched normal kidney in CPTAC? | decreased | ✅ | UMOD protein is decreased in tumors versus matched normal (log2FC -2.24, padj 3.2e-33). |
-| q10 | Name a high-confidence STRING interaction partner of CA9 that is a HIF alpha transcription factor. | HIF1A or EPAS1 | ✅ | EPAS1 (HIF-2alpha; STRING score 0.923); HIF1A (0.972) is also a partner. |
+| q01 | Which chromosome arm is most frequently lost in the CPTAC ccRCC tumors? | 3p | ✅ | Chromosome arm 3p is lost most often: the VHL locus is lost in 79.1% of the 110 CPTAC tumors (EV:omics_cnv:52e5aeb6c197). The tool only reports one gene at a time, so I compared three genes rather than every arm. The oth |
+| q02 | Is CA9 protein increased or decreased in ccRCC tumors compared with matched normal kidney in CPTAC? | increased | ✅ | CA9 protein is increased in ccRCC tumors versus matched normal kidney in CPTAC (log2FC +2.27, padj 9.9e-43, 84 pairs; evidence ID EV:omics_de:5afe18b4024b). |
+| q03 | Which antibody targeting CA9 reached phase 3 according to Open Targets? | girentuximab | ✅ | Girentuximab, the anti-CA9 antibody, reached Phase 3 in Open Targets (evidence ID EV:open_targets_drug:646a0aec5b64). |
+| q04 | Which gene has the highest Open Targets association score with clear cell renal carcinoma? | VHL | ✅ | VHL has the highest Open Targets association score with clear cell renal carcinoma, at 0.6466 (evidence ID EV:open_targets_assoc:730901c424b4). |
+| q05 | Is EGLN3 measured in the CPTAC ccRCC proteome used in this project? | no | ✅ | No. The omics tool returns only an RNA result for EGLN3 (log2FC 4.41, padj 1.4e-42, evidence EV:omics_de:1a89557965e3) and no proteome result, so EGLN3 does not appear to be measured in the CPTAC ccRCC proteome used here |
+| q06 | In what fraction of CPTAC ccRCC tumors is VHL affected by copy-number loss (to two decimals)? | 0.79 | ✅ | VHL is affected by copy-number loss in 0.79 of CPTAC ccRCC tumors (loss frequency 0.791 across 110 tumors, evidence ID EV:omics_cnv:52e5aeb6c197). |
+| q07 | Which approved drug targets EPAS1 (HIF-2alpha) according to Open Targets? | belzutifan | ✅ | Open Targets lists belzutifan (CHEMBL4585668) as the approved drug targeting EPAS1 (HIF-2α), with max stage APPROVAL (evidence ID EV:open_targets_drug:199c475802ce). |
+| q08 | Which gene ranks first in this project's deterministic convergence ranking? | EGFR | ✅ | EGFR ranks first in the deterministic convergence ranking, with a score of 3.87 across 5 evidence streams. |
+| q09 | Is UMOD protein increased or decreased in ccRCC tumors versus matched normal kidney in CPTAC? | decreased | ✅ | UMOD protein is decreased in ccRCC tumors versus matched normal kidney in CPTAC (log2FC −2.24, padj 3.2e-33, 84 pairs; evidence EV:omics_de:e6e9e4ef8e40). |
+| q10 | Name a high-confidence STRING interaction partner of CA9 that is a HIF alpha transcription factor. | HIF1A or EPAS1 | ✅ | HIF1A is a high-confidence STRING partner of CA9, with a combined score of 0.972 (evidence ID EV:string:9e9468e265e0). EPAS1, which encodes HIF-2α, also scores high at 0.923. |
 
 ## Analysis
 

@@ -1,0 +1,159 @@
+{
+ "agent": "agente-literatura",
+ "findings": [
+  {
+   "gene": "CA9",
+   "role": "target_and_biomarker",
+   "statement": "PMID:42473996: CA9 is preferentially enriched in ccRCC tumor cells with low normal-kidney expression; CA9-targeted PET offers proof-of-concept noninvasive discrimination of ccRCC, warranting prospective validation (single study, not validated clinically). High CA9 PET uptake associated with PBRM1 loss-of-function. PMID:35795483 reports CAIX mRNA increased in HIV-associated kidney cancer.",
+   "evidence_ids": [
+    "EV:literature:534430b0156d",
+    "EV:literature:7f2628a50d15",
+    "EV:literature:687723b4e539",
+    "EV:literature:e80ed5d1f9d6"
+   ]
+  },
+  {
+   "gene": "COXFA4L2",
+   "role": "target_and_biomarker",
+   "statement": "NDUFA4L2 is predictive of poor survival in ccRCC and supports proliferation/colony formation in cell lines (PMID:34970493); increases glycolysis (PMID:36722045); enhances lipid deposition and Ca9 expression in the TRACK early-ccRCC model; also a marker of low- and high-grade ccRCC in tissue and EVs (PMID:41656939).",
+   "evidence_ids": [
+    "EV:literature:1741cd200f2a",
+    "EV:literature:b9de06a6f23b",
+    "EV:literature:5722b2746d48",
+    "EV:literature:7ada5d5028c8",
+    "EV:literature:b324d5280bd3"
+   ]
+  },
+  {
+   "gene": "MT1G",
+   "role": "target_and_biomarker",
+   "statement": "PMID:36204178: MT1G downregulated in ccRCC vs normal tissue, proposed negative regulator of ferroptosis and poor-prognosis biomarker. PMID:38906969: high MT1G correlated with advanced stage and poorer prognosis; elevated MT1G promoted growth and metastasis in vitro/in vivo and inhibits CPT1B via H3K14 trimethylation, increasing lipid droplets. Note: tumour-vs-normal downregulation yet high expression is adverse within tumours.",
+   "evidence_ids": [
+    "EV:literature:f6c45de2c4dd",
+    "EV:literature:01828633a99d",
+    "EV:literature:de9d334b7b1c",
+    "EV:literature:0a8bb8c4711b",
+    "EV:literature:347e445b0c25"
+   ]
+  },
+  {
+   "gene": "SAP30",
+   "role": "target_and_biomarker",
+   "statement": "SAP30 suppresses MT1G and the p53 pathway; SAP30 upregulated in ccRCC with poor prognosis; authors suggest SAP30 and MT1G as potential prognostic markers and therapeutic targets (PMID:40247376 and related chunks).",
+   "evidence_ids": [
+    "EV:literature:84b4bf458a59",
+    "EV:chunk:bbaf3b86d5be",
+    "EV:chunk:d09443c604bb",
+    "EV:chunk:d82c1e4c3d0f"
+   ]
+  },
+  {
+   "gene": "MT1X",
+   "role": "biomarker",
+   "statement": "Chunks report MT1X as an oncogene indicating prognosis in ccRCC, an independent prognostic factor correlated with T/M stage and grade, with increased expression linked to worse prognosis (bioinformatic plus some experimental work).",
+   "evidence_ids": [
+    "EV:chunk:ef3ec8ca0154",
+    "EV:chunk:551a7743b2f5",
+    "EV:chunk:ec299a3fb6d9",
+    "EV:chunk:a1809815e922"
+   ]
+  },
+  {
+   "gene": "ENO2",
+   "role": "target_and_biomarker",
+   "statement": "PMID:37760940: ENO2 potential diagnostic biomarker and independent prognostic predictor in ccRCC, promoting progression via Warburg-effect glycolysis. PMID:39091581: ENO2 high in ccRCC cell lines; knockdown inhibits glycolysis and promotes ferroptosis. PMID:36313709: ENO2 related to OS. Enolase 2 also associated with TKI resistance (lenvatinib, cabozantinib) in cell lines.",
+   "evidence_ids": [
+    "EV:literature:cfa400884c1b",
+    "EV:literature:26df25eedf25",
+    "EV:literature:3b3e46e581b5",
+    "EV:literature:d6832e52c21c",
+    "EV:chunk:23100d36e975"
+   ]
+  },
+  {
+   "gene": "ALDOB",
+   "role": "biomarker",
+   "statement": "PMID:40852386 reports ALDOB as a prognostic biomarker and potential immunotherapy target in ccRCC, linked to Treg/Th17/neutrophil infiltration; PMID:38655323 reports independent prognostic value in KIRC; PMID:37083815 pan-cancer low expression. Bioinformatic-heavy evidence.",
+   "evidence_ids": [
+    "EV:literature:f834882a57a7",
+    "EV:literature:58d7b6f6e786",
+    "EV:literature:dd489b3df02e",
+    "EV:literature:e0d3ee0b1199"
+   ]
+  },
+  {
+   "gene": "PFKP",
+   "role": "biomarker",
+   "statement": "PFKP upregulated in ccRCC (PMID:34321910, PMID:36901940); PMID:40341002 reports PFKP among glycolysis-related biomarkers with diagnostic and prognostic potential. PMID:34321910 notes low PFKP expression correlated with poor OS, which is direction-discordant with upregulation in tumour.",
+   "evidence_ids": [
+    "EV:literature:2fceed76c9b4",
+    "EV:literature:292de8367805",
+    "EV:literature:a55b9a38e327",
+    "EV:literature:fa5e4add4a84"
+   ]
+  },
+  {
+   "gene": "PLIN2",
+   "role": "biomarker",
+   "statement": "PLIN2 consistently upregulated in ccRCC (PMID:36901940), part of a diagnostic IHC panel validated on 128 samples (PMID:34482820) and related to prognosis via GEPIA (PMID:35314744).",
+   "evidence_ids": [
+    "EV:literature:dbfbe45c8391",
+    "EV:literature:e3ae1997555f",
+    "EV:literature:821636f02856"
+   ]
+  },
+  {
+   "gene": "ABAT",
+   "role": "biomarker",
+   "statement": "PMID:41158242 (pan-cancer): ABAT underexpressed in KIRC and predicts poor prognosis in KIRC; PMID:41813748: ABAT overexpression suppresses tumour growth, mediates cGAS-STING and interacts with PRMT5 (context of that study not clear from sentence).",
+   "evidence_ids": [
+    "EV:literature:22349683c148",
+    "EV:literature:6295ed0b0e37",
+    "EV:literature:24b33107cb4e",
+    "EV:literature:5f35843a9307"
+   ]
+  },
+  {
+   "gene": "ACY1",
+   "role": "biomarker",
+   "statement": "In ccRCC, ACY1 is only reported as downregulated (PMID:34002044, with MAGI2-AS3). Other relations concern colorectal cancer (oncogene, radiotherapy target in cetuximab-resistant CRC), so ccRCC therapeutic relevance is not supported.",
+   "evidence_ids": [
+    "EV:literature:07378577904d",
+    "EV:literature:4e3ff257f99a"
+   ]
+  },
+  {
+   "gene": "CXCR4",
+   "role": "biomarker",
+   "statement": "PMID:34266404: CXCR4 and C3 overexpressed in ccRCC and associated with prognosis (database mining, single bioinformatic study).",
+   "evidence_ids": [
+    "EV:literature:6fb1ac12a544"
+   ]
+  },
+  {
+   "gene": "CD74",
+   "role": "mechanism",
+   "statement": "Strong omics/tractability ranking (rank 2) but no literature relations; chunks describe CD74 expressed in both cancer cells and macrophages in ccRCC with a potential protumor function, with functional significance still unclear.",
+   "evidence_ids": [
+    "EV:chunk:5e52d718ddfe",
+    "EV:chunk:96d540bdb30b",
+    "EV:chunk:16a2e830b064"
+   ]
+  },
+  {
+   "gene": "MET",
+   "role": "target",
+   "statement": "Top-ranked (rank 6) with approved-drug tractability but zero literature relations; a chunk notes MET alterations as possible predictive markers in papillary tumours, not ccRCC.",
+   "evidence_ids": [
+    "EV:chunk:a31c8aca1021"
+   ]
+  }
+ ],
+ "caveats": [
+  "Top convergence genes (EGFR, FAS, PIGR, ERBB2, TNFRSF10B, ATP1A1, PDGFRA, KDR, EPAS1) have 0 literature relations in this corpus; literature is silent on them despite omics/Open Targets support. EGFR search returned no relevant EGFR sentences.",
+  "Clinically validated targets (HIF-2alpha inhibitor belzutifan; VEGFR TKIs/ICI combinations as standard of care) appear in chunks but only by alias (HIF-2alpha, VEGFR) and not as EPAS1/KDR symbols, so they are not cited as gene evidence.",
+  "Most literature-backed candidates (MT1G, MT1X, ENO2, ALDOB, PFKP, PLIN2, ABAT, COXFA4L2) rest on single or few bioinformatic/retrospective studies; none clinically validated as biomarker or target.",
+  "Contradictions: MT1G and PFKP are downregulated or upregulated in tumour vs normal yet high/low expression associated with adverse outcome in different studies; ACY1 evidence is mostly from colorectal cancer.",
+  "Corpus is ~320 abstracts; absence of evidence is not evidence of absence."
+ ]
+}

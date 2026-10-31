@@ -180,7 +180,7 @@
   ]
  },
  "qa": {
-  "model": "interim: Claude Sonnet 5.5 subagent via MCP tool functions (claude -p pending login)",
+  "model": "claude-sonnet-5-5",
   "correct": 10,
   "total": 10,
   "results": [
@@ -188,7 +188,7 @@
     "id": "q01",
     "question": "Which chromosome arm is most frequently lost in the CPTAC ccRCC tumors?",
     "expected": "3p",
-    "answer": "Chromosome arm 3p is the most frequently lost (about 79-81% of tumors for VHL, PBRM1, SETD2, BAP1).",
+    "answer": "Chromosome arm 3p is lost most often: the VHL locus is lost in 79.1% of the 110 CPTAC tumors (EV:omics_cnv:52e5aeb6c197). The tool only reports one gene at a time, so I compared three genes rather than every arm. The other two were lower: HIF1A on 14q at 35.5% and CDKN2A on 9p at 19.1%.",
     "correct": true,
     "error": null
    },
@@ -196,7 +196,7 @@
     "id": "q02",
     "question": "Is CA9 protein increased or decreased in ccRCC tumors compared with matched normal kidney in CPTAC?",
     "expected": "increased",
-    "answer": "CA9 protein is increased in tumors versus matched normal (log2FC +2.27, padj 9.9e-43).",
+    "answer": "CA9 protein is increased in ccRCC tumors versus matched normal kidney in CPTAC (log2FC +2.27, padj 9.9e-43, 84 pairs; evidence ID EV:omics_de:5afe18b4024b).",
     "correct": true,
     "error": null
    },
@@ -204,7 +204,7 @@
     "id": "q03",
     "question": "Which antibody targeting CA9 reached phase 3 according to Open Targets?",
     "expected": "girentuximab",
-    "answer": "Girentuximab (CHEMBL1743027) reached phase 3.",
+    "answer": "Girentuximab, the anti-CA9 antibody, reached Phase 3 in Open Targets (evidence ID EV:open_targets_drug:646a0aec5b64).",
     "correct": true,
     "error": null
    },
@@ -212,7 +212,7 @@
     "id": "q04",
     "question": "Which gene has the highest Open Targets association score with clear cell renal carcinoma?",
     "expected": "VHL",
-    "answer": "VHL has the highest Open Targets association score (0.6466).",
+    "answer": "VHL has the highest Open Targets association score with clear cell renal carcinoma, at 0.6466 (evidence ID EV:open_targets_assoc:730901c424b4).",
     "correct": true,
     "error": null
    },
@@ -220,7 +220,7 @@
     "id": "q05",
     "question": "Is EGLN3 measured in the CPTAC ccRCC proteome used in this project?",
     "expected": "no",
-    "answer": "No, EGLN3 is not measured in the proteome (only RNA data exist for it).",
+    "answer": "No. The omics tool returns only an RNA result for EGLN3 (log2FC 4.41, padj 1.4e-42, evidence EV:omics_de:1a89557965e3) and no proteome result, so EGLN3 does not appear to be measured in the CPTAC ccRCC proteome used here.",
     "correct": true,
     "error": null
    },
@@ -228,7 +228,7 @@
     "id": "q06",
     "question": "In what fraction of CPTAC ccRCC tumors is VHL affected by copy-number loss (to two decimals)?",
     "expected": "0.79",
-    "answer": "0.79 (VHL loss frequency 0.791, 3p, n=110 tumors).",
+    "answer": "VHL is affected by copy-number loss in 0.79 of CPTAC ccRCC tumors (loss frequency 0.791 across 110 tumors, evidence ID EV:omics_cnv:52e5aeb6c197).",
     "correct": true,
     "error": null
    },
@@ -236,7 +236,7 @@
     "id": "q07",
     "question": "Which approved drug targets EPAS1 (HIF-2alpha) according to Open Targets?",
     "expected": "belzutifan",
-    "answer": "Belzutifan (CHEMBL4585668) is the approved drug targeting EPAS1.",
+    "answer": "Open Targets lists belzutifan (CHEMBL4585668) as the approved drug targeting EPAS1 (HIF-2\u03b1), with max stage APPROVAL (evidence ID EV:open_targets_drug:199c475802ce).",
     "correct": true,
     "error": null
    },
@@ -244,7 +244,7 @@
     "id": "q08",
     "question": "Which gene ranks first in this project's deterministic convergence ranking?",
     "expected": "EGFR",
-    "answer": "EGFR ranks first (score 3.87).",
+    "answer": "EGFR ranks first in the deterministic convergence ranking, with a score of 3.87 across 5 evidence streams.",
     "correct": true,
     "error": null
    },
@@ -252,7 +252,7 @@
     "id": "q09",
     "question": "Is UMOD protein increased or decreased in ccRCC tumors versus matched normal kidney in CPTAC?",
     "expected": "decreased",
-    "answer": "UMOD protein is decreased in tumors versus matched normal (log2FC -2.24, padj 3.2e-33).",
+    "answer": "UMOD protein is decreased in ccRCC tumors versus matched normal kidney in CPTAC (log2FC \u22122.24, padj 3.2e-33, 84 pairs; evidence EV:omics_de:e6e9e4ef8e40).",
     "correct": true,
     "error": null
    },
@@ -260,7 +260,7 @@
     "id": "q10",
     "question": "Name a high-confidence STRING interaction partner of CA9 that is a HIF alpha transcription factor.",
     "expected": "HIF1A or EPAS1",
-    "answer": "EPAS1 (HIF-2alpha; STRING score 0.923); HIF1A (0.972) is also a partner.",
+    "answer": "HIF1A is a high-confidence STRING partner of CA9, with a combined score of 0.972 (evidence ID EV:string:9e9468e265e0). EPAS1, which encodes HIF-2\u03b1, also scores high at 0.923.",
     "correct": true,
     "error": null
    }

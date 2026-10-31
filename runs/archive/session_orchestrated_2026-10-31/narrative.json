@@ -1,0 +1,62 @@
+{
+ "summary": [
+  {"text": "Three kinds of candidates emerge when CPTAC tumor-versus-normal omics, the literature corpus and external knowledge are integrated. First, established ccRCC drug targets whose evidence is genetic and clinical rather than expression-based: HIF-2α (EPAS1, belzutifan approved), the VEGF receptor KDR (multiple approved tyrosine kinase inhibitors) and MTOR. Second, HIF-driven surface or secreted proteins with large, layer-concordant increases in tumors and an existing clinical modality: CA9 (girentuximab, phase 3) and CD70 (cusatuzumab and antibody–drug conjugates). Third, metabolic tissue biomarkers that capture the clear-cell phenotype (NDUFA4L2/COXFA4L2, PLIN2, ENO2, NNMT, SLC16A3) or the loss of proximal-tubule identity (ALDOB).",
+   "evidence_ids": ["EV:open_targets_drug:199c475802ce", "EV:open_targets_drug:ebf79c04555c", "EV:open_targets_drug:5e12506a2e98", "EV:omics_de:b269736afdb0", "EV:open_targets_drug:646a0aec5b64", "EV:omics_de:97c97f6d7d62", "EV:omics_de:c256227d9408", "EV:omics_de:c5ce9c3c6f51", "EV:omics_de:1f7150068d77"]},
+  {"text": "CA9 is the candidate with the most complete convergence. It is increased at RNA (log2FC 6.31), protein (2.27) and phosphoprotein level, RNA and protein agree across tumors (Spearman ρ 0.80), the literature supports CA9-targeted PET imaging, and an anti-CA9 antibody has reached phase 3. Its weakness is the absence of Open Targets germline or somatic genetic evidence, which lowers it to rank 10 in the deterministic score.",
+   "gene": "CA9",
+   "evidence_ids": ["EV:omics_de:b269736afdb0", "EV:omics_de:5afe18b4024b", "EV:omics_rna_protein:225a767ebcb5", "EV:literature:534430b0156d", "EV:open_targets_drug:646a0aec5b64"]},
+  {"text": "The deterministic ranking places EGFR, CD74, FAS, CXCR4 and PIGR at the top. These genes show modest but concordant expression changes and receive a uniform Open Targets somatic-mutation score that is not specific to ccRCC. Several of them are expressed by infiltrating immune cells (CXCR4, CD74). They are tractable but have little or no ccRCC-specific literature in this corpus, so they are presented as hypotheses rather than priorities.",
+   "evidence_ids": ["EV:omics_de:a35ae1101e15", "EV:open_targets_assoc:796599138e4a", "EV:omics_de:52fecd7a30a3", "EV:open_targets_assoc:38756b21a30a", "EV:open_targets_assoc:1170ea2f4d6c", "EV:chunk:5e52d718ddfe"]}
+ ],
+ "sections": {
+  "omics": [
+   {"text": "The CPTAC discovery cohort reproduces the canonical VHL–HIF biology. VHL lies on 3p, which is lost in 79 % of tumors, and the HIF targets CA9 and NDUFA4L2 (HGNC COXFA4L2) carry the largest tumor-versus-normal changes in the dataset (RNA log2FC 6.31 and 6.75; protein 2.27 and 3.77).",
+    "evidence_ids": ["EV:omics_cnv:52e5aeb6c197", "EV:omics_de:b269736afdb0", "EV:omics_de:5afe18b4024b", "EV:omics_de:c256227d9408", "EV:omics_de:82b179f21539"]},
+   {"text": "Beyond hypoxia, the proteome captures the metabolic rewiring of ccRCC. Glycolysis and lactate export rise (ENO2 protein log2FC 2.25; SLC16A3/MCT4 2.28), as do lipid-droplet formation (PLIN2 2.67) and NNMT (2.71). ALDOB falls (protein log2FC −2.27; RNA −7.03), marking the loss of proximal-tubule identity.",
+    "evidence_ids": ["EV:omics_de:fd71617cdad3", "EV:omics_de:d93a2cc11342", "EV:omics_de:c5ce9c3c6f51", "EV:omics_de:de39cc0c5ed8", "EV:omics_de:af15cb07921d", "EV:omics_de:1f7150068d77"]},
+   {"text": "VHL and PBRM1 illustrate why expression-based convergence misses genetic drivers. Both are lost with 3p in about 80 % of tumors, yet their protein levels barely change (VHL log2FC −0.17; PBRM1 −0.27).",
+    "evidence_ids": ["EV:omics_cnv:52e5aeb6c197", "EV:omics_de:d57df1dca677", "EV:omics_cnv:07b6205e67e5", "EV:omics_de:e0f9ac819ea2"]}
+  ],
+  "literature": [
+   {"text": "Translational literature in this corpus is strongest for CA9 (tumor-cell enrichment with low normal-kidney expression and CA9-directed PET imaging) and for NDUFA4L2, which predicts poor survival and promotes glycolysis. Most other literature-supported candidates rest on single retrospective or bioinformatic studies.",
+    "evidence_ids": ["EV:literature:534430b0156d", "EV:literature:7f2628a50d15", "EV:literature:1741cd200f2a", "EV:literature:5722b2746d48"]},
+   {"text": "The corpus contains contradictions that a single score would hide. MT1G is reported both as downregulated in tumors and as a marker of poor prognosis, and for PFKP increased expression in tumors coexists with a report linking low expression to worse survival.",
+    "evidence_ids": ["EV:literature:f6c45de2c4dd", "EV:literature:0a8bb8c4711b", "EV:literature:2fceed76c9b4", "EV:literature:fa5e4add4a84"]}
+  ],
+  "external": [
+   {"text": "Open Targets identifies the targets already exploited clinically in ccRCC: EPAS1 (belzutifan, approved), KDR (approved VEGFR inhibitors) and MTOR (approved rapalog). They rank 9, 13 and 6 of 1,998 targets associated with ccRCC.",
+    "evidence_ids": ["EV:open_targets_assoc:61983038a898", "EV:open_targets_drug:199c475802ce", "EV:open_targets_assoc:07cfe399d2b3", "EV:open_targets_drug:ebf79c04555c", "EV:open_targets_assoc:900f88933f86", "EV:open_targets_drug:5e12506a2e98"]},
+   {"text": "MET combines omics support with strong druggability. It is increased in RNA, protein and phosphoprotein, and approved inhibitors exist (cabozantinib, already used in ccRCC, and tepotinib).",
+    "gene": "MET",
+    "evidence_ids": ["EV:omics_de:c0ea990d5cc5", "EV:omics_de:d20212f7a294", "EV:open_targets_drug:eed7c1230a3b", "EV:open_targets_tract:8314520758de"]}
+  ],
+  "integration": [
+   {"text": "Omics, literature and external knowledge agree most clearly on CA9: all three agents independently selected it, and it is the only candidate with expression, literature and a late-stage clinical modality at once. CD70 and NDUFA4L2 follow, with strong omics and literature support but early or no clinical drugs.",
+    "evidence_ids": ["EV:omics_de:5afe18b4024b", "EV:literature:534430b0156d", "EV:open_targets_tract:225a767ebcb5", "EV:omics_de:8a1dc0572ead", "EV:literature:1741cd200f2a"]},
+   {"text": "The evidence streams disagree in systematic ways. The established drug targets (EPAS1, KDR, MTOR) have genetic and clinical support but weak bulk-expression changes. The top omics genes have little ccRCC literature. Immune-related genes in the ranking (CXCR4, CD74) may reflect infiltration rather than tumor-cell expression. Prioritization therefore requires judgment across streams, not a single score.",
+    "evidence_ids": ["EV:open_targets_assoc:61983038a898", "EV:open_targets_assoc:07cfe399d2b3", "EV:omics_de:52fecd7a30a3", "EV:chunk:5e52d718ddfe"]}
+  ]
+ },
+ "targets": [
+  {"gene": "CA9", "category": "target_and_biomarker", "rationale": "Largest concordant multi-layer increase (RNA log2FC 6.31, protein 2.27, ρ 0.80), membrane enzyme, CA9-PET literature, girentuximab phase 3. Ranked 10 by the deterministic score only because it lacks germline or somatic genetic evidence.", "evidence_ids": ["EV:omics_de:b269736afdb0", "EV:omics_de:5afe18b4024b", "EV:omics_rna_protein:225a767ebcb5", "EV:literature:534430b0156d", "EV:open_targets_drug:646a0aec5b64"]},
+  {"gene": "EPAS1", "category": "target", "rationale": "HIF-2α, the direct effector of VHL loss; belzutifan approved. Little bulk-expression change, so the omics stream underrates it.", "evidence_ids": ["EV:open_targets_assoc:61983038a898", "EV:open_targets_drug:199c475802ce", "EV:open_targets_tract:6a657326c9fd"]},
+  {"gene": "KDR", "category": "target", "rationale": "VEGFR2, the backbone of ccRCC therapy, with many approved inhibitors; Open Targets rank 13.", "evidence_ids": ["EV:open_targets_assoc:07cfe399d2b3", "EV:open_targets_drug:ebf79c04555c", "EV:open_targets_tract:fd47891e1c7f"]},
+  {"gene": "CD70", "category": "target_and_biomarker", "rationale": "Surface ligand up in RNA (log2FC 4.46) and protein (2.42) with the highest RNA–protein concordance among candidates (ρ 0.84); antibody and ADC programs exist.", "evidence_ids": ["EV:omics_de:97c97f6d7d62", "EV:omics_de:8a1dc0572ead", "EV:omics_rna_protein:908e84663f6a"]},
+  {"gene": "MET", "category": "target", "rationale": "Up in RNA, protein and phosphoprotein; approved inhibitors including cabozantinib, already used in ccRCC.", "evidence_ids": ["EV:omics_de:c0ea990d5cc5", "EV:omics_de:d20212f7a294", "EV:open_targets_drug:eed7c1230a3b"]},
+  {"gene": "MTOR", "category": "target", "rationale": "Established ccRCC pathway with an approved rapalog; Open Targets rank 6. Driven by pathway activation, not expression change.", "evidence_ids": ["EV:open_targets_assoc:900f88933f86", "EV:open_targets_drug:5e12506a2e98"]},
+  {"gene": "COXFA4L2", "category": "biomarker", "rationale": "NDUFA4L2: the largest RNA and protein increase in the cohort (log2FC 6.75 and 3.77) and literature linking it to poor survival and glycolysis. Excellent tissue biomarker; no drug yet.", "evidence_ids": ["EV:omics_de:c256227d9408", "EV:omics_de:82b179f21539", "EV:literature:1741cd200f2a", "EV:literature:5722b2746d48"]},
+  {"gene": "SLC16A3", "category": "target", "rationale": "MCT4 lactate exporter up in RNA (log2FC 3.44) and protein (2.28); a membrane transporter consistent with the glycolytic phenotype, a plausible metabolic target.", "evidence_ids": ["EV:omics_de:545c6eb28bce", "EV:omics_de:d93a2cc11342"]},
+  {"gene": "PLIN2", "category": "biomarker", "rationale": "Lipid-droplet protein up in protein (log2FC 2.67); validated in an IHC diagnostic panel in the literature.", "evidence_ids": ["EV:omics_de:c5ce9c3c6f51", "EV:literature:e3ae1997555f"]},
+  {"gene": "ENO2", "category": "biomarker", "rationale": "Glycolytic enzyme up in protein (log2FC 2.25), reported as a diagnostic and prognostic marker.", "evidence_ids": ["EV:omics_de:fd71617cdad3", "EV:literature:cfa400884c1b"]},
+  {"gene": "ALDOB", "category": "biomarker", "rationale": "Strongest decrease (RNA log2FC −7.03; protein −2.27): a negative tissue biomarker of proximal-tubule identity loss, not a target.", "evidence_ids": ["EV:omics_de:1f7150068d77", "EV:omics_de:af15cb07921d", "EV:literature:f834882a57a7"]},
+  {"gene": "EGFR", "category": "target", "rationale": "Top of the deterministic ranking (modest but concordant increases, 7p gain, tractable), but no ccRCC literature in the corpus and only a non-specific somatic score: a hypothesis to test, not a priority.", "evidence_ids": ["EV:omics_de:a35ae1101e15", "EV:omics_de:9a5214fad2b4", "EV:open_targets_assoc:796599138e4a"]}
+ ],
+ "limitations": [
+  {"text": "Single discovery cohort (CPTAC, 110 tumors) without independent validation; bulk tissue comparisons mix tumor-cell and microenvironment signals."},
+  {"text": "Somatic mutation data were outside the data scope, so mutational drivers (VHL, PBRM1, SETD2, BAP1, KDM5C) are captured only through 3p loss and Open Targets."},
+  {"text": "The literature corpus has ~320 abstracts and was searched for the top omics genes, so absence of literature for a gene is not evidence of absence."},
+  {"text": "Open Targets assigns a uniform somatic-mutation score (0.456) to many cancer-census genes, which inflates the genetics stream for genes without ccRCC-specific mutation evidence."},
+  {"text": "Copy-number frequencies below 0.3 are reported in agent statements but have no evidence record in the graph."},
+  {"text": "Drug stages are reported for any indication, not specifically for ccRCC. LLM steps (relation extraction, agent analyses, this narrative) are not bit-reproducible; their outputs are saved and every statement was verified against the graph."}
+ ]
+}

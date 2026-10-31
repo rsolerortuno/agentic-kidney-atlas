@@ -1,36 +1,37 @@
 {
  "agents": {
   "agent_omics.json": {
-   "submitted": 12,
-   "kept": 12,
+   "submitted": 15,
+   "kept": 15,
    "dropped": 0,
    "dropped_detail": [],
-   "ids_removed": 0
+   "ids_removed": 1
   },
   "agent_literature.json": {
-   "submitted": 14,
-   "kept": 13,
+   "submitted": 13,
+   "kept": 12,
    "dropped": 1,
    "dropped_detail": [
     {
-     "text": "Top-ranked (rank 6) with approved-drug tractability but zero literature relations; a chunk notes MET alterations as possible predictive markers in papillary tum",
+     "text": "A chunk (PMID 36816976) mentions MET alterations as a possible predictive marker in papillary tumors, so the clinical MET evidence is for papillary rather than ",
      "gene": "MET",
-     "cited": 1,
+     "cited": 2,
      "nonexistent": [],
      "not_linked_to_gene": [
+      "EV:chunk:0916ae945827",
       "EV:chunk:a31c8aca1021"
      ],
      "kept": false
     }
    ],
-   "ids_removed": 1
+   "ids_removed": 2
   },
   "agent_external.json": {
-   "submitted": 10,
-   "kept": 10,
+   "submitted": 14,
+   "kept": 14,
    "dropped": 0,
    "dropped_detail": [],
-   "ids_removed": 0
+   "ids_removed": 2
   }
  }
 }

@@ -82,7 +82,7 @@ def get_evidence(ids: list[str]) -> list[dict]:
 @mcp.tool()
 def convergence_ranking(n: int = 25) -> list[dict]:
     """Deterministic convergence ranking from the latest scripts/integrate.py run (if any)."""
-    runs = sorted(p for p in RUNS.glob("*/convergence.json"))
+    runs = sorted(p for p in RUNS.glob("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/convergence.json"))
     if not runs:
         return [{"message": "no convergence run yet; the orchestrator runs scripts/integrate.py"}]
     return json.loads(runs[-1].read_text())["ranking"][:n]

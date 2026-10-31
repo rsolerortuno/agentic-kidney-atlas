@@ -9,5 +9,5 @@ if __name__ == "__main__":
     if len(sys.argv) > 1:
         path = run_dir(sys.argv[1]) / "findings.json"
     else:
-        path = sorted(RUNS.glob("*/findings.json"))[-1]
+        path = sorted(RUNS.glob("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/findings.json"))[-1]
     print(render(path))

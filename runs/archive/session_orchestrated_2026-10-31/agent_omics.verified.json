@@ -1,0 +1,139 @@
+{
+ "agent": "agente-omico",
+ "findings": [
+  {
+   "gene": "CA9",
+   "role": "target_and_biomarker",
+   "statement": "CA9 is up in all three layers: RNA log2FC 6.312 (padj 1.72e-49), protein log2FC 2.269 (padj 9.9e-43), phospho log2FC 1.91 (padj 5.18e-30). RNA-protein Spearman rho 0.797 (padj 6.48e-24); 9p loss frequency 0.145. A HIF-driven membrane enzyme, it is a strong tissue-biomarker and surface-target candidate.",
+   "evidence_ids": [
+    "EV:omics_de:b269736afdb0",
+    "EV:omics_de:5afe18b4024b",
+    "EV:omics_de:29dfc93ac765",
+    "EV:omics_rna_protein:225a767ebcb5"
+   ]
+  },
+  {
+   "gene": "CD70",
+   "role": "target",
+   "statement": "CD70 is up in RNA (log2FC 4.464, padj 4.13e-35) and protein (log2FC 2.421, padj 1.94e-38), with RNA-protein rho 0.843 (padj 4e-29), the highest concordance among the candidates; CNV is minimal (gain 0.027, loss 0.009). A surface ligand with very large tumor-normal difference, consistent with an antibody/cell-therapy target.",
+   "evidence_ids": [
+    "EV:omics_de:97c97f6d7d62",
+    "EV:omics_de:8a1dc0572ead",
+    "EV:omics_rna_protein:908e84663f6a"
+   ]
+  },
+  {
+   "gene": "EGFR",
+   "role": "target",
+   "statement": "EGFR is top of the convergence ranking (score 3.87, 5 streams). Up in RNA (log2FC 1.461, padj 1.76e-23), protein (log2FC 1.062, padj 7.32e-45) and phospho (log2FC 0.874, padj 1.99e-37); rho 0.699; 7p gain frequency 0.255. Effect sizes are modest but layer-concordant, with approved EGFR drugs available.",
+   "evidence_ids": [
+    "EV:omics_de:a35ae1101e15",
+    "EV:omics_de:9a5214fad2b4",
+    "EV:omics_de:c9f50b441497",
+    "EV:omics_rna_protein:6bce27c2d6df"
+   ]
+  },
+  {
+   "gene": "MET",
+   "role": "target",
+   "statement": "MET is up in RNA (log2FC 1.342, padj 1.19e-21), protein (log2FC 1.101, padj 1.42e-34) and phospho (log2FC 0.723, padj 8.03e-19); rho 0.817 (padj 5.62e-26); 7q gain frequency 0.255. Kinase activity signal supports MET as a druggable target (rank 6 in convergence).",
+   "evidence_ids": [
+    "EV:omics_de:c0ea990d5cc5",
+    "EV:omics_de:d20212f7a294",
+    "EV:omics_de:f53fd6713671",
+    "EV:omics_rna_protein:8314520758de"
+   ]
+  },
+  {
+   "gene": "COXFA4L2",
+   "role": "biomarker",
+   "statement": "COXFA4L2 (dataset symbol NDUFA4L2) has the largest tumor-normal change: RNA log2FC 6.752 (padj 1.66e-49), protein log2FC 3.768 (padj 5.99e-48), phospho log2FC 2.598; rho 0.634; 12q gain frequency 0.118. It is a hypoxia-driven mitochondrial gene, a top tissue biomarker rather than an obvious surface target.",
+   "evidence_ids": [
+    "EV:omics_de:c256227d9408",
+    "EV:omics_de:82b179f21539",
+    "EV:omics_de:4b096717bfc0",
+    "EV:omics_rna_protein:f0a8d64901b6"
+   ]
+  },
+  {
+   "gene": "NNMT",
+   "role": "target_and_biomarker",
+   "statement": "NNMT is up in RNA (log2FC 4.67, padj 2.04e-40) and protein (log2FC 2.709, padj 1.23e-43); rho 0.634 (padj 6.46e-13); no marked CNV (loss 0.045, gain 0.027). Concordant across layers; metabolic enzyme with a small-molecule-inhibitor rationale and biomarker value.",
+   "evidence_ids": [
+    "EV:omics_de:aefc373d6072",
+    "EV:omics_de:de39cc0c5ed8",
+    "EV:omics_rna_protein:7dbf93860d9f"
+   ]
+  },
+  {
+   "gene": "PLIN2",
+   "role": "biomarker",
+   "statement": "PLIN2 is up in protein (log2FC 2.667, padj 7.99e-44), phospho (log2FC 1.9) and RNA (log2FC 2.62, padj 2.37e-26), reflecting lipid-droplet accumulation of ccRCC; RNA-protein rho is only 0.336 (padj 0.000618) and 9p loss frequency 0.164, so protein-level measurement is preferable.",
+   "evidence_ids": [
+    "EV:omics_de:c5ce9c3c6f51",
+    "EV:omics_de:a5f216bad01c",
+    "EV:omics_de:468a9888af97",
+    "EV:omics_rna_protein:d1a8a0cd4e0e"
+   ]
+  },
+  {
+   "gene": "ENO2",
+   "role": "biomarker",
+   "statement": "ENO2 is up in RNA (log2FC 3.538, padj 4.81e-39), protein (log2FC 2.245, padj 2.91e-44) and phospho (log2FC 1.84); rho 0.716 (padj 1.78e-17); 12p gain frequency 0.118. Glycolytic marker consistent with the Warburg-like ccRCC phenotype.",
+   "evidence_ids": [
+    "EV:omics_de:c09f09dc13b4",
+    "EV:omics_de:fd71617cdad3",
+    "EV:omics_de:4b95996578cf",
+    "EV:omics_rna_protein:6df1d3d7f245"
+   ]
+  },
+  {
+   "gene": "SLC16A3",
+   "role": "target",
+   "statement": "SLC16A3 (MCT4, lactate exporter) is up in RNA (log2FC 3.435, padj 3.3e-49), protein (log2FC 2.279, padj 5.43e-47) and phospho (log2FC 1.48); membrane transporter with minimal CNV (gain 0.036, loss 0.018), a plausible metabolic target.",
+   "evidence_ids": [
+    "EV:omics_de:545c6eb28bce",
+    "EV:omics_de:d93a2cc11342",
+    "EV:omics_de:9600512e806d"
+   ]
+  },
+  {
+   "gene": "ALDOB",
+   "role": "biomarker",
+   "statement": "ALDOB is strongly down in RNA (log2FC -7.028, padj 9.42e-31), protein (log2FC -2.273, padj 2.07e-40) and phospho (log2FC -1.415), reflecting loss of proximal-tubule identity; a negative tissue biomarker, not a target. 9p loss frequency 0.164.",
+   "evidence_ids": [
+    "EV:omics_de:1f7150068d77",
+    "EV:omics_de:af15cb07921d",
+    "EV:omics_de:8b73e00cdc38"
+   ]
+  },
+  {
+   "gene": "VHL",
+   "role": "mechanism",
+   "statement": "VHL sits on 3p with loss frequency 0.791 (gain 0.027) and is reduced in RNA (log2FC -0.479, padj 1.62e-17) and protein (log2FC -0.172, padj 0.04), the founding event behind HIF activation and the CA9/NDUFA4L2 signature. The protein change is small and borderline.",
+   "evidence_ids": [
+    "EV:omics_cnv:52e5aeb6c197",
+    "EV:omics_de:820a46b9b018",
+    "EV:omics_de:d57df1dca677"
+   ]
+  },
+  {
+   "gene": "PBRM1",
+   "role": "mechanism",
+   "statement": "PBRM1 (3p) has copy-number loss frequency 0.8 (gain 0.027) with modest reductions in RNA (log2FC -0.238, padj 1.16e-08), protein (log2FC -0.265, padj 6.76e-12) and phospho (log2FC -0.246). Tumor-suppressor loss is a driver mechanism, not a directly targetable product.",
+   "evidence_ids": [
+    "EV:omics_cnv:07b6205e67e5",
+    "EV:omics_de:27766a00d24b",
+    "EV:omics_de:e0f9ac819ea2",
+    "EV:omics_de:dfadb516a59d"
+   ]
+  }
+ ],
+ "caveats": [
+  "CPTAC discovery cohort only (110 tumors; 75 RNA and 84 proteome/phosphoproteome matched normals); no independent validation was performed here.",
+  "Bulk tumor-vs-normal differences can reflect immune/stromal infiltration or tissue composition, not only tumor-cell expression.",
+  "Omics supports expression and copy number only; surface localization, druggability and safety were not assessed from these data beyond the convergence ranking.",
+  "Several cnv_frequency results (CA9, EGFR, MET, CD70, NNMT, PLIN2, ENO2, ALDOB, SLC16A3, COXFA4L2) have no evidence id, so CNV values are quoted without citation.",
+  "COXFA4L2 is the dataset symbol NDUFA4L2; EGFR/MET gains are arm-level 7p/7q events, not focal amplifications."
+ ]
+}

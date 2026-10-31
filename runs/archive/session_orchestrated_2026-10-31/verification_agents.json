@@ -1,0 +1,36 @@
+{
+ "agents": {
+  "agent_omics.json": {
+   "submitted": 12,
+   "kept": 12,
+   "dropped": 0,
+   "dropped_detail": [],
+   "ids_removed": 0
+  },
+  "agent_literature.json": {
+   "submitted": 14,
+   "kept": 13,
+   "dropped": 1,
+   "dropped_detail": [
+    {
+     "text": "Top-ranked (rank 6) with approved-drug tractability but zero literature relations; a chunk notes MET alterations as possible predictive markers in papillary tum",
+     "gene": "MET",
+     "cited": 1,
+     "nonexistent": [],
+     "not_linked_to_gene": [
+      "EV:chunk:a31c8aca1021"
+     ],
+     "kept": false
+    }
+   ],
+   "ids_removed": 1
+  },
+  "agent_external.json": {
+   "submitted": 10,
+   "kept": 10,
+   "dropped": 0,
+   "dropped_detail": [],
+   "ids_removed": 0
+  }
+ }
+}

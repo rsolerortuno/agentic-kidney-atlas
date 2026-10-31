@@ -1,0 +1,42 @@
+[
+ {
+  "id": "q01",
+  "question": "Which chromosome arm is most frequently lost in the CPTAC ccRCC tumors?"
+ },
+ {
+  "id": "q02",
+  "question": "Is CA9 protein increased or decreased in ccRCC tumors compared with matched normal kidney in CPTAC?"
+ },
+ {
+  "id": "q03",
+  "question": "Which antibody targeting CA9 reached phase 3 according to Open Targets?"
+ },
+ {
+  "id": "q04",
+  "question": "Which gene has the highest Open Targets association score with clear cell renal carcinoma?"
+ },
+ {
+  "id": "q05",
+  "question": "Is EGLN3 measured in the CPTAC ccRCC proteome used in this project?"
+ },
+ {
+  "id": "q06",
+  "question": "In what fraction of CPTAC ccRCC tumors is VHL affected by copy-number loss (to two decimals)?"
+ },
+ {
+  "id": "q07",
+  "question": "Which approved drug targets EPAS1 (HIF-2alpha) according to Open Targets?"
+ },
+ {
+  "id": "q08",
+  "question": "Which gene ranks first in this project's deterministic convergence ranking?"
+ },
+ {
+  "id": "q09",
+  "question": "Is UMOD protein increased or decreased in ccRCC tumors versus matched normal kidney in CPTAC?"
+ },
+ {
+  "id": "q10",
+  "question": "Name a high-confidence STRING interaction partner of CA9 that is a HIF alpha transcription factor."
+ }
+]

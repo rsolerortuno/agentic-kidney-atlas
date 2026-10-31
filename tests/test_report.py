@@ -6,7 +6,7 @@ import pytest
 from ccrcc.paths import REPORTS, ROOT, RUNS
 from ccrcc.verify import verify_final
 
-FINDINGS = sorted(RUNS.glob("*/findings.json"))
+FINDINGS = sorted(RUNS.glob("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/findings.json"))
 REPORT = REPORTS / "ccrcc_report.html"
 
 

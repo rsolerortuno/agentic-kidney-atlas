@@ -43,7 +43,7 @@ def run_all(fresh: bool = True) -> int:
     print("    relations:", _step("M3 validate extracted relations", literature.validate_extractions))
     _step("M5 external enrichment (cached)", enrich.run)
     _step("M4 knowledge graph", kg_build.build)
-    runs = sorted(p.parent for p in RUNS.glob("*/narrative.json"))
+    runs = sorted(p.parent for p in RUNS.glob("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/narrative.json"))
     if not runs:
         print("No saved agent run (runs/<date>/narrative.json). Run scripts/run_informe.ps1 first.")
         return 1

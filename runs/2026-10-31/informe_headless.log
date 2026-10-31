@@ -1,0 +1,23 @@
+﻿I've run the integration step and started the omics, literature and external agents in parallel. All three are still running, and I'll continue once they finish.
+
+So far:
+- **Integration:** it scored 19,161 genes and wrote `runs/2026-10-31/convergence.json`. The top 10 are EGFR, CD74, FAS, CXCR4, PIGR, MET, ACY1, GRAMD4, ERBB2 and CA9.
+- **Top 25:** I've read it in full and have it ready to combine with the agents' findings.
+
+Once the agents finish, I'll check their evidence ids, write `narrative.json`, assemble and verify until there are 0 unsupported claims, then render the report.
+
+The omics agent has finished, writing 15 findings to `agent_omics.json`. Its strongest candidates are CA9 and NDUFA4L2, and 3p loss (VHL, PBRM1) is the main mechanism it describes. The literature and external agents are still running.
+
+The literature agent has finished, writing 12 findings to `agent_literature.json`. Only the external agent is still running.
+
+The report is ready at `C:\Users\rafae\Documents\ccrcc-graphrag\reports\ccrcc_report.html`. Final verification checked 64 statements and found 0 unsupported claims on the first pass, so `narrative.json` needed no fixes.
+
+1. **Best overall candidate: CA9.** It is the only gene where all three sources agree: strongly up in tumors (RNA log2FC 6.312, protein log2FC 2.269), backed by a CA9 PET proof-of-concept study, a membrane protein, and girentuximab is in Phase 3.
+2. **Clinically validated target: EPAS1 (HIF-2α).** Belzutifan is approved, and the protein is up while RNA barely changes, as expected after VHL loss. It sits at only rank 38 in the numeric score, so I moved it up.
+3. **Tractable targets:** MET and KDR come next. EGFR is rank 1 by score but has no ccRCC literature in the corpus and no ccRCC approval, so I kept it as a hypothesis.
+4. **Biomarkers:**
+   - Up in tumors, both RNA and protein: NDUFA4L2 (COXFA4L2), ENO2, PLIN2.
+   - Down in tumors: PIGR and ACY1. ACY1 is also lost on chromosome 3p in 0.809 of tumors.
+5. **Where the sources disagree:** CD74 and CXCR4 (ranks 2 and 4) probably reflect immune cells in the tumor rather than the tumor itself, so I ranked them lower. Established targets MTOR and FLT4 have strong Open Targets support but don't appear in the omics data. MT1G and PFKP show contradictory prognostic direction in the literature.
+
+The verification step removed a few evidence ids from the agents' outputs before integration: 1 from omics, 2 from external, and 2 ids plus one whole finding from literature. The external agent skipped STRING interaction lookups to stay within its tool budget, so the report has no protein-interaction context.

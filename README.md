@@ -60,14 +60,13 @@ Raw CPTAC matrices and PubMed abstracts are **not redistributed** in this reposi
 See the report for the full, cited analysis. Headlines:
 - Expected ccRCC biology is recovered: HIF targets CA9, NDUFA4L2, ANGPTL4, EGLN3 and VEGFA are strongly up in RNA (log2FC 2.9–6.8, padj < 1e-32), and CA9, NDUFA4L2 and ANGPTL4 are also up in protein. 3p is the most frequently lost arm (median 80 % of tumors).
 - The knowledge graph holds ~96k evidence-backed claims, with 0 claims lacking resolvable evidence.
-- **Prioritized candidates (orchestrator):** CA9 (target and biomarker; strongest convergence across all streams), EPAS1, KDR and MTOR (established targets with genetic and clinical, not expression, support), CD70 and MET (expression plus a clinical modality), and metabolic tissue biomarkers NDUFA4L2/COXFA4L2, SLC16A3, PLIN2, ENO2 and ALDOB. The deterministic ranking's top genes (EGFR, CD74, FAS, CXCR4) are kept as hypotheses because of non-specific genetic evidence and possible immune infiltration.
-- **Verification:** 59 narrative and agent statements checked against the graph, **0 unsupported**. The HTML validator found 84 claims and 282 evidence ids, all resolvable.
-- **Evaluation:** recall of 23 known ccRCC genes in the top 100 is **22 %**, below the 60 % target, but it is 42× random enrichment (median rank 309/19,161; recall@1000 74 %). [`evals/history.md`](evals/history.md) explains why: known ccRCC genes are mostly *mutational* drivers with little bulk expression change, and mutation data were out of scope. Known-answer questions: 10/10. That result is interim, answered by a Sonnet 5.5 subagent through the same MCP tool functions. The `claude -p` version is pending (see below).
+- **Prioritized candidates (orchestrator):** CA9 (target and biomarker; the only gene where omics, literature and a late-stage clinical modality all agree), EPAS1/HIF-2α (belzutifan approved; promoted from rank 38), MET and KDR (tractable, approved inhibitors), EGFR (rank 1 by score but kept as a hypothesis: no ccRCC literature or approval), and biomarkers NDUFA4L2/COXFA4L2, ENO2 and PLIN2 (up) and PIGR and ACY1 (down; ACY1 lost with 3p). CD74 and CXCR4 likely reflect immune infiltration.
+- **Verification:** 64 narrative and agent statements checked against the graph, **0 unsupported**. The HTML validator found 89 claims and 251 evidence ids, all resolvable.
+- **Evaluation:** recall of 23 known ccRCC genes in the top 100 is **22 %**, below the 60 % target, but it is 42× random enrichment (median rank 309/19,161; recall@1000 74 %). [`evals/history.md`](evals/history.md) explains why: known ccRCC genes are mostly *mutational* drivers with little bulk expression change, and mutation data were out of scope. Known-answer questions answered by `claude -p` (Sonnet 5.5) with the MCP servers: **10/10**.
 
-> **Status of the headless run.** The agent analysis in `runs/2026-10-31/` was orchestrated from an interactive
-> Claude Code session (Opus 5.5 orchestrator, three Sonnet 5.5 subagents). It used the same agent definitions and
-> called the same MCP tool functions through `scripts/mcp_call.py`. The fully headless command
-> (`claude -p "/informe"`, `scripts/run_informe.ps1`) is ready but needs the Claude Code CLI to be logged in once.
+> The agent analysis in `runs/2026-10-31/` was produced headless with `claude -p "/informe"` (Opus 5.5 orchestrator,
+> three Sonnet 5.5 subagents, project MCP servers); log in `runs/2026-10-31/informe_headless.log`. An earlier
+> session-orchestrated run is kept in `runs/archive/` for comparison.
 
 ## Reproduce
 
