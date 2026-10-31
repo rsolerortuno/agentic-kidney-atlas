@@ -1,0 +1,15 @@
+﻿I have the top 25. Now waiting for the four agents to finish.
+
+One agent is done. Waiting for the other three.
+
+Two done. Waiting for the literature and cells agents.
+
+The full pipeline ran and the report is written to `C:\Users\rafae\Documents\ccrcc-graphrag\reports\ccrcc_report.html`. The final check found no unsupported claims across 95 statements.
+
+1. **CA9 has the strongest convergent evidence and is the top target and biomarker.** It is strongly up in tumors (RNA log2FC 6.312, protein 2.269) and made by the tumor cells themselves: 0.976 of tumor transcripts are in RCC cells, and versus normal tubule log2FC is 7.739 (padj 0.0189). It also has direct literature support (CA9-PET) and an antibody, girentuximab, in Phase 3.
+2. **Established targets are confirmed: EPAS1 (belzutifan), KDR/VEGFR and MTOR.** I moved EPAS1 up from numeric rank 38 because its protein rises while its RNA barely moves (protein log2FC 1.162, RNA 0.306), so RNA-based scores understate it. KDR, and most EPAS1 RNA, sit in blood-vessel and stromal cells rather than tumor cells.
+3. **MET and EGFR (numeric ranks 6 and 1) are druggable and made by tumor cells, but are second-tier.** Neither is significant versus normal tubule (padj 0.069 and 0.0714). EGFR has no ccRCC literature relations in this corpus, and MET's best binding pocket is very shallow.
+4. **CD74 and CXCR4 (numeric ranks 2 and 4) come from immune cells, not tumor cells.** Single-cell data place their RNA in macrophages and T cells, so I list them as immune biomarkers rather than tumor targets.
+5. **The biomarkers mostly reflect the hypoxic, fat-laden tumor phenotype.** COXFA4L2/NDUFA4L2, PLIN2 and PFKP are up, and PIGR is down. Their literature support is mostly bioinformatic, and PFKP's results contradict each other. The molecular-glue degrader scores only rank possible binding sites and do not show that any degrader exists.
+
+When the subagent evidence was checked, the literature agent lost one finding and three evidence ids, and the external agent lost one id. The external agent also did not query STRING interactions or check everolimus, cabozantinib and nivolumab individually; the report lists these among its limitations.

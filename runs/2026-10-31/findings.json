@@ -6,7 +6,7 @@
   "open_targets_id": "MONDO_0005005",
   "open_targets_top": 2000
  },
- "generated_utc": "2026-10-31T08:19:56+00:00",
+ "generated_utc": "2026-10-31T08:24:20+00:00",
  "models": {
   "orchestrator": "Claude Opus 5.5 (effort medium) — Claude Code main session",
   "agents": "Claude Sonnet 5.5 — Claude Code subagents (agente-omico, agente-literatura, agente-externo, agente-celular)",
@@ -8285,7 +8285,7 @@
     {
      "gene": "CA9",
      "role": "target_and_biomarker",
-     "statement": "CA9 is up in tumors at RNA (log2FC 6.312, padj 1.72e-49) and protein (log2FC 2.269, padj 9.9e-43), with RNA-protein Spearman rho 0.797. It is a membrane enzyme with girentuximab in Phase 3, which makes it the best-supported imaging/targeting candidate.",
+     "statement": "CA9 is strongly up in tumors at RNA (log2FC 6.312, padj 1.72e-49), protein (log2FC 2.269, padj 9.9e-43) and phospho (log2FC 1.91); RNA-protein Spearman rho 0.797. Membrane enzyme with girentuximab (Phase 3) as an antibody; a classic HIF-driven ccRCC marker.",
      "evidence_ids": [
       "EV:omics_de:b269736afdb0",
       "EV:omics_de:5afe18b4024b",
@@ -8295,7 +8295,7 @@
     {
      "gene": "COXFA4L2",
      "role": "biomarker",
-     "statement": "COXFA4L2 (NDUFA4L2) has the largest tumor-up protein change (log2FC 3.768, padj 5.99e-48) and RNA log2FC 6.752; RNA-protein rho is 0.634. This is a strong HIF-driven tumor-specific biomarker, though a mitochondrial protein is a poor surface target.",
+     "statement": "COXFA4L2 (NDUFA4L2) is the top up-regulated protein (log2FC 3.768, padj 5.99e-48) with RNA log2FC 6.752; RNA-protein rho 0.634. A hypoxia-linked tumor marker, not a surface target.",
      "evidence_ids": [
       "EV:omics_de:82b179f21539",
       "EV:omics_de:c256227d9408",
@@ -8303,54 +8303,55 @@
      ]
     },
     {
-     "gene": "PFKP",
-     "role": "biomarker",
-     "statement": "PFKP is up at protein (log2FC 2.863, padj 7.05e-45) and RNA (log2FC 2.72), consistent with a glycolytic shift. Layers agree, but no drug is attached in the ranking.",
+     "gene": "NNMT",
+     "role": "target_and_biomarker",
+     "statement": "NNMT is up at protein (log2FC 2.709, padj 1.23e-43) and RNA (log2FC 4.67, padj 2.04e-40), concordant across layers; a metabolic enzyme candidate target and tissue biomarker.",
      "evidence_ids": [
-      "EV:omics_de:a3054c62a87e",
-      "EV:omics_de:614e9c4ffc2e"
+      "EV:omics_de:de39cc0c5ed8",
+      "EV:omics_de:aefc373d6072"
      ]
     },
     {
      "gene": "PLIN2",
      "role": "biomarker",
-     "statement": "PLIN2 is up at protein (log2FC 2.667, padj 7.99e-44) and RNA (log2FC 2.62), matching the lipid-droplet clear-cell phenotype. It is a tissue biomarker rather than a druggable target.",
+     "statement": "PLIN2 is up at protein (log2FC 2.667) and RNA (log2FC 2.62), consistent with the lipid-droplet-rich clear-cell phenotype; 16.4% of tumors show copy loss.",
      "evidence_ids": [
       "EV:omics_de:c5ce9c3c6f51",
       "EV:omics_de:468a9888af97"
      ]
     },
     {
-     "gene": "ENO2",
-     "role": "biomarker",
-     "statement": "ENO2 is up at protein (log2FC 2.245, padj 2.91e-44) and RNA (log2FC 3.538), with no 3p-type copy loss (loss 0, gain 0.118).",
+     "gene": "PFKP",
+     "role": "target_and_biomarker",
+     "statement": "PFKP is up at protein (log2FC 2.863, padj 7.05e-45) and RNA (log2FC 2.72), a glycolytic enzyme reflecting the Warburg shift under VHL loss.",
      "evidence_ids": [
-      "EV:omics_de:fd71617cdad3",
-      "EV:omics_de:c09f09dc13b4"
-     ]
-    },
-    {
-     "gene": "EGFR",
-     "role": "target",
-     "statement": "EGFR is up at RNA (log2FC 1.461) and protein (log2FC 1.062), with copy gain in 0.255 of tumors. It tops the convergence ranking (score 3.87) with approved or late-stage EGFR drugs such as afatinib. The fold changes are modest.",
-     "evidence_ids": [
-      "EV:omics_de:a35ae1101e15",
-      "EV:omics_de:9a5214fad2b4"
+      "EV:omics_de:a3054c62a87e",
+      "EV:omics_de:614e9c4ffc2e"
      ]
     },
     {
      "gene": "MET",
      "role": "target",
-     "statement": "MET is up at RNA (log2FC 1.342) and protein (log2FC 1.101), with gain in 0.255 of tumors. It has Phase 3 inhibitors (savolitinib, telisotuzumab vedotin), so it is a tractable kinase target.",
+     "statement": "MET is up at RNA (log2FC 1.342) and protein (log2FC 1.101) with 25.5% copy gain; druggable (savolitinib Phase 3, telisotuzumab vedotin Phase 3).",
      "evidence_ids": [
       "EV:omics_de:c0ea990d5cc5",
       "EV:omics_de:d20212f7a294"
      ]
     },
     {
+     "gene": "EGFR",
+     "role": "target",
+     "statement": "EGFR is up at RNA (log2FC 1.461) and protein (log2FC 1.062) with 25.5% copy gain; has approved/late-stage agents (afatinib Phase 4, cetuximab sarotalocan approved).",
+     "evidence_ids": [
+      "EV:omics_de:a35ae1101e15",
+      "EV:omics_de:9a5214fad2b4",
+      "EV:open_targets_drug:6a980760ce7b"
+     ]
+    },
+    {
      "gene": "CD74",
      "role": "target_and_biomarker",
-     "statement": "CD74 is up at RNA (log2FC 1.775) and protein (log2FC 0.935), with copy gain in 0.564 of tumors (5q). It has milatuzumab (Phase 1/2) as an antibody. Expression likely partly reflects immune infiltration.",
+     "statement": "CD74 is up at RNA (log2FC 1.775) and protein (log2FC 0.935) with 56.4% copy gain; milatuzumab (Phase 1/2) targets it. Likely partly immune-infiltrate signal.",
      "evidence_ids": [
       "EV:omics_de:bc96215336db",
       "EV:omics_de:0fcb197fa5a4",
@@ -8360,7 +8361,7 @@
     {
      "gene": "CXCR4",
      "role": "target",
-     "statement": "CXCR4 is up at RNA (log2FC 2.859) and protein (log2FC 1.157), with approved antagonists (plerixafor, mavorixafor). The signal is probably largely from immune/stromal cells.",
+     "statement": "CXCR4 is up at RNA (log2FC 2.859) and protein (log2FC 1.157); approved antagonists exist (plerixafor, mavorixafor). Possibly reflects immune infiltration.",
      "evidence_ids": [
       "EV:omics_de:52fecd7a30a3",
       "EV:omics_de:c5aa5217f231"
@@ -8369,64 +8370,65 @@
     {
      "gene": "EPAS1",
      "role": "mechanism",
-     "statement": "EPAS1 (HIF-2alpha) protein is up (log2FC 1.162) while RNA changes little (log2FC 0.306), which fits VHL-loss protein stabilisation. Belzutifan, a HIF-2alpha inhibitor, is approved.",
+     "statement": "EPAS1 (HIF-2alpha) protein is up (log2FC 1.162) while RNA rises only modestly (0.306), indicating post-transcriptional stabilization under VHL loss; belzutifan is approved.",
      "evidence_ids": [
       "EV:omics_de:2203d6274a08",
-      "EV:omics_de:f37b60917d06"
+      "EV:omics_de:f37b60917d06",
+      "EV:open_targets_drug:199c475802ce"
      ]
     },
     {
      "gene": "VHL",
      "role": "mechanism",
-     "statement": "VHL lies on 3p with copy loss in 0.791 of tumors. PBRM1, also on 3p, is lost in 0.8, which explains the disease mechanism.",
+     "statement": "VHL lies on 3p with loss frequency 0.791 (gain 0.027) across 110 tumors, explaining HIF pathway activation.",
      "evidence_ids": [
       "EV:omics_cnv:52e5aeb6c197"
      ]
     },
     {
-     "gene": "ACY1",
-     "role": "biomarker",
-     "statement": "ACY1 is down at protein (log2FC -2.305, padj 1.21e-39) and RNA (log2FC -3.529), with 3p copy loss in 0.809 of tumors. This is a loss of tubule identity linked to 3p deletion.",
+     "gene": "PBRM1",
+     "role": "mechanism",
+     "statement": "PBRM1 on 3p shows loss frequency 0.8 (gain 0.027), consistent with 3p loss as the founding event.",
      "evidence_ids": [
-      "EV:omics_de:ccf34df54ef0",
-      "EV:omics_de:72ff4c46cbe0",
-      "EV:omics_cnv:eac880ece0df"
-     ]
-    },
-    {
-     "gene": "CHL1",
-     "role": "biomarker",
-     "statement": "CHL1 is strongly down at protein (log2FC -3.432, padj 2.06e-32), with 3p loss in 0.773 of tumors.",
-     "evidence_ids": [
-      "EV:omics_de:61a823d5d7bd",
-      "EV:omics_cnv:99902909d141"
+      "EV:omics_cnv:07b6205e67e5"
      ]
     },
     {
      "gene": "ALDOB",
      "role": "biomarker",
-     "statement": "ALDOB (proximal tubule marker) is down at RNA (log2FC -7.028, padj 9.42e-31) and protein (log2FC -2.273), a negative tissue biomarker.",
+     "statement": "ALDOB is strongly down at RNA (log2FC -7.028) reflecting loss of proximal tubule identity; a negative tissue marker, not a target.",
      "evidence_ids": [
       "EV:omics_de:1f7150068d77",
       "EV:omics_de:af15cb07921d"
      ]
     },
     {
-     "gene": "MT1G",
+     "gene": "ACY1",
      "role": "biomarker",
-     "statement": "MT1G is down at RNA (log2FC -5.878, padj 8.35e-34) and protein (log2FC -3.087, padj 1.91e-30), part of a coordinated metallothionein loss.",
+     "statement": "ACY1 is down at RNA (log2FC -3.529) and protein (-2.305) with 80.9% copy loss, consistent with 3p-linked loss of tubule metabolism.",
      "evidence_ids": [
-      "EV:omics_de:55e4b70cac1a",
-      "EV:omics_de:93e7e2226b38"
+      "EV:omics_de:72ff4c46cbe0",
+      "EV:omics_de:ccf34df54ef0",
+      "EV:omics_cnv:eac880ece0df"
+     ]
+    },
+    {
+     "gene": "CHL1",
+     "role": "biomarker",
+     "statement": "CHL1 protein is among the most down-regulated (log2FC -3.432, padj 2.06e-32) with RNA log2FC -3.117 and 77.3% copy loss.",
+     "evidence_ids": [
+      "EV:omics_de:61a823d5d7bd",
+      "EV:omics_de:555fb62ac803",
+      "EV:omics_cnv:99902909d141"
      ]
     }
    ],
    "caveats": [
-    "Bulk tumor-vs-normal comparisons: immune genes (CD74, CXCR4, PTPRC) may reflect infiltration, not tumor-cell expression.",
-    "Convergence score partly rewards Open Targets tractability and generic somatic-mutation scores that are not ccRCC-specific.",
-    "Normals are adjacent kidney, so tubule-identity genes dominate the down-regulated list.",
-    "Copy number is thresholded at |log2 ratio| > 0.2; no mutation data were queried, and EPAS1 evidence ids were not matched to individual layers (values come from the convergence ranking).",
-    "Associations are correlative; no functional validation is implied."
+    "Convergence score mixes omics with Open Targets, so immune genes (CD74, CXCR4, PTPRC) may reflect infiltrate rather than tumor cell expression.",
+    "Bulk tissue; paired n varies by layer (75 RNA, 84 protein).",
+    "Copy-number data lacks evidence ids for genes with frequency under 0.3.",
+    "Convergence score is not validated causally; targets need functional validation.",
+    "Phospho and drug evidence were not examined beyond CA9 and ranking output."
    ]
   },
   "literature": {
@@ -8435,156 +8437,205 @@
     {
      "gene": "CA9",
      "role": "target_and_biomarker",
-     "statement": "PMID 42473996 reports CA9 is preferentially enriched in ccRCC tumor cells with low background expression in normal kidney; CA9-targeted PET gives proof-of-concept noninvasive discrimination of ccRCC, 'warranting prospective validation'. High CA9 PET uptake is associated with PBRM1 loss-of-function, reduced B cell infiltration and enhanced angiogenic activity. Evidence is a single proof-of-concept imaging study; Open Targets lists girentuximab (phase 3) as the CA9 drug.",
+     "statement": "CA9 is the best-supported gene across omics, Open Targets (girentuximab, Phase 3) and literature. PMID:42473996 reports CA9 preferentially enriched in ccRCC tumor cells with low expression in normal kidney, CA9-targeted PET as proof-of-concept for noninvasive ccRCC discrimination 'warranting prospective validation', and high CA9-PET uptake associated with PBRM1 loss-of-function, reduced B-cell infiltration and enhanced angiogenic activity; CA9-high PDX models showed greater growth inhibition under axitinib. CAIX mRNA was also increased in HIV-associated kidney cancer (PMID:35795483). Evidence is proof-of-concept, not prospectively validated.",
      "evidence_ids": [
       "EV:literature:534430b0156d",
       "EV:literature:7f2628a50d15",
-      "EV:literature:687723b4e539"
-     ]
-    },
-    {
-     "gene": "EPAS1",
-     "role": "target",
-     "statement": "Review PMID 42422841: VHL inactivation leads to HIF-2alpha accumulation, and the HIF-2alpha inhibitor belzutifan has been approved by the FDA for ccRCC. This matches Open Targets (belzutifan, approval). It is the best clinically validated target here. EPAS1 has no literature_relation edges in the graph, so the support comes from sentence chunks only.",
-     "evidence_ids": [
-      "EV:chunk:b27db0e77426",
-      "EV:chunk:726228166de6"
+      "EV:literature:687723b4e539",
+      "EV:literature:e80ed5d1f9d6",
+      "EV:chunk:102dfb2a3b51"
      ]
     },
     {
      "gene": "COXFA4L2",
      "role": "target_and_biomarker",
-     "statement": "NDUFA4L2 (COXFA4L2) is HIF-induced and over 90% of ccRCCs overexpress it (PMID 36722045). It predicts poor survival and supports proliferation in cell lines (PMID 34970493). It is a marker of low- and high-grade ccRCC in tissue and EVs (PMID 41656939). It suppresses ferroptosis, and the NDUFA4L2/LDHB axis is proposed as a therapeutic strategy (PMID 42331208). It also enhances lipid deposition and Ca9 expression in a mouse model (PMID 34970493). Evidence is multi-study but preclinical or bioinformatic, with no clinical validation.",
+     "statement": "NDUFA4L2 (COXFA4L2) is upregulated in >90% of ccRCC (PMID:36722045), induced by HIF-1alpha/hypoxic signaling (PMID:42331208, 36722045), predicts poor survival and supports proliferation in cell lines (PMID:34970493), increases glycolysis, and enhances lipid deposition and Ca9 expression in the TRACK model. PMID:42331208 states it suppresses mitochondria-associated ferroptosis with LDHB and that targeting the NDUFA4L2/LDHB axis is a promising strategy, particularly with radiotherapy. It also marks low- and high-grade ccRCC in tissue-derived EVs (PMID:41656939). Largely preclinical; no ccRCC clinical validation in the corpus.",
      "evidence_ids": [
       "EV:literature:ec673e405bc1",
+      "EV:literature:533012368b9c",
+      "EV:literature:fddf853d5604",
       "EV:literature:1741cd200f2a",
       "EV:literature:1f4e8bd4d272",
-      "EV:literature:b324d5280bd3"
+      "EV:literature:b324d5280bd3",
+      "EV:literature:b9de06a6f23b",
+      "EV:literature:5722b2746d48"
      ]
     },
     {
-     "gene": "MT1G",
+     "gene": "EPAS1",
+     "role": "target",
+     "statement": "EPAS1 (HIF-2alpha) is the only top-ranked gene with an approved ccRCC-relevant drug (belzutifan). The corpus states VHL inactivation leads to HIF-2alpha accumulation and that belzutifan has been FDA-approved for ccRCC (PMID:42422841); a review notes HIF-2alpha inhibitors as later-line options after ICI exposure (PMID:41941086). EPAS1 has zero extracted literature relations, so support comes from review sentences.",
+     "evidence_ids": [
+      "EV:chunk:b27db0e77426",
+      "EV:chunk:726228166de6",
+      "EV:chunk:fdf4ada64877"
+     ]
+    },
+    {
+     "gene": "CD74",
      "role": "mechanism",
-     "statement": "MT1G is downregulated in ccRCC tissue versus normal (PMID 36204178) and is proposed as a negative regulator of ferroptosis and a poor-prognosis biomarker. PMID 38906969 reports that high MT1G correlates with advanced stage and poorer prognosis, that elevated MT1G promoted growth and metastasis in vitro and in vivo, and that it inhibits CPT1B to drive lipid droplet accumulation. The direction is mixed: low in tumor, but high within tumors predicts poor outcome. Preclinical only.",
+     "statement": "CD74 ranks 2nd by convergence (omics, CNV gain 56%, Open Targets) but has one ccRCC paper in the corpus (PMID:39080216, 'Potential protumor function of CD74'): IHC shows expression in cancer cells and macrophages, with function suggested to differ between the two and 'further studies are necessary'. Evidence is a single, descriptive study; part of the omics signal may reflect macrophage infiltration.",
      "evidence_ids": [
-      "EV:literature:f6c45de2c4dd",
-      "EV:literature:de9d334b7b1c",
-      "EV:literature:0a8bb8c4711b"
-     ]
-    },
-    {
-     "gene": "ALDOB",
-     "role": "biomarker",
-     "statement": "ALDOB is reduced in ccRCC versus adjacent normal tissue by IHC (PMID 40852386). It is described as a prognostic biomarker and potential immunotherapy target, and tracks with Treg, Th17 and neutrophil infiltration. PMID 38655323 calls it an independent prognostic predictor in KIRC. This is bioinformatic with limited IHC validation, and there is no drug.",
-     "evidence_ids": [
-      "EV:literature:f834882a57a7",
-      "EV:literature:dd489b3df02e"
-     ]
-    },
-    {
-     "gene": "ENO2",
-     "role": "target_and_biomarker",
-     "statement": "PMID 37760940 reports ENO2 as a potential diagnostic biomarker that independently predicts ccRCC prognosis and promotes progression via glycolysis (Warburg effect). PMID 39091581 reports that ENO2 knockdown inhibits glycolysis, promotes ferroptosis and affects mitochondrial function. A chunk (PMID 42869109) links AXL and enolase 2 to resistance to lenvatinib and cabozantinib in renal cancer cells. Evidence is preclinical and bioinformatic. The corpus has no ENO2 inhibitor.",
-     "evidence_ids": [
-      "EV:literature:cfa400884c1b",
-      "EV:literature:3b3e46e581b5",
-      "EV:chunk:23100d36e975"
-     ]
-    },
-    {
-     "gene": "PFKP",
-     "role": "biomarker",
-     "statement": "PFKP is significantly highly expressed in kidney cancer, especially ccRCC (PMID 34321910), and is among the consistently upregulated genes in a ccRCC meta-analysis (PMID 36901940). PMID 40341002 lists PFKP among glycolysis-related biomarkers with strong diagnostic and prognostic potential. Contradiction: PMID 34321910 reports that low PFKP expression correlated with poor 5- and 10-year overall survival, although the gene is upregulated in tumor. The prognostic direction is therefore unclear.",
-     "evidence_ids": [
-      "EV:literature:2fceed76c9b4",
-      "EV:literature:fa5e4add4a84",
-      "EV:literature:a55b9a38e327"
-     ]
-    },
-    {
-     "gene": "PLIN2",
-     "role": "biomarker",
-     "statement": "PLIN2 is among the most consistently upregulated genes in ccRCC (PMID 36901940). PMID 35314744 reports its expression is related to KIRC prognosis from GEPIA Kaplan-Meier analysis. PMID 34482820 validated PLIN2 by IHC (128 samples on tissue microarrays) as a diagnostic marker for renal neoplasms. The evidence is modest and diagnostic or bioinformatic.",
-     "evidence_ids": [
-      "EV:literature:dbfbe45c8391",
-      "EV:literature:821636f02856"
-     ]
-    },
-    {
-     "gene": "ACY1",
-     "role": "biomarker",
-     "statement": "The only ccRCC-specific sentence (PMID 34002044) reports that ACY1 and MAGI2-AS3 are downregulated in ccRCC tissue, and low MAGI2-AS3 (not ACY1 itself) was associated with poor survival. The other ACY1 relations concern colorectal cancer, where ACY1 acts as an oncogene (PMID 36428796). ACY1 has strong omics support (RNA log2FC -3.5, 81% CNV loss), but ccRCC-specific literature is thin.",
-     "evidence_ids": [
-      "EV:literature:07378577904d"
-     ]
-    },
-    {
-     "gene": "CHL1",
-     "role": "biomarker",
-     "statement": "PMID 35262525 reports CHL1 is significantly lower in ccRCC than adjacent normal tissue. Low CHL1 correlates with TNM stage, Fuhrman grade and LVI, and might predict poor OS. This is a single retrospective study. It agrees with the omics (RNA and protein down, 77% CNV loss).",
-     "evidence_ids": [
-      "EV:literature:7c4f640e79c0",
-      "EV:literature:a072e3f76c04"
-     ]
-    },
-    {
-     "gene": "ABAT",
-     "role": "biomarker",
-     "statement": "ABAT is underexpressed in KIRC among 11 cancers and predicted poor prognosis in KIRC (pan-cancer, PMID 41158242). In another study (PMID 41813748), ABAT overexpression suppressed tumor growth, mediating cGAS-STING and interacting with PRMT5. The evidence is pan-cancer and not ccRCC-specific. Vigabatrin is the only Open Targets drug.",
-     "evidence_ids": [
-      "EV:literature:22349683c148",
-      "EV:literature:6295ed0b0e37"
+      "EV:chunk:5e52d718ddfe",
+      "EV:chunk:96d540bdb30b",
+      "EV:chunk:16a2e830b064"
      ]
     },
     {
      "gene": "CXCR4",
      "role": "biomarker",
-     "statement": "One sentence (PMID 34266404) reports that CXCR4 and C3 are overexpressed in ccRCC and associated with prognosis, based on database mining only. The omics and druggability evidence (plerixafor, mavorixafor) is much stronger than the literature, which has a single bioinformatic edge.",
+     "statement": "CXCR4 has strong omics (log2FC 2.86) and drugs (plerixafor approved for other indications), but one literature relation: a database-integration study (PMID:34266404) found C3 and CXCR4 overexpressed in ccRCC and associated with prognosis. This is a bioinformatic finding without experimental or clinical validation.",
      "evidence_ids": [
       "EV:literature:6fb1ac12a544"
+     ]
+    },
+    {
+     "gene": "ENO2",
+     "role": "target_and_biomarker",
+     "statement": "ENO2 is proposed as a diagnostic and independent prognostic biomarker in ccRCC (PMID:37760940), drives Warburg-type glycolysis, and its knockdown inhibits glycolysis and promotes ferroptosis (PMID:39091581). High ENO2 is associated with lower predicted sensitivity to axitinib, sunitinib, pazopanib and temsirolimus (PMID:36419844), and AXL and ENO2 are linked to lenvatinib/cabozantinib resistance (PMID:42869109). Another survival analysis also lists ENO2 (PMID:36313709). All findings are bioinformatic or cell-line based. NSE was a risk factor for intraocular metastasis in RCC (PMID:34467977).",
+     "evidence_ids": [
+      "EV:literature:cfa400884c1b",
+      "EV:literature:26df25eedf25",
+      "EV:literature:3b3e46e581b5",
+      "EV:chunk:23100d36e975",
+      "EV:literature:d6832e52c21c",
+      "EV:literature:378217cfd049"
+     ]
+    },
+    {
+     "gene": "MT1G",
+     "role": "mechanism",
+     "statement": "The literature on MT1G is contradictory. PMID:36204178 reports MT1G downregulated in ccRCC and 'may be a negative regulator of ferroptosis ... and a biomarker of poor prognosis'. PMID:38906969 reports low MT1G in tumor tissue but high MT1G correlating with advanced stage and poorer prognosis; elevated MT1G promoted growth and metastasis, and MT1G inhibits CPT1B via H3K14 trimethylation to increase lipid droplets. PMID:40247376 shows SAP30 inhibits MT1G transcription, impairing zinc delivery to p53. The direction (tumor suppressor versus oncogenic) is not settled.",
+     "evidence_ids": [
+      "EV:literature:01828633a99d",
+      "EV:literature:f6c45de2c4dd",
+      "EV:literature:de9d334b7b1c",
+      "EV:literature:0a8bb8c4711b",
+      "EV:literature:347e445b0c25",
+      "EV:literature:84b4bf458a59"
+     ]
+    },
+    {
+     "gene": "ALDOB",
+     "role": "biomarker",
+     "statement": "ALDOB is strongly downregulated in ccRCC (log2FC -7). PMID:40852386 confirms by IHC that it is diminished versus adjacent normal tissue, links it to infiltrating Treg, Th17 and neutrophils, and calls it 'a prognostic biomarker and a potential immunotherapy target'. PMID:38655323 reports it as an independent prognostic predictor in KIRC, and a pan-cancer study (PMID:37083815) found low expression across cancers. Evidence is retrospective and bioinformatic with limited IHC; the pan-cancer pattern limits specificity.",
+     "evidence_ids": [
+      "EV:literature:f834882a57a7",
+      "EV:literature:c73e5613ede3",
+      "EV:literature:58d7b6f6e786",
+      "EV:literature:dd489b3df02e",
+      "EV:literature:e0d3ee0b1199"
+     ]
+    },
+    {
+     "gene": "PFKP",
+     "role": "biomarker",
+     "statement": "PFKP is upregulated in ccRCC (PMID:34321910, PMID:36901940, among the most consistently upregulated genes with PLIN2, VEGFA, CCND1) and listed as a glycolysis-related biomarker with strong diagnostic and prognostic potential (PMID:40341002). Contradiction: PMID:34321910 also reports that low PFKP expression correlates with poor 5- and 10-year OS despite upregulation in tumors. Bioinformatic signatures only.",
+     "evidence_ids": [
+      "EV:literature:2fceed76c9b4",
+      "EV:literature:292de8367805",
+      "EV:literature:a55b9a38e327",
+      "EV:literature:fa5e4add4a84",
+      "EV:literature:b362caea066b"
+     ]
+    },
+    {
+     "gene": "PLIN2",
+     "role": "biomarker",
+     "statement": "PLIN2 is upregulated in ccRCC (PMID:36901940), related to prognosis in KIRC by GEPIA Kaplan-Meier analysis (PMID:35314744), and PLIN2 diagnostic potential was validated by IHC on 128 tissue-microarray samples for renal neoplasms (PMID:34482820). Support is for diagnostic and lipid-droplet biology; no therapeutic evidence in the corpus.",
+     "evidence_ids": [
+      "EV:literature:dbfbe45c8391",
+      "EV:literature:821636f02856",
+      "EV:literature:e3ae1997555f"
+     ]
+    },
+    {
+     "gene": "ABAT",
+     "role": "mechanism",
+     "statement": "ABAT is downregulated in KIRC and KIRP and predicts poor prognosis in KIRC in a pan-cancer analysis (PMID:41158242). PMID:41813748 shows overexpression suppresses tumor growth in vitro and in vivo via cGAS-STING and PRMT5-enhanced interferon signaling. A separate study links ABAT and GABAergic shifts to sunitinib resistance (PMID:39100925). Note that low expression is reported with poor prognosis while tumor-suppressive function is shown, which is internally consistent, but the clinical link to sunitinib resistance is title-level only. Vigabatrin is a Phase 4 ABAT inhibitor, which would act in the opposite direction to a suppressor role.",
+     "evidence_ids": [
+      "EV:literature:22349683c148",
+      "EV:literature:6295ed0b0e37",
+      "EV:literature:24b33107cb4e",
+      "EV:literature:5f35843a9307",
+      "EV:chunk:641870b72e87"
+     ]
+    },
+    {
+     "gene": "CHL1",
+     "role": "biomarker",
+     "statement": "CHL1 is lost in ccRCC (CNV loss 77%, protein log2FC -3.4). PMID:35262525 reports that ccRCC patients with low CHL1 had poorer overall survival (Kaplan-Meier P<0.001) and that low CHL1 'might predict poor OS'. This is a single retrospective expression study with no mechanistic or therapeutic evidence.",
+     "evidence_ids": [
+      "EV:chunk:938a649a270d",
+      "EV:chunk:4b923f171d14"
+     ]
+    },
+    {
+     "gene": "ACY1",
+     "role": "biomarker",
+     "statement": "ACY1 is downregulated in ccRCC tissues alongside MAGI2-AS3, whose low expression is associated with poor survival (PMID:34002044). The ACY1 oncogene/radiotherapy-target statements (PMID:36428796) concern colorectal cancer, not ccRCC. ACY1 has no direct ccRCC prognostic or therapeutic evidence, and the CRC data suggest the opposite functional direction.",
+     "evidence_ids": [
+      "EV:literature:07378577904d",
+      "EV:literature:e460ac803ce6",
+      "EV:literature:7d54a0fc31f0"
      ]
     }
    ],
    "caveats": [
-    "Several top-ranked genes (EGFR, CD74, FAS, PIGR, GRAMD4, ERBB2, TNFRSF10B, ATP1A1, PTPRC, PDGFRA, KDR, EPAS1, MET) have strong omics and Open Targets support but zero literature_relation edges in this corpus. Their rank there rests on omics, somatic-mutation and tractability streams, and the literature score is only the Open Targets literature component. No ccRCC-specific EGFR sentence was found.",
-    "The literature_relation extraction is biased toward recent bioinformatic and preclinical papers: TCGA/GEPIA signatures, cell lines and single IHC cohorts. Only CA9 (PET, proof-of-concept) and EPAS1 (belzutifan approval) have clinical-level statements, and EPAS1 only via chunks.",
-    "Contradictions: MT1G is downregulated in tumor yet high expression predicts poor outcome. PFKP is upregulated in tumor yet low expression correlated with poor OS. ACY1 is reported mainly as an oncogene in colorectal cancer, which conflicts with its downregulation in ccRCC.",
-    "Gene symbol aliasing (NDUFA4L2 to COXFA4L2, NSE to ENO2, CAIX to CA9) was handled by the extractor, but some edges are non-ccRCC, such as ENO2 and intraocular metastasis, and ACY1 in colorectal cancer.",
-    "The sentence chunks cover about 320 abstracts, so absence of evidence is not evidence of absence."
+    "Many top-ranked genes (EGFR, FAS, PIGR, GRAMD4, ERBB2, TNFRSF10B, ATP1A1, PTPRC, PDGFRA, FHIT, SCARB1, AGMAT, GPC3, IKZF1, DDC, KDR, TNFAIP3, CARD11, NDRG1, PBX1, RUNX1, MECOM, PTPN13) have 0 extracted literature relations; their rank rests on omics, shared somatic-mutation scores (identical 0.4559 values suggest a generic Open Targets feature) and tractability, not ccRCC literature. EGFR and KDR searches returned no ccRCC-specific sentences.",
+    "Literature scores of 1.0 for ACY1, MT1G, ALDOB, PLIN2, COXFA4L2, ENO2, SAP30, ABAT and PFKP reflect relation counts in this corpus, not clinical validity; most evidence is TCGA/GEO bioinformatics, cell lines or single-center IHC.",
+    "Contradictions: MT1G (low in tumor yet high expression linked to poor prognosis/oncogenic), PFKP (up in tumor yet low expression linked to poor OS), ACY1 (downregulated in ccRCC but oncogene in CRC), ABAT (suppressor versus vigabatrin inhibitor drug).",
+    "Clinically validated items are limited to belzutifan/HIF-2alpha and VEGFR-TKI/ICI standards of care (review sentences); CA9 PET is proof-of-concept needing prospective validation.",
+    "The corpus (~320 abstracts) is small; absence of sentences does not mean absence of evidence in the wider literature. Chunk searches were not exhaustive for each gene."
    ]
   },
   "external": {
    "agent": "agente-externo",
    "findings": [
     {
-     "gene": "EPAS1",
-     "role": "target",
-     "statement": "Established ccRCC target (HIF-2alpha). Open Targets association 0.4871 (ot_genetic 0.5677, somatic 0.4559, literature 0.4802); convergence rank 38. Tractability: SM approved drug, PROTAC/ubiquitination labels. Drug: BELZUTIFAN (APPROVAL). Nuclear transcription factor (nucleus, nuclear speckle), so not an antibody target. Pathways: regulation of gene expression by HIF, oxygen-dependent proline hydroxylation, PD-L1 transcription regulation.",
-     "evidence_ids": [
-      "EV:open_targets_assoc:61983038a898",
-      "EV:open_targets_drug:199c475802ce",
-      "EV:open_targets_tract:6a657326c9fd",
-      "EV:uniprot:d332bcfb6c96",
-      "EV:omics_de:2203d6274a08"
-     ]
-    },
-    {
      "gene": "CA9",
      "role": "target_and_biomarker",
-     "statement": "Convergence rank 10 (4 streams); RNA log2FC 6.312, protein log2FC 2.269 (tumor up). Open Targets association score 0.3088 (literature 0.4991). Drugs: GIRENTUXIMAB (PHASE_3), IODINE I 124 GIRENTUXIMAB (PHASE_2), SULTHIAME (PHASE_4), ETHOXZOLAMIDE (WITHDRAWAL). UniProt: cell membrane / microvillus membrane, which suits antibody/imaging use and a tissue biomarker. Not a drug target in approved ccRCC therapy.",
+     "statement": "Convergence rank 10 (score 3.5727, 4 streams). Open Targets ccRCC association 0.3088 (literature 0.4991, no genetic/somatic component). Tumour RNA log2FC 6.312, protein log2FC 2.269 (strongest up-regulation among the ranked druggable candidates). Drugs: GIRENTUXIMAB PHASE_3, IODINE I 124 GIRENTUXIMAB PHASE_2, SULTHIAME PHASE_4, ETHOXZOLAMIDE WITHDRAWAL. UniProt Q16790: cell membrane / microvillus membrane, which suits antibody/radioligand imaging and a tissue or serum biomarker. Untested as an approved ccRCC drug target, but the best-supported membrane biomarker.",
      "evidence_ids": [
       "EV:open_targets_assoc:dcacc6a531bf",
       "EV:open_targets_drug:e1e0c664ada3",
-      "EV:open_targets_drug:646a0aec5b64",
-      "EV:open_targets_tract:225a767ebcb5",
       "EV:uniprot:93360ddb9195",
       "EV:omics_de:b269736afdb0"
      ]
     },
     {
+     "gene": "EPAS1",
+     "role": "target",
+     "statement": "Established ccRCC target (HIF-2alpha). Convergence rank 38 (score 3.2903). Open Targets association 0.4871 (genetic 0.5677, somatic 0.4559, literature 0.4802). Drug: BELZUTIFAN APPROVAL. UniProt Q99814: nuclear transcription factor, so not an antibody or biomarker target. RNA log2FC only 0.306 (protein 1.162), so its effect is post-transcriptional (VHL loss stabilises the protein).",
+     "evidence_ids": [
+      "EV:open_targets_assoc:61983038a898",
+      "EV:open_targets_drug:199c475802ce",
+      "EV:uniprot:d332bcfb6c96"
+     ]
+    },
+    {
+     "gene": "KDR",
+     "role": "target",
+     "statement": "Established ccRCC target (VEGFR2). Convergence rank 21 (score 3.3998). Open Targets association 0.4566 (somatic 0.4559, literature 0.2373). Tumour RNA log2FC 1.263. Drugs returned include RIVOCERANIB MESYLATE APPROVAL, VATALANIB PHASE_3, LINIFANIB PHASE_3, XL-820 PHASE_2. Other VEGFR-targeted agents (sunitinib, pazopanib, axitinib, etc.) appear in the FLT4 drug list. UniProt P35968: cell-membrane receptor tyrosine kinase for VEGFA/C/D.",
+     "evidence_ids": [
+      "EV:open_targets_assoc:07cfe399d2b3",
+      "EV:open_targets_drug:4a17ceadb829",
+      "EV:uniprot:03a0601281b2"
+     ]
+    },
+    {
+     "gene": "FLT4",
+     "role": "target",
+     "statement": "Established VEGFR family member (VEGFR3). Open Targets ccRCC association 0.4549 (top-25 disease target). Tractable modalities AB, PR, SM. Drugs include TIVOZANIB APPROVAL, AXITINIB APPROVAL, PAZOPANIB HYDROCHLORIDE APPROVAL, LENVATINIB MESYLATE APPROVAL, SORAFENIB TOSYLATE APPROVAL, SUNITINIB MALATE PHASE_4, CABOZANTINIB not listed. These are multikinase agents, so the FLT4 label reflects polypharmacology and not FLT4-selective validation.",
+     "evidence_ids": [
+      "EV:open_targets_assoc:76837e201bb9",
+      "EV:open_targets_drug:852cf93b8934"
+     ]
+    },
+    {
      "gene": "MTOR",
      "role": "target",
-     "statement": "Established ccRCC target. Open Targets association 0.525, rank 6 of 1998. Tractability modalities AB, PR, SM (approved drug). Drugs include RIDAFOROLIMUS (APPROVAL), GEDATOLISIB (PHASE_3), DACTOLISIB (PHASE_3), SAPANISERTIB (PHASE_2), VISTUSERTIB (PHASE_2). Not in convergence top 40 (omics streams did not flag it). Pathways: MTOR signalling, mTORC1-mediated signalling, PIP3 activates AKT.",
+     "statement": "Established ccRCC target. Open Targets association 0.525 (6th among ccRCC targets, after VHL, PBRM1, KDM5C, BAP1 and SETD2). Tractability AB, PR, SM (SM: Approved Drug). Drugs include RIDAFOROLIMUS APPROVAL, GEDATOLISIB PHASE_3, DACTOLISIB PHASE_3, SAPANISERTIB PHASE_2, VISTUSERTIB PHASE_2. Reactome: mTORC1-mediated signalling, PIP3 activates AKT signaling. The everolimus/temsirolimus rapalogs are not in the returned list, so check ChEMBL names separately.",
      "evidence_ids": [
       "EV:open_targets_assoc:900f88933f86",
       "EV:open_targets_drug:47a49b68dd99",
@@ -8592,284 +8643,531 @@
      ]
     },
     {
-     "gene": "KDR",
-     "role": "target",
-     "statement": "Established ccRCC target (VEGFR2). Convergence rank 21; RNA log2FC 1.263, protein log2FC 0.662. Open Targets association 0.4566 (somatic 0.4559, literature 0.2373). Drugs: VATALANIB (PHASE_3), LINIFANIB (PHASE_3), RIVOCERANIB MESYLATE (APPROVAL), XL-820 (PHASE_2). Cell membrane receptor tyrosine kinase (VEGFA/C/D receptor, angiogenesis).",
-     "evidence_ids": [
-      "EV:open_targets_assoc:07cfe399d2b3",
-      "EV:uniprot:03a0601281b2"
-     ]
-    },
-    {
-     "gene": "FLT4",
-     "role": "target",
-     "statement": "VEGFR3 (Open Targets rank 15 for ccRCC, score 0.4549). Targeted by the approved ccRCC TKIs: AXITINIB (APPROVAL), PAZOPANIB (PHASE_4) / PAZOPANIB HYDROCHLORIDE (APPROVAL), TIVOZANIB (APPROVAL), SUNITINIB (PHASE_4), SORAFENIB (PHASE_4), LENVATINIB (PHASE_4) / LENVATINIB MESYLATE (APPROVAL), CEDIRANIB (APPROVAL). Tractable by SM and AB (membrane, antibody Phase 1 label).",
-     "evidence_ids": [
-      "EV:open_targets_assoc:76837e201bb9",
-      "EV:open_targets_drug:852cf93b8934",
-      "EV:open_targets_drug:f88fa40f4ce0",
-      "EV:open_targets_drug:bb4fc7025dd4",
-      "EV:open_targets_tract:2177087c9e8b"
-     ]
-    },
-    {
      "gene": "MET",
      "role": "target",
-     "statement": "Established in papillary RCC and used in ccRCC TKIs. Convergence rank 6 (5 streams); RNA log2FC 1.342, protein log2FC 1.101, CNV gain 25.5%. Open Targets association 0.389 (somatic 0.4161, literature 0.2946). Drugs: SAVOLITINIB (PHASE_3), TELISOTUZUMAB VEDOTIN (PHASE_3), FORETINIB (PHASE_2), TELISOTUZUMAB (PHASE_1), SGX-523 (PHASE_1). Membrane receptor, antibody-tractable.",
+     "statement": "Convergence rank 6 (score 3.754, 5 streams). Open Targets association 0.389 (somatic 0.4161, literature 0.2946). Tumour RNA log2FC 1.342, protein log2FC 1.101, CNV gain 25.5%. Drugs: SAVOLITINIB PHASE_3, TELISOTUZUMAB VEDOTIN PHASE_3, FORETINIB PHASE_2, SGX-523 PHASE_1. UniProt P08581: membrane and secreted forms. A tractable, clinically tested (papillary RCC) candidate with consistent RNA and protein up-regulation in this ccRCC cohort.",
      "evidence_ids": [
       "EV:open_targets_assoc:f7461651ef5d",
-      "EV:open_targets_drug:cb8b66153e41",
-      "EV:open_targets_tract:8314520758de",
+      "EV:open_targets_drug:1f109fa4640d",
       "EV:uniprot:2989e431fa06"
-     ]
-    },
-    {
-     "gene": "CXCR4",
-     "role": "target_and_biomarker",
-     "statement": "Tractable but untested in ccRCC. Convergence rank 4 (5 streams); RNA log2FC 2.859, protein log2FC 1.157. Open Targets association 0.3017 (literature 0.3605); has 1 literature relation. Drugs: PLERIXAFOR (APPROVAL), MAVORIXAFOR (APPROVAL), MOTIXAFORTIDE (APPROVAL), BURIXAFOR (PHASE_2), MSX-122 (PHASE_1). Cell membrane GPCR; the approved drugs are for non-ccRCC indications. Likely reflects tumor-infiltrating immune/endothelial signal.",
-     "evidence_ids": [
-      "EV:open_targets_assoc:38756b21a30a",
-      "EV:open_targets_drug:07e50daceb2e",
-      "EV:literature:6fb1ac12a544",
-      "EV:uniprot:86297350cabc"
      ]
     },
     {
      "gene": "CD74",
      "role": "target_and_biomarker",
-     "statement": "Tractable but untested in ccRCC. Convergence rank 2; RNA log2FC 1.775, protein log2FC 0.935, CNV gain 56.4%. Open Targets association 0.282 (somatic 0.4559). Drugs: MILATUZUMAB (PHASE_1_2) anti-CD74 antibody; REPOTRECTINIB (APPROVAL) is listed but is a kinase inhibitor with CD74 only as a fusion partner, so treat with caution. Located in cell membrane, endosome and secreted forms. The signal is probably immune infiltration (MHC-II chaperone).",
+     "statement": "Convergence rank 2 (score 3.8535, 5 streams). Open Targets association 0.282 (somatic 0.4559). RNA log2FC 1.775, protein log2FC 0.935, CNV gain 56.4% (highest gain frequency among the top candidates). Drugs: MILATUZUMAB PHASE_1_2 (anti-CD74 antibody); REPOTRECTINIB APPROVAL is probably an off-target annotation. UniProt P04233: cell membrane and secreted. Likely reflects immune-infiltrate signal in addition to tumour-cell expression.",
      "evidence_ids": [
       "EV:open_targets_assoc:e91b5227f1e3",
       "EV:open_targets_drug:82f6e28cd0ee",
-      "EV:uniprot:598cef54c320",
-      "EV:omics_de:bc96215336db"
+      "EV:uniprot:598cef54c320"
      ]
     },
     {
-     "gene": "PIGR",
-     "role": "biomarker",
-     "statement": "Association-only gene. Convergence rank 5; strongly down in tumor (RNA log2FC -3.824, protein log2FC -1.235). Open Targets association 0.4532 (genetic association 0.7338), rank 16 in ccRCC top targets. No drugs. Cell membrane and secreted protein, so it is a candidate loss-of-expression tissue or fluid biomarker.",
+     "gene": "CXCR4",
+     "role": "target_and_biomarker",
+     "statement": "Convergence rank 4 (score 3.8042). Open Targets association 0.3017 (literature 0.3605). Highest RNA up-regulation among the druggable top-6 (log2FC 2.859, protein 1.157). Drugs: PLERIXAFOR APPROVAL, MAVORIXAFOR APPROVAL, MOTIXAFORTIDE APPROVAL, BURIXAFOR PHASE_2, MSX-122 PHASE_1. UniProt P61073: cell-membrane GPCR. Approved drugs exist for other indications, so repurposing is plausible but untested in ccRCC.",
      "evidence_ids": [
-      "EV:open_targets_assoc:1170ea2f4d6c",
-      "EV:uniprot:3e621c5515b1",
-      "EV:omics_de:567a00d72eaa"
+      "EV:open_targets_assoc:38756b21a30a",
+      "EV:open_targets_drug:07e50daceb2e",
+      "EV:uniprot:86297350cabc"
      ]
     },
     {
      "gene": "EGFR",
      "role": "target",
-     "statement": "Tractable but untested in ccRCC. Convergence rank 1 (score 3.87, 5 streams); RNA log2FC 1.461, protein log2FC 1.062, CNV gain 25.5%. Open Targets association 0.3049 (somatic 0.4559, literature 0.3308). Drugs: AFATINIB (PHASE_4), CETUXIMAB SAROTALOCAN (APPROVAL), RUSERONTINIB (PHASE_3), TESEVATINIB (PHASE_3), MDX-447 (PHASE_1). Membrane receptor. Not a standard ccRCC target.",
+     "statement": "Convergence rank 1 (score 3.87, 5 streams). Open Targets association 0.3049 (somatic 0.4559, literature 0.3308). RNA log2FC 1.461, protein log2FC 1.062, CNV gain 25.5%. Drugs: AFATINIB PHASE_4, CETUXIMAB SAROTALOCAN APPROVAL, RUSERONTINIB PHASE_3, TESEVATINIB PHASE_3. Tractable and consistently up-regulated, but not an established ccRCC drug target (approvals are for other cancers).",
      "evidence_ids": [
       "EV:open_targets_assoc:796599138e4a",
-      "EV:open_targets_drug:49b92d32290b",
-      "EV:open_targets_tract:6bce27c2d6df"
+      "EV:open_targets_drug:6a980760ce7b"
      ]
     },
     {
-     "gene": "VHL",
-     "role": "mechanism",
-     "statement": "Top Open Targets ccRCC association (score 0.6466, rank 1). Tumor suppressor controlling HIF-alpha proline hydroxylation and degradation (Reactome oxygen-dependent proline hydroxylation of HIF, neddylation). No drugs (has_approved_or_clinical_drug false); SM tractability is by high-quality ligand and structure (the VHL ligand is used in PROTACs). VHL loss is the upstream driver of the HIF-2alpha/EPAS1 and CA9 signature.",
+     "gene": "PIGR",
+     "role": "biomarker",
+     "statement": "Convergence rank 5 (score 3.7768). Open Targets association 0.4532 (genetic 0.7338; 16th among ccRCC targets). Strongly down-regulated in tumour (RNA log2FC -3.824, protein -1.235). No drugs. UniProt P01833: cell membrane and secreted, so it is a plausible loss-of-expression tissue or fluid biomarker. Association-only gene.",
      "evidence_ids": [
-      "EV:open_targets_assoc:730901c424b4",
-      "EV:open_targets_tract:52e5aeb6c197"
-     ]
-    },
-    {
-     "gene": "PBRM1",
-     "role": "mechanism",
-     "statement": "Second-ranked Open Targets ccRCC association (0.6348). Chromatin remodeler tumor suppressor; association-only gene, loss-of-function so not directly druggable. I did not query its tractability.",
-     "evidence_ids": [
-      "EV:open_targets_assoc:a61ad112b8ec"
+      "EV:open_targets_assoc:1170ea2f4d6c",
+      "EV:uniprot:3e621c5515b1"
      ]
     },
     {
      "gene": "TNFRSF10B",
      "role": "target",
-     "statement": "Tractable but untested. Convergence rank 11; RNA log2FC 1.01, protein log2FC 1.047. Open Targets association 0.4265 (genetic 0.5552), rank 23 in ccRCC top targets. Agonist antibodies and ligands: DULANERMIN (PHASE_2), DROZITUMAB (PHASE_2), TIGATUZUMAB (PHASE_2), LBY-135 (PHASE_1), APOMAB (PHASE_1). Death receptor on the cell surface.",
+     "statement": "Convergence rank 11 (score 3.5677). Open Targets association 0.4265 (genetic 0.5552; top-25 target). RNA log2FC 1.01, protein 1.047. Drugs: DULANERMIN PHASE_2, DROZITUMAB PHASE_2, TIGATUZUMAB PHASE_2, LBY-135 PHASE_1, APOMAB PHASE_1 (TRAIL-R2 agonists, untested in ccRCC). Tractable but untested.",
      "evidence_ids": [
       "EV:open_targets_assoc:b068a7e57ee2",
       "EV:open_targets_drug:a1f5b8ddf98b"
      ]
     },
     {
-     "gene": "SCARB1",
+     "gene": "PLIN2",
      "role": "biomarker",
-     "statement": "Association-driven. Convergence rank 16; RNA log2FC 2.974, protein log2FC 1.837 (tumor up). Open Targets association 0.4049 (genetic association 0.519). No drugs listed. Tractability tier is lower (convergence tractability 0.5). Lipid and cholesterol uptake receptor linked to the lipid-rich ccRCC phenotype; candidate metabolic biomarker.",
+     "statement": "Convergence rank 28 (score 3.3318, 4 streams). Open Targets association only 0.0272 (literature 0.141), but literature relations in the graph (3) and strong concordant up-regulation (RNA log2FC 2.62, protein 2.667). No drugs. UniProt Q99541: lipid droplet protein, consistent with the lipid-laden clear-cell phenotype. Candidate tissue biomarker, not a drug target.",
      "evidence_ids": [
-      "EV:open_targets_assoc:ee2e17841173",
-      "EV:open_targets_tract:2d66f8e78d0c"
+      "EV:open_targets_assoc:18a00e50e32c",
+      "EV:uniprot:131c444e9565"
+     ]
+    },
+    {
+     "gene": "VHL",
+     "role": "mechanism",
+     "statement": "Top Open Targets ccRCC association (0.6466, rank 1). PBRM1 is next (0.6348). VHL loss drives HIF-2alpha (EPAS1) stabilisation, which underlies the VEGF, CA9 and PLIN2 programmes above. VHL itself is not directly druggable; the therapeutic route is through EPAS1 (belzutifan).",
+     "evidence_ids": [
+      "EV:open_targets_assoc:730901c424b4"
      ]
     }
    ],
    "caveats": [
-    "STRING interactions were not queried, to stay within the tool budget.",
-    "UniProt function text returned for some genes (CXCR4, MET, CD74) is truncated to microbial-infection annotations, so I relied on subcellular location only.",
-    "Open Targets drug lists show max stage across all indications; drugs on EGFR, CXCR4, CD74 and MET are not approved for ccRCC. REPOTRECTINIB under CD74 likely reflects fusion-partner annotation.",
-    "The convergence ranking is dominated by omics and somatic scores, so immune-infiltration genes (CD74, CXCR4, PTPRC) may mark the microenvironment rather than tumor-cell dependencies.",
-    "Established ccRCC targets MTOR, FLT4 and VHL are absent from the convergence top 40 but appear in Open Targets top targets; EPAS1 appears only at rank 38.",
-    "PBRM1 tractability and pathways were not checked."
+    "Convergence scores in the top ranks (about 3.3 to 3.9) are dominated by omics and a shared somatic-mutation score of 0.4559, which is identical across many genes. This is probably a generic OT somatic score, not ccRCC-specific driver evidence.",
+    "Open Targets drug lists include off-target or unrelated-indication annotations (for example REPOTRECTINIB for CD74, PERHEXILINE for MTOR), and the 'max stage' is not specific to ccRCC.",
+    "Established ccRCC agents (everolimus, temsirolimus, cabozantinib, nivolumab) were not checked individually; MTOR and FLT4 lists were truncated to the returned records.",
+    "STRING interactions were not queried because of time or budget; the pathway context relies on Reactome labels from the target profiles.",
+    "Published-literature support for PIGR, CD74 and CXCR4 in ccRCC was not independently verified."
+   ]
+  },
+  "cells": {
+   "agent": "agente-celular",
+   "findings": [
+    {
+     "gene": "CA9",
+     "role": "target_and_biomarker",
+     "statement": "CA9 is tumor-intrinsic: RCC cells hold 0.976 of tumor transcripts (54.7% of 10900 RCC cells express it; PT 2.6%), and tumor cells vs proximal tubule give log2FC 7.739 (padj 0.0189, 6 donors, PT mean log2CPM 0.0). Bulk RNA log2FC 6.312.",
+     "evidence_ids": [
+      "EV:sc_expr:35b84fee998f",
+      "EV:sc_tvp:225a767ebcb5",
+      "EV:omics_de:b269736afdb0"
+     ]
+    },
+    {
+     "gene": "CA9",
+     "role": "target_and_biomarker",
+     "statement": "In situ, CA9-high spots (n=3585) are surrounded by RCC (observed 0.4962 vs expected 0.384, log2 enrichment 0.37, padj 0.00167) with composition-corrected RCC share 0.999; macrophage enrichment is marginal (log2 0.084).",
+     "evidence_ids": [
+      "EV:spatial_nb:35b84fee998f"
+     ]
+    },
+    {
+     "gene": "CA9",
+     "role": "target_and_biomarker",
+     "statement": "Structural caveat: best CA9 site MGD score is only 0.546 (volume 126.8 A3, 1 accessible lysine, pocket pLDDT 90.3; mean pLDDT 76.56). Ligand-site recall 0.5 overall but 0.221 in top pockets. A modest site, not a prediction of a degrader; CA9 is better suited to antibody/imaging (girentuximab) than glue.",
+     "evidence_ids": [
+      "EV:mgd_site:cacfae1940f6",
+      "EV:ligand_sites:93360ddb9195"
+     ]
+    },
+    {
+     "gene": "EGFR",
+     "role": "target",
+     "statement": "EGFR ranks first in convergence (score 3.87, 5 streams; RNA log2FC 1.461, protein 1.062). RCC cells hold 0.948 of tumor transcripts but only 29.7% of RCC cells express it, so the signal is tumor-intrinsic but sparse.",
+     "evidence_ids": [
+      "EV:sc_expr:232cf512ce32",
+      "EV:omics_de:a35ae1101e15"
+     ]
+    },
+    {
+     "gene": "EGFR",
+     "role": "target",
+     "statement": "Tumor cells vs proximal tubule: log2FC 4.748 (pvalue 0.00449, padj 0.0714, 6 donors), so not significant at padj<0.05; PT also expresses EGFR (15.4% of cells). High spots (n=3751) are enriched for RCC neighbours (log2 0.263, padj 0.00167).",
+     "evidence_ids": [
+      "EV:sc_tvp:6bce27c2d6df",
+      "EV:spatial_nb:232cf512ce32"
+     ]
+    },
+    {
+     "gene": "EGFR",
+     "role": "target",
+     "statement": "Top EGFR site scores 0.7304 (volume 189.9 A3, 6 accessible lysines, pocket pLDDT 85.9, mean pLDDT 75.94); it lies in the kinase region, so a glue site claim needs caution. Ligand-site recall 0.375 (0.11 in top pockets).",
+     "evidence_ids": [
+      "EV:mgd_site:8866d65b0347",
+      "EV:ligand_sites:d86debc16d33"
+     ]
+    },
+    {
+     "gene": "MET",
+     "role": "target",
+     "statement": "MET is tumor-intrinsic: RCC cells hold 0.935 of tumor transcripts (35.2% expressing); endothelium contributes 0.03. Tumor vs PT log2FC 5.237 (pvalue 0.00407, padj 0.069, 6 donors), not significant at padj<0.05. Bulk RNA log2FC 1.342.",
+     "evidence_ids": [
+      "EV:sc_expr:114c287fd103",
+      "EV:sc_tvp:8314520758de",
+      "EV:omics_de:c0ea990d5cc5"
+     ]
+    },
+    {
+     "gene": "MET",
+     "role": "target",
+     "statement": "MET-high spots (n=3674) are enriched for RCC (log2 0.203, padj 0.00167) and NK neighbours (log2 0.17, padj 0.00167); composition-corrected RCC share 0.971.",
+     "evidence_ids": [
+      "EV:spatial_nb:114c287fd103"
+     ]
+    },
+    {
+     "gene": "MET",
+     "role": "target",
+     "statement": "MET best site score 0.6789 is driven by lysines (8) and degron loop, but its volume is only 27.6 A3 (geometry 0.0), a shallow pocket; ligand-site recall 0.439 (0.095 in top pockets). Weak glue pocket despite the score.",
+     "evidence_ids": [
+      "EV:mgd_site:2545bd364550",
+      "EV:ligand_sites:2989e431fa06"
+     ]
+    },
+    {
+     "gene": "EPAS1",
+     "role": "mechanism",
+     "statement": "EPAS1 (HIF-2a) transcripts are mostly stromal in scRNA: Endothelial 0.365 share (81.3% expressing), Fibroblast 0.081, RCC only 0.051 (4.9% expressing). Tumor vs PT log2FC 0.589 (padj 0.665), no tumor-cell-specific RNA gain; bulk signal is largely microenvironment RNA, and HIF-2a activity is post-transcriptional.",
+     "evidence_ids": [
+      "EV:sc_expr:d00e4a293c7f",
+      "EV:sc_expr:ffb74b11de1d",
+      "EV:sc_tvp:6a657326c9fd"
+     ]
+    },
+    {
+     "gene": "EPAS1",
+     "role": "mechanism",
+     "statement": "EPAS1-high spots (n=3757) are enriched for fibroblast (log2 0.327) and endothelial (log2 0.267) neighbours, padj 0.00167. Best MGD site 0.6709 has low confidence: mean pLDDT 58.56, only 3 accessible lysines, so a glue site is poorly supported.",
+     "evidence_ids": [
+      "EV:spatial_nb:7a7d0640d3ac",
+      "EV:spatial_nb:d00e4a293c7f",
+      "EV:mgd_site:64fb28deaeab"
+     ]
+    },
+    {
+     "gene": "KDR",
+     "role": "microenvironment",
+     "statement": "KDR is an endothelial (microenvironment) target, not a tumor-cell target: endothelium holds 0.951 of tumor transcripts (40.5% of endothelial cells), and in situ corrected endothelial share is 0.99 with RCC 0.002. High spots are enriched for endothelial neighbours (log2 0.286, padj 0.00167).",
+     "evidence_ids": [
+      "EV:sc_expr:801fa5377cb7",
+      "EV:spatial_nb:801fa5377cb7"
+     ]
+    },
+    {
+     "gene": "KDR",
+     "role": "microenvironment",
+     "statement": "KDR holds the second best MGD site overall (0.841; volume 361.1 A3, 7 accessible lysines, pocket pLDDT 83.1, mean pLDDT 71.12) in the kinase region; ligand-site recall 0.4 (0.2 in top pockets). Target cell is endothelium (anti-angiogenic logic).",
+     "evidence_ids": [
+      "EV:mgd_site:baece750032d",
+      "EV:ligand_sites:03a0601281b2"
+     ]
+    },
+    {
+     "gene": "CD74",
+     "role": "microenvironment",
+     "statement": "CD74 is immune/myeloid: macrophages hold 0.436 of tumor transcripts, CD8 T 0.345, cDC 0.114 (cDC 100% expressing; macrophage 99.5%). Convergence rank 2 (score 3.8535, RNA log2FC 1.775) therefore reflects infiltrate, not tumor cells. In situ RCC share is 0.174 vs macrophage 0.596; high spots neighbour T cells (log2 0.407) and macrophages (log2 0.235).",
+     "evidence_ids": [
+      "EV:sc_expr:a2ae18752f02",
+      "EV:sc_expr:4f6619c493da",
+      "EV:sc_expr:095e86414820",
+      "EV:spatial_nb:dc6a77013f1a",
+      "EV:spatial_expr:57b5025c7100",
+      "EV:omics_de:bc96215336db"
+     ]
+    },
+    {
+     "gene": "CXCR4",
+     "role": "microenvironment",
+     "statement": "CXCR4 is lymphocyte-borne: CD8 T hold 0.563 of tumor transcripts (72.9% expressing), CD4 T 0.176 (87.8%). Bulk RNA log2FC 2.859 reflects T/B cell infiltration. High spots neighbour B cells (log2 0.292) and T cells.",
+     "evidence_ids": [
+      "EV:sc_expr:52ac4d964066",
+      "EV:sc_expr:4e0010bd69bf",
+      "EV:spatial_nb:1a23487b2865",
+      "EV:omics_de:52fecd7a30a3"
+     ]
+    },
+    {
+     "gene": "CXCR4",
+     "role": "microenvironment",
+     "statement": "CXCR4 best MGD score 0.7066 but pocket volume 1149.5 A3 (near large-void territory), only 1 accessible lysine, mean pLDDT 82.25 (GPCR): a weak glue candidate.",
+     "evidence_ids": [
+      "EV:mgd_site:09198c3e9eb1"
+     ]
+    },
+    {
+     "gene": "ERBB2",
+     "role": "target",
+     "statement": "ERBB2 is down in tumor (RNA log2FC -1.38, protein -0.692) despite a high MGD site (0.7821, volume 415.6 A3, 6 lysines, pLDDT 74); main expresser RCC with share 0.453, so it is a weaker tumor target than EGFR/MET.",
+     "evidence_ids": [
+      "EV:mgd_site:754babeb5af8",
+      "EV:omics_de:3f761aa88113"
+     ]
+    },
+    {
+     "gene": "PTPRC",
+     "role": "microenvironment",
+     "statement": "PTPRC (CD45) is a pan-leukocyte marker: CD8 T hold 0.574 of tumor transcripts; it has the top MGD score (0.8462; volume 1142.4 A3, 5 lysines, pLDDT 76.06) but its up-regulation (RNA log2FC 2.071) reports immune infiltration, not tumor cells.",
+     "evidence_ids": [
+      "EV:mgd_site:4410fd4dd31b",
+      "EV:omics_de:c82115e25a64"
+     ]
+    }
+   ],
+   "caveats": [
+    "scRNA has 12 donors; tumor-vs-PT comparison uses 6 donors and PT has only 39 cells from 1 donor in tumor tissue; EGFR and MET are not significant at padj<0.05.",
+    "Endothelium is 1202 cells from 5 donors; CA9 and EGFR sparsity (30-55% expressing) reflects dropout.",
+    "Spatial enrichments are small in effect size (log2 0.04-0.4) although BH-significant; Visium spots mix cell types.",
+    "MGD scores rank sites only; none implies an existing or effective glue. Large voids (>1500 A3) are excluded as glue pockets. AlphaFold models are apo, and ligand-site recall is 0.375-0.5 for genes checked.",
+    "CXCR4 and PTPRC are immune targets; EPAS1 structure is low confidence (mean pLDDT 58.56).",
+    "CD74/CXCR4 structure_pockets were not run; their MGD values are from mgd_ranking."
    ]
   }
  },
  "narrative": {
   "summary": [
    {
-    "text": "The strongest convergent evidence in ccRCC sits on the VHL/HIF axis. CA9 is the only candidate supported at once by strong tumor-up omics (RNA log2FC 6.312, protein log2FC 2.269), several literature relations including a CA9-targeted PET proof-of-concept study, membrane localisation and a Phase 3 antibody (girentuximab). EPAS1 (HIF-2alpha) is the clinically validated target: belzutifan is approved, and the omics show protein up (log2FC 1.162) with little RNA change, which fits VHL-loss stabilisation.",
+    "text": "CA9 is the candidate with the strongest convergent evidence. It is strongly up-regulated in tumors at RNA and protein level, it is the most tumor-intrinsic candidate in single-cell and spatial data (clearly specific versus proximal tubule), it has the largest set of validated literature relations among druggable genes, and an antibody (girentuximab) has reached Phase 3. It is best positioned as a target_and_biomarker for antibody, radioligand and PET imaging approaches.",
+    "gene": "CA9",
     "evidence_ids": [
      "EV:omics_de:b269736afdb0",
      "EV:omics_de:5afe18b4024b",
+     "EV:sc_tvp:225a767ebcb5",
+     "EV:spatial_nb:35b84fee998f",
      "EV:literature:534430b0156d",
-     "EV:open_targets_drug:e1e0c664ada3",
-     "EV:open_targets_drug:199c475802ce",
-     "EV:chunk:b27db0e77426",
-     "EV:omics_de:2203d6274a08"
+     "EV:open_targets_drug:e1e0c664ada3"
     ]
    },
    {
-    "text": "The numeric convergence ranking is led by EGFR, CD74, FAS, CXCR4, PIGR and MET. All are tumor-dysregulated at RNA and protein level and highly tractable in Open Targets, but none has a ccRCC literature relation in the corpus except one bioinformatic CXCR4 edge. MET and the VEGFR kinases (KDR, and FLT4 outside the top 25) are the tractable targets with the clearest link to existing RCC therapy. EGFR, CD74 and CXCR4 should be read as tractable hypotheses, and CD74 and CXCR4 likely reflect immune infiltration.",
+    "text": "The VHL / HIF-2alpha axis is the mechanistic backbone: 3p loss (VHL, PBRM1) is near-universal, EPAS1 protein rises without a matching RNA increase, and belzutifan is approved. Established anti-angiogenic targets (KDR, FLT4) and MTOR are confirmed by Open Targets, but KDR and most EPAS1 RNA sit in endothelial and stromal cells, so these act on the microenvironment rather than on tumor-cell RNA levels.",
     "evidence_ids": [
-     "EV:omics_de:a35ae1101e15",
-     "EV:omics_de:bc96215336db",
-     "EV:omics_de:52fecd7a30a3",
-     "EV:omics_de:c0ea990d5cc5",
-     "EV:open_targets_assoc:07cfe399d2b3",
-     "EV:open_targets_assoc:76837e201bb9",
-     "EV:literature:6fb1ac12a544"
+     "EV:omics_cnv:52e5aeb6c197",
+     "EV:omics_cnv:07b6205e67e5",
+     "EV:omics_de:2203d6274a08",
+     "EV:open_targets_drug:199c475802ce",
+     "EV:sc_expr:801fa5377cb7",
+     "EV:sc_expr:d00e4a293c7f",
+     "EV:open_targets_assoc:900f88933f86"
     ]
    },
    {
-    "text": "Biomarkers are better supported than new targets. NDUFA4L2 (COXFA4L2), ENO2, PFKP and PLIN2 are up in tumors at both layers and have multi-study preclinical literature support, tracing the HIF-driven glycolytic and lipid-storage phenotype. On the down side, ACY1, CHL1, ALDOB, MT1G and PIGR mark loss of tubule identity, with ACY1 and CHL1 tied to 3p copy loss.",
+    "text": "The top of the numeric convergence ranking (EGFR, CD74, FAS, CXCR4, PIGR, MET) is driven largely by omics plus a shared Open Targets somatic score and tractability, with little ccRCC-specific literature in this corpus. Cell-type data split this group: EGFR and MET are tumor-intrinsic (though not significant versus proximal tubule), whereas CD74, CXCR4 and PTPRC are immune-infiltrate signals and should not be read as tumor-cell targets.",
+    "evidence_ids": [
+     "EV:sc_expr:232cf512ce32",
+     "EV:sc_expr:114c287fd103",
+     "EV:sc_expr:a2ae18752f02",
+     "EV:sc_expr:52ac4d964066",
+     "EV:omics_de:c82115e25a64"
+    ]
+   },
+   {
+    "text": "Biomarker-oriented candidates are dominated by the hypoxic and lipid-laden clear-cell phenotype (COXFA4L2/NDUFA4L2, PLIN2, PFKP, NNMT up; ALDOB, ACY1, CHL1, PIGR down as markers of lost tubule identity). Literature support for these is mostly bioinformatic or single-center, with outright contradictions for PFKP and MT1G.",
     "evidence_ids": [
      "EV:omics_de:82b179f21539",
-     "EV:literature:ec673e405bc1",
-     "EV:omics_de:fd71617cdad3",
-     "EV:omics_de:a3054c62a87e",
      "EV:omics_de:c5ce9c3c6f51",
-     "EV:omics_cnv:eac880ece0df",
-     "EV:omics_cnv:99902909d141",
+     "EV:omics_de:a3054c62a87e",
+     "EV:omics_de:de39cc0c5ed8",
      "EV:omics_de:1f7150068d77",
-     "EV:omics_de:567a00d72eaa"
+     "EV:omics_de:72ff4c46cbe0",
+     "EV:omics_de:61a823d5d7bd",
+     "EV:literature:2fceed76c9b4",
+     "EV:literature:01828633a99d"
     ]
    }
   ],
   "sections": {
    "omics": [
     {
-     "text": "CPTAC tumor-vs-normal data show the largest tumor-up changes for CA9 (RNA log2FC 6.312, protein log2FC 2.269, RNA-protein rho 0.797) and COXFA4L2 (protein log2FC 3.768, RNA log2FC 6.752), followed by PFKP, PLIN2 and ENO2, all concordant across layers. EPAS1 protein is up (log2FC 1.162) while RNA changes little (log2FC 0.306).",
+     "text": "CA9 is strongly up in tumors at RNA (log2FC 6.312), protein (log2FC 2.269) and phospho levels, with RNA-protein Spearman rho 0.797.",
+     "gene": "CA9",
      "evidence_ids": [
       "EV:omics_de:b269736afdb0",
-      "EV:omics_rna_protein:225a767ebcb5",
+      "EV:omics_de:5afe18b4024b",
+      "EV:omics_rna_protein:225a767ebcb5"
+     ]
+    },
+    {
+     "text": "COXFA4L2 (NDUFA4L2) is the top up-regulated protein (log2FC 3.768) with RNA log2FC 6.752, a hypoxia-linked marker rather than a surface target.",
+     "gene": "COXFA4L2",
+     "evidence_ids": [
       "EV:omics_de:82b179f21539",
-      "EV:omics_de:a3054c62a87e",
-      "EV:omics_de:c5ce9c3c6f51",
-      "EV:omics_de:fd71617cdad3",
+      "EV:omics_de:c256227d9408",
+      "EV:omics_rna_protein:f0a8d64901b6"
+     ]
+    },
+    {
+     "text": "EPAS1 protein is up (log2FC 1.162) while RNA rises only modestly (0.306), consistent with post-transcriptional stabilization of HIF-2alpha after VHL loss.",
+     "gene": "EPAS1",
+     "evidence_ids": [
       "EV:omics_de:2203d6274a08",
       "EV:omics_de:f37b60917d06"
      ]
     },
     {
-     "text": "Copy number confirms the 3p-loss signature: VHL is lost in 0.791 of tumors, and ACY1 (0.809) and CHL1 (0.773) are lost and strongly down at protein. Tractable top-ranked genes EGFR and MET are modestly up (protein log2FC 1.062 and 1.101) with copy gain in 0.255 of tumors. CD74 shows gain in 0.564 of tumors.",
+     "text": "VHL (loss frequency 0.791) and PBRM1 (0.8) on 3p are lost in most tumors, the founding event that activates the HIF program; tubule-identity genes such as ACY1 (80.9% copy loss) and CHL1 are strongly down.",
      "evidence_ids": [
       "EV:omics_cnv:52e5aeb6c197",
+      "EV:omics_cnv:07b6205e67e5",
       "EV:omics_cnv:eac880ece0df",
-      "EV:omics_cnv:99902909d141",
-      "EV:omics_de:9a5214fad2b4",
-      "EV:omics_de:d20212f7a294",
-      "EV:omics_cnv:ee059aa145d0"
+      "EV:omics_de:61a823d5d7bd"
      ]
     }
    ],
    "literature": [
     {
-     "text": "Only CA9 (PET proof-of-concept, warranting prospective validation) and EPAS1 (FDA approval of belzutifan, via sentence chunks) have clinical-level statements in the corpus. NDUFA4L2/COXFA4L2, ENO2, PFKP, PLIN2, ALDOB, CHL1 and MT1G are supported by preclinical or bioinformatic studies.",
+     "text": "CA9 has the most direct ccRCC literature support: enrichment in ccRCC tumor cells with low normal-kidney expression and CA9-targeted PET as proof-of-concept for noninvasive discrimination, which still warrants prospective validation.",
+     "gene": "CA9",
      "evidence_ids": [
       "EV:literature:534430b0156d",
-      "EV:chunk:b27db0e77426",
-      "EV:literature:ec673e405bc1",
-      "EV:literature:cfa400884c1b",
-      "EV:literature:2fceed76c9b4",
-      "EV:literature:dbfbe45c8391",
-      "EV:literature:f834882a57a7",
-      "EV:literature:7c4f640e79c0",
-      "EV:literature:f6c45de2c4dd"
+      "EV:literature:7f2628a50d15",
+      "EV:literature:687723b4e539",
+      "EV:literature:e80ed5d1f9d6"
      ]
     },
     {
-     "text": "The literature contains contradictions. MT1G is downregulated in tumor tissue, yet high MT1G correlates with advanced stage and poor prognosis. PFKP is upregulated in ccRCC, yet low PFKP correlated with poor overall survival. The only ccRCC-specific ACY1 sentence reports downregulation without a direct survival link.",
+     "text": "NDUFA4L2 (COXFA4L2) is reported as upregulated in most ccRCC, HIF-induced, linked to poor survival and to ferroptosis suppression; the evidence is largely preclinical.",
+     "gene": "COXFA4L2",
      "evidence_ids": [
+      "EV:literature:ec673e405bc1",
+      "EV:literature:533012368b9c",
+      "EV:literature:fddf853d5604",
+      "EV:literature:1741cd200f2a"
+     ]
+    },
+    {
+     "text": "Literature is contradictory for MT1G (low in tumor yet high expression linked to poor prognosis) and PFKP (up in tumor yet low expression linked to poor survival), and many top-ranked genes (EGFR, FAS, PIGR, KDR, ERBB2) have no extracted ccRCC relations in this corpus.",
+     "evidence_ids": [
+      "EV:literature:01828633a99d",
       "EV:literature:f6c45de2c4dd",
-      "EV:literature:de9d334b7b1c",
-      "EV:literature:2fceed76c9b4",
-      "EV:literature:07378577904d"
+      "EV:literature:2fceed76c9b4"
      ]
     }
    ],
    "external": [
     {
-     "text": "Open Targets ranks VHL and PBRM1 as the top ccRCC associations (both loss-of-function, not directly druggable). It confirms the established targets EPAS1 (belzutifan approved), MTOR (association 0.525), KDR (0.4566) and FLT4 (0.4549, targeted by approved TKIs such as axitinib and tivozanib). MTOR and FLT4 are not in the convergence top 25 because the omics streams did not flag them.",
+     "text": "Open Targets confirms EPAS1 (belzutifan, approved), KDR and FLT4 (VEGFR-directed kinase inhibitors) and MTOR as established ccRCC targets; FLT4 drug labels reflect multikinase polypharmacology.",
      "evidence_ids": [
-      "EV:open_targets_assoc:730901c424b4",
-      "EV:open_targets_assoc:a61ad112b8ec",
       "EV:open_targets_drug:199c475802ce",
-      "EV:open_targets_assoc:900f88933f86",
-      "EV:open_targets_assoc:07cfe399d2b3",
-      "EV:open_targets_assoc:76837e201bb9",
-      "EV:open_targets_drug:852cf93b8934"
+      "EV:open_targets_drug:4a17ceadb829",
+      "EV:open_targets_drug:852cf93b8934",
+      "EV:open_targets_drug:47a49b68dd99"
      ]
     },
     {
-     "text": "Membrane localisation from UniProt supports antibody or imaging use for CA9, MET, CXCR4 and KDR. The drugs listed for EGFR, CD74, CXCR4 and MET are not approved for ccRCC, and REPOTRECTINIB under CD74 likely reflects a fusion-partner annotation.",
+     "text": "MET is tractable and clinically tested elsewhere (savolitinib and telisotuzumab vedotin at Phase 3), with membrane localization in UniProt.",
+     "gene": "MET",
      "evidence_ids": [
-      "EV:uniprot:93360ddb9195",
-      "EV:uniprot:2989e431fa06",
-      "EV:uniprot:86297350cabc",
-      "EV:uniprot:03a0601281b2",
-      "EV:open_targets_drug:82f6e28cd0ee"
+      "EV:open_targets_assoc:f7461651ef5d",
+      "EV:open_targets_drug:1f109fa4640d",
+      "EV:uniprot:2989e431fa06"
+     ]
+    },
+    {
+     "text": "VHL has the top Open Targets ccRCC association (0.6466) but is not directly druggable; the therapeutic route runs through EPAS1.",
+     "gene": "VHL",
+     "evidence_ids": [
+      "EV:open_targets_assoc:730901c424b4"
+     ]
+    }
+   ],
+   "cells": [
+    {
+     "text": "CA9 is tumor-intrinsic: RCC cells hold 0.976 of tumor transcripts and the tumor-cell versus proximal-tubule comparison gives log2FC 7.739 (padj 0.0189).",
+     "gene": "CA9",
+     "evidence_ids": [
+      "EV:sc_expr:35b84fee998f",
+      "EV:sc_tvp:225a767ebcb5"
+     ]
+    },
+    {
+     "text": "EGFR (RCC share 0.948) and MET (RCC share 0.935) are expressed by tumor cells, but neither reaches padj<0.05 versus proximal tubule (EGFR padj 0.0714, MET padj 0.069).",
+     "evidence_ids": [
+      "EV:sc_expr:232cf512ce32",
+      "EV:sc_tvp:6bce27c2d6df",
+      "EV:sc_expr:114c287fd103",
+      "EV:sc_tvp:8314520758de"
+     ]
+    },
+    {
+     "text": "Several bulk-omics candidates are not tumor-intrinsic: KDR is endothelial (share 0.951), EPAS1 RNA is mostly endothelial and fibroblast (RCC share 0.051), CD74 is macrophage/CD8 T-cell borne, and CXCR4 is lymphocyte-borne (CD8 T share 0.563).",
+     "evidence_ids": [
+      "EV:sc_expr:801fa5377cb7",
+      "EV:sc_expr:d00e4a293c7f",
+      "EV:sc_expr:a2ae18752f02",
+      "EV:sc_expr:52ac4d964066"
+     ]
+    }
+   ],
+   "spatial": [
+    {
+     "text": "CA9-high Visium spots are surrounded by RCC (log2 enrichment 0.37, padj 0.00167), consistent with tumor-cell expression in situ.",
+     "gene": "CA9",
+     "evidence_ids": [
+      "EV:spatial_nb:35b84fee998f"
+     ]
+    },
+    {
+     "text": "EGFR- and MET-high spots are enriched for RCC neighbours, whereas KDR-high spots neighbour endothelium, EPAS1-high spots neighbour fibroblasts and endothelium, and CD74-high spots neighbour T cells and macrophages; effect sizes are small.",
+     "evidence_ids": [
+      "EV:spatial_nb:232cf512ce32",
+      "EV:spatial_nb:114c287fd103",
+      "EV:spatial_nb:801fa5377cb7",
+      "EV:spatial_nb:7a7d0640d3ac",
+      "EV:spatial_nb:dc6a77013f1a"
+     ]
+    }
+   ],
+   "structure": [
+    {
+     "text": "MGD scores rank predicted pockets, not degraders. The highest-ranked sites belong to PTPRC (0.8462) and KDR (0.841), both non-tumor-cell targets; ERBB2 (0.7821) and EGFR (0.7304) follow, with EGFR's site in the kinase region.",
+     "evidence_ids": [
+      "EV:mgd_site:4410fd4dd31b",
+      "EV:mgd_site:baece750032d",
+      "EV:mgd_site:754babeb5af8",
+      "EV:mgd_site:8866d65b0347"
+     ]
+    },
+    {
+     "text": "Several scores overstate site quality: MET's best site is only 27.6 A3, CXCR4's is 1149.5 A3 with one accessible lysine, and EPAS1's model has low confidence (mean pLDDT 58.56).",
+     "evidence_ids": [
+      "EV:mgd_site:2545bd364550",
+      "EV:mgd_site:09198c3e9eb1",
+      "EV:mgd_site:64fb28deaeab"
+     ]
+    },
+    {
+     "text": "CA9's best site scores a modest 0.546, so CA9 is better suited to antibody or imaging approaches than to a molecular glue.",
+     "gene": "CA9",
+     "evidence_ids": [
+      "EV:mgd_site:cacfae1940f6",
+      "EV:ligand_sites:93360ddb9195"
      ]
     }
    ],
    "integration": [
     {
-     "text": "All three streams converge on the VHL-HIF axis: 3p loss (VHL), HIF-2alpha protein stabilisation (EPAS1, belzutifan) and HIF target genes (CA9, COXFA4L2, ENO2, PFKP, PLIN2) up in tumors. CA9 is the clearest point where omics, literature and external tractability all agree.",
+     "text": "Omics, literature, external knowledge and cell context converge most clearly on CA9: strong concordant up-regulation, tumor-intrinsic expression, literature support and a Phase 3 antibody.",
+     "gene": "CA9",
      "evidence_ids": [
-      "EV:omics_cnv:52e5aeb6c197",
-      "EV:omics_de:2203d6274a08",
-      "EV:open_targets_drug:199c475802ce",
       "EV:omics_de:b269736afdb0",
+      "EV:sc_tvp:225a767ebcb5",
       "EV:literature:534430b0156d",
-      "EV:open_targets_tract:225a767ebcb5",
-      "EV:literature:ec673e405bc1"
+      "EV:open_targets_drug:e1e0c664ada3"
      ]
     },
     {
-     "text": "The streams disagree on the numeric top of the ranking. EGFR, CD74, FAS, CXCR4 and PIGR score highly through omics, generic somatic-mutation and tractability components, but lack ccRCC literature support. Conversely, established targets such as MTOR and FLT4 have strong external evidence but no omics signal. This ordering therefore puts CA9 and EPAS1 ahead of EGFR and treats the immune genes (CD74, CXCR4) as microenvironment markers.",
+     "text": "The main disagreement is between numeric rank and cell context: CD74 and CXCR4 rank in the top four but are immune-borne, while EPAS1 ranks only 38th yet is the clinically validated target because its activity is post-transcriptional. I therefore promote EPAS1 and the VEGFR axis and demote immune genes in the target list.",
      "evidence_ids": [
-      "EV:open_targets_assoc:796599138e4a",
-      "EV:open_targets_assoc:e91b5227f1e3",
-      "EV:open_targets_assoc:da356bed139f",
-      "EV:open_targets_assoc:38756b21a30a",
-      "EV:open_targets_assoc:1170ea2f4d6c",
-      "EV:open_targets_assoc:900f88933f86",
-      "EV:open_targets_assoc:76837e201bb9"
+      "EV:sc_expr:a2ae18752f02",
+      "EV:sc_expr:52ac4d964066",
+      "EV:open_targets_assoc:61983038a898",
+      "EV:omics_de:2203d6274a08"
      ]
     }
    ]
   },
   "limitations": [
    {
-    "text": "Bulk tumor-vs-normal proteogenomics cannot separate tumor-cell from immune or stromal expression; CD74, CXCR4 and PTPRC likely mark the microenvironment."
+    "text": "Omics are bulk tumor-versus-normal tissue (paired n varies by layer), so immune and stromal genes can appear as tumor up-regulation."
    },
    {
-    "text": "Normals are adjacent kidney, so tubule-identity genes dominate the down-regulated list and may not be tumor-specific biomarkers."
+    "text": "The numeric convergence score is inflated for many genes by an identical Open Targets somatic score, which looks generic rather than ccRCC-specific."
    },
    {
-    "text": "The convergence score includes generic Open Targets somatic-mutation and tractability components that are not ccRCC-specific, inflating broadly druggable genes such as EGFR."
+    "text": "The literature corpus is small (~320 abstracts); absence of relations does not mean absence of published evidence, and most relations are bioinformatic or single-center."
    },
    {
-    "text": "The literature corpus is a frozen set of PubMed abstracts biased toward recent bioinformatic and preclinical studies; absence of a literature edge is not evidence of absence."
+    "text": "Single-cell tumor-versus-proximal-tubule comparisons use 6 donors with few proximal-tubule cells; EGFR and MET do not reach padj<0.05."
    },
    {
-    "text": "Drug stages in Open Targets are maximum stages across all indications, not ccRCC approvals. STRING interactions were not queried in this run."
+    "text": "MGD scores rank predicted pockets on apo AlphaFold models; they are not evidence that any degrader exists or would work."
+   },
+   {
+    "text": "STRING interactions were not queried and established agents such as everolimus, cabozantinib and nivolumab were not checked individually."
    }
   ]
  },
@@ -8877,62 +9175,72 @@
   {
    "gene": "CA9",
    "category": "target_and_biomarker",
-   "rationale": "Strongest overall agreement: largest tumor-up RNA change among candidates (log2FC 6.312) with concordant protein (log2FC 2.269), CA9-targeted PET proof-of-concept literature, a membrane protein, and girentuximab in Phase 3. Ranked first despite numeric rank 10 because it is the only candidate where every stream agrees.",
+   "rationale": "Strongest multi-layer convergence: RNA log2FC 6.312 and protein log2FC 2.269, tumor-intrinsic (log2FC 7.739 versus proximal tubule), validated literature relations including CA9-PET, and girentuximab at Phase 3. Ranked first despite numeric rank 10 because no other candidate is supported by every layer.",
    "evidence_ids": [
     "EV:omics_de:b269736afdb0",
     "EV:omics_de:5afe18b4024b",
+    "EV:sc_tvp:225a767ebcb5",
     "EV:literature:534430b0156d",
-    "EV:uniprot:93360ddb9195",
     "EV:open_targets_drug:e1e0c664ada3"
    ]
   },
   {
    "gene": "EPAS1",
    "category": "target",
-   "rationale": "Clinically validated (belzutifan approved, supported by literature chunks). Protein stabilised in tumors (log2FC 1.162) with little RNA change. Promoted from convergence rank 38 because the generic scoring under-weights its approved status.",
+   "rationale": "Clinically validated (belzutifan approved). Protein is up while RNA is flat, so bulk and single-cell RNA understate it; this is why it ranks only 38th numerically and is promoted here.",
    "evidence_ids": [
     "EV:open_targets_drug:199c475802ce",
-    "EV:chunk:b27db0e77426",
     "EV:omics_de:2203d6274a08",
-    "EV:open_targets_assoc:61983038a898"
-   ]
-  },
-  {
-   "gene": "MET",
-   "category": "target",
-   "rationale": "Up at RNA and protein (log2FC 1.342 and 1.101) with copy gain in 0.255 of tumors, membrane-localised, with savolitinib and telisotuzumab vedotin in Phase 3. Convergence rank 6.",
-   "evidence_ids": [
-    "EV:omics_de:c0ea990d5cc5",
-    "EV:omics_de:d20212f7a294",
-    "EV:open_targets_drug:cb8b66153e41",
-    "EV:uniprot:2989e431fa06"
+    "EV:omics_de:f37b60917d06",
+    "EV:chunk:b27db0e77426"
    ]
   },
   {
    "gene": "KDR",
    "category": "target",
-   "rationale": "Established ccRCC target (VEGFR2): Open Targets association 0.4566, modestly up in tumors, approved and late-stage inhibitors. Placed above its numeric rank 21 because of its clinical relevance.",
+   "rationale": "Established anti-angiogenic target with approved VEGFR inhibitors; it is endothelial (share 0.951), not tumor-intrinsic, so it acts on the tumor vasculature.",
    "evidence_ids": [
     "EV:open_targets_assoc:07cfe399d2b3",
-    "EV:uniprot:03a0601281b2",
-    "EV:omics_de:562798467e8b"
+    "EV:open_targets_drug:4a17ceadb829",
+    "EV:sc_expr:801fa5377cb7"
+   ]
+  },
+  {
+   "gene": "MET",
+   "category": "target",
+   "rationale": "Concordant RNA and protein up-regulation with 25.5% copy gain, tumor-intrinsic expression (RCC share 0.935) and Phase 3 agents; weaker than CA9 because it is not significant versus proximal tubule and its best pocket is shallow.",
+   "evidence_ids": [
+    "EV:omics_de:c0ea990d5cc5",
+    "EV:omics_de:d20212f7a294",
+    "EV:sc_expr:114c287fd103",
+    "EV:open_targets_drug:1f109fa4640d"
    ]
   },
   {
    "gene": "EGFR",
    "category": "target",
-   "rationale": "Top of the numeric ranking (score 3.87, 5 streams) with modest RNA and protein increases and approved drugs, but no ccRCC literature relation and no ccRCC approval. Kept as a tractable hypothesis below the validated targets.",
+   "rationale": "Numeric rank 1 with RNA and protein up-regulation and approved agents in other cancers; tumor-intrinsic but sparse (29.7% of RCC cells) and not significant versus proximal tubule, with no ccRCC literature relations, so placed below MET.",
    "evidence_ids": [
     "EV:omics_de:a35ae1101e15",
     "EV:omics_de:9a5214fad2b4",
-    "EV:open_targets_assoc:796599138e4a",
-    "EV:open_targets_drug:49b92d32290b"
+    "EV:sc_expr:232cf512ce32",
+    "EV:open_targets_drug:6a980760ce7b"
+   ]
+  },
+  {
+   "gene": "MTOR",
+   "category": "target",
+   "rationale": "Established ccRCC pathway target in Open Targets (association 0.525) with an approved small-molecule drug; included for clinical relevance although it is not in the omics top 25.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:900f88933f86",
+    "EV:open_targets_drug:47a49b68dd99",
+    "EV:open_targets_tract:95bc7fa85685"
    ]
   },
   {
    "gene": "COXFA4L2",
    "category": "biomarker",
-   "rationale": "Largest tumor-up protein change (log2FC 3.768). Multi-study literature describes it as HIF-induced, overexpressed in most ccRCCs and prognostic. As a mitochondrial protein it is a poor surface target, so it is classed as a biomarker.",
+   "rationale": "Top up-regulated protein (log2FC 3.768) with HIF-linked biology and poor-survival associations in the literature; a strong tissue biomarker, with therapeutic claims still preclinical.",
    "evidence_ids": [
     "EV:omics_de:82b179f21539",
     "EV:omics_de:c256227d9408",
@@ -8941,53 +9249,30 @@
    ]
   },
   {
-   "gene": "ENO2",
-   "category": "biomarker",
-   "rationale": "Up at protein (log2FC 2.245) and RNA (log2FC 3.538). Literature reports diagnostic and prognostic value and a glycolysis role. No inhibitor is available in the corpus.",
-   "evidence_ids": [
-    "EV:omics_de:fd71617cdad3",
-    "EV:omics_de:c09f09dc13b4",
-    "EV:literature:cfa400884c1b",
-    "EV:literature:3b3e46e581b5"
-   ]
-  },
-  {
    "gene": "PLIN2",
    "category": "biomarker",
-   "rationale": "Concordantly up (protein log2FC 2.667, RNA log2FC 2.62), reflecting the lipid-droplet clear-cell phenotype. Literature includes an IHC validation as a diagnostic marker.",
+   "rationale": "Concordant up-regulation (RNA log2FC 2.62, protein 2.667) reflecting the lipid-laden clear-cell phenotype, with IHC diagnostic validation reported; no drugs.",
    "evidence_ids": [
     "EV:omics_de:c5ce9c3c6f51",
     "EV:omics_de:468a9888af97",
-    "EV:literature:dbfbe45c8391",
-    "EV:literature:821636f02856"
+    "EV:literature:e3ae1997555f",
+    "EV:uniprot:131c444e9565"
    ]
   },
   {
-   "gene": "CXCR4",
-   "category": "target_and_biomarker",
-   "rationale": "Strongly up at RNA (log2FC 2.859) with approved antagonists (plerixafor, mavorixafor) and one bioinformatic prognostic literature edge. Down-weighted from numeric rank 4 because the signal likely comes from immune or stromal cells.",
+   "gene": "PFKP",
+   "category": "biomarker",
+   "rationale": "Up at protein (log2FC 2.863) and RNA (log2FC 2.72) as part of the glycolytic shift; literature is contradictory on prognosis, so it is listed as a biomarker rather than a target.",
    "evidence_ids": [
-    "EV:omics_de:52fecd7a30a3",
-    "EV:omics_de:c5aa5217f231",
-    "EV:literature:6fb1ac12a544",
-    "EV:open_targets_drug:07e50daceb2e"
-   ]
-  },
-  {
-   "gene": "CD74",
-   "category": "target_and_biomarker",
-   "rationale": "Numeric rank 2 (up at RNA and protein, copy gain in 0.564 of tumors, milatuzumab Phase 1/2). Down-weighted because it is an MHC-II chaperone likely marking immune infiltration, and its approved-drug link (repotrectinib) is a fusion-partner artifact.",
-   "evidence_ids": [
-    "EV:omics_de:bc96215336db",
-    "EV:omics_cnv:ee059aa145d0",
-    "EV:open_targets_drug:82f6e28cd0ee",
-    "EV:uniprot:598cef54c320"
+    "EV:omics_de:a3054c62a87e",
+    "EV:omics_de:614e9c4ffc2e",
+    "EV:literature:2fceed76c9b4"
    ]
   },
   {
    "gene": "PIGR",
    "category": "biomarker",
-   "rationale": "Strongly down in tumor (RNA log2FC -3.824, protein log2FC -1.235) with Open Targets genetic association 0.7338. Membrane and secreted, so it is a candidate loss-of-expression tissue or fluid biomarker. No drugs.",
+   "rationale": "Numeric rank 5, strongly down-regulated (RNA log2FC -3.824) with Open Targets genetic association 0.7338 and a membrane/secreted form; a loss-of-expression biomarker without literature support in this corpus.",
    "evidence_ids": [
     "EV:omics_de:567a00d72eaa",
     "EV:open_targets_assoc:1170ea2f4d6c",
@@ -8995,14 +9280,23 @@
    ]
   },
   {
-   "gene": "ACY1",
+   "gene": "CD74",
    "category": "biomarker",
-   "rationale": "Down at protein (log2FC -2.305) and RNA (log2FC -3.529) with 3p loss in 0.809 of tumors, a negative tissue biomarker of 3p deletion. ccRCC-specific literature is thin (one downregulation sentence).",
+   "rationale": "Numeric rank 2, but single-cell data place its RNA mainly in macrophages (0.436) and CD8 T cells (0.345); demoted to a microenvironment biomarker rather than a tumor-cell target.",
    "evidence_ids": [
-    "EV:omics_de:ccf34df54ef0",
-    "EV:omics_de:72ff4c46cbe0",
-    "EV:omics_cnv:eac880ece0df",
-    "EV:literature:07378577904d"
+    "EV:omics_de:bc96215336db",
+    "EV:sc_expr:a2ae18752f02",
+    "EV:spatial_nb:dc6a77013f1a"
+   ]
+  },
+  {
+   "gene": "CXCR4",
+   "category": "biomarker",
+   "rationale": "Numeric rank 4 with approved antagonists, but its up-regulation reflects lymphocyte infiltration (CD8 T share 0.563) and literature support is a single bioinformatic study; demoted to an immune biomarker.",
+   "evidence_ids": [
+    "EV:omics_de:52fecd7a30a3",
+    "EV:sc_expr:52ac4d964066",
+    "EV:literature:6fb1ac12a544"
    ]
   }
  ],

@@ -5,36 +5,40 @@
    "kept": 15,
    "dropped": 0,
    "dropped_detail": [],
-   "ids_removed": 1
+   "ids_removed": 0
   },
   "agent_literature.json": {
-   "submitted": 13,
-   "kept": 12,
+   "submitted": 14,
+   "kept": 13,
    "dropped": 1,
    "dropped_detail": [
     {
-     "text": "A chunk (PMID 36816976) mentions MET alterations as a possible predictive marker in papillary tumors, so the clinical MET evidence is for papillary rather than ",
+     "text": "MET has strong tractability (savolitinib Phase 3) and omics support, but literature in this corpus is thin: PMID:36816976 mentions MET alterations in papillary ",
      "gene": "MET",
      "cited": 2,
      "nonexistent": [],
      "not_linked_to_gene": [
-      "EV:chunk:0916ae945827",
-      "EV:chunk:a31c8aca1021"
+      "EV:chunk:a31c8aca1021",
+      "EV:chunk:e36f5a9a412b"
      ],
      "kept": false
     }
    ],
-   "ids_removed": 2
+   "ids_removed": 3
   },
   "agent_external.json": {
-   "submitted": 14,
-   "kept": 14,
+   "submitted": 13,
+   "kept": 13,
    "dropped": 0,
    "dropped_detail": [],
-   "ids_removed": 2
+   "ids_removed": 1
   },
   "agent_cells.json": {
-   "missing": true
+   "submitted": 18,
+   "kept": 18,
+   "dropped": 0,
+   "dropped_detail": [],
+   "ids_removed": 0
   }
  }
 }
