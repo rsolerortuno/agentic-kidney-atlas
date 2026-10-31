@@ -105,7 +105,18 @@ def build_tables() -> dict:
     return {"publications": len(pubs), "annotations": len(anns), "chunks": len(chunks)}
 
 
-def ingest() -> dict:
+def ingest(refresh: bool = False) -> dict:
+    """Fetch PubTator3 annotations. The PMID lists are frozen in query_log.json (versioned) so that a fresh
+    clone reproduces the same corpus; pass refresh=True to search PubTator3 again."""
+    log_path = LITERATURE / "query_log.json"
+    if log_path.exists() and not refresh:
+        log = json.loads(log_path.read_text())
+        all_pmids = sorted(set(log["disease_pmids"]) | {p for v in log["gene_pmids"].values() for p in v})
+        fetch_biocjson(all_pmids)
+        stats = build_tables()
+        stats["top_genes"] = len(log["top_genes"])
+        stats["source"] = "frozen query_log.json"
+        return stats
     cfg = load()["literature"]
     genes = top_omics_candidates(cfg["top_genes"])
     disease_pmids = search(cfg["disease_query"], cfg["disease_pmids"])

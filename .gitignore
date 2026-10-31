@@ -2,8 +2,17 @@
 __pycache__/
 *.pyc
 .pytest_cache/
+# raw / regenerable data (CPTAC matrices are re-downloaded; caches are rebuilt)
 data/raw/
 data/processed/
 data/cache/
 data/graph/
+# PubMed titles/abstracts are not redistributed; `uv run ccrcc literature` re-fetches them from PubTator3
 data/literature/pubtator/
+data/literature/publications.parquet
+data/literature/chunks.parquet
+data/literature/annotations.parquet
+data/literature/extraction_batches/
+# development leftovers
+runs/dev_v1_agents/
+runs/*/qa_questions.json
