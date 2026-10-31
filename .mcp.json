@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "omics-mcp": {
+      "type": "stdio",
+      "command": "uv",
+      "args": ["run", "--quiet", "python", "-m", "ccrcc.mcp_servers.omics"]
+    },
+    "kg-mcp": {
+      "type": "stdio",
+      "command": "uv",
+      "args": ["run", "--quiet", "python", "-m", "ccrcc.mcp_servers.kg"]
+    },
+    "external-mcp": {
+      "type": "stdio",
+      "command": "uv",
+      "args": ["run", "--quiet", "python", "-m", "ccrcc.mcp_servers.external"]
+    }
+  }
+}

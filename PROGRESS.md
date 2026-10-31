@@ -2,7 +2,7 @@
 
 Spec: [OBJETIVO.md](OBJETIVO.md). A milestone is closed only when its check passes; evidence is recorded below.
 
-**Current milestone:** M4
+**Current milestone:** M6
 
 | Milestone | Status | Evidence |
 |---|---|---|
@@ -10,12 +10,13 @@ Spec: [OBJETIVO.md](OBJETIVO.md). A milestone is closed only when its check pass
 | M1 Data | ✅ passed | `data/raw/manifest.json` (URL, UTC date, sha256, dims). 110 tumors in every tumor matrix; normals: proteome 84, phospho 84, RNA 75. HGNC 45,289 rows. `tests/test_data.py` green |
 | M2 Omics analysis | ✅ passed | `data/processed/*.parquet`. Paired t-test (matched cases) + BH. RNA: CA9 log2FC 6.31, NDUFA4L2 6.75, ANGPTL4 5.57, EGLN3 4.41, VEGFA 2.92 (all padj < 1e-32). Protein: CA9 2.27, NDUFA4L2 3.77, ANGPTL4 1.73 (padj < 1e-35). EGLN3 is not in the CPTAC proteome; VEGFA protein has 14 tumor / 4 normal values (not testable). 3p is the top arm loss (median loss frequency 0.80). ID mapping: 18,304 approved, 980 via previous/alias symbol, 684 unmapped. `tests/test_omics.py` green |
 | M3 Literature | ✅ passed | PubTator3: 319 publications (top 100 disease hits + 5 per top-50 omics gene, searched with the literature-era symbol, e.g. NDUFA4L2 for HGNC COXFA4L2), 7,270 normalized annotations, 3,487 sentence chunks with a BM25 index (`ccrcc.search`). 100 abstracts in 4 batches processed by 4 `extractor-relaciones` subagents (Sonnet 5.5): 198 relations, 198 kept / 0 rejected by the verbatim validator (82 PMIDs). Validator negative tests (paraphrase, out-of-schema relation, foreign PMID, bad confidence, invalid JSON) pass. `tests/test_literature.py` green |
-| M4 Knowledge graph | ⏳ | |
-| M5 MCP servers | ⏳ | |
+| M4 Knowledge graph | ✅ passed | `data/graph/kg.sqlite` via `GraphStore` (SQLite + NetworkX view). Nodes: 18,964 Gene, 300 Protein, 634 Pathway (Reactome), 365 Drug (ChEMBL), 1 Disease (MONDO:0005005), 4 Dataset, 318 Publication, 3,487 Chunk, 81 Concept. 91,304 claims, each through an Evidence record (omics_de 35,721; omics_cnv 1,510; RNA–protein 7,130; literature_relation 198; Open Targets association 1,990 / drug 401 / tractability 300; STRING 2,367; Reactome 953; UniProt 300; PubTator 976; provenance 3,487). **claims_without_resolvable_evidence = 0**; schema enforces `evidence_id NOT NULL` + FK. `tests/test_graph.py` green |
+| M5 MCP servers | ✅ passed | FastMCP (mcp 1.30, pinned <2 because 2.x renamed FastMCP) stdio servers registered in `.mcp.json`: omics-mcp (get_de_results, top_genes, rna_protein_correlation, cnv_frequency), kg-mcp (neighbors, evidence_for, search_literature, check_evidence_ids, get_evidence, convergence_ranking), external-mcp (open_targets_association, open_targets_target, string_interactions, uniprot_entry, disease_top_targets). External responses cached in `data/cache/`. One test per tool + stdio `list_tools` smoke test per server: `tests/test_mcp.py` green (28/28 total) |
 | M6 Agents | ⏳ | |
 | M7 HTML report | ⏳ | |
 | M8 Evaluation | ⏳ | |
 | M9 Reproducibility | ⏳ | |
+| M10 GitHub publication | ⏳ | |
 
 ## Blockers / notes
 - The original session folder path exceeded the Windows 260-character limit inside `.venv` (networkx import failures). The project was moved to `C:\Users\rafae\Documents\ccrcc-graphrag`. Enabling long paths is a system setting and was not touched.

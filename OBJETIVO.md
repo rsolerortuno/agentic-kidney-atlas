@@ -54,5 +54,8 @@ Construir y dejar funcionando, de principio a fin, un sistema GraphRAG multiómi
 **M9 Reproducibilidad:** `uv run ccrcc run-all` ejecuta M1→M5 y el render; README con arquitectura, uso, consumo aproximado de cuota, cómo pasar a Neo4j y cómo añadir sc/espacial (Li 2022 Mendeley g67bkbnhhg, GSE175540, GSE156632).
 - ✔ Una ejecución limpia regenera el informe sin errores.
 
+**M10 Publicación en GitHub:** subir el repositorio a GitHub (privado por defecto) con `gh`. El README lo presenta como un análisis / caso de estudio de cómo construir un sistema agéntico multiómico para identificar dianas y su relevancia (no como herramienta reutilizable): pregunta, diseño, decisiones, resultados, evaluación y limitaciones. No se suben datos crudos de CPTAC ni abstracts de PubMed (se regeneran con los scripts); sí código, configuración, agentes, relaciones extraídas validadas, informe HTML y evaluación.
+- ✔ `gh repo view` muestra el repositorio con el último commit; ningún archivo con abstracts o matrices crudas en el historial.
+
 ## Definición de terminado
-M0–M9 superados, `uv run pytest` en verde, reports/ccrcc_report.html generado con datos reales y evaluado en evals/results.md. Si se agota la cuota de Pro a mitad, guardar el estado en PROGRESS.md, anotar en qué milestone se quedó y continuar desde ahí en la siguiente ventana de uso.
+M0–M10 superados, `uv run pytest` en verde, reports/ccrcc_report.html generado con datos reales y evaluado en evals/results.md. Si se agota la cuota de Pro a mitad, guardar el estado en PROGRESS.md, anotar en qué milestone se quedó y continuar desde ahí en la siguiente ventana de uso.
