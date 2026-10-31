@@ -1,0 +1,36 @@
+# Deterministic thresholds and weights. Changing these changes results; every run records this file.
+question: "What are the candidate therapeutic targets and biomarkers in ccRCC with the strongest convergent evidence?"
+disease:
+  name: clear cell renal cell carcinoma
+  mondo: "MONDO:0005005"
+  open_targets_id: "MONDO_0005005"   # Open Targets disease id ("clear cell renal carcinoma")
+  open_targets_top: 2000             # associated targets pulled for convergence scoring
+
+omics:
+  padj: 0.05
+  min_abs_log2fc:
+    rna: 1.0
+    protein: 0.5
+    phospho: 0.5
+
+literature:
+  disease_query: "clear cell renal cell carcinoma"
+  disease_pmids: 100          # top PubTator3 hits for the disease query (annotations only)
+  top_genes: 50               # omics candidates searched individually
+  pmids_per_gene: 5
+  max_extraction_abstracts: 100
+  extraction_batch_size: 25
+
+convergence:
+  # score = sum(weight * component); every component is in [0, 1]
+  weights:
+    rna: 1.0           # significant & above fold-change threshold in RNA
+    protein: 1.5       # significant & above threshold in protein (closer to function)
+    phospho: 0.5       # significant phospho change (gene level)
+    concordance: 0.5   # RNA and protein agree in direction
+    cnv: 0.5           # gene's loss or gain frequency in tumors (frequency itself)
+    literature: 1.0    # min(1, supporting validated relations / 3)
+    open_targets: 1.0  # Open Targets association score with the disease
+    tractability: 0.5  # 1 if Open Targets reports a known drug or tractable modality
+  top_n_report: 25
+  top_n_eval: 100
