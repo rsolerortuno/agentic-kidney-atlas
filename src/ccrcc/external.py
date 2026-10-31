@@ -31,16 +31,17 @@ def _cached(source: str, key: str, fetch):
 
 
 def _request(method: str, url: str, **kw) -> requests.Response:
-    for attempt in range(5):
+    attempts = 8   # public APIs (UniProt, Open Targets) return transient 5xx; back off up to ~1 min
+    for attempt in range(attempts):
         try:
             r = requests.request(method, url, timeout=60, **kw)
         except (requests.ConnectionError, requests.Timeout):
-            if attempt == 4:
+            if attempt == attempts - 1:
                 raise
-            time.sleep(2 ** attempt)
+            time.sleep(min(2 ** attempt, 60))
             continue
-        if r.status_code == 429 or r.status_code >= 500:
-            time.sleep(2 ** attempt)
+        if (r.status_code == 429 or r.status_code >= 500) and attempt < attempts - 1:
+            time.sleep(min(2 ** attempt, 60))
             continue
         r.raise_for_status()
         return r

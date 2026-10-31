@@ -32,9 +32,17 @@ def download_hpa(force: bool = False) -> None:
     import requests
     if HPA.exists() and not force:
         return
+    import time
     HPA.parent.mkdir(parents=True, exist_ok=True)
-    r = requests.get(HPA_URL, timeout=300)
-    r.raise_for_status()
+    for attempt in range(6):   # proteinatlas.org occasionally resets the connection
+        try:
+            r = requests.get(HPA_URL, timeout=300)
+            r.raise_for_status()
+            break
+        except (requests.ConnectionError, requests.Timeout, requests.HTTPError):
+            if attempt == 5:
+                raise
+            time.sleep(min(2 ** attempt, 30))
     zipfile.ZipFile(io.BytesIO(r.content)).extract("rna_tissue_consensus.tsv", HPA.parent)
 
 

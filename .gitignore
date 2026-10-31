@@ -16,3 +16,4 @@ data/literature/extraction_batches/
 # development leftovers
 runs/dev_v1_agents/
 runs/*/qa_questions.json
+runs/replicates/*/report.html

@@ -100,6 +100,7 @@ footer{color:var(--muted);font-size:.8rem;padding:10px 0 50px;border-top:1px sol
     <button class="tab" role="tab" data-tab="cells">Cells &amp; space</button>
     <button class="tab" role="tab" data-tab="structure">Structure &amp; MGD</button>
     <button class="tab" role="tab" data-tab="discovery">Discovery<span class="n">{{ kpis.fic }}</span></button>
+    <button class="tab" role="tab" data-tab="validation">Validation &amp; robustness</button>
     <button class="tab" role="tab" data-tab="literature">Literature &amp; drugs</button>
     <button class="tab" role="tab" data-tab="network">Network</button>
     <button class="tab" role="tab" data-tab="methods">Methods &amp; evidence</button>
@@ -143,8 +144,9 @@ footer{color:var(--muted);font-size:.8rem;padding:10px 0 50px;border-top:1px sol
 
 <section class="panel" id="tab-candidates" data-name="candidates">
 <h2>Deterministic convergence ranking</h2>
-<p class="lede">Score = Σ stream weight × component (each in [0, 1]) over omics (RNA, protein, phospho, concordance combined), copy number,
-literature, genetics and tractability. Weights ({% for k, v in f.convergence.config.stream_weights.items() %}{{ k }} {{ v }}{% if not loop.last %}, {% endif %}{% endfor %}) are in
+<p class="lede">Convergence v{{ f.convergence.config.version or 2 }}. Score = Σ stream weight × component (each in [0, 1]) over omics (continuous: RNA, protein,
+phospho and concordance, each min(1, |log2FC| / cap) when significant), copy number × its cis effect on the gene product, literature, genetics
+(germline association or measured somatic recurrence), tractability (all genes), selective DepMap dependency and TCGA-KIRC replication. Weights ({% for k, v in f.convergence.config.stream_weights.items() %}{{ k }} {{ v }}{% if not loop.last %}, {% endif %}{% endfor %}) are in
 <code>config.yaml</code>. Universe: {{ "{:,}".format(f.convergence.universe_size) }} genes.</p>
 <div class="grid two">
   <div class="plot">{{ figs.stream_stack | safe }}</div>
@@ -152,15 +154,17 @@ literature, genetics and tractability. Weights ({% for k, v in f.convergence.con
 </div>
 <h3>Top 25</h3>
 <div class="tw"><table>
-<thead><tr><th>#</th><th>Gene</th><th>Score</th><th>Omics</th><th>CNV</th><th>Lit.</th><th>Genetics</th><th>Tract.</th>
+<thead><tr><th>#</th><th>Gene</th><th>Score</th><th>Omics</th><th>CNV</th><th>Lit.</th><th>Genetics</th><th>Tract.</th><th>Dep.</th><th>Repl.</th><th>Rank 90 % interval</th>
 <th>RNA log2FC</th><th>Protein log2FC</th><th>Drugs (max stage)</th><th>Evidence</th></tr></thead>
 <tbody>
-{% for r in top25 %}{% set ids = r.evidence_ids.omics + r.evidence_ids.cnv + r.evidence_ids.literature + r.evidence_ids.genetics + r.evidence_ids.tractability %}
+{% for r in top25 %}{% set ids = r.evidence_ids.omics + r.evidence_ids.cnv + r.evidence_ids.literature + r.evidence_ids.genetics + r.evidence_ids.tractability + (r.evidence_ids.dependency or []) + (r.evidence_ids.replication or []) %}
 <tr class="claim" data-evidence="{{ ids | evattr }}">
 <td>{{ r.rank }}</td><td><strong>{{ r.gene }}</strong></td>
 <td class="num"><span class="score" style="width:{{ (r.score * 10) | round(0) | int }}px"></span>{{ r.score }}</td>
 <td class="num">{{ r.components.omics }}</td><td class="num">{{ r.components.cnv }}</td><td class="num">{{ r.components.literature }}</td>
 <td class="num">{{ r.components.genetics }}</td><td class="num">{{ r.components.tractability }}</td>
+<td class="num">{{ r.components.dependency | fmt }}</td><td class="num">{{ r.components.replication | fmt }}</td>
+<td class="num">{% if r.rank_interval_90 %}{{ r.rank_interval_90.rank_p05 }}–{{ r.rank_interval_90.rank_p95 }}{% else %}—{% endif %}</td>
 <td class="num">{{ r.rna_log2fc | fmt }}</td><td class="num">{{ r.protein_log2fc | fmt }}</td>
 <td>{% for d in r.drugs[:3] %}{{ d.name | title }} ({{ d.max_stage | replace("_"," ") | lower }}){% if not loop.last %}; {% endif %}{% endfor %}</td>
 <td>{{ ids[:6] | cite | safe }}</td></tr>
@@ -345,6 +349,94 @@ over-count. “No clinical drug” and tractability come from Open Targets (pred
 Cell-type attribution comes from a different cohort than CPTAC (12 donors, dissociation bias). Concordant tumor-up expression does not imply dependency: nothing here tests that the gene is required for tumor growth.</div>
 </section>
 
+<section class="panel" id="tab-validation" data-name="validation">
+<h2>Independent validation layers and robustness (M13)</h2>
+<p class="lede">Layers added after the first evaluation, each a different kind of evidence than tumour-vs-normal expression:
+somatic recurrence in {{ layers.mutations.genes | default("—") }} genes tested across CPTAC + TCGA-KIRC (length-corrected), DepMap 26Q1 dependency in
+{{ (layers.dependency.ccrcc_lines | default([])) | length }} clear cell RCC lines vs {{ layers.dependency.other_lines | default("—") }} others, TCGA-KIRC replication
+({{ layers.tcga.pairs | default("—") }} tumour–normal pairs) and overall survival ({{ layers.tcga.survival_patients | default("—") }} patients),
+{{ "{:,}".format(layers.phosphosites.sites) if layers.phosphosites else "—" }} phosphosites with protein-adjusted kinase activity, and ESTIMATE tumour purity.</p>
+{% for p in f.narrative.sections.validation or [] %}
+<p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
+{% endfor %}
+<div class="grid two">
+  {% if figs.tcga %}<div class="plot">{{ figs.tcga | safe }}</div>{% endif %}
+  {% if figs.purity %}<div class="plot">{{ figs.purity | safe }}</div>{% endif %}
+  {% if figs.mutations %}<div class="plot">{{ figs.mutations | safe }}</div>{% endif %}
+  {% if figs.dependency %}<div class="plot">{{ figs.dependency | safe }}</div>{% endif %}
+  {% if figs.kinases %}<div class="plot">{{ figs.kinases | safe }}</div>{% endif %}
+</div>
+
+<h2>Two questions, two scores</h2>
+<p class="small">The overall convergence score mixes target and biomarker evidence. The <strong>target</strong> profile weights
+({% for k, v in profile_weights.target.items() %}{{ k | replace("_", " ") }} {{ v }}{% if not loop.last %}, {% endif %}{% endfor %}) and the
+<strong>biomarker</strong> profile ({% for k, v in profile_weights.biomarker.items() %}{{ k | replace("_", " ") }} {{ v }}{% if not loop.last %}, {% endif %}{% endfor %})
+use measurements only, without literature or drug history, so they can be evaluated against clinical outcomes (below).</p>
+{% for name in ["target", "biomarker"] %}{% if profiles[name] %}
+<h3>{{ name | capitalize }} profile — top 25</h3>
+<div class="tw"><table>
+<thead><tr><th>#</th><th>Gene</th><th>Score</th>{% for k in profile_weights[name] %}<th>{{ k | replace("_", " ") }}</th>{% endfor %}<th>Rank 90 % interval</th><th>P(top 10)</th><th>Evidence</th></tr></thead>
+<tbody>{% for r in profiles[name] %}{% set allids = [] %}{% for v in r.evidence_ids.values() %}{% for i in v %}{% set _ = allids.append(i) %}{% endfor %}{% endfor %}
+<tr class="claim" data-evidence="{{ allids | evattr }}"><td>{{ r.rank }}</td><td><strong>{{ r.gene }}</strong></td><td class="num">{{ r.score }}</td>
+{% for k in profile_weights[name] %}<td class="num">{{ r.components[k] | fmt }}</td>{% endfor %}
+<td class="num">{% if r.rank_interval_90 %}{{ r.rank_interval_90.rank_p05 }}–{{ r.rank_interval_90.rank_p95 }}{% else %}—{% endif %}</td>
+<td class="num">{% if r.rank_interval_90 %}{{ r.rank_interval_90.p_top10 }}{% else %}—{% endif %}</td>
+<td>{{ allids[:6] | cite | safe }}</td></tr>
+{% endfor %}</tbody></table></div>
+{% endif %}{% endfor %}
+
+<h2>Robustness to the weights</h2>
+{% for p in f.narrative.sections.robustness or [] %}
+<p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
+{% endfor %}
+<p class="small">Each ranking is recomputed under 1,000 random weightings drawn around the configured weights (Dirichlet, κ = 20). Points are median ranks,
+bars the 5th–95th percentile; a narrow bar near the top means the position does not depend on the chosen weights.</p>
+<div class="grid two">
+  {% if figs.rank_target %}<div class="plot">{{ figs.rank_target | safe }}</div>{% endif %}
+  {% if figs.rank_biomarker %}<div class="plot">{{ figs.rank_biomarker | safe }}</div>{% endif %}
+</div>
+{% if figs.rank_conv %}<div class="plot">{{ figs.rank_conv | safe }}</div>{% endif %}
+
+{% if evals.outcomes %}
+<h2>Evaluation against outcomes the scores do not see</h2>
+<p class="small">Gold sets: {{ evals.outcomes.gold_sets.rcc_clinical_targets | length }} RCC clinical targets (phase ≥ 2, ≥ 2 trials or approval, drugs with ≤ 5 targets),
+the {{ evals.outcomes.gold_sets.temporal_holdout_targets | length }} of them whose first RCC trial started on or after {{ evals.outcomes.gold_sets.cutoff }}
+({{ evals.outcomes.gold_sets.temporal_holdout_targets | join(", ") }}), and the {{ evals.outcomes.gold_sets.clearcode34 | length }} mapped genes of the ClearCode34 prognostic classifier (Brooks et al. 2014; validated in TCGA,
+so the biomarker profile's prognosis component makes that comparison partly optimistic: see the row without it). The convergence score includes literature and drug history, so its clinical-target AUROC is partly circular.</p>
+{% if figs.outcomes %}<div class="plot">{{ figs.outcomes | safe }}</div>{% endif %}
+<div class="tw"><table><thead><tr><th>Gold set</th><th>Score</th><th>n</th><th>AUROC (95 % CI)</th><th>Recall@100</th><th>Recall@500</th><th>Median rank</th></tr></thead><tbody>
+{% for key, label in [("clinical_targets", "RCC clinical targets"), ("temporal_holdout", "Temporal holdout"), ("clearcode34", "ClearCode34 (prognostic)")] %}
+{% for sname, m in evals.outcomes[key].items() %}<tr><td>{{ label }}</td><td>{{ sname }}</td><td class="num">{{ m.n_gold }}</td>
+<td class="num">{{ m.auroc }} ({{ m.auroc_ci95[0] }}–{{ m.auroc_ci95[1] }})</td><td class="num">{{ (m.recall_at_100 * 100) | round(0) | int }} %</td>
+<td class="num">{{ (m.recall_at_500 * 100) | round(0) | int }} %</td><td class="num">{{ "{:,}".format(m.median_rank) }}</td></tr>{% endfor %}
+{% endfor %}</tbody></table></div>
+{% endif %}
+{% if evals.recall %}<p class="small">Recall of the 23 known ccRCC genes in the convergence top 100: <strong>{{ (evals.recall.recall * 100) | round(0) | int }} %</strong>
+(v2: 22 %); median rank {{ evals.recall.median_rank | int }} of {{ "{:,}".format(evals.recall.universe) }}.</p>{% endif %}
+
+{% if evals.baselines %}{% set cb = evals.baselines.closed_book %}{% set pl = evals.baselines.pipeline %}
+<h2>What does the agentic layer add?</h2>
+<div class="tw"><table><thead><tr><th></th><th>Closed-book LLM (no tools)</th><th>GraphRAG pipeline</th></tr></thead><tbody>
+<tr><td>Runs</td><td class="num">{{ cb.runs }}</td><td class="num">{{ pl.runs | length }}</td></tr>
+<tr><td>Mean pairwise Jaccard of candidate lists</td><td class="num">{{ cb.mean_pairwise_jaccard }}</td><td class="num">{{ pl.mean_pairwise_jaccard | fmt }}</td></tr>
+<tr><td>Candidates that are RCC clinical targets</td><td>{% for x in cb.support %}{{ (x.in_rcc_clinical_targets * 100) | round(0) | int }} %{% if not loop.last %}, {% endif %}{% endfor %}</td>
+<td>{% for x in pl.support %}{{ (x.in_rcc_clinical_targets * 100) | round(0) | int }} %{% if not loop.last %}, {% endif %}{% endfor %}</td></tr>
+<tr><td>Candidates in the data-only target / biomarker top 500</td><td>{% for x in cb.support %}{{ (x.in_target_or_biomarker_profile_top500 * 100) | round(0) | int }} %{% if not loop.last %}, {% endif %}{% endfor %}</td>
+<td>{% for x in pl.support %}{{ (x.in_target_or_biomarker_profile_top500 * 100) | round(0) | int }} %{% if not loop.last %}, {% endif %}{% endfor %}</td></tr>
+<tr><td>Statements citing checkable evidence</td><td>0</td><td>{{ pl.statements_checked | fmt }} checked, {{ pl.unsupported | fmt }} unsupported</td></tr>
+</tbody></table></div>
+<p class="small">Closed-book candidates: {% for c in cb.candidates %}{{ c | join(", ") }}{% if not loop.last %}; {% endif %}{% endfor %}.
+Pipeline targets: {% for c in pl.targets %}{{ c | join(", ") }}{% if not loop.last %}; {% endif %}{% endfor %}.</p>
+{% if evals.baselines.agents_vs_ranking %}
+<h3>Orchestrator decisions vs the numeric convergence rank (promoted = in the final list but outside the convergence top 10)</h3>
+<div class="tw"><table><thead><tr><th>Gene</th><th>Decision</th><th>Agent position</th><th>Convergence rank</th><th>RNA log2FC</th><th>At purity 1</th><th>Dependency</th><th>Replication</th><th>Target score</th><th>Biomarker score</th></tr></thead><tbody>
+{% for r in evals.baselines.agents_vs_ranking %}<tr><td><strong>{{ r.gene }}</strong></td><td>{{ r.decision }}</td><td class="num">{{ r.agent_position | fmt }}</td><td class="num">{{ r.convergence_rank | fmt }}</td>
+<td class="num">{{ r.rna_log2fc | fmt }}</td><td class="num">{{ r.rna_lfc_at_purity1 | fmt }}</td><td class="num">{{ r.c_dependency | fmt }}</td><td class="num">{{ r.c_replication | fmt }}</td>
+<td class="num">{{ r.target_profile_score | fmt }}</td><td class="num">{{ r.biomarker_profile_score | fmt }}</td></tr>{% endfor %}
+</tbody></table></div>{% endif %}
+{% endif %}
+</section>
+
 <section class="panel" id="tab-literature" data-name="literature">
 <h2>Literature evidence (PubTator3 + verbatim-validated relations)</h2>
 {% for p in f.narrative.sections.literature or [] %}
@@ -377,7 +469,7 @@ Cell-type attribution comes from a different cohort than CPTAC (12 donors, disso
 <h2>Provenance</h2>
 <div class="tw"><table><thead><tr><th>File</th><th>Dimensions</th><th>Downloaded (UTC)</th><th>sha256</th></tr></thead>
 <tbody>{% for d in f.datasets %}<tr><td><a href="{{ d.url }}">{{ d.file }}</a></td><td>{{ d.rows }} × {{ d.columns }}</td><td>{{ d.downloaded_utc }}</td><td><code>{{ d.sha256[:16] }}…</code></td></tr>{% endfor %}</tbody></table></div>
-<p class="small">Also used (not stored): Europe PMC counts, Open Targets, STRING, UniProt, Reactome, AlphaFold DB, PDBe-KB, Human Protein Atlas consensus RNA.
+<p class="small">Also used (not stored): Europe PMC counts, Open Targets (API and 26.09 bulk tractability / clinical precedence), STRING, UniProt, Reactome, AlphaFold DB, PDBe-KB, Human Protein Atlas consensus RNA. M13 layers (sha256 in <code>data/raw/extra/manifest.json</code>): somatic mutations from cBioPortal (CPTAC renal, TCGA-KIRC PanCancer Atlas), DepMap Public 26Q1 Chronos + Cellosaurus, TCGA-KIRC RNA-seq and survival (UCSC Xena), CPTAC phosphosites and ESTIMATE purity (cptac Zenodo record 8394329), OmniPath kinase–substrate relations, GENCODE v22.
 Models: orchestrator — {{ f.models.orchestrator }}; agents — {{ f.models.agents }}; relation extraction — {{ f.models.relation_extraction }}.
 All statistics are computed by deterministic Python code; the LLMs only chose what to query and wrote the interpretive text.
 {% if verification %}Final verification: {{ verification.statements }} statements checked, {{ verification.unsupported }} unsupported.{% endif %}
@@ -386,11 +478,12 @@ All statistics are computed by deterministic Python code; the LLMs only chose wh
 <ul>{% for l in f.narrative.limitations %}<li>{{ l.text }}</li>{% endfor %}</ul>
 <h2>What would improve this</h2>
 <ul class="roadmap">
-<li><strong>Mutation layer.</strong> Known ccRCC drivers (VHL, PBRM1, SETD2, BAP1) act by mutation and barely move in bulk expression, so recall of known genes stays at 22 %. Add somatic mutations (TCGA-KIRC / CPTAC) as their own stream and score “driver” and “expression target” separately.</li>
-<li><strong>External validation and outcome.</strong> One discovery cohort and no survival (the CPTAC clinical file has grade and stage only). Validate top candidates in an independent cohort with survival, and add a second scRNA/spatial study.</li>
-<li><strong>Dependency evidence.</strong> Concordant tumor-up expression does not mean the tumor needs the gene. Add CRISPR dependency (DepMap kidney lines) and perturbation data to the discovery score.</li>
+<li><strong>Done in M13.</strong> Somatic mutation layer, DepMap dependency, TCGA-KIRC replication and survival, site-level phosphorylation with kinase activity,
+tumour purity, separate target / biomarker scores, weight-sensitivity intervals, numeric and direction checks of every narrative sentence, and
+evaluation against clinical targets with a temporal holdout. See the Validation &amp; robustness tab.</li>
+<li><strong>Second proteogenomic cohort.</strong> TCGA replicates RNA only; the CPTAC confirmatory ccRCC cohort would replicate protein and phosphosite changes.</li>
 <li><strong>MGD scoring.</strong> The score is a heuristic and its known-substrate controls rank unevenly (see the Structure tab). Next steps: degron-motif search (C2H2 zinc-finger G-loops, β-hairpins), ternary-complex modelling with CRBN/DCAF15/DCAF16, and better models for disordered or low-pLDDT regions.</li>
-<li><strong>Narrative checking.</strong> The verifier checks that evidence ids exist and belong to the gene, not that the sentence is true. Add deterministic numeric-claim checks (numbers in the text must match the cited evidence).</li>
+<li><strong>Subtype-aware scores.</strong> Stratify by VHL / PBRM1 / BAP1 / SETD2 status (now available from the mutation layer) to find subgroup-specific targets.</li>
 <li><strong>Literature and drug gaps.</strong> Europe PMC counts depend on gene symbols; add alias disambiguation, patents, ChEMBL preclinical compounds and trial registries so “undrugged” is not only “no clinical-stage drug in Open Targets”.</li>
 <li><strong>Spatial resolution.</strong> Visium spots mix cells and the 23 sections come from few donors. Higher-resolution data (Slide-seq, Xenium) and probabilistic deconvolution would sharpen neighbourhood claims.</li>
 </ul>
@@ -405,7 +498,7 @@ All statistics are computed by deterministic Python code; the LLMs only chose wh
 </section>
 
 </main>
-<div class="wrap"><footer>ccRCC multi-omics GraphRAG case study. Data: CPTAC ccRCC (LinkedOmics), Li et al. 2022 via CELLxGENE, PubTator3, Europe PMC, Open Targets, STRING, UniProt, Reactome, AlphaFold DB, PDBe-KB, Human Protein Atlas. Not medical advice.</footer></div>
+<div class="wrap"><footer>ccRCC multi-omics GraphRAG case study. Data: CPTAC ccRCC (LinkedOmics; phosphosites, purity and mutations via cptac / cBioPortal), TCGA-KIRC (UCSC Xena, cBioPortal), DepMap 26Q1, Li et al. 2022 via CELLxGENE, PubTator3, Europe PMC, Open Targets, STRING, UniProt, Reactome, AlphaFold DB, PDBe-KB, Human Protein Atlas. Not medical advice.</footer></div>
 
 <script>
 (function(){

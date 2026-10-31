@@ -59,3 +59,7 @@ Construir y dejar funcionando, de principio a fin, un sistema GraphRAG multiómi
 
 ## Definición de terminado
 M0–M10 superados, `uv run pytest` en verde, reports/ccrcc_report.html generado con datos reales y evaluado en evals/results.md. Si se agota la cuota de Pro a mitad, guardar el estado en PROGRESS.md, anotar en qué milestone se quedó y continuar desde ahí en la siguiente ventana de uso.
+
+## Ampliación M13 (pedida tras revisar v2)
+Capas independientes (mutaciones somáticas CPTAC + TCGA con corrección por longitud, efecto cis del número de copias, dependencia DepMap 26Q1, replicación y supervivencia en TCGA-KIRC, fosfositios con actividad de quinasas ajustada por proteína, pureza tumoral), convergencia v3 continua, perfiles separados de diana y biomarcador sin literatura ni historia de fármacos, sensibilidad a los pesos (1.000 reponderaciones), verificación de números y dirección de cada afirmación frente a la evidencia citada, evaluación frente a dianas clínicas de RCC con holdout temporal (primer ensayo ≥ 2016) y ClearCode34, y baselines agénticos (LLM sin herramientas, réplicas de `/informe`).
+- ✔ `run-all` reproduce M1–M12 y añade M13; 0 afirmaciones sin evidencia resoluble en el grafo; `verify.py final` 0 afirmaciones sin soporte (incluida la comprobación semántica); informe válido; `evals/results.md` con (a)–(e) y `evals/history.md` con las decisiones y correcciones.

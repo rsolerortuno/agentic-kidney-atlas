@@ -107,14 +107,28 @@ def grade_answers(path: Path, model: str) -> dict:
     return {"model": model, "correct": sum(r["correct"] for r in results), "total": len(results), "results": results}
 
 
-def write_results(rec: dict, qa: dict | None) -> Path:
+def _fmt_metrics(block: dict) -> list[str]:
+    lines = ["| Score | Gold genes | AUROC (95 % CI) | Recall@100 | Recall@500 | Median rank | Enrichment@100 | Gold genes in top 100 |",
+             "|---|---|---|---|---|---|---|---|"]
+    for label, m in block.items():
+        if not m["n_gold"]:
+            lines.append(f"| {label} | 0 | — | — | — | — | — | — |")
+            continue
+        ci = f"{m['auroc']:.3f} ({m['auroc_ci95'][0]:.2f}–{m['auroc_ci95'][1]:.2f})"
+        lines.append(f"| {label} | {m['n_gold']} | {ci} | {m['recall_at_100']:.0%} | {m['recall_at_500']:.0%} | "
+                     f"{m['median_rank']:,} | {m['fold_enrichment_at_100']}× | {', '.join(m['top_hits']) or '—'} |")
+    return lines
+
+
+def write_results(rec: dict, qa: dict | None, outcomes: dict | None = None, baselines: dict | None = None,
+                  sensitivity: dict | None = None) -> Path:
     lines = ["# Evaluation results", "",
+             "Convergence **v3** (M13). Earlier versions and why each change was made: [history.md](history.md).", "",
              f"## (a) Recall of known ccRCC genes in the top {rec['top_n']} convergence genes", "",
              f"- Known genes: {rec['known']} (curated 10 + Open Targets top 20, deduplicated)",
-             f"- **Recall: {rec['recall']:.0%}**",
-             f"- Recall with the Open Targets genetics stream removed (circularity check): "
-             f"{rec['recall_without_open_targets_stream']:.0%}",
-             f"- Supplementary: recall@50/100/200/500/1000 = "
+             f"- **Recall: {rec['recall']:.0%}** (v2: 22 %; target 60 %)",
+             f"- Recall with the genetics stream removed: {rec['recall_without_open_targets_stream']:.0%}",
+             f"- recall@50/100/200/500/1000 = "
              + " / ".join(f"{v:.0%}" for v in rec["recall_at"].values())
              + f"; median rank {rec['median_rank']:.0f} of {rec['universe']:,} genes; "
              f"random expectation {rec['random_expected_recall']:.2%} → {rec['fold_enrichment']:.0f}× enrichment",
@@ -122,7 +136,51 @@ def write_results(rec: dict, qa: dict | None) -> Path:
     for r in rec["genes"]:
         lines.append(f"| {r['gene']} | {r['source']} | {r['rank']} | {'✅' if r['in_top'] else '❌'} | "
                      f"{'✅' if r['in_top_without_ot'] else '❌'} |")
-    lines += ["", "## (b) Known-answer questions (`claude -p` + project MCP servers)", ""]
+    if outcomes:
+        g = outcomes["gold_sets"]
+        lines += ["", "## (b) Outcomes the scores do not see (M13)", "",
+                  "The target and biomarker profiles use measurements only (no literature, no drug history), so they can "
+                  "be scored against clinical outcomes. The overall convergence score includes literature and drug "
+                  "history and is shown only to make that circularity visible. Gold-set construction: "
+                  "`src/ccrcc/outcomes.py`.", "",
+                  f"### RCC clinical targets ({len(g['rcc_clinical_targets'])} genes: phase ≥ 2 in renal cell carcinoma, "
+                  "≥ 2 trials or approval, drugs with ≤ 5 targets)", ""] + _fmt_metrics(outcomes["clinical_targets"])
+        lines += ["", f"Predicted tractability (strong SM / AB buckets) flags {outcomes.get('n_predicted_tractable', '—'):,} genes. "
+                  "It alone gives most of the AUROC — clinical targets are, almost by definition, druggable proteins — so "
+                  "the data layers should be judged by early enrichment: the share of gold genes in the top 100, which within "
+                  "the tractable set would be ~"
+                  f"{100 / max(outcomes.get('n_predicted_tractable', 1), 1):.1%} per tractable gold gene by chance, and by the "
+                  "\"without tractability\" row."]
+        lines += ["", f"### Temporal holdout: first RCC trial on or after {g['cutoff']} "
+                  f"({len(g['temporal_holdout_targets'])} genes: {', '.join(g['temporal_holdout_targets'])})", "",
+                  "Earlier clinical targets are removed from the background.", ""] + _fmt_metrics(outcomes["temporal_holdout"])
+        lines += ["", f"### Prognostic biomarkers: ClearCode34 ({len(g['clearcode34'])} of 34 genes mapped; Brooks et al. 2014)", "",
+                  "ClearCode34 was validated in TCGA, which the biomarker profile's prognosis component also uses; the last row "
+                  "removes that component. A literature-based gold set (verbatim `biomarker_of` relations from the disease-level "
+                  f"query) was empty ({len(g['literature_biomarkers_disease_query'])} genes): all such relations came from "
+                  "gene-specific queries chosen from the omics ranking, so they were not used.", ""] + _fmt_metrics(outcomes["clearcode34"])
+    if sensitivity:
+        lines += ["", "## (c) Robustness to the weights", "",
+                  "1,000 random re-weightings (Dirichlet, κ = 20, around the configured weights). Genes in the top 10 in "
+                  "≥ 80 % of draws:", ""]
+        for name, v in sensitivity.items():
+            lines.append(f"- **{name}**: {', '.join(v['robust_top10']) or 'none'}")
+    if baselines:
+        cb, pl = baselines["closed_book"], baselines["pipeline"]
+        lines += ["", "## (d) What the agentic layer adds", "",
+                  "| | Closed-book LLM (Sonnet 5.5, no tools) | GraphRAG pipeline |", "|---|---|---|",
+                  f"| Runs | {cb['runs']} | {len(pl['runs'])} |",
+                  f"| Mean pairwise Jaccard of candidate lists | {cb['mean_pairwise_jaccard']} | {pl['mean_pairwise_jaccard']} |",
+                  f"| Candidates that are RCC clinical targets | {', '.join(f'{x['in_rcc_clinical_targets']:.0%}' for x in cb['support'])} | "
+                  f"{', '.join(f'{x['in_rcc_clinical_targets']:.0%}' for x in pl['support'])} |",
+                  f"| Candidates in the data-only target or biomarker top 500 | "
+                  f"{', '.join(f'{x['in_target_or_biomarker_profile_top500']:.0%}' for x in cb['support'])} | "
+                  f"{', '.join(f'{x['in_target_or_biomarker_profile_top500']:.0%}' for x in pl['support'])} |",
+                  f"| Statements citing checkable evidence | 0 | {pl.get('statements_checked', '—')} checked, "
+                  f"{pl.get('unsupported', '—')} unsupported |", "",
+                  f"Closed-book candidates: {'; '.join(', '.join(c) for c in cb['candidates'])}.", "",
+                  f"Pipeline final targets: {'; '.join(', '.join(c) for c in pl['targets'])}."]
+    lines += ["", "## (e) Known-answer questions (`claude -p` + project MCP servers)", ""]
     if qa:
         lines += [f"- Model: {qa['model']}", f"- **Correct: {qa['correct']}/{qa['total']}**", "",
                   "| ID | Question | Expected | Correct | Answer / error |", "|---|---|---|---|---|"]
@@ -131,13 +189,10 @@ def write_results(rec: dict, qa: dict | None) -> Path:
             ans = ans.replace("|", "\\|").replace("\n", " ")[:220]
             lines.append(f"| {r['id']} | {r['question']} | {r['expected']} | {'✅' if r['correct'] else '❌'} | {ans} |")
     else:
-        lines.append("Not run.")
-    lines += ["", "## Analysis", "",
-              "Recall@100 is below the 60 % target. The cause is structural, not a bug: see "
-              "[history.md](history.md) for the evaluated versions, the single methodological change, and why "
-              "mutational drivers with unchanged bulk expression (VHL, PBRM1, SETD2, BAP1, KDM5C…) cannot reach "
-              "the top 100 of an expression-convergence ranking without a somatic-mutation layer."]
+        lines.append("Not run in this evaluation.")
     out = EVALS / "results.md"
     out.write_text("\n".join(lines) + "\n", encoding="utf-8")
-    (EVALS / "results.json").write_text(json.dumps({"recall": rec, "qa": qa}, indent=1), encoding="utf-8")
+    (EVALS / "results.json").write_text(json.dumps({"recall": rec, "qa": qa, "outcomes": outcomes,
+                                                    "sensitivity": sensitivity, "baselines": baselines},
+                                                   indent=1, default=str), encoding="utf-8")
     return out

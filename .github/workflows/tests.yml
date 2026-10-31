@@ -1,0 +1,17 @@
+name: tests
+# Unit tests that need no downloaded data (statistics, verifier regexes, graph schema). Tests that need the CPTAC /
+# single-cell / M13 data skip themselves when data/processed is empty; run them locally after `make all`.
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.12"
+      - run: uv sync
+      - run: uv run pytest -q -m "not network"

@@ -9,7 +9,7 @@ are specific to this question and these data.
 > **Question:** *What are the candidate therapeutic targets and biomarkers in ccRCC with the strongest
 > convergent evidence?*
 
-Outputs: [`reports/ccrcc_report.html`](reports/ccrcc_report.html) (self-contained, open in a browser) ·
+Outputs: [`reports/ccrcc_report.html`](reports/ccrcc_report.html) (self-contained, open in a browser; 10 tabs) ·
 [`evals/results.md`](evals/results.md) · [`evals/history.md`](evals/history.md) · [`PROGRESS.md`](PROGRESS.md)
 
 ## Design in one picture
@@ -21,6 +21,8 @@ Outputs: [`reports/ccrcc_report.html`](reports/ccrcc_report.html) (self-containe
    M2 deterministic stats     M3 closed-schema relation           M5 external client
    paired DE, CNV freq,       extraction (Sonnet subagents)            │
    RNA–protein correlation    + verbatim validation                    │
+   M13 independent layers: somatic recurrence (CPTAC + TCGA) · CNV cis effect · DepMap dependency ·
+   TCGA-KIRC replication + survival · phosphosites → kinase activity · tumour purity
           └──────────────┬───────────┴─────────────────────────────────┘
                          ▼
         M4 knowledge graph (SQLite + NetworkX behind GraphStore)
@@ -29,8 +31,8 @@ Outputs: [`reports/ccrcc_report.html`](reports/ccrcc_report.html) (self-containe
         M5 MCP servers: omics-mcp · kg-mcp · external-mcp (FastMCP, stdio)
                          │
         M6 Claude Code: orchestrator (Opus 5.5) ──► agente-omico · agente-literatura · agente-externo (Sonnet 5.5)
-                         │            scripts/integrate.py (deterministic convergence)
-                         │            scripts/verify.py (drops claims without gene-linked evidence)
+                         │            scripts/integrate.py (convergence v3 + target / biomarker profiles + weight sensitivity)
+                         │            scripts/verify.py (gene-linked evidence AND numbers / direction match the cited evidence)
                          ▼
         M7 Jinja2 HTML report: LLM writes only the interpretive text; numbers, tables, figures, citations are code
 ```
@@ -44,6 +46,9 @@ Outputs: [`reports/ccrcc_report.html`](reports/ccrcc_report.html) (self-containe
 | PubTator3 instead of generic GraphRAG extraction | Entities come already normalized (NCBI Gene, MeSH). The LLM only extracts relations in a closed schema, and every relation must quote a sentence that is verified verbatim against the abstract. |
 | Verification that is *gene-aware* | An agent claim about gene X is kept only if it cites evidence ids that exist **and** are attached to a claim involving X. A real id about another gene is rejected. |
 | Convergence = independent evidence streams | Omics layers are combined into one stream so that differential expression alone (thousands of genes) cannot dominate. Weights live in `config.yaml`. |
+| Two questions, two scores (M13) | "Is it a target?" and "is it a biomarker?" need different evidence. Both profiles leave out literature and drug history, so they can be evaluated against clinical outcomes without circularity. |
+| Numbers are verified, not only ids (M13) | Every number an agent writes must exist in the evidence it cites, and up/down wording must match the cited omics evidence. This caught citation errors and stale numbers that existence checks had passed. |
+| Robustness is reported, not assumed (M13) | Every rank comes with a 5th–95th percentile interval under 1,000 random re-weightings. |
 | No paid API | All LLM work runs on Claude Code with a Pro subscription: subagents in `.claude/agents/`, orchestrator command `.claude/commands/informe.md`. |
 
 ## Data
@@ -52,21 +57,24 @@ Outputs: [`reports/ccrcc_report.html`](reports/ccrcc_report.html) (self-containe
 - **HGNC** complete set for identifier mapping (e.g. NDUFA4L2 is HGNC `COXFA4L2` today; the literature uses the old symbol).
 - **PubTator3**: 319 abstracts (top 100 for the disease + 5 per top-50 omics gene), 7,270 normalized annotations; 100 abstracts used for relation extraction → 198 verbatim-validated relations.
 - **Open Targets Platform** (MONDO_0005005): 1,998 associations with datatype scores; tractability, drugs and Reactome pathways for 371 genes. **STRING** (score ≥ 0.7). **UniProt** Swiss-Prot.
+- **M13 layers** (sha256 in `data/raw/extra/manifest.json`): somatic mutations from cBioPortal (CPTAC renal and TCGA-KIRC PanCancer Atlas; 511 tumours), DepMap Public 26Q1 Chronos (24 clear cell RCC lines vs 1,184 others), TCGA-KIRC RNA-seq (72 tumour–normal pairs) and overall survival (533 patients) from UCSC Xena, CPTAC phosphosites (BCM pipeline) and ESTIMATE purity (cptac Zenodo record), OmniPath kinase–substrate relations, Open Targets 26.09 bulk tables (tractability for every target, clinical precedence with trial dates), GENCODE v22 coding lengths.
 
 Raw CPTAC matrices and PubMed abstracts are **not redistributed** in this repository. The scripts download them again.
 
 ## Results (summary)
 
-See the report for the full, cited analysis. Headlines:
-- Expected ccRCC biology is recovered: HIF targets CA9, NDUFA4L2, ANGPTL4, EGLN3 and VEGFA are strongly up in RNA (log2FC 2.9–6.8, padj < 1e-32), and CA9, NDUFA4L2 and ANGPTL4 are also up in protein. 3p is the most frequently lost arm (median 80 % of tumors).
-- The knowledge graph holds ~96k evidence-backed claims, with 0 claims lacking resolvable evidence.
-- **Prioritized candidates (orchestrator):** CA9 (target and biomarker; the only gene where omics, literature and a late-stage clinical modality all agree), EPAS1/HIF-2α (belzutifan approved; promoted from rank 38), MET and KDR (tractable, approved inhibitors), EGFR (rank 1 by score but kept as a hypothesis: no ccRCC literature or approval), and biomarkers NDUFA4L2/COXFA4L2, ENO2 and PLIN2 (up) and PIGR and ACY1 (down; ACY1 lost with 3p). CD74 and CXCR4 likely reflect immune infiltration.
-- **Verification:** 64 narrative and agent statements checked against the graph, **0 unsupported**. The HTML validator found 89 claims and 251 evidence ids, all resolvable.
-- **Evaluation:** recall of 23 known ccRCC genes in the top 100 is **22 %**, below the 60 % target, but it is 42× random enrichment (median rank 309/19,161; recall@1000 74 %). [`evals/history.md`](evals/history.md) explains why: known ccRCC genes are mostly *mutational* drivers with little bulk expression change, and mutation data were out of scope. Known-answer questions answered by `claude -p` (Sonnet 5.5) with the MCP servers: **10/10**.
+See the report for the full, cited analysis. Headlines (convergence v3, M13):
+- Expected ccRCC biology is recovered: HIF targets CA9, NDUFA4L2, ANGPTL4, EGLN3 and VEGFA are strongly up in RNA (log2FC 2.9–6.8, padj < 1e-32) and replicate in TCGA-KIRC; 3p is the most frequently lost arm; somatic recurrence calls exactly VHL, PBRM1, BAP1, SETD2, KDM5C, MTOR, PTEN and TP53.
+- **Candidates (orchestrator, Opus 5.5 + four Sonnet 5.5 agents):** CA9 (only gene robustly in the convergence top 10; tumour-intrinsic, replicated, phase 3 antibody), CD70 and NNMT, SCARB1 (most weight-robust target-profile call, little prior literature), ENPP3 and SLC16A3 (tumour-up and replicated), the biomarkers PSAT1, ALDH6A1, ALDOB and SLC22A8 (lost tubule genes; PSAT1/ALDH6A1 also prognostic), and EPAS1, promoted on clinical grounds (belzutifan) although its RNA barely moves.
+- **Main caveat:** none of the expression-ranked targets is a selective DepMap dependency of ccRCC lines; EPAS1 is the only borderline one. They are targeting handles (antibody, ADC, radioligand), not genes the tumour needs.
+- **Verification:** 91 statements in the final findings, 0 unsupported; the numeric check dropped 3 that quoted values not in the evidence they cited. Report validator: 414 claims, 1,364 evidence ids, all resolvable.
+- **Evaluation** ([`evals/results.md`](evals/results.md), [`evals/history.md`](evals/history.md)): recall of 23 known ccRCC genes in the top 100 rises from 22 % (v2) to **39 %** (median rank 309 → 171). The data-only target profile ranks RCC clinical targets at AUROC 0.90 and a **temporal holdout** of targets first trialled in 2016 or later at 0.91 (4 of 13 in the top 100); predicted tractability alone gives 0.85, so the gain of the data layers is in early enrichment (17 % vs 4 % of clinical targets in the top 100). Known-answer QA with `claude -p` (Sonnet 5.5) and the MCP servers: **10/10**.
+- **What the agents add:** a closed-book LLM gives the textbook list (60 % clinical targets, no evidence); the pipeline gives data-supported candidates with every statement verified, and three independent runs agree (Jaccard 0.94, same top 3).
 
 > The agent analysis in `runs/2026-10-31/` was produced headless with `claude -p "/informe"` (Opus 5.5 orchestrator,
-> three Sonnet 5.5 subagents, project MCP servers); log in `runs/2026-10-31/informe_headless.log`. An earlier
-> session-orchestrated run is kept in `runs/archive/` for comparison.
+> four Sonnet 5.5 subagents, project MCP servers); log in `runs/2026-10-31/informe_headless_m13.log`. Replicates in
+> `runs/replicates/`; the earlier runs (session-orchestrated, and the M11-era headless run behind the M12 report) are in
+> `runs/archive/`.
 
 ## Reproduce
 
@@ -74,16 +82,24 @@ Requirements: Windows/macOS/Linux, [uv](https://docs.astral.sh/uv/), Claude Code
 
 ```bash
 uv sync
-uv run ccrcc run-all          # data → omics → literature tables → enrichment → graph → convergence → verify → HTML
+uv run ccrcc run-all          # data → omics → M13 layers → literature → enrichment → graph → cells/structure/discovery
+                              #   → convergence v3 + profiles + sensitivity → verify → HTML  (or: make all)
 uv run pytest                 # tests (external calls are served from the disk cache after the first run)
+uv run ccrcc eval             # recall, outcome gold sets, temporal holdout, robustness, baselines → evals/results.md
 ```
 
 Agent step (Claude Code, no API key). It regenerates `runs/<date>/` with fresh agent analyses and narrative:
 
-```powershell
-./scripts/run_informe.ps1     # = claude -p "/informe" --model claude-opus-5-5 --mcp-config .mcp.json --allowedTools ...
-uv run ccrcc eval --qa        # recall + 10 known-answer questions answered by claude -p with the MCP servers
+```bash
+./scripts/run_informe.sh      # Linux / macOS (Windows: ./scripts/run_informe.ps1)
+                              # = claude -p "/informe" --model claude-opus-5-5 --mcp-config .mcp.json --allowedTools ...
+CCRCC_RUN_DIR=replicates/rep1 ./scripts/run_informe.sh   # a replicate run that does not touch runs/<date>/
+uv run ccrcc baselines        # closed-book LLM runs, agent decisions vs ranking, replicate agreement
+uv run ccrcc eval --qa        # + 10 known-answer questions answered by claude -p with the MCP servers
 ```
+
+Approximate quota: one `/informe` run is one Opus orchestrator session plus four Sonnet subagents (~40 tool calls each);
+the M13 evaluation used 3 agent runs, 3 closed-book calls and 10 QA calls.
 
 Relation extraction (M3) is an LLM step done once with the `extractor-relaciones` subagent. Its validated output
 (`data/literature/extracted/*.jsonl`) is versioned and re-validated on every run.
@@ -99,8 +115,11 @@ Relation extraction (M3) is an LLM step done once with the `extractor-relaciones
 | `src/ccrcc/singlecell.py` · `spatial.py` · `structure.py` · `kg_cell_structure.py` · `cell_context.py` | M11 cell-type, spatial and MGD layers |
 | `src/ccrcc/discovery.py` · `safety_clinical.py` · `report_figures.py` | M12 target discovery, HPA safety, clinical association, report figures |
 | `src/ccrcc/integrate.py` · `verify.py` · `assemble.py` · `render.py` | Convergence, verification, findings assembly, HTML |
+| `src/ccrcc/extra_download.py` · `layers.py` · `kg_layers.py` | M13 downloads, statistics (mutations, cis dosage, DepMap, TCGA, phosphosites, kinases, purity) and graph loading |
+| `src/ccrcc/scores.py` · `semantic.py` | M13 v3 components, target / biomarker profiles, sensitivity; numeric and direction verification |
+| `src/ccrcc/outcomes.py` · `baselines.py` | M13 evaluation against clinical targets, temporal holdout and ClearCode34; agentic baselines |
 | `.claude/agents/*.md` · `.claude/commands/informe.md` | Subagents (Sonnet 5.5) and orchestrator command |
-| `config.yaml` | Thresholds and convergence weights (v2) |
+| `config.yaml` | Thresholds, convergence weights (v3), profile weights, sensitivity settings |
 | `evals/` | Known-answer questions, results, evaluation history |
 
 ## Moving to Neo4j
@@ -156,11 +175,33 @@ Discovery (filterable table, spotlight cards, novelty map, off-tumor risk), Lite
 roadmap, searchable evidence list). Light/dark theme, hash-based tab links and citations that open the right tab. `cell-mcp` gained `novel_targets` and
 `discovery_profile`, and `agente-celular` writes the discovery paragraphs.
 
+## Independent layers, two scores and outcome evaluation (M13)
+
+Added after a review of v2. Everything numeric is deterministic code; weights were fixed before measuring.
+
+| Change | Why | Result |
+|---|---|---|
+| Continuous omics (min(1, \|log2FC\| / cap) when significant) | 549 genes tied at a perfect binary omics component, so small streams decided the top 100 | 9 genes now reach ≥ 0.999 |
+| CNV × cis effect (copy number vs own protein / RNA) | 3p loss gave the same bonus to ~490 genes | only genes whose dosage moves the product score |
+| Somatic recurrence, CPTAC + TCGA-KIRC, length-corrected | The OT somatic datatype was a uniform 0.456 for many cancer-census genes | drivers recovered; TTN / MUC16 rejected |
+| DepMap 26Q1 dependency, ccRCC lines vs the rest | Over-expression does not mean the tumour needs the gene | PAX8, HNF1B lineage dependencies; no top expression target is a dependency |
+| TCGA-KIRC replication and survival | One cohort, no outcome | ρ = 0.81 between cohorts; prognostic genes flagged |
+| Phosphosites → protein-adjusted kinase activity (KSEA, OmniPath) | Gene-level phospho hid the actionable signal | RPS6KB1 (mTOR axis) the most activated kinase |
+| ESTIMATE purity: log2FC extrapolated to a pure tumour | Bulk changes can be infiltration | CD74 1.78 → 0.56, PTPRC 2.07 → 0.67; CA9 6.3 → 7.8 |
+| scRNA `cpm_share` (per-cell level, abundance-independent) | Transcript shares depend on how many cells of each type were captured | reported next to the transcript share |
+| Target and biomarker profiles; 1,000-draw weight sensitivity | One score answered two questions; ranks had no uncertainty | robust calls separated from weight-dependent ones |
+| Numeric and direction verification of every statement | Ids were checked, content was not | 22 / 96 statements of the M11-era run fail; 3 / 94 in the new run, dropped |
+| Outcome evaluation: RCC clinical targets, temporal holdout (≥ 2016), ClearCode34 | Recall of a mixed known-gene list is partly circular | target profile AUROC 0.90 / holdout 0.91, with a tractability-only control |
+| Closed-book LLM baseline and replicate runs | The value of the agentic layer was asserted, not measured | see `evals/results.md` (d) |
+
 ## Limitations
 
-Single discovery cohort without external validation; bulk tissue (immune genes may reflect infiltration, now quantified by scRNA-seq);
+External replication is RNA-only (TCGA-KIRC); a second proteogenomic cohort would replicate protein and phosphosites. Bulk tissue
+(infiltration now quantified by scRNA-seq and purity extrapolation, which assumes a linear purity effect);
+DepMap ccRCC lines are few (24) and grown in normoxia, so HIF-dependent biology is under-represented;
 scRNA-seq / Visium come from a different cohort than CPTAC (12 donors; dissociation bias favours immune cells; Visium spots hold several cells);
 MGD sites are heuristic and weakly validated (see above);
-mutation data out of scope; literature corpus limited and biased toward omics-selected genes; Open Targets
+outcome gold sets are small (13 holdout targets; wide confidence intervals) and clinical targets are mostly druggable by construction;
+literature corpus limited and biased toward omics-selected genes; Open Targets
 evidence includes non-specific pan-cancer scores; LLM steps are not bit-reproducible (their outputs are saved and
 verified). Not medical advice.

@@ -10,7 +10,8 @@ from ccrcc.paths import LITERATURE
 REL = LITERATURE / "relations.parquet"
 
 
-@pytest.mark.skipif(not REL.exists(), reason="run literature extraction first")
+@pytest.mark.skipif(not REL.exists() or not (LITERATURE / "publications.parquet").exists(),
+                    reason="needs the PubTator abstracts, which are not redistributed (run `ccrcc literature`)")
 def test_kept_relations_are_verbatim_and_have_pmid():
     rel = pd.read_parquet(REL)
     pubs = pd.read_parquet(LITERATURE / "publications.parquet").set_index("pmid")

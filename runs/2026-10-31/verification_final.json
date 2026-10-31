@@ -1,6 +1,7 @@
 {
- "file": "C:\\Users\\rafae\\Documents\\ccrcc-graphrag\\runs\\2026-10-31\\findings.json",
- "statements": 95,
+ "file": "/home/claude/ccrcc-agentic-multiomics-graphrag/runs/2026-10-31/findings.json",
+ "statements": 91,
  "unsupported": 0,
+ "semantic_failures": 0,
  "detail": []
 }

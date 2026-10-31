@@ -1,0 +1,57 @@
+{
+ "run": 3,
+ "model": "claude-sonnet-5-5",
+ "raw": "{\"candidates\":[{\"gene\":\"HIF2A\",\"role\":\"target_and_biomarker\",\"rationale\":\"EPAS1 (HIF-2α) is the key oncogenic driver downstream of VHL loss (~80-90% of ccRCC); belzutifan, a HIF-2α inhibitor, is FDA-approved (VHL disease RCC, ORR ~49%; advanced RCC after prior therapy, ORR ~22% in LITESPARK-005 and PFS benefit over everolimus).\"},{\"gene\":\"VHL\",\"role\":\"target_and_biomarker\",\"rationale\":\"Biallelic inactivation by mutation, deletion or methylation occurs in ~80-90% of ccRCC, is the founding truncal event, and is the synthetic-lethal and pharmacologic basis for HIF-2α inhibition.\"},{\"gene\":\"VEGFA\",\"role\":\"target_and_biomarker\",\"rationale\":\"HIF-driven VEGF overexpression underlies the hypervascular phenotype; VEGF/VEGFR TKIs (sunitinib, pazopanib, axitinib, cabozantinib, lenvatinib) are standard of care, and an angiogenesis gene signature predicts TKI response (IMmotion150/151).\"},{\"gene\":\"KDR\",\"role\":\"target\",\"rationale\":\"VEGFR2 is the principal receptor blocked by approved TKIs, with ORRs of ~25-30% for sunitinib monotherapy and ~55-70% for TKI plus PD-1 combinations.\"},{\"gene\":\"PDCD1\",\"role\":\"target_and_biomarker\",\"rationale\":\"PD-1 blockade (nivolumab, pembrolizumab) is backbone therapy, e.g. nivolumab+ipilimumab and pembrolizumab+axitinib/lenvatinib improve OS in first line, although PD-L1 expression is only a weak predictor of response.\"},{\"gene\":\"MTOR\",\"role\":\"target\",\"rationale\":\"mTOR is hyperactivated via PI3K/AKT/PTEN alterations and HIF translation; everolimus and temsirolimus are approved, though with modest benefit (median PFS ~4-5 months).\"},{\"gene\":\"PBRM1\",\"role\":\"biomarker\",\"rationale\":\"Second most frequently mutated gene (~40% of ccRCC); loss is associated with angiogenic signature and possible benefit from anti-VEGF and ICI therapy in some cohorts, though results are inconsistent (e.g., CheckMate 025 vs. Miao 2018).\"},{\"gene\":\"BAP1\",\"role\":\"biomarker\",\"rationale\":\"Mutated in ~10-15% of ccRCC; loss is associated with high-grade disease, mutual exclusivity with PBRM1, and significantly worse overall survival, and may predict sensitivity to PARP/EZH2 strategies.\"},{\"gene\":\"SETD2\",\"role\":\"biomarker\",\"rationale\":\"Mutated in ~10-15% of ccRCC; loss of H3K36me3 is associated with poor prognosis and genomic instability, and creates potential synthetic-lethal vulnerabilities (e.g., WEE1 inhibition).\"},{\"gene\":\"CA9\",\"role\":\"target_and_biomarker\",\"rationale\":\"HIF-induced carbonic anhydrase IX is expressed in >90% of ccRCC, is the basis for girentuximab imaging (REDECT: ~86% sensitivity, ~87% specificity) and radioimmunotherapy, and low expression has been linked to worse prognosis.\"}]}",
+ "candidates": [
+  {
+   "gene": "HIF2A",
+   "role": "target_and_biomarker",
+   "rationale": "EPAS1 (HIF-2α) is the key oncogenic driver downstream of VHL loss (~80-90% of ccRCC); belzutifan, a HIF-2α inhibitor, is FDA-approved (VHL disease RCC, ORR ~49%; advanced RCC after prior therapy, ORR ~22% in LITESPARK-005 and PFS benefit over everolimus)."
+  },
+  {
+   "gene": "VHL",
+   "role": "target_and_biomarker",
+   "rationale": "Biallelic inactivation by mutation, deletion or methylation occurs in ~80-90% of ccRCC, is the founding truncal event, and is the synthetic-lethal and pharmacologic basis for HIF-2α inhibition."
+  },
+  {
+   "gene": "VEGFA",
+   "role": "target_and_biomarker",
+   "rationale": "HIF-driven VEGF overexpression underlies the hypervascular phenotype; VEGF/VEGFR TKIs (sunitinib, pazopanib, axitinib, cabozantinib, lenvatinib) are standard of care, and an angiogenesis gene signature predicts TKI response (IMmotion150/151)."
+  },
+  {
+   "gene": "KDR",
+   "role": "target",
+   "rationale": "VEGFR2 is the principal receptor blocked by approved TKIs, with ORRs of ~25-30% for sunitinib monotherapy and ~55-70% for TKI plus PD-1 combinations."
+  },
+  {
+   "gene": "PDCD1",
+   "role": "target_and_biomarker",
+   "rationale": "PD-1 blockade (nivolumab, pembrolizumab) is backbone therapy, e.g. nivolumab+ipilimumab and pembrolizumab+axitinib/lenvatinib improve OS in first line, although PD-L1 expression is only a weak predictor of response."
+  },
+  {
+   "gene": "MTOR",
+   "role": "target",
+   "rationale": "mTOR is hyperactivated via PI3K/AKT/PTEN alterations and HIF translation; everolimus and temsirolimus are approved, though with modest benefit (median PFS ~4-5 months)."
+  },
+  {
+   "gene": "PBRM1",
+   "role": "biomarker",
+   "rationale": "Second most frequently mutated gene (~40% of ccRCC); loss is associated with angiogenic signature and possible benefit from anti-VEGF and ICI therapy in some cohorts, though results are inconsistent (e.g., CheckMate 025 vs. Miao 2018)."
+  },
+  {
+   "gene": "BAP1",
+   "role": "biomarker",
+   "rationale": "Mutated in ~10-15% of ccRCC; loss is associated with high-grade disease, mutual exclusivity with PBRM1, and significantly worse overall survival, and may predict sensitivity to PARP/EZH2 strategies."
+  },
+  {
+   "gene": "SETD2",
+   "role": "biomarker",
+   "rationale": "Mutated in ~10-15% of ccRCC; loss of H3K36me3 is associated with poor prognosis and genomic instability, and creates potential synthetic-lethal vulnerabilities (e.g., WEE1 inhibition)."
+  },
+  {
+   "gene": "CA9",
+   "role": "target_and_biomarker",
+   "rationale": "HIF-induced carbonic anhydrase IX is expressed in >90% of ccRCC, is the basis for girentuximab imaging (REDECT: ~86% sensitivity, ~87% specificity) and radioimmunotherapy, and low expression has been linked to worse prognosis."
+  }
+ ]
+}

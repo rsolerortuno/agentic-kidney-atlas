@@ -149,7 +149,11 @@ def celltype_table(pb: dict) -> pd.DataFrame:
             }))
     df = pd.concat(out, ignore_index=True)
     df = df[df["hgnc_symbol"].notna()]
-    for c in ("pct_expressing", "mean_lognorm", "pseudobulk_cpm", "share_of_tissue_transcripts"):
+    # abundance-independent share: the group's per-cell (pseudobulk CPM) level as a fraction of the sum over groups.
+    # share_of_tissue_transcripts mixes per-cell expression with how many cells of each group were captured
+    # (dissociation favours immune cells); cpm_share answers "which cell type expresses it most, per cell".
+    df["cpm_share"] = df["pseudobulk_cpm"] / df.groupby(["tissue", "ensembl"])["pseudobulk_cpm"].transform("sum")
+    for c in ("pct_expressing", "mean_lognorm", "pseudobulk_cpm", "share_of_tissue_transcripts", "cpm_share"):
         df[c] = df[c].astype("float32")
     return df
 
@@ -215,10 +219,13 @@ def target_summary(ct: pd.DataFrame, tvp: pd.DataFrame, targets: list[str]) -> l
             "gene": g, "measured": True,
             "top_groups": [{"cell_group": k, "label": CELL_GROUPS[k][1], "mean_lognorm": round(float(r.mean_lognorm), 3),
                             "pct_expressing": round(float(r.pct_expressing), 1),
-                            "share_of_tumor_transcripts": round(float(r.share_of_tissue_transcripts), 3)}
+                            "share_of_tumor_transcripts": round(float(r.share_of_tissue_transcripts), 3),
+                            "cpm_share": None if pd.isna(r.cpm_share) else round(float(r.cpm_share), 3)}
                            for k, r in order.head(3).iterrows()],
             "expressing_groups": [k for k, r in order.iterrows() if r.pct_expressing >= cfg["expressing_min_pct"]],
             "tumor_cell_share": round(float(s.loc["RCC", "share_of_tissue_transcripts"]), 3) if "RCC" in s.index else None,
+            "tumor_cell_cpm_share": (round(float(s.loc["RCC", "cpm_share"]), 3)
+                                     if "RCC" in s.index and pd.notna(s.loc["RCC", "cpm_share"]) else None),
             "tau": round(tau(s["mean_lognorm"].to_numpy()), 3),
             "tumor_vs_pt": None if d.empty else {"log2fc": round(float(d.iloc[0].log2fc), 3),
                                                  "padj": float(f"{d.iloc[0].padj:.3g}"), "n_donors": int(d.iloc[0].n_donors)},
