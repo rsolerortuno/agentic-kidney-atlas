@@ -94,3 +94,14 @@ def test_cell_mcp_tools_return_citable_evidence():
     sp = cell.structure_pockets("KDR")
     assert sp["pockets"][0]["evidence_id"] and sp["model_evidence_id"]
     assert cell.mgd_ranking(5)[0]["best_mgd_score"] >= cell.mgd_ranking(5)[-1]["best_mgd_score"]
+
+
+def test_cell_mcp_discovery_tools():
+    from ccrcc.mcp_servers import cell
+    rows = cell.novel_targets(n=5)
+    assert rows and all(r["status"] == "first-in-class opportunity" and r["evidence_id"] for r in rows)
+    assert not GraphStore().check_evidence_ids([r["evidence_id"] for r in rows])["invalid"]
+    assert cell.novel_targets(track="tumor", status="any", n=3)[0]["track"] == "tumor"
+    prof = cell.discovery_profile(rows[0]["gene"])
+    assert prof["gene"] == rows[0]["gene"] and prof["evidence_id"]
+    assert "not in the discovery pool" in cell.discovery_profile("VHL").get("message", "") or cell.discovery_profile("VHL")["gene"] == "VHL"

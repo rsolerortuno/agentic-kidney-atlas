@@ -138,3 +138,18 @@ def uniprot(symbol: str) -> dict | None:
             locations += [s["location"]["value"] for s in c.get("subcellularLocations", []) if "location" in s]
     return {"accession": r["primaryAccession"], "name": name, "function": function[:800],
             "subcellular_location": sorted(set(locations))}
+
+
+# ---------------------------------------------------------------- Europe PMC (literature volume)
+EPMC_URL = "https://www.ebi.ac.uk/europepmc/webservices/rest/search"
+CCRCC_TERMS = ('("renal cell carcinoma" OR "clear cell renal" OR "ccRCC" OR "kidney cancer" OR "renal carcinoma" '
+               'OR "renal cancer")')
+
+
+def europepmc_count(query: str) -> int:
+    """Number of Europe PMC records matching a query (cached; used to size the literature around a gene)."""
+    params = {"query": query, "format": "json", "pageSize": 1, "resultType": "lite"}
+    data = _cached("europepmc", json.dumps(params, sort_keys=True),
+                   lambda: _request("GET", EPMC_URL, params=params).json())["data"]
+    time.sleep(0.05)
+    return int(data["hitCount"])

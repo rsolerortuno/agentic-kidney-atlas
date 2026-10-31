@@ -52,3 +52,21 @@ construction. Decisions taken before looking at results:
 saturating at 8 (`structure.lysine_saturation`), a change made from the component's distribution, not from any gene's
 rank. Remaining caveat: the score is a heuristic prioritization of sites with no ground truth for glue degraders; the only
 validation available is whether detected cavities recover experimentally ligand-bound residues (PDBe-KB).
+
+
+## M12: target discovery (2026-10-31)
+
+Annotation only; recall@100 is unchanged. Decisions and findings:
+
+- Pool: concordant tumor-up RNA (log2FC >= 1) and protein (>= 0.5), dominant scRNA cell group holding >= 40 % of tumour transcripts and
+  expressing in >= 10 % of its cells. Tracks by dominant group: tumor cell / stroma / immune.
+- Novel = no clinical-stage drug in Open Targets and <= 15 Europe PMC records for gene AND ccRCC terms. First-in-class adds SM/AB tractability and
+  <= 50 nTPM in every vital organ (HPA). Weights are in `config.yaml`; none was tuned against an outcome (there is none: this is hypothesis generation).
+- Found and fixed: (1) Open Targets modality codes (SM, AB, PR, OC) were compared to names, so no gene was druggable; PR is called for ~90 % of genes, so
+  it now only adds 0.2. (2) FABP6 passed as first-in-class with 4,264 nTPM in small intestine; vital-organ expression now blocks that status.
+  (3) The omics component could go negative; clipped and covered by a unit test.
+- MGD score positive controls (known glue substrates, scored like the candidates): GSPT1 3rd and CSNK1A1 10th of 54 proteins, but SALL4 36th,
+  ZFP91 47th, IKZF3 48th and IKZF1 last: beta-hairpin degrons are captured, CRBN zinc-finger degrons are not (low pLDDT, no cavity). The score is
+  therefore only informative for proteins with a ligandable cavity.
+- Process error: rebuilding the graph while `ccrcc.structure` was reading it locked SQLite and crashed that run; stages that read the graph must not
+  overlap with `kg_build`.

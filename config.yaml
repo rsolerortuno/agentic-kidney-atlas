@@ -54,6 +54,7 @@ cell_context:
     min_cells_pseudobulk: 20      # donor x cell group pseudobulks below this are not used
     expressing_min_pct: 10        # a cell group "expresses" a gene if >= 10 % of its tumor cells have >= 1 UMI
   spatial:
+    map_genes: [CA9, KDR, CD74, EPAS1, MET, PIGR, COL23A1, RAB42]   # genes drawn on the tissue maps in the report
     markers_per_group: 40         # deconvolution reference genes per cell group (targets are excluded)
     min_marker_cpm: 20
     high_quantile: 0.9            # target-high spots: top 10 % of a section (with >= 1 UMI)
@@ -72,3 +73,20 @@ structure:
   hairpin_radius: 15             # A: G-loop-like beta-hairpin degron near the pocket
   mgd_weights: {confidence: 0.3, geometry: 0.3, lysines: 0.25, degron: 0.15}
   top_pockets: 3
+  # Known molecular-glue-degrader substrates, scored the same way as the candidates, to test the MGD score:
+  # IKZF1/IKZF3 (lenalidomide, CRBN), GSPT1 (CC-885, eRF3a), CSNK1A1 (lenalidomide, CK1alpha), ZFP91 (CRBN), SALL4 (thalidomide)
+  controls: [IKZF1, IKZF3, GSPT1, CSNK1A1, ZFP91, SALL4]
+
+discovery:
+  # Target discovery: concordant tumor-up genes (CPTAC RNA + protein) that are also attributable to a cell type in
+  # scRNA-seq, scored for novelty (few ccRCC papers), absence of clinical drugs and druggability. Annotation only:
+  # it does not change the convergence score.
+  min_rna_log2fc: 1.0
+  min_protein_log2fc: 0.5
+  min_source_share: 0.4          # the dominant cell group must hold >= 40 % of the gene's tumour transcripts
+  min_source_pct: 10             # ... and >= 10 % of its cells must express it
+  novel_max_ccrcc_papers: 15     # "little bibliographic support": <= 15 Europe PMC records for gene AND ccRCC terms
+  saturation_papers: 50          # understudied component reaches 0 at this many ccRCC papers
+  safe_max_ntpm: 50              # vital-organ expression (HPA nTPM) above which a target carries off-tumor risk
+  weights: {omics: 2.0, cell_specificity: 2.0, understudied: 1.5, undrugged: 1.0, druggable: 1.0, safety: 1.5, aggressiveness: 0.5}
+  shortlist_per_track: {tumor: 12, stroma: 5, immune: 5}   # novel candidates that also get spatial and structure analysis

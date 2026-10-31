@@ -28,7 +28,7 @@ from scipy.optimize import nnls
 from scipy.spatial import cKDTree
 from statsmodels.stats.multitest import multipletests
 
-from .config import load
+from .config import analysis_targets, load
 from .paths import PROCESSED, RAW
 
 FILES = {"core": RAW / "singlecell" / "li2022_visium_core.h5ad",
@@ -146,7 +146,7 @@ def neighborhood_enrichment(high: np.ndarray, sections: np.ndarray, NP: np.ndarr
 def run() -> dict:
     cfg_all = load()["cell_context"]
     cfg = cfg_all["spatial"]
-    targets = cfg_all["targets"]
+    targets = analysis_targets()
     rng = np.random.default_rng(cfg["seed"])
     ref = reference()
     spots, counts, var = load_spots()
@@ -242,6 +242,31 @@ def run() -> dict:
                "validation": validation, "targets": summary_t}
     (PROCESSED / "spatial_summary.json").write_text(json.dumps(summary, indent=1))
     return summary
+
+
+
+def section_maps() -> dict:
+    """Spot coordinates, deconvolved cell shares and CPM of a few genes for the largest tumour-core and interface
+    sections, so the report can draw interactive tissue maps without loading the h5ad files."""
+    cfg = load()["cell_context"]["spatial"]
+    genes = cfg["map_genes"]
+    dec = pd.read_parquet(PROCESSED / "spatial_deconvolution.parquet")
+    spots, counts, var = load_spots()
+    ref = reference()
+    sym2ens = ref["hgnc_symbol"].dropna().reset_index().drop_duplicates("hgnc_symbol").set_index("hgnc_symbol").iloc[:, 0]
+    keep = []
+    for region in ("core", "interface"):
+        sec = dec[dec["region"] == region].groupby("section").size().sort_values(ascending=False).index[0]
+        keep.append(sec)
+    m = dec["section"].isin(keep).to_numpy()
+    out = dec[m].copy()
+    for g in genes:
+        ens = sym2ens.get(g)
+        if ens is not None and ens in var:
+            _, cpm = target_expression(counts, var, ens)
+            out[f"gene_{g}"] = cpm[m].astype("float32")
+    out.to_parquet(PROCESSED / "spatial_section_maps.parquet", index=False)
+    return {"sections": keep, "spots": int(m.sum()), "genes": [g for g in genes if f"gene_{g}" in out]}
 
 
 if __name__ == "__main__":

@@ -44,11 +44,16 @@ def run_all(fresh: bool = True) -> int:
     print("    relations:", _step("M3 validate extracted relations", literature.validate_extractions))
     _step("M5 external enrichment (cached)", enrich.run)
     _step("M4 knowledge graph", kg_build.build)
-    from . import kg_cell_structure, singlecell, spatial, structure
+    from . import discovery, kg_cell_structure, singlecell, spatial, structure
     _step("M11 single-cell cell-type expression", singlecell.run)
+    print("    discovery:", {k: v for k, v in _step("M12 target discovery (Europe PMC, Open Targets, UniProt)",
+                                                   discovery.run).items() if k in ("pool", "novel", "by_status")})
+    _step("M12 single-cell summary for report + discovery shortlist", singlecell.write_summary)
     _step("M11 spatial deconvolution and neighbourhoods", spatial.run)
+    _step("M12 spatial section maps for the report", spatial.section_maps)
     _step("M11 AlphaFold models, pockets and MGD scoring", structure.run)
     print("    claims:", _step("M11 load cell / structure layers into the graph", kg_cell_structure.load)["claims_added"])
+    print("    discovery claims:", _step("M12 load discovery profiles into the graph", discovery.load_graph))
     runs = sorted(p.parent for p in RUNS.glob("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/narrative.json"))
     if not runs:
         print("No saved agent run (runs/<date>/narrative.json). Run scripts/run_informe.ps1 first.")
@@ -73,7 +78,7 @@ def main(argv=None) -> int:
     ra = sub.add_parser("run-all", help="rebuild everything deterministic from scratch and render the report")
     ra.add_argument("--keep", action="store_true", help="do not delete processed data / graph first")
     for name in ("download", "omics", "literature", "validate-relations", "enrich", "graph", "integrate", "eval",
-                 "singlecell", "spatial", "structure", "cell-graph"):
+                 "singlecell", "spatial", "structure", "cell-graph", "discovery"):
         sub.add_parser(name)
     ev = sub.choices["eval"]
     ev.add_argument("--qa", action="store_true", help="also run the known-answer questions with claude -p")
@@ -110,6 +115,9 @@ def main(argv=None) -> int:
         print(json.dumps({k: v for k, v in s.items() if k != "marker_genes"}, indent=1))
     elif args.cmd == "structure":
         from .structure import run
+        print(json.dumps(run(), indent=1))
+    elif args.cmd == "discovery":
+        from .discovery import run
         print(json.dumps(run(), indent=1))
     elif args.cmd == "cell-graph":
         from .kg_cell_structure import load as load_cs

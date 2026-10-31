@@ -97,6 +97,7 @@ Relation extraction (M3) is an LLM step done once with the `extractor-relaciones
 | `src/ccrcc/graph.py` / `kg_build.py` | `GraphStore` (SQLite + NetworkX) and graph construction |
 | `src/ccrcc/mcp_servers/` | `omics-mcp`, `kg-mcp`, `external-mcp`, `cell-mcp` (FastMCP) |
 | `src/ccrcc/singlecell.py` · `spatial.py` · `structure.py` · `kg_cell_structure.py` · `cell_context.py` | M11 cell-type, spatial and MGD layers |
+| `src/ccrcc/discovery.py` · `safety_clinical.py` · `report_figures.py` | M12 target discovery, HPA safety, clinical association, report figures |
 | `src/ccrcc/integrate.py` · `verify.py` · `assemble.py` · `render.py` | Convergence, verification, findings assembly, HTML |
 | `.claude/agents/*.md` · `.claude/commands/informe.md` | Subagents (Sonnet 5.5) and orchestrator command |
 | `config.yaml` | Thresholds and convergence weights (v2) |
@@ -138,6 +139,22 @@ degron-sequence modelling is done; glue-degrader chemistry would need docking / 
 New MCP server `cell-mcp` (celltype_expression, tumor_cell_vs_proximal_tubule, spatial_context, structure_pockets, mgd_ranking) and a
 fourth subagent, `agente-celular` (Sonnet 5.5). Not used: Wu et al. 2023 snRNA/snATAC (dbGaP-controlled); GSE175540 / GSE156632 / Mendeley
 `g67bkbnhhg` were checked as alternatives, but the CELLxGENE-curated copy of Li 2022 has harmonized Cell Ontology labels.
+
+## Target discovery and the tabbed report (M12)
+
+`src/ccrcc/discovery.py` screens genes that are up in tumor in both CPTAC RNA and protein and that scRNA-seq attributes mostly to one cell type
+(tumor cell, stroma/vasculature or immune track), then annotates each with: ccRCC and overall literature volume (Europe PMC, symbol plus specific
+aliases), clinical-stage drugs and tractability (Open Targets), UniProt location, vital-organ expression (Human Protein Atlas RNA, `safety_clinical.py`)
+and correlation with histologic grade/stage (the CPTAC clinical file, unused until now). **Novel** = no clinical-stage drug and <= 15 ccRCC papers;
+**first-in-class opportunity** adds small-molecule or antibody tractability and <= 50 nTPM in every vital organ. The shortlist also gets spatial and
+structure analysis. Thresholds and weights are in `config.yaml`; the screen annotates and does not change the convergence score.
+
+The report (`reports/ccrcc_report.html`, still one self-contained file) is now a tabbed atlas: Overview (KPIs, candidate cards), Candidates (stream
+contributions, evidence heatmap), Omics (volcanoes, RNA-vs-protein, 3p loss, grade association), Cells & space (dot plot, tumour-transcript shares,
+interactive Visium maps, neighbourhood heatmap), Structure & MGD (bubble chart, component breakdown, ligand-site validation, known-substrate controls),
+Discovery (filterable table, spotlight cards, novelty map, off-tumor risk), Literature & drugs, Network, Methods & evidence (provenance, limitations,
+roadmap, searchable evidence list). Light/dark theme, hash-based tab links and citations that open the right tab. `cell-mcp` gained `novel_targets` and
+`discovery_profile`, and `agente-celular` writes the discovery paragraphs.
 
 ## Limitations
 

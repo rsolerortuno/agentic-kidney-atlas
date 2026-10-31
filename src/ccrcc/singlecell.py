@@ -22,7 +22,7 @@ import scipy.sparse as sp
 from scipy import stats
 from statsmodels.stats.multitest import multipletests
 
-from .config import load
+from .config import analysis_targets, load
 from .omics import load_hgnc
 from .paths import PROCESSED, RAW
 
@@ -226,6 +226,17 @@ def target_summary(ct: pd.DataFrame, tvp: pd.DataFrame, targets: list[str]) -> l
     return out
 
 
+def write_summary() -> dict:
+    """Per-target summary (light: reads the parquet tables). Re-run after the discovery shortlist changes."""
+    ct = pd.read_parquet(PROCESSED / "sc_celltype_expression.parquet")
+    tvp = pd.read_parquet(PROCESSED / "sc_tumor_vs_pt.parquet")
+    meta = json.loads((PROCESSED / "sc_meta.json").read_text())
+    summary = {**meta, "tumor_vs_pt_donors": int(tvp["n_donors"].iloc[0]) if len(tvp) else 0,
+               "targets": target_summary(ct, tvp, analysis_targets())}
+    (PROCESSED / "sc_summary.json").write_text(json.dumps(summary, indent=1))
+    return summary
+
+
 def run() -> dict:
     meta = cell_metadata()
     pb = pseudobulk(meta)
@@ -235,13 +246,10 @@ def run() -> dict:
     tvp.to_parquet(PROCESSED / "sc_tumor_vs_pt.parquet", index=False)
     reference_profiles(pb).to_parquet(PROCESSED / "sc_reference.parquet")
     pb["keys"].to_parquet(PROCESSED / "sc_pseudobulk_keys.parquet", index=False)
-    targets = load()["cell_context"]["targets"]
-    summary = {"cells_used": int(len(meta)), "cells_by_group": meta["group"].value_counts().to_dict(),
-               "cells_by_tissue": meta["tissue"].value_counts().to_dict(), "donors": int(meta["donor"].nunique()),
-               "tumor_vs_pt_donors": int(tvp["n_donors"].iloc[0]) if len(tvp) else 0,
-               "targets": target_summary(ct, tvp, targets)}
-    (PROCESSED / "sc_summary.json").write_text(json.dumps(summary, indent=1))
-    return summary
+    (PROCESSED / "sc_meta.json").write_text(json.dumps({
+        "cells_used": int(len(meta)), "cells_by_group": meta["group"].value_counts().to_dict(),
+        "cells_by_tissue": meta["tissue"].value_counts().to_dict(), "donors": int(meta["donor"].nunique())}))
+    return write_summary()
 
 
 if __name__ == "__main__":

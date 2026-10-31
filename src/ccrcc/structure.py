@@ -34,7 +34,7 @@ import numpy as np
 import requests
 from Bio.PDB import PDBParser, ShrakeRupley
 
-from .config import load
+from .config import analysis_targets, load
 from .graph import GraphStore
 from .paths import CACHE, PROCESSED
 
@@ -226,16 +226,27 @@ def validate(cavities: list[dict], sites: dict, top: int) -> dict:
             "overlap_by_rank": {r: n for r, n in overlaps.items() if n}}
 
 
+def _uniprot_of(gene: str, store: GraphStore, hgnc) -> str | None:
+    node = store.resolve(gene)
+    acc = (node or {}).get("uniprot")
+    if not (isinstance(acc, str) and acc) and gene in hgnc.index:
+        acc = hgnc.loc[gene, "uniprot_ids"]
+    return acc.split("|")[0].strip() if isinstance(acc, str) and acc else None
+
+
 def run() -> dict:
+    import pandas as pd
+
+    from .omics import load_hgnc
     cfg = load()["structure"]
-    targets = load()["cell_context"]["targets"]
+    targets = analysis_targets()
+    controls = [g for g in cfg.get("controls", []) if g not in targets]
+    hgnc = load_hgnc().drop_duplicates("symbol").set_index("symbol")
     store = GraphStore()
     AF_DIR.mkdir(parents=True, exist_ok=True)
     results, rows = [], []
-    for gene in targets:
-        node = store.resolve(gene)
-        acc = (node or {}).get("uniprot")
-        acc = acc.split("|")[0].strip() if isinstance(acc, str) and acc else None
+    for gene in targets + controls:
+        acc = _uniprot_of(gene, store, hgnc)
         if not acc:
             results.append({"gene": gene, "modeled": False, "reason": "no UniProt accession in the graph"})
             continue
@@ -249,7 +260,7 @@ def run() -> dict:
         all_cav = cavity_table(trimmed, st) if kept >= 30 else []
         cav = all_cav[: cfg["top_pockets"]]
         sites = ligand_sites(acc)
-        entry = {"gene": gene, "modeled": True, "uniprot": acc,
+        entry = {"gene": gene, "modeled": True, "control": gene in controls, "uniprot": acc,
                  **{k: v for k, v in model.items() if k not in ("path",)},
                  "residues_kept_above_plddt": kept,
                  "fraction_confident_residues": round(float((st["plddt"] >= cfg["confident_plddt"]).mean()), 3),
@@ -258,16 +269,15 @@ def run() -> dict:
         entry["best_mgd_score"] = cav[0]["mgd_score"] if cav else None
         results.append(entry)
         for c in cav:
-            rows.append({"gene": gene, "uniprot": acc, "rank": c["rank"], "cavity": c["cavity"],
+            rows.append({"gene": gene, "control": gene in controls, "uniprot": acc, "rank": c["rank"], "cavity": c["cavity"],
                          "volume_a3": c["volume_a3"], "area_a2": c["area_a2"], "max_depth_a": c["max_depth_a"],
                          "avg_hydropathy": c["avg_hydropathy"], "mean_plddt": c["mean_plddt"],
                          "n_accessible_lysines": len(c["accessible_lysines"]),
                          "exposed_loop_run": c["exposed_loop_run"], "mgd_score": c["mgd_score"],
                          **{f"comp_{k}": v for k, v in c["components"].items()},
                          "residues": ",".join(map(str, c["residues"]))})
-    import pandas as pd
     pd.DataFrame(rows).to_parquet(PROCESSED / "structure_pockets.parquet", index=False)
-    summary = {"modeled": sum(1 for r in results if r["modeled"]), "targets": len(targets),
+    summary = {"modeled": sum(1 for r in results if r["modeled"]), "targets": len(targets) + len(controls),
                "config": {k: cfg[k] for k in ("min_plddt_keep", "pocket_volume", "lysine_radius", "mgd_weights")},
                "tool": "pyKVFinder (SES surface, probe_in 1.4 A, probe_out 4.0 A, step 0.6 A)",
                "results": results}

@@ -6,13 +6,13 @@
   "open_targets_id": "MONDO_0005005",
   "open_targets_top": 2000
  },
- "generated_utc": "2026-10-31T08:24:20+00:00",
+ "generated_utc": "2026-10-31T09:26:44+00:00",
  "models": {
   "orchestrator": "Claude Opus 5.5 (effort medium) — Claude Code main session",
   "agents": "Claude Sonnet 5.5 — Claude Code subagents (agente-omico, agente-literatura, agente-externo, agente-celular)",
   "relation_extraction": "Claude Sonnet 5.5 — extractor-relaciones subagent"
  },
- "config_sha256": "c696b6628aa5f1f2a9791a99ddd30df6a63b3355110c027c5bfbf6b4a2c36008",
+ "config_sha256": "ed5580f7e8da5b17e7a688b5c4be71a5765d4affc8d30c3f4692c515fb8c6520",
  "datasets": [
   {
    "file": "HS_CPTAC_CCRCC_CLI.tsi",
@@ -6131,6 +6131,843 @@
       "padj": 0.0759,
       "n_donors": 6
      }
+    },
+    {
+     "gene": "COL23A1",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "Epi_other",
+       "label": "other renal epithelial cell",
+       "mean_lognorm": 0.515,
+       "pct_expressing": 27.8,
+       "share_of_tumor_transcripts": 0.003
+      },
+      {
+       "cell_group": "RCC",
+       "label": "ccRCC tumor cell",
+       "mean_lognorm": 0.279,
+       "pct_expressing": 17.1,
+       "share_of_tumor_transcripts": 0.881
+      },
+      {
+       "cell_group": "PT",
+       "label": "proximal tubule epithelial cell",
+       "mean_lognorm": 0.036,
+       "pct_expressing": 2.6,
+       "share_of_tumor_transcripts": 0.0
+      }
+     ],
+     "expressing_groups": [
+      "Epi_other",
+      "RCC"
+     ],
+     "tumor_cell_share": 0.881,
+     "tau": 0.954,
+     "tumor_vs_pt": {
+      "log2fc": 5.366,
+      "padj": 0.0193,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "RAB42",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "RCC",
+       "label": "ccRCC tumor cell",
+       "mean_lognorm": 0.197,
+       "pct_expressing": 11.6,
+       "share_of_tumor_transcripts": 0.627
+      },
+      {
+       "cell_group": "PT",
+       "label": "proximal tubule epithelial cell",
+       "mean_lognorm": 0.067,
+       "pct_expressing": 2.6,
+       "share_of_tumor_transcripts": 0.001
+      },
+      {
+       "cell_group": "Macrophage",
+       "label": "macrophage (TAM)",
+       "mean_lognorm": 0.059,
+       "pct_expressing": 4.0,
+       "share_of_tumor_transcripts": 0.319
+      }
+     ],
+     "expressing_groups": [
+      "RCC"
+     ],
+     "tumor_cell_share": 0.627,
+     "tau": 0.949,
+     "tumor_vs_pt": {
+      "log2fc": 3.803,
+      "padj": 0.147,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "FABP6",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "PT",
+       "label": "proximal tubule epithelial cell",
+       "mean_lognorm": 0.559,
+       "pct_expressing": 25.6,
+       "share_of_tumor_transcripts": 0.005
+      },
+      {
+       "cell_group": "RCC",
+       "label": "ccRCC tumor cell",
+       "mean_lognorm": 0.432,
+       "pct_expressing": 25.2,
+       "share_of_tumor_transcripts": 0.96
+      },
+      {
+       "cell_group": "Epi_other",
+       "label": "other renal epithelial cell",
+       "mean_lognorm": 0.116,
+       "pct_expressing": 5.6,
+       "share_of_tumor_transcripts": 0.001
+      }
+     ],
+     "expressing_groups": [
+      "PT",
+      "RCC"
+     ],
+     "tumor_cell_share": 0.96,
+     "tau": 0.935,
+     "tumor_vs_pt": {
+      "log2fc": 6.818,
+      "padj": 0.0122,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "RRAD",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "RCC",
+       "label": "ccRCC tumor cell",
+       "mean_lognorm": 0.324,
+       "pct_expressing": 17.1,
+       "share_of_tumor_transcripts": 0.892
+      },
+      {
+       "cell_group": "Epi_other",
+       "label": "other renal epithelial cell",
+       "mean_lognorm": 0.204,
+       "pct_expressing": 11.1,
+       "share_of_tumor_transcripts": 0.0
+      },
+      {
+       "cell_group": "Fibroblast",
+       "label": "fibroblast / pericyte",
+       "mean_lognorm": 0.082,
+       "pct_expressing": 4.8,
+       "share_of_tumor_transcripts": 0.007
+      }
+     ],
+     "expressing_groups": [
+      "RCC",
+      "Epi_other"
+     ],
+     "tumor_cell_share": 0.892,
+     "tau": 0.933,
+     "tumor_vs_pt": {
+      "log2fc": 5.388,
+      "padj": 0.0774,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "CYP2J2",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "Epi_other",
+       "label": "other renal epithelial cell",
+       "mean_lognorm": 0.28,
+       "pct_expressing": 16.7,
+       "share_of_tumor_transcripts": 0.002
+      },
+      {
+       "cell_group": "PT",
+       "label": "proximal tubule epithelial cell",
+       "mean_lognorm": 0.22,
+       "pct_expressing": 12.8,
+       "share_of_tumor_transcripts": 0.003
+      },
+      {
+       "cell_group": "RCC",
+       "label": "ccRCC tumor cell",
+       "mean_lognorm": 0.22,
+       "pct_expressing": 13.3,
+       "share_of_tumor_transcripts": 0.929
+      }
+     ],
+     "expressing_groups": [
+      "Epi_other",
+      "PT",
+      "RCC"
+     ],
+     "tumor_cell_share": 0.929,
+     "tau": 0.898,
+     "tumor_vs_pt": {
+      "log2fc": 3.037,
+      "padj": 0.27,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "C19orf33",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "RCC",
+       "label": "ccRCC tumor cell",
+       "mean_lognorm": 1.154,
+       "pct_expressing": 54.2,
+       "share_of_tumor_transcripts": 0.97
+      },
+      {
+       "cell_group": "Epi_other",
+       "label": "other renal epithelial cell",
+       "mean_lognorm": 0.659,
+       "pct_expressing": 38.9,
+       "share_of_tumor_transcripts": 0.001
+      },
+      {
+       "cell_group": "Endothelial",
+       "label": "endothelial cell",
+       "mean_lognorm": 0.116,
+       "pct_expressing": 6.5,
+       "share_of_tumor_transcripts": 0.007
+      }
+     ],
+     "expressing_groups": [
+      "RCC",
+      "Epi_other"
+     ],
+     "tumor_cell_share": 0.97,
+     "tau": 0.95,
+     "tumor_vs_pt": {
+      "log2fc": 3.822,
+      "padj": 0.117,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "PNCK",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "RCC",
+       "label": "ccRCC tumor cell",
+       "mean_lognorm": 0.379,
+       "pct_expressing": 21.0,
+       "share_of_tumor_transcripts": 0.958
+      },
+      {
+       "cell_group": "Epi_other",
+       "label": "other renal epithelial cell",
+       "mean_lognorm": 0.371,
+       "pct_expressing": 22.2,
+       "share_of_tumor_transcripts": 0.001
+      },
+      {
+       "cell_group": "PT",
+       "label": "proximal tubule epithelial cell",
+       "mean_lognorm": 0.049,
+       "pct_expressing": 2.6,
+       "share_of_tumor_transcripts": 0.0
+      }
+     ],
+     "expressing_groups": [
+      "RCC",
+      "Epi_other"
+     ],
+     "tumor_cell_share": 0.958,
+     "tau": 0.922,
+     "tumor_vs_pt": {
+      "log2fc": 4.683,
+      "padj": 0.105,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "CAVIN3",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "Fibroblast",
+       "label": "fibroblast / pericyte",
+       "mean_lognorm": 0.871,
+       "pct_expressing": 46.3,
+       "share_of_tumor_transcripts": 0.054
+      },
+      {
+       "cell_group": "Endothelial",
+       "label": "endothelial cell",
+       "mean_lognorm": 0.689,
+       "pct_expressing": 36.9,
+       "share_of_tumor_transcripts": 0.096
+      },
+      {
+       "cell_group": "RCC",
+       "label": "ccRCC tumor cell",
+       "mean_lognorm": 0.667,
+       "pct_expressing": 38.5,
+       "share_of_tumor_transcripts": 0.753
+      }
+     ],
+     "expressing_groups": [
+      "Fibroblast",
+      "Endothelial",
+      "RCC",
+      "PT",
+      "Epi_other"
+     ],
+     "tumor_cell_share": 0.753,
+     "tau": 0.859,
+     "tumor_vs_pt": {
+      "log2fc": 5.6,
+      "padj": 0.0472,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "HSD3B7",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "RCC",
+       "label": "ccRCC tumor cell",
+       "mean_lognorm": 0.475,
+       "pct_expressing": 28.1,
+       "share_of_tumor_transcripts": 0.856
+      },
+      {
+       "cell_group": "Epi_other",
+       "label": "other renal epithelial cell",
+       "mean_lognorm": 0.167,
+       "pct_expressing": 11.1,
+       "share_of_tumor_transcripts": 0.0
+      },
+      {
+       "cell_group": "PT",
+       "label": "proximal tubule epithelial cell",
+       "mean_lognorm": 0.093,
+       "pct_expressing": 5.1,
+       "share_of_tumor_transcripts": 0.0
+      }
+     ],
+     "expressing_groups": [
+      "RCC",
+      "Epi_other"
+     ],
+     "tumor_cell_share": 0.856,
+     "tau": 0.948,
+     "tumor_vs_pt": {
+      "log2fc": 2.379,
+      "padj": 0.113,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "PDIA5",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "RCC",
+       "label": "ccRCC tumor cell",
+       "mean_lognorm": 0.216,
+       "pct_expressing": 13.8,
+       "share_of_tumor_transcripts": 0.632
+      },
+      {
+       "cell_group": "PT",
+       "label": "proximal tubule epithelial cell",
+       "mean_lognorm": 0.204,
+       "pct_expressing": 10.3,
+       "share_of_tumor_transcripts": 0.002
+      },
+      {
+       "cell_group": "Endothelial",
+       "label": "endothelial cell",
+       "mean_lognorm": 0.148,
+       "pct_expressing": 9.1,
+       "share_of_tumor_transcripts": 0.047
+      }
+     ],
+     "expressing_groups": [
+      "RCC",
+      "PT"
+     ],
+     "tumor_cell_share": 0.632,
+     "tau": 0.814,
+     "tumor_vs_pt": {
+      "log2fc": 3.918,
+      "padj": 0.0629,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "EHD2",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "Fibroblast",
+       "label": "fibroblast / pericyte",
+       "mean_lognorm": 0.997,
+       "pct_expressing": 51.7,
+       "share_of_tumor_transcripts": 0.141
+      },
+      {
+       "cell_group": "Endothelial",
+       "label": "endothelial cell",
+       "mean_lognorm": 0.424,
+       "pct_expressing": 24.5,
+       "share_of_tumor_transcripts": 0.105
+      },
+      {
+       "cell_group": "RCC",
+       "label": "ccRCC tumor cell",
+       "mean_lognorm": 0.336,
+       "pct_expressing": 20.1,
+       "share_of_tumor_transcripts": 0.713
+      }
+     ],
+     "expressing_groups": [
+      "Fibroblast",
+      "Endothelial",
+      "RCC"
+     ],
+     "tumor_cell_share": 0.713,
+     "tau": 0.945,
+     "tumor_vs_pt": {
+      "log2fc": 5.528,
+      "padj": 0.0213,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "PPP1R13L",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "RCC",
+       "label": "ccRCC tumor cell",
+       "mean_lognorm": 0.225,
+       "pct_expressing": 14.0,
+       "share_of_tumor_transcripts": 0.622
+      },
+      {
+       "cell_group": "Epi_other",
+       "label": "other renal epithelial cell",
+       "mean_lognorm": 0.176,
+       "pct_expressing": 11.1,
+       "share_of_tumor_transcripts": 0.001
+      },
+      {
+       "cell_group": "PT",
+       "label": "proximal tubule epithelial cell",
+       "mean_lognorm": 0.085,
+       "pct_expressing": 5.1,
+       "share_of_tumor_transcripts": 0.001
+      }
+     ],
+     "expressing_groups": [
+      "RCC",
+      "Epi_other"
+     ],
+     "tumor_cell_share": 0.622,
+     "tau": 0.874,
+     "tumor_vs_pt": {
+      "log2fc": 4.789,
+      "padj": 0.0252,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "HMCN1",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "Endothelial",
+       "label": "endothelial cell",
+       "mean_lognorm": 0.228,
+       "pct_expressing": 12.8,
+       "share_of_tumor_transcripts": 0.719
+      },
+      {
+       "cell_group": "Fibroblast",
+       "label": "fibroblast / pericyte",
+       "mean_lognorm": 0.021,
+       "pct_expressing": 1.3,
+       "share_of_tumor_transcripts": 0.023
+      },
+      {
+       "cell_group": "RCC",
+       "label": "ccRCC tumor cell",
+       "mean_lognorm": 0.007,
+       "pct_expressing": 0.4,
+       "share_of_tumor_transcripts": 0.166
+      }
+     ],
+     "expressing_groups": [
+      "Endothelial"
+     ],
+     "tumor_cell_share": 0.166,
+     "tau": 0.991,
+     "tumor_vs_pt": {
+      "log2fc": 1.009,
+      "padj": 0.262,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "OLFML2A",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "Fibroblast",
+       "label": "fibroblast / pericyte",
+       "mean_lognorm": 0.734,
+       "pct_expressing": 38.3,
+       "share_of_tumor_transcripts": 0.647
+      },
+      {
+       "cell_group": "Endothelial",
+       "label": "endothelial cell",
+       "mean_lognorm": 0.176,
+       "pct_expressing": 10.9,
+       "share_of_tumor_transcripts": 0.261
+      },
+      {
+       "cell_group": "Monocyte",
+       "label": "monocyte",
+       "mean_lognorm": 0.003,
+       "pct_expressing": 0.2,
+       "share_of_tumor_transcripts": 0.003
+      }
+     ],
+     "expressing_groups": [
+      "Fibroblast",
+      "Endothelial"
+     ],
+     "tumor_cell_share": 0.014,
+     "tau": 0.984,
+     "tumor_vs_pt": {
+      "log2fc": 0.235,
+      "padj": 0.428,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "COX4I2",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "Fibroblast",
+       "label": "fibroblast / pericyte",
+       "mean_lognorm": 0.944,
+       "pct_expressing": 44.6,
+       "share_of_tumor_transcripts": 0.893
+      },
+      {
+       "cell_group": "Endothelial",
+       "label": "endothelial cell",
+       "mean_lognorm": 0.022,
+       "pct_expressing": 1.1,
+       "share_of_tumor_transcripts": 0.048
+      },
+      {
+       "cell_group": "T_other",
+       "label": "other T cell (MAIT, gamma-delta)",
+       "mean_lognorm": 0.002,
+       "pct_expressing": 0.1,
+       "share_of_tumor_transcripts": 0.017
+      }
+     ],
+     "expressing_groups": [
+      "Fibroblast"
+     ],
+     "tumor_cell_share": 0.007,
+     "tau": 0.998,
+     "tumor_vs_pt": {
+      "log2fc": 0.29,
+      "padj": 0.494,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "JAG2",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "Endothelial",
+       "label": "endothelial cell",
+       "mean_lognorm": 0.463,
+       "pct_expressing": 25.7,
+       "share_of_tumor_transcripts": 0.487
+      },
+      {
+       "cell_group": "Epi_other",
+       "label": "other renal epithelial cell",
+       "mean_lognorm": 0.082,
+       "pct_expressing": 5.6,
+       "share_of_tumor_transcripts": 0.001
+      },
+      {
+       "cell_group": "NK",
+       "label": "natural killer cell",
+       "mean_lognorm": 0.009,
+       "pct_expressing": 0.5,
+       "share_of_tumor_transcripts": 0.116
+      }
+     ],
+     "expressing_groups": [
+      "Endothelial"
+     ],
+     "tumor_cell_share": 0.023,
+     "tau": 0.982,
+     "tumor_vs_pt": {
+      "log2fc": 0.251,
+      "padj": 0.172,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "VWA1",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "Endothelial",
+       "label": "endothelial cell",
+       "mean_lognorm": 0.883,
+       "pct_expressing": 41.3,
+       "share_of_tumor_transcripts": 0.658
+      },
+      {
+       "cell_group": "RCC",
+       "label": "ccRCC tumor cell",
+       "mean_lognorm": 0.066,
+       "pct_expressing": 4.5,
+       "share_of_tumor_transcripts": 0.308
+      },
+      {
+       "cell_group": "Fibroblast",
+       "label": "fibroblast / pericyte",
+       "mean_lognorm": 0.008,
+       "pct_expressing": 0.6,
+       "share_of_tumor_transcripts": 0.002
+      }
+     ],
+     "expressing_groups": [
+      "Endothelial"
+     ],
+     "tumor_cell_share": 0.308,
+     "tau": 0.994,
+     "tumor_vs_pt": {
+      "log2fc": 2.342,
+      "padj": 0.229,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "GAL3ST4",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "Macrophage",
+       "label": "macrophage (TAM)",
+       "mean_lognorm": 0.396,
+       "pct_expressing": 23.7,
+       "share_of_tumor_transcripts": 0.972
+      },
+      {
+       "cell_group": "Fibroblast",
+       "label": "fibroblast / pericyte",
+       "mean_lognorm": 0.027,
+       "pct_expressing": 1.7,
+       "share_of_tumor_transcripts": 0.002
+      },
+      {
+       "cell_group": "cDC",
+       "label": "conventional dendritic cell",
+       "mean_lognorm": 0.02,
+       "pct_expressing": 1.3,
+       "share_of_tumor_transcripts": 0.007
+      }
+     ],
+     "expressing_groups": [
+      "Macrophage"
+     ],
+     "tumor_cell_share": 0.002,
+     "tau": 0.988,
+     "tumor_vs_pt": {
+      "log2fc": 0.31,
+      "padj": 0.372,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "LRRC25",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "Monocyte",
+       "label": "monocyte",
+       "mean_lognorm": 0.969,
+       "pct_expressing": 52.5,
+       "share_of_tumor_transcripts": 0.133
+      },
+      {
+       "cell_group": "Macrophage",
+       "label": "macrophage (TAM)",
+       "mean_lognorm": 0.46,
+       "pct_expressing": 29.1,
+       "share_of_tumor_transcripts": 0.787
+      },
+      {
+       "cell_group": "pDC",
+       "label": "plasmacytoid dendritic cell",
+       "mean_lognorm": 0.174,
+       "pct_expressing": 13.2,
+       "share_of_tumor_transcripts": 0.004
+      }
+     ],
+     "expressing_groups": [
+      "Monocyte",
+      "Macrophage",
+      "pDC"
+     ],
+     "tumor_cell_share": 0.016,
+     "tau": 0.943,
+     "tumor_vs_pt": {
+      "log2fc": 0.869,
+      "padj": 0.199,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "SLC37A2",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "Macrophage",
+       "label": "macrophage (TAM)",
+       "mean_lognorm": 0.302,
+       "pct_expressing": 19.5,
+       "share_of_tumor_transcripts": 0.886
+      },
+      {
+       "cell_group": "Monocyte",
+       "label": "monocyte",
+       "mean_lognorm": 0.11,
+       "pct_expressing": 7.0,
+       "share_of_tumor_transcripts": 0.02
+      },
+      {
+       "cell_group": "cDC",
+       "label": "conventional dendritic cell",
+       "mean_lognorm": 0.1,
+       "pct_expressing": 6.5,
+       "share_of_tumor_transcripts": 0.052
+      }
+     ],
+     "expressing_groups": [
+      "Macrophage"
+     ],
+     "tumor_cell_share": 0.003,
+     "tau": 0.941,
+     "tumor_vs_pt": {
+      "log2fc": 0.397,
+      "padj": 0.225,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "TRAT1",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "CD4_T",
+       "label": "CD4 T cell",
+       "mean_lognorm": 0.586,
+       "pct_expressing": 34.4,
+       "share_of_tumor_transcripts": 0.183
+      },
+      {
+       "cell_group": "CD8_T",
+       "label": "CD8 T cell",
+       "mean_lognorm": 0.466,
+       "pct_expressing": 28.0,
+       "share_of_tumor_transcripts": 0.711
+      },
+      {
+       "cell_group": "T_other",
+       "label": "other T cell (MAIT, gamma-delta)",
+       "mean_lognorm": 0.421,
+       "pct_expressing": 24.3,
+       "share_of_tumor_transcripts": 0.058
+      }
+     ],
+     "expressing_groups": [
+      "CD4_T",
+      "CD8_T",
+      "T_other"
+     ],
+     "tumor_cell_share": 0.002,
+     "tau": 0.872,
+     "tumor_vs_pt": {
+      "log2fc": 1.491,
+      "padj": 0.0928,
+      "n_donors": 6
+     }
+    },
+    {
+     "gene": "MILR1",
+     "measured": true,
+     "top_groups": [
+      {
+       "cell_group": "Macrophage",
+       "label": "macrophage (TAM)",
+       "mean_lognorm": 0.232,
+       "pct_expressing": 15.8,
+       "share_of_tumor_transcripts": 0.841
+      },
+      {
+       "cell_group": "pDC",
+       "label": "plasmacytoid dendritic cell",
+       "mean_lognorm": 0.229,
+       "pct_expressing": 16.1,
+       "share_of_tumor_transcripts": 0.01
+      },
+      {
+       "cell_group": "Mast",
+       "label": "mast cell",
+       "mean_lognorm": 0.185,
+       "pct_expressing": 11.0,
+       "share_of_tumor_transcripts": 0.015
+      }
+     ],
+     "expressing_groups": [
+      "Macrophage",
+      "pDC",
+      "Mast"
+     ],
+     "tumor_cell_share": 0.003,
+     "tau": 0.814,
+     "tumor_vs_pt": {
+      "log2fc": 0.516,
+      "padj": 0.373,
+      "n_donors": 6
+     }
     }
    ]
   },
@@ -6170,39 +7007,39 @@
    },
    "validation": {
     "mean_share_core": {
-     "RCC": 0.57,
-     "PT": 0.029,
+     "RCC": 0.544,
+     "PT": 0.032,
      "Epi_other": 0.009,
-     "Endothelial": 0.059,
-     "Fibroblast": 0.035,
-     "Macrophage": 0.178,
-     "Monocyte": 0.016,
-     "DC": 0.023,
+     "Endothelial": 0.062,
+     "Fibroblast": 0.038,
+     "Macrophage": 0.188,
+     "Monocyte": 0.017,
+     "DC": 0.024,
      "Mast": 0.012,
-     "T_cell": 0.007,
+     "T_cell": 0.008,
      "NK": 0.022,
      "B": 0.007,
-     "Plasma": 0.019
+     "Plasma": 0.021
     },
     "mean_share_interface": {
-     "RCC": 0.284,
-     "PT": 0.033,
+     "RCC": 0.271,
+     "PT": 0.034,
      "Epi_other": 0.066,
-     "Endothelial": 0.1,
-     "Fibroblast": 0.233,
-     "Macrophage": 0.125,
-     "Monocyte": 0.015,
-     "DC": 0.023,
+     "Endothelial": 0.101,
+     "Fibroblast": 0.239,
+     "Macrophage": 0.128,
+     "Monocyte": 0.016,
+     "DC": 0.024,
      "Mast": 0.015,
      "T_cell": 0.006,
      "NK": 0.013,
      "B": 0.011,
-     "Plasma": 0.064
+     "Plasma": 0.065
     },
-    "spearman_CA9_vs_RCC": 0.281,
-    "spearman_KDR_vs_Endothelial": 0.217,
-    "spearman_CD74_vs_Macrophage": 0.334,
-    "spearman_PTPRC_vs_T_cell": 0.165
+    "spearman_CA9_vs_RCC": 0.273,
+    "spearman_KDR_vs_Endothelial": 0.22,
+    "spearman_CD74_vs_Macrophage": 0.333,
+    "spearman_PTPRC_vs_T_cell": 0.156
    }
   },
   "structure": {
@@ -6786,6 +7623,428 @@
      "EV:sc_expr:d34a61d4a7d8",
      "EV:sc_tvp:b7c6013f9825"
     ]
+   },
+   {
+    "gene": "COL23A1",
+    "top_group": "Epi_other",
+    "top_label": "other renal epithelial cell",
+    "top_pct": 27.8,
+    "top_share": 0.003,
+    "tumor_cell_share": 0.881,
+    "tau": 0.954,
+    "tvp": {
+     "log2fc": 5.366,
+     "padj": 0.0193,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:2004e5c49703",
+     "EV:sc_expr:da05366dd07f",
+     "EV:sc_tvp:e1532aa1b09c"
+    ]
+   },
+   {
+    "gene": "RAB42",
+    "top_group": "RCC",
+    "top_label": "ccRCC tumor cell",
+    "top_pct": 11.6,
+    "top_share": 0.627,
+    "tumor_cell_share": 0.627,
+    "tau": 0.949,
+    "tvp": {
+     "log2fc": 3.803,
+     "padj": 0.147,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:2c86705a51fe",
+     "EV:sc_expr:619fb8f930e5",
+     "EV:sc_tvp:f53feb0aa597"
+    ]
+   },
+   {
+    "gene": "FABP6",
+    "top_group": "PT",
+    "top_label": "proximal tubule epithelial cell",
+    "top_pct": 25.6,
+    "top_share": 0.005,
+    "tumor_cell_share": 0.96,
+    "tau": 0.935,
+    "tvp": {
+     "log2fc": 6.818,
+     "padj": 0.0122,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:7714949b2d7f",
+     "EV:sc_expr:882bb956c16e",
+     "EV:sc_tvp:52f5e4eeb4a8"
+    ]
+   },
+   {
+    "gene": "RRAD",
+    "top_group": "RCC",
+    "top_label": "ccRCC tumor cell",
+    "top_pct": 17.1,
+    "top_share": 0.892,
+    "tumor_cell_share": 0.892,
+    "tau": 0.933,
+    "tvp": {
+     "log2fc": 5.388,
+     "padj": 0.0774,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:3239e3b8d49c",
+     "EV:sc_expr:5f3a913642a2",
+     "EV:sc_tvp:e98521a115fd"
+    ]
+   },
+   {
+    "gene": "CYP2J2",
+    "top_group": "Epi_other",
+    "top_label": "other renal epithelial cell",
+    "top_pct": 16.7,
+    "top_share": 0.002,
+    "tumor_cell_share": 0.929,
+    "tau": 0.898,
+    "tvp": {
+     "log2fc": 3.037,
+     "padj": 0.27,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:d85977d6e5e5",
+     "EV:sc_expr:f549bbcb8d9e",
+     "EV:sc_expr:f88266a77c78",
+     "EV:sc_tvp:800c9f294545"
+    ]
+   },
+   {
+    "gene": "C19orf33",
+    "top_group": "RCC",
+    "top_label": "ccRCC tumor cell",
+    "top_pct": 54.2,
+    "top_share": 0.97,
+    "tumor_cell_share": 0.97,
+    "tau": 0.95,
+    "tvp": {
+     "log2fc": 3.822,
+     "padj": 0.117,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:5be448835e3e",
+     "EV:sc_expr:6e8db7d15e23",
+     "EV:sc_tvp:cad76a0afa44"
+    ]
+   },
+   {
+    "gene": "PNCK",
+    "top_group": "RCC",
+    "top_label": "ccRCC tumor cell",
+    "top_pct": 21.0,
+    "top_share": 0.958,
+    "tumor_cell_share": 0.958,
+    "tau": 0.922,
+    "tvp": {
+     "log2fc": 4.683,
+     "padj": 0.105,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:205d3de9020e",
+     "EV:sc_expr:e9860ac49f25",
+     "EV:sc_tvp:578ce7e8e78d"
+    ]
+   },
+   {
+    "gene": "CAVIN3",
+    "top_group": "Fibroblast",
+    "top_label": "fibroblast / pericyte",
+    "top_pct": 46.3,
+    "top_share": 0.054,
+    "tumor_cell_share": 0.753,
+    "tau": 0.859,
+    "tvp": {
+     "log2fc": 5.6,
+     "padj": 0.0472,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:0e8a2f9b4e89",
+     "EV:sc_expr:591c070abe35",
+     "EV:sc_expr:ebd808ce8602",
+     "EV:sc_tvp:245d2bf486da"
+    ]
+   },
+   {
+    "gene": "HSD3B7",
+    "top_group": "RCC",
+    "top_label": "ccRCC tumor cell",
+    "top_pct": 28.1,
+    "top_share": 0.856,
+    "tumor_cell_share": 0.856,
+    "tau": 0.948,
+    "tvp": {
+     "log2fc": 2.379,
+     "padj": 0.113,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:aefc961cab15",
+     "EV:sc_expr:ebdb3f4b064f",
+     "EV:sc_tvp:4afb364a2c1d"
+    ]
+   },
+   {
+    "gene": "PDIA5",
+    "top_group": "RCC",
+    "top_label": "ccRCC tumor cell",
+    "top_pct": 13.8,
+    "top_share": 0.632,
+    "tumor_cell_share": 0.632,
+    "tau": 0.814,
+    "tvp": {
+     "log2fc": 3.918,
+     "padj": 0.0629,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:0750296be114",
+     "EV:sc_expr:7ee878bf95d2",
+     "EV:sc_tvp:e7c4775ac49e"
+    ]
+   },
+   {
+    "gene": "EHD2",
+    "top_group": "Fibroblast",
+    "top_label": "fibroblast / pericyte",
+    "top_pct": 51.7,
+    "top_share": 0.141,
+    "tumor_cell_share": 0.713,
+    "tau": 0.945,
+    "tvp": {
+     "log2fc": 5.528,
+     "padj": 0.0213,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:574a94cb8d36",
+     "EV:sc_expr:b227c0286743",
+     "EV:sc_expr:edd199538f1d",
+     "EV:sc_tvp:807caa44f75b"
+    ]
+   },
+   {
+    "gene": "PPP1R13L",
+    "top_group": "RCC",
+    "top_label": "ccRCC tumor cell",
+    "top_pct": 14.0,
+    "top_share": 0.622,
+    "tumor_cell_share": 0.622,
+    "tau": 0.874,
+    "tvp": {
+     "log2fc": 4.789,
+     "padj": 0.0252,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:1bcd2ac15fc1",
+     "EV:sc_expr:2b78bde88703",
+     "EV:sc_tvp:fe514a78a7eb"
+    ]
+   },
+   {
+    "gene": "HMCN1",
+    "top_group": "Endothelial",
+    "top_label": "endothelial cell",
+    "top_pct": 12.8,
+    "top_share": 0.719,
+    "tumor_cell_share": 0.166,
+    "tau": 0.991,
+    "tvp": {
+     "log2fc": 1.009,
+     "padj": 0.262,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:e4251f373811",
+     "EV:sc_expr:f242ea91c84e",
+     "EV:sc_tvp:d851b36fb6af"
+    ]
+   },
+   {
+    "gene": "OLFML2A",
+    "top_group": "Fibroblast",
+    "top_label": "fibroblast / pericyte",
+    "top_pct": 38.3,
+    "top_share": 0.647,
+    "tumor_cell_share": 0.014,
+    "tau": 0.984,
+    "tvp": {
+     "log2fc": 0.235,
+     "padj": 0.428,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:5506f00cc58b",
+     "EV:sc_expr:f29e7815378c",
+     "EV:sc_tvp:eb3ffaa04212"
+    ]
+   },
+   {
+    "gene": "COX4I2",
+    "top_group": "Fibroblast",
+    "top_label": "fibroblast / pericyte",
+    "top_pct": 44.6,
+    "top_share": 0.893,
+    "tumor_cell_share": 0.007,
+    "tau": 0.998,
+    "tvp": {
+     "log2fc": 0.29,
+     "padj": 0.494,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:23bb05fe57a4",
+     "EV:sc_tvp:f7469609a880"
+    ]
+   },
+   {
+    "gene": "JAG2",
+    "top_group": "Endothelial",
+    "top_label": "endothelial cell",
+    "top_pct": 25.7,
+    "top_share": 0.487,
+    "tumor_cell_share": 0.023,
+    "tau": 0.982,
+    "tvp": {
+     "log2fc": 0.251,
+     "padj": 0.172,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:1d6fc2012204",
+     "EV:sc_expr:7fb97b327c83",
+     "EV:sc_tvp:85b9825a2b63"
+    ]
+   },
+   {
+    "gene": "VWA1",
+    "top_group": "Endothelial",
+    "top_label": "endothelial cell",
+    "top_pct": 41.3,
+    "top_share": 0.658,
+    "tumor_cell_share": 0.308,
+    "tau": 0.994,
+    "tvp": {
+     "log2fc": 2.342,
+     "padj": 0.229,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:aec7f97782af",
+     "EV:sc_expr:e21ff324dfb0",
+     "EV:sc_tvp:3473a5956380"
+    ]
+   },
+   {
+    "gene": "GAL3ST4",
+    "top_group": "Macrophage",
+    "top_label": "macrophage (TAM)",
+    "top_pct": 23.7,
+    "top_share": 0.972,
+    "tumor_cell_share": 0.002,
+    "tau": 0.988,
+    "tvp": {
+     "log2fc": 0.31,
+     "padj": 0.372,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:4c21b92a3bb8",
+     "EV:sc_tvp:b3f34d2662ac"
+    ]
+   },
+   {
+    "gene": "LRRC25",
+    "top_group": "Monocyte",
+    "top_label": "monocyte",
+    "top_pct": 52.5,
+    "top_share": 0.133,
+    "tumor_cell_share": 0.016,
+    "tau": 0.943,
+    "tvp": {
+     "log2fc": 0.869,
+     "padj": 0.199,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:68522d6b98a2",
+     "EV:sc_expr:6dabca222d7c",
+     "EV:sc_expr:c637f88e9b6c",
+     "EV:sc_tvp:bbbe73889f70"
+    ]
+   },
+   {
+    "gene": "SLC37A2",
+    "top_group": "Macrophage",
+    "top_label": "macrophage (TAM)",
+    "top_pct": 19.5,
+    "top_share": 0.886,
+    "tumor_cell_share": 0.003,
+    "tau": 0.941,
+    "tvp": {
+     "log2fc": 0.397,
+     "padj": 0.225,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:62d9d1b35355",
+     "EV:sc_expr:e77d3ceb6c0a",
+     "EV:sc_tvp:cdf9c58accd5"
+    ]
+   },
+   {
+    "gene": "TRAT1",
+    "top_group": "CD4_T",
+    "top_label": "CD4 T cell",
+    "top_pct": 34.4,
+    "top_share": 0.183,
+    "tumor_cell_share": 0.002,
+    "tau": 0.872,
+    "tvp": {
+     "log2fc": 1.491,
+     "padj": 0.0928,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:095e40ad8569",
+     "EV:sc_expr:87ffea90e234",
+     "EV:sc_expr:dffad865d27e",
+     "EV:sc_tvp:5cf4554cd923"
+    ]
+   },
+   {
+    "gene": "MILR1",
+    "top_group": "Macrophage",
+    "top_label": "macrophage (TAM)",
+    "top_pct": 15.8,
+    "top_share": 0.841,
+    "tumor_cell_share": 0.003,
+    "tau": 0.814,
+    "tvp": {
+     "log2fc": 0.516,
+     "padj": 0.373,
+     "n_donors": 6
+    },
+    "evidence_ids": [
+     "EV:sc_expr:225271654064",
+     "EV:sc_expr:c5d98707bc6c",
+     "EV:sc_expr:c701935a2769",
+     "EV:sc_tvp:bba941fb5229"
+    ]
    }
   ],
   "spatial_rows": [
@@ -6797,22 +8056,28 @@
     "neighbors": [
      {
       "cell_group": "RCC",
-      "log2_enrichment": 0.37,
-      "padj": 0.00167
-     },
-     {
-      "cell_group": "NK",
-      "log2_enrichment": 0.087,
-      "padj": 0.02
+      "log2_enrichment": 0.377,
+      "padj": 0.00173
      },
      {
       "cell_group": "Macrophage",
       "log2_enrichment": 0.084,
-      "padj": 0.00167
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "NK",
+      "log2_enrichment": 0.079,
+      "padj": 0.0297
+     },
+     {
+      "cell_group": "Endothelial",
+      "log2_enrichment": 0.03,
+      "padj": 0.0411
      }
     ],
     "evidence_ids": [
      "EV:spatial_expr:35b84fee998f",
+     "EV:spatial_nb:110ca75de7c1",
      "EV:spatial_nb:35b84fee998f",
      "EV:spatial_nb:8d41f48f7297",
      "EV:spatial_nb:c163f3f28053"
@@ -6827,27 +8092,27 @@
      {
       "cell_group": "Fibroblast",
       "log2_enrichment": 0.327,
-      "padj": 0.00167
+      "padj": 0.00173
      },
      {
       "cell_group": "Endothelial",
-      "log2_enrichment": 0.267,
-      "padj": 0.00167
+      "log2_enrichment": 0.263,
+      "padj": 0.00173
      },
      {
       "cell_group": "Monocyte",
-      "log2_enrichment": 0.111,
-      "padj": 0.00167
+      "log2_enrichment": 0.11,
+      "padj": 0.00173
      },
      {
       "cell_group": "Plasma",
-      "log2_enrichment": 0.104,
-      "padj": 0.00326
+      "log2_enrichment": 0.103,
+      "padj": 0.00337
      },
      {
       "cell_group": "Mast",
-      "log2_enrichment": 0.087,
-      "padj": 0.0471
+      "log2_enrichment": 0.088,
+      "padj": 0.0436
      }
     ],
     "evidence_ids": [
@@ -6868,13 +8133,13 @@
     "neighbors": [
      {
       "cell_group": "RCC",
-      "log2_enrichment": 0.203,
-      "padj": 0.00167
+      "log2_enrichment": 0.212,
+      "padj": 0.00173
      },
      {
       "cell_group": "NK",
-      "log2_enrichment": 0.17,
-      "padj": 0.00167
+      "log2_enrichment": 0.164,
+      "padj": 0.00173
      }
     ],
     "evidence_ids": [
@@ -6891,18 +8156,18 @@
     "neighbors": [
      {
       "cell_group": "Endothelial",
-      "log2_enrichment": 0.286,
-      "padj": 0.00167
+      "log2_enrichment": 0.295,
+      "padj": 0.00173
      },
      {
       "cell_group": "RCC",
-      "log2_enrichment": 0.211,
-      "padj": 0.00167
+      "log2_enrichment": 0.205,
+      "padj": 0.00173
      },
      {
       "cell_group": "Macrophage",
-      "log2_enrichment": 0.049,
-      "padj": 0.00636
+      "log2_enrichment": 0.052,
+      "padj": 0.00489
      }
     ],
     "evidence_ids": [
@@ -6920,13 +8185,13 @@
     "neighbors": [
      {
       "cell_group": "RCC",
-      "log2_enrichment": 0.263,
-      "padj": 0.00167
+      "log2_enrichment": 0.273,
+      "padj": 0.00173
      },
      {
       "cell_group": "Macrophage",
-      "log2_enrichment": 0.036,
-      "padj": 0.02
+      "log2_enrichment": 0.037,
+      "padj": 0.0121
      }
     ],
     "evidence_ids": [
@@ -6943,13 +8208,13 @@
     "neighbors": [
      {
       "cell_group": "RCC",
-      "log2_enrichment": 0.358,
-      "padj": 0.00167
+      "log2_enrichment": 0.363,
+      "padj": 0.00173
      },
      {
       "cell_group": "Endothelial",
-      "log2_enrichment": 0.118,
-      "padj": 0.00167
+      "log2_enrichment": 0.124,
+      "padj": 0.00173
      }
     ],
     "evidence_ids": [
@@ -6966,23 +8231,23 @@
     "neighbors": [
      {
       "cell_group": "RCC",
-      "log2_enrichment": 0.253,
-      "padj": 0.00167
+      "log2_enrichment": 0.262,
+      "padj": 0.00173
      },
      {
       "cell_group": "NK",
-      "log2_enrichment": 0.174,
-      "padj": 0.00167
+      "log2_enrichment": 0.163,
+      "padj": 0.00173
      },
      {
       "cell_group": "Endothelial",
-      "log2_enrichment": 0.079,
-      "padj": 0.00167
+      "log2_enrichment": 0.087,
+      "padj": 0.00173
      },
      {
       "cell_group": "Macrophage",
-      "log2_enrichment": 0.076,
-      "padj": 0.00167
+      "log2_enrichment": 0.067,
+      "padj": 0.00173
      }
     ],
     "evidence_ids": [
@@ -7001,18 +8266,24 @@
     "neighbors": [
      {
       "cell_group": "RCC",
-      "log2_enrichment": 0.377,
-      "padj": 0.00167
+      "log2_enrichment": 0.386,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "T_cell",
+      "log2_enrichment": 0.087,
+      "padj": 0.0436
      },
      {
       "cell_group": "Macrophage",
-      "log2_enrichment": 0.066,
-      "padj": 0.00167
+      "log2_enrichment": 0.068,
+      "padj": 0.00173
      }
     ],
     "evidence_ids": [
      "EV:spatial_expr:48beb6d82333",
      "EV:spatial_nb:48beb6d82333",
+     "EV:spatial_nb:cae18f79499b",
      "EV:spatial_nb:f5141b707dde"
     ]
    },
@@ -7024,28 +8295,28 @@
     "neighbors": [
      {
       "cell_group": "B",
-      "log2_enrichment": 0.292,
-      "padj": 0.00167
+      "log2_enrichment": 0.286,
+      "padj": 0.00173
      },
      {
       "cell_group": "T_cell",
-      "log2_enrichment": 0.273,
-      "padj": 0.00167
+      "log2_enrichment": 0.263,
+      "padj": 0.00173
      },
      {
       "cell_group": "Plasma",
-      "log2_enrichment": 0.205,
-      "padj": 0.00167
+      "log2_enrichment": 0.2,
+      "padj": 0.00173
      },
      {
       "cell_group": "Macrophage",
-      "log2_enrichment": 0.133,
-      "padj": 0.00167
+      "log2_enrichment": 0.125,
+      "padj": 0.00173
      },
      {
       "cell_group": "DC",
-      "log2_enrichment": 0.128,
-      "padj": 0.00167
+      "log2_enrichment": 0.119,
+      "padj": 0.00173
      }
     ],
     "evidence_ids": [
@@ -7068,28 +8339,28 @@
     "neighbors": [
      {
       "cell_group": "T_cell",
-      "log2_enrichment": 0.407,
-      "padj": 0.00167
+      "log2_enrichment": 0.395,
+      "padj": 0.00173
      },
      {
       "cell_group": "Macrophage",
-      "log2_enrichment": 0.235,
-      "padj": 0.00167
+      "log2_enrichment": 0.237,
+      "padj": 0.00173
      },
      {
       "cell_group": "DC",
-      "log2_enrichment": 0.162,
-      "padj": 0.00167
+      "log2_enrichment": 0.158,
+      "padj": 0.00173
      },
      {
       "cell_group": "Plasma",
-      "log2_enrichment": 0.127,
-      "padj": 0.00167
+      "log2_enrichment": 0.133,
+      "padj": 0.00173
      },
      {
       "cell_group": "RCC",
-      "log2_enrichment": 0.056,
-      "padj": 0.00167
+      "log2_enrichment": 0.045,
+      "padj": 0.00173
      }
     ],
     "evidence_ids": [
@@ -7110,28 +8381,28 @@
     "neighbors": [
      {
       "cell_group": "Epi_other",
-      "log2_enrichment": 1.315,
-      "padj": 0.00167
+      "log2_enrichment": 1.308,
+      "padj": 0.00173
      },
      {
       "cell_group": "PT",
-      "log2_enrichment": 1.145,
-      "padj": 0.00167
-     },
-     {
-      "cell_group": "Plasma",
-      "log2_enrichment": 0.431,
-      "padj": 0.00167
+      "log2_enrichment": 1.092,
+      "padj": 0.00173
      },
      {
       "cell_group": "Mast",
-      "log2_enrichment": 0.415,
-      "padj": 0.00167
+      "log2_enrichment": 0.421,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "Plasma",
+      "log2_enrichment": 0.409,
+      "padj": 0.00173
      },
      {
       "cell_group": "Fibroblast",
-      "log2_enrichment": 0.326,
-      "padj": 0.00167
+      "log2_enrichment": 0.305,
+      "padj": 0.00173
      }
     ],
     "evidence_ids": [
@@ -7155,13 +8426,13 @@
     "neighbors": [
      {
       "cell_group": "PT",
-      "log2_enrichment": 0.75,
-      "padj": 0.00167
+      "log2_enrichment": 0.73,
+      "padj": 0.00173
      },
      {
       "cell_group": "Epi_other",
-      "log2_enrichment": 0.302,
-      "padj": 0.00167
+      "log2_enrichment": 0.299,
+      "padj": 0.00173
      }
     ],
     "evidence_ids": [
@@ -7179,13 +8450,13 @@
     "neighbors": [
      {
       "cell_group": "RCC",
-      "log2_enrichment": 0.204,
-      "padj": 0.00167
+      "log2_enrichment": 0.207,
+      "padj": 0.00173
      },
      {
       "cell_group": "Macrophage",
       "log2_enrichment": 0.057,
-      "padj": 0.00167
+      "padj": 0.00337
      }
     ],
     "evidence_ids": [
@@ -7203,17 +8474,17 @@
      {
       "cell_group": "RCC",
       "log2_enrichment": 0.196,
-      "padj": 0.00167
+      "padj": 0.00173
      },
      {
       "cell_group": "Macrophage",
-      "log2_enrichment": 0.122,
-      "padj": 0.00167
+      "log2_enrichment": 0.117,
+      "padj": 0.00173
      },
      {
       "cell_group": "Endothelial",
-      "log2_enrichment": 0.071,
-      "padj": 0.00167
+      "log2_enrichment": 0.084,
+      "padj": 0.00173
      }
     ],
     "evidence_ids": [
@@ -7231,28 +8502,28 @@
     "neighbors": [
      {
       "cell_group": "Epi_other",
-      "log2_enrichment": 0.942,
-      "padj": 0.00167
+      "log2_enrichment": 0.935,
+      "padj": 0.00173
      },
      {
       "cell_group": "PT",
-      "log2_enrichment": 0.546,
-      "padj": 0.00167
+      "log2_enrichment": 0.523,
+      "padj": 0.00173
      },
      {
       "cell_group": "Mast",
-      "log2_enrichment": 0.198,
-      "padj": 0.00167
+      "log2_enrichment": 0.201,
+      "padj": 0.00173
      },
      {
       "cell_group": "Plasma",
-      "log2_enrichment": 0.185,
-      "padj": 0.00167
+      "log2_enrichment": 0.172,
+      "padj": 0.00173
      },
      {
       "cell_group": "Fibroblast",
-      "log2_enrichment": 0.176,
-      "padj": 0.00167
+      "log2_enrichment": 0.169,
+      "padj": 0.00173
      }
     ],
     "evidence_ids": [
@@ -7273,23 +8544,23 @@
     "neighbors": [
      {
       "cell_group": "RCC",
-      "log2_enrichment": 0.161,
-      "padj": 0.00167
+      "log2_enrichment": 0.169,
+      "padj": 0.00173
      },
      {
       "cell_group": "NK",
-      "log2_enrichment": 0.138,
-      "padj": 0.00167
+      "log2_enrichment": 0.127,
+      "padj": 0.00173
      },
      {
       "cell_group": "Macrophage",
-      "log2_enrichment": 0.08,
-      "padj": 0.00167
+      "log2_enrichment": 0.076,
+      "padj": 0.00173
      },
      {
       "cell_group": "Endothelial",
-      "log2_enrichment": 0.048,
-      "padj": 0.00326
+      "log2_enrichment": 0.049,
+      "padj": 0.00645
      }
     ],
     "evidence_ids": [
@@ -7308,28 +8579,28 @@
     "neighbors": [
      {
       "cell_group": "Epi_other",
-      "log2_enrichment": 1.366,
-      "padj": 0.00167
+      "log2_enrichment": 1.358,
+      "padj": 0.00173
      },
      {
       "cell_group": "PT",
-      "log2_enrichment": 0.643,
-      "padj": 0.00167
+      "log2_enrichment": 0.609,
+      "padj": 0.00173
      },
      {
       "cell_group": "Mast",
-      "log2_enrichment": 0.281,
-      "padj": 0.00167
+      "log2_enrichment": 0.285,
+      "padj": 0.00173
      },
      {
       "cell_group": "Fibroblast",
-      "log2_enrichment": 0.229,
-      "padj": 0.00167
+      "log2_enrichment": 0.214,
+      "padj": 0.00173
      },
      {
       "cell_group": "Plasma",
-      "log2_enrichment": 0.193,
-      "padj": 0.00167
+      "log2_enrichment": 0.178,
+      "padj": 0.00173
      }
     ],
     "evidence_ids": [
@@ -7351,28 +8622,23 @@
     "neighbors": [
      {
       "cell_group": "T_cell",
-      "log2_enrichment": 0.307,
-      "padj": 0.00167
+      "log2_enrichment": 0.291,
+      "padj": 0.00173
      },
      {
       "cell_group": "Macrophage",
-      "log2_enrichment": 0.174,
-      "padj": 0.00167
+      "log2_enrichment": 0.171,
+      "padj": 0.00173
      },
      {
       "cell_group": "Plasma",
-      "log2_enrichment": 0.171,
-      "padj": 0.00167
+      "log2_enrichment": 0.167,
+      "padj": 0.00173
      },
      {
       "cell_group": "B",
-      "log2_enrichment": 0.145,
-      "padj": 0.00167
-     },
-     {
-      "cell_group": "DC",
-      "log2_enrichment": 0.069,
-      "padj": 0.0392
+      "log2_enrichment": 0.148,
+      "padj": 0.00173
      }
     ],
     "evidence_ids": [
@@ -7380,8 +8646,7 @@
      "EV:spatial_nb:051c537fb995",
      "EV:spatial_nb:40038ffe48c3",
      "EV:spatial_nb:50c3cb69912e",
-     "EV:spatial_nb:68a217fd1843",
-     "EV:spatial_nb:f2ec54b66310"
+     "EV:spatial_nb:68a217fd1843"
     ]
    },
    {
@@ -7392,28 +8657,28 @@
     "neighbors": [
      {
       "cell_group": "Epi_other",
-      "log2_enrichment": 0.561,
-      "padj": 0.00167
+      "log2_enrichment": 0.556,
+      "padj": 0.00173
      },
      {
       "cell_group": "Plasma",
-      "log2_enrichment": 0.528,
-      "padj": 0.00167
+      "log2_enrichment": 0.511,
+      "padj": 0.00173
      },
      {
       "cell_group": "Fibroblast",
-      "log2_enrichment": 0.477,
-      "padj": 0.00167
+      "log2_enrichment": 0.464,
+      "padj": 0.00173
      },
      {
       "cell_group": "Mast",
-      "log2_enrichment": 0.371,
-      "padj": 0.00167
+      "log2_enrichment": 0.373,
+      "padj": 0.00173
      },
      {
       "cell_group": "B",
-      "log2_enrichment": 0.264,
-      "padj": 0.00167
+      "log2_enrichment": 0.246,
+      "padj": 0.00173
      }
     ],
     "evidence_ids": [
@@ -7434,13 +8699,13 @@
     "neighbors": [
      {
       "cell_group": "PT",
-      "log2_enrichment": 0.376,
-      "padj": 0.00167
+      "log2_enrichment": 0.359,
+      "padj": 0.00173
      },
      {
       "cell_group": "RCC",
-      "log2_enrichment": 0.119,
-      "padj": 0.00167
+      "log2_enrichment": 0.12,
+      "padj": 0.00173
      }
     ],
     "evidence_ids": [
@@ -7457,23 +8722,23 @@
     "neighbors": [
      {
       "cell_group": "RCC",
-      "log2_enrichment": 0.232,
-      "padj": 0.00167
+      "log2_enrichment": 0.234,
+      "padj": 0.00173
      },
      {
       "cell_group": "NK",
-      "log2_enrichment": 0.156,
-      "padj": 0.00167
+      "log2_enrichment": 0.148,
+      "padj": 0.00173
      },
      {
       "cell_group": "Endothelial",
-      "log2_enrichment": 0.141,
-      "padj": 0.00167
+      "log2_enrichment": 0.145,
+      "padj": 0.00173
      },
      {
       "cell_group": "Macrophage",
-      "log2_enrichment": 0.115,
-      "padj": 0.00167
+      "log2_enrichment": 0.113,
+      "padj": 0.00173
      }
     ],
     "evidence_ids": [
@@ -7486,22 +8751,23 @@
    },
    {
     "gene": "AGMAT",
-    "top_expresser": "RCC",
+    "top_expresser": "PT",
     "corrected": "RCC",
     "n_high": 2375,
     "neighbors": [
      {
       "cell_group": "PT",
-      "log2_enrichment": 0.742,
-      "padj": 0.00167
+      "log2_enrichment": 0.733,
+      "padj": 0.00173
      },
      {
       "cell_group": "RCC",
-      "log2_enrichment": 0.111,
-      "padj": 0.00167
+      "log2_enrichment": 0.108,
+      "padj": 0.00173
      }
     ],
     "evidence_ids": [
+     "EV:spatial_expr:5302e1592e7c",
      "EV:spatial_expr:620e20307a66",
      "EV:spatial_nb:5302e1592e7c",
      "EV:spatial_nb:620e20307a66"
@@ -7515,28 +8781,28 @@
     "neighbors": [
      {
       "cell_group": "Epi_other",
-      "log2_enrichment": 1.178,
-      "padj": 0.00167
+      "log2_enrichment": 1.173,
+      "padj": 0.00173
      },
      {
       "cell_group": "Plasma",
-      "log2_enrichment": 0.56,
-      "padj": 0.00167
+      "log2_enrichment": 0.543,
+      "padj": 0.00173
      },
      {
       "cell_group": "PT",
-      "log2_enrichment": 0.536,
-      "padj": 0.00167
+      "log2_enrichment": 0.503,
+      "padj": 0.00173
      },
      {
       "cell_group": "Mast",
-      "log2_enrichment": 0.41,
-      "padj": 0.00167
+      "log2_enrichment": 0.421,
+      "padj": 0.00173
      },
      {
       "cell_group": "Fibroblast",
-      "log2_enrichment": 0.337,
-      "padj": 0.00167
+      "log2_enrichment": 0.328,
+      "padj": 0.00173
      }
     ],
     "evidence_ids": [
@@ -7557,28 +8823,28 @@
     "neighbors": [
      {
       "cell_group": "T_cell",
-      "log2_enrichment": 0.321,
-      "padj": 0.00167
+      "log2_enrichment": 0.308,
+      "padj": 0.00173
      },
      {
       "cell_group": "B",
-      "log2_enrichment": 0.231,
-      "padj": 0.00167
+      "log2_enrichment": 0.23,
+      "padj": 0.00173
      },
      {
       "cell_group": "Macrophage",
-      "log2_enrichment": 0.228,
-      "padj": 0.00167
+      "log2_enrichment": 0.229,
+      "padj": 0.00173
      },
      {
       "cell_group": "Plasma",
-      "log2_enrichment": 0.187,
-      "padj": 0.00167
+      "log2_enrichment": 0.184,
+      "padj": 0.00173
      },
      {
       "cell_group": "RCC",
-      "log2_enrichment": 0.044,
-      "padj": 0.00636
+      "log2_enrichment": 0.039,
+      "padj": 0.0178
      }
     ],
     "evidence_ids": [
@@ -7598,13 +8864,13 @@
     "neighbors": [
      {
       "cell_group": "PT",
-      "log2_enrichment": 0.6,
-      "padj": 0.00167
+      "log2_enrichment": 0.588,
+      "padj": 0.00173
      },
      {
       "cell_group": "RCC",
-      "log2_enrichment": 0.212,
-      "padj": 0.00167
+      "log2_enrichment": 0.214,
+      "padj": 0.00173
      }
     ],
     "evidence_ids": [
@@ -7615,33 +8881,32 @@
    },
    {
     "gene": "TNFAIP3",
-    "top_expresser": "RCC",
+    "top_expresser": "Macrophage",
     "corrected": "Macrophage",
     "n_high": 3305,
     "neighbors": [
      {
       "cell_group": "Macrophage",
-      "log2_enrichment": 0.202,
-      "padj": 0.00167
+      "log2_enrichment": 0.193,
+      "padj": 0.00173
      },
      {
       "cell_group": "RCC",
-      "log2_enrichment": 0.153,
-      "padj": 0.00167
+      "log2_enrichment": 0.158,
+      "padj": 0.00173
      },
      {
       "cell_group": "T_cell",
-      "log2_enrichment": 0.148,
-      "padj": 0.00636
+      "log2_enrichment": 0.127,
+      "padj": 0.00931
      },
      {
       "cell_group": "Endothelial",
-      "log2_enrichment": 0.071,
-      "padj": 0.00167
+      "log2_enrichment": 0.074,
+      "padj": 0.00173
      }
     ],
     "evidence_ids": [
-     "EV:spatial_expr:5c433e4ac48e",
      "EV:spatial_expr:ee9a20cdcf9f",
      "EV:spatial_nb:5c433e4ac48e",
      "EV:spatial_nb:6ff3f73b0d77",
@@ -7657,28 +8922,28 @@
     "neighbors": [
      {
       "cell_group": "T_cell",
-      "log2_enrichment": 0.343,
-      "padj": 0.00167
+      "log2_enrichment": 0.33,
+      "padj": 0.00173
      },
      {
       "cell_group": "Macrophage",
-      "log2_enrichment": 0.213,
-      "padj": 0.00167
+      "log2_enrichment": 0.21,
+      "padj": 0.00173
      },
      {
       "cell_group": "NK",
-      "log2_enrichment": 0.13,
-      "padj": 0.0119
+      "log2_enrichment": 0.134,
+      "padj": 0.00931
      },
      {
       "cell_group": "DC",
-      "log2_enrichment": 0.12,
-      "padj": 0.0119
+      "log2_enrichment": 0.114,
+      "padj": 0.0164
      },
      {
       "cell_group": "RCC",
-      "log2_enrichment": 0.1,
-      "padj": 0.00167
+      "log2_enrichment": 0.096,
+      "padj": 0.00173
      }
     ],
     "evidence_ids": [
@@ -7699,13 +8964,13 @@
     "neighbors": [
      {
       "cell_group": "RCC",
-      "log2_enrichment": 0.357,
-      "padj": 0.00167
+      "log2_enrichment": 0.36,
+      "padj": 0.00173
      },
      {
       "cell_group": "Endothelial",
-      "log2_enrichment": 0.065,
-      "padj": 0.00167
+      "log2_enrichment": 0.079,
+      "padj": 0.00173
      }
     ],
     "evidence_ids": [
@@ -7722,28 +8987,28 @@
     "neighbors": [
      {
       "cell_group": "PT",
-      "log2_enrichment": 1.034,
-      "padj": 0.00167
+      "log2_enrichment": 0.988,
+      "padj": 0.00173
      },
      {
       "cell_group": "Epi_other",
-      "log2_enrichment": 0.676,
-      "padj": 0.00167
+      "log2_enrichment": 0.671,
+      "padj": 0.00173
      },
      {
       "cell_group": "Mast",
-      "log2_enrichment": 0.19,
-      "padj": 0.00167
+      "log2_enrichment": 0.198,
+      "padj": 0.00173
      },
      {
       "cell_group": "Fibroblast",
-      "log2_enrichment": 0.175,
-      "padj": 0.00167
+      "log2_enrichment": 0.166,
+      "padj": 0.00173
      },
      {
       "cell_group": "Macrophage",
-      "log2_enrichment": 0.064,
-      "padj": 0.00167
+      "log2_enrichment": 0.044,
+      "padj": 0.0107
      }
     ],
     "evidence_ids": [
@@ -7755,11 +9020,705 @@
      "EV:spatial_nb:5d38ec2813f0",
      "EV:spatial_nb:df6d508a0dea"
     ]
+   },
+   {
+    "gene": "COL23A1",
+    "top_expresser": "RCC",
+    "corrected": "RCC",
+    "n_high": 3435,
+    "neighbors": [
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.27,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "Endothelial",
+      "log2_enrichment": 0.123,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "Macrophage",
+      "log2_enrichment": 0.099,
+      "padj": 0.00173
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:2004e5c49703",
+     "EV:spatial_nb:2004e5c49703",
+     "EV:spatial_nb:25447eafa74e",
+     "EV:spatial_nb:9301b8f2cd96"
+    ]
+   },
+   {
+    "gene": "RAB42",
+    "top_expresser": "RCC",
+    "corrected": "RCC",
+    "n_high": 1593,
+    "neighbors": [
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.28,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "Macrophage",
+      "log2_enrichment": 0.242,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "NK",
+      "log2_enrichment": 0.173,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "Endothelial",
+      "log2_enrichment": 0.082,
+      "padj": 0.00173
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:2c86705a51fe",
+     "EV:spatial_nb:2c86705a51fe",
+     "EV:spatial_nb:619fb8f930e5",
+     "EV:spatial_nb:7796900742e0",
+     "EV:spatial_nb:af6e2d183015"
+    ]
+   },
+   {
+    "gene": "FABP6",
+    "top_expresser": "RCC",
+    "corrected": "RCC",
+    "n_high": 3439,
+    "neighbors": [
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.396,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "Macrophage",
+      "log2_enrichment": 0.117,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "T_cell",
+      "log2_enrichment": 0.094,
+      "padj": 0.0411
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:882bb956c16e",
+     "EV:spatial_nb:5e3fd42c99ac",
+     "EV:spatial_nb:882bb956c16e",
+     "EV:spatial_nb:ead54d267efc"
+    ]
+   },
+   {
+    "gene": "RRAD",
+    "top_expresser": "RCC",
+    "corrected": "RCC",
+    "n_high": 3891,
+    "neighbors": [
+     {
+      "cell_group": "Mast",
+      "log2_enrichment": 0.206,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "Macrophage",
+      "log2_enrichment": 0.084,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "NK",
+      "log2_enrichment": 0.072,
+      "padj": 0.0366
+     },
+     {
+      "cell_group": "Endothelial",
+      "log2_enrichment": 0.059,
+      "padj": 0.00173
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:3239e3b8d49c",
+     "EV:spatial_nb:59ec7b76bc0c",
+     "EV:spatial_nb:78aa4f207f31",
+     "EV:spatial_nb:942ff214c542",
+     "EV:spatial_nb:b4c7dfcdeb9b"
+    ]
+   },
+   {
+    "gene": "CYP2J2",
+    "top_expresser": "RCC",
+    "corrected": "RCC",
+    "n_high": 2337,
+    "neighbors": [
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.358,
+      "padj": 0.00173
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:f549bbcb8d9e",
+     "EV:spatial_nb:f549bbcb8d9e"
+    ]
+   },
+   {
+    "gene": "C19orf33",
+    "top_expresser": "RCC",
+    "corrected": "RCC",
+    "n_high": 3874,
+    "neighbors": [
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.137,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "Monocyte",
+      "log2_enrichment": 0.12,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "NK",
+      "log2_enrichment": 0.115,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "Macrophage",
+      "log2_enrichment": 0.073,
+      "padj": 0.00173
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:6e8db7d15e23",
+     "EV:spatial_nb:017eaa4751d1",
+     "EV:spatial_nb:178ca0f54091",
+     "EV:spatial_nb:6e8db7d15e23",
+     "EV:spatial_nb:7e3c01befa44"
+    ]
+   },
+   {
+    "gene": "PNCK",
+    "top_expresser": "RCC",
+    "corrected": "RCC",
+    "n_high": 1616,
+    "neighbors": [
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.192,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "Endothelial",
+      "log2_enrichment": 0.184,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "Macrophage",
+      "log2_enrichment": 0.161,
+      "padj": 0.00173
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:205d3de9020e",
+     "EV:spatial_nb:08a2553f5afb",
+     "EV:spatial_nb:1145fd5da97a",
+     "EV:spatial_nb:205d3de9020e"
+    ]
+   },
+   {
+    "gene": "CAVIN3",
+    "top_expresser": "Fibroblast",
+    "corrected": "RCC",
+    "n_high": 3892,
+    "neighbors": [
+     {
+      "cell_group": "Fibroblast",
+      "log2_enrichment": 0.237,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "Mast",
+      "log2_enrichment": 0.218,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "Plasma",
+      "log2_enrichment": 0.152,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "NK",
+      "log2_enrichment": 0.073,
+      "padj": 0.0244
+     },
+     {
+      "cell_group": "Endothelial",
+      "log2_enrichment": 0.061,
+      "padj": 0.00173
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:0e8a2f9b4e89",
+     "EV:spatial_expr:591c070abe35",
+     "EV:spatial_nb:0e8a2f9b4e89",
+     "EV:spatial_nb:2d17cd52764a",
+     "EV:spatial_nb:51ffb6cfed60",
+     "EV:spatial_nb:d21c7190b4f2",
+     "EV:spatial_nb:ebd808ce8602"
+    ]
+   },
+   {
+    "gene": "HSD3B7",
+    "top_expresser": "RCC",
+    "corrected": "RCC",
+    "n_high": 3375,
+    "neighbors": [
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.22,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "Macrophage",
+      "log2_enrichment": 0.098,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "Endothelial",
+      "log2_enrichment": 0.037,
+      "padj": 0.0257
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:ebdb3f4b064f",
+     "EV:spatial_nb:85b2ac61adbd",
+     "EV:spatial_nb:e7f91f05afb8",
+     "EV:spatial_nb:ebdb3f4b064f"
+    ]
+   },
+   {
+    "gene": "PDIA5",
+    "top_expresser": "RCC",
+    "corrected": "RCC",
+    "n_high": 3189,
+    "neighbors": [
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.258,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "Macrophage",
+      "log2_enrichment": 0.107,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "NK",
+      "log2_enrichment": 0.077,
+      "padj": 0.0377
+     },
+     {
+      "cell_group": "Endothelial",
+      "log2_enrichment": 0.053,
+      "padj": 0.00173
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:0750296be114",
+     "EV:spatial_nb:0750296be114",
+     "EV:spatial_nb:7f19e5b59bff",
+     "EV:spatial_nb:d72cf3cbc104",
+     "EV:spatial_nb:feab686a86aa"
+    ]
+   },
+   {
+    "gene": "EHD2",
+    "top_expresser": "Fibroblast",
+    "corrected": "RCC",
+    "n_high": 3893,
+    "neighbors": [
+     {
+      "cell_group": "Mast",
+      "log2_enrichment": 0.292,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "Fibroblast",
+      "log2_enrichment": 0.285,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "Monocyte",
+      "log2_enrichment": 0.158,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "Plasma",
+      "log2_enrichment": 0.138,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "Endothelial",
+      "log2_enrichment": 0.114,
+      "padj": 0.00173
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:574a94cb8d36",
+     "EV:spatial_expr:b227c0286743",
+     "EV:spatial_nb:19a803f6373e",
+     "EV:spatial_nb:1d4e1754a8b3",
+     "EV:spatial_nb:b227c0286743",
+     "EV:spatial_nb:d79acc0c53be",
+     "EV:spatial_nb:edd199538f1d",
+     "EV:spatial_nb:f10ec901fb06"
+    ]
+   },
+   {
+    "gene": "PPP1R13L",
+    "top_expresser": "RCC",
+    "corrected": "RCC",
+    "n_high": 3229,
+    "neighbors": [
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.175,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "NK",
+      "log2_enrichment": 0.11,
+      "padj": 0.00489
+     },
+     {
+      "cell_group": "Macrophage",
+      "log2_enrichment": 0.064,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "Endothelial",
+      "log2_enrichment": 0.048,
+      "padj": 0.00337
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:1bcd2ac15fc1",
+     "EV:spatial_nb:1bcd2ac15fc1",
+     "EV:spatial_nb:886a8f2c9f96",
+     "EV:spatial_nb:ad57fb084fd8",
+     "EV:spatial_nb:b64ddbe3c102"
+    ]
+   },
+   {
+    "gene": "HMCN1",
+    "top_expresser": "Fibroblast",
+    "corrected": "Endothelial",
+    "n_high": 965,
+    "neighbors": [
+     {
+      "cell_group": "Endothelial",
+      "log2_enrichment": 0.161,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.099,
+      "padj": 0.00173
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:405dfa21c2e3",
+     "EV:spatial_expr:e4251f373811",
+     "EV:spatial_nb:e4251f373811",
+     "EV:spatial_nb:f242ea91c84e"
+    ]
+   },
+   {
+    "gene": "OLFML2A",
+    "top_expresser": "Endothelial",
+    "corrected": "Fibroblast",
+    "n_high": 2642,
+    "neighbors": [
+     {
+      "cell_group": "Endothelial",
+      "log2_enrichment": 0.321,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.169,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "Macrophage",
+      "log2_enrichment": 0.066,
+      "padj": 0.00173
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:5506f00cc58b",
+     "EV:spatial_expr:f29e7815378c",
+     "EV:spatial_nb:5506f00cc58b",
+     "EV:spatial_nb:e0f74bc06902",
+     "EV:spatial_nb:e7aadc021151"
+    ]
+   },
+   {
+    "gene": "COX4I2",
+    "top_expresser": "Endothelial",
+    "corrected": "Fibroblast",
+    "n_high": 1811,
+    "neighbors": [
+     {
+      "cell_group": "Endothelial",
+      "log2_enrichment": 0.231,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.157,
+      "padj": 0.00173
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:23bb05fe57a4",
+     "EV:spatial_expr:f5409ee16ff4",
+     "EV:spatial_nb:f5409ee16ff4",
+     "EV:spatial_nb:facba2b06fad"
+    ]
+   },
+   {
+    "gene": "JAG2",
+    "top_expresser": "Endothelial",
+    "corrected": "Endothelial",
+    "n_high": 2417,
+    "neighbors": [
+     {
+      "cell_group": "Endothelial",
+      "log2_enrichment": 0.221,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.11,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "Macrophage",
+      "log2_enrichment": 0.046,
+      "padj": 0.00645
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:7fb97b327c83",
+     "EV:spatial_nb:4dc31d4ae391",
+     "EV:spatial_nb:7fb97b327c83",
+     "EV:spatial_nb:8104c43781ea"
+    ]
+   },
+   {
+    "gene": "VWA1",
+    "top_expresser": "Endothelial",
+    "corrected": "Endothelial",
+    "n_high": 3808,
+    "neighbors": [
+     {
+      "cell_group": "Endothelial",
+      "log2_enrichment": 0.234,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "Plasma",
+      "log2_enrichment": 0.167,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "Fibroblast",
+      "log2_enrichment": 0.157,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "Mast",
+      "log2_enrichment": 0.117,
+      "padj": 0.0107
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:e21ff324dfb0",
+     "EV:spatial_nb:2c978a82a388",
+     "EV:spatial_nb:49543921d619",
+     "EV:spatial_nb:766fe9b16cfd",
+     "EV:spatial_nb:e21ff324dfb0"
+    ]
+   },
+   {
+    "gene": "GAL3ST4",
+    "top_expresser": "Macrophage",
+    "corrected": "Macrophage",
+    "n_high": 1824,
+    "neighbors": [
+     {
+      "cell_group": "Macrophage",
+      "log2_enrichment": 0.257,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.182,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "T_cell",
+      "log2_enrichment": 0.125,
+      "padj": 0.0244
+     },
+     {
+      "cell_group": "Endothelial",
+      "log2_enrichment": 0.092,
+      "padj": 0.00173
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:4c21b92a3bb8",
+     "EV:spatial_nb:2fdaad15492f",
+     "EV:spatial_nb:4c21b92a3bb8",
+     "EV:spatial_nb:7c9cef1d6bdf",
+     "EV:spatial_nb:df4ab7bfe84c"
+    ]
+   },
+   {
+    "gene": "LRRC25",
+    "top_expresser": "RCC",
+    "corrected": "Macrophage",
+    "n_high": 2158,
+    "neighbors": [
+     {
+      "cell_group": "Macrophage",
+      "log2_enrichment": 0.224,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.213,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "T_cell",
+      "log2_enrichment": 0.11,
+      "padj": 0.0449
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:386e7d9e35b4",
+     "EV:spatial_expr:68522d6b98a2",
+     "EV:spatial_nb:386e7d9e35b4",
+     "EV:spatial_nb:68522d6b98a2",
+     "EV:spatial_nb:76cc886213d0"
+    ]
+   },
+   {
+    "gene": "SLC37A2",
+    "top_expresser": "Macrophage",
+    "corrected": "Macrophage",
+    "n_high": 976,
+    "neighbors": [
+     {
+      "cell_group": "Macrophage",
+      "log2_enrichment": 0.291,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "T_cell",
+      "log2_enrichment": 0.211,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.152,
+      "padj": 0.00173
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:62d9d1b35355",
+     "EV:spatial_nb:62d9d1b35355",
+     "EV:spatial_nb:8323490567aa",
+     "EV:spatial_nb:89a2a7b2b6c1"
+    ]
+   },
+   {
+    "gene": "TRAT1",
+    "top_expresser": "RCC",
+    "corrected": "RCC",
+    "n_high": 379,
+    "neighbors": [
+     {
+      "cell_group": "T_cell",
+      "log2_enrichment": 0.481,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "DC",
+      "log2_enrichment": 0.315,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "Macrophage",
+      "log2_enrichment": 0.293,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.198,
+      "padj": 0.00173
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:f93d35cd1927",
+     "EV:spatial_nb:5ffe5a88d07c",
+     "EV:spatial_nb:6949a8d87e4b",
+     "EV:spatial_nb:9a7ee9e4eaaf",
+     "EV:spatial_nb:f93d35cd1927"
+    ]
+   },
+   {
+    "gene": "MILR1",
+    "top_expresser": "Macrophage",
+    "corrected": "Macrophage",
+    "n_high": 867,
+    "neighbors": [
+     {
+      "cell_group": "Macrophage",
+      "log2_enrichment": 0.277,
+      "padj": 0.00173
+     },
+     {
+      "cell_group": "T_cell",
+      "log2_enrichment": 0.189,
+      "padj": 0.0311
+     },
+     {
+      "cell_group": "RCC",
+      "log2_enrichment": 0.12,
+      "padj": 0.00173
+     }
+    ],
+    "evidence_ids": [
+     "EV:spatial_expr:c701935a2769",
+     "EV:spatial_nb:bfe891dd8aa4",
+     "EV:spatial_nb:c701935a2769",
+     "EV:spatial_nb:c8cf3dfd8bc0"
+    ]
    }
   ],
   "pocket_rows": [
    {
     "gene": "PTPRC",
+    "control": false,
     "uniprot": "P08575",
     "mean_plddt": 76.06,
     "rank": 1,
@@ -7778,6 +9737,7 @@
    },
    {
     "gene": "KDR",
+    "control": false,
     "uniprot": "P35968",
     "mean_plddt": 71.12,
     "rank": 1,
@@ -7795,7 +9755,27 @@
     ]
    },
    {
+    "gene": "GSPT1",
+    "control": true,
+    "uniprot": "P15170",
+    "mean_plddt": 81.81,
+    "rank": 1,
+    "volume_a3": 144.3,
+    "max_depth_a": 4.28,
+    "n_lysines": 8,
+    "loop_run": 5,
+    "mgd_score": 0.8222,
+    "recall": 0.727,
+    "recall_top": 0.697,
+    "evidence_ids": [
+     "EV:alphafold:997d4f9f9ec7",
+     "EV:ligand_sites:0601c14c7830",
+     "EV:mgd_site:b4940ad438b6"
+    ]
+   },
+   {
     "gene": "TNFAIP3",
+    "control": false,
     "uniprot": "P21580",
     "mean_plddt": 73.75,
     "rank": 1,
@@ -7814,6 +9794,7 @@
    },
    {
     "gene": "FHIT",
+    "control": false,
     "uniprot": "P49789",
     "mean_plddt": 95.25,
     "rank": 1,
@@ -7831,7 +9812,26 @@
     ]
    },
    {
+    "gene": "GAL3ST4",
+    "control": false,
+    "uniprot": "Q96RP7",
+    "mean_plddt": 79.31,
+    "rank": 1,
+    "volume_a3": 819.7,
+    "max_depth_a": 9.04,
+    "n_lysines": 5,
+    "loop_run": 2,
+    "mgd_score": 0.7874,
+    "recall": null,
+    "recall_top": null,
+    "evidence_ids": [
+     "EV:alphafold:59e9334e77b2",
+     "EV:mgd_site:6c0798036b9c"
+    ]
+   },
+   {
     "gene": "ERBB2",
+    "control": false,
     "uniprot": "P04626",
     "mean_plddt": 74.0,
     "rank": 1,
@@ -7849,7 +9849,82 @@
     ]
    },
    {
+    "gene": "PDIA5",
+    "control": false,
+    "uniprot": "Q14554",
+    "mean_plddt": 89.19,
+    "rank": 1,
+    "volume_a3": 1242.0,
+    "max_depth_a": 6.12,
+    "n_lysines": 7,
+    "loop_run": 2,
+    "mgd_score": 0.7623,
+    "recall": null,
+    "recall_top": null,
+    "evidence_ids": [
+     "EV:alphafold:2a0c2ac4f492",
+     "EV:mgd_site:e847ded91c30"
+    ]
+   },
+   {
+    "gene": "EHD2",
+    "control": false,
+    "uniprot": "Q9NZN4",
+    "mean_plddt": 86.75,
+    "rank": 1,
+    "volume_a3": 1092.3,
+    "max_depth_a": 10.15,
+    "n_lysines": 3,
+    "loop_run": 2,
+    "mgd_score": 0.7537,
+    "recall": null,
+    "recall_top": null,
+    "evidence_ids": [
+     "EV:alphafold:489ccb46e4b7",
+     "EV:mgd_site:04e25da1b690"
+    ]
+   },
+   {
+    "gene": "CSNK1A1",
+    "control": true,
+    "uniprot": "P48729",
+    "mean_plddt": 91.38,
+    "rank": 1,
+    "volume_a3": 294.0,
+    "max_depth_a": 6.63,
+    "n_lysines": 5,
+    "loop_run": 3,
+    "mgd_score": 0.7451,
+    "recall": 0.449,
+    "recall_top": 0.388,
+    "evidence_ids": [
+     "EV:alphafold:f31c5574f376",
+     "EV:ligand_sites:a18d03dc6880",
+     "EV:mgd_site:bba8b87fae2c"
+    ]
+   },
+   {
+    "gene": "SLC37A2",
+    "control": false,
+    "uniprot": "Q8TED4",
+    "mean_plddt": 83.94,
+    "rank": 1,
+    "volume_a3": 228.1,
+    "max_depth_a": 11.79,
+    "n_lysines": 4,
+    "loop_run": 3,
+    "mgd_score": 0.7403,
+    "recall": 1.0,
+    "recall_top": 0.3,
+    "evidence_ids": [
+     "EV:alphafold:66b9247fa94d",
+     "EV:ligand_sites:bf1662e326e4",
+     "EV:mgd_site:5e10ec281010"
+    ]
+   },
+   {
     "gene": "CARD11",
+    "control": false,
     "uniprot": "Q9BXL7",
     "mean_plddt": 71.19,
     "rank": 1,
@@ -7868,6 +9943,7 @@
    },
    {
     "gene": "ATP1A1",
+    "control": false,
     "uniprot": "P05023",
     "mean_plddt": 88.69,
     "rank": 1,
@@ -7886,6 +9962,7 @@
    },
    {
     "gene": "EGFR",
+    "control": false,
     "uniprot": "P00533",
     "mean_plddt": 75.94,
     "rank": 1,
@@ -7904,6 +9981,7 @@
    },
    {
     "gene": "GPC3",
+    "control": false,
     "uniprot": "P51654",
     "mean_plddt": 75.06,
     "rank": 1,
@@ -7922,6 +10000,7 @@
    },
    {
     "gene": "CXCR4",
+    "control": false,
     "uniprot": "P61073",
     "mean_plddt": 82.25,
     "rank": 1,
@@ -7940,6 +10019,7 @@
    },
    {
     "gene": "SCARB1",
+    "control": false,
     "uniprot": "Q8WTV0",
     "mean_plddt": 83.38,
     "rank": 1,
@@ -7957,6 +10037,7 @@
    },
    {
     "gene": "PDGFRA",
+    "control": false,
     "uniprot": "P16234",
     "mean_plddt": 72.69,
     "rank": 1,
@@ -7975,6 +10056,7 @@
    },
    {
     "gene": "MET",
+    "control": false,
     "uniprot": "P08581",
     "mean_plddt": 79.25,
     "rank": 1,
@@ -7993,6 +10075,7 @@
    },
    {
     "gene": "EPAS1",
+    "control": false,
     "uniprot": "Q99814",
     "mean_plddt": 58.56,
     "rank": 1,
@@ -8010,7 +10093,45 @@
     ]
    },
    {
+    "gene": "FABP6",
+    "control": false,
+    "uniprot": "P51161",
+    "mean_plddt": 90.12,
+    "rank": 1,
+    "volume_a3": 71.5,
+    "max_depth_a": 3.06,
+    "n_lysines": 8,
+    "loop_run": 4,
+    "mgd_score": 0.6701,
+    "recall": 0.75,
+    "recall_top": 0.75,
+    "evidence_ids": [
+     "EV:alphafold:e09429f347a8",
+     "EV:ligand_sites:619be2e11d0f",
+     "EV:mgd_site:c7d00f122278"
+    ]
+   },
+   {
+    "gene": "MILR1",
+    "control": false,
+    "uniprot": "Q7Z6M3",
+    "mean_plddt": 74.5,
+    "rank": 1,
+    "volume_a3": 17.3,
+    "max_depth_a": 1.2,
+    "n_lysines": 8,
+    "loop_run": 4,
+    "mgd_score": 0.67,
+    "recall": null,
+    "recall_top": null,
+    "evidence_ids": [
+     "EV:alphafold:5482fe659f02",
+     "EV:mgd_site:20d07db56080"
+    ]
+   },
+   {
     "gene": "GRAMD4",
+    "control": false,
     "uniprot": "Q6IC98",
     "mean_plddt": 66.75,
     "rank": 1,
@@ -8027,7 +10148,80 @@
     ]
    },
    {
+    "gene": "HSD3B7",
+    "control": false,
+    "uniprot": "Q9H2F3",
+    "mean_plddt": 93.75,
+    "rank": 1,
+    "volume_a3": 1533.6,
+    "max_depth_a": 12.56,
+    "n_lysines": 1,
+    "loop_run": 1,
+    "mgd_score": 0.6552,
+    "recall": null,
+    "recall_top": null,
+    "evidence_ids": [
+     "EV:alphafold:cb4c1559540b",
+     "EV:mgd_site:3fa9330ca04d"
+    ]
+   },
+   {
+    "gene": "OLFML2A",
+    "control": false,
+    "uniprot": "Q68BL7",
+    "mean_plddt": 67.06,
+    "rank": 1,
+    "volume_a3": 366.8,
+    "max_depth_a": 7.59,
+    "n_lysines": 3,
+    "loop_run": 4,
+    "mgd_score": 0.6416,
+    "recall": null,
+    "recall_top": null,
+    "evidence_ids": [
+     "EV:alphafold:d129f16be71f",
+     "EV:mgd_site:fd942e8ad819"
+    ]
+   },
+   {
+    "gene": "CYP2J2",
+    "control": false,
+    "uniprot": "P51589",
+    "mean_plddt": 93.69,
+    "rank": 1,
+    "volume_a3": 102.8,
+    "max_depth_a": 6.18,
+    "n_lysines": 5,
+    "loop_run": 2,
+    "mgd_score": 0.6379,
+    "recall": null,
+    "recall_top": null,
+    "evidence_ids": [
+     "EV:alphafold:d255b5140c77",
+     "EV:mgd_site:4dfa1b571876"
+    ]
+   },
+   {
+    "gene": "PNCK",
+    "control": false,
+    "uniprot": "Q6P2M8",
+    "mean_plddt": 81.81,
+    "rank": 1,
+    "volume_a3": 554.5,
+    "max_depth_a": 6.12,
+    "n_lysines": 6,
+    "loop_run": 1,
+    "mgd_score": 0.6367,
+    "recall": null,
+    "recall_top": null,
+    "evidence_ids": [
+     "EV:alphafold:d9f72ab3adae",
+     "EV:mgd_site:30617d071441"
+    ]
+   },
+   {
     "gene": "DDC",
+    "control": false,
     "uniprot": "P20711",
     "mean_plddt": 96.81,
     "rank": 1,
@@ -8046,6 +10240,7 @@
    },
    {
     "gene": "NDRG1",
+    "control": false,
     "uniprot": "Q92597",
     "mean_plddt": 78.0,
     "rank": 1,
@@ -8064,6 +10259,7 @@
    },
    {
     "gene": "ACY1",
+    "control": false,
     "uniprot": "Q03154",
     "mean_plddt": 96.44,
     "rank": 1,
@@ -8082,6 +10278,7 @@
    },
    {
     "gene": "FAS",
+    "control": false,
     "uniprot": "P25445",
     "mean_plddt": 77.88,
     "rank": 1,
@@ -8100,6 +10297,7 @@
    },
    {
     "gene": "PIGR",
+    "control": false,
     "uniprot": "P01833",
     "mean_plddt": 76.69,
     "rank": 1,
@@ -8118,6 +10316,7 @@
    },
    {
     "gene": "ENO2",
+    "control": false,
     "uniprot": "P09104",
     "mean_plddt": 97.06,
     "rank": 1,
@@ -8135,7 +10334,26 @@
     ]
    },
    {
+    "gene": "HMCN1",
+    "control": false,
+    "uniprot": "Q96RW7",
+    "mean_plddt": 91.56,
+    "rank": 1,
+    "volume_a3": 12.3,
+    "max_depth_a": 0.0,
+    "n_lysines": 5,
+    "loop_run": 4,
+    "mgd_score": 0.5762,
+    "recall": null,
+    "recall_top": null,
+    "evidence_ids": [
+     "EV:alphafold:876e69242ef9",
+     "EV:mgd_site:8e86c98f9b8a"
+    ]
+   },
+   {
     "gene": "CD74",
+    "control": false,
     "uniprot": "P04233",
     "mean_plddt": 69.94,
     "rank": 1,
@@ -8153,7 +10371,27 @@
     ]
    },
    {
+    "gene": "SALL4",
+    "control": true,
+    "uniprot": "Q9UJQ4",
+    "mean_plddt": 51.06,
+    "rank": 1,
+    "volume_a3": 206.7,
+    "max_depth_a": 3.29,
+    "n_lysines": 4,
+    "loop_run": 6,
+    "mgd_score": 0.5532,
+    "recall": 0.185,
+    "recall_top": 0.148,
+    "evidence_ids": [
+     "EV:alphafold:712d8f868f3f",
+     "EV:ligand_sites:bd9b998b7ccf",
+     "EV:mgd_site:7b2b94fcaeb3"
+    ]
+   },
+   {
     "gene": "TNFRSF10B",
+    "control": false,
     "uniprot": "O14763",
     "mean_plddt": 71.19,
     "rank": 1,
@@ -8172,6 +10410,7 @@
    },
    {
     "gene": "PLIN2",
+    "control": false,
     "uniprot": "Q99541",
     "mean_plddt": 64.19,
     "rank": 1,
@@ -8189,6 +10428,7 @@
    },
    {
     "gene": "CA9",
+    "control": false,
     "uniprot": "Q16790",
     "mean_plddt": 76.56,
     "rank": 1,
@@ -8207,6 +10447,7 @@
    },
    {
     "gene": "AGMAT",
+    "control": false,
     "uniprot": "Q9BSE5",
     "mean_plddt": 91.81,
     "rank": 1,
@@ -8223,7 +10464,100 @@
     ]
    },
    {
+    "gene": "COX4I2",
+    "control": false,
+    "uniprot": "Q96KJ9",
+    "mean_plddt": 79.56,
+    "rank": 1,
+    "volume_a3": 6.3,
+    "max_depth_a": 0.6,
+    "n_lysines": 3,
+    "loop_run": 5,
+    "mgd_score": 0.5437,
+    "recall": null,
+    "recall_top": null,
+    "evidence_ids": [
+     "EV:alphafold:168eb76a02fe",
+     "EV:mgd_site:e098e8d4728e"
+    ]
+   },
+   {
+    "gene": "PPP1R13L",
+    "control": false,
+    "uniprot": "Q8WUF5",
+    "mean_plddt": 57.19,
+    "rank": 1,
+    "volume_a3": 355.3,
+    "max_depth_a": 4.84,
+    "n_lysines": 1,
+    "loop_run": 4,
+    "mgd_score": 0.543,
+    "recall": null,
+    "recall_top": null,
+    "evidence_ids": [
+     "EV:alphafold:51c66c403d52",
+     "EV:mgd_site:5e0f5155869d"
+    ]
+   },
+   {
+    "gene": "RAB42",
+    "control": false,
+    "uniprot": "Q8N4Z0",
+    "mean_plddt": 85.31,
+    "rank": 1,
+    "volume_a3": 37.4,
+    "max_depth_a": 3.0,
+    "n_lysines": 3,
+    "loop_run": 5,
+    "mgd_score": 0.5348,
+    "recall": null,
+    "recall_top": null,
+    "evidence_ids": [
+     "EV:alphafold:c7726f37155e",
+     "EV:mgd_site:99d1b16599f0"
+    ]
+   },
+   {
+    "gene": "JAG2",
+    "control": false,
+    "uniprot": "Q9Y219",
+    "mean_plddt": 72.62,
+    "rank": 1,
+    "volume_a3": 79.3,
+    "max_depth_a": 4.2,
+    "n_lysines": 3,
+    "loop_run": 4,
+    "mgd_score": 0.5235,
+    "recall": 0.368,
+    "recall_top": 0.0,
+    "evidence_ids": [
+     "EV:alphafold:9c301374ff00",
+     "EV:ligand_sites:01f0cdcd1d4b",
+     "EV:mgd_site:47b152ba2895"
+    ]
+   },
+   {
+    "gene": "RRAD",
+    "control": false,
+    "uniprot": "P55042",
+    "mean_plddt": 73.38,
+    "rank": 1,
+    "volume_a3": 83.4,
+    "max_depth_a": 2.68,
+    "n_lysines": 3,
+    "loop_run": 3,
+    "mgd_score": 0.5212,
+    "recall": 0.25,
+    "recall_top": 0.083,
+    "evidence_ids": [
+     "EV:alphafold:5cd6f959f8fc",
+     "EV:ligand_sites:c05d81b0a531",
+     "EV:mgd_site:eb1f44d28efc"
+    ]
+   },
+   {
     "gene": "COXFA4L2",
+    "control": false,
     "uniprot": "Q9NRX3",
     "mean_plddt": 84.75,
     "rank": 1,
@@ -8240,7 +10574,100 @@
     ]
    },
    {
+    "gene": "ZFP91",
+    "control": true,
+    "uniprot": "Q96JP5",
+    "mean_plddt": 51.62,
+    "rank": 1,
+    "volume_a3": 125.1,
+    "max_depth_a": 2.47,
+    "n_lysines": 4,
+    "loop_run": 7,
+    "mgd_score": 0.5097,
+    "recall": 0.0,
+    "recall_top": 0.0,
+    "evidence_ids": [
+     "EV:alphafold:7632db0b6271",
+     "EV:ligand_sites:acb2d452c2c3",
+     "EV:mgd_site:6b1715e3768e"
+    ]
+   },
+   {
+    "gene": "IKZF3",
+    "control": true,
+    "uniprot": "Q9UKT9",
+    "mean_plddt": 47.91,
+    "rank": 1,
+    "volume_a3": 6.9,
+    "max_depth_a": 0.85,
+    "n_lysines": 4,
+    "loop_run": 5,
+    "mgd_score": 0.498,
+    "recall": 0.0,
+    "recall_top": 0.0,
+    "evidence_ids": [
+     "EV:alphafold:fa0d2140b99d",
+     "EV:ligand_sites:cd4efcc0b851",
+     "EV:mgd_site:672c3167abf4"
+    ]
+   },
+   {
+    "gene": "LRRC25",
+    "control": false,
+    "uniprot": "Q8N386",
+    "mean_plddt": 70.31,
+    "rank": 1,
+    "volume_a3": 43.0,
+    "max_depth_a": 0.0,
+    "n_lysines": 2,
+    "loop_run": 4,
+    "mgd_score": 0.4825,
+    "recall": null,
+    "recall_top": null,
+    "evidence_ids": [
+     "EV:alphafold:cb46e7a63e4b",
+     "EV:mgd_site:f8bf52186dbd"
+    ]
+   },
+   {
+    "gene": "VWA1",
+    "control": false,
+    "uniprot": "Q6PCB0",
+    "mean_plddt": 78.38,
+    "rank": 1,
+    "volume_a3": 162.2,
+    "max_depth_a": 3.06,
+    "n_lysines": 1,
+    "loop_run": 3,
+    "mgd_score": 0.4712,
+    "recall": null,
+    "recall_top": null,
+    "evidence_ids": [
+     "EV:alphafold:10653c87ec5c",
+     "EV:mgd_site:da99dbfe0912"
+    ]
+   },
+   {
+    "gene": "CAVIN3",
+    "control": false,
+    "uniprot": "Q969G5",
+    "mean_plddt": 71.56,
+    "rank": 1,
+    "volume_a3": 5.6,
+    "max_depth_a": 0.6,
+    "n_lysines": 4,
+    "loop_run": 8,
+    "mgd_score": 0.4532,
+    "recall": null,
+    "recall_top": null,
+    "evidence_ids": [
+     "EV:alphafold:c8d38c9bee51",
+     "EV:mgd_site:09f6ad924174"
+    ]
+   },
+   {
     "gene": "IKZF1",
+    "control": false,
     "uniprot": "Q13422",
     "mean_plddt": 47.75,
     "rank": 1,
@@ -8255,6 +10682,3563 @@
      "EV:alphafold:cee03bb97c85",
      "EV:ligand_sites:bdd83eb73a16",
      "EV:mgd_site:ace6789560a9"
+    ]
+   },
+   {
+    "gene": "TRAT1",
+    "control": false,
+    "uniprot": "Q6PIZ9",
+    "mean_plddt": 63.78,
+    "rank": 1,
+    "volume_a3": 33.3,
+    "max_depth_a": 1.34,
+    "n_lysines": 1,
+    "loop_run": 9,
+    "mgd_score": 0.3158,
+    "recall": null,
+    "recall_top": null,
+    "evidence_ids": [
+     "EV:alphafold:831458a6c857",
+     "EV:mgd_site:6d77380e2ab2"
+    ]
+   },
+   {
+    "gene": "COL23A1",
+    "control": false,
+    "uniprot": "Q86Y22",
+    "mean_plddt": 58.91,
+    "rank": 1,
+    "volume_a3": 8.0,
+    "max_depth_a": 0.0,
+    "n_lysines": 2,
+    "loop_run": 11,
+    "mgd_score": 0.2342,
+    "recall": null,
+    "recall_top": null,
+    "evidence_ids": [
+     "EV:alphafold:4f8072787076",
+     "EV:mgd_site:3a4161457d4f"
+    ]
+   }
+  ],
+  "discovery": {
+   "pool": 410,
+   "novel": 204,
+   "shortlist": [
+    "COL23A1",
+    "RAB42",
+    "FABP6",
+    "RRAD",
+    "CYP2J2",
+    "C19orf33",
+    "PNCK",
+    "CAVIN3",
+    "HSD3B7",
+    "PDIA5",
+    "EHD2",
+    "PPP1R13L",
+    "HMCN1",
+    "OLFML2A",
+    "COX4I2",
+    "JAG2",
+    "VWA1",
+    "GAL3ST4",
+    "LRRC25",
+    "SLC37A2",
+    "TRAT1",
+    "MILR1"
+   ],
+   "by_status": {
+    "under-studied vs. established": 135,
+    "novel, off-tumor risk (vital-organ expression)": 91,
+    "has clinical drug (repurposing)": 71,
+    "first-in-class opportunity": 66,
+    "novel, harder to drug": 47
+   },
+   "by_track": {
+    "immune": 313,
+    "tumor": 63,
+    "stroma": 34
+   },
+   "thresholds": {
+    "min_rna_log2fc": 1.0,
+    "min_protein_log2fc": 0.5,
+    "min_source_share": 0.4,
+    "min_source_pct": 10,
+    "novel_max_ccrcc_papers": 15,
+    "saturation_papers": 50
+   },
+   "weights": {
+    "omics": 2.0,
+    "cell_specificity": 2.0,
+    "understudied": 1.5,
+    "undrugged": 1.0,
+    "druggable": 1.0,
+    "safety": 1.5,
+    "aggressiveness": 0.5
+   }
+  },
+  "discovery_rows": [
+   {
+    "gene": "COL23A1",
+    "track": "tumor",
+    "status": "first-in-class opportunity",
+    "novelty": 0.84,
+    "source_group": "RCC",
+    "source_share": 0.88,
+    "source_pct": 17.0,
+    "rna": 4.07,
+    "protein": 2.51,
+    "papers": 7,
+    "total_papers": 43,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": true,
+    "vital": 3.0,
+    "vital_tissue": "heart muscle",
+    "grade": null,
+    "name": "Collagen alpha-1(XXIII) chain",
+    "uniprot": "Q86Y22",
+    "mgd": 0.23,
+    "why": "RCC cells hold 88% of its tumour transcripts (17 % of cells express it); tumor RNA log2FC 4.07 and protein log2FC 2.51; 7 ccRCC papers (43 overall); no clinical-stage drug; tractability AB; PR; surface/secreted; highest vital-organ expression 3 nTPM (heart muscle)",
+    "components": {
+     "omics": 1.0,
+     "cell_specificity": 0.93,
+     "understudied": 0.47,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.94,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:e1532aa1b09c",
+     "EV:mgd_site:3a4161457d4f",
+     "EV:omics_de:221109300f58",
+     "EV:omics_de:d65b09179038",
+     "EV:sc_expr:2004e5c49703"
+    ]
+   },
+   {
+    "gene": "RAB42",
+    "track": "tumor",
+    "status": "first-in-class opportunity",
+    "novelty": 0.77,
+    "source_group": "RCC",
+    "source_share": 0.63,
+    "source_pct": 12.0,
+    "rna": 3.11,
+    "protein": 1.9,
+    "papers": 2,
+    "total_papers": 20,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": true,
+    "vital": 3.0,
+    "vital_tissue": "lung",
+    "grade": null,
+    "name": "Ras-related protein Rab-42",
+    "uniprot": "Q8N4Z0",
+    "mgd": 0.53,
+    "why": "RCC cells hold 63% of its tumour transcripts (12 % of cells express it); tumor RNA log2FC 3.11 and protein log2FC 1.90; 2 ccRCC papers (20 overall); no clinical-stage drug; tractability AB; PR; surface/secreted; highest vital-organ expression 3 nTPM (lung)",
+    "components": {
+     "omics": 0.86,
+     "cell_specificity": 0.57,
+     "understudied": 0.72,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.95,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:f53feb0aa597",
+     "EV:mgd_site:99d1b16599f0",
+     "EV:omics_de:0e1bd4da12e9",
+     "EV:omics_de:50d3d785f55b",
+     "EV:sc_expr:2c86705a51fe"
+    ]
+   },
+   {
+    "gene": "TNFAIP6",
+    "track": "tumor",
+    "status": "under-studied vs. established",
+    "novelty": 0.73,
+    "source_group": "RCC",
+    "source_share": 0.86,
+    "source_pct": 19.0,
+    "rna": 4.46,
+    "protein": 1.65,
+    "papers": 16,
+    "total_papers": 985,
+    "drugs": "",
+    "modalities": "AB",
+    "surface": true,
+    "vital": 15.0,
+    "vital_tissue": "heart muscle",
+    "grade": null,
+    "name": "Tumor necrosis factor-inducible gene 6 protein",
+    "uniprot": "P98066",
+    "mgd": null,
+    "why": "RCC cells hold 86% of its tumour transcripts (19 % of cells express it); tumor RNA log2FC 4.46 and protein log2FC 1.65; 16 ccRCC papers (985 overall); no clinical-stage drug; tractability AB; surface/secreted; highest vital-organ expression 15 nTPM (heart muscle)",
+    "components": {
+     "omics": 0.91,
+     "cell_specificity": 0.92,
+     "understudied": 0.28,
+     "undrugged": 1.0,
+     "druggable": 0.8,
+     "safety": 0.7,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:701af9311213",
+     "EV:omics_de:a50f66c6848e",
+     "EV:omics_de:ff4a729ba10c"
+    ]
+   },
+   {
+    "gene": "FABP6",
+    "track": "tumor",
+    "status": "novel, off-tumor risk (vital-organ expression)",
+    "novelty": 0.72,
+    "source_group": "RCC",
+    "source_share": 0.96,
+    "source_pct": 25.0,
+    "rna": 4.01,
+    "protein": 1.92,
+    "papers": 14,
+    "total_papers": 340,
+    "drugs": "",
+    "modalities": "AB; PR; SM",
+    "surface": true,
+    "vital": 4264.0,
+    "vital_tissue": "small intestine",
+    "grade": 0.43,
+    "name": "Gastrotropin",
+    "uniprot": "P51161",
+    "mgd": 0.67,
+    "why": "RCC cells hold 96% of its tumour transcripts (25 % of cells express it); tumor RNA log2FC 4.01 and protein log2FC 1.92; 14 ccRCC papers (340 overall); no clinical-stage drug; tractability AB; PR; SM; surface/secreted; highest vital-organ expression 4264 nTPM (small intestine); grade (protein) rho 0.43",
+    "components": {
+     "omics": 0.98,
+     "cell_specificity": 0.98,
+     "understudied": 0.31,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.0,
+     "aggressiveness": 1.0
+    },
+    "evidence_ids": [
+     "EV:discovery:52f5e4eeb4a8",
+     "EV:mgd_site:c7d00f122278",
+     "EV:omics_de:0ea3d10905b2",
+     "EV:omics_de:12f11b6896c3",
+     "EV:sc_expr:882bb956c16e"
+    ]
+   },
+   {
+    "gene": "HAVCR1",
+    "track": "tumor",
+    "status": "under-studied vs. established",
+    "novelty": 0.72,
+    "source_group": "RCC",
+    "source_share": 0.82,
+    "source_pct": 11.0,
+    "rna": 1.88,
+    "protein": 1.83,
+    "papers": 77,
+    "total_papers": 1072,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": true,
+    "vital": 4.0,
+    "vital_tissue": "colon",
+    "grade": 0.28,
+    "name": "Hepatitis A virus cellular receptor 1",
+    "uniprot": "Q96D42",
+    "mgd": null,
+    "why": "RCC cells hold 82% of its tumour transcripts (11 % of cells express it); tumor RNA log2FC 1.88 and protein log2FC 1.83; 77 ccRCC papers (1072 overall); no clinical-stage drug; tractability AB; PR; surface/secreted; highest vital-organ expression 4 nTPM (colon); grade (protein) rho 0.28",
+    "components": {
+     "omics": 0.69,
+     "cell_specificity": 0.87,
+     "understudied": 0.0,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.91,
+     "aggressiveness": 0.71
+    },
+    "evidence_ids": [
+     "EV:discovery:64513649c27d",
+     "EV:omics_de:8be4a7b1b3d7",
+     "EV:omics_de:af678fccd18d"
+    ]
+   },
+   {
+    "gene": "GAL3ST4",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.71,
+    "source_group": "Macrophage",
+    "source_share": 0.97,
+    "source_pct": 24.0,
+    "rna": 1.77,
+    "protein": 0.91,
+    "papers": 1,
+    "total_papers": 17,
+    "drugs": "",
+    "modalities": "AB",
+    "surface": true,
+    "vital": 7.0,
+    "vital_tissue": "cerebral cortex",
+    "grade": 0.27,
+    "name": "Galactose-3-O-sulfotransferase 4",
+    "uniprot": "Q96RP7",
+    "mgd": 0.79,
+    "why": "Macrophage cells hold 97% of its tumour transcripts (24 % of cells express it); tumor RNA log2FC 1.77 and protein log2FC 0.91; 1 ccRCC papers (17 overall); no clinical-stage drug; tractability AB; surface/secreted; highest vital-organ expression 7 nTPM (cerebral cortex); grade (protein) rho 0.27",
+    "components": {
+     "omics": 0.45,
+     "cell_specificity": 0.6,
+     "understudied": 0.82,
+     "undrugged": 1.0,
+     "druggable": 0.8,
+     "safety": 0.85,
+     "aggressiveness": 0.68
+    },
+    "evidence_ids": [
+     "EV:discovery:b3f34d2662ac",
+     "EV:mgd_site:6c0798036b9c",
+     "EV:omics_de:3075466ae2f9",
+     "EV:omics_de:e79fa5c115ba",
+     "EV:sc_expr:4c21b92a3bb8"
+    ]
+   },
+   {
+    "gene": "LRRC25",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.7,
+    "source_group": "Macrophage",
+    "source_share": 0.79,
+    "source_pct": 29.0,
+    "rna": 1.7,
+    "protein": 1.48,
+    "papers": 0,
+    "total_papers": 39,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": true,
+    "vital": 31.0,
+    "vital_tissue": "bone marrow",
+    "grade": 0.34,
+    "name": "Leucine-rich repeat-containing protein 25",
+    "uniprot": "Q8N386",
+    "mgd": 0.48,
+    "why": "Macrophage cells hold 79% of its tumour transcripts (29 % of cells express it); tumor RNA log2FC 1.70 and protein log2FC 1.48; 0 ccRCC papers (39 overall); no clinical-stage drug; tractability AB; PR; surface/secreted; highest vital-organ expression 31 nTPM (bone marrow); grade (protein) rho 0.34",
+    "components": {
+     "omics": 0.58,
+     "cell_specificity": 0.52,
+     "understudied": 1.0,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.38,
+     "aggressiveness": 0.84
+    },
+    "evidence_ids": [
+     "EV:discovery:bbbe73889f70",
+     "EV:mgd_site:f8bf52186dbd",
+     "EV:omics_de:1172352081a1",
+     "EV:omics_de:5ee1a85c106a",
+     "EV:sc_expr:68522d6b98a2"
+    ]
+   },
+   {
+    "gene": "SLC37A2",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.7,
+    "source_group": "Macrophage",
+    "source_share": 0.89,
+    "source_pct": 19.0,
+    "rna": 2.07,
+    "protein": 1.38,
+    "papers": 2,
+    "total_papers": 90,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": true,
+    "vital": 8.0,
+    "vital_tissue": "colon",
+    "grade": null,
+    "name": "Glucose-6-phosphate exchanger SLC37A2",
+    "uniprot": "Q8TED4",
+    "mgd": 0.74,
+    "why": "Macrophage cells hold 89% of its tumour transcripts (19 % of cells express it); tumor RNA log2FC 2.07 and protein log2FC 1.38; 2 ccRCC papers (90 overall); no clinical-stage drug; tractability AB; PR; surface/secreted; highest vital-organ expression 8 nTPM (colon)",
+    "components": {
+     "omics": 0.6,
+     "cell_specificity": 0.55,
+     "understudied": 0.72,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.85,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:cdf9c58accd5",
+     "EV:mgd_site:5e10ec281010",
+     "EV:omics_de:723236c2b609",
+     "EV:omics_de:d6b4689da17f",
+     "EV:sc_expr:62d9d1b35355"
+    ]
+   },
+   {
+    "gene": "TRAT1",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.7,
+    "source_group": "CD8_T",
+    "source_share": 0.71,
+    "source_pct": 28.0,
+    "rna": 1.06,
+    "protein": 0.6,
+    "papers": 1,
+    "total_papers": 42,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": true,
+    "vital": 3.0,
+    "vital_tissue": "small intestine",
+    "grade": 0.22,
+    "name": "T-cell receptor-associated transmembrane adapter 1",
+    "uniprot": "Q6PIZ9",
+    "mgd": 0.32,
+    "why": "CD8_T cells hold 71% of its tumour transcripts (28 % of cells express it); tumor RNA log2FC 1.06 and protein log2FC 0.60; 1 ccRCC papers (42 overall); no clinical-stage drug; tractability AB; PR; surface/secreted; highest vital-organ expression 3 nTPM (small intestine); grade (rna) rho 0.22",
+    "components": {
+     "omics": 0.28,
+     "cell_specificity": 0.58,
+     "understudied": 0.82,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.94,
+     "aggressiveness": 0.56
+    },
+    "evidence_ids": [
+     "EV:discovery:5cf4554cd923",
+     "EV:mgd_site:6d77380e2ab2",
+     "EV:omics_de:e25a2b8590cc",
+     "EV:omics_de:f76478354e8b",
+     "EV:sc_expr:dffad865d27e"
+    ]
+   },
+   {
+    "gene": "MILR1",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.69,
+    "source_group": "Macrophage",
+    "source_share": 0.84,
+    "source_pct": 16.0,
+    "rna": 1.63,
+    "protein": 0.74,
+    "papers": 0,
+    "total_papers": 35,
+    "drugs": "",
+    "modalities": "AB",
+    "surface": true,
+    "vital": 16.0,
+    "vital_tissue": "bone marrow",
+    "grade": 0.35,
+    "name": "Allergin-1",
+    "uniprot": "Q7Z6M3",
+    "mgd": 0.67,
+    "why": "Macrophage cells hold 84% of its tumour transcripts (16 % of cells express it); tumor RNA log2FC 1.63 and protein log2FC 0.74; 0 ccRCC papers (35 overall); no clinical-stage drug; tractability AB; surface/secreted; highest vital-organ expression 16 nTPM (bone marrow); grade (rna) rho 0.35",
+    "components": {
+     "omics": 0.39,
+     "cell_specificity": 0.53,
+     "understudied": 1.0,
+     "undrugged": 1.0,
+     "druggable": 0.8,
+     "safety": 0.67,
+     "aggressiveness": 0.86
+    },
+    "evidence_ids": [
+     "EV:discovery:bba941fb5229",
+     "EV:mgd_site:20d07db56080",
+     "EV:omics_de:a8e2f46040c2",
+     "EV:omics_de:afecaa838e2b",
+     "EV:sc_expr:c701935a2769"
+    ]
+   },
+   {
+    "gene": "LOX",
+    "track": "tumor",
+    "status": "under-studied vs. established",
+    "novelty": 0.69,
+    "source_group": "RCC",
+    "source_share": 0.96,
+    "source_pct": 19.0,
+    "rna": 3.0,
+    "protein": 1.48,
+    "papers": 165,
+    "total_papers": 12638,
+    "drugs": "",
+    "modalities": "AB; PR; SM",
+    "surface": true,
+    "vital": 24.0,
+    "vital_tissue": "heart muscle",
+    "grade": 0.25,
+    "name": "Protein-lysine 6-oxidase",
+    "uniprot": "P28300",
+    "mgd": null,
+    "why": "RCC cells hold 96% of its tumour transcripts (19 % of cells express it); tumor RNA log2FC 3.00 and protein log2FC 1.48; 165 ccRCC papers (12638 overall); no clinical-stage drug; tractability AB; PR; SM; surface/secreted; highest vital-organ expression 24 nTPM (heart muscle); grade (rna) rho 0.25",
+    "components": {
+     "omics": 0.75,
+     "cell_specificity": 0.97,
+     "understudied": 0.0,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.52,
+     "aggressiveness": 0.63
+    },
+    "evidence_ids": [
+     "EV:discovery:853ccd68cb25",
+     "EV:omics_de:05e9c97f54b6",
+     "EV:omics_de:cf5cd6aa7c97"
+    ]
+   },
+   {
+    "gene": "LILRB4",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.68,
+    "source_group": "Macrophage",
+    "source_share": 0.93,
+    "source_pct": 55.0,
+    "rna": 2.19,
+    "protein": 1.23,
+    "papers": 7,
+    "total_papers": 340,
+    "drugs": "",
+    "modalities": "AB",
+    "surface": true,
+    "vital": 13.0,
+    "vital_tissue": "lung",
+    "grade": 0.4,
+    "name": "Leukocyte immunoglobulin-like receptor subfamily B member 4",
+    "uniprot": "Q8NHJ6",
+    "mgd": null,
+    "why": "Macrophage cells hold 93% of its tumour transcripts (55 % of cells express it); tumor RNA log2FC 2.19 and protein log2FC 1.23; 7 ccRCC papers (340 overall); no clinical-stage drug; tractability AB; surface/secreted; highest vital-organ expression 13 nTPM (lung); grade (rna) rho 0.40",
+    "components": {
+     "omics": 0.58,
+     "cell_specificity": 0.57,
+     "understudied": 0.47,
+     "undrugged": 1.0,
+     "druggable": 0.8,
+     "safety": 0.74,
+     "aggressiveness": 1.0
+    },
+    "evidence_ids": [
+     "EV:discovery:3c9bb849285e",
+     "EV:omics_de:04a16e70ef55",
+     "EV:omics_de:fe256678d09d"
+    ]
+   },
+   {
+    "gene": "TM6SF1",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.67,
+    "source_group": "Macrophage",
+    "source_share": 0.72,
+    "source_pct": 28.0,
+    "rna": 1.36,
+    "protein": 1.25,
+    "papers": 2,
+    "total_papers": 18,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": true,
+    "vital": 10.0,
+    "vital_tissue": "lung",
+    "grade": 0.22,
+    "name": "Transmembrane 6 superfamily member 1",
+    "uniprot": "Q9BZW5",
+    "mgd": null,
+    "why": "Macrophage cells hold 72% of its tumour transcripts (28 % of cells express it); tumor RNA log2FC 1.36 and protein log2FC 1.25; 2 ccRCC papers (18 overall); no clinical-stage drug; tractability AB; PR; surface/secreted; highest vital-organ expression 10 nTPM (lung); grade (rna) rho 0.22",
+    "components": {
+     "omics": 0.48,
+     "cell_specificity": 0.44,
+     "understudied": 0.72,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.8,
+     "aggressiveness": 0.54
+    },
+    "evidence_ids": [
+     "EV:discovery:5552594cd4e2",
+     "EV:omics_de:16181d56d9fa",
+     "EV:omics_de:aa62c628b601"
+    ]
+   },
+   {
+    "gene": "IKBIP",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.67,
+    "source_group": "CD8_T",
+    "source_share": 0.47,
+    "source_pct": 14.0,
+    "rna": 1.84,
+    "protein": 1.51,
+    "papers": 7,
+    "total_papers": 29,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": true,
+    "vital": 11.0,
+    "vital_tissue": "lung",
+    "grade": 0.33,
+    "name": "Inhibitor of nuclear factor kappa-B kinase-interacting protein",
+    "uniprot": "Q70UQ0",
+    "mgd": null,
+    "why": "CD8_T cells hold 47% of its tumour transcripts (14 % of cells express it); tumor RNA log2FC 1.84 and protein log2FC 1.51; 7 ccRCC papers (29 overall); no clinical-stage drug; tractability AB; PR; surface/secreted; highest vital-organ expression 11 nTPM (lung); grade (rna) rho 0.33",
+    "components": {
+     "omics": 0.61,
+     "cell_specificity": 0.41,
+     "understudied": 0.47,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.79,
+     "aggressiveness": 0.82
+    },
+    "evidence_ids": [
+     "EV:discovery:fddfe5c8902c",
+     "EV:omics_de:b1b457857555",
+     "EV:omics_de:e7456dbdb6b9"
+    ]
+   },
+   {
+    "gene": "IGSF6",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.67,
+    "source_group": "Macrophage",
+    "source_share": 0.87,
+    "source_pct": 61.0,
+    "rna": 1.58,
+    "protein": 1.15,
+    "papers": 1,
+    "total_papers": 38,
+    "drugs": "",
+    "modalities": "AB",
+    "surface": true,
+    "vital": 7.0,
+    "vital_tissue": "lung",
+    "grade": null,
+    "name": "Immunoglobulin superfamily member 6",
+    "uniprot": "O95976",
+    "mgd": null,
+    "why": "Macrophage cells hold 87% of its tumour transcripts (61 % of cells express it); tumor RNA log2FC 1.58 and protein log2FC 1.15; 1 ccRCC papers (38 overall); no clinical-stage drug; tractability AB; surface/secreted; highest vital-organ expression 7 nTPM (lung)",
+    "components": {
+     "omics": 0.48,
+     "cell_specificity": 0.52,
+     "understudied": 0.82,
+     "undrugged": 1.0,
+     "druggable": 0.8,
+     "safety": 0.86,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:1f54cf878051",
+     "EV:omics_de:ab7acb652f10",
+     "EV:omics_de:b3bde2fcdadc"
+    ]
+   },
+   {
+    "gene": "PAG1",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.67,
+    "source_group": "CD8_T",
+    "source_share": 0.66,
+    "source_pct": 28.0,
+    "rna": 1.63,
+    "protein": 0.92,
+    "papers": 4,
+    "total_papers": 134,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": true,
+    "vital": 14.0,
+    "vital_tissue": "lung",
+    "grade": null,
+    "name": "Phosphoprotein associated with glycosphingolipid-enriched microdomains 1",
+    "uniprot": "Q9NWQ8",
+    "mgd": null,
+    "why": "CD8_T cells hold 66% of its tumour transcripts (28 % of cells express it); tumor RNA log2FC 1.63 and protein log2FC 0.92; 4 ccRCC papers (134 overall); no clinical-stage drug; tractability AB; PR; surface/secreted; highest vital-organ expression 14 nTPM (lung)",
+    "components": {
+     "omics": 0.43,
+     "cell_specificity": 0.75,
+     "understudied": 0.59,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.72,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:cd3748409b5c",
+     "EV:omics_de:a2fc9bf621e0",
+     "EV:omics_de:e71c8e7c633f"
+    ]
+   },
+   {
+    "gene": "GBP5",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.66,
+    "source_group": "CD8_T",
+    "source_share": 0.57,
+    "source_pct": 33.0,
+    "rna": 2.61,
+    "protein": 1.59,
+    "papers": 10,
+    "total_papers": 280,
+    "drugs": "",
+    "modalities": "PR; SM",
+    "surface": true,
+    "vital": 17.0,
+    "vital_tissue": "bone marrow",
+    "grade": 0.27,
+    "name": "Guanylate-binding protein 5",
+    "uniprot": "Q96PP8",
+    "mgd": null,
+    "why": "CD8_T cells hold 57% of its tumour transcripts (33 % of cells express it); tumor RNA log2FC 2.61 and protein log2FC 1.59; 10 ccRCC papers (280 overall); no clinical-stage drug; tractability PR; SM; surface/secreted; highest vital-organ expression 17 nTPM (bone marrow); grade (protein) rho 0.27",
+    "components": {
+     "omics": 0.72,
+     "cell_specificity": 0.46,
+     "understudied": 0.39,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.66,
+     "aggressiveness": 0.68
+    },
+    "evidence_ids": [
+     "EV:discovery:c3ba50cd5fe7",
+     "EV:omics_de:2a2f914bdebe",
+     "EV:omics_de:3b3ebf4c8847"
+    ]
+   },
+   {
+    "gene": "APOBEC3G",
+    "track": "immune",
+    "status": "under-studied vs. established",
+    "novelty": 0.66,
+    "source_group": "CD8_T",
+    "source_share": 0.75,
+    "source_pct": 57.0,
+    "rna": 2.13,
+    "protein": 1.15,
+    "papers": 18,
+    "total_papers": 1249,
+    "drugs": "",
+    "modalities": "PR; SM",
+    "surface": false,
+    "vital": 15.0,
+    "vital_tissue": "bone marrow",
+    "grade": 0.4,
+    "name": "DNA dC->dU-editing enzyme APOBEC-3G",
+    "uniprot": "Q9HC16",
+    "mgd": null,
+    "why": "CD8_T cells hold 75% of its tumour transcripts (57 % of cells express it); tumor RNA log2FC 2.13 and protein log2FC 1.15; 18 ccRCC papers (1249 overall); no clinical-stage drug; tractability PR; SM; highest vital-organ expression 15 nTPM (bone marrow); grade (rna) rho 0.40",
+    "components": {
+     "omics": 0.55,
+     "cell_specificity": 0.77,
+     "understudied": 0.25,
+     "undrugged": 1.0,
+     "druggable": 0.7,
+     "safety": 0.7,
+     "aggressiveness": 0.99
+    },
+    "evidence_ids": [
+     "EV:discovery:a2ca2ea05b0d",
+     "EV:omics_de:6c88c7679aeb",
+     "EV:omics_de:8ce934f33a7e"
+    ]
+   },
+   {
+    "gene": "SIGLEC9",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.66,
+    "source_group": "Macrophage",
+    "source_share": 0.74,
+    "source_pct": 15.0,
+    "rna": 1.59,
+    "protein": 0.54,
+    "papers": 2,
+    "total_papers": 52,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": true,
+    "vital": 8.0,
+    "vital_tissue": "bone marrow",
+    "grade": 0.3,
+    "name": "Sialic acid-binding Ig-like lectin 9",
+    "uniprot": "Q9Y336",
+    "mgd": null,
+    "why": "Macrophage cells hold 74% of its tumour transcripts (15 % of cells express it); tumor RNA log2FC 1.59 and protein log2FC 0.54; 2 ccRCC papers (52 overall); no clinical-stage drug; tractability AB; PR; surface/secreted; highest vital-organ expression 8 nTPM (bone marrow); grade (rna) rho 0.30",
+    "components": {
+     "omics": 0.33,
+     "cell_specificity": 0.45,
+     "understudied": 0.72,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.83,
+     "aggressiveness": 0.74
+    },
+    "evidence_ids": [
+     "EV:discovery:14660214d544",
+     "EV:omics_de:2edfd58261db",
+     "EV:omics_de:c45788e2eb5b"
+    ]
+   },
+   {
+    "gene": "EMILIN2",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.66,
+    "source_group": "Macrophage",
+    "source_share": 0.65,
+    "source_pct": 22.0,
+    "rna": 1.34,
+    "protein": 1.49,
+    "papers": 5,
+    "total_papers": 65,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": true,
+    "vital": 11.0,
+    "vital_tissue": "lung",
+    "grade": 0.31,
+    "name": "EMILIN-2",
+    "uniprot": "Q9BXX0",
+    "mgd": null,
+    "why": "Macrophage cells hold 65% of its tumour transcripts (22 % of cells express it); tumor RNA log2FC 1.34 and protein log2FC 1.49; 5 ccRCC papers (65 overall); no clinical-stage drug; tractability AB; PR; surface/secreted; highest vital-organ expression 11 nTPM (lung); grade (rna) rho 0.31",
+    "components": {
+     "omics": 0.54,
+     "cell_specificity": 0.4,
+     "understudied": 0.54,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.78,
+     "aggressiveness": 0.79
+    },
+    "evidence_ids": [
+     "EV:discovery:9b87ec346bb9",
+     "EV:omics_de:69b79f0a4bd0",
+     "EV:omics_de:ee13442c178b"
+    ]
+   },
+   {
+    "gene": "PILRA",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.66,
+    "source_group": "Macrophage",
+    "source_share": 0.85,
+    "source_pct": 49.0,
+    "rna": 1.29,
+    "protein": 0.91,
+    "papers": 3,
+    "total_papers": 93,
+    "drugs": "",
+    "modalities": "AB; PR; SM",
+    "surface": true,
+    "vital": 29.0,
+    "vital_tissue": "lung",
+    "grade": 0.37,
+    "name": "Paired immunoglobulin-like type 2 receptor alpha",
+    "uniprot": "Q9UKJ1",
+    "mgd": null,
+    "why": "Macrophage cells hold 85% of its tumour transcripts (49 % of cells express it); tumor RNA log2FC 1.29 and protein log2FC 0.91; 3 ccRCC papers (93 overall); no clinical-stage drug; tractability AB; PR; SM; surface/secreted; highest vital-organ expression 29 nTPM (lung); grade (rna) rho 0.37",
+    "components": {
+     "omics": 0.39,
+     "cell_specificity": 0.7,
+     "understudied": 0.65,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.43,
+     "aggressiveness": 0.93
+    },
+    "evidence_ids": [
+     "EV:discovery:3003db8bc152",
+     "EV:omics_de:1544301708a5",
+     "EV:omics_de:def464bac6de"
+    ]
+   },
+   {
+    "gene": "CD84",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.66,
+    "source_group": "CD8_T",
+    "source_share": 0.56,
+    "source_pct": 23.0,
+    "rna": 2.25,
+    "protein": 0.77,
+    "papers": 5,
+    "total_papers": 211,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": true,
+    "vital": 8.0,
+    "vital_tissue": "bone marrow",
+    "grade": 0.34,
+    "name": "SLAM family member 5",
+    "uniprot": "Q9UIB8",
+    "mgd": null,
+    "why": "CD8_T cells hold 56% of its tumour transcripts (23 % of cells express it); tumor RNA log2FC 2.25 and protein log2FC 0.77; 5 ccRCC papers (211 overall); no clinical-stage drug; tractability AB; PR; surface/secreted; highest vital-organ expression 8 nTPM (bone marrow); grade (rna) rho 0.34",
+    "components": {
+     "omics": 0.47,
+     "cell_specificity": 0.39,
+     "understudied": 0.54,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.85,
+     "aggressiveness": 0.86
+    },
+    "evidence_ids": [
+     "EV:discovery:ac0e2f7c1982",
+     "EV:omics_de:58861b74d6e5",
+     "EV:omics_de:efb448c441b7"
+    ]
+   },
+   {
+    "gene": "RRAD",
+    "track": "tumor",
+    "status": "novel, off-tumor risk (vital-organ expression)",
+    "novelty": 0.66,
+    "source_group": "RCC",
+    "source_share": 0.89,
+    "source_pct": 17.0,
+    "rna": 1.86,
+    "protein": 1.03,
+    "papers": 3,
+    "total_papers": 124,
+    "drugs": "",
+    "modalities": "AB; PR; SM",
+    "surface": true,
+    "vital": 316.0,
+    "vital_tissue": "heart muscle",
+    "grade": 0.33,
+    "name": "GTP-binding protein RAD",
+    "uniprot": "P55042",
+    "mgd": 0.52,
+    "why": "RCC cells hold 89% of its tumour transcripts (17 % of cells express it); tumor RNA log2FC 1.86 and protein log2FC 1.03; 3 ccRCC papers (124 overall); no clinical-stage drug; tractability AB; PR; SM; surface/secreted; highest vital-organ expression 316 nTPM (heart muscle); grade (rna) rho 0.33",
+    "components": {
+     "omics": 0.49,
+     "cell_specificity": 0.94,
+     "understudied": 0.65,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.0,
+     "aggressiveness": 0.82
+    },
+    "evidence_ids": [
+     "EV:discovery:e98521a115fd",
+     "EV:mgd_site:eb1f44d28efc",
+     "EV:omics_de:69a889dc54d2",
+     "EV:omics_de:e8b8f5f44e46",
+     "EV:sc_expr:3239e3b8d49c"
+    ]
+   },
+   {
+    "gene": "FGD2",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.65,
+    "source_group": "Macrophage",
+    "source_share": 0.64,
+    "source_pct": 29.0,
+    "rna": 1.63,
+    "protein": 0.54,
+    "papers": 0,
+    "total_papers": 34,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": true,
+    "vital": 11.0,
+    "vital_tissue": "small intestine",
+    "grade": null,
+    "name": "FYVE, RhoGEF and PH domain-containing protein 2",
+    "uniprot": "Q7Z6J4",
+    "mgd": null,
+    "why": "Macrophage cells hold 64% of its tumour transcripts (29 % of cells express it); tumor RNA log2FC 1.63 and protein log2FC 0.54; 0 ccRCC papers (34 overall); no clinical-stage drug; tractability AB; PR; surface/secreted; highest vital-organ expression 11 nTPM (small intestine)",
+    "components": {
+     "omics": 0.34,
+     "cell_specificity": 0.42,
+     "understudied": 1.0,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.78,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:16f820a022dc",
+     "EV:omics_de:46eb8d3ca1c3",
+     "EV:omics_de:89ca9415b501"
+    ]
+   },
+   {
+    "gene": "SIT1",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.65,
+    "source_group": "CD8_T",
+    "source_share": 0.82,
+    "source_pct": 52.0,
+    "rna": 1.28,
+    "protein": 0.61,
+    "papers": 1,
+    "total_papers": 145,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": true,
+    "vital": 12.0,
+    "vital_tissue": "small intestine",
+    "grade": null,
+    "name": "Sodium- and chloride-dependent transporter XTRP3",
+    "uniprot": "Q9NP91",
+    "mgd": null,
+    "why": "CD8_T cells hold 82% of its tumour transcripts (52 % of cells express it); tumor RNA log2FC 1.28 and protein log2FC 0.61; 1 ccRCC papers (145 overall); no clinical-stage drug; tractability AB; PR; surface/secreted; highest vital-organ expression 12 nTPM (small intestine)",
+    "components": {
+     "omics": 0.31,
+     "cell_specificity": 0.56,
+     "understudied": 0.82,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.76,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:981195e47c75",
+     "EV:omics_de:0c420700b249",
+     "EV:omics_de:1522be196187"
+    ]
+   },
+   {
+    "gene": "NNMT",
+    "track": "tumor",
+    "status": "under-studied vs. established",
+    "novelty": 0.64,
+    "source_group": "RCC",
+    "source_share": 0.97,
+    "source_pct": 85.0,
+    "rna": 4.67,
+    "protein": 2.71,
+    "papers": 87,
+    "total_papers": 624,
+    "drugs": "",
+    "modalities": "PR; SM",
+    "surface": false,
+    "vital": 297.0,
+    "vital_tissue": "liver",
+    "grade": 0.37,
+    "name": "Nicotinamide N-methyltransferase",
+    "uniprot": "P40261",
+    "mgd": null,
+    "why": "RCC cells hold 97% of its tumour transcripts (85 % of cells express it); tumor RNA log2FC 4.67 and protein log2FC 2.71; 87 ccRCC papers (624 overall); no clinical-stage drug; tractability PR; SM; highest vital-organ expression 297 nTPM (liver); grade (protein) rho 0.37",
+    "components": {
+     "omics": 1.0,
+     "cell_specificity": 0.98,
+     "understudied": 0.0,
+     "undrugged": 1.0,
+     "druggable": 0.7,
+     "safety": 0.0,
+     "aggressiveness": 0.92
+    },
+    "evidence_ids": [
+     "EV:discovery:7dbf93860d9f",
+     "EV:omics_de:aefc373d6072",
+     "EV:omics_de:de39cc0c5ed8"
+    ]
+   },
+   {
+    "gene": "CA9",
+    "track": "tumor",
+    "status": "has clinical drug (repurposing)",
+    "novelty": 0.64,
+    "source_group": "RCC",
+    "source_share": 0.98,
+    "source_pct": 55.0,
+    "rna": 6.31,
+    "protein": 2.27,
+    "papers": 303,
+    "total_papers": 1426,
+    "drugs": "GIRENTUXIMAB; IODINE I 124 GIRENTUXIMAB; SULTHIAME",
+    "modalities": "AB; PR; SM",
+    "surface": true,
+    "vital": 13.0,
+    "vital_tissue": "small intestine",
+    "grade": null,
+    "name": "Carbonic anhydrase 9",
+    "uniprot": "Q16790",
+    "mgd": 0.55,
+    "why": "RCC cells hold 98% of its tumour transcripts (55 % of cells express it); tumor RNA log2FC 6.31 and protein log2FC 2.27; 303 ccRCC papers (1426 overall); clinical drug(s): GIRENTUXIMAB; IODINE I 124 GIRENTUXIMAB; SULTHIAME; tractability AB; PR; SM; surface/secreted; highest vital-organ expression 13 nTPM (small intestine)",
+    "components": {
+     "omics": 1.0,
+     "cell_specificity": 0.99,
+     "understudied": 0.0,
+     "undrugged": 0.0,
+     "druggable": 1.0,
+     "safety": 0.74,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:225a767ebcb5",
+     "EV:mgd_site:cacfae1940f6",
+     "EV:omics_de:5afe18b4024b",
+     "EV:omics_de:b269736afdb0",
+     "EV:sc_expr:35b84fee998f"
+    ]
+   },
+   {
+    "gene": "STAMBPL1",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.64,
+    "source_group": "CD8_T",
+    "source_share": 0.68,
+    "source_pct": 11.0,
+    "rna": 1.79,
+    "protein": 0.98,
+    "papers": 5,
+    "total_papers": 48,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": false,
+    "vital": 11.0,
+    "vital_tissue": "cerebral cortex",
+    "grade": null,
+    "name": "AMSH-like protease",
+    "uniprot": "Q96FJ0",
+    "mgd": null,
+    "why": "CD8_T cells hold 68% of its tumour transcripts (11 % of cells express it); tumor RNA log2FC 1.79 and protein log2FC 0.98; 5 ccRCC papers (48 overall); no clinical-stage drug; tractability AB; PR; highest vital-organ expression 11 nTPM (cerebral cortex)",
+    "components": {
+     "omics": 0.47,
+     "cell_specificity": 0.7,
+     "understudied": 0.54,
+     "undrugged": 1.0,
+     "druggable": 0.7,
+     "safety": 0.79,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:9a4af7881ae8",
+     "EV:omics_de:2a04ec36e217",
+     "EV:omics_de:f954bf80ed34"
+    ]
+   },
+   {
+    "gene": "HILPDA",
+    "track": "tumor",
+    "status": "under-studied vs. established",
+    "novelty": 0.63,
+    "source_group": "RCC",
+    "source_share": 0.94,
+    "source_pct": 80.0,
+    "rna": 5.12,
+    "protein": 2.74,
+    "papers": 39,
+    "total_papers": 181,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": true,
+    "vital": 55.0,
+    "vital_tissue": "heart muscle",
+    "grade": null,
+    "name": "Hypoxia-inducible lipid droplet-associated protein",
+    "uniprot": "Q9Y5L2",
+    "mgd": null,
+    "why": "RCC cells hold 94% of its tumour transcripts (80 % of cells express it); tumor RNA log2FC 5.12 and protein log2FC 2.74; 39 ccRCC papers (181 overall); no clinical-stage drug; tractability AB; PR; surface/secreted; highest vital-organ expression 55 nTPM (heart muscle)",
+    "components": {
+     "omics": 1.0,
+     "cell_specificity": 0.97,
+     "understudied": 0.06,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.0,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:1f1bb0c8a3dd",
+     "EV:omics_de:692fe0bee879",
+     "EV:omics_de:c7634d378e2f"
+    ]
+   },
+   {
+    "gene": "CD300A",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.63,
+    "source_group": "Macrophage",
+    "source_share": 0.45,
+    "source_pct": 40.0,
+    "rna": 2.46,
+    "protein": 1.14,
+    "papers": 5,
+    "total_papers": 192,
+    "drugs": "",
+    "modalities": "AB; PR; SM",
+    "surface": true,
+    "vital": 23.0,
+    "vital_tissue": "bone marrow",
+    "grade": 0.34,
+    "name": "CMRF35-like molecule 8",
+    "uniprot": "Q9UGN4",
+    "mgd": null,
+    "why": "Macrophage cells hold 45% of its tumour transcripts (40 % of cells express it); tumor RNA log2FC 2.46 and protein log2FC 1.14; 5 ccRCC papers (192 overall); no clinical-stage drug; tractability AB; PR; SM; surface/secreted; highest vital-organ expression 23 nTPM (bone marrow); grade (rna) rho 0.34",
+    "components": {
+     "omics": 0.59,
+     "cell_specificity": 0.36,
+     "understudied": 0.54,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.54,
+     "aggressiveness": 0.85
+    },
+    "evidence_ids": [
+     "EV:discovery:83162c893e00",
+     "EV:omics_de:563312838358",
+     "EV:omics_de:b847376cbb6a"
+    ]
+   },
+   {
+    "gene": "MYOF",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.62,
+    "source_group": "Macrophage",
+    "source_share": 0.54,
+    "source_pct": 18.0,
+    "rna": 1.61,
+    "protein": 0.96,
+    "papers": 10,
+    "total_papers": 165,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": true,
+    "vital": 30.0,
+    "vital_tissue": "lung",
+    "grade": 0.34,
+    "name": "Myoferlin",
+    "uniprot": "Q9NZM1",
+    "mgd": null,
+    "why": "Macrophage cells hold 54% of its tumour transcripts (18 % of cells express it); tumor RNA log2FC 1.61 and protein log2FC 0.96; 10 ccRCC papers (165 overall); no clinical-stage drug; tractability AB; PR; surface/secreted; highest vital-organ expression 30 nTPM (lung); grade (rna) rho 0.34",
+    "components": {
+     "omics": 0.44,
+     "cell_specificity": 0.72,
+     "understudied": 0.39,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.39,
+     "aggressiveness": 0.86
+    },
+    "evidence_ids": [
+     "EV:discovery:6bb3dde49bab",
+     "EV:omics_de:00c8f9e758a3",
+     "EV:omics_de:813723bfde7a"
+    ]
+   },
+   {
+    "gene": "ADAP2",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.62,
+    "source_group": "Macrophage",
+    "source_share": 0.87,
+    "source_pct": 48.0,
+    "rna": 1.43,
+    "protein": 0.88,
+    "papers": 2,
+    "total_papers": 36,
+    "drugs": "",
+    "modalities": "AB",
+    "surface": true,
+    "vital": 10.0,
+    "vital_tissue": "liver",
+    "grade": null,
+    "name": "Arf-GAP with dual PH domain-containing protein 2",
+    "uniprot": "Q9NPF8",
+    "mgd": null,
+    "why": "Macrophage cells hold 87% of its tumour transcripts (48 % of cells express it); tumor RNA log2FC 1.43 and protein log2FC 0.88; 2 ccRCC papers (36 overall); no clinical-stage drug; tractability AB; surface/secreted; highest vital-organ expression 10 nTPM (liver)",
+    "components": {
+     "omics": 0.4,
+     "cell_specificity": 0.53,
+     "understudied": 0.72,
+     "undrugged": 1.0,
+     "druggable": 0.8,
+     "safety": 0.79,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:9c284cd93b85",
+     "EV:omics_de:023a4d4ae543",
+     "EV:omics_de:a084a4f701a3"
+    ]
+   },
+   {
+    "gene": "NCKAP1L",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.62,
+    "source_group": "CD8_T",
+    "source_share": 0.47,
+    "source_pct": 20.0,
+    "rna": 2.05,
+    "protein": 1.3,
+    "papers": 5,
+    "total_papers": 137,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": true,
+    "vital": 27.0,
+    "vital_tissue": "bone marrow",
+    "grade": 0.34,
+    "name": "Nck-associated protein 1-like",
+    "uniprot": "P55160",
+    "mgd": null,
+    "why": "CD8_T cells hold 47% of its tumour transcripts (20 % of cells express it); tumor RNA log2FC 2.05 and protein log2FC 1.30; 5 ccRCC papers (137 overall); no clinical-stage drug; tractability AB; PR; surface/secreted; highest vital-organ expression 27 nTPM (bone marrow); grade (protein) rho 0.34",
+    "components": {
+     "omics": 0.58,
+     "cell_specificity": 0.41,
+     "understudied": 0.54,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.46,
+     "aggressiveness": 0.84
+    },
+    "evidence_ids": [
+     "EV:discovery:88dee666df02",
+     "EV:omics_de:2214d364ef72",
+     "EV:omics_de:d5f837b8cdeb"
+    ]
+   },
+   {
+    "gene": "ESM1",
+    "track": "stroma",
+    "status": "under-studied vs. established",
+    "novelty": 0.62,
+    "source_group": "Endothelial",
+    "source_share": 0.93,
+    "source_pct": 53.0,
+    "rna": 3.38,
+    "protein": 1.69,
+    "papers": 36,
+    "total_papers": 374,
+    "drugs": "",
+    "modalities": "AB",
+    "surface": true,
+    "vital": 11.0,
+    "vital_tissue": "lung",
+    "grade": null,
+    "name": "Endothelial cell-specific molecule 1",
+    "uniprot": "Q9NQ30",
+    "mgd": null,
+    "why": "Endothelial cells hold 93% of its tumour transcripts (53 % of cells express it); tumor RNA log2FC 3.38 and protein log2FC 1.69; 36 ccRCC papers (374 overall); no clinical-stage drug; tractability AB; surface/secreted; highest vital-organ expression 11 nTPM (lung)",
+    "components": {
+     "omics": 0.85,
+     "cell_specificity": 0.56,
+     "understudied": 0.08,
+     "undrugged": 1.0,
+     "druggable": 0.8,
+     "safety": 0.78,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:78896824d953",
+     "EV:omics_de:3004e8f05251",
+     "EV:omics_de:49ec006d6b46"
+    ]
+   },
+   {
+    "gene": "CALHM6",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.62,
+    "source_group": "Macrophage",
+    "source_share": 0.77,
+    "source_pct": 56.0,
+    "rna": 2.37,
+    "protein": 1.12,
+    "papers": 0,
+    "total_papers": 37,
+    "drugs": "",
+    "modalities": "AB",
+    "surface": true,
+    "vital": 39.0,
+    "vital_tissue": "bone marrow",
+    "grade": null,
+    "name": "Calcium homeostasis modulator protein 6",
+    "uniprot": "Q5R3K3",
+    "mgd": null,
+    "why": "Macrophage cells hold 77% of its tumour transcripts (56 % of cells express it); tumor RNA log2FC 2.37 and protein log2FC 1.12; 0 ccRCC papers (37 overall); no clinical-stage drug; tractability AB; surface/secreted; highest vital-organ expression 39 nTPM (bone marrow)",
+    "components": {
+     "omics": 0.58,
+     "cell_specificity": 0.56,
+     "understudied": 1.0,
+     "undrugged": 1.0,
+     "druggable": 0.8,
+     "safety": 0.22,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:5e83f5eb0341",
+     "EV:omics_de:22011e3c3a2c",
+     "EV:omics_de:6befe5dccd52"
+    ]
+   },
+   {
+    "gene": "GIMAP2",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.62,
+    "source_group": "CD8_T",
+    "source_share": 0.55,
+    "source_pct": 21.0,
+    "rna": 1.3,
+    "protein": 1.36,
+    "papers": 0,
+    "total_papers": 21,
+    "drugs": "",
+    "modalities": "PR; SM",
+    "surface": false,
+    "vital": 21.0,
+    "vital_tissue": "lung",
+    "grade": null,
+    "name": "GTPase IMAP family member 2",
+    "uniprot": "Q9UG22",
+    "mgd": null,
+    "why": "CD8_T cells hold 55% of its tumour transcripts (21 % of cells express it); tumor RNA log2FC 1.30 and protein log2FC 1.36; 0 ccRCC papers (21 overall); no clinical-stage drug; tractability PR; SM; highest vital-organ expression 21 nTPM (lung)",
+    "components": {
+     "omics": 0.5,
+     "cell_specificity": 0.4,
+     "understudied": 1.0,
+     "undrugged": 1.0,
+     "druggable": 0.7,
+     "safety": 0.59,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:351bc4f1e1b4",
+     "EV:omics_de:08ecd4f525a0",
+     "EV:omics_de:f2d06d2ee565"
+    ]
+   },
+   {
+    "gene": "CD70",
+    "track": "immune",
+    "status": "has clinical drug (repurposing)",
+    "novelty": 0.62,
+    "source_group": "CD8_T",
+    "source_share": 0.53,
+    "source_pct": 14.0,
+    "rna": 4.46,
+    "protein": 2.42,
+    "papers": 227,
+    "total_papers": 1301,
+    "drugs": "VORSETUZUMAB; VORSETUZUMAB MAFODOTIN; MDX-1411; CUSATUZUMAB",
+    "modalities": "AB; OC; PR",
+    "surface": true,
+    "vital": 2.0,
+    "vital_tissue": "small intestine",
+    "grade": null,
+    "name": "CD70 antigen",
+    "uniprot": "P32970",
+    "mgd": null,
+    "why": "CD8_T cells hold 53% of its tumour transcripts (14 % of cells express it); tumor RNA log2FC 4.46 and protein log2FC 2.42; 227 ccRCC papers (1301 overall); clinical drug(s): VORSETUZUMAB; VORSETUZUMAB MAFODOTIN; MDX-1411; CUSATUZUMAB; tractability AB; OC; PR; surface/secreted; highest vital-organ expression 2 nTPM (small intestine)",
+    "components": {
+     "omics": 1.0,
+     "cell_specificity": 0.72,
+     "understudied": 0.0,
+     "undrugged": 0.0,
+     "druggable": 1.0,
+     "safety": 0.96,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:908e84663f6a",
+     "EV:omics_de:8a1dc0572ead",
+     "EV:omics_de:97c97f6d7d62"
+    ]
+   },
+   {
+    "gene": "GBP2",
+    "track": "immune",
+    "status": "under-studied vs. established",
+    "novelty": 0.62,
+    "source_group": "CD8_T",
+    "source_share": 0.47,
+    "source_pct": 25.0,
+    "rna": 2.12,
+    "protein": 1.55,
+    "papers": 24,
+    "total_papers": 368,
+    "drugs": "",
+    "modalities": "PR; SM",
+    "surface": true,
+    "vital": 18.0,
+    "vital_tissue": "lung",
+    "grade": 0.31,
+    "name": "Guanylate-binding protein 2",
+    "uniprot": "P32456",
+    "mgd": null,
+    "why": "CD8_T cells hold 47% of its tumour transcripts (25 % of cells express it); tumor RNA log2FC 2.12 and protein log2FC 1.55; 24 ccRCC papers (368 overall); no clinical-stage drug; tractability PR; SM; surface/secreted; highest vital-organ expression 18 nTPM (lung); grade (rna) rho 0.31",
+    "components": {
+     "omics": 0.65,
+     "cell_specificity": 0.48,
+     "understudied": 0.18,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.63,
+     "aggressiveness": 0.76
+    },
+    "evidence_ids": [
+     "EV:discovery:d1d38a8ebc7b",
+     "EV:omics_de:b26eaf002cb7",
+     "EV:omics_de:b40c6c6345c3"
+    ]
+   },
+   {
+    "gene": "CTHRC1",
+    "track": "tumor",
+    "status": "under-studied vs. established",
+    "novelty": 0.62,
+    "source_group": "RCC",
+    "source_share": 0.52,
+    "source_pct": 15.0,
+    "rna": 1.94,
+    "protein": 1.56,
+    "papers": 39,
+    "total_papers": 508,
+    "drugs": "",
+    "modalities": "AB",
+    "surface": true,
+    "vital": 8.0,
+    "vital_tissue": "lung",
+    "grade": 0.33,
+    "name": "Collagen triple helix repeat-containing protein 1",
+    "uniprot": "Q96CG8",
+    "mgd": null,
+    "why": "RCC cells hold 52% of its tumour transcripts (15 % of cells express it); tumor RNA log2FC 1.94 and protein log2FC 1.56; 39 ccRCC papers (508 overall); no clinical-stage drug; tractability AB; surface/secreted; highest vital-organ expression 8 nTPM (lung); grade (rna) rho 0.33",
+    "components": {
+     "omics": 0.63,
+     "cell_specificity": 0.51,
+     "understudied": 0.06,
+     "undrugged": 1.0,
+     "druggable": 0.8,
+     "safety": 0.83,
+     "aggressiveness": 0.83
+    },
+    "evidence_ids": [
+     "EV:discovery:8abc69741c46",
+     "EV:omics_de:aea55c546a15",
+     "EV:omics_de:e6d0a15addaf"
+    ]
+   },
+   {
+    "gene": "CYP2J2",
+    "track": "tumor",
+    "status": "novel, off-tumor risk (vital-organ expression)",
+    "novelty": 0.61,
+    "source_group": "RCC",
+    "source_share": 0.93,
+    "source_pct": 13.0,
+    "rna": 3.85,
+    "protein": 1.86,
+    "papers": 12,
+    "total_papers": 578,
+    "drugs": "",
+    "modalities": "AB; PR; SM",
+    "surface": true,
+    "vital": 137.0,
+    "vital_tissue": "liver",
+    "grade": null,
+    "name": "Cytochrome P450 2J2",
+    "uniprot": "P51589",
+    "mgd": 0.64,
+    "why": "RCC cells hold 93% of its tumour transcripts (13 % of cells express it); tumor RNA log2FC 3.85 and protein log2FC 1.86; 12 ccRCC papers (578 overall); no clinical-stage drug; tractability AB; PR; SM; surface/secreted; highest vital-organ expression 137 nTPM (liver)",
+    "components": {
+     "omics": 0.95,
+     "cell_specificity": 0.71,
+     "understudied": 0.35,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.0,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:800c9f294545",
+     "EV:mgd_site:4dfa1b571876",
+     "EV:omics_de:8504d0e4bd6d",
+     "EV:omics_de:e18b0cab7459",
+     "EV:sc_expr:f549bbcb8d9e"
+    ]
+   },
+   {
+    "gene": "ANGPTL4",
+    "track": "tumor",
+    "status": "under-studied vs. established",
+    "novelty": 0.61,
+    "source_group": "RCC",
+    "source_share": 0.96,
+    "source_pct": 70.0,
+    "rna": 5.57,
+    "protein": 1.73,
+    "papers": 74,
+    "total_papers": 1742,
+    "drugs": "",
+    "modalities": "AB; PR; SM",
+    "surface": true,
+    "vital": 177.0,
+    "vital_tissue": "liver",
+    "grade": null,
+    "name": "Angiopoietin-related protein 4",
+    "uniprot": "Q9BY76",
+    "mgd": null,
+    "why": "RCC cells hold 96% of its tumour transcripts (70 % of cells express it); tumor RNA log2FC 5.57 and protein log2FC 1.73; 74 ccRCC papers (1742 overall); no clinical-stage drug; tractability AB; PR; SM; surface/secreted; highest vital-organ expression 177 nTPM (liver)",
+    "components": {
+     "omics": 0.93,
+     "cell_specificity": 0.98,
+     "understudied": 0.0,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.0,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:54533d65c68e",
+     "EV:omics_de:b6a0fbcac17f",
+     "EV:omics_de:fd2b5ba0c2cc"
+    ]
+   },
+   {
+    "gene": "LILRB3",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.61,
+    "source_group": "Macrophage",
+    "source_share": 0.85,
+    "source_pct": 30.0,
+    "rna": 1.1,
+    "protein": 0.73,
+    "papers": 3,
+    "total_papers": 107,
+    "drugs": "",
+    "modalities": "AB",
+    "surface": true,
+    "vital": 19.0,
+    "vital_tissue": "lung",
+    "grade": 0.25,
+    "name": "Leukocyte immunoglobulin-like receptor subfamily B member 3",
+    "uniprot": "O75022",
+    "mgd": null,
+    "why": "Macrophage cells hold 85% of its tumour transcripts (30 % of cells express it); tumor RNA log2FC 1.10 and protein log2FC 0.73; 3 ccRCC papers (107 overall); no clinical-stage drug; tractability AB; surface/secreted; highest vital-organ expression 19 nTPM (lung); grade (rna) rho 0.25",
+    "components": {
+     "omics": 0.32,
+     "cell_specificity": 0.55,
+     "understudied": 0.65,
+     "undrugged": 1.0,
+     "druggable": 0.8,
+     "safety": 0.62,
+     "aggressiveness": 0.63
+    },
+    "evidence_ids": [
+     "EV:discovery:6e648dc1a80d",
+     "EV:omics_de:833fa91cd106",
+     "EV:omics_de:95761a16ca0d"
+    ]
+   },
+   {
+    "gene": "NCK1",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.61,
+    "source_group": "CD8_T",
+    "source_share": 0.51,
+    "source_pct": 17.0,
+    "rna": 1.09,
+    "protein": 1.96,
+    "papers": 1,
+    "total_papers": 231,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": false,
+    "vital": 30.0,
+    "vital_tissue": "bone marrow",
+    "grade": 0.23,
+    "name": "SH2/SH3 adapter protein NCK1",
+    "uniprot": "P16333",
+    "mgd": null,
+    "why": "CD8_T cells hold 51% of its tumour transcripts (17 % of cells express it); tumor RNA log2FC 1.09 and protein log2FC 1.96; 1 ccRCC papers (231 overall); no clinical-stage drug; tractability AB; PR; highest vital-organ expression 30 nTPM (bone marrow); grade (rna) rho 0.23",
+    "components": {
+     "omics": 0.63,
+     "cell_specificity": 0.34,
+     "understudied": 0.82,
+     "undrugged": 1.0,
+     "druggable": 0.7,
+     "safety": 0.4,
+     "aggressiveness": 0.57
+    },
+    "evidence_ids": [
+     "EV:discovery:dd0fd44e31af",
+     "EV:omics_de:48bff6b20e6d",
+     "EV:omics_de:dd069e86e1f0"
+    ]
+   },
+   {
+    "gene": "DOCK10",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.6,
+    "source_group": "CD8_T",
+    "source_share": 0.41,
+    "source_pct": 15.0,
+    "rna": 1.49,
+    "protein": 0.58,
+    "papers": 0,
+    "total_papers": 54,
+    "drugs": "",
+    "modalities": "PR; SM",
+    "surface": false,
+    "vital": 20.0,
+    "vital_tissue": "cerebral cortex",
+    "grade": 0.3,
+    "name": "Dedicator of cytokinesis protein 10",
+    "uniprot": "Q96BY6",
+    "mgd": null,
+    "why": "CD8_T cells hold 41% of its tumour transcripts (15 % of cells express it); tumor RNA log2FC 1.49 and protein log2FC 0.58; 0 ccRCC papers (54 overall); no clinical-stage drug; tractability PR; SM; highest vital-organ expression 20 nTPM (cerebral cortex); grade (rna) rho 0.30",
+    "components": {
+     "omics": 0.33,
+     "cell_specificity": 0.3,
+     "understudied": 1.0,
+     "undrugged": 1.0,
+     "druggable": 0.7,
+     "safety": 0.6,
+     "aggressiveness": 0.75
+    },
+    "evidence_ids": [
+     "EV:discovery:f067be1c3b64",
+     "EV:omics_de:4f5a048c10f6",
+     "EV:omics_de:f64ff408be81"
+    ]
+   },
+   {
+    "gene": "PLXNC1",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.6,
+    "source_group": "Macrophage",
+    "source_share": 0.47,
+    "source_pct": 17.0,
+    "rna": 1.45,
+    "protein": 1.0,
+    "papers": 4,
+    "total_papers": 77,
+    "drugs": "",
+    "modalities": "AB; PR; SM",
+    "surface": true,
+    "vital": 16.0,
+    "vital_tissue": "bone marrow",
+    "grade": 0.29,
+    "name": "Plexin-C1",
+    "uniprot": "O60486",
+    "mgd": null,
+    "why": "Macrophage cells hold 47% of its tumour transcripts (17 % of cells express it); tumor RNA log2FC 1.45 and protein log2FC 1.00; 4 ccRCC papers (77 overall); no clinical-stage drug; tractability AB; PR; SM; surface/secreted; highest vital-organ expression 16 nTPM (bone marrow); grade (rna) rho 0.29",
+    "components": {
+     "omics": 0.43,
+     "cell_specificity": 0.31,
+     "understudied": 0.59,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.67,
+     "aggressiveness": 0.73
+    },
+    "evidence_ids": [
+     "EV:discovery:8c344c12a50a",
+     "EV:omics_de:0cebc3930504",
+     "EV:omics_de:6db70c522a98"
+    ]
+   },
+   {
+    "gene": "PARVG",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.6,
+    "source_group": "CD8_T",
+    "source_share": 0.55,
+    "source_pct": 27.0,
+    "rna": 1.8,
+    "protein": 1.52,
+    "papers": 3,
+    "total_papers": 21,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": true,
+    "vital": 47.0,
+    "vital_tissue": "bone marrow",
+    "grade": 0.39,
+    "name": "Gamma-parvin",
+    "uniprot": "Q9HBI0",
+    "mgd": null,
+    "why": "CD8_T cells hold 55% of its tumour transcripts (27 % of cells express it); tumor RNA log2FC 1.80 and protein log2FC 1.52; 3 ccRCC papers (21 overall); no clinical-stage drug; tractability AB; PR; surface/secreted; highest vital-organ expression 47 nTPM (bone marrow); grade (protein) rho 0.39",
+    "components": {
+     "omics": 0.6,
+     "cell_specificity": 0.47,
+     "understudied": 0.65,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.06,
+     "aggressiveness": 0.97
+    },
+    "evidence_ids": [
+     "EV:discovery:70294e6b72fb",
+     "EV:omics_de:007c190439cb",
+     "EV:omics_de:4fbdb8e3d748"
+    ]
+   },
+   {
+    "gene": "GZMK",
+    "track": "immune",
+    "status": "under-studied vs. established",
+    "novelty": 0.6,
+    "source_group": "CD8_T",
+    "source_share": 0.89,
+    "source_pct": 90.0,
+    "rna": 2.06,
+    "protein": 1.05,
+    "papers": 26,
+    "total_papers": 455,
+    "drugs": "",
+    "modalities": "AB; PR; SM",
+    "surface": true,
+    "vital": 10.0,
+    "vital_tissue": "liver",
+    "grade": null,
+    "name": "Granzyme K",
+    "uniprot": "P49863",
+    "mgd": null,
+    "why": "CD8_T cells hold 89% of its tumour transcripts (90 % of cells express it); tumor RNA log2FC 2.06 and protein log2FC 1.05; 26 ccRCC papers (455 overall); no clinical-stage drug; tractability AB; PR; SM; surface/secreted; highest vital-organ expression 10 nTPM (liver)",
+    "components": {
+     "omics": 0.52,
+     "cell_specificity": 0.6,
+     "understudied": 0.16,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.8,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:0774364e41fb",
+     "EV:omics_de:48d3ea743200",
+     "EV:omics_de:dac73e9bbaa2"
+    ]
+   },
+   {
+    "gene": "C19orf33",
+    "track": "tumor",
+    "status": "novel, off-tumor risk (vital-organ expression)",
+    "novelty": 0.6,
+    "source_group": "RCC",
+    "source_share": 0.97,
+    "source_pct": 54.0,
+    "rna": 2.19,
+    "protein": 1.6,
+    "papers": 2,
+    "total_papers": 26,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": false,
+    "vital": 198.0,
+    "vital_tissue": "colon",
+    "grade": null,
+    "name": "Immortalization up-regulated protein",
+    "uniprot": "Q9GZP8",
+    "mgd": null,
+    "why": "RCC cells hold 97% of its tumour transcripts (54 % of cells express it); tumor RNA log2FC 2.19 and protein log2FC 1.60; 2 ccRCC papers (26 overall); no clinical-stage drug; tractability AB; PR; highest vital-organ expression 198 nTPM (colon)",
+    "components": {
+     "omics": 0.68,
+     "cell_specificity": 0.77,
+     "understudied": 0.72,
+     "undrugged": 1.0,
+     "druggable": 0.7,
+     "safety": 0.0,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:cad76a0afa44",
+     "EV:omics_de:9e1a87c6c49b",
+     "EV:omics_de:fd10cac6690c",
+     "EV:sc_expr:6e8db7d15e23"
+    ]
+   },
+   {
+    "gene": "COLGALT1",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.6,
+    "source_group": "Macrophage",
+    "source_share": 0.46,
+    "source_pct": 16.0,
+    "rna": 1.65,
+    "protein": 1.23,
+    "papers": 7,
+    "total_papers": 52,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": false,
+    "vital": 26.0,
+    "vital_tissue": "lung",
+    "grade": 0.29,
+    "name": "Procollagen galactosyltransferase 1",
+    "uniprot": "Q8NBJ5",
+    "mgd": null,
+    "why": "Macrophage cells hold 46% of its tumour transcripts (16 % of cells express it); tumor RNA log2FC 1.65 and protein log2FC 1.23; 7 ccRCC papers (52 overall); no clinical-stage drug; tractability AB; PR; highest vital-organ expression 26 nTPM (lung); stage (rna) rho 0.29",
+    "components": {
+     "omics": 0.51,
+     "cell_specificity": 0.58,
+     "understudied": 0.47,
+     "undrugged": 1.0,
+     "druggable": 0.7,
+     "safety": 0.47,
+     "aggressiveness": 0.73
+    },
+    "evidence_ids": [
+     "EV:discovery:7266cac030f1",
+     "EV:omics_de:2d51059a164f",
+     "EV:omics_de:7130815b1659"
+    ]
+   },
+   {
+    "gene": "PNCK",
+    "track": "tumor",
+    "status": "novel, off-tumor risk (vital-organ expression)",
+    "novelty": 0.59,
+    "source_group": "RCC",
+    "source_share": 0.96,
+    "source_pct": 21.0,
+    "rna": 4.09,
+    "protein": 1.66,
+    "papers": 11,
+    "total_papers": 37,
+    "drugs": "",
+    "modalities": "AB; PR; SM",
+    "surface": false,
+    "vital": 78.0,
+    "vital_tissue": "colon",
+    "grade": null,
+    "name": "Calcium/calmodulin-dependent protein kinase type 1B",
+    "uniprot": "Q6P2M8",
+    "mgd": 0.64,
+    "why": "RCC cells hold 96% of its tumour transcripts (21 % of cells express it); tumor RNA log2FC 4.09 and protein log2FC 1.66; 11 ccRCC papers (37 overall); no clinical-stage drug; tractability AB; PR; SM; highest vital-organ expression 78 nTPM (colon)",
+    "components": {
+     "omics": 0.92,
+     "cell_specificity": 0.77,
+     "understudied": 0.37,
+     "undrugged": 1.0,
+     "druggable": 0.7,
+     "safety": 0.0,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:578ce7e8e78d",
+     "EV:mgd_site:30617d071441",
+     "EV:omics_de:59e4561c5775",
+     "EV:omics_de:92c90279d5b8",
+     "EV:sc_expr:205d3de9020e"
+    ]
+   },
+   {
+    "gene": "CAVIN3",
+    "track": "tumor",
+    "status": "novel, off-tumor risk (vital-organ expression)",
+    "novelty": 0.59,
+    "source_group": "RCC",
+    "source_share": 0.75,
+    "source_pct": 38.0,
+    "rna": 2.11,
+    "protein": 0.86,
+    "papers": 3,
+    "total_papers": 55,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": true,
+    "vital": 82.0,
+    "vital_tissue": "colon",
+    "grade": -0.25,
+    "name": "Caveolae-associated protein 3",
+    "uniprot": "Q969G5",
+    "mgd": 0.45,
+    "why": "RCC cells hold 75% of its tumour transcripts (38 % of cells express it); tumor RNA log2FC 2.11 and protein log2FC 0.86; 3 ccRCC papers (55 overall); no clinical-stage drug; tractability AB; PR; surface/secreted; highest vital-organ expression 82 nTPM (colon)",
+    "components": {
+     "omics": 0.48,
+     "cell_specificity": 0.85,
+     "understudied": 0.65,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.0,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:245d2bf486da",
+     "EV:mgd_site:09f6ad924174",
+     "EV:omics_de:16c9b272cb2a",
+     "EV:omics_de:1b92a9c8c6a6",
+     "EV:sc_expr:591c070abe35"
+    ]
+   },
+   {
+    "gene": "LAIR1",
+    "track": "immune",
+    "status": "under-studied vs. established",
+    "novelty": 0.59,
+    "source_group": "Macrophage",
+    "source_share": 0.6,
+    "source_pct": 49.0,
+    "rna": 2.18,
+    "protein": 1.33,
+    "papers": 21,
+    "total_papers": 353,
+    "drugs": "",
+    "modalities": "AB; PR; SM",
+    "surface": true,
+    "vital": 27.0,
+    "vital_tissue": "lung",
+    "grade": 0.4,
+    "name": "Leukocyte-associated immunoglobulin-like receptor 1",
+    "uniprot": "Q6GTX8",
+    "mgd": null,
+    "why": "Macrophage cells hold 60% of its tumour transcripts (49 % of cells express it); tumor RNA log2FC 2.18 and protein log2FC 1.33; 21 ccRCC papers (353 overall); no clinical-stage drug; tractability AB; PR; SM; surface/secreted; highest vital-organ expression 27 nTPM (lung); grade (rna) rho 0.40",
+    "components": {
+     "omics": 0.61,
+     "cell_specificity": 0.45,
+     "understudied": 0.21,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.46,
+     "aggressiveness": 1.0
+    },
+    "evidence_ids": [
+     "EV:discovery:c5681632b2d1",
+     "EV:omics_de:1ac3f5c1c561",
+     "EV:omics_de:26dd7246ee90"
+    ]
+   },
+   {
+    "gene": "PNMA2",
+    "track": "tumor",
+    "status": "novel, harder to drug",
+    "novelty": 0.59,
+    "source_group": "RCC",
+    "source_share": 0.94,
+    "source_pct": 11.0,
+    "rna": 2.5,
+    "protein": 1.88,
+    "papers": 3,
+    "total_papers": 34,
+    "drugs": "",
+    "modalities": "PR",
+    "surface": false,
+    "vital": 114.0,
+    "vital_tissue": "cerebral cortex",
+    "grade": null,
+    "name": "Paraneoplastic antigen Ma2",
+    "uniprot": "Q9UL42",
+    "mgd": null,
+    "why": "RCC cells hold 94% of its tumour transcripts (11 % of cells express it); tumor RNA log2FC 2.50 and protein log2FC 1.88; 3 ccRCC papers (34 overall); no clinical-stage drug; tractability PR; highest vital-organ expression 114 nTPM (cerebral cortex)",
+    "components": {
+     "omics": 0.78,
+     "cell_specificity": 0.93,
+     "understudied": 0.65,
+     "undrugged": 1.0,
+     "druggable": 0.2,
+     "safety": 0.0,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:46d53e5d7e85",
+     "EV:omics_de:b28e1b1e56b8",
+     "EV:omics_de:f185bdfd0e30"
+    ]
+   },
+   {
+    "gene": "BTN3A2",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.59,
+    "source_group": "CD8_T",
+    "source_share": 0.61,
+    "source_pct": 41.0,
+    "rna": 1.99,
+    "protein": 1.43,
+    "papers": 6,
+    "total_papers": 116,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": true,
+    "vital": 39.0,
+    "vital_tissue": "lung",
+    "grade": 0.22,
+    "name": "Butyrophilin subfamily 3 member A2",
+    "uniprot": "P78410",
+    "mgd": null,
+    "why": "CD8_T cells hold 61% of its tumour transcripts (41 % of cells express it); tumor RNA log2FC 1.99 and protein log2FC 1.43; 6 ccRCC papers (116 overall); no clinical-stage drug; tractability AB; PR; surface/secreted; highest vital-organ expression 39 nTPM (lung); grade (rna) rho 0.22",
+    "components": {
+     "omics": 0.61,
+     "cell_specificity": 0.5,
+     "understudied": 0.51,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.23,
+     "aggressiveness": 0.56
+    },
+    "evidence_ids": [
+     "EV:discovery:97c49befc9ad",
+     "EV:omics_de:0127bb65e6d0",
+     "EV:omics_de:ccbc680b66e6"
+    ]
+   },
+   {
+    "gene": "NOL3",
+    "track": "tumor",
+    "status": "novel, harder to drug",
+    "novelty": 0.59,
+    "source_group": "RCC",
+    "source_share": 0.92,
+    "source_pct": 51.0,
+    "rna": 2.68,
+    "protein": 1.9,
+    "papers": 8,
+    "total_papers": 83,
+    "drugs": "",
+    "modalities": "PR",
+    "surface": true,
+    "vital": 93.0,
+    "vital_tissue": "heart muscle",
+    "grade": null,
+    "name": "Nucleolar protein 3",
+    "uniprot": "O60936",
+    "mgd": null,
+    "why": "RCC cells hold 92% of its tumour transcripts (51 % of cells express it); tumor RNA log2FC 2.68 and protein log2FC 1.90; 8 ccRCC papers (83 overall); no clinical-stage drug; tractability PR; surface/secreted; highest vital-organ expression 93 nTPM (heart muscle)",
+    "components": {
+     "omics": 0.81,
+     "cell_specificity": 0.89,
+     "understudied": 0.44,
+     "undrugged": 1.0,
+     "druggable": 0.5,
+     "safety": 0.0,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:38eb67669ea1",
+     "EV:omics_de:3bacc842db31",
+     "EV:omics_de:67f0035be504"
+    ]
+   },
+   {
+    "gene": "AHNAK2",
+    "track": "tumor",
+    "status": "under-studied vs. established",
+    "novelty": 0.59,
+    "source_group": "RCC",
+    "source_share": 0.91,
+    "source_pct": 14.0,
+    "rna": 3.25,
+    "protein": 2.1,
+    "papers": 33,
+    "total_papers": 127,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": false,
+    "vital": 101.0,
+    "vital_tissue": "colon",
+    "grade": null,
+    "name": "Protein AHNAK2",
+    "uniprot": "Q8IVF2",
+    "mgd": null,
+    "why": "RCC cells hold 91% of its tumour transcripts (14 % of cells express it); tumor RNA log2FC 3.25 and protein log2FC 2.10; 33 ccRCC papers (127 overall); no clinical-stage drug; tractability AB; PR; highest vital-organ expression 101 nTPM (colon)",
+    "components": {
+     "omics": 0.91,
+     "cell_specificity": 0.95,
+     "understudied": 0.1,
+     "undrugged": 1.0,
+     "druggable": 0.7,
+     "safety": 0.0,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:ec2fb31adc99",
+     "EV:omics_de:01285fb00cb2",
+     "EV:omics_de:de4b3232de25"
+    ]
+   },
+   {
+    "gene": "APOBEC3C",
+    "track": "immune",
+    "status": "novel, harder to drug",
+    "novelty": 0.59,
+    "source_group": "CD8_T",
+    "source_share": 0.75,
+    "source_pct": 40.0,
+    "rna": 1.83,
+    "protein": 1.12,
+    "papers": 9,
+    "total_papers": 164,
+    "drugs": "",
+    "modalities": "PR",
+    "surface": false,
+    "vital": 29.0,
+    "vital_tissue": "bone marrow",
+    "grade": 0.33,
+    "name": "DNA dC->dU-editing enzyme APOBEC-3C",
+    "uniprot": "Q9NRW3",
+    "mgd": null,
+    "why": "CD8_T cells hold 75% of its tumour transcripts (40 % of cells express it); tumor RNA log2FC 1.83 and protein log2FC 1.12; 9 ccRCC papers (164 overall); no clinical-stage drug; tractability PR; highest vital-organ expression 29 nTPM (bone marrow); grade (protein) rho 0.33",
+    "components": {
+     "omics": 0.51,
+     "cell_specificity": 0.85,
+     "understudied": 0.41,
+     "undrugged": 1.0,
+     "druggable": 0.2,
+     "safety": 0.41,
+     "aggressiveness": 0.83
+    },
+    "evidence_ids": [
+     "EV:discovery:3a07e4429035",
+     "EV:omics_de:97a8de7f7109",
+     "EV:omics_de:afa049d653f1"
+    ]
+   },
+   {
+    "gene": "HSD3B7",
+    "track": "tumor",
+    "status": "novel, off-tumor risk (vital-organ expression)",
+    "novelty": 0.59,
+    "source_group": "RCC",
+    "source_share": 0.86,
+    "source_pct": 28.0,
+    "rna": 1.81,
+    "protein": 1.2,
+    "papers": 5,
+    "total_papers": 94,
+    "drugs": "",
+    "modalities": "AB; PR; SM",
+    "surface": true,
+    "vital": 132.0,
+    "vital_tissue": "liver",
+    "grade": 0.34,
+    "name": "3 beta-hydroxysteroid dehydrogenase type 7",
+    "uniprot": "Q9H2F3",
+    "mgd": 0.66,
+    "why": "RCC cells hold 86% of its tumour transcripts (28 % of cells express it); tumor RNA log2FC 1.81 and protein log2FC 1.20; 5 ccRCC papers (94 overall); no clinical-stage drug; tractability AB; PR; SM; surface/secreted; highest vital-organ expression 132 nTPM (liver); grade (rna) rho 0.34",
+    "components": {
+     "omics": 0.53,
+     "cell_specificity": 0.63,
+     "understudied": 0.54,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.0,
+     "aggressiveness": 0.85
+    },
+    "evidence_ids": [
+     "EV:discovery:4afb364a2c1d",
+     "EV:mgd_site:3fa9330ca04d",
+     "EV:omics_de:0ef7708569a5",
+     "EV:omics_de:8ccda177dfff",
+     "EV:sc_expr:ebdb3f4b064f"
+    ]
+   },
+   {
+    "gene": "NPTX2",
+    "track": "tumor",
+    "status": "under-studied vs. established",
+    "novelty": 0.58,
+    "source_group": "RCC",
+    "source_share": 0.86,
+    "source_pct": 12.0,
+    "rna": 4.25,
+    "protein": 1.78,
+    "papers": 22,
+    "total_papers": 270,
+    "drugs": "",
+    "modalities": "AB",
+    "surface": true,
+    "vital": 45.0,
+    "vital_tissue": "cerebral cortex",
+    "grade": null,
+    "name": "Neuronal pentraxin-2",
+    "uniprot": "P47972",
+    "mgd": null,
+    "why": "RCC cells hold 86% of its tumour transcripts (12 % of cells express it); tumor RNA log2FC 4.25 and protein log2FC 1.78; 22 ccRCC papers (270 overall); no clinical-stage drug; tractability AB; surface/secreted; highest vital-organ expression 45 nTPM (cerebral cortex)",
+    "components": {
+     "omics": 0.95,
+     "cell_specificity": 0.7,
+     "understudied": 0.2,
+     "undrugged": 1.0,
+     "druggable": 0.8,
+     "safety": 0.1,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:123a499b526b",
+     "EV:omics_de:000288289ccd",
+     "EV:omics_de:9538e28323e8"
+    ]
+   },
+   {
+    "gene": "THEMIS",
+    "track": "immune",
+    "status": "novel, harder to drug",
+    "novelty": 0.58,
+    "source_group": "CD8_T",
+    "source_share": 0.75,
+    "source_pct": 29.0,
+    "rna": 1.21,
+    "protein": 0.73,
+    "papers": 1,
+    "total_papers": 263,
+    "drugs": "",
+    "modalities": "PR",
+    "surface": false,
+    "vital": 3.0,
+    "vital_tissue": "small intestine",
+    "grade": null,
+    "name": "Protein THEMIS",
+    "uniprot": "Q8N1K5",
+    "mgd": null,
+    "why": "CD8_T cells hold 75% of its tumour transcripts (29 % of cells express it); tumor RNA log2FC 1.21 and protein log2FC 0.73; 1 ccRCC papers (263 overall); no clinical-stage drug; tractability PR; highest vital-organ expression 3 nTPM (small intestine)",
+    "components": {
+     "omics": 0.33,
+     "cell_specificity": 0.51,
+     "understudied": 0.82,
+     "undrugged": 1.0,
+     "druggable": 0.2,
+     "safety": 0.95,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:937907e7fc5f",
+     "EV:omics_de:04734bd626b6",
+     "EV:omics_de:1d2d0a72a70b"
+    ]
+   },
+   {
+    "gene": "DDB2",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.58,
+    "source_group": "CD8_T",
+    "source_share": 0.53,
+    "source_pct": 13.0,
+    "rna": 1.83,
+    "protein": 1.4,
+    "papers": 13,
+    "total_papers": 531,
+    "drugs": "",
+    "modalities": "PR; SM",
+    "surface": false,
+    "vital": 25.0,
+    "vital_tissue": "liver",
+    "grade": null,
+    "name": "DNA damage-binding protein 2",
+    "uniprot": "Q92466",
+    "mgd": null,
+    "why": "CD8_T cells hold 53% of its tumour transcripts (13 % of cells express it); tumor RNA log2FC 1.83 and protein log2FC 1.40; 13 ccRCC papers (531 overall); no clinical-stage drug; tractability PR; SM; highest vital-organ expression 25 nTPM (liver)",
+    "components": {
+     "omics": 0.58,
+     "cell_specificity": 0.72,
+     "understudied": 0.33,
+     "undrugged": 1.0,
+     "druggable": 0.7,
+     "safety": 0.49,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:86bb03c86d68",
+     "EV:omics_de:a2135e5579a2",
+     "EV:omics_de:f19845f91bf7"
+    ]
+   },
+   {
+    "gene": "TREM2",
+    "track": "immune",
+    "status": "under-studied vs. established",
+    "novelty": 0.58,
+    "source_group": "Macrophage",
+    "source_share": 0.97,
+    "source_pct": 53.0,
+    "rna": 3.67,
+    "protein": 0.88,
+    "papers": 75,
+    "total_papers": 3501,
+    "drugs": "",
+    "modalities": "AB; SM",
+    "surface": true,
+    "vital": 28.0,
+    "vital_tissue": "lung",
+    "grade": 0.38,
+    "name": "Triggering receptor expressed on myeloid cells 2",
+    "uniprot": "Q9NZC2",
+    "mgd": null,
+    "why": "Macrophage cells hold 97% of its tumour transcripts (53 % of cells express it); tumor RNA log2FC 3.67 and protein log2FC 0.88; 75 ccRCC papers (3501 overall); no clinical-stage drug; tractability AB; SM; surface/secreted; highest vital-organ expression 28 nTPM (lung); grade (rna) rho 0.38",
+    "components": {
+     "omics": 0.68,
+     "cell_specificity": 0.62,
+     "understudied": 0.0,
+     "undrugged": 1.0,
+     "druggable": 0.8,
+     "safety": 0.43,
+     "aggressiveness": 0.96
+    },
+    "evidence_ids": [
+     "EV:discovery:435a9bb3fb0b",
+     "EV:omics_de:3d293f946b3c",
+     "EV:omics_de:98445d02e948"
+    ]
+   },
+   {
+    "gene": "OLFML2B",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.58,
+    "source_group": "Macrophage",
+    "source_share": 0.83,
+    "source_pct": 13.0,
+    "rna": 1.95,
+    "protein": 0.99,
+    "papers": 6,
+    "total_papers": 46,
+    "drugs": "",
+    "modalities": "AB",
+    "surface": true,
+    "vital": 17.0,
+    "vital_tissue": "colon",
+    "grade": null,
+    "name": "Olfactomedin-like protein 2B",
+    "uniprot": "Q68BL8",
+    "mgd": null,
+    "why": "Macrophage cells hold 83% of its tumour transcripts (13 % of cells express it); tumor RNA log2FC 1.95 and protein log2FC 0.99; 6 ccRCC papers (46 overall); no clinical-stage drug; tractability AB; surface/secreted; highest vital-organ expression 17 nTPM (colon)",
+    "components": {
+     "omics": 0.49,
+     "cell_specificity": 0.5,
+     "understudied": 0.51,
+     "undrugged": 1.0,
+     "druggable": 0.8,
+     "safety": 0.65,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:af3bc82e3b9c",
+     "EV:omics_de:2ed2398a99f8",
+     "EV:omics_de:8d27541cde3b"
+    ]
+   },
+   {
+    "gene": "BTN3A1",
+    "track": "immune",
+    "status": "under-studied vs. established",
+    "novelty": 0.58,
+    "source_group": "CD8_T",
+    "source_share": 0.6,
+    "source_pct": 22.0,
+    "rna": 1.9,
+    "protein": 1.29,
+    "papers": 23,
+    "total_papers": 214,
+    "drugs": "",
+    "modalities": "AB; PR; SM",
+    "surface": true,
+    "vital": 39.0,
+    "vital_tissue": "lung",
+    "grade": 0.26,
+    "name": "Butyrophilin subfamily 3 member A1",
+    "uniprot": "O00481",
+    "mgd": null,
+    "why": "CD8_T cells hold 60% of its tumour transcripts (22 % of cells express it); tumor RNA log2FC 1.90 and protein log2FC 1.29; 23 ccRCC papers (214 overall); no clinical-stage drug; tractability AB; PR; SM; surface/secreted; highest vital-organ expression 39 nTPM (lung); grade (rna) rho 0.26",
+    "components": {
+     "omics": 0.56,
+     "cell_specificity": 0.71,
+     "understudied": 0.19,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.22,
+     "aggressiveness": 0.66
+    },
+    "evidence_ids": [
+     "EV:discovery:5c5a29e9cd72",
+     "EV:omics_de:0b97910caed2",
+     "EV:omics_de:51a313afeb04"
+    ]
+   },
+   {
+    "gene": "DOCK4",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.58,
+    "source_group": "Macrophage",
+    "source_share": 0.88,
+    "source_pct": 26.0,
+    "rna": 1.1,
+    "protein": 0.74,
+    "papers": 8,
+    "total_papers": 149,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": true,
+    "vital": 20.0,
+    "vital_tissue": "cerebral cortex",
+    "grade": null,
+    "name": "Dedicator of cytokinesis protein 4",
+    "uniprot": "Q8N1I0",
+    "mgd": null,
+    "why": "Macrophage cells hold 88% of its tumour transcripts (26 % of cells express it); tumor RNA log2FC 1.10 and protein log2FC 0.74; 8 ccRCC papers (149 overall); no clinical-stage drug; tractability AB; PR; surface/secreted; highest vital-organ expression 20 nTPM (cerebral cortex)",
+    "components": {
+     "omics": 0.32,
+     "cell_specificity": 0.62,
+     "understudied": 0.44,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.61,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:d4263bb701df",
+     "EV:omics_de:1e76a5ca34ba",
+     "EV:omics_de:ce2db4ac1db3"
+    ]
+   },
+   {
+    "gene": "PDIA5",
+    "track": "tumor",
+    "status": "novel, off-tumor risk (vital-organ expression)",
+    "novelty": 0.57,
+    "source_group": "RCC",
+    "source_share": 0.63,
+    "source_pct": 14.0,
+    "rna": 1.6,
+    "protein": 0.91,
+    "papers": 2,
+    "total_papers": 37,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": false,
+    "vital": 75.0,
+    "vital_tissue": "liver",
+    "grade": 0.23,
+    "name": "Protein disulfide-isomerase A5",
+    "uniprot": "Q14554",
+    "mgd": 0.76,
+    "why": "RCC cells hold 63% of its tumour transcripts (14 % of cells express it); tumor RNA log2FC 1.60 and protein log2FC 0.91; 2 ccRCC papers (37 overall); no clinical-stage drug; tractability AB; PR; highest vital-organ expression 75 nTPM (liver); grade (rna) rho 0.23",
+    "components": {
+     "omics": 0.43,
+     "cell_specificity": 0.77,
+     "understudied": 0.72,
+     "undrugged": 1.0,
+     "druggable": 0.7,
+     "safety": 0.0,
+     "aggressiveness": 0.56
+    },
+    "evidence_ids": [
+     "EV:discovery:e7c4775ac49e",
+     "EV:mgd_site:e847ded91c30",
+     "EV:omics_de:8490e3b6abce",
+     "EV:omics_de:b1b6067055c2",
+     "EV:sc_expr:0750296be114"
+    ]
+   },
+   {
+    "gene": "MYO1G",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.57,
+    "source_group": "CD8_T",
+    "source_share": 0.6,
+    "source_pct": 26.0,
+    "rna": 1.8,
+    "protein": 1.06,
+    "papers": 5,
+    "total_papers": 555,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": true,
+    "vital": 41.0,
+    "vital_tissue": "bone marrow",
+    "grade": 0.29,
+    "name": "Unconventional myosin-Ig",
+    "uniprot": "B0I1T2",
+    "mgd": null,
+    "why": "CD8_T cells hold 60% of its tumour transcripts (26 % of cells express it); tumor RNA log2FC 1.80 and protein log2FC 1.06; 5 ccRCC papers (555 overall); no clinical-stage drug; tractability AB; PR; surface/secreted; highest vital-organ expression 41 nTPM (bone marrow); grade (rna) rho 0.29",
+    "components": {
+     "omics": 0.49,
+     "cell_specificity": 0.51,
+     "understudied": 0.54,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.18,
+     "aggressiveness": 0.72
+    },
+    "evidence_ids": [
+     "EV:discovery:55d65865ccb7",
+     "EV:omics_de:30c5253eb96b",
+     "EV:omics_de:fd5cb97fed7c"
+    ]
+   },
+   {
+    "gene": "WAS",
+    "track": "immune",
+    "status": "novel, off-tumor risk (vital-organ expression)",
+    "novelty": 0.57,
+    "source_group": "CD8_T",
+    "source_share": 0.57,
+    "source_pct": 45.0,
+    "rna": 1.09,
+    "protein": 1.09,
+    "papers": 0,
+    "total_papers": 39,
+    "drugs": "",
+    "modalities": "AB; PR; SM",
+    "surface": true,
+    "vital": 62.0,
+    "vital_tissue": "bone marrow",
+    "grade": 0.28,
+    "name": "Mitochondrial-derived peptide MOTS-c",
+    "uniprot": "A0A0C5B5G6",
+    "mgd": null,
+    "why": "CD8_T cells hold 57% of its tumour transcripts (45 % of cells express it); tumor RNA log2FC 1.09 and protein log2FC 1.09; 0 ccRCC papers (39 overall); no clinical-stage drug; tractability AB; PR; SM; surface/secreted; highest vital-organ expression 62 nTPM (bone marrow); grade (rna) rho 0.28",
+    "components": {
+     "omics": 0.41,
+     "cell_specificity": 0.39,
+     "understudied": 1.0,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.0,
+     "aggressiveness": 0.69
+    },
+    "evidence_ids": [
+     "EV:discovery:fca8e05c6f66",
+     "EV:omics_de:e3f855e10f74",
+     "EV:omics_de:f1868aab92e1"
+    ]
+   },
+   {
+    "gene": "CARD9",
+    "track": "immune",
+    "status": "under-studied vs. established",
+    "novelty": 0.57,
+    "source_group": "Macrophage",
+    "source_share": 0.72,
+    "source_pct": 12.0,
+    "rna": 1.11,
+    "protein": 0.93,
+    "papers": 17,
+    "total_papers": 672,
+    "drugs": "",
+    "modalities": "AB; PR; SM",
+    "surface": false,
+    "vital": 7.0,
+    "vital_tissue": "bone marrow",
+    "grade": 0.33,
+    "name": "Caspase recruitment domain-containing protein 9",
+    "uniprot": "Q9H257",
+    "mgd": null,
+    "why": "Macrophage cells hold 72% of its tumour transcripts (12 % of cells express it); tumor RNA log2FC 1.11 and protein log2FC 0.93; 17 ccRCC papers (672 overall); no clinical-stage drug; tractability AB; PR; SM; highest vital-organ expression 7 nTPM (bone marrow); grade (rna) rho 0.33",
+    "components": {
+     "omics": 0.37,
+     "cell_specificity": 0.44,
+     "understudied": 0.26,
+     "undrugged": 1.0,
+     "druggable": 0.7,
+     "safety": 0.86,
+     "aggressiveness": 0.83
+    },
+    "evidence_ids": [
+     "EV:discovery:d97ce0305ee3",
+     "EV:omics_de:9be20e2a5631",
+     "EV:omics_de:d29ca9f86d52"
+    ]
+   },
+   {
+    "gene": "CAV2",
+    "track": "tumor",
+    "status": "under-studied vs. established",
+    "novelty": 0.57,
+    "source_group": "RCC",
+    "source_share": 0.88,
+    "source_pct": 47.0,
+    "rna": 2.13,
+    "protein": 1.38,
+    "papers": 21,
+    "total_papers": 428,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": true,
+    "vital": 152.0,
+    "vital_tissue": "lung",
+    "grade": null,
+    "name": "Caveolin-2",
+    "uniprot": "P51636",
+    "mgd": null,
+    "why": "RCC cells hold 88% of its tumour transcripts (47 % of cells express it); tumor RNA log2FC 2.13 and protein log2FC 1.38; 21 ccRCC papers (428 overall); no clinical-stage drug; tractability AB; PR; surface/secreted; highest vital-organ expression 152 nTPM (lung)",
+    "components": {
+     "omics": 0.61,
+     "cell_specificity": 0.93,
+     "understudied": 0.21,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.0,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:fb2913f3fa97",
+     "EV:omics_de:b9108fd03553",
+     "EV:omics_de:dc2dd8d18f07"
+    ]
+   },
+   {
+    "gene": "GBP4",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.57,
+    "source_group": "CD8_T",
+    "source_share": 0.53,
+    "source_pct": 20.0,
+    "rna": 1.43,
+    "protein": 1.21,
+    "papers": 4,
+    "total_papers": 99,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": true,
+    "vital": 29.0,
+    "vital_tissue": "lung",
+    "grade": null,
+    "name": "Guanylate-binding protein 4",
+    "uniprot": "Q96PP9",
+    "mgd": null,
+    "why": "CD8_T cells hold 53% of its tumour transcripts (20 % of cells express it); tumor RNA log2FC 1.43 and protein log2FC 1.21; 4 ccRCC papers (99 overall); no clinical-stage drug; tractability AB; PR; surface/secreted; highest vital-organ expression 29 nTPM (lung)",
+    "components": {
+     "omics": 0.48,
+     "cell_specificity": 0.45,
+     "understudied": 0.59,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.41,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:8bcf8db3dd48",
+     "EV:omics_de:4c651b16d371",
+     "EV:omics_de:50df4493f375"
+    ]
+   },
+   {
+    "gene": "CD8A",
+    "track": "immune",
+    "status": "under-studied vs. established",
+    "novelty": 0.56,
+    "source_group": "CD8_T",
+    "source_share": 0.93,
+    "source_pct": 86.0,
+    "rna": 1.74,
+    "protein": 0.69,
+    "papers": 72,
+    "total_papers": 999,
+    "drugs": "",
+    "modalities": "AB; PR; SM",
+    "surface": true,
+    "vital": 17.0,
+    "vital_tissue": "small intestine",
+    "grade": 0.24,
+    "name": "T-cell surface glycoprotein CD8 alpha chain",
+    "uniprot": "P01732",
+    "mgd": null,
+    "why": "CD8_T cells hold 93% of its tumour transcripts (86 % of cells express it); tumor RNA log2FC 1.74 and protein log2FC 0.69; 72 ccRCC papers (999 overall); no clinical-stage drug; tractability AB; PR; SM; surface/secreted; highest vital-organ expression 17 nTPM (small intestine); grade (rna) rho 0.24",
+    "components": {
+     "omics": 0.39,
+     "cell_specificity": 0.64,
+     "understudied": 0.0,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.66,
+     "aggressiveness": 0.59
+    },
+    "evidence_ids": [
+     "EV:discovery:c016bdaea05c",
+     "EV:omics_de:1e36013d3bc7",
+     "EV:omics_de:cb3d94b36d1c"
+    ]
+   },
+   {
+    "gene": "CLEC2B",
+    "track": "immune",
+    "status": "novel, off-tumor risk (vital-organ expression)",
+    "novelty": 0.56,
+    "source_group": "CD8_T",
+    "source_share": 0.57,
+    "source_pct": 49.0,
+    "rna": 1.86,
+    "protein": 1.5,
+    "papers": 6,
+    "total_papers": 37,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": true,
+    "vital": 107.0,
+    "vital_tissue": "bone marrow",
+    "grade": 0.34,
+    "name": "C-type lectin domain family 2 member B",
+    "uniprot": "Q92478",
+    "mgd": null,
+    "why": "CD8_T cells hold 57% of its tumour transcripts (49 % of cells express it); tumor RNA log2FC 1.86 and protein log2FC 1.50; 6 ccRCC papers (37 overall); no clinical-stage drug; tractability AB; PR; surface/secreted; highest vital-organ expression 107 nTPM (bone marrow); grade (rna) rho 0.34",
+    "components": {
+     "omics": 0.61,
+     "cell_specificity": 0.47,
+     "understudied": 0.51,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.0,
+     "aggressiveness": 0.84
+    },
+    "evidence_ids": [
+     "EV:discovery:db32407326b2",
+     "EV:omics_de:b42be3250c3e",
+     "EV:omics_de:edde8150f535"
+    ]
+   },
+   {
+    "gene": "TRPV2",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.56,
+    "source_group": "CD8_T",
+    "source_share": 0.55,
+    "source_pct": 12.0,
+    "rna": 1.74,
+    "protein": 1.15,
+    "papers": 8,
+    "total_papers": 833,
+    "drugs": "",
+    "modalities": "AB; PR; SM",
+    "surface": true,
+    "vital": 30.0,
+    "vital_tissue": "lung",
+    "grade": 0.24,
+    "name": "Transient receptor potential cation channel subfamily V member 2",
+    "uniprot": "Q9Y5S1",
+    "mgd": null,
+    "why": "CD8_T cells hold 55% of its tumour transcripts (12 % of cells express it); tumor RNA log2FC 1.74 and protein log2FC 1.15; 8 ccRCC papers (833 overall); no clinical-stage drug; tractability AB; PR; SM; surface/secreted; highest vital-organ expression 30 nTPM (lung); grade (protein) rho 0.24",
+    "components": {
+     "omics": 0.5,
+     "cell_specificity": 0.37,
+     "understudied": 0.44,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.41,
+     "aggressiveness": 0.61
+    },
+    "evidence_ids": [
+     "EV:discovery:71057fdc4d93",
+     "EV:omics_de:6c622029f9e3",
+     "EV:omics_de:9a216515c81a"
+    ]
+   },
+   {
+    "gene": "PLOD2",
+    "track": "tumor",
+    "status": "under-studied vs. established",
+    "novelty": 0.56,
+    "source_group": "RCC",
+    "source_share": 0.94,
+    "source_pct": 33.0,
+    "rna": 2.24,
+    "protein": 0.96,
+    "papers": 54,
+    "total_papers": 399,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": true,
+    "vital": 53.0,
+    "vital_tissue": "liver",
+    "grade": 0.28,
+    "name": "Procollagen-lysine,2-oxoglutarate 5-dioxygenase 2",
+    "uniprot": "O00469",
+    "mgd": null,
+    "why": "RCC cells hold 94% of its tumour transcripts (33 % of cells express it); tumor RNA log2FC 2.24 and protein log2FC 0.96; 54 ccRCC papers (399 overall); no clinical-stage drug; tractability AB; PR; surface/secreted; highest vital-organ expression 53 nTPM (liver); grade (rna) rho 0.28",
+    "components": {
+     "omics": 0.52,
+     "cell_specificity": 0.96,
+     "understudied": 0.0,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.0,
+     "aggressiveness": 0.7
+    },
+    "evidence_ids": [
+     "EV:discovery:68398ea3482f",
+     "EV:omics_de:1d8bceae8202",
+     "EV:omics_de:f01ce6cb150d"
+    ]
+   },
+   {
+    "gene": "HMCN1",
+    "track": "stroma",
+    "status": "first-in-class opportunity",
+    "novelty": 0.56,
+    "source_group": "Endothelial",
+    "source_share": 0.72,
+    "source_pct": 13.0,
+    "rna": 1.13,
+    "protein": 0.97,
+    "papers": 8,
+    "total_papers": 110,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": true,
+    "vital": 19.0,
+    "vital_tissue": "lung",
+    "grade": -0.25,
+    "name": "Hemicentin-1",
+    "uniprot": "Q96RW7",
+    "mgd": 0.58,
+    "why": "Endothelial cells hold 72% of its tumour transcripts (13 % of cells express it); tumor RNA log2FC 1.13 and protein log2FC 0.97; 8 ccRCC papers (110 overall); no clinical-stage drug; tractability AB; PR; surface/secreted; highest vital-organ expression 19 nTPM (lung)",
+    "components": {
+     "omics": 0.38,
+     "cell_specificity": 0.48,
+     "understudied": 0.44,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.61,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:d851b36fb6af",
+     "EV:mgd_site:8e86c98f9b8a",
+     "EV:omics_de:8b7c0c0a7c81",
+     "EV:omics_de:e4900e1aa209",
+     "EV:sc_expr:e4251f373811"
+    ]
+   },
+   {
+    "gene": "IGFBP3",
+    "track": "tumor",
+    "status": "under-studied vs. established",
+    "novelty": 0.56,
+    "source_group": "RCC",
+    "source_share": 0.81,
+    "source_pct": 65.0,
+    "rna": 3.96,
+    "protein": 1.08,
+    "papers": 53,
+    "total_papers": 1851,
+    "drugs": "",
+    "modalities": "AB; PR; SM",
+    "surface": true,
+    "vital": 668.0,
+    "vital_tissue": "liver",
+    "grade": null,
+    "name": "Insulin-like growth factor-binding protein 3",
+    "uniprot": "P17936",
+    "mgd": null,
+    "why": "RCC cells hold 81% of its tumour transcripts (65 % of cells express it); tumor RNA log2FC 3.96 and protein log2FC 1.08; 53 ccRCC papers (1851 overall); no clinical-stage drug; tractability AB; PR; SM; surface/secreted; highest vital-organ expression 668 nTPM (liver)",
+    "components": {
+     "omics": 0.77,
+     "cell_specificity": 0.89,
+     "understudied": 0.0,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.0,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:9b88ea7f31b9",
+     "EV:omics_de:8641d2f840b5",
+     "EV:omics_de:ada987b4e3dc"
+    ]
+   },
+   {
+    "gene": "RECQL",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.56,
+    "source_group": "CD8_T",
+    "source_share": 0.52,
+    "source_pct": 15.0,
+    "rna": 1.21,
+    "protein": 0.9,
+    "papers": 4,
+    "total_papers": 118,
+    "drugs": "",
+    "modalities": "PR; SM",
+    "surface": false,
+    "vital": 25.0,
+    "vital_tissue": "heart muscle",
+    "grade": 0.24,
+    "name": "ATP-dependent DNA helicase Q1",
+    "uniprot": "P46063",
+    "mgd": null,
+    "why": "CD8_T cells hold 52% of its tumour transcripts (15 % of cells express it); tumor RNA log2FC 1.21 and protein log2FC 0.90; 4 ccRCC papers (118 overall); no clinical-stage drug; tractability PR; SM; highest vital-organ expression 25 nTPM (heart muscle); grade (rna) rho 0.24",
+    "components": {
+     "omics": 0.38,
+     "cell_specificity": 0.46,
+     "understudied": 0.59,
+     "undrugged": 1.0,
+     "druggable": 0.7,
+     "safety": 0.5,
+     "aggressiveness": 0.59
+    },
+    "evidence_ids": [
+     "EV:discovery:beb680e0dee2",
+     "EV:omics_de:448b5578a2fa",
+     "EV:omics_de:7f7fb351f7bc"
+    ]
+   },
+   {
+    "gene": "PALD1",
+    "track": "immune",
+    "status": "novel, harder to drug",
+    "novelty": 0.56,
+    "source_group": "Macrophage",
+    "source_share": 0.77,
+    "source_pct": 10.0,
+    "rna": 1.41,
+    "protein": 0.66,
+    "papers": 0,
+    "total_papers": 15,
+    "drugs": "",
+    "modalities": "PR",
+    "surface": false,
+    "vital": 19.0,
+    "vital_tissue": "lung",
+    "grade": null,
+    "name": "Paladin",
+    "uniprot": "Q9ULE6",
+    "mgd": null,
+    "why": "Macrophage cells hold 77% of its tumour transcripts (10 % of cells express it); tumor RNA log2FC 1.41 and protein log2FC 0.66; 0 ccRCC papers (15 overall); no clinical-stage drug; tractability PR; highest vital-organ expression 19 nTPM (lung)",
+    "components": {
+     "omics": 0.34,
+     "cell_specificity": 0.48,
+     "understudied": 1.0,
+     "undrugged": 1.0,
+     "druggable": 0.2,
+     "safety": 0.63,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:3506bb01b64b",
+     "EV:omics_de:104c42c6659f",
+     "EV:omics_de:1e97379cf779"
+    ]
+   },
+   {
+    "gene": "MYO1F",
+    "track": "immune",
+    "status": "novel, off-tumor risk (vital-organ expression)",
+    "novelty": 0.56,
+    "source_group": "CD8_T",
+    "source_share": 0.44,
+    "source_pct": 19.0,
+    "rna": 1.8,
+    "protein": 1.26,
+    "papers": 1,
+    "total_papers": 78,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": true,
+    "vital": 91.0,
+    "vital_tissue": "bone marrow",
+    "grade": 0.31,
+    "name": "Unconventional myosin-If",
+    "uniprot": "O00160",
+    "mgd": null,
+    "why": "CD8_T cells hold 44% of its tumour transcripts (19 % of cells express it); tumor RNA log2FC 1.80 and protein log2FC 1.26; 1 ccRCC papers (78 overall); no clinical-stage drug; tractability AB; PR; surface/secreted; highest vital-organ expression 91 nTPM (bone marrow); grade (protein) rho 0.31",
+    "components": {
+     "omics": 0.54,
+     "cell_specificity": 0.29,
+     "understudied": 0.82,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.0,
+     "aggressiveness": 0.77
+    },
+    "evidence_ids": [
+     "EV:discovery:cfa40283983b",
+     "EV:omics_de:2938a9a41260",
+     "EV:omics_de:6b2529de7602"
+    ]
+   }
+  ],
+  "discovery_cards": [
+   {
+    "gene": "COL23A1",
+    "track": "tumor",
+    "status": "first-in-class opportunity",
+    "novelty": 0.84,
+    "source_group": "RCC",
+    "source_share": 0.88,
+    "source_pct": 17.0,
+    "rna": 4.07,
+    "protein": 2.51,
+    "papers": 7,
+    "total_papers": 43,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": true,
+    "vital": 3.0,
+    "vital_tissue": "heart muscle",
+    "grade": null,
+    "name": "Collagen alpha-1(XXIII) chain",
+    "uniprot": "Q86Y22",
+    "mgd": 0.23,
+    "why": "RCC cells hold 88% of its tumour transcripts (17 % of cells express it); tumor RNA log2FC 4.07 and protein log2FC 2.51; 7 ccRCC papers (43 overall); no clinical-stage drug; tractability AB; PR; surface/secreted; highest vital-organ expression 3 nTPM (heart muscle)",
+    "components": {
+     "omics": 1.0,
+     "cell_specificity": 0.93,
+     "understudied": 0.47,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.94,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:e1532aa1b09c",
+     "EV:mgd_site:3a4161457d4f",
+     "EV:omics_de:221109300f58",
+     "EV:omics_de:d65b09179038",
+     "EV:sc_expr:2004e5c49703"
+    ]
+   },
+   {
+    "gene": "RAB42",
+    "track": "tumor",
+    "status": "first-in-class opportunity",
+    "novelty": 0.77,
+    "source_group": "RCC",
+    "source_share": 0.63,
+    "source_pct": 12.0,
+    "rna": 3.11,
+    "protein": 1.9,
+    "papers": 2,
+    "total_papers": 20,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": true,
+    "vital": 3.0,
+    "vital_tissue": "lung",
+    "grade": null,
+    "name": "Ras-related protein Rab-42",
+    "uniprot": "Q8N4Z0",
+    "mgd": 0.53,
+    "why": "RCC cells hold 63% of its tumour transcripts (12 % of cells express it); tumor RNA log2FC 3.11 and protein log2FC 1.90; 2 ccRCC papers (20 overall); no clinical-stage drug; tractability AB; PR; surface/secreted; highest vital-organ expression 3 nTPM (lung)",
+    "components": {
+     "omics": 0.86,
+     "cell_specificity": 0.57,
+     "understudied": 0.72,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.95,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:f53feb0aa597",
+     "EV:mgd_site:99d1b16599f0",
+     "EV:omics_de:0e1bd4da12e9",
+     "EV:omics_de:50d3d785f55b",
+     "EV:sc_expr:2c86705a51fe"
+    ]
+   },
+   {
+    "gene": "FABP6",
+    "track": "tumor",
+    "status": "novel, off-tumor risk (vital-organ expression)",
+    "novelty": 0.72,
+    "source_group": "RCC",
+    "source_share": 0.96,
+    "source_pct": 25.0,
+    "rna": 4.01,
+    "protein": 1.92,
+    "papers": 14,
+    "total_papers": 340,
+    "drugs": "",
+    "modalities": "AB; PR; SM",
+    "surface": true,
+    "vital": 4264.0,
+    "vital_tissue": "small intestine",
+    "grade": 0.43,
+    "name": "Gastrotropin",
+    "uniprot": "P51161",
+    "mgd": 0.67,
+    "why": "RCC cells hold 96% of its tumour transcripts (25 % of cells express it); tumor RNA log2FC 4.01 and protein log2FC 1.92; 14 ccRCC papers (340 overall); no clinical-stage drug; tractability AB; PR; SM; surface/secreted; highest vital-organ expression 4264 nTPM (small intestine); grade (protein) rho 0.43",
+    "components": {
+     "omics": 0.98,
+     "cell_specificity": 0.98,
+     "understudied": 0.31,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.0,
+     "aggressiveness": 1.0
+    },
+    "evidence_ids": [
+     "EV:discovery:52f5e4eeb4a8",
+     "EV:mgd_site:c7d00f122278",
+     "EV:omics_de:0ea3d10905b2",
+     "EV:omics_de:12f11b6896c3",
+     "EV:sc_expr:882bb956c16e"
+    ]
+   },
+   {
+    "gene": "RRAD",
+    "track": "tumor",
+    "status": "novel, off-tumor risk (vital-organ expression)",
+    "novelty": 0.66,
+    "source_group": "RCC",
+    "source_share": 0.89,
+    "source_pct": 17.0,
+    "rna": 1.86,
+    "protein": 1.03,
+    "papers": 3,
+    "total_papers": 124,
+    "drugs": "",
+    "modalities": "AB; PR; SM",
+    "surface": true,
+    "vital": 316.0,
+    "vital_tissue": "heart muscle",
+    "grade": 0.33,
+    "name": "GTP-binding protein RAD",
+    "uniprot": "P55042",
+    "mgd": 0.52,
+    "why": "RCC cells hold 89% of its tumour transcripts (17 % of cells express it); tumor RNA log2FC 1.86 and protein log2FC 1.03; 3 ccRCC papers (124 overall); no clinical-stage drug; tractability AB; PR; SM; surface/secreted; highest vital-organ expression 316 nTPM (heart muscle); grade (rna) rho 0.33",
+    "components": {
+     "omics": 0.49,
+     "cell_specificity": 0.94,
+     "understudied": 0.65,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.0,
+     "aggressiveness": 0.82
+    },
+    "evidence_ids": [
+     "EV:discovery:e98521a115fd",
+     "EV:mgd_site:eb1f44d28efc",
+     "EV:omics_de:69a889dc54d2",
+     "EV:omics_de:e8b8f5f44e46",
+     "EV:sc_expr:3239e3b8d49c"
+    ]
+   },
+   {
+    "gene": "CYP2J2",
+    "track": "tumor",
+    "status": "novel, off-tumor risk (vital-organ expression)",
+    "novelty": 0.61,
+    "source_group": "RCC",
+    "source_share": 0.93,
+    "source_pct": 13.0,
+    "rna": 3.85,
+    "protein": 1.86,
+    "papers": 12,
+    "total_papers": 578,
+    "drugs": "",
+    "modalities": "AB; PR; SM",
+    "surface": true,
+    "vital": 137.0,
+    "vital_tissue": "liver",
+    "grade": null,
+    "name": "Cytochrome P450 2J2",
+    "uniprot": "P51589",
+    "mgd": 0.64,
+    "why": "RCC cells hold 93% of its tumour transcripts (13 % of cells express it); tumor RNA log2FC 3.85 and protein log2FC 1.86; 12 ccRCC papers (578 overall); no clinical-stage drug; tractability AB; PR; SM; surface/secreted; highest vital-organ expression 137 nTPM (liver)",
+    "components": {
+     "omics": 0.95,
+     "cell_specificity": 0.71,
+     "understudied": 0.35,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.0,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:800c9f294545",
+     "EV:mgd_site:4dfa1b571876",
+     "EV:omics_de:8504d0e4bd6d",
+     "EV:omics_de:e18b0cab7459",
+     "EV:sc_expr:f549bbcb8d9e"
+    ]
+   },
+   {
+    "gene": "C19orf33",
+    "track": "tumor",
+    "status": "novel, off-tumor risk (vital-organ expression)",
+    "novelty": 0.6,
+    "source_group": "RCC",
+    "source_share": 0.97,
+    "source_pct": 54.0,
+    "rna": 2.19,
+    "protein": 1.6,
+    "papers": 2,
+    "total_papers": 26,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": false,
+    "vital": 198.0,
+    "vital_tissue": "colon",
+    "grade": null,
+    "name": "Immortalization up-regulated protein",
+    "uniprot": "Q9GZP8",
+    "mgd": null,
+    "why": "RCC cells hold 97% of its tumour transcripts (54 % of cells express it); tumor RNA log2FC 2.19 and protein log2FC 1.60; 2 ccRCC papers (26 overall); no clinical-stage drug; tractability AB; PR; highest vital-organ expression 198 nTPM (colon)",
+    "components": {
+     "omics": 0.68,
+     "cell_specificity": 0.77,
+     "understudied": 0.72,
+     "undrugged": 1.0,
+     "druggable": 0.7,
+     "safety": 0.0,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:cad76a0afa44",
+     "EV:omics_de:9e1a87c6c49b",
+     "EV:omics_de:fd10cac6690c",
+     "EV:sc_expr:6e8db7d15e23"
+    ]
+   },
+   {
+    "gene": "HMCN1",
+    "track": "stroma",
+    "status": "first-in-class opportunity",
+    "novelty": 0.56,
+    "source_group": "Endothelial",
+    "source_share": 0.72,
+    "source_pct": 13.0,
+    "rna": 1.13,
+    "protein": 0.97,
+    "papers": 8,
+    "total_papers": 110,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": true,
+    "vital": 19.0,
+    "vital_tissue": "lung",
+    "grade": -0.25,
+    "name": "Hemicentin-1",
+    "uniprot": "Q96RW7",
+    "mgd": 0.58,
+    "why": "Endothelial cells hold 72% of its tumour transcripts (13 % of cells express it); tumor RNA log2FC 1.13 and protein log2FC 0.97; 8 ccRCC papers (110 overall); no clinical-stage drug; tractability AB; PR; surface/secreted; highest vital-organ expression 19 nTPM (lung)",
+    "components": {
+     "omics": 0.38,
+     "cell_specificity": 0.48,
+     "understudied": 0.44,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.61,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:d851b36fb6af",
+     "EV:mgd_site:8e86c98f9b8a",
+     "EV:omics_de:8b7c0c0a7c81",
+     "EV:omics_de:e4900e1aa209",
+     "EV:sc_expr:e4251f373811"
+    ]
+   },
+   {
+    "gene": "OLFML2A",
+    "track": "stroma",
+    "status": "first-in-class opportunity",
+    "novelty": 0.56,
+    "source_group": "Fibroblast",
+    "source_share": 0.65,
+    "source_pct": 38.0,
+    "rna": 1.62,
+    "protein": 1.07,
+    "papers": 2,
+    "total_papers": 27,
+    "drugs": "",
+    "modalities": "AB",
+    "surface": true,
+    "vital": 28.0,
+    "vital_tissue": "colon",
+    "grade": -0.3,
+    "name": "Olfactomedin-like protein 2A",
+    "uniprot": "Q68BL7",
+    "mgd": 0.64,
+    "why": "Fibroblast cells hold 65% of its tumour transcripts (38 % of cells express it); tumor RNA log2FC 1.62 and protein log2FC 1.07; 2 ccRCC papers (27 overall); no clinical-stage drug; tractability AB; surface/secreted; highest vital-organ expression 28 nTPM (colon)",
+    "components": {
+     "omics": 0.47,
+     "cell_specificity": 0.4,
+     "understudied": 0.72,
+     "undrugged": 1.0,
+     "druggable": 0.8,
+     "safety": 0.44,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:eb3ffaa04212",
+     "EV:mgd_site:fd942e8ad819",
+     "EV:omics_de:5025feb30af1",
+     "EV:omics_de:b0bada52c11b",
+     "EV:sc_expr:f29e7815378c"
+    ]
+   },
+   {
+    "gene": "COX4I2",
+    "track": "stroma",
+    "status": "first-in-class opportunity",
+    "novelty": 0.53,
+    "source_group": "Fibroblast",
+    "source_share": 0.89,
+    "source_pct": 45.0,
+    "rna": 1.76,
+    "protein": 1.2,
+    "papers": 2,
+    "total_papers": 105,
+    "drugs": "",
+    "modalities": "AB",
+    "surface": true,
+    "vital": 48.0,
+    "vital_tissue": "lung",
+    "grade": -0.3,
+    "name": "Cytochrome c oxidase subunit 4 isoform 2, mitochondrial",
+    "uniprot": "Q96KJ9",
+    "mgd": 0.54,
+    "why": "Fibroblast cells hold 89% of its tumour transcripts (45 % of cells express it); tumor RNA log2FC 1.76 and protein log2FC 1.20; 2 ccRCC papers (105 overall); no clinical-stage drug; tractability AB; surface/secreted; highest vital-organ expression 48 nTPM (lung)",
+    "components": {
+     "omics": 0.52,
+     "cell_specificity": 0.55,
+     "understudied": 0.72,
+     "undrugged": 1.0,
+     "druggable": 0.8,
+     "safety": 0.03,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:f7469609a880",
+     "EV:mgd_site:e098e8d4728e",
+     "EV:omics_de:2029bf697821",
+     "EV:omics_de:d09ab3732c80",
+     "EV:sc_expr:23bb05fe57a4"
+    ]
+   },
+   {
+    "gene": "GAL3ST4",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.71,
+    "source_group": "Macrophage",
+    "source_share": 0.97,
+    "source_pct": 24.0,
+    "rna": 1.77,
+    "protein": 0.91,
+    "papers": 1,
+    "total_papers": 17,
+    "drugs": "",
+    "modalities": "AB",
+    "surface": true,
+    "vital": 7.0,
+    "vital_tissue": "cerebral cortex",
+    "grade": 0.27,
+    "name": "Galactose-3-O-sulfotransferase 4",
+    "uniprot": "Q96RP7",
+    "mgd": 0.79,
+    "why": "Macrophage cells hold 97% of its tumour transcripts (24 % of cells express it); tumor RNA log2FC 1.77 and protein log2FC 0.91; 1 ccRCC papers (17 overall); no clinical-stage drug; tractability AB; surface/secreted; highest vital-organ expression 7 nTPM (cerebral cortex); grade (protein) rho 0.27",
+    "components": {
+     "omics": 0.45,
+     "cell_specificity": 0.6,
+     "understudied": 0.82,
+     "undrugged": 1.0,
+     "druggable": 0.8,
+     "safety": 0.85,
+     "aggressiveness": 0.68
+    },
+    "evidence_ids": [
+     "EV:discovery:b3f34d2662ac",
+     "EV:mgd_site:6c0798036b9c",
+     "EV:omics_de:3075466ae2f9",
+     "EV:omics_de:e79fa5c115ba",
+     "EV:sc_expr:4c21b92a3bb8"
+    ]
+   },
+   {
+    "gene": "LRRC25",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.7,
+    "source_group": "Macrophage",
+    "source_share": 0.79,
+    "source_pct": 29.0,
+    "rna": 1.7,
+    "protein": 1.48,
+    "papers": 0,
+    "total_papers": 39,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": true,
+    "vital": 31.0,
+    "vital_tissue": "bone marrow",
+    "grade": 0.34,
+    "name": "Leucine-rich repeat-containing protein 25",
+    "uniprot": "Q8N386",
+    "mgd": 0.48,
+    "why": "Macrophage cells hold 79% of its tumour transcripts (29 % of cells express it); tumor RNA log2FC 1.70 and protein log2FC 1.48; 0 ccRCC papers (39 overall); no clinical-stage drug; tractability AB; PR; surface/secreted; highest vital-organ expression 31 nTPM (bone marrow); grade (protein) rho 0.34",
+    "components": {
+     "omics": 0.58,
+     "cell_specificity": 0.52,
+     "understudied": 1.0,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.38,
+     "aggressiveness": 0.84
+    },
+    "evidence_ids": [
+     "EV:discovery:bbbe73889f70",
+     "EV:mgd_site:f8bf52186dbd",
+     "EV:omics_de:1172352081a1",
+     "EV:omics_de:5ee1a85c106a",
+     "EV:sc_expr:68522d6b98a2"
+    ]
+   },
+   {
+    "gene": "SLC37A2",
+    "track": "immune",
+    "status": "first-in-class opportunity",
+    "novelty": 0.7,
+    "source_group": "Macrophage",
+    "source_share": 0.89,
+    "source_pct": 19.0,
+    "rna": 2.07,
+    "protein": 1.38,
+    "papers": 2,
+    "total_papers": 90,
+    "drugs": "",
+    "modalities": "AB; PR",
+    "surface": true,
+    "vital": 8.0,
+    "vital_tissue": "colon",
+    "grade": null,
+    "name": "Glucose-6-phosphate exchanger SLC37A2",
+    "uniprot": "Q8TED4",
+    "mgd": 0.74,
+    "why": "Macrophage cells hold 89% of its tumour transcripts (19 % of cells express it); tumor RNA log2FC 2.07 and protein log2FC 1.38; 2 ccRCC papers (90 overall); no clinical-stage drug; tractability AB; PR; surface/secreted; highest vital-organ expression 8 nTPM (colon)",
+    "components": {
+     "omics": 0.6,
+     "cell_specificity": 0.55,
+     "understudied": 0.72,
+     "undrugged": 1.0,
+     "druggable": 1.0,
+     "safety": 0.85,
+     "aggressiveness": 0.0
+    },
+    "evidence_ids": [
+     "EV:discovery:cdf9c58accd5",
+     "EV:mgd_site:5e10ec281010",
+     "EV:omics_de:723236c2b609",
+     "EV:omics_de:d6b4689da17f",
+     "EV:sc_expr:62d9d1b35355"
     ]
    }
   ],

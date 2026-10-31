@@ -26,7 +26,7 @@ Follow these steps exactly. All numbers come from tools/scripts; you never compu
 
    ```json
    {"summary":  [{"text": "...", "evidence_ids": ["..."]}],
-    "sections": {"omics": [...], "literature": [...], "external": [...], "cells": [...], "spatial": [...], "structure": [...], "integration": [...]},
+    "sections": {"omics": [...], "literature": [...], "external": [...], "cells": [...], "spatial": [...], "structure": [...], "discovery": [...], "integration": [...]},
     "targets":  [{"gene": "CA9", "category": "target|biomarker|target_and_biomarker",
                   "rationale": "...", "evidence_ids": ["..."]}],
     "limitations": [{"text": "..."}]}
@@ -35,6 +35,9 @@ Follow these steps exactly. All numbers come from tools/scripts; you never compu
      candidate (tumor-intrinsic vs stromal / immune), what surrounds it in situ, and which candidates have a
      credible molecular-glue-degrader site. Say explicitly when a bulk-omics candidate is not tumor-intrinsic, and
      present MGD scores as a ranking of sites, never as evidence that a degrader exists.
+   - `discovery` (2–3 paragraphs) comes from the `role: "discovery"` findings of `agent_cells.verified.json`: the most promising
+     under-studied, undrugged candidates per track, what makes them novel, and the caveat that they are data-ranked hypotheses
+     (no dependency or functional evidence).
    - 2–4 summary paragraphs; 1–3 paragraphs per section; 8–12 entries in `targets` ordered by your judgment of
      strength (you may depart from the numeric ranking, but say why in `rationale`).
    - Every summary/section paragraph and every target MUST cite evidence ids copied from the verified agent files

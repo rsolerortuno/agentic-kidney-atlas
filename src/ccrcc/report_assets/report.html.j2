@@ -3,261 +3,492 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ccRCC Convergent Targets</title>
+<title>ccRCC Target Atlas</title>
 <style>
-:root{--bg:#fbfaf7;--fg:#1d1f24;--muted:#5d6370;--line:#e3e0d8;--card:#ffffff;--accent:#9e2a2b;--accent2:#1f6f8b;--chip:#f1eee6}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#15171b;--fg:#e8e6e1;--muted:#a3a7b0;--line:#2c3038;--card:#1c1f25;--accent:#e07a5f;--accent2:#5fb3d1;--chip:#262a31}}
+:root{
+  color-scheme:light;
+  --bg:#f9f9f7;--surface:#fcfcfb;--ink:#0b0b0b;--ink2:#52514e;--muted:#898781;--line:#e1e0d9;--axis:#c3c2b7;
+  --s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;--s4:#eda100;--s5:#e87ba4;--s6:#008300;--s7:#6250d6;--s8:#e34948;
+  --chip:#efeee9;--good:#006300;--warn:#8a5a00;--bad:#b02e2e;--shadow:0 1px 2px rgba(11,11,11,.06),0 4px 14px rgba(11,11,11,.05);
+  --grid:rgba(137,135,129,.22);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  color-scheme:dark;--bg:#0d0d0d;--surface:#1a1a19;--ink:#f0efec;--ink2:#c3c2b7;--muted:#898781;--line:#2c2c2a;--axis:#383835;
+  --s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#c98500;--s5:#d55181;--s6:#008300;--s7:#9085e9;--s8:#e66767;
+  --chip:#262624;--good:#0ca30c;--warn:#fab219;--bad:#ec835a;--shadow:none;--grid:rgba(137,135,129,.2)}}
+:root[data-theme="dark"]{
+  color-scheme:dark;--bg:#0d0d0d;--surface:#1a1a19;--ink:#f0efec;--ink2:#c3c2b7;--muted:#898781;--line:#2c2c2a;--axis:#383835;
+  --s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#c98500;--s5:#d55181;--s6:#008300;--s7:#9085e9;--s8:#e66767;
+  --chip:#262624;--good:#0ca30c;--warn:#fab219;--bad:#ec835a;--shadow:none;--grid:rgba(137,135,129,.2)}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 "Source Serif 4",Georgia,serif}
-header,main,footer{max-width:1080px;margin:0 auto;padding:0 16px}
-header{padding-top:40px;border-bottom:1px solid var(--line)}
-h1{font-size:2rem;line-height:1.2;margin:.2em 0}
-h2{font-size:1.35rem;margin-top:2.2em;border-bottom:1px solid var(--line);padding-bottom:.3em}
-h3{font-size:1.05rem;margin-bottom:.3em}
-.kicker{font:600 .78rem/1 system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
-.meta{color:var(--muted);font:.85rem/1.5 system-ui,sans-serif;margin:.6em 0 1.4em}
-nav{font:.85rem system-ui,sans-serif;margin:1em 0 1.6em;display:flex;flex-wrap:wrap;gap:.4em .9em}
-nav a{color:var(--accent2);text-decoration:none}
-.claim{margin:.6em 0}
-.cite{color:var(--accent2);text-decoration:none;font:600 .72rem system-ui,sans-serif}
-.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
-.tag{display:inline-block;font:600 .7rem system-ui,sans-serif;padding:2px 8px;border-radius:99px;background:var(--chip);color:var(--muted);margin-right:4px}
-.tag.target{color:#fff;background:var(--accent)}.tag.biomarker{color:#fff;background:var(--accent2)}
-.tag.target_and_biomarker{color:#fff;background:linear-gradient(90deg,var(--accent),var(--accent2))}
-.table-wrap{overflow-x:auto}
-table{border-collapse:collapse;width:100%;font:.82rem/1.4 system-ui,sans-serif}
-th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
-th{color:var(--muted);font-weight:600}
-td.num{text-align:right;font-variant-numeric:tabular-nums}
-.bar{display:inline-block;height:8px;border-radius:4px;background:var(--accent);vertical-align:middle}
-#cy{height:560px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
-.legend{font:.8rem system-ui,sans-serif;color:var(--muted)}
-.ev{font:.8rem/1.45 system-ui,sans-serif;border-bottom:1px dashed var(--line);padding:6px 0}
-.ev code{font-size:.72rem;color:var(--muted)}
-.ev:target{background:rgba(224,122,95,.15)}
-.small{font:.82rem/1.5 system-ui,sans-serif;color:var(--muted)}
-footer{padding:40px 16px 60px;color:var(--muted);font:.8rem system-ui,sans-serif}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:var(--s1)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:12px;padding:12px 0 6px}
+.brand h1{font-size:1.05rem;margin:0;font-weight:650;letter-spacing:-.01em}
+.brand .sub{color:var(--muted);font-size:.8rem;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.themebtn{border:1px solid var(--line);background:var(--surface);color:var(--ink2);border-radius:8px;padding:5px 10px;font:inherit;font-size:.8rem;cursor:pointer}
+.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{appearance:none;background:none;border:0;border-bottom:2px solid transparent;color:var(--ink2);font:inherit;font-size:.88rem;font-weight:550;padding:9px 13px;cursor:pointer;white-space:nowrap}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--s1)}
+.tab .n{font-size:.7rem;background:var(--chip);color:var(--muted);border-radius:99px;padding:1px 7px;margin-left:5px}
+.panel{display:none;padding:26px 0 60px}
+.panel.on{display:block}
+h2{font-size:1.25rem;margin:1.6em 0 .4em;letter-spacing:-.01em}
+h2:first-child{margin-top:0}
+h3{font-size:.98rem;margin:1.2em 0 .3em}
+.lede{color:var(--ink2);max-width:80ch;margin:.2em 0 1em}
+.small{font-size:.82rem;color:var(--muted);line-height:1.5}
+.claim{margin:.55em 0;max-width:92ch}
+.cite{color:var(--s1);text-decoration:none;font-size:.7rem;font-weight:600}
+.cite:hover{text-decoration:underline}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow)}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(min(100%,480px),1fr))}
+.kpis{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin:0 0 22px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.kpi b{display:block;font-size:1.65rem;line-height:1.15;letter-spacing:-.02em}
+.kpi span{color:var(--muted);font-size:.78rem}
+.tag{display:inline-block;font-size:.68rem;font-weight:600;padding:2px 8px;border-radius:99px;background:var(--chip);color:var(--ink2);margin:0 4px 2px 0;white-space:nowrap}
+.tag.t{background:var(--s1);color:#fff}.tag.b{background:var(--s2);color:#fff}.tag.tb{background:linear-gradient(90deg,var(--s1),var(--s2));color:#fff}
+.tag.tumor{background:var(--s1);color:#fff}.tag.stroma{background:var(--s2);color:#fff}.tag.immune{background:var(--s3);color:#fff}
+.tag.fic{background:var(--good);color:#fff}
+.tag.warn{background:transparent;border:1px solid var(--warn);color:var(--warn)}
+.cand h3{margin:.1em 0 .35em;font-size:1.05rem}
+.cand .meta{display:flex;flex-wrap:wrap;gap:4px;margin:.2em 0 .5em}
+.cand p{margin:.3em 0;font-size:.88rem;color:var(--ink2)}
+.score{display:inline-block;height:7px;border-radius:4px;background:var(--s1);vertical-align:middle;margin-right:6px}
+.note{border-left:3px solid var(--s4);background:var(--chip);padding:10px 14px;border-radius:0 8px 8px 0;font-size:.88rem;color:var(--ink2);margin:14px 0}
+.note.bad{border-left-color:var(--s8)}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.82rem}
+th,td{padding:7px 10px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+th{color:var(--muted);font-weight:600;background:var(--surface);white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tbody tr:hover{background:var(--chip)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
+.chip{border:1px solid var(--line);background:var(--surface);color:var(--ink2);border-radius:99px;padding:4px 12px;font:inherit;font-size:.8rem;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--s1);border-color:var(--s1);color:#fff}
+.search{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:6px 10px;font:inherit;font-size:.85rem;min-width:200px}
+.plot{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:6px;min-width:0}
+#cy{height:600px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.ev{font-size:.8rem;border-bottom:1px dashed var(--line);padding:6px 0;line-height:1.45}
+.ev code{font-size:.7rem;color:var(--muted)}
+.ev:target{background:color-mix(in srgb,var(--s4) 22%,transparent)}
+ul.roadmap li{margin:.5em 0;max-width:90ch}
+footer{color:var(--muted);font-size:.8rem;padding:10px 0 50px;border-top:1px solid var(--line)}
+@media (max-width:640px){.brand .sub{display:none}.kpi b{font-size:1.35rem}}
+@media print{.top{position:static}.panel{display:block!important}.themebtn,.filters{display:none}}
 </style>
 <script>{{ plotly_js | safe }}</script>
 <script>{{ cytoscape_js | safe }}</script>
 </head>
 <body>
-<header>
-  <div class="kicker">Case study · agentic multi-omics GraphRAG</div>
-  <h1>Candidate therapeutic targets and biomarkers in clear cell renal cell carcinoma</h1>
-  <div class="meta">
-    Question: <em>{{ f.question }}</em><br>
-    Generated {{ f.generated_utc }} · Disease {{ f.disease.name }} ({{ f.disease.mondo }}) ·
-    Knowledge graph: {{ "{:,}".format(graph_stats.claims_total) }} evidence-backed claims ·
-    Config sha256 <code>{{ f.config_sha256[:12] }}</code>
+<div class="top"><div class="wrap">
+  <div class="brand"><h1>ccRCC Target Atlas</h1>
+    <span class="sub">{{ f.disease.name }} · multi-omics GraphRAG · generated {{ f.generated_utc[:10] }} · config <code>{{ f.config_sha256[:8] }}</code></span>
+    <button class="themebtn" id="themebtn" type="button" aria-label="Toggle light and dark theme">Theme</button></div>
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" data-tab="overview">Overview</button>
+    <button class="tab" role="tab" data-tab="candidates">Candidates</button>
+    <button class="tab" role="tab" data-tab="omics">Omics</button>
+    <button class="tab" role="tab" data-tab="cells">Cells &amp; space</button>
+    <button class="tab" role="tab" data-tab="structure">Structure &amp; MGD</button>
+    <button class="tab" role="tab" data-tab="discovery">Discovery<span class="n">{{ kpis.fic }}</span></button>
+    <button class="tab" role="tab" data-tab="literature">Literature &amp; drugs</button>
+    <button class="tab" role="tab" data-tab="network">Network</button>
+    <button class="tab" role="tab" data-tab="methods">Methods &amp; evidence</button>
   </div>
-  <nav>
-    <a href="#summary">Summary</a><a href="#targets">Prioritized candidates</a><a href="#convergence">Convergence table</a>
-    <a href="#omics">Omics</a><a href="#literature">Literature</a><a href="#external">Druggability</a>
-    <a href="#cells">Cell types</a><a href="#spatialsec">Spatial</a><a href="#structure">Structure &amp; MGD</a>
-    <a href="#integration">Integration</a><a href="#network">Network</a><a href="#provenance">Provenance</a>
-    <a href="#limitations">Limitations</a><a href="#evidence">Evidence</a>
-  </nav>
-</header>
-<main>
+</div></div>
 
-<h2 id="summary">Summary</h2>
+<main class="wrap">
+
+<section class="panel" id="tab-overview" data-name="overview">
+<p class="lede">{{ f.question }}</p>
+<div class="kpis">
+  <div class="kpi"><b>{{ "{:,}".format(kpis.universe) }}</b><span>genes scored</span></div>
+  <div class="kpi"><b>{{ "{:,}".format(kpis.claims) }}</b><span>evidence-backed claims in the graph</span></div>
+  <div class="kpi"><b>{{ "{:,}".format(kpis.cells) }}</b><span>single cells (scRNA-seq)</span></div>
+  <div class="kpi"><b>{{ "{:,}".format(kpis.spots) }}</b><span>Visium spots</span></div>
+  <div class="kpi"><b>{{ kpis.proteins }}</b><span>AlphaFold models analysed</span></div>
+  <div class="kpi"><b>{{ kpis.fic }}</b><span>first-in-class opportunities (of {{ kpis.pool }} screened)</span></div>
+</div>
+<h2>Summary</h2>
 {% for p in f.narrative.summary %}
 <p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
 {% endfor %}
-
-<h2 id="targets">Prioritized candidates</h2>
-<p class="small">Selected by the orchestrator (Claude Opus 5.5) from the deterministic ranking and the three verified agent reports. Every rationale is linked to graph evidence.</p>
+<h2>Prioritized candidates</h2>
+<p class="small">Chosen by the orchestrator from the deterministic ranking and the verified agent reports; every rationale links to graph evidence.</p>
 <div class="grid">
-{% for t in f.targets %}
-  <div class="card claim" data-evidence="{{ t.evidence_ids | evattr }}">
-    <h3>{{ loop.index }}. {{ t.gene }} <span class="tag {{ t.category }}">{{ t.category | replace("_"," ") }}</span></h3>
-    <div>{{ t.rationale }} {{ t.evidence_ids | cite | safe }}</div>
+{% for t in f.targets %}{% set b = badges.get(t.gene, {}) %}
+<div class="card cand claim" data-evidence="{{ t.evidence_ids | evattr }}">
+  <h3>{{ loop.index }}. {{ t.gene }}</h3>
+  <div class="meta">
+    <span class="tag {{ {'target':'t','biomarker':'b','target_and_biomarker':'tb'}.get(t.category,'') }}">{{ t.category | replace("_"," ") }}</span>
+    {% if b.rank %}<span class="tag">rank {{ b.rank }}</span>{% endif %}
+    {% if b.cell_label %}<span class="tag">{{ b.cell_label }}{% if b.cell_share is not none %} {{ "%.0f" | format(b.cell_share * 100) }}%{% endif %}</span>{% endif %}
+    {% if b.mgd %}<span class="tag">MGD {{ b.mgd }}</span>{% endif %}
+    {% if b.drug %}<span class="tag fic">{{ b.drug }}</span>{% endif %}
   </div>
+  <p>{{ t.rationale }} {{ t.evidence_ids | cite | safe }}</p>
+</div>
 {% endfor %}
 </div>
+</section>
 
-<h2 id="convergence">Deterministic convergence ranking (top 25)</h2>
-<p class="small">Score = Σ stream weight × component (each component in [0, 1]); streams: omics (RNA, protein, phospho, concordance combined),
-copy number, literature (local relations or Open Targets text mining), genetics (Open Targets germline + somatic), tractability. Weights from <code>config.yaml</code>:
-{% for k, v in f.convergence.config.stream_weights.items() %}{{ k }} {{ v }}{% if not loop.last %}, {% endif %}{% endfor %}.
-Universe: {{ "{:,}".format(f.convergence.universe_size) }} genes.</p>
-<div class="table-wrap"><table>
+<section class="panel" id="tab-candidates" data-name="candidates">
+<h2>Deterministic convergence ranking</h2>
+<p class="lede">Score = Σ stream weight × component (each in [0, 1]) over omics (RNA, protein, phospho, concordance combined), copy number,
+literature, genetics and tractability. Weights ({% for k, v in f.convergence.config.stream_weights.items() %}{{ k }} {{ v }}{% if not loop.last %}, {% endif %}{% endfor %}) are in
+<code>config.yaml</code>. Universe: {{ "{:,}".format(f.convergence.universe_size) }} genes.</p>
+<div class="grid two">
+  <div class="plot">{{ figs.stream_stack | safe }}</div>
+  <div class="plot">{{ figs.component_heatmap | safe }}</div>
+</div>
+<h3>Top 25</h3>
+<div class="tw"><table>
 <thead><tr><th>#</th><th>Gene</th><th>Score</th><th>Omics</th><th>CNV</th><th>Lit.</th><th>Genetics</th><th>Tract.</th>
 <th>RNA log2FC</th><th>Protein log2FC</th><th>Drugs (max stage)</th><th>Evidence</th></tr></thead>
 <tbody>
-{% for r in top25 %}
-<tr class="claim" data-evidence="{{ (r.evidence_ids.omics + r.evidence_ids.cnv + r.evidence_ids.literature + r.evidence_ids.genetics + r.evidence_ids.tractability) | evattr }}">
+{% for r in top25 %}{% set ids = r.evidence_ids.omics + r.evidence_ids.cnv + r.evidence_ids.literature + r.evidence_ids.genetics + r.evidence_ids.tractability %}
+<tr class="claim" data-evidence="{{ ids | evattr }}">
 <td>{{ r.rank }}</td><td><strong>{{ r.gene }}</strong></td>
-<td class="num"><span class="bar" style="width:{{ (r.score * 12) | round(0) | int }}px"></span> {{ r.score }}</td>
+<td class="num"><span class="score" style="width:{{ (r.score * 10) | round(0) | int }}px"></span>{{ r.score }}</td>
 <td class="num">{{ r.components.omics }}</td><td class="num">{{ r.components.cnv }}</td><td class="num">{{ r.components.literature }}</td>
 <td class="num">{{ r.components.genetics }}</td><td class="num">{{ r.components.tractability }}</td>
 <td class="num">{{ r.rna_log2fc | fmt }}</td><td class="num">{{ r.protein_log2fc | fmt }}</td>
 <td>{% for d in r.drugs[:3] %}{{ d.name | title }} ({{ d.max_stage | replace("_"," ") | lower }}){% if not loop.last %}; {% endif %}{% endfor %}</td>
-<td>{{ (r.evidence_ids.omics + r.evidence_ids.cnv + r.evidence_ids.literature + r.evidence_ids.genetics + r.evidence_ids.tractability)[:6] | cite | safe }}</td>
-</tr>
+<td>{{ ids[:6] | cite | safe }}</td></tr>
 {% endfor %}
 </tbody></table></div>
-
-<h2 id="omics">Omics evidence (CPTAC discovery cohort)</h2>
-{% for p in f.narrative.sections.omics or [] %}
-<p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
-{% endfor %}
-<div class="grid"><div class="card">{{ volcano_rna | safe }}</div><div class="card">{{ volcano_protein | safe }}</div></div>
-{% if f.agent_findings.omics %}
-<h3>Omics agent findings (verified)</h3>
-{% for x in f.agent_findings.omics.findings %}
-<p class="claim" data-evidence="{{ x.evidence_ids | evattr }}"><strong>{{ x.gene }}</strong> <span class="tag">{{ x.role | replace("_"," ") }}</span> {{ x.statement }} {{ x.evidence_ids | cite | safe }}</p>
-{% endfor %}{% endif %}
-
-<h2 id="literature">Literature evidence (PubTator3 + verbatim-validated relations)</h2>
-{% for p in f.narrative.sections.literature or [] %}
-<p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
-{% endfor %}
-{% if f.agent_findings.literature %}
-<h3>Literature agent findings (verified)</h3>
-{% for x in f.agent_findings.literature.findings %}
-<p class="claim" data-evidence="{{ x.evidence_ids | evattr }}"><strong>{{ x.gene }}</strong> <span class="tag">{{ x.role | replace("_"," ") }}</span> {{ x.statement }} {{ x.evidence_ids | cite | safe }}</p>
-{% endfor %}{% endif %}
-
-<h2 id="external">Druggability and prior knowledge (Open Targets, STRING, UniProt)</h2>
-{% for p in f.narrative.sections.external or [] %}
-<p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
-{% endfor %}
-{% if f.agent_findings.external %}
-<h3>External-knowledge agent findings (verified)</h3>
-{% for x in f.agent_findings.external.findings %}
-<p class="claim" data-evidence="{{ x.evidence_ids | evattr }}"><strong>{{ x.gene }}</strong> <span class="tag">{{ x.role | replace("_"," ") }}</span> {{ x.statement }} {{ x.evidence_ids | cite | safe }}</p>
-{% endfor %}{% endif %}
-
-<h2 id="cells">Cell types expressing each candidate (scRNA-seq)</h2>
-<p class="small">Li et al. 2022 ccRCC scRNA-seq via CZ CELLxGENE Discover: {{ "{:,}".format(cell.sc.cells_used) }} cells,
-{{ cell.sc.donors }} donors, {{ cell.sc.cells_by_tissue.tumor }} from tumour tissue. “Share of tumour transcripts” is the fraction of
-all transcripts of that gene in the tumour compartment contributed by each cell group — it separates tumour-intrinsic targets from
-signal donated by infiltrating cells. Tumour cell vs proximal tubule is a donor-paired pseudobulk comparison against the cell of origin
-({{ cell.sc.tumor_vs_pt_donors }} donors with both).</p>
-{% for p in f.narrative.sections.cells or [] %}
-<p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
-{% endfor %}
-<div class="table-wrap"><table>
-<thead><tr><th>Gene</th><th>Main expressing cell type</th><th>% cells</th><th>Share of tumour transcripts</th>
-<th>Tumour-cell share</th><th>τ specificity</th><th>Tumour cell vs proximal tubule</th><th>Evidence</th></tr></thead>
-<tbody>
-{% for t in cell.cell_rows %}
-<tr class="claim" data-evidence="{{ t.evidence_ids | evattr }}">
-<td><strong>{{ t.gene }}</strong></td>
-<td>{{ t.top_label }} <span class="small">({{ t.top_group }})</span></td>
-<td class="num">{{ t.top_pct }}</td><td class="num">{{ t.top_share }}</td>
-<td class="num">{{ t.tumor_cell_share | fmt }}</td><td class="num">{{ t.tau | fmt }}</td>
-<td class="num">{% if t.tvp %}log2FC {{ t.tvp.log2fc }} (padj {{ t.tvp.padj }}){% else %}—{% endif %}</td>
-<td>{{ t.evidence_ids[:4] | cite | safe }}</td>
-</tr>
-{% endfor %}
-</tbody></table></div>
-
-<h2 id="spatialsec">Spatial context: in situ expression and weighted neighbourhoods (10x Visium)</h2>
-<p class="small">{{ "{:,}".format(cell.spatial.spots) }} spots, {{ cell.spatial.sections }} sections, {{ cell.spatial.donors }} donors.
-Spot composition by non-negative least squares against the study's own scRNA-seq profiles; candidate genes are excluded from the marker
-sets, so their agreement with the deconvolved cell shares is an independent check
-(CA9–tumour ρ {{ cell.spatial.validation.spearman_CA9_vs_RCC }}, KDR–endothelium ρ {{ cell.spatial.validation.spearman_KDR_vs_Endothelial }},
-CD74–macrophage ρ {{ cell.spatial.validation.spearman_CD74_vs_Macrophage }}, PTPRC–T cell ρ {{ cell.spatial.validation.spearman_PTPRC_vs_T_cell }}).
-Neighbour enrichment compares the ring-1 neighbours (~100 µm) of each gene's top-decile spots with section-matched random spots, so it is
-a proportion relative to how abundant each cell type already is; 1000 permutations per section, Benjamini-Hochberg over all genes × cell types.</p>
-{% for p in f.narrative.sections.spatial or [] %}
-<p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
-{% endfor %}
-<div class="table-wrap"><table>
-<thead><tr><th>Gene</th><th>In situ expresser (NNLS)</th><th>Composition-corrected source</th>
-<th>High spots</th><th>Enriched neighbours (log₂ observed/expected, padj &lt; 0.05)</th><th>Evidence</th></tr></thead>
-<tbody>
-{% for t in cell.spatial_rows %}
-<tr class="claim" data-evidence="{{ t.evidence_ids | evattr }}">
-<td><strong>{{ t.gene }}</strong></td><td>{{ t.top_expresser | fmt }}</td><td>{{ t.corrected | fmt }}</td>
-<td class="num">{{ t.n_high }}</td>
-<td>{% for e in t.neighbors %}{{ e.cell_group }} {{ "%+.2f"|format(e.log2_enrichment) }}{% if not loop.last %} · {% endif %}{% endfor %}{% if not t.neighbors %}—{% endif %}</td>
-<td>{{ t.evidence_ids[:4] | cite | safe }}</td>
-</tr>
-{% endfor %}
-</tbody></table></div>
-<div class="grid"><div class="card">{{ spatial_figure | safe }}</div><div class="card">{{ cells_figure | safe }}</div></div>
-
-<h2 id="structure">Structure and molecular glue degrader (MGD) sites</h2>
-<p class="small">AlphaFold DB models (residues below pLDDT {{ cell.structure.config.min_plddt_keep }} removed), cavities by
-{{ cell.structure.tool }}. The MGD site score in [0, 1] weights model confidence {{ cell.structure.config.mgd_weights.confidence }},
-pocket geometry {{ cell.structure.config.mgd_weights.geometry }}, solvent-accessible lysines within
-{{ cell.structure.config.lysine_radius }} Å {{ cell.structure.config.mgd_weights.lysines }} (an E2~ubiquitin needs an acceptor lysine) and an
-exposed non-helical loop or hairpin nearby {{ cell.structure.config.mgd_weights.degron }} (the shape of known glue degrons such as the IMiD
-zinc-finger G-loop and the CK1α/GSPT1 β-hairpin). Validation uses experimentally ligand-bound residues from PDBe-KB and separates two questions: does the cavity detector cover them (recall over all cavities), and does the MGD score rank them highly (recall in the top 3 pockets shown, and the rank of the best-matching cavity). These are sites worth a
-chemistry campaign, not evidence that a degrader exists.</p>
-{% for p in f.narrative.sections.structure or [] %}
-<p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
-{% endfor %}
-<div class="table-wrap"><table>
-<thead><tr><th>Gene</th><th>UniProt</th><th>Mean pLDDT</th><th>Pocket</th><th>Volume (Å³)</th><th>Depth (Å)</th>
-<th>Lys ≤ {{ cell.structure.config.lysine_radius }} Å</th><th>Loop run</th><th>MGD score</th>
-<th>Ligand-site recall (all cavities / top 3)</th><th>Evidence</th></tr></thead>
-<tbody>
-{% for r in cell.pocket_rows %}
-<tr class="claim" data-evidence="{{ r.evidence_ids | evattr }}">
-<td><strong>{{ r.gene }}</strong></td><td><a href="https://www.uniprot.org/uniprotkb/{{ r.uniprot }}">{{ r.uniprot }}</a></td>
-<td class="num">{{ r.mean_plddt }}</td><td class="num">{{ r.rank }}</td><td class="num">{{ r.volume_a3 }}</td>
-<td class="num">{{ r.max_depth_a }}</td><td class="num">{{ r.n_lysines }}</td><td class="num">{{ r.loop_run }}</td>
-<td class="num"><span class="bar" style="width:{{ (r.mgd_score * 80) | round(0) | int }}px"></span> {{ r.mgd_score }}</td>
-<td class="num">{{ r.recall | fmt }} / {{ r.recall_top | fmt }}</td><td>{{ r.evidence_ids[:3] | cite | safe }}</td>
-</tr>
-{% endfor %}
-</tbody></table></div>
-
-<h2 id="integration">Integration</h2>
+{% if f.narrative.sections.integration %}<h3 style="margin-top:1.6em">Integration</h3>{% endif %}
 {% for p in f.narrative.sections.integration or [] %}
 <p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
 {% endfor %}
+</section>
 
-<h2 id="network">Network of top candidates</h2>
-<p class="legend">● gene (top 25) · ◆ drug (Open Targets, max 3 per gene) · ■ ccRCC. Edges: drug→target, STRING interactions (score ≥ 0.7), up/down-regulation in ccRCC (CPTAC). Click an edge to see its evidence id.</p>
+<section class="panel" id="tab-omics" data-name="omics">
+<h2>Omics evidence (CPTAC discovery cohort)</h2>
+{% for p in f.narrative.sections.omics or [] %}
+<p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
+{% endfor %}
+<div class="grid two">
+  <div class="plot">{{ figs.volcano_rna | safe }}</div><div class="plot">{{ figs.volcano_protein | safe }}</div>
+  <div class="plot">{{ figs.rna_vs_protein | safe }}</div><div class="plot">{{ figs.arm_loss | safe }}</div>
+</div>
+<h3>Association with tumor grade</h3>
+<p class="small">Spearman correlation of tumor RNA and protein with histologic grade (G1–G4) across the discovery tumors. The CPTAC clinical file has grade, stage
+and tumor size but no survival, so this is the only clinical read-out available.</p>
+<div class="plot">{{ figs.grade | safe }}</div>
+{% if f.agent_findings.omics %}<h3>Omics agent findings (verified)</h3>
+{% for x in f.agent_findings.omics.findings %}
+<p class="claim" data-evidence="{{ x.evidence_ids | evattr }}"><strong>{{ x.gene }}</strong> <span class="tag">{{ x.role | replace("_"," ") }}</span> {{ x.statement }} {{ x.evidence_ids | cite | safe }}</p>
+{% endfor %}{% endif %}
+</section>
+
+<section class="panel" id="tab-cells" data-name="cells">
+<h2>Which cells express each candidate?</h2>
+<p class="lede">Li et al. 2022 scRNA-seq via CZ CELLxGENE Discover: {{ "{:,}".format(cell.sc.cells_used) }} cells, {{ cell.sc.donors }} donors,
+{{ "{:,}".format(cell.sc.cells_by_tissue.tumor) }} from tumour tissue. “Share of tumour transcripts” is the fraction of a gene's tumour-compartment
+transcripts contributed by each cell group: it separates tumor-intrinsic targets from signal donated by infiltrating cells. Tumour cell vs proximal tubule is a
+donor-paired pseudobulk comparison against the cell of origin ({{ cell.sc.tumor_vs_pt_donors }} donors with both).</p>
+{% for p in f.narrative.sections.cells or [] %}
+<p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
+{% endfor %}
+<div class="grid two">
+  <div class="plot">{{ figs.dotplot | safe }}</div><div class="plot">{{ figs.share_stack | safe }}</div>
+</div>
+<div class="tw" style="margin-top:14px"><table>
+<thead><tr><th>Gene</th><th>Highest-expressing cell type (mean)</th><th>% cells</th><th>Share of tumour transcripts</th><th>Tumour-cell share</th><th>τ</th>
+<th>Tumour cell vs proximal tubule</th><th>Evidence</th></tr></thead><tbody>
+{% for t in cell.cell_rows %}
+<tr class="claim" data-evidence="{{ t.evidence_ids | evattr }}"><td><strong>{{ t.gene }}</strong></td>
+<td>{{ t.top_label }} <span class="small">({{ t.top_group }})</span></td><td class="num">{{ t.top_pct }}</td><td class="num">{{ t.top_share }}</td>
+<td class="num">{{ t.tumor_cell_share | fmt }}</td><td class="num">{{ t.tau | fmt }}</td>
+<td class="num">{% if t.tvp %}log2FC {{ t.tvp.log2fc }} (padj {{ t.tvp.padj }}){% else %}—{% endif %}</td><td>{{ t.evidence_ids[:4] | cite | safe }}</td></tr>
+{% endfor %}</tbody></table></div>
+
+<h2>Where are they in the tissue?</h2>
+<p class="lede">{{ "{:,}".format(cell.spatial.spots) }} Visium spots, {{ cell.spatial.sections }} sections, {{ cell.spatial.donors }} donors. Spot composition by non-negative
+least squares against the study's own scRNA-seq profiles; candidate genes are excluded from the marker sets, so their agreement with the deconvolved shares is an
+independent check (CA9–tumour ρ {{ cell.spatial.validation.spearman_CA9_vs_RCC }}, KDR–endothelium ρ {{ cell.spatial.validation.spearman_KDR_vs_Endothelial }},
+CD74–macrophage ρ {{ cell.spatial.validation.spearman_CD74_vs_Macrophage }}, PTPRC–T cell ρ {{ cell.spatial.validation.spearman_PTPRC_vs_T_cell }}).</p>
+{% for p in f.narrative.sections.spatial or [] %}
+<p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
+{% endfor %}
+{% if figs.map_core or figs.map_interface %}
+<p class="small">Pick a variable from the menu above each map: deconvolved cell share or the expression of a candidate gene (CPM). Largest section of each region.</p>
+<div class="grid two">
+  {% if figs.map_core %}<div class="plot">{{ figs.map_core | safe }}</div>{% endif %}
+  {% if figs.map_interface %}<div class="plot">{{ figs.map_interface | safe }}</div>{% endif %}
+</div>{% endif %}
+<div class="plot" style="margin-top:14px">{{ figs.neighbors | safe }}</div>
+<p class="small">Neighbour enrichment compares the ring-1 neighbours (~100 µm) of each gene's top-decile spots with section-matched random spots (observed/expected, so abundant cell types are
+not favoured); 1000 permutations per section, Benjamini–Hochberg over all genes × cell types.</p>
+<div class="tw"><table>
+<thead><tr><th>Gene</th><th>In situ expresser (NNLS)</th><th>Composition-corrected source</th><th>High spots</th><th>Enriched neighbours (log₂ obs/exp, padj &lt; 0.05)</th><th>Evidence</th></tr></thead><tbody>
+{% for t in cell.spatial_rows %}
+<tr class="claim" data-evidence="{{ t.evidence_ids | evattr }}"><td><strong>{{ t.gene }}</strong></td><td>{{ t.top_expresser | fmt }}</td><td>{{ t.corrected | fmt }}</td>
+<td class="num">{{ t.n_high }}</td>
+<td>{% for e in t.neighbors %}{{ e.cell_group }} {{ "%+.2f"|format(e.log2_enrichment) }}{% if not loop.last %} · {% endif %}{% endfor %}{% if not t.neighbors %}—{% endif %}</td>
+<td>{{ t.evidence_ids[:4] | cite | safe }}</td></tr>
+{% endfor %}</tbody></table></div>
+{% if f.agent_findings.cells %}<h3>Cell-context agent findings (verified)</h3>
+{% for x in f.agent_findings.cells.findings %}
+<p class="claim" data-evidence="{{ x.evidence_ids | evattr }}"><strong>{{ x.gene }}</strong> <span class="tag">{{ x.role | replace("_"," ") }}</span> {{ x.statement }} {{ x.evidence_ids | cite | safe }}</p>
+{% endfor %}{% endif %}
+</section>
+
+<section class="panel" id="tab-structure" data-name="structure">
+<h2>Structure and molecular glue degrader (MGD) sites</h2>
+<p class="lede">AlphaFold DB models (residues below pLDDT {{ cell.structure.config.min_plddt_keep }} removed), cavities by {{ cell.structure.tool }}. The MGD site score in [0, 1]
+weights model confidence {{ cell.structure.config.mgd_weights.confidence }}, pocket geometry {{ cell.structure.config.mgd_weights.geometry }}, solvent-accessible lysines within
+{{ cell.structure.config.lysine_radius }} Å {{ cell.structure.config.mgd_weights.lysines }} (an E2~ubiquitin needs an acceptor lysine) and an exposed non-helical loop or hairpin nearby
+{{ cell.structure.config.mgd_weights.degron }} (the shape of known glue degrons such as the IMiD zinc-finger G-loop and the CK1α/GSPT1 β-hairpin).</p>
+<div class="note bad"><strong>Read this as a site-prioritization heuristic, not as evidence that a degrader exists.</strong> Validation separates two questions: does the cavity detector cover
+experimentally ligand-bound residues (PDBe-KB; recall over all cavities), and does the score rank them highly (recall in the top 3 pockets shown)? Both are modest (see the
+validation chart). No E3 ligase compatibility, ternary-complex or degron-sequence modelling is done.</div>
+{% for p in f.narrative.sections.structure or [] %}
+<p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
+{% endfor %}
+{% if controls %}
+<h3>Positive controls: known glue-degrader substrates scored the same way</h3>
+<div class="tw"><table><thead><tr><th>Protein</th><th>MGD score</th><th>Mean pLDDT</th><th>Rank among {{ controls[0].of }} proteins</th></tr></thead><tbody>
+{% for c in controls %}<tr><td><strong>{{ c.gene }}</strong></td><td class="num">{{ c.score }}</td><td class="num">{{ c.plddt }}</td><td class="num">{{ c.rank }}</td></tr>{% endfor %}
+</tbody></table></div>
+<p class="small">Known substrates (IKZF1/IKZF3/ZFP91/SALL4 via CRBN, GSPT1, CSNK1A1) should rank well if the score captured glue-ability. Where they do not, the score does not yet separate
+real glue targets from other proteins, and its use here is limited to ordering sites within a protein.</p>
+{% endif %}
+<div class="grid two">
+  <div class="plot">{{ figs.mgd_bubble | safe }}</div><div class="plot">{{ figs.mgd_components | safe }}</div>
+  <div class="plot">{{ figs.ligand_validation | safe }}</div>
+  {% if figs.control_ranking %}<div class="plot">{{ figs.control_ranking | safe }}</div>{% endif %}
+</div>
+<h3>Best pocket per protein</h3>
+<div class="tw"><table>
+<thead><tr><th>Gene</th><th>UniProt</th><th>Mean pLDDT</th><th>Pocket</th><th>Volume (Å³)</th><th>Depth (Å)</th><th>Lys ≤ {{ cell.structure.config.lysine_radius }} Å</th><th>Loop run</th>
+<th>MGD score</th><th>Ligand-site recall (all / top 3)</th><th>Evidence</th></tr></thead><tbody>
+{% for r in cell.pocket_rows %}
+<tr class="claim" data-evidence="{{ r.evidence_ids | evattr }}"><td><strong>{{ r.gene }}</strong>{% if r.control %} <span class="tag">control</span>{% endif %}</td>
+<td><a href="https://www.uniprot.org/uniprotkb/{{ r.uniprot }}">{{ r.uniprot }}</a></td><td class="num">{{ r.mean_plddt }}</td><td class="num">{{ r.rank }}</td>
+<td class="num">{{ r.volume_a3 }}</td><td class="num">{{ r.max_depth_a }}</td><td class="num">{{ r.n_lysines }}</td><td class="num">{{ r.loop_run }}</td>
+<td class="num"><span class="score" style="width:{{ (r.mgd_score * 60) | round(0) | int }}px"></span>{{ r.mgd_score }}</td>
+<td class="num">{{ r.recall | fmt }} / {{ r.recall_top | fmt }}</td><td>{{ r.evidence_ids[:3] | cite | safe }}</td></tr>
+{% endfor %}</tbody></table></div>
+</section>
+
+<section class="panel" id="tab-discovery" data-name="discovery">
+<h2>Target discovery: promising, under-studied, undrugged</h2>
+<p class="lede">A screen of <strong>{{ cell.discovery.pool }}</strong> genes that are up in tumor in both CPTAC RNA (log2FC ≥ {{ cell.discovery.thresholds.min_rna_log2fc }}) and protein
+(≥ {{ cell.discovery.thresholds.min_protein_log2fc }}) and that scRNA-seq attributes mostly to one cell type (≥ {{ (cell.discovery.thresholds.min_source_share * 100) | int }} % of their tumour transcripts).
+Each gene is annotated with the volume of ccRCC literature (Europe PMC), clinical-stage drugs and tractability (Open Targets), location (UniProt), expression in vital organs
+(Human Protein Atlas) and association with grade. <strong>Novel</strong> = no clinical-stage drug and ≤ {{ cell.discovery.thresholds.novel_max_ccrcc_papers }} ccRCC papers
+({{ cell.discovery.novel }} genes); <strong>first-in-class opportunity</strong> adds small-molecule or antibody tractability and ≤ 50 nTPM in every vital organ ({{ kpis.fic }} genes).
+These are hypotheses ranked by data, not validated targets.</p>
+{% for p in f.narrative.sections.discovery or [] %}
+<p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
+{% endfor %}
+<div class="kpis">
+  <div class="kpi"><b>{{ cell.discovery.by_track.tumor }}</b><span>tumor-cell track</span></div>
+  <div class="kpi"><b>{{ cell.discovery.by_track.stroma }}</b><span>stroma / vasculature track</span></div>
+  <div class="kpi"><b>{{ cell.discovery.by_track.immune }}</b><span>immune track</span></div>
+  <div class="kpi"><b>{{ cell.discovery.novel }}</b><span>novel (no drug, little literature)</span></div>
+  <div class="kpi"><b>{{ cell.discovery.by_status["novel, off-tumor risk (vital-organ expression)"] or 0 }}</b><span>novel but expressed in vital organs</span></div>
+</div>
+<div class="grid two">
+  <div class="plot">{{ figs.discovery_scatter | safe }}</div><div class="plot">{{ figs.discovery_bars | safe }}</div>
+</div>
+<h3>Spotlight: novel, tractable candidates</h3>
+<p class="small">Top candidates per track that have no clinical-stage drug, few ccRCC papers and small-molecule or antibody tractability. Those marked “off-tumor risk” are also expressed in a vital organ (&gt; 50 nTPM).</p>
+<div class="grid">
+{% for r in cell.discovery_cards %}
+<div class="card cand claim" data-evidence="{{ r.evidence_ids | evattr }}">
+  <h3>{{ r.gene }} <span class="small">{{ r.name or "" }}</span></h3>
+  <div class="meta"><span class="tag {{ r.track }}">{{ r.track }}</span>{% if r.status == "first-in-class opportunity" %}<span class="tag fic">first-in-class</span>{% else %}<span class="tag warn">novel · off-tumor risk</span>{% endif %}
+    <span class="tag">novelty {{ r.novelty }}</span>
+    {% if r.mgd %}<span class="tag">MGD {{ r.mgd }}</span>{% endif %}</div>
+  <p>{{ r.why }}. {{ r.evidence_ids | cite | safe }}</p>
+</div>
+{% endfor %}
+</div>
+<div class="plot" style="margin-top:14px">{{ figs.safety | safe }}</div>
+<h3>Screen results (top 80 by novelty score)</h3>
+<div class="filters">
+  <span class="small">Track</span>
+  <button class="chip" aria-pressed="true" data-ftrack="all">all</button><button class="chip" aria-pressed="false" data-ftrack="tumor">tumor</button>
+  <button class="chip" aria-pressed="false" data-ftrack="stroma">stroma</button><button class="chip" aria-pressed="false" data-ftrack="immune">immune</button>
+  <span class="small" style="margin-left:10px">Status</span>
+  <button class="chip" aria-pressed="false" data-fstatus="first-in-class opportunity">first-in-class</button>
+  <button class="chip" aria-pressed="false" data-fstatus="novel">any novel</button>
+  <input class="search" id="dsearch" type="search" placeholder="Search gene or cell type" aria-label="Search discovery table">
+  <span class="small" id="dcount"></span>
+</div>
+<div class="tw"><table id="dtable">
+<thead><tr><th>Gene</th><th>Track</th><th>Cell type (share)</th><th>Novelty</th><th>ccRCC / all papers</th><th>Clinical drugs</th><th>Tractability</th><th>Surface</th>
+<th>Vital-organ max</th><th>Grade ρ</th><th>MGD</th><th>Status</th><th>Evidence</th></tr></thead><tbody>
+{% for r in cell.discovery_rows %}
+<tr class="claim" data-evidence="{{ r.evidence_ids | evattr }}" data-track="{{ r.track }}" data-status="{{ r.status }}" data-text="{{ (r.gene ~ ' ' ~ r.source_group ~ ' ' ~ (r.name or '')) | lower }}">
+<td><strong>{{ r.gene }}</strong></td><td><span class="tag {{ r.track }}">{{ r.track }}</span></td>
+<td>{{ r.source_group }} ({{ "%.0f" | format(r.source_share * 100) }}%)</td>
+<td class="num"><span class="score" style="width:{{ (r.novelty * 50) | round(0) | int }}px"></span>{{ r.novelty }}</td>
+<td class="num">{{ r.papers }} / {{ "{:,}".format(r.total_papers) }}</td><td>{{ r.drugs or "none" }}</td><td>{{ r.modalities or "—" }}</td>
+<td>{{ "yes" if r.surface else "no" }}</td><td class="num">{% if r.vital is not none %}{{ r.vital | int }} ({{ r.vital_tissue }}){% else %}—{% endif %}</td>
+<td class="num">{{ r.grade | fmt }}</td><td class="num">{{ r.mgd | fmt }}</td><td>{{ r.status }}</td><td>{{ r.evidence_ids[:3] | cite | safe }}</td></tr>
+{% endfor %}</tbody></table></div>
+<div class="note"><strong>Caveats.</strong> Literature volume is a Europe PMC title/abstract count for the gene symbol (plus specific aliases) and ccRCC terms; ambiguous or recently renamed symbols can under- or
+over-count. “No clinical drug” and tractability come from Open Targets (predicted tractability, not experimental). Vital-organ expression is RNA (HPA consensus), not protein.
+Cell-type attribution comes from a different cohort than CPTAC (12 donors, dissociation bias). Concordant tumor-up expression does not imply dependency: nothing here tests that the gene is required for tumor growth.</div>
+</section>
+
+<section class="panel" id="tab-literature" data-name="literature">
+<h2>Literature evidence (PubTator3 + verbatim-validated relations)</h2>
+{% for p in f.narrative.sections.literature or [] %}
+<p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
+{% endfor %}
+<div class="grid two"><div class="plot">{{ figs.lit_relations | safe }}</div><div class="plot">{{ figs.lit_years | safe }}</div></div>
+{% if f.agent_findings.literature %}<h3>Literature agent findings (verified)</h3>
+{% for x in f.agent_findings.literature.findings %}
+<p class="claim" data-evidence="{{ x.evidence_ids | evattr }}"><strong>{{ x.gene }}</strong> <span class="tag">{{ x.role | replace("_"," ") }}</span> {{ x.statement }} {{ x.evidence_ids | cite | safe }}</p>
+{% endfor %}{% endif %}
+<h2>Druggability and prior knowledge (Open Targets, STRING, UniProt)</h2>
+{% for p in f.narrative.sections.external or [] %}
+<p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
+{% endfor %}
+<div class="plot">{{ figs.drug_stage | safe }}</div>
+{% if f.agent_findings.external %}<h3>External-knowledge agent findings (verified)</h3>
+{% for x in f.agent_findings.external.findings %}
+<p class="claim" data-evidence="{{ x.evidence_ids | evattr }}"><strong>{{ x.gene }}</strong> <span class="tag">{{ x.role | replace("_"," ") }}</span> {{ x.statement }} {{ x.evidence_ids | cite | safe }}</p>
+{% endfor %}{% endif %}
+</section>
+
+<section class="panel" id="tab-network" data-name="network">
+<h2>Network of top candidates</h2>
+<p class="small">● gene (top 25) · ◆ drug (Open Targets, max 3 per gene) · ■ ccRCC. Edges: drug→target, STRING interactions (score ≥ 0.7), up/down-regulation in ccRCC (CPTAC). Click an edge to see its evidence id.</p>
 <div id="cy"></div>
 <p class="small" id="cy-info">&nbsp;</p>
+</section>
 
-<h2 id="provenance">Provenance</h2>
-<div class="table-wrap"><table>
-<thead><tr><th>File</th><th>Dimensions</th><th>Downloaded (UTC)</th><th>sha256</th></tr></thead>
-<tbody>{% for d in f.datasets %}<tr><td><a href="{{ d.url }}">{{ d.file }}</a></td><td>{{ d.rows }} × {{ d.columns }}</td><td>{{ d.downloaded_utc }}</td><td><code>{{ d.sha256[:16] }}…</code></td></tr>{% endfor %}</tbody>
-</table></div>
-<p class="small">Models: orchestrator — {{ f.models.orchestrator }}; agents — {{ f.models.agents }}; relation extraction — {{ f.models.relation_extraction }}.
-All statistics (differential expression, copy number, correlations, convergence) are computed by deterministic Python code; the LLMs only chose what to query and wrote the interpretive text.
+<section class="panel" id="tab-methods" data-name="methods">
+<h2>Provenance</h2>
+<div class="tw"><table><thead><tr><th>File</th><th>Dimensions</th><th>Downloaded (UTC)</th><th>sha256</th></tr></thead>
+<tbody>{% for d in f.datasets %}<tr><td><a href="{{ d.url }}">{{ d.file }}</a></td><td>{{ d.rows }} × {{ d.columns }}</td><td>{{ d.downloaded_utc }}</td><td><code>{{ d.sha256[:16] }}…</code></td></tr>{% endfor %}</tbody></table></div>
+<p class="small">Also used (not stored): Europe PMC counts, Open Targets, STRING, UniProt, Reactome, AlphaFold DB, PDBe-KB, Human Protein Atlas consensus RNA.
+Models: orchestrator — {{ f.models.orchestrator }}; agents — {{ f.models.agents }}; relation extraction — {{ f.models.relation_extraction }}.
+All statistics are computed by deterministic Python code; the LLMs only chose what to query and wrote the interpretive text.
 {% if verification %}Final verification: {{ verification.statements }} statements checked, {{ verification.unsupported }} unsupported.{% endif %}
 {% for name, a in f.agent_findings.items() %} Agent {{ name }}: {{ a.findings | length }} verified findings.{% endfor %}</p>
-
-<h2 id="limitations">Limitations</h2>
+<h2>Limitations</h2>
 <ul>{% for l in f.narrative.limitations %}<li>{{ l.text }}</li>{% endfor %}</ul>
-
-<h2 id="evidence">Evidence ({{ evidence | length }} records cited)</h2>
+<h2>What would improve this</h2>
+<ul class="roadmap">
+<li><strong>Mutation layer.</strong> Known ccRCC drivers (VHL, PBRM1, SETD2, BAP1) act by mutation and barely move in bulk expression, so recall of known genes stays at 22 %. Add somatic mutations (TCGA-KIRC / CPTAC) as their own stream and score “driver” and “expression target” separately.</li>
+<li><strong>External validation and outcome.</strong> One discovery cohort and no survival (the CPTAC clinical file has grade and stage only). Validate top candidates in an independent cohort with survival, and add a second scRNA/spatial study.</li>
+<li><strong>Dependency evidence.</strong> Concordant tumor-up expression does not mean the tumor needs the gene. Add CRISPR dependency (DepMap kidney lines) and perturbation data to the discovery score.</li>
+<li><strong>MGD scoring.</strong> The score is a heuristic and its known-substrate controls rank unevenly (see the Structure tab). Next steps: degron-motif search (C2H2 zinc-finger G-loops, β-hairpins), ternary-complex modelling with CRBN/DCAF15/DCAF16, and better models for disordered or low-pLDDT regions.</li>
+<li><strong>Narrative checking.</strong> The verifier checks that evidence ids exist and belong to the gene, not that the sentence is true. Add deterministic numeric-claim checks (numbers in the text must match the cited evidence).</li>
+<li><strong>Literature and drug gaps.</strong> Europe PMC counts depend on gene symbols; add alias disambiguation, patents, ChEMBL preclinical compounds and trial registries so “undrugged” is not only “no clinical-stage drug in Open Targets”.</li>
+<li><strong>Spatial resolution.</strong> Visium spots mix cells and the 23 sections come from few donors. Higher-resolution data (Slide-seq, Xenium) and probabilistic deconvolution would sharpen neighbourhood claims.</li>
+</ul>
+<h2>Evidence ({{ evidence | length }} records cited)</h2>
+<div class="filters"><input class="search" id="esearch" type="search" placeholder="Filter evidence (gene, type, id)" aria-label="Filter evidence records"><span class="small" id="ecount"></span></div>
+<div id="evlist">
 {% for e in evidence %}
 <div class="ev" id="{{ e.anchor }}"><strong>[{{ loop.index }}]</strong> <span class="tag">{{ e.type | replace("_"," ") }}</span>
 {% if e.link %}<a href="{{ e.link }}">{{ e.label }}</a>{% else %}{{ e.label }}{% endif %} — {{ e.detail }} <code>{{ e.id }}</code></div>
 {% endfor %}
+</div>
+</section>
+
 </main>
-<footer>Generated by the ccRCC multi-omics GraphRAG case study. Data: CPTAC ccRCC discovery cohort (LinkedOmics), PubTator3, Open Targets Platform, STRING, UniProt, Reactome. Not medical advice.</footer>
+<div class="wrap"><footer>ccRCC multi-omics GraphRAG case study. Data: CPTAC ccRCC (LinkedOmics), Li et al. 2022 via CELLxGENE, PubTator3, Europe PMC, Open Targets, STRING, UniProt, Reactome, AlphaFold DB, PDBe-KB, Human Protein Atlas. Not medical advice.</footer></div>
+
 <script>
 (function(){
-  var data = {{ network_json | safe }};
-  var dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  var fg = dark ? '#e8e6e1' : '#1d1f24';
-  var cy = cytoscape({container: document.getElementById('cy'), elements: data.nodes.concat(data.edges),
-    layout: {name: 'cose', animate: false, nodeRepulsion: 9000, idealEdgeLength: 90},
-    style: [
-      {selector: 'node', style: {'label': 'data(label)', 'font-size': 10, 'color': fg, 'text-valign': 'bottom', 'text-margin-y': 3}},
-      {selector: 'node[kind="gene"]', style: {'background-color': '#d1495b', 'width': 18, 'height': 18}},
-      {selector: 'node[kind="drug"]', style: {'background-color': '#1f6f8b', 'shape': 'diamond', 'width': 12, 'height': 12, 'font-size': 8}},
-      {selector: 'node[kind="disease"]', style: {'background-color': '#edae49', 'shape': 'round-rectangle', 'width': 34, 'height': 20, 'font-size': 12, 'font-weight': 'bold'}},
-      {selector: 'edge', style: {'width': 1.2, 'line-color': '#9aa0aa', 'curve-style': 'bezier', 'opacity': 0.7}},
-      {selector: 'edge[kind="drug"]', style: {'line-color': '#1f6f8b', 'target-arrow-shape': 'triangle', 'target-arrow-color': '#1f6f8b'}},
-      {selector: 'edge[kind="upregulated_in"]', style: {'line-color': '#d1495b', 'line-style': 'dashed'}},
-      {selector: 'edge[kind="downregulated_in"]', style: {'line-color': '#00798c', 'line-style': 'dashed'}}
-    ]});
-  cy.on('tap', 'edge', function(evt){ var d = evt.target.data();
-    document.getElementById('cy-info').textContent = d.kind + ': ' + cy.getElementById(d.source).data('label') + ' → ' + cy.getElementById(d.target).data('label') + ' · evidence ' + d.ev; });
+  var root=document.documentElement, panels=[].slice.call(document.querySelectorAll('.panel')), tabs=[].slice.call(document.querySelectorAll('.tab'));
+  var cy=null, cyData={{ network_json | safe }};
+
+  function css(v){return getComputedStyle(root).getPropertyValue(v).trim();}
+  function applyTheme(){
+    var ink=css('--ink2'), grid=css('--grid');
+    [].slice.call(document.querySelectorAll('.js-plotly-plot')).forEach(function(d){
+      try{Plotly.relayout(d,{'font.color':ink,'xaxis.gridcolor':grid,'yaxis.gridcolor':grid,'legend.font.color':ink});}catch(e){}
+    });
+    if(cy){cy.style().selector('node').style('color',css('--ink')).update();}
+  }
+  function resizePlots(p){[].slice.call(p.querySelectorAll('.js-plotly-plot')).forEach(function(d){try{Plotly.Plots.resize(d);}catch(e){}});}
+  function initCy(){
+    if(cy||!document.getElementById('cy')) return;
+    cy=cytoscape({container:document.getElementById('cy'),elements:cyData.nodes.concat(cyData.edges),
+      layout:{name:'cose',animate:false,nodeRepulsion:9000,idealEdgeLength:90},
+      style:[
+        {selector:'node',style:{'label':'data(label)','font-size':10,'color':css('--ink'),'text-valign':'bottom','text-margin-y':3}},
+        {selector:'node[kind="gene"]',style:{'background-color':css('--s1'),'width':18,'height':18}},
+        {selector:'node[kind="drug"]',style:{'background-color':css('--s3'),'shape':'diamond','width':12,'height':12,'font-size':8}},
+        {selector:'node[kind="disease"]',style:{'background-color':css('--s4'),'shape':'round-rectangle','width':34,'height':20,'font-size':12,'font-weight':'bold'}},
+        {selector:'edge',style:{'width':1.2,'line-color':'#9aa0aa','curve-style':'bezier','opacity':0.7}},
+        {selector:'edge[kind="drug"]',style:{'line-color':css('--s3'),'target-arrow-shape':'triangle','target-arrow-color':css('--s3')}},
+        {selector:'edge[kind="upregulated_in"]',style:{'line-color':css('--s8'),'line-style':'dashed'}},
+        {selector:'edge[kind="downregulated_in"]',style:{'line-color':css('--s1'),'line-style':'dashed'}}]});
+    cy.on('tap','edge',function(evt){var d=evt.target.data();
+      document.getElementById('cy-info').textContent=d.kind+': '+cy.getElementById(d.source).data('label')+' → '+cy.getElementById(d.target).data('label')+' · evidence '+d.ev;});
+  }
+  function show(name,push){
+    var p=document.getElementById('tab-'+name)||document.getElementById('tab-overview'); name=p.getAttribute('data-name');
+    panels.forEach(function(x){x.classList.toggle('on',x===p);});
+    tabs.forEach(function(t){t.setAttribute('aria-selected',t.getAttribute('data-tab')===name?'true':'false');});
+    if(name==='network'){initCy(); if(cy){cy.resize();cy.fit(undefined,30);}}
+    resizePlots(p); applyTheme();
+    if(push!==false){try{history.replaceState(null,'','#tab='+name);}catch(e){}}
+  }
+  tabs.forEach(function(t){t.addEventListener('click',function(){show(t.getAttribute('data-tab'));window.scrollTo(0,0);});});
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href^="#"]'); if(!a) return;
+    var id=a.getAttribute('href').slice(1); if(!id||id.indexOf('tab=')===0) return;
+    var el=document.getElementById(id); if(!el) return; e.preventDefault();
+    var p=el.closest('.panel'); if(p) show(p.getAttribute('data-name'),false);
+    el.scrollIntoView({behavior:'smooth',block:'center'});
+    try{history.replaceState(null,'','#'+id);}catch(x){}
+  });
+  var saved=null; try{saved=localStorage.getItem('ccrcc-theme');}catch(e){}
+  if(saved) root.setAttribute('data-theme',saved);
+  document.getElementById('themebtn').addEventListener('click',function(){
+    var dark=root.getAttribute('data-theme')==='dark'||(!root.getAttribute('data-theme')&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches);
+    var next=dark?'light':'dark'; root.setAttribute('data-theme',next);
+    try{localStorage.setItem('ccrcc-theme',next);}catch(e){}
+    setTimeout(applyTheme,30);
+  });
+  if(window.matchMedia){window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(){setTimeout(applyTheme,30);});}
+  var rows=[].slice.call(document.querySelectorAll('#dtable tbody tr')), ft='all', fs='', q='';
+  function filt(){
+    var n=0;
+    rows.forEach(function(r){
+      var okT=ft==='all'||r.dataset.track===ft;
+      var st=r.dataset.status, okS=!fs||(fs==='novel'?(st.indexOf('novel')===0||st==='first-in-class opportunity'):st===fs);
+      var okQ=!q||r.dataset.text.indexOf(q)>=0, vis=okT&&okS&&okQ; r.style.display=vis?'':'none'; if(vis)n++;});
+    var c=document.getElementById('dcount'); if(c) c.textContent=n+' of '+rows.length+' shown';
+  }
+  [].slice.call(document.querySelectorAll('[data-ftrack]')).forEach(function(b){b.addEventListener('click',function(){
+    ft=b.dataset.ftrack; [].slice.call(document.querySelectorAll('[data-ftrack]')).forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');}); filt();});});
+  [].slice.call(document.querySelectorAll('[data-fstatus]')).forEach(function(b){b.addEventListener('click',function(){
+    var on=b.getAttribute('aria-pressed')==='true'; [].slice.call(document.querySelectorAll('[data-fstatus]')).forEach(function(x){x.setAttribute('aria-pressed','false');});
+    fs=on?'':b.dataset.fstatus; if(!on) b.setAttribute('aria-pressed','true'); filt();});});
+  var ds=document.getElementById('dsearch'); if(ds) ds.addEventListener('input',function(){q=ds.value.trim().toLowerCase();filt();});
+  filt();
+  var ev=[].slice.call(document.querySelectorAll('#evlist .ev')), es=document.getElementById('esearch');
+  function efilt(){var s=es.value.trim().toLowerCase(),n=0; ev.forEach(function(e){var v=!s||e.textContent.toLowerCase().indexOf(s)>=0; e.style.display=v?'':'none'; if(v)n++;});
+    document.getElementById('ecount').textContent=n+' of '+ev.length+' shown';}
+  if(es){es.addEventListener('input',efilt);efilt();}
+  var h=(location.hash||'').replace('#tab=','').replace('#','');
+  var he=h?document.getElementById(h):null;
+  var start=document.getElementById('tab-'+h)?h:(he&&he.closest('.panel')?he.closest('.panel').getAttribute('data-name'):'overview');
+  window.addEventListener('hashchange',function(){var h2=(location.hash||'').replace('#tab=','').replace('#','');
+    if(document.getElementById('tab-'+h2)) show(h2,false);});
+  show(start,false); window.addEventListener('load',function(){resizePlots(document.querySelector('.panel.on'));applyTheme();});
 })();
 </script>
 </body>

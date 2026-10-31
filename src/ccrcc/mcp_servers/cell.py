@@ -1,4 +1,4 @@
-"""cell-mcp: single-cell, spatial and structural context for a gene (read-only, never raw matrices)."""
+"""cell-mcp: single-cell, spatial, structural and target-discovery context (read-only, never raw matrices)."""
 from __future__ import annotations
 
 import json
@@ -167,6 +167,56 @@ def mgd_ranking(n: int = 10) -> list[dict]:
         }))
     rows.sort(key=lambda r: -(r["best_mgd_score"] or 0))
     return rows[:min(n, 30)]
+
+
+
+@lru_cache(maxsize=1)
+def _discovery() -> pd.DataFrame:
+    return pd.read_parquet(PROCESSED / "discovery_candidates.parquet")
+
+
+def _disc_row(r) -> dict:
+    return clean({
+        "gene": r.gene, "track": r.track, "status": r.status, "novelty_score": round(float(r.novelty_score), 3),
+        "cell_group": r.source_group, "share_of_tumor_transcripts": round(float(r.source_share), 3),
+        "rna_log2fc": round(float(r.rna_log2fc), 2), "protein_log2fc": round(float(r.protein_log2fc), 2),
+        "ccrcc_papers": int(r.ccrcc_papers), "total_papers": int(r.total_papers),
+        "clinical_drugs": r.clinical_drugs or None, "tractable_modalities": r.modalities or None,
+        "surface_or_secreted": bool(r.surface_or_secreted),
+        "vital_organ_max_ntpm": None if pd.isna(r.vital_max_ntpm) else round(float(r.vital_max_ntpm), 1),
+        "vital_organ_tissue": None if pd.isna(r.vital_max_tissue) else r.vital_max_tissue,
+        "grade_association": None if pd.isna(r.clin_rho) else f"{r.clin_variable} rho {r.clin_rho:.2f}",
+        "evidence_id": existing(evidence_id("discovery", r.gene))})
+
+
+@mcp.tool()
+def novel_targets(track: str | None = None, status: str = "first-in-class opportunity", n: int = 10) -> list[dict]:
+    """Under-studied, undrugged target candidates from the discovery screen, ranked by novelty score.
+
+    The screen covers genes up in ccRCC tumors in both CPTAC RNA and protein that scRNA-seq attributes mostly to one cell
+    type. track: 'tumor' (expressed by tumor cells), 'stroma' (endothelium / fibroblasts / normal epithelium) or 'immune';
+    omit for all. status: 'first-in-class opportunity' (no clinical drug, <= 15 ccRCC papers, small-molecule or antibody
+    tractable, low vital-organ expression), 'novel, off-tumor risk (vital-organ expression)', 'novel, harder to drug',
+    'has clinical drug (repurposing)', 'under-studied vs. established', or 'any' for no filter. n <= 30. These are
+    data-ranked hypotheses: concordant tumor-up expression does not show that the gene is required for tumor growth."""
+    d = _discovery()
+    if track:
+        d = d[d["track"] == track]
+    if status != "any":
+        d = d[d["status"] == status]
+    return [_disc_row(r) for r in d.head(min(n, 30)).itertuples()]
+
+
+@mcp.tool()
+def discovery_profile(gene: str) -> dict:
+    """Discovery-screen profile of one gene: literature volume (ccRCC and overall), clinical drugs, tractability, location,
+    vital-organ expression (Human Protein Atlas), grade association, novelty score and status."""
+    g = canonical_gene(gene)
+    d = _discovery()
+    sub = d[d["gene"] == g]
+    if sub.empty:
+        return {"gene": g, "message": "not in the discovery pool (needs concordant tumor-up RNA and protein and a dominant cell type)"}
+    return _disc_row(next(sub.itertuples()))
 
 
 if __name__ == "__main__":

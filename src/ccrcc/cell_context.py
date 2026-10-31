@@ -6,6 +6,8 @@ from __future__ import annotations
 
 import json
 
+import pandas as pd
+
 from .graph import GraphStore, evidence_id
 from .paths import PROCESSED
 from .singlecell import CELL_GROUPS
@@ -50,14 +52,67 @@ def build(store: GraphStore | None = None) -> dict:
             ids = [evidence_id("mgd_site", r["uniprot"], c["cavity"]), evidence_id("alphafold", r["uniprot"], r["version"])]
             if v.get("checked"):
                 ids.append(evidence_id("ligand_sites", r["uniprot"]))
-            pocket_rows.append({"gene": r["gene"], "uniprot": r["uniprot"], "mean_plddt": r["mean_plddt"],
+            pocket_rows.append({"gene": r["gene"], "control": bool(r.get("control")), "uniprot": r["uniprot"], "mean_plddt": r["mean_plddt"],
                                 "rank": c["rank"], "volume_a3": c["volume_a3"], "max_depth_a": c["max_depth_a"],
                                 "n_lysines": len(c["accessible_lysines"]), "loop_run": c["exposed_loop_run"],
                                 "mgd_score": c["mgd_score"], "recall": v.get("recall") if v.get("checked") else None,
                                 "recall_top": v.get("recall_in_top_pockets") if v.get("checked") else None,
                                 "evidence_ids": keep(ids)})
     pocket_rows.sort(key=lambda r: -r["mgd_score"])
+    disc = discovery_block(store, st, sc)
     return {"sc": sc, "spatial": {k: v for k, v in sp_.items() if k not in ("marker_genes", "targets")},
             "structure": {"config": st["config"], "tool": st["tool"]},
-            "cell_rows": cell_rows, "spatial_rows": spatial_rows, "pocket_rows": pocket_rows,
+            "cell_rows": cell_rows, "spatial_rows": spatial_rows, "pocket_rows": pocket_rows, **disc,
             "cell_groups": {k: v[1] for k, v in CELL_GROUPS.items()}}
+
+
+def _round(x, n=2):
+    return None if x is None or pd.isna(x) else round(float(x), n)
+
+
+def discovery_block(store: GraphStore, st: dict, sc: dict) -> dict:
+    """Rows for the discovery tab: filterable table (top 80), spotlight cards (top first-in-class per track)."""
+    d = pd.read_parquet(PROCESSED / "discovery_candidates.parquet")
+    summ = _read("discovery_summary.json")
+    pockets = {r["gene"]: r["pockets"][0] for r in st["results"] if r["modeled"] and r["pockets"] and not r.get("control")}
+    sc_t = {t["gene"]: t for t in sc["targets"] if t["measured"]}
+
+    def valid(ids):
+        return store.check_evidence_ids(list(dict.fromkeys(ids)))["valid"]
+
+    def row(r):
+        ids = [evidence_id("discovery", r.gene), evidence_id("omics_de", "rna", r.gene),
+               evidence_id("omics_de", "protein", r.gene), evidence_id("sc_expr", r.gene, r.source_group)]
+        pk = pockets.get(r.gene)
+        if pk:
+            ids.append(evidence_id("mgd_site", pk_acc(st, r.gene), pk["cavity"]))
+        why = (f"{r.source_group} cells hold {r.source_share:.0%} of its tumour transcripts ({r.source_pct:.0f} % of cells express it); "
+               f"tumor RNA log2FC {r.rna_log2fc:.2f} and protein log2FC {r.protein_log2fc:.2f}; "
+               f"{int(r.ccrcc_papers)} ccRCC papers ({int(r.total_papers)} overall); "
+               + ("no clinical-stage drug" if not r.clinical_drugs else f"clinical drug(s): {r.clinical_drugs}")
+               + f"; tractability {r.modalities or 'none predicted'}"
+               + ("; surface/secreted" if r.surface_or_secreted else "")
+               + (f"; highest vital-organ expression {r.vital_max_ntpm:.0f} nTPM ({r.vital_max_tissue})"
+                  if pd.notna(r.vital_max_ntpm) else "")
+               + (f"; {r.clin_variable} rho {r.clin_rho:.2f}" if pd.notna(r.clin_rho) and r.clin_rho > 0 else ""))
+        return {"gene": r.gene, "track": r.track, "status": r.status, "novelty": _round(r.novelty_score),
+                "source_group": r.source_group, "source_share": _round(r.source_share), "source_pct": _round(r.source_pct, 0),
+                "rna": _round(r.rna_log2fc), "protein": _round(r.protein_log2fc), "papers": int(r.ccrcc_papers),
+                "total_papers": int(r.total_papers), "drugs": r.clinical_drugs, "modalities": r.modalities,
+                "surface": bool(r.surface_or_secreted), "vital": _round(r.vital_max_ntpm, 0), "vital_tissue": r.vital_max_tissue,
+                "grade": _round(r.clin_rho), "name": r.protein_name, "uniprot": r.uniprot,
+                "mgd": _round(pk["mgd_score"]) if pk else None, "why": why,
+                "components": {k: _round(getattr(r, f"c_{k}")) for k in ("omics", "cell_specificity", "understudied",
+                                                                         "undrugged", "druggable", "safety", "aggressiveness")},
+                "evidence_ids": valid(ids)}
+
+    table = [row(r) for r in d.head(80).itertuples()]
+    cards = []
+    for track, n in (("tumor", 6), ("stroma", 3), ("immune", 3)):
+        sub = d[(d.track == track) & d.novel & d.druggable_core].head(n)
+        cards += [row(r) for r in sub.itertuples()]
+    return {"discovery": {k: v for k, v in summ.items()}, "discovery_rows": table, "discovery_cards": cards}
+
+
+def pk_acc(st: dict, gene: str) -> str:
+    return next(r["uniprot"] for r in st["results"] if r["gene"] == gene)
