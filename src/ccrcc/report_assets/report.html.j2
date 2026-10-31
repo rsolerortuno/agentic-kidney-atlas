@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ccRCC Convergent Targets</title>
+<style>
+:root{--bg:#fbfaf7;--fg:#1d1f24;--muted:#5d6370;--line:#e3e0d8;--card:#ffffff;--accent:#9e2a2b;--accent2:#1f6f8b;--chip:#f1eee6}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#15171b;--fg:#e8e6e1;--muted:#a3a7b0;--line:#2c3038;--card:#1c1f25;--accent:#e07a5f;--accent2:#5fb3d1;--chip:#262a31}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 "Source Serif 4",Georgia,serif}
+header,main,footer{max-width:1080px;margin:0 auto;padding:0 16px}
+header{padding-top:40px;border-bottom:1px solid var(--line)}
+h1{font-size:2rem;line-height:1.2;margin:.2em 0}
+h2{font-size:1.35rem;margin-top:2.2em;border-bottom:1px solid var(--line);padding-bottom:.3em}
+h3{font-size:1.05rem;margin-bottom:.3em}
+.kicker{font:600 .78rem/1 system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.meta{color:var(--muted);font:.85rem/1.5 system-ui,sans-serif;margin:.6em 0 1.4em}
+nav{font:.85rem system-ui,sans-serif;margin:1em 0 1.6em;display:flex;flex-wrap:wrap;gap:.4em .9em}
+nav a{color:var(--accent2);text-decoration:none}
+.claim{margin:.6em 0}
+.cite{color:var(--accent2);text-decoration:none;font:600 .72rem system-ui,sans-serif}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+.tag{display:inline-block;font:600 .7rem system-ui,sans-serif;padding:2px 8px;border-radius:99px;background:var(--chip);color:var(--muted);margin-right:4px}
+.tag.target{color:#fff;background:var(--accent)}.tag.biomarker{color:#fff;background:var(--accent2)}
+.tag.target_and_biomarker{color:#fff;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.table-wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font:.82rem/1.4 system-ui,sans-serif}
+th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{color:var(--muted);font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+.bar{display:inline-block;height:8px;border-radius:4px;background:var(--accent);vertical-align:middle}
+#cy{height:560px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+.legend{font:.8rem system-ui,sans-serif;color:var(--muted)}
+.ev{font:.8rem/1.45 system-ui,sans-serif;border-bottom:1px dashed var(--line);padding:6px 0}
+.ev code{font-size:.72rem;color:var(--muted)}
+.ev:target{background:rgba(224,122,95,.15)}
+.small{font:.82rem/1.5 system-ui,sans-serif;color:var(--muted)}
+footer{padding:40px 16px 60px;color:var(--muted);font:.8rem system-ui,sans-serif}
+</style>
+<script>{{ plotly_js | safe }}</script>
+<script>{{ cytoscape_js | safe }}</script>
+</head>
+<body>
+<header>
+  <div class="kicker">Case study · agentic multi-omics GraphRAG</div>
+  <h1>Candidate therapeutic targets and biomarkers in clear cell renal cell carcinoma</h1>
+  <div class="meta">
+    Question: <em>{{ f.question }}</em><br>
+    Generated {{ f.generated_utc }} · Disease {{ f.disease.name }} ({{ f.disease.mondo }}) ·
+    Knowledge graph: {{ "{:,}".format(graph_stats.claims_total) }} evidence-backed claims ·
+    Config sha256 <code>{{ f.config_sha256[:12] }}</code>
+  </div>
+  <nav>
+    <a href="#summary">Summary</a><a href="#targets">Prioritized candidates</a><a href="#convergence">Convergence table</a>
+    <a href="#omics">Omics</a><a href="#literature">Literature</a><a href="#external">Druggability</a>
+    <a href="#integration">Integration</a><a href="#network">Network</a><a href="#provenance">Provenance</a>
+    <a href="#limitations">Limitations</a><a href="#evidence">Evidence</a>
+  </nav>
+</header>
+<main>
+
+<h2 id="summary">Summary</h2>
+{% for p in f.narrative.summary %}
+<p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
+{% endfor %}
+
+<h2 id="targets">Prioritized candidates</h2>
+<p class="small">Selected by the orchestrator (Claude Opus 5.5) from the deterministic ranking and the three verified agent reports. Every rationale is linked to graph evidence.</p>
+<div class="grid">
+{% for t in f.targets %}
+  <div class="card claim" data-evidence="{{ t.evidence_ids | evattr }}">
+    <h3>{{ loop.index }}. {{ t.gene }} <span class="tag {{ t.category }}">{{ t.category | replace("_"," ") }}</span></h3>
+    <div>{{ t.rationale }} {{ t.evidence_ids | cite | safe }}</div>
+  </div>
+{% endfor %}
+</div>
+
+<h2 id="convergence">Deterministic convergence ranking (top 25)</h2>
+<p class="small">Score = Σ stream weight × component (each component in [0, 1]); streams: omics (RNA, protein, phospho, concordance combined),
+copy number, literature (local relations or Open Targets text mining), genetics (Open Targets germline + somatic), tractability. Weights from <code>config.yaml</code>:
+{% for k, v in f.convergence.config.stream_weights.items() %}{{ k }} {{ v }}{% if not loop.last %}, {% endif %}{% endfor %}.
+Universe: {{ "{:,}".format(f.convergence.universe_size) }} genes.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>#</th><th>Gene</th><th>Score</th><th>Omics</th><th>CNV</th><th>Lit.</th><th>Genetics</th><th>Tract.</th>
+<th>RNA log2FC</th><th>Protein log2FC</th><th>Drugs (max stage)</th><th>Evidence</th></tr></thead>
+<tbody>
+{% for r in top25 %}
+<tr class="claim" data-evidence="{{ (r.evidence_ids.omics + r.evidence_ids.cnv + r.evidence_ids.literature + r.evidence_ids.genetics + r.evidence_ids.tractability) | evattr }}">
+<td>{{ r.rank }}</td><td><strong>{{ r.gene }}</strong></td>
+<td class="num"><span class="bar" style="width:{{ (r.score * 12) | round(0) | int }}px"></span> {{ r.score }}</td>
+<td class="num">{{ r.components.omics }}</td><td class="num">{{ r.components.cnv }}</td><td class="num">{{ r.components.literature }}</td>
+<td class="num">{{ r.components.genetics }}</td><td class="num">{{ r.components.tractability }}</td>
+<td class="num">{{ r.rna_log2fc | fmt }}</td><td class="num">{{ r.protein_log2fc | fmt }}</td>
+<td>{% for d in r.drugs[:3] %}{{ d.name | title }} ({{ d.max_stage | replace("_"," ") | lower }}){% if not loop.last %}; {% endif %}{% endfor %}</td>
+<td>{{ (r.evidence_ids.omics + r.evidence_ids.cnv + r.evidence_ids.literature + r.evidence_ids.genetics + r.evidence_ids.tractability)[:6] | cite | safe }}</td>
+</tr>
+{% endfor %}
+</tbody></table></div>
+
+<h2 id="omics">Omics evidence (CPTAC discovery cohort)</h2>
+{% for p in f.narrative.sections.omics or [] %}
+<p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
+{% endfor %}
+<div class="grid"><div class="card">{{ volcano_rna | safe }}</div><div class="card">{{ volcano_protein | safe }}</div></div>
+{% if f.agent_findings.omics %}
+<h3>Omics agent findings (verified)</h3>
+{% for x in f.agent_findings.omics.findings %}
+<p class="claim" data-evidence="{{ x.evidence_ids | evattr }}"><strong>{{ x.gene }}</strong> <span class="tag">{{ x.role | replace("_"," ") }}</span> {{ x.statement }} {{ x.evidence_ids | cite | safe }}</p>
+{% endfor %}{% endif %}
+
+<h2 id="literature">Literature evidence (PubTator3 + verbatim-validated relations)</h2>
+{% for p in f.narrative.sections.literature or [] %}
+<p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
+{% endfor %}
+{% if f.agent_findings.literature %}
+<h3>Literature agent findings (verified)</h3>
+{% for x in f.agent_findings.literature.findings %}
+<p class="claim" data-evidence="{{ x.evidence_ids | evattr }}"><strong>{{ x.gene }}</strong> <span class="tag">{{ x.role | replace("_"," ") }}</span> {{ x.statement }} {{ x.evidence_ids | cite | safe }}</p>
+{% endfor %}{% endif %}
+
+<h2 id="external">Druggability and prior knowledge (Open Targets, STRING, UniProt)</h2>
+{% for p in f.narrative.sections.external or [] %}
+<p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
+{% endfor %}
+{% if f.agent_findings.external %}
+<h3>External-knowledge agent findings (verified)</h3>
+{% for x in f.agent_findings.external.findings %}
+<p class="claim" data-evidence="{{ x.evidence_ids | evattr }}"><strong>{{ x.gene }}</strong> <span class="tag">{{ x.role | replace("_"," ") }}</span> {{ x.statement }} {{ x.evidence_ids | cite | safe }}</p>
+{% endfor %}{% endif %}
+
+<h2 id="integration">Integration</h2>
+{% for p in f.narrative.sections.integration or [] %}
+<p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
+{% endfor %}
+
+<h2 id="network">Network of top candidates</h2>
+<p class="legend">● gene (top 25) · ◆ drug (Open Targets, max 3 per gene) · ■ ccRCC. Edges: drug→target, STRING interactions (score ≥ 0.7), up/down-regulation in ccRCC (CPTAC). Click an edge to see its evidence id.</p>
+<div id="cy"></div>
+<p class="small" id="cy-info">&nbsp;</p>
+
+<h2 id="provenance">Provenance</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>File</th><th>Dimensions</th><th>Downloaded (UTC)</th><th>sha256</th></tr></thead>
+<tbody>{% for d in f.datasets %}<tr><td><a href="{{ d.url }}">{{ d.file }}</a></td><td>{{ d.rows }} × {{ d.columns }}</td><td>{{ d.downloaded_utc }}</td><td><code>{{ d.sha256[:16] }}…</code></td></tr>{% endfor %}</tbody>
+</table></div>
+<p class="small">Models: orchestrator — {{ f.models.orchestrator }}; agents — {{ f.models.agents }}; relation extraction — {{ f.models.relation_extraction }}.
+All statistics (differential expression, copy number, correlations, convergence) are computed by deterministic Python code; the LLMs only chose what to query and wrote the interpretive text.
+{% if verification %}Final verification: {{ verification.statements }} statements checked, {{ verification.unsupported }} unsupported.{% endif %}
+{% for name, a in f.agent_findings.items() %} Agent {{ name }}: {{ a.findings | length }} verified findings.{% endfor %}</p>
+
+<h2 id="limitations">Limitations</h2>
+<ul>{% for l in f.narrative.limitations %}<li>{{ l.text }}</li>{% endfor %}</ul>
+
+<h2 id="evidence">Evidence ({{ evidence | length }} records cited)</h2>
+{% for e in evidence %}
+<div class="ev" id="{{ e.anchor }}"><strong>[{{ loop.index }}]</strong> <span class="tag">{{ e.type | replace("_"," ") }}</span>
+{% if e.link %}<a href="{{ e.link }}">{{ e.label }}</a>{% else %}{{ e.label }}{% endif %} — {{ e.detail }} <code>{{ e.id }}</code></div>
+{% endfor %}
+</main>
+<footer>Generated by the ccRCC multi-omics GraphRAG case study. Data: CPTAC ccRCC discovery cohort (LinkedOmics), PubTator3, Open Targets Platform, STRING, UniProt, Reactome. Not medical advice.</footer>
+<script>
+(function(){
+  var data = {{ network_json | safe }};
+  var dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  var fg = dark ? '#e8e6e1' : '#1d1f24';
+  var cy = cytoscape({container: document.getElementById('cy'), elements: data.nodes.concat(data.edges),
+    layout: {name: 'cose', animate: false, nodeRepulsion: 9000, idealEdgeLength: 90},
+    style: [
+      {selector: 'node', style: {'label': 'data(label)', 'font-size': 10, 'color': fg, 'text-valign': 'bottom', 'text-margin-y': 3}},
+      {selector: 'node[kind="gene"]', style: {'background-color': '#d1495b', 'width': 18, 'height': 18}},
+      {selector: 'node[kind="drug"]', style: {'background-color': '#1f6f8b', 'shape': 'diamond', 'width': 12, 'height': 12, 'font-size': 8}},
+      {selector: 'node[kind="disease"]', style: {'background-color': '#edae49', 'shape': 'round-rectangle', 'width': 34, 'height': 20, 'font-size': 12, 'font-weight': 'bold'}},
+      {selector: 'edge', style: {'width': 1.2, 'line-color': '#9aa0aa', 'curve-style': 'bezier', 'opacity': 0.7}},
+      {selector: 'edge[kind="drug"]', style: {'line-color': '#1f6f8b', 'target-arrow-shape': 'triangle', 'target-arrow-color': '#1f6f8b'}},
+      {selector: 'edge[kind="upregulated_in"]', style: {'line-color': '#d1495b', 'line-style': 'dashed'}},
+      {selector: 'edge[kind="downregulated_in"]', style: {'line-color': '#00798c', 'line-style': 'dashed'}}
+    ]});
+  cy.on('tap', 'edge', function(evt){ var d = evt.target.data();
+    document.getElementById('cy-info').textContent = d.kind + ': ' + cy.getElementById(d.source).data('label') + ' → ' + cy.getElementById(d.target).data('label') + ' · evidence ' + d.ev; });
+})();
+</script>
+</body>
+</html>
