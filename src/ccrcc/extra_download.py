@@ -153,6 +153,27 @@ def _singlecell_extra() -> None:
         _get(next(a["url"] for a in assets if a["filetype"] == "H5AD"), dest)
 
 
+def _pdc_confirmatory() -> None:
+    """Processed matrices of the CPTAC ccRCC confirmatory cohort from the Proteomic Data Commons (study PDC000411,
+    supplementary archive of PMID 36563681). The signed download URL comes from the PDC GraphQL API."""
+    import zipfile
+    conf = RAW / "confirmatory"
+    names = ("CPTAC_ccRCC_global_proteome_DIA.tsv", "CPTAC_ccRCC_phosphoproteome_DIA_site.tsv")
+    if all((conf / n).exists() for n in names):
+        return
+    conf.mkdir(parents=True, exist_ok=True)
+    q = '{ filesPerStudy(pdc_study_id:"PDC000411", acceptDUA:true){ file_id file_name signedUrl { url } } }'
+    r = requests.post("https://pdc.cancer.gov/graphql", json={"query": q}, timeout=120).json()
+    f = next(x for x in r["data"]["filesPerStudy"] if x["file_name"].startswith("Supplementary_Processed_Proteomic_Data"))
+    zpath = EXTRA / "pdc000411_supplementary_processed.zip"
+    _get(f["signedUrl"]["url"], zpath)
+    base = zpath.stem.replace("pdc000411_supplementary_processed", "")
+    with zipfile.ZipFile(zpath) as z:
+        root = next(n for n in z.namelist() if n.endswith("/") and "__MACOSX" not in n and n.count("/") == 1)
+        for n in names:
+            (conf / n).write_bytes(z.read(root + n))
+
+
 def download_extra() -> dict:
     EXTRA.mkdir(parents=True, exist_ok=True)
     previous = json.loads(MANIFEST.read_text()) if MANIFEST.exists() else {}
@@ -170,6 +191,7 @@ def download_extra() -> dict:
     _get(CELLOSAURUS, EXTRA / "cellosaurus_rcc.txt")
     _treatment_studies()
     _singlecell_extra()
+    _pdc_confirmatory()
     # the BCM tumour phosphosite table is published uncompressed (~0.3 GB); keep a gzip copy only
     raw = EXTRA / "cptac_ccrcc_phosphosite_tumor.txt"
     gz = EXTRA / "cptac_ccrcc_phosphosite_tumor.txt.gz"

@@ -1,12 +1,12 @@
 {
  "file": "C:\\Users\\rafae\\Documents\\ccrcc-graphrag\\runs\\replicates\\rep1\\findings.json",
- "statements": 101,
+ "statements": 127,
  "unsupported": 0,
  "semantic_failures": 0,
  "stale": 0,
  "basis": {
-  "started_utc": "2026-11-01T17:53:34+00:00",
-  "evidence": 1120
+  "started_utc": "2026-11-01T19:44:54+00:00",
+  "evidence": 1152
  },
  "detail": []
 }

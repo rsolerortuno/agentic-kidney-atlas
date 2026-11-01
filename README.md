@@ -1,147 +1,178 @@
-# Building an agentic multi-omics GraphRAG to prioritize targets in ccRCC: a case study
+# ccRCC Target Atlas: finding drug targets and biomarkers in kidney cancer with data and AI agents
 
-This repository shows how to build a system that combines multi-omics data, literature and external knowledge in an
-evidence-backed knowledge graph, and uses LLM agents to pick candidate therapeutic targets and biomarkers for clear cell
-renal cell carcinoma (ccRCC). It is a worked example, not a general tool: paths, thresholds and choices belong to this
-question and these data.
+**Live report:** https://rsolerortuno.github.io/ccrcc-multiomics-graphrag/
 
-> **Question:** *What are the candidate therapeutic targets and biomarkers in ccRCC with the strongest convergent evidence?*
+This project asks one question about clear cell renal cell carcinoma (ccRCC), the most common kidney cancer:
 
-Live report: https://rsolerortuno.github.io/ccrcc-multiomics-graphrag/
+> *Which genes are the best candidates for new drugs or for tests that tell patients apart, judged by how many independent kinds of evidence agree?*
 
-Outputs: [`reports/ccrcc_report.html`](reports/ccrcc_report.html) (one self-contained file, 13 tabs, a "?" button on every
-figure, table and counter) · [`evals/results.md`](evals/results.md) · [`evals/history.md`](evals/history.md) · [`PROGRESS.md`](PROGRESS.md)
+It is a worked example of how to build such a system, not a finished product or medical advice. Everything is open: the code, the data sources, the checks and the places where it fails.
 
-## Design in one picture
+## The idea in plain words
 
-Core architecture (the treatment, subtype, ADC, immune and second single-cell analyses sit in the independent-layers box). Code computes the statistics, rankings and report assets; Claude Code
-extracts literature relations and writes interpretations grounded in the processed results and their evidence.
+Imagine you are looking for the one weak spot of a very complicated machine, and you have a hundred different sensors. Any single sensor can be wrong. A spot that lights up on one sensor is a hunch. A spot that lights up on many unrelated sensors is worth a closer look.
 
-![ccRCC agentic multi-omics GraphRAG architecture: omics, single-cell and Visium spatial analysis, literature, external evidence, knowledge graph, MCP servers, Claude Code agents and HTML report](assets/ccrcc-architecture.png)
+Kidney cancer works the same way. Almost every ccRCC tumour has lost a gene called *VHL*, which makes the cell act as if it were short of oxygen. Drugs exist, but patients often stop responding. So researchers look for new things to aim at (targets) and for measurements that predict who will do well (biomarkers).
 
-**How to read the diagram**
+Here we collect many kinds of public data about hundreds of tumours, and for about 19,000 genes we ask the same questions again and again:
 
-- **The independent layers combine complementary measurements with shared cohorts.** Somatic recurrence uses CPTAC + TCGA
-  (cBioPortal; coding-length correction); CNV cis effects reuse CPTAC; dependency comes from DepMap;
-  replication and univariate overall-survival analysis use TCGA-KIRC (Xena); protein-adjusted kinase activity
-  uses CPTAC phosphosites + OmniPath; purity effects use CPTAC ESTIMATE. These layers feed the
-  [configured convergence and profile components](config.yaml). The target and biomarker profiles exclude
-  literature and drug history; convergence v3 still includes a literature stream.
-- **Cell, spatial and structure results contextualize candidates; discovery has its own ranking.** cell and spatial context
-  and the discovery novelty scores do not enter convergence v3. Discovery combines bulk and scRNA evidence with
-  tractability, clinical drugs, off-tumour expression, grade/stage, TCGA replication/prognosis, purity and
-  dependency, and expands the spatial/structure shortlist. Spatial analysis uses fixed marker exclusions and
-  per-gene seeded permutations. MGD scores prioritize sites; they do not demonstrate degradation.
-- **Four analysis agents share four MCP servers.** `agente-omico`, `agente-literatura`, `agente-externo` and
-  `agente-celular` run in parallel under `/informe`; `extractor-relaciones` is the separate extraction
-  subagent. Agent findings are checked before Opus writes the narrative, and the assembled findings are checked
-  again before rendering. `basis.json` fingerprints evidence so changed values invalidate stale text.
-- **Rebuild and LLM regeneration are separate operations.** `ccrcc run-all` rebuilds deterministic artifacts
-  and revalidates saved extraction/agent outputs; `scripts/run_informe.sh` (or `.ps1`) regenerates the four-agent
-  analysis and narrative. relation extraction is a separate saved LLM step. Verification checks citation
-  linkage, numeric/direction consistency and evidence freshness; it does not establish biological causality.
+- Is the gene higher or lower in tumours than in healthy kidney from the same patient?
+- Does a second group of patients show the same thing?
+- Which cell makes it: a cancer cell, a blood-vessel cell or an immune cell?
+- Does the protein sit on the cell surface where a drug could reach it?
+- Is it also high in the heart, liver or lung, where a drug could do harm?
+- Do cancer cells die when the gene is switched off?
+- Is the gene linked to how well patients do on a drug?
+- What do papers and drug databases already say?
 
-Implementation: [`cli.py`](src/ccrcc/cli.py) · [`discovery.py`](src/ccrcc/discovery.py) ·
-[`integrate.py`](src/ccrcc/integrate.py) / [`scores.py`](src/ccrcc/scores.py) ·
-[MCP configuration](.mcp.json) · [`/informe`](.claude/commands/informe.md) ·
-[`verify.py`](src/ccrcc/verify.py) / [`provenance.py`](src/ccrcc/provenance.py) ·
-[`render.py`](src/ccrcc/render.py)
+A gene that scores well on many of these, in data that were collected separately, is a candidate. The result is a ranked list and an interactive report.
 
-## Key design decisions
+## What you get
 
-| Decision | Rationale |
+| Output | What it is |
 |---|---|
-| Raw omics never enter the graph or a prompt | Statistics are computed once, deterministically. Agents query results through tools. |
-| Evidence reification | Every claim is stored through an Evidence record (statistic, dataset, date). The SQLite schema enforces `evidence_id NOT NULL` with a foreign key. |
-| PubTator3 instead of generic GraphRAG extraction | Entities come normalized. The LLM only extracts relations in a closed schema, and each must quote a sentence verified word for word. |
-| Verification is gene-aware and number-aware | A claim about gene X must cite evidence attached to X, and every number and the up or down wording must match that evidence. |
-| Convergence means independent evidence streams | Omics layers form one stream so expression alone cannot dominate. Weights are in `config.yaml`, set before looking at results. |
-| Two questions, two scores | "Is it a target?" and "is it a biomarker?" need different evidence. Neither profile uses literature or drug history, so both can be tested against clinical outcomes. |
-| Robustness is reported | Every rank comes with a 5th to 95th percentile interval from 1,000 random re-weightings. |
-| Stale narrative guard | `basis.json` fingerprints the evidence the agents saw. `verify.py final` fails any sentence whose evidence changed afterwards. |
-| No paid API | All LLM work runs on Claude Code with a subscription: subagents in `.claude/agents/`, orchestrator `.claude/commands/informe.md`. |
+| [`reports/ccrcc_report.html`](reports/ccrcc_report.html) | One self-contained web page with 13 tabs. It also runs online at the live link above. |
+| [`evals/results.md`](evals/results.md), [`evals/history.md`](evals/history.md) | How well the scores recover known biology, and a log of every change, including changes made after seeing data. |
+| [`PROGRESS.md`](PROGRESS.md) | The build log. |
+| `runs/` | The saved outputs of each AI-agent run, with their checks. |
 
-## Data
+The report is written for people who are not specialists. The Overview tab explains the question, the method and each tab. Every figure, table and counter has a round **?** button that explains what it shows, how to read it and what to keep in mind. The Tissue viewer lets you look at real tumour slices with the microscope picture underneath and click a spot to see its neighbours.
 
-- **CPTAC ccRCC discovery cohort** (LinkedOmics): 110 tumours, matched normals 75 (RNA) and 84 (proteome, phospho), gene-level copy number. sha256 in `data/raw/manifest.json`.
-- **HGNC** for identifier mapping. **PubTator3**: 319 abstracts, 100 used for relation extraction, 198 verbatim-validated relations.
-- **Open Targets** (API and 26.09 bulk tables), **ChEMBL** (potent compounds, patent records), **STRING**, **UniProt**, **Human Protein Atlas** (RNA and normal-tissue staining), **AlphaFold DB**, **PDBe-KB**, Europe PMC counts.
-- **Independent layers** (sha256 in `data/raw/extra/manifest.json`): somatic mutations (cBioPortal; CPTAC and TCGA-KIRC), DepMap 26Q1, TCGA-KIRC RNA and survival (UCSC Xena), CPTAC phosphosites, ESTIMATE purity, CIBERSORT and xCell (cptac Zenodo record), OmniPath.
-- **Treatment response:** IMmotion150 (263 patients, atezolizumab with or without bevacizumab, or sunitinib) and Choueiri 2016 (16 patients, nivolumab), from the cBioPortal datahub.
-- **Single cell and space:** Li et al. 2022 (178,817 cells, 12 donors; 38,836 Visium spots, 23 sections; four sections with H&E for the viewer) and Zhang et al. 2021 (20,509 ccRCC cells, 7 donors, plus 5 normal kidneys), both via CZ CELLxGENE.
+## How it works
 
-Raw matrices and abstracts are not redistributed. The scripts download them again.
+![Architecture: omics, single-cell and spatial analysis, literature, external evidence, knowledge graph, MCP servers, Claude Code agents and HTML report](assets/ccrcc-architecture.png)
 
-## What the analysis finds
+There are four stages. The first two are ordinary code. The third uses language models. The fourth checks the third.
 
-- **Biology is recovered.** HIF targets (CA9, NDUFA4L2, ANGPTL4, EGLN3, VEGFA) are strongly up and replicate in TCGA-KIRC. Somatic recurrence calls VHL, PBRM1, BAP1, SETD2, KDM5C, MTOR, PTEN and TP53.
-- **Candidates:** CA9 is the only gene robustly in the convergence top 10. The target calls include CD70, NNMT, ENPP3, SCARB1, SLC16A3 and HK2. The biomarker calls include PSAT1, PCK1, SLC6A19 and ALDH6A1. EPAS1 is kept on clinical grounds although its RNA barely moves.
-- **Main caveat:** no expression-ranked target is a selective DepMap dependency. They are handles for antibodies, conjugates and radioligands, not genes the tumour needs.
-- **Verification:** 97 statements in the final findings, 0 unsupported, 0 stale. The report validator checks 429 claims and 1,570 evidence ids, all resolvable.
-- **Evaluation** (`evals/results.md`): recall of 23 known genes in the top 100 is 39 % (median rank 171). The target profile ranks RCC clinical targets at AUROC 0.90 and a temporal holdout (first trial 2016 or later) at 0.91. Predicted tractability alone gives 0.85, so the gain is early enrichment. The biomarker profile gets AUROC 0.74 on ClearCode34 (0.75 before the ccA/ccB component, within the confidence interval).
-- **What the agents add:** a closed-book LLM gives the textbook list (60 % clinical targets, nothing citable). The pipeline gives data-supported candidates with every statement checked. Three agent runs agree with a mean Jaccard of 0.84 (the closed-book runs: 0.67). The top three candidates differ between runs, and one replicate reported that its agents' tools may have read the main run's files, so treat that figure as an upper bound on independence.
-- **Cells and tissue:** CA9, EGFR and MET are made by tumour cells. KDR is endothelial. CD74, CXCR4 and PTPRC are immune. EPAS1 transcripts come mostly from endothelium and fibroblasts. In the held-out check of the spatial deconvolution, CA9 follows the tumour-cell share (rho 0.277), KDR endothelium (0.205), CD74 macrophages (0.304) and PTPRC T cells (0.123). A second single-cell dataset agrees: the dominant source matches in 59 of 63 tumour, 33 of 34 stroma and 183 of 313 immune discovery genes.
-- **Discovery:** 410 genes are up in both RNA and protein and tied to one cell type. 204 are novel and 58 are first-in-class opportunities (immune 52, tumour 3, stroma 3). Literature counts use only aliases unique to the gene, and 45 genes have potent preclinical compounds in ChEMBL.
-- **Treatment response:** two published signatures reproduce in IMmotion150, so the trial data work. 90, 103 and 13 genes associate with progression in the combination, sunitinib and atezolizumab arms, but none differs between the combination and sunitinib after correction.
-- **Subtypes:** PBRM1 and BAP1 reshape the tumour far more than VHL. ccB tumours have a hazard ratio of 2.30 for death in TCGA. PBRM1-mutant tumours raise CA9 and ENPP3, and BAP1-mutant tumours raise HAVCR1 and MET.
-- **ADC and radioligands:** the known targets CD70, HAVCR1, CA9, ENPP3 and FOLH1 rank 2, 4, 13, 39 and 488 of 2,017 tumour-up genes.
-- **Immune:** 185 CPTAC tumours split into cold, intermediate and hot. PDCD1 ranks 10 in the immune-target profile, but only 1 of 7 checkpoint controls reaches the top 100, so it lists candidates and is not a validated ranking.
+1. **Measure (code only).** Python scripts run the statistics. They compare tumour with matched healthy kidney, look at single cells and tissue slices, test other cohorts and trials, and pull in drug and protein databases. No language model sees raw data or computes a number.
+2. **Store with receipts (knowledge graph).** Every result is saved as a *claim* in a small database, together with an *evidence record* that holds the number, the dataset and the date. The database refuses a claim that has no evidence record, so nothing can be asserted without a source.
+3. **Ask the agents (Claude Code).** Five AI agents, each with its own tools, read the graph and write short findings:
+   - the **omics agent** interprets changes in RNA, protein and phosphorylation;
+   - the **literature agent** reads what papers say;
+   - the **external agent** looks at drugs and protein databases;
+   - the **cell agent** says which cell makes each gene and what surrounds it in the tissue;
+   - the **translational agent** says how a candidate would hold up in practice: treatment response, tumour subtypes, antibody-drug conjugates, the immune environment and replication.
 
-## The report
+   An orchestrator then picks the final candidates and writes the summary.
+4. **Check every sentence.** Another script verifies each sentence the agents wrote. The evidence it cites must exist, must belong to the same gene, the numbers must match, an "up" must really be up, and the evidence must not have changed since the agent read it. Sentences that fail are dropped.
 
-13 tabs: Overview (with what is new), Candidates, Omics, Cells and space, Structure and MGD, Discovery, Tissue viewer, Treatment and subtypes, ADC and immune, Validation and robustness, Literature and drugs, Network, Methods and evidence. The page is light and matte, with no dark mode. Every figure, table and counter has a "?" button that explains what it shows, how to read it and what to keep in mind. The **Tissue viewer** draws four tumour sections on their H&E image: pick a gene, its top-decile spots are ringed, click a spot to see its six neighbours and their cell makeup, and compare the neighbours of all high spots with the section average. The permutation p-values shown next to it come from the Python analysis over all 23 sections.
+The agents only choose what to look at and explain it. The numbers, tables, figures and citations in the report come from code.
 
-## Reproduce
+## The evidence, layer by layer
 
-Requirements: Windows, macOS or Linux, [uv](https://docs.astral.sh/uv/), and Claude Code logged in with a Claude subscription (agent step only).
+| Layer | What it is | Why it matters |
+|---|---|---|
+| Tumour vs normal | CPTAC: 110 tumours with matched normals, measured as RNA, protein and phosphorylation | The basic question: what changes in the tumour |
+| Copy number | Gains and losses of DNA, and whether they move the gene's product | Loss of the 3p chromosome arm is the hallmark of ccRCC |
+| Mutations | CPTAC and TCGA tumours, corrected for gene length | Finds drivers (VHL, PBRM1, BAP1, SETD2) |
+| Second cohort | TCGA-KIRC RNA and survival; the confirmatory CPTAC cohort for protein and phosphosites | A result that appears in other patients is more believable |
+| Cell-line dependency | DepMap CRISPR screens | Shows whether cancer cells need the gene, or whether it is only high |
+| Kinase activity | Phosphorylation turned into inferred enzyme activity | Enzymes are drug targets |
+| Tumour purity | How much of a sample is cancer cells | Stops infiltrating cells from faking a tumour signal |
+| Single cells | 178,817 cells from Li 2022, repeated in Zhang 2021 | Says which cell type makes each gene |
+| Tissue slices | 23 Visium sections, four with the microscope image | Says where in the tumour a gene is active and what is next to it |
+| Treatment response | IMmotion150 and Choueiri 2016 trials | Links genes to who benefits from which drug |
+| Subtypes | VHL, PBRM1, BAP1, SETD2 mutation and ccA/ccB | Finds targets for one genetic subgroup |
+| ADC suitability | UniProt surface topology, Human Protein Atlas staining in vital organs, evenness across tumour cells | A target for a conjugate must be on tumour cells and not in vital organs |
+| Immune environment | CIBERSORT and xCell estimates of immune cells | Immune-cell genes can be targets too |
+| Literature and drugs | PubMed relations, Europe PMC counts, Open Targets, ChEMBL | Tells what is already known and what is new |
+| Pockets | AlphaFold structures and cavity detection | A rough guide to where a small molecule might bind. It is only a heuristic |
+
+## What we found
+
+Numbers below come from the current run. The full detail, with caveats, is in the report.
+
+- **The method recovers known biology.** HIF targets such as CA9, NDUFA4L2, ANGPTL4 and VEGFA are strongly up in tumours and replicate in a second cohort. Loss of the 3p arm is the most frequent change. The mutation test calls VHL, PBRM1, BAP1, SETD2, KDM5C, MTOR, PTEN and TP53.
+- **Candidates.** CA9 is the one gene that stays in the top ten whatever the weights. Target calls include CD70, NNMT, ENPP3, SCARB1, SLC16A3 and HK2 (see the confirmatory result below). Biomarker calls include PSAT1, PCK1, SLC6A19 and ALDH6A1, mostly kidney genes that tumours lose.
+- **A caution that matters.** None of the expression-based targets is a gene the cancer cells need to survive. They are handles for antibodies and radioligands, not weak spots.
+- **The protein data replicate.** In the confirmatory cohort, 79 % of the protein changes found in the discovery cohort and 73 % of the phosphosite changes appear again in the same direction (the fold changes correlate at 0.89 and 0.83). The gaps are informative: HK2 rises in discovery and does not in the confirmatory cohort.
+- **Treatment response.** Two published gene signatures reproduce in IMmotion150, which shows the trial data are usable. Individual genes are associated with progression in each arm, but no gene separates immunotherapy from sunitinib after correcting for testing 20,000 genes.
+- **Subtypes.** PBRM1 and BAP1 mutations reshape the tumour far more than VHL. Patients with a ccB tumour are about 2.3 times as likely to die in TCGA.
+- **Antibody and radioligand targets.** The known targets CD70, HAVCR1, CA9 and ENPP3 rank 2, 4, 13 and 39 among 2,017 tumour-up genes, so the score picks them out.
+- **Immune environment.** PDCD1 ranks 10th in the immune-target profile, but only one of seven checkpoint controls reaches the top 100, so that profile lists candidates and does not give a validated ranking.
+- **The agents add traceability.** A language model asked from memory gives the textbook list with nothing to cite. The pipeline gives candidates backed by data, and every sentence is checked.
+
+## How we know it is not nonsense
+
+- **Controls.** Wherever a score is new, known cases are scored the same way. Known ADC targets rank near the top. Known checkpoints rank unevenly, and the report says so.
+- **Held-out clinical targets.** The target profile uses no literature or drug history, and still ranks real RCC drug targets at AUROC 0.90, and 0.91 for targets that first entered trials in 2016 or later.
+- **Replication.** Protein and phosphosite results are repeated in a separate patient cohort with a different method. Single-cell attributions are repeated in a second dataset.
+- **Stability.** Every rank has an interval from 1,000 random re-weightings.
+- **Repeated agent runs.** The whole agent step was run three times, each from a clean folder with the tools reading that same folder. The final target lists overlap with a mean Jaccard of 0.94 and the top four candidates (CA9, NNMT, CD70, SCARB1) are identical in all three. The main run had 118 checked statements and the repeats 127 and 128, none unsupported.
+- **Checks on the text.** Every numeric claim must match its evidence record. In the main run 118 statements passed, 0 were unsupported and 0 were stale, and a few agent findings were dropped for quoting values their evidence did not contain.
+
+## How the project is organised
+
+```
+config.yaml            thresholds and weights, set before looking at results
+src/ccrcc/             all the code (details below)
+scripts/               the commands the agent step runs
+.claude/agents/        the five agents (plus the literature extractor)
+.claude/commands/      the orchestrator command that runs them
+data/                  downloaded data and results (not in git, rebuilt by the scripts)
+runs/                  saved agent outputs and their verification, one folder per run
+evals/                 evaluation results and the history of changes
+reports/               the final HTML report
+tests/                 automated tests
+```
+
+| Code in `src/ccrcc/` | What it does |
+|---|---|
+| `omics.py`, `layers.py`, `confirmatory.py` | Tumour-vs-normal statistics; mutations, copy-number effects, dependency, TCGA, phosphosites, purity; the confirmatory cohort |
+| `treatment.py`, `subtypes.py`, `adc.py`, `immune.py` | Treatment response, subtypes, antibody-drug-conjugate suitability, immune environment |
+| `singlecell.py`, `sc_replication.py`, `spatial.py`, `spatial_viewer.py` | Cell types, the second single-cell dataset, tissue neighbourhoods, data for the Tissue viewer |
+| `structure.py` | Predicted structures and pockets (heuristic) |
+| `discovery.py`, `safety_clinical.py`, `external.py` | The first-in-class screen, vital-organ expression, Open Targets, ChEMBL, Europe PMC |
+| `literature.py`, `literature_entities.py` | PubMed ingestion and checked relation extraction |
+| `graph.py`, `kg_build.py`, `kg_layers.py`, `kg_cell_structure.py`, `kg_applied.py` | The knowledge graph and the loaders that fill it |
+| `scores.py`, `integrate.py` | The convergence score, the target and biomarker profiles, weight sensitivity |
+| `verify.py`, `semantic.py`, `provenance.py`, `assemble.py` | The sentence checks and the stale-text guard |
+| `mcp_servers/` | The tools the agents use (four MCP servers) |
+| `outcomes.py`, `baselines.py`, `evaluate.py` | Tests against clinical targets and against a model that answers from memory |
+| `render.py`, `report_*.py`, `report_assets/` | The HTML report: figures, help texts and templates |
+| `extra_download.py`, `download.py` | Downloads, each recorded with a checksum |
+
+## Run it yourself
+
+You need [uv](https://docs.astral.sh/uv/) and, for the agent step only, Claude Code logged in with a subscription (no API key).
 
 ```bash
 uv sync
-uv run ccrcc run-all          # everything deterministic, from downloads to the HTML (about 40 minutes the first time)
-uv run pytest                 # 95 tests
-uv run ccrcc eval             # recall, outcome gold sets, temporal holdout, robustness, baselines -> evals/results.md
+uv run ccrcc run-all        # rebuild everything deterministic, from downloads to the HTML (roughly 40 minutes the first time)
+uv run pytest               # automated tests
+uv run ccrcc eval           # evaluation against clinical targets, robustness, baselines
 ```
 
-Agent step (no API key). It regenerates `runs/<date>/` with fresh analyses and narrative:
+The agent step regenerates the findings and the summary, and takes about half an hour:
 
 ```bash
-./scripts/run_informe.sh      # Linux / macOS (Windows: ./scripts/run_informe.ps1)
-CCRCC_RUN_DIR=replicates/rep1 ./scripts/run_informe.sh   # a replicate that does not touch runs/<date>/
-uv run ccrcc baselines        # closed-book LLM runs, agent decisions vs ranking, replicate agreement
+./scripts/run_informe.sh                                   # Windows: ./scripts/run_informe.ps1
+CCRCC_RUN_DIR=replicates/rep1 ./scripts/run_informe.sh     # a repeat run that does not touch the main one
+uv run ccrcc baselines                                     # compare with a memory-only model and across repeat runs
 ```
 
-Single analyses can be run alone: `ccrcc treatment | subtypes | adc | immune | sc-replication | spatial-viewer | discovery`.
-Run `/informe` again after any `run-all` that changes evidence, because the stale guard rejects old sentences.
+Individual analyses can also run alone, for example `uv run ccrcc treatment`, `subtypes`, `adc`, `immune`, `confirmatory`, `sc-replication`, `spatial-viewer` or `discovery`. After any rebuild that changes evidence, run the agent step again: the stale-text guard rejects sentences written about old numbers.
 
-## Repository map
-
-| Path | What it is |
-|---|---|
-| `src/ccrcc/omics.py`, `literature.py`, `graph.py`, `kg_build.py` | Paired DE, CNV, RNA-protein; PubTator3 and relation validation; the graph |
-| `src/ccrcc/layers.py`, `kg_layers.py`, `extra_download.py` | Mutations, cis dosage, DepMap (one `selective_dependency` rule), TCGA, phosphosites, purity; their downloads and graph loading |
-| `src/ccrcc/treatment.py`, `subtypes.py`, `adc.py`, `immune.py`, `sc_replication.py` | Treatment response, genetic and ccA/ccB subtypes, ADC suitability, immune profile, second single-cell dataset |
-| `src/ccrcc/singlecell.py`, `spatial.py`, `spatial_viewer.py`, `structure.py`, `cell_context.py` | Cell types, tissue neighbourhoods, viewer data, pocket analysis |
-| `src/ccrcc/discovery.py`, `safety_clinical.py`, `external.py` | Target discovery, vital-organ expression and grade, Open Targets, ChEMBL, Europe PMC |
-| `src/ccrcc/scores.py`, `integrate.py`, `semantic.py`, `provenance.py`, `verify.py`, `assemble.py` | Scores, profiles, sensitivity, verification, staleness guard |
-| `src/ccrcc/outcomes.py`, `baselines.py`, `evaluate.py` | Evaluation against clinical outcomes and agent baselines |
-| `src/ccrcc/render.py`, `report_figures*.py`, `report_help.py`, `m15_tables.py`, `report_assets/` | The HTML report, its figures, "?" texts and templates |
-| `.claude/agents/*.md`, `.claude/commands/informe.md` | Subagents and the orchestrator command |
-| `config.yaml` | Thresholds and weights |
-
-## Moving to Neo4j
-
-Only `GraphStore` touches storage. Implement the same methods over the Neo4j driver (nodes as labels, Evidence as nodes,
-claims as `(:Entity)-[:SUBJECT_OF]->(:Claim {predicate})-[:OBJECT]->(:Entity)` with `(:Claim)-[:SUPPORTED_BY]->(:Evidence)`).
-Agents, MCP servers and the report do not change.
+The online report updates by itself. A workflow in `.github/workflows/pages.yml` publishes `reports/ccrcc_report.html` to GitHub Pages whenever that file changes on `main`.
 
 ## Decisions made after seeing data
 
-These are not pre-registered. They are logged with their effect in `evals/history.md`.
-- A selective dependency needs at least 3 dependent ccRCC lines (24 lines in total).
-- Discovery literature counts use only aliases unique to the gene. "Undrugged" is halved for genes with potent ChEMBL compounds or patent records.
+These were not planned in advance. They are listed so you can judge them, and logged with their effect in `evals/history.md`.
+
+- A selective dependency needs at least three dependent ccRCC cell lines out of 24.
+- Literature counts use only gene names that belong to one gene. "Undrugged" is halved for genes with potent compounds or patents in ChEMBL.
 - A clinical-precedence term was removed from the target profile because it leaked the answer into the evaluation.
-- The numeric check was tightened after it passed a wrong number.
+- The number check was tightened after it let a wrong number through.
+- Repeat agent runs now start from a clean folder and the agent tools read the same folder, after one repeat run reported it might have read the main run's files.
 
-## Limitations
+## Limits
 
-External replication of protein and phosphosites is missing: the confirmatory CPTAC cohort sits in the Proteomic Data Commons, which returned HTTP 503 when this was built. TCGA replicates RNA only. Bulk tissue mixes cells (single-cell data and purity extrapolation help, and the latter assumes a straight-line effect). Only 24 DepMap ccRCC lines, grown in normal oxygen. Single-cell and Visium data come from other cohorts than CPTAC, with few donors and a dissociation bias towards immune cells. Treatment-response tests are weak: one adequately sized trial and no gene that separates the two arms. Pocket-based scores are a heuristic for ordering sites and are only weakly validated. Gold sets are small and clinical targets are mostly druggable by construction. The agents do not yet narrate the treatment, subtype, ADC and immune tabs. LLM steps are not bit-reproducible; their outputs are saved and checked. Not medical advice.
+- All data are public and from a few cohorts. Nothing here was tested in a laboratory or in patients.
+- Bulk tissue mixes cell types. Single-cell data and purity corrections help, but the single-cell and tissue data come from other patients than the CPTAC cohorts and from few donors, and the dissociation step favours immune cells.
+- The confirmatory proteome misses some genes (CA9 among them), because label-free data are sparse in normal kidney. A missing gene is a gap, not a failed replication.
+- Cell-line dependency uses only 24 ccRCC lines grown in normal oxygen.
+- Treatment-response tests are weak: one adequately sized trial, and no gene separates the two main arms.
+- The pocket score is a rough heuristic with modest validation, and it is not extended here.
+- Gold sets of clinical targets are small, and clinical targets are mostly druggable by construction.
+- Language-model steps cannot be repeated bit for bit. Their outputs are saved and checked.
+- Not medical advice.

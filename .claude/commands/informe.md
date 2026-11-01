@@ -10,23 +10,24 @@ Follow these steps exactly. All numbers come from tools/scripts; you never compu
 1. Run `uv run python scripts/integrate.py`. It prints the run directory path (`runs/<date>/convergence.json`).
    Call that directory RUN below.
 
-2. Launch the four subagents **in parallel** (one message, four Agent/Task calls), each with this prompt
+2. Launch the five subagents **in parallel** (one message, five Agent/Task calls), each with this prompt
    (replace RUN with the absolute path):
    - `agente-omico`: "Question: <question>. Write your output to RUN/agent_omics.json."
    - `agente-literatura`: "Question: <question>. Write your output to RUN/agent_literature.json."
    - `agente-externo`: "Question: <question>. Write your output to RUN/agent_external.json."
    - `agente-celular`: "Question: <question>. Write your output to RUN/agent_cells.json."
+   - `agente-aplicado`: "Question: <question>. Write your output to RUN/agent_applied.json."
 
 3. Run `uv run python scripts/verify.py agents`. It removes evidence ids that do not exist or are not linked to
    the gene and drops unsupported findings, writing `*.verified.json`.
 
-4. Read `RUN/convergence.json` (top 25) and the four `RUN/agent_*.verified.json` files. Integrate them: where do
+4. Read `RUN/convergence.json` (top 25) and the five `RUN/agent_*.verified.json` files. Integrate them: where do
    omics, literature and external knowledge converge, where do they disagree, which candidates are targets vs.
    biomarkers vs. mechanism. Then write `RUN/narrative.json`:
 
    ```json
    {"summary":  [{"text": "...", "evidence_ids": ["..."]}],
-    "sections": {"omics": [...], "literature": [...], "external": [...], "cells": [...], "spatial": [...], "structure": [...], "discovery": [...], "validation": [...], "robustness": [...], "integration": [...]},
+    "sections": {"omics": [...], "literature": [...], "external": [...], "cells": [...], "spatial": [...], "structure": [...], "discovery": [...], "validation": [...], "robustness": [...], "treatment": [...], "subtypes": [...], "adc": [...], "immune": [...], "integration": [...]},
     "targets":  [{"gene": "CA9", "category": "target|biomarker|target_and_biomarker",
                   "rationale": "...", "evidence_ids": ["..."]}],
     "limitations": [{"text": "..."}]}
@@ -44,6 +45,14 @@ Follow these steps exactly. All numbers come from tools/scripts; you never compu
      in TCGA-KIRC and prognosis, somatic driver status, selective DepMap dependency, protein-adjusted kinase activity,
      and the purity check (does a bulk change survive extrapolation to a pure tumour or is it infiltration?). Name the
      candidates these layers strengthen and the ones they weaken.
+   - `treatment`, `subtypes`, `adc` and `immune` (1-2 paragraphs each) come from `agent_applied.verified.json`. `treatment`: what
+     IMmotion150 shows for the leading candidates, always as association with the adjusted p-value, and say that no gene
+     separates the two main arms. `subtypes`: which candidates change with VHL, PBRM1, BAP1, SETD2 or ccA/ccB and which are
+     subgroup candidates, with the infiltration caveat. `adc`: which candidates suit an antibody-drug conjugate or radioligand
+     (surface, staining in vital organs, homogeneity) and which known targets act as controls. `immune`: which candidates are
+     immune-cell genes, how they relate to cold and hot tumours, and the controls. Also use `confirmatory_replication` and
+     `sc_replication_check` findings in `validation` and `cells`: say which protein calls replicate in the confirmatory cohort
+     and which do not (HK2 is an example of a candidate that does not replicate there).
    - `robustness` (1–2 paragraphs): read `profiles.target` and `profiles.biomarker` and every row's
      `rank_interval_90` in `convergence.json`. Separate the candidates whose position survives random re-weighting
      (high `p_top10` / `p_top25`, narrow interval) from those that depend on the chosen weights.

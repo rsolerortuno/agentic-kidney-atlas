@@ -1,21 +1,17 @@
-﻿I have the target and biomarker profiles. Now waiting for the four subagents to finish.
+﻿The report is written and the final check passed: 127 statements checked, 0 unsupported claims.
 
-The omics agent is done (14 findings). Waiting for the other three agents.
+**Report:** `C:\Users\rafae\Documents\ccrcc-graphrag\runs\replicates\rep1\report.html`
 
-The external agent is done (10 findings). Still waiting on the literature and cell-context agents.
-
-The cell-context agent is done (21 findings). Only the literature agent is still running.
-
-I rendered the report to `C:\Users\rafae\Documents\ccrcc-graphrag\runs\replicates\rep1\report.html`.
-
-It went there rather than `runs/2026-11-01/` because `CCRCC_RUN_DIR` was set in this session, which makes this a replicate run. So `reports/ccrcc_report.html` and `runs/2026-11-01/` were not changed. The final check passed: 101 statements, 0 unsupported. I had to fix one paragraph that mentioned PIGR without citing its evidence.
+This run went to the replicate folder `runs/replicates/rep1`, not `runs/2026-11-01`. `integrate.py` chose that folder, most likely because the `CCRCC_RUN_DIR` setting is on in this shell. So `reports/ccrcc_report.html` and the earlier run were not touched.
 
 **Summary:**
-1. **CA9** has the strongest and most robust evidence. It is 1st overall and the only gene that stays in the overall top 10 when the weights are randomly varied. It comes from the tumour cells themselves: TCGA log2FC 9.712, and 0.976 of its tumour transcripts are in RCC cells. Girentuximab, an antibody against it, reached phase 3. It is not a dependency, so its value is for antibodies, imaging and diagnosis.
-2. **Other targets:** CD70, NNMT, SCARB1 (1st in the target profile, p_top10 0.968), ENPP3 and SLC16A3 are all up in tumour at RNA and protein, replicated in TCGA, and still up after correcting for tumour purity. CD70 and ENPP3 already have ADC or antibody programmes. NNMT is also linked to worse survival.
-3. **Biomarkers:** the strongest are genes lost along with normal kidney-tubule identity: PSAT1 (p_top10 0.986), PCK1, ALDH6A1, SLC6A19 and ALDOB. They are prognostic, not targets.
-4. **Known ccRCC targets:** EPAS1 (belzutifan) is the only candidate whose loss tumour cells selectively depend on (DepMap selectivity 0.3), and VHL is the main driver mutation. KDR, CD74 and CXCR4 are expressed by blood-vessel or immune cells, not tumour cells.
-5. **Discovery candidates:** COL23A1 and RAB42 (tumour), OLFML2A and JAG2 (stroma), and GAL3ST4 and LILRB4 (immune) are hypotheses from the data only. The immune signals mostly disappear after purity correction, which means they reflect immune-cell infiltration. Molecular-glue scores only rank possible binding sites.
-
-The agents' tools may have read a different run than this one. Some ranks and scores in their findings don't match this run's ranking: for example, the external agent puts ENPP3 at convergence rank 29 and gives CD70 a score of 4.2143. My narrative only quotes values that match this run's ranking, but those agent statements are still in the verified files. If replicate runs are meant to be independent, check that the tools use `CCRCC_RUN_DIR`.
+1. **CA9** has the strongest and most stable evidence. It is up in tumour at RNA and protein, confirmed in the TCGA kidney cancer cohort, made by the tumour cells themselves, and has an antibody in phase 3 (girentuximab). It does not predict survival, and tumour cells don't depend on it to grow, so it suits imaging or antibody-based treatment.
+2. **NNMT** is the best candidate as both target and biomarker. It is made by tumour cells, higher levels go with worse survival, and its protein increase was confirmed in a second cohort. It has no drug yet, so it would need a new small molecule.
+3. **CD70** is a strong surface target, with antibodies in trials and the best score for antibody-drug conjugates among known targets. However, immune cells hold 0.654 of its tumour transcripts. **SCARB1** and **SLC16A3** are the most stable data-driven targets, but which cells make them differs between the two single-cell datasets.
+4. **PSAT1, PCK1, ALDH6A1, SLC6A19 and ALDOB** are biomarkers that are lost in tumour and predict survival, not drug targets. **EPAS1** (HIF-2α, belzutifan approved) is the one clinically proven target and the only gene tumour cell lines selectively depend on, but its RNA sits mainly in blood-vessel cells.
+5. **What weakens these calls:**
+   - None of the tumour-up targets is something the tumour cells selectively need to survive.
+   - No gene separates the two main arms of the IMmotion150 trial.
+   - CA9 was not tested in the second protein cohort.
+   - HK2 was not checked there either, so the expected point that HK2 fails to replicate does not appear in this run.
 rep1 exit 0

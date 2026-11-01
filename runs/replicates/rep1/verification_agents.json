@@ -1,49 +1,73 @@
 {
  "agents": {
   "agent_omics.json": {
-   "submitted": 14,
-   "kept": 14,
+   "submitted": 12,
+   "kept": 12,
    "dropped": 0,
    "dropped_detail": [],
    "semantic_failures": 0,
    "ids_removed": 0
   },
   "agent_literature.json": {
-   "submitted": 14,
-   "kept": 14,
-   "dropped": 0,
-   "dropped_detail": [],
-   "semantic_failures": 0,
-   "ids_removed": 1
-  },
-  "agent_external.json": {
-   "submitted": 10,
-   "kept": 10,
+   "submitted": 12,
+   "kept": 12,
    "dropped": 0,
    "dropped_detail": [],
    "semantic_failures": 0,
    "ids_removed": 0
   },
-  "agent_cells.json": {
-   "submitted": 21,
-   "kept": 20,
+  "agent_external.json": {
+   "submitted": 12,
+   "kept": 11,
    "dropped": 1,
    "dropped_detail": [
     {
-     "text": "KDR has a high-scoring site (MGD score 0.841, pocket volume 361.1 A3, 7 accessible lysines, mean pLDDT 71.12), but it sits in endothelium, so any degrader would",
+     "text": "Established ccRCC target (VEGFR2). Open Targets association score 0.4566. Approved drugs include PAZOPANIB HYDROCHLORIDE APPROVAL, AXITINIB APPROVAL, TIVOZANIB ",
      "gene": "KDR",
-     "cited": 2,
+     "cited": 3,
      "nonexistent": [],
      "not_linked_to_gene": [],
      "kept": false,
      "unmatched_numbers": [
-      "71.12"
+      "0.079",
+      "-0.027"
      ],
      "direction_contradiction": null,
      "semantic_failure": true
     }
    ],
    "semantic_failures": 1,
+   "ids_removed": 0
+  },
+  "agent_cells.json": {
+   "submitted": 20,
+   "kept": 19,
+   "dropped": 1,
+   "dropped_detail": [
+    {
+     "text": "CD74 is an immune gene. Macrophages hold a 0.436 transcript share, CD8 T cells 0.345 and cDC 0.114. High-CD74 spots are enriched for T_cell (log2 0.388), macrop",
+     "gene": "CD74",
+     "cited": 3,
+     "nonexistent": [],
+     "not_linked_to_gene": [],
+     "kept": false,
+     "unmatched_numbers": [
+      "0.218",
+      "0.155"
+     ],
+     "direction_contradiction": null,
+     "semantic_failure": true
+    }
+   ],
+   "semantic_failures": 1,
+   "ids_removed": 0
+  },
+  "agent_applied.json": {
+   "submitted": 28,
+   "kept": 28,
+   "dropped": 0,
+   "dropped_detail": [],
+   "semantic_failures": 0,
    "ids_removed": 0
   }
  }

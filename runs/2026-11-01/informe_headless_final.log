@@ -1,10 +1,20 @@
-﻿The report is at `C:\Users\rafae\Documents\ccrcc-graphrag\reports\ccrcc_report.html`. The final check found 0 unsupported claims across 97 statements, and no narrative statements were dropped.
+﻿I have a template from the previous run. Now I'll wait for the five agents to finish.
 
-1. **CA9 has the strongest convergent evidence.** It is first in the overall ranking and the only gene that stays in the overall top ten when the weights are randomly re-weighted. It is higher in tumour than normal tissue at RNA (log2FC 6.312) and protein (2.269), and replicates in TCGA-KIRC (9.712). Single-cell data put 0.976 of its transcripts in tumour cells, and girentuximab is in Phase 3. CA9 is not a dependency in ccRCC cell lines, so it is best used as an antibody, imaging or radioligand target and as a diagnostic marker.
-2. **A stable second group of targets:** CD70, NNMT, ENPP3, SCARB1, SLC16A3 and HK2. All are higher in tumour, confirmed at protein level, replicated in TCGA, and hold up when the bulk signal is extrapolated to a pure tumour sample. SCARB1 is first in the data-driven target ranking, but I placed it below CD70, NNMT and ENPP3. It has no papers in the corpus and no drugs, and in single-cell data its expression is split between tumour cells, macrophages and blood-vessel cells.
-3. **The best biomarkers are genes lost with normal kidney-tubule identity:** PSAT1 is the most stable (probability 0.986 of staying in the top ten), then PCK1, SLC6A19 and ALDH6A1. All have significant survival associations in TCGA, so they are diagnostic or prognostic markers, not drug targets.
-4. **The known ccRCC targets mostly act through cells other than the tumour cells.** EPAS1 (belzutifan) is the only selective cell-line dependency among the genes discussed, and only partial; in single-cell data it is expressed mostly in blood-vessel and connective-tissue cells. KDR is a blood-vessel gene, and MTOR is essential in all cell types. VHL and PBRM1 are the driver mutations behind the tumour's response to low oxygen, which is why CA9 and NNMT are high.
-5. **Main caveat: no data-led candidate is a selective dependency.** The target calls rest on tumour-restricted expression and on whether the protein can be drugged, not on essentiality. The new candidates (COL23A1, RAB42, GAL3ST4) are hypotheses ranked from data alone. LILRB4's signal comes from infiltrating immune cells rather than the tumour.
+The omics agent is done. Four agents are still running.
 
-The subagents only read part of the large ranking file, and nobody ran the phosphosite or kinase-activity analyses; the report's limitations list both. The PubMed connector isn't authorized, but nothing in this run needed it.
+The literature agent is done too. Three agents are still running.
+
+Three agents are done (omics, literature, external). Waiting on the cell and applied agents.
+
+The applied agent is done. Only the cell agent is still running.
+
+The report is ready: `C:\Users\rafae\Documents\ccrcc-graphrag\reports\ccrcc_report.html`. The final check found 0 unsupported claims out of 118. One cells paragraph was first dropped because a value lacked its evidence id; I added the citation and re-ran.
+
+1. **CA9 has the strongest and most robust convergent evidence.** It is up in tumour (RNA log2FC 6.312, protein 2.269), replicates in TCGA-KIRC, is still up after correcting for tumour purity, and is carried by tumour cells in both single-cell datasets. Girentuximab has reached phase 3. It is not prognostic and not a dependency, so it suits an antibody, radioligand or imaging approach.
+2. **NNMT is the best combined target and biomarker.** It is tumour-intrinsic and prognostic (Cox log HR 0.301), and it holds in every validation layer: confirmatory proteomics, the second single-cell dataset and the literature. It has no drug, so as a target it is a small-molecule hypothesis.
+3. **CD70 and SCARB1 come next, each with a caveat.** CD70 has clinical antibodies and the best antibody-drug-conjugate (ADC) suitability score among the known targets (0.746), but 0.654 of its tumour transcripts come from immune cells and the two single-cell datasets disagree on which cells carry it. SCARB1 is the target whose rank changes least under re-weighting (top 10 in 0.968 of draws), but it has no literature or drug.
+4. **The leading biomarkers mark loss of normal kidney tubule identity.** PSAT1, PCK1, ALDH6A1, ALDOB and SLC22A8 are lost in tumour and prognostic; PSAT1 and PCK1 also replicate in confirmatory proteomics. EPAS1 (belzutifan) is the only candidate with a selective DepMap dependency, and it is borderline.
+5. **The clinical layers add caveats rather than confirmation.** No gene separates the IMmotion150 treatment arms, and no convergent target is a cell-line dependency. Some coverage is missing: CA9 and CD70 could not be tested in the confirmatory cohort, and HK2 was not checked there, so the report does not repeat the earlier note that HK2 fails to replicate. STRING interactions were not queried.
+
+The evidence check removed two findings from the agent files, one from the external agent and one from the cells agent.
 official exit 0

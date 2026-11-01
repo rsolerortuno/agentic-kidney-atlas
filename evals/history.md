@@ -229,3 +229,21 @@ Everything added since the first release is described here by purpose, not by th
 - Replication of protein and phosphosites in the confirmatory CPTAC cohort: the Proteomic Data Commons returned HTTP 503.
 - Pocket-based scoring was not extended in this version.
 - The agents do not yet narrate the treatment, subtype, ADC and immune tabs; those tables are deterministic code only.
+
+
+## Closing the gaps (version 16)
+
+- **Confirmatory cohort.** The processed global proteome and phosphosite matrices of the confirmatory CPTAC cohort (Proteomic
+  Data Commons, study PDC000411) were downloaded. Only patients outside the discovery cohort are used (111 tumours, about 86
+  matched pairs). Of 5,726 proteins significant in discovery and measured in both, 79 % replicate (same direction, q < 0.05),
+  94 % when the discovery change was at least 0.5 log2 units; rho 0.89. Phosphosites: 73 % of 5,946, rho 0.83. HK2 does not
+  replicate (q 0.07, opposite sign). CA9 and CD70 have fewer than 10 matched pairs in the label-free data and cannot be tested.
+- **Independence of the repeat runs.** One repeat reported its agent tools might have read the main run's files. Two causes
+  were closed: the run folder is now emptied of old agent, narrative and findings files at the start of every agent run, and
+  `.mcp.json` passes `CCRCC_RUN_DIR` to the tool servers (they start with a reduced environment). Rerun result: statements 118
+  (main), 127 and 128 (repeats), none unsupported or stale; mean Jaccard of the final target lists 0.94 and the first four
+  candidates identical. The earlier 0.84 came from the contaminated runs.
+- **A fifth agent** (`agente-aplicado`) with six new tools and six new evidence types (treatment response, subtype profile, ADC
+  profile, immune profile, second single-cell dataset, confirmatory replication), so the new tabs are narrated and checked like
+  the rest. `kg_applied.py` loads the evidence for a focus set of about 1,400 genes.
+- **Not done:** extension of the pocket score.

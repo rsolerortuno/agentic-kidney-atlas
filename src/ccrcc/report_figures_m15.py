@@ -138,3 +138,32 @@ def sc_replication_figure() -> str | None:
     fig.update_xaxes(title="share of tumour transcripts from tumour cells, Li 2022")
     fig.update_yaxes(title="same share, Zhang 2021")
     return _html(fig, 420, "Does a second dataset give the same cell attribution?")
+
+
+def confirmatory_scatter(kind: str) -> str | None:
+    """Discovery vs confirmatory log2 fold change for proteins or phosphosites measured in both cohorts."""
+    d = _read("confirmatory_protein.parquet" if kind == "protein" else "confirmatory_phospho.parquet")
+    if d is None:
+        return None
+    label = "gene" if kind == "protein" else "site_id"
+    d = d.dropna(subset=["disc_log2fc", "conf_log2fc"])
+    rep = d[d["replicates"]]
+    non = d[~d["replicates"]]
+    fig = go.Figure()
+    fig.add_trace(go.Scattergl(x=non["disc_log2fc"], y=non["conf_log2fc"], mode="markers", name="does not replicate", text=non[label],
+                               marker=dict(size=3, color="rgba(137,135,129,.4)"),
+                               hovertemplate="%{text}<br>discovery %{x:.2f}<br>confirmatory %{y:.2f}<extra></extra>"))
+    fig.add_trace(go.Scattergl(x=rep["disc_log2fc"], y=rep["conf_log2fc"], mode="markers", name="replicates", text=rep[label],
+                               marker=dict(size=3, color=CAT[0], opacity=.55),
+                               hovertemplate="%{text}<br>discovery %{x:.2f}<br>confirmatory %{y:.2f}<extra></extra>"))
+    if kind == "protein":
+        hl = d[d["gene"].isin(["CA9", "NDUFA4L2", "ENPP3", "NNMT", "SCARB1", "SLC16A3", "HK2", "PSAT1", "PCK1", "ALDOB", "EGFR", "MET"])]
+        fig.add_trace(go.Scatter(x=hl["disc_log2fc"], y=hl["conf_log2fc"], mode="markers+text", text=hl["gene"], textposition="top center",
+                                 name="candidates", marker=dict(size=8, color=CAT[1], symbol="diamond"),
+                                 hovertemplate="%{text}<br>discovery %{x:.2f}<br>confirmatory %{y:.2f}<extra></extra>"))
+    lo = float(min(d["disc_log2fc"].min(), d["conf_log2fc"].min()))
+    hi = float(max(d["disc_log2fc"].max(), d["conf_log2fc"].max()))
+    fig.add_trace(go.Scatter(x=[lo, hi], y=[lo, hi], mode="lines", line=dict(color=GRAY, dash="dot"), showlegend=False, hoverinfo="skip"))
+    fig.update_xaxes(title="change in tumour, discovery cohort (log2 fold change)")
+    fig.update_yaxes(title="change in tumour, confirmatory cohort (log2 fold change)")
+    return _html(fig, 440, "Proteins in two cohorts" if kind == "protein" else "Phosphosites in two cohorts")

@@ -52,6 +52,8 @@ def run_all(fresh: bool = True) -> int:
     print("    treatment:", _step("M15 treatment-response biomarkers (IMmotion150, Choueiri 2016)",
                                   treatment.run)["controls_reproduced"])
     _step("M15 genetic subtypes and ccA / ccB", subtypes.run)
+    from . import confirmatory
+    print("    confirmatory:", _step("Replication in the confirmatory CPTAC cohort", confirmatory.run)["protein"]["replication_rate"])
     _step("M3 literature ingestion (PubTator3, frozen PMID lists)", literature.ingest)
     _step("M3 rebuild extraction batches (deterministic)", literature.write_extraction_batches)
     print("    relations:", _step("M3 validate extracted relations", literature.validate_extractions))
@@ -80,6 +82,9 @@ def run_all(fresh: bool = True) -> int:
         return 1
     run = runs[-1]
     _step("convergence v3 + target / biomarker profiles + weight sensitivity", integrate.write, day=run.name)
+    from . import kg_applied
+    print("    applied claims:", _step("Load treatment, subtype, ADC, immune and replication evidence into the graph",
+                                   kg_applied.load_applied))
     print("    agents:", {k: (v.get("kept"), v.get("dropped")) for k, v in
                           _step("verify agents", verify_agents, run)["agents"].items()})
     _step("assemble findings.json", assemble, run)
@@ -100,7 +105,7 @@ def main(argv=None) -> int:
     for name in ("download", "omics", "literature", "validate-relations", "enrich", "graph", "integrate", "eval",
                  "singlecell", "spatial", "structure", "cell-graph", "discovery", "layers", "layers-graph",
                  "download-extra", "safety-clinical", "baselines", "treatment", "subtypes", "adc", "immune",
-                 "sc-replication", "spatial-viewer"):
+                 "sc-replication", "spatial-viewer", "confirmatory", "applied-graph"):
         sub.add_parser(name)
     ev = sub.choices["eval"]
     ev.add_argument("--qa", action="store_true", help="also run the known-answer questions with claude -p")
@@ -156,11 +161,12 @@ def main(argv=None) -> int:
     elif args.cmd == "layers-graph":
         from .kg_layers import load_layers
         print(json.dumps(load_layers(), indent=1))
-    elif args.cmd in ("treatment", "subtypes", "adc", "immune", "sc-replication", "spatial-viewer"):
+    elif args.cmd in ("treatment", "subtypes", "adc", "immune", "sc-replication", "spatial-viewer", "confirmatory", "applied-graph"):
         from importlib import import_module
-        mod = import_module({"sc-replication": ".sc_replication", "spatial-viewer": ".spatial_viewer"}.get(
+        mod = import_module({"sc-replication": ".sc_replication", "spatial-viewer": ".spatial_viewer",
+                                   "applied-graph": ".kg_applied"}.get(
             args.cmd, "." + args.cmd), __package__)
-        print(json.dumps(mod.run(), indent=1, default=str))
+        print(json.dumps((mod.load_applied if args.cmd == "applied-graph" else mod.run)(), indent=1, default=str))
     elif args.cmd == "baselines":
         from .baselines import run
         print(json.dumps(run(), indent=1, default=str))

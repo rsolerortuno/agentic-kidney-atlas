@@ -23,7 +23,8 @@ def _rows(df: pd.DataFrame, cols: list[str], n: int, nd: int = 3) -> list[dict]:
 def build(candidates: list[str]) -> dict:
     out: dict = {"treatment": _json("treatment_summary.json"), "subtypes": _json("subtypes_summary.json"),
                  "adc_summary": _json("adc_summary.json"), "immune_summary": _json("immune_summary.json"),
-                 "sc_rep": _json("sc_replication_summary.json")}
+                 "sc_rep": _json("sc_replication_summary.json"),
+                 "confirmatory": _json("confirmatory_summary.json")}
     t = PROCESSED / "layer_treatment.parquet"
     if t.exists():
         d = pd.read_parquet(t)

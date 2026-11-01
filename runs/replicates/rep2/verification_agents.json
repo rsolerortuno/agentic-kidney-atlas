@@ -1,8 +1,8 @@
 {
  "agents": {
   "agent_omics.json": {
-   "submitted": 14,
-   "kept": 14,
+   "submitted": 13,
+   "kept": 13,
    "dropped": 0,
    "dropped_detail": [],
    "semantic_failures": 0,
@@ -17,46 +17,41 @@
    "ids_removed": 1
   },
   "agent_external.json": {
-   "submitted": 10,
+   "submitted": 11,
    "kept": 10,
-   "dropped": 0,
-   "dropped_detail": [],
-   "semantic_failures": 0,
-   "ids_removed": 0
-  },
-  "agent_cells.json": {
-   "submitted": 19,
-   "kept": 17,
-   "dropped": 2,
+   "dropped": 1,
    "dropped_detail": [
     {
-     "text": "KDR has a high-scoring site (MGD 0.841, pocket 361.1 A3, 7 accessible lysines, mean pLDDT 71.12) but it acts on endothelium, so any glue would be a microenviron",
+     "text": "Established ccRCC target (VEGFR2). Open Targets association score 0.4566. Approved drugs include PAZOPANIB HYDROCHLORIDE (APPROVAL), AXITINIB (APPROVAL), TIVOZA",
      "gene": "KDR",
-     "cited": 2,
+     "cited": 4,
      "nonexistent": [],
      "not_linked_to_gene": [],
      "kept": false,
      "unmatched_numbers": [
-      "71.12"
-     ],
-     "direction_contradiction": null,
-     "semantic_failure": true
-    },
-    {
-     "text": "GAL3ST4 is a macrophage immune-track candidate (0.972 of tumor transcripts), 1 ccRCC paper, no clinical drug; TCGA log2FC 2.993 and adverse prognosis (Cox log H",
-     "gene": "GAL3ST4",
-     "cited": 5,
-     "nonexistent": [],
-     "not_linked_to_gene": [],
-     "kept": false,
-     "unmatched_numbers": [
-      "79.31"
+      "0.079"
      ],
      "direction_contradiction": null,
      "semantic_failure": true
     }
    ],
-   "semantic_failures": 2,
+   "semantic_failures": 1,
+   "ids_removed": 0
+  },
+  "agent_cells.json": {
+   "submitted": 19,
+   "kept": 19,
+   "dropped": 0,
+   "dropped_detail": [],
+   "semantic_failures": 0,
+   "ids_removed": 0
+  },
+  "agent_applied.json": {
+   "submitted": 30,
+   "kept": 30,
+   "dropped": 0,
+   "dropped_detail": [],
+   "semantic_failures": 0,
    "ids_removed": 0
   }
  }

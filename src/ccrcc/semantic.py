@@ -60,7 +60,9 @@ def project_facts() -> frozenset:
     vals: set[float] = set()
     for name in ("omics_summary.json", "sc_meta.json", "layers_summary.json", "graph_stats.json",
                  "spatial_summary.json", "layer_mutations_meta.json", "layer_dependency_lines.json",
-                 "discovery_summary.json", "structure_summary.json", "safety_clinical_summary.json"):
+                 "discovery_summary.json", "structure_summary.json", "safety_clinical_summary.json",
+                 "treatment_summary.json", "subtypes_summary.json", "adc_summary.json", "immune_summary.json",
+                 "sc_replication_summary.json", "confirmatory_summary.json"):
         p = PROCESSED / name
         if p.exists():
             try:
