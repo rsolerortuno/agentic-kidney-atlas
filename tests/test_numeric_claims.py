@@ -81,6 +81,8 @@ def test_verifier_passes_bindings_and_final_does_not_hide_filtered_failures(tmp_
             return {"valid":["EV:test"]}
         def get_evidence(self, ids):
             return [NESTED]
+    # This unit test supplies a canonical symbol; HGNC lookup is integration coverage.
+    monkeypatch.setattr(verify, "resolve_gene", lambda gene: gene)
     v = verify.Verifier(store=Store())
     monkeypatch.setattr(v, "_gene_evidence", lambda gene: {"EV:test"})
     statement = {"gene":"CA9", "evidence_ids":["EV:test"],
