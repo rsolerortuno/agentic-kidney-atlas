@@ -4,19 +4,39 @@
   {
    "gene": "CA9",
    "role": "target_and_biomarker",
-   "statement": "CA9 has the broadest literature support among the top-ranked genes. PMID:42473996 reports CA9 is preferentially enriched in ccRCC tumor cells with low background expression in normal kidney, and CA9-targeted PET gives proof-of-concept noninvasive discrimination of ccRCC from non-clear-cell RCC, 'warranting prospective validation'. High CA9 PET uptake was associated with PBRM1 loss-of-function. This is a single imaging study, not a validated clinical biomarker. The omics streams agree (upregulated in tumour, replicated in TCGA, tumour-intrinsic), and girentuximab (Phase 3) is the drug on record. TCGA Cox shows no prognostic signal for CA9 (padj 0.933), so the literature supports diagnostic/imaging use rather than prognostic use.",
+   "statement": "PMID:42473996 reports preferential CA9 enrichment in ccRCC tumour cells, an association between PET uptake and PBRM1 alterations, and imaging discrimination that requires prospective validation. This is evidence for an imaging hypothesis, not an independently validated diagnostic test or proof of tumour exclusivity across all tissues. Local univariate overall-survival analysis: [gene=CA9; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=-0.009] [gene=CA9; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; padj=0.9326]. The adjusted test does not establish a survival association. Frozen drug annotations: GIRENTUXIMAB (PHASE_3). Stage labels do not establish a ccRCC indication or efficacy.",
    "evidence_ids": [
     "EV:literature:534430b0156d",
     "EV:literature:7f2628a50d15",
     "EV:literature:687723b4e539",
     "EV:chunk:3457e05b2329",
-    "EV:chunk:d40fdeaee3e8"
+    "EV:chunk:d40fdeaee3e8",
+    "EV:tcga_survival:225a767ebcb5",
+    "EV:open_targets_drug:646a0aec5b64"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:tcga_survival:225a767ebcb5",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "-0.009",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:225a767ebcb5",
+     "field": [
+      "padj"
+     ],
+     "display": "0.9326",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "CD70",
    "role": "target",
-   "statement": "CD70 is described as commonly overexpressed in RCC and minimally expressed in normal tissue, making it a potential therapeutic target (PMID:38195301). It correlates with hypoxia pathway proteins and is suggested to be a downstream HIF target. In PMID:39510586, CD70 expression is associated with distant metastasis and overall survival, and CD70-specific single-domain antibodies were labelled with 68Ga as radiotracers. The corpus also holds CD70-targeted allogeneic CAR T-cell therapy and CAIX/CD70 theranostics papers (titles and abstract sentences only). Open Targets lists vorsetuzumab and cusatuzumab, both early-phase. Data and literature agree on tumour-specific up-regulation. CD70 prognosis is not supported by TCGA Cox (padj 0.175).",
+   "statement": "PMID:38195301 reports RCC overexpression and correlation with hypoxia-pathway proteins. PMID:39510586 describes clinical associations and CD70-directed radiotracer development. Those study-level claims do not establish tumour-cell restriction in the current cohorts, where cell-attribution results conflict. Early clinical antibody programmes are not proof of efficacy. Local univariate overall-survival analysis: [gene=CD70; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=0.126] [gene=CD70; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; padj=0.1747]. The adjusted test does not establish a survival association. Frozen drug annotations: VORSETUZUMAB (PHASE_1); CUSATUZUMAB (PHASE_2). Stage labels do not establish a ccRCC indication or efficacy.",
    "evidence_ids": [
     "EV:literature:92dc16d8b33c",
     "EV:literature:3db6a5b218c7",
@@ -24,94 +44,521 @@
     "EV:literature:e23d2f8cb981",
     "EV:literature:453d456e73e3",
     "EV:chunk:71aa24ad9e3e",
-    "EV:chunk:b3b97feff5ba"
+    "EV:chunk:b3b97feff5ba",
+    "EV:tcga_survival:908e84663f6a",
+    "EV:open_targets_drug:fcadbe214e8c",
+    "EV:open_targets_drug:0a02c566ec75"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:tcga_survival:908e84663f6a",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "0.126",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:908e84663f6a",
+     "field": [
+      "padj"
+     ],
+     "display": "0.1747",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "NNMT",
    "role": "target_and_biomarker",
-   "statement": "NNMT is the only top gene with both prognostic and therapeutic literature. PMID:41399267 reports NNMT significantly upregulated in tumour tissue and high NNMT expression correlating with worse overall and disease-specific survival (P < 0.001), while HILPDA showed no prognostic impact. The authors call it a promising prognostic biomarker and potential therapeutic target, supported by transcriptomic, clinical and functional validation. PMID:37523719 describes potent selective NNMT inhibitors (II559, II802, over 5000-fold selectivity), though not in a ccRCC setting. PMID:42440812 reports an NNMT inhibitor suppressing FN1 expression and tumor progression in vitro and in vivo. The data profiles agree: TCGA Cox padj 0.00479 and rank 4 convergence/rank 6 biomarker. Still, the evidence is from single retrospective/preclinical studies, and DepMap mean effect in ccRCC is 0.316 (no dependency).",
+   "statement": "PMID:41399267 reports tumour enrichment and a survival association, motivating a prognostic and therapeutic hypothesis. PMID:37523719 describes inhibitors II559 and II802, including enzyme-assay selectivity and clear-cell renal cancer cell-line experiments; the earlier description as unrelated to ccRCC was incorrect. PMID:42440812 reports suppression of FN1 expression and tumour progression in experimental models. These findings remain study-specific and preclinical rather than clinical efficacy evidence. Local univariate overall-survival analysis: [gene=NNMT; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=0.301] [gene=NNMT; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; padj=0.0048]. This association does not establish independent prognostic utility. Measured cell-line dependency: [gene=NNMT; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=0.316] [gene=NNMT; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; padj=0.0725]. Selective dependency is not established under the configured rule. Computed convergence profile: [gene=NNMT; type=analysis_ranking; source=ANALYSIS:ranking:convergence:8d5ff79b77e8d233; profile=convergence; rank=7] [gene=NNMT; type=analysis_ranking; source=ANALYSIS:ranking:convergence:8d5ff79b77e8d233; profile=convergence; score=3.9643]. Computed target profile: [gene=NNMT; type=analysis_ranking; source=ANALYSIS:ranking:target:8d5ff79b77e8d233; profile=target; rank=4] [gene=NNMT; type=analysis_ranking; source=ANALYSIS:ranking:target:8d5ff79b77e8d233; profile=target; score=3.7143]. Computed biomarker profile: [gene=NNMT; type=analysis_ranking; source=ANALYSIS:ranking:biomarker:8d5ff79b77e8d233; profile=biomarker; rank=6] [gene=NNMT; type=analysis_ranking; source=ANALYSIS:ranking:biomarker:8d5ff79b77e8d233; profile=biomarker; score=4.7744]. Reported enzyme-assay affinity, in nM: [gene=NNMT; type=literature_review; source=PMID:37523719; reported_metrics.II559_Ki_nM=1.2] [gene=NNMT; type=literature_review; source=PMID:37523719; reported_metrics.II802_Ki_nM=1.6]. The reported selectivity is greater than this fold lower bound: [gene=NNMT; type=literature_review; source=PMID:37523719; reported_metrics.selectivity_fold_lower_bound=5000]. These source-reported measurements are not independent experiments performed by this project.",
    "evidence_ids": [
     "EV:literature:111b19cdfe29",
     "EV:literature:8945a590eaca",
     "EV:literature:c57be95f20a6",
-    "EV:literature:5d5690eab84a"
+    "EV:literature:5d5690eab84a",
+    "EV:tcga_survival:7dbf93860d9f",
+    "EV:depmap_dependency:7dbf93860d9f",
+    "EV:analysis_ranking:184a1e09f8bd",
+    "EV:analysis_ranking:6d3fe6ac1bbb",
+    "EV:analysis_ranking:628e6d0a6d70",
+    "EV:literature_review:7085e26e137f",
+    "EV:literature_review:4c83ca520443"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:tcga_survival:7dbf93860d9f",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "0.301",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:7dbf93860d9f",
+     "field": [
+      "padj"
+     ],
+     "display": "0.0048",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:7dbf93860d9f",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "0.316",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:7dbf93860d9f",
+     "field": [
+      "padj"
+     ],
+     "display": "0.0725",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:184a1e09f8bd",
+     "field": [
+      "rank"
+     ],
+     "display": "7",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:184a1e09f8bd",
+     "field": [
+      "score"
+     ],
+     "display": "3.9643",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:6d3fe6ac1bbb",
+     "field": [
+      "rank"
+     ],
+     "display": "4",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:6d3fe6ac1bbb",
+     "field": [
+      "score"
+     ],
+     "display": "3.7143",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:628e6d0a6d70",
+     "field": [
+      "rank"
+     ],
+     "display": "6",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:628e6d0a6d70",
+     "field": [
+      "score"
+     ],
+     "display": "4.7744",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:literature_review:7085e26e137f",
+     "field": [
+      "reported_metrics",
+      "II559_Ki_nM"
+     ],
+     "display": "1.2",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:literature_review:7085e26e137f",
+     "field": [
+      "reported_metrics",
+      "II802_Ki_nM"
+     ],
+     "display": "1.6",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:literature_review:7085e26e137f",
+     "field": [
+      "reported_metrics",
+      "selectivity_fold_lower_bound"
+     ],
+     "display": "5000",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "SLC16A3",
    "role": "mechanism",
-   "statement": "PMID:42028950 reports SLC16A3-induced lactate remodeling drives immune evasion in ccRCC through an autocrine GPR81-ERK-c-MYC loop. SLC16A3-mediated lactate export activated macrophage ERK signaling in a GPR81-dependent manner, promoted M2 macrophage polarization and suppressed CD8+ T-cell function. This is a mechanistic study that nominates SLC16A3 (MCT4) as an immune-metabolic target. It is one paper, not clinically validated. Omics data (tumour up, rank 3) are concordant, but DepMap shows no dependency (mean effect -0.015), so any benefit would be via the microenvironment rather than tumour-cell viability.",
+   "statement": "PMID:42028950 reports a lactate/GPR81/ERK mechanism involving macrophage polarization and T-cell function in ccRCC. This supports a mechanistic hypothesis. A negative cell-line dependency result cannot prove that any therapeutic benefit must act exclusively through the microenvironment. Measured cell-line dependency: [gene=SLC16A3; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=-0.015] [gene=SLC16A3; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; padj=0.9288]. Selective dependency is not established under the configured rule. Computed target profile: [gene=SLC16A3; type=analysis_ranking; source=ANALYSIS:ranking:target:8d5ff79b77e8d233; profile=target; rank=3] [gene=SLC16A3; type=analysis_ranking; source=ANALYSIS:ranking:target:8d5ff79b77e8d233; profile=target; score=3.7597].",
    "evidence_ids": [
     "EV:literature:40d5741774e9",
-    "EV:literature:9fd0ce3fec73"
+    "EV:literature:9fd0ce3fec73",
+    "EV:depmap_dependency:11298113327b",
+    "EV:analysis_ranking:d91e84c1bae5"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:depmap_dependency:11298113327b",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "-0.015",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:11298113327b",
+     "field": [
+      "padj"
+     ],
+     "display": "0.9288",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:d91e84c1bae5",
+     "field": [
+      "rank"
+     ],
+     "display": "3",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:d91e84c1bae5",
+     "field": [
+      "score"
+     ],
+     "display": "3.7597",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "SLC6A19",
    "role": "biomarker",
-   "statement": "SLC6A19 is down-regulated in tumour and is a protective-type biomarker in the data (TCGA Cox padj 1.07e-7, biomarker rank 4). The only literature (PMID:40099255, a bioinformatics plus cell experiment study) says SLC6A19 could inhibit invasion and proliferation of ccRCC cells and is correlated with fatty acid metabolism and CPT1A. This is one signature-type study; it makes SLC6A19 a tumour-suppressive marker, not a drug target, even though the target profile carries it.",
+   "statement": "PMID:40099255 reports experiments linking SLC6A19 to reduced invasion/proliferation and to fatty-acid-metabolism pathways. This supports a candidate tumour-suppressive mechanism in the reported experiments, not a validated clinical biomarker or an indication to inhibit the protein. Local univariate overall-survival analysis: [gene=SLC6A19; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=-0.456] [gene=SLC6A19; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; padj=1.07e-07]. This association does not establish independent prognostic utility. Computed biomarker profile: [gene=SLC6A19; type=analysis_ranking; source=ANALYSIS:ranking:biomarker:8d5ff79b77e8d233; profile=biomarker; rank=4] [gene=SLC6A19; type=analysis_ranking; source=ANALYSIS:ranking:biomarker:8d5ff79b77e8d233; profile=biomarker; score=5.0078].",
    "evidence_ids": [
     "EV:literature:8a5730511173",
-    "EV:literature:29e37c391729"
+    "EV:literature:29e37c391729",
+    "EV:tcga_survival:a68c82cb3c87",
+    "EV:analysis_ranking:67a9ce1d0a4c"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:tcga_survival:a68c82cb3c87",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "-0.456",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:a68c82cb3c87",
+     "field": [
+      "padj"
+     ],
+     "display": "1.07e-07",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:67a9ce1d0a4c",
+     "field": [
+      "rank"
+     ],
+     "display": "4",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:67a9ce1d0a4c",
+     "field": [
+      "score"
+     ],
+     "display": "5.0078",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "SLC2A1",
    "role": "biomarker",
-   "statement": "PMID:40341002 lists SLC2A1 (GLUT1) among glycolysis-related biomarkers (with PFKP and PDK1) as showing strong diagnostic and prognostic potential in KIRC. This is a bioinformatic signature claim. The data partly agree: TCGA Cox padj 0.0411, tumour up, but the tumour log2FC (1.898) is modest compared with other top genes.",
+   "statement": "PMID:40341002 nominates SLC2A1 among glycolysis-related biomarkers. A bioinformatic signature claim does not by itself establish diagnostic or prognostic utility in independent patients. Local univariate overall-survival analysis: [gene=SLC2A1; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=0.197] [gene=SLC2A1; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; padj=0.0411]. This association does not establish independent prognostic utility. TCGA tumour-versus-normal RNA: [gene=SLC2A1; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=1.8979] [gene=SLC2A1; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; padj=1.98e-16].",
    "evidence_ids": [
-    "EV:literature:2fc20563c788"
+    "EV:literature:2fc20563c788",
+    "EV:tcga_survival:ba3fb9165f81",
+    "EV:tcga_de:ba3fb9165f81"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:tcga_survival:ba3fb9165f81",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "0.197",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:ba3fb9165f81",
+     "field": [
+      "padj"
+     ],
+     "display": "0.0411",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:ba3fb9165f81",
+     "field": [
+      "log2fc"
+     ],
+     "display": "1.8979",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:ba3fb9165f81",
+     "field": [
+      "padj"
+     ],
+     "display": "1.98e-16",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "IGFBP3",
    "role": "biomarker",
-   "statement": "IGFBP3 appears in PMID:36901940 as one of the most consistently upregulated genes in ccRCC (together with PLIN2, PLOD2, PFKP, VEGFA and CCND1). Literature is limited to this one differential-expression statement; there is no prognostic or therapeutic evidence in the corpus, and TCGA Cox is not significant (padj 0.663).",
+   "statement": "PMID:36901940 reports IGFBP3 among genes with increased expression in ccRCC. The cited material establishes an expression observation, not therapeutic efficacy or a validated prognostic biomarker. The limited retrieved corpus does not establish absence of other published evidence. Local univariate overall-survival analysis: [gene=IGFBP3; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=0.047] [gene=IGFBP3; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; padj=0.6632]. The adjusted test does not establish a survival association.",
    "evidence_ids": [
-    "EV:literature:b7cef02b17a6"
+    "EV:literature:b7cef02b17a6",
+    "EV:tcga_survival:9b88ea7f31b9"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:tcga_survival:9b88ea7f31b9",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "0.047",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:9b88ea7f31b9",
+     "field": [
+      "padj"
+     ],
+     "display": "0.6632",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "HK2",
    "role": "mechanism",
-   "statement": "HK2 ranks 9 in the convergence and target profiles (strong omics, TCGA replication) but has no literature relation in the corpus; the only hits are generic glycolysis sentences from PMID:39091581 (ENO2 knockdown reduced expression of GLUT1, PKM2 and hexokinase 2 among glycolysis readouts). Literature support for HK2 as a ccRCC target is therefore effectively absent here, and DepMap mean effect is -0.123.",
+   "statement": "PMID:39091581 studies ENO2 perturbation and includes hexokinase as a glycolysis readout. That sentence is not a direct HK2 intervention experiment and does not establish HK2 as a therapeutic target. Sparse retrieved literature is not proof that no relevant publication exists. Measured cell-line dependency: [gene=HK2; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=-0.123] [gene=HK2; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; padj=0.4459]. Selective dependency is not established under the configured rule. Computed convergence profile: [gene=HK2; type=analysis_ranking; source=ANALYSIS:ranking:convergence:8d5ff79b77e8d233; profile=convergence; rank=54] [gene=HK2; type=analysis_ranking; source=ANALYSIS:ranking:convergence:8d5ff79b77e8d233; profile=convergence; score=3.0935]. Computed target profile: [gene=HK2; type=analysis_ranking; source=ANALYSIS:ranking:target:8d5ff79b77e8d233; profile=target; rank=9] [gene=HK2; type=analysis_ranking; source=ANALYSIS:ranking:target:8d5ff79b77e8d233; profile=target; score=3.5725].",
    "evidence_ids": [
-    "EV:chunk:05c7ed50764d"
+    "EV:chunk:05c7ed50764d",
+    "EV:depmap_dependency:c5d66c7fafe1",
+    "EV:analysis_ranking:7b3f71aadac4",
+    "EV:analysis_ranking:ff8af293dd53"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:depmap_dependency:c5d66c7fafe1",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "-0.123",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:c5d66c7fafe1",
+     "field": [
+      "padj"
+     ],
+     "display": "0.4459",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:7b3f71aadac4",
+     "field": [
+      "rank"
+     ],
+     "display": "54",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:7b3f71aadac4",
+     "field": [
+      "score"
+     ],
+     "display": "3.0935",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:ff8af293dd53",
+     "field": [
+      "rank"
+     ],
+     "display": "9",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:ff8af293dd53",
+     "field": [
+      "score"
+     ],
+     "display": "3.5725",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "PSAT1",
    "role": "biomarker",
-   "statement": "PSAT1 is the top biomarker-profile gene (down in tumour, TCGA Cox padj 5.66e-7, rank 1) yet has no literature relation in this corpus. The only relevant sentence (PMID:41971124) says PSAT1 was positively enriched in oncogenic signaling, glycolysis and cholesterol homeostasis, which is in the opposite direction to the data-defined down-regulation in ccRCC. Context of that sentence is not clear (it may refer to another cohort or cancer), so the contradiction is unresolved.",
+   "statement": "The complete abstract of PMID:41971124 explicitly includes PSAT1 in a signature with reduced RNA and protein expression in ccRCC. Its pathway-enrichment statement concerns a different comparison and is not a contradiction of tumour-versus-normal downregulation. Functional intervention in that abstract concerns HPGD, not PSAT1. The earlier unresolved-contradiction claim is corrected. Local univariate overall-survival analysis: [gene=PSAT1; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=0.43] [gene=PSAT1; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; padj=5.66e-07]. This association does not establish independent prognostic utility. Computed biomarker profile: [gene=PSAT1; type=analysis_ranking; source=ANALYSIS:ranking:biomarker:8d5ff79b77e8d233; profile=biomarker; rank=1] [gene=PSAT1; type=analysis_ranking; source=ANALYSIS:ranking:biomarker:8d5ff79b77e8d233; profile=biomarker; score=5.3696].",
    "evidence_ids": [
-    "EV:chunk:3413ec529d30"
+    "EV:chunk:3413ec529d30",
+    "EV:tcga_survival:58119698ea36",
+    "EV:analysis_ranking:159ae9ab0bb7",
+    "EV:literature_review:d9ee30436e30"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:tcga_survival:58119698ea36",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "0.43",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:58119698ea36",
+     "field": [
+      "padj"
+     ],
+     "display": "5.66e-07",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:159ae9ab0bb7",
+     "field": [
+      "rank"
+     ],
+     "display": "1",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:159ae9ab0bb7",
+     "field": [
+      "score"
+     ],
+     "display": "5.3696",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "SCARB1",
    "role": "target",
-   "statement": "SCARB1 is the convergence and target rank 1 gene (tumour up, TCGA replicated, tumour-intrinsic, genetic association from Open Targets) but the corpus contains no literature relation for it and no useful sentence chunks. This is a data-only candidate; the literature neither supports nor contradicts it.",
+   "statement": "The retained literature findings do not provide a direct experimental study for SCARB1. Its prioritisation here is data-driven; absence of a relation in this bounded corpus is not evidence of absence of relevant literature. Computed convergence profile: [gene=SCARB1; type=analysis_ranking; source=ANALYSIS:ranking:convergence:8d5ff79b77e8d233; profile=convergence; rank=5] [gene=SCARB1; type=analysis_ranking; source=ANALYSIS:ranking:convergence:8d5ff79b77e8d233; profile=convergence; score=4.1052]. Computed target profile: [gene=SCARB1; type=analysis_ranking; source=ANALYSIS:ranking:target:8d5ff79b77e8d233; profile=target; rank=1] [gene=SCARB1; type=analysis_ranking; source=ANALYSIS:ranking:target:8d5ff79b77e8d233; profile=target; score=4.1314].",
    "evidence_ids": [
-    "EV:omics_de:36b227bd1fb6"
+    "EV:omics_de:36b227bd1fb6",
+    "EV:analysis_ranking:c8692741216b",
+    "EV:analysis_ranking:fec77c62f0a2"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:analysis_ranking:c8692741216b",
+     "field": [
+      "rank"
+     ],
+     "display": "5",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:c8692741216b",
+     "field": [
+      "score"
+     ],
+     "display": "4.1052",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:fec77c62f0a2",
+     "field": [
+      "rank"
+     ],
+     "display": "1",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:fec77c62f0a2",
+     "field": [
+      "score"
+     ],
+     "display": "4.1314",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "ENPP3",
    "role": "target",
-   "statement": "ENPP3 (rank 6, ADC AGS-16C3F in Phase 2 per Open Targets, tumour log2FC 5.557) has no literature relation in this corpus. Its clinical-stage drug history is therefore not backed by ccRCC abstracts in the graph and should be treated as data/Open Targets support only.",
+   "statement": "The evidence cited here for ENPP3 prioritisation and clinical development comes from the expression and Open Targets records. The bounded literature extraction does not independently substantiate efficacy of the ADC programme. Computed target profile: [gene=ENPP3; type=analysis_ranking; source=ANALYSIS:ranking:target:8d5ff79b77e8d233; profile=target; rank=6] [gene=ENPP3; type=analysis_ranking; source=ANALYSIS:ranking:target:8d5ff79b77e8d233; profile=target; score=3.6933]. TCGA tumour-versus-normal RNA: [gene=ENPP3; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=5.5569] [gene=ENPP3; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; padj=1.66e-22]. Frozen drug annotations: AGS-16C3F (PHASE_2). Stage labels do not establish a ccRCC indication or efficacy.",
    "evidence_ids": [
     "EV:omics_de:d540450c23e1",
-    "EV:open_targets_drug:49872cd86a77"
+    "EV:open_targets_drug:49872cd86a77",
+    "EV:analysis_ranking:b9d812ddc75b",
+    "EV:tcga_de:d5aee88146ed"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:analysis_ranking:b9d812ddc75b",
+     "field": [
+      "rank"
+     ],
+     "display": "6",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:b9d812ddc75b",
+     "field": [
+      "score"
+     ],
+     "display": "3.6933",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:d5aee88146ed",
+     "field": [
+      "log2fc"
+     ],
+     "display": "5.5569",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:d5aee88146ed",
+     "field": [
+      "padj"
+     ],
+     "display": "1.66e-22",
+     "unit": "native"
+    }
    ]
   }
  ],
  "caveats": [
-  "The corpus has about 320 ccRCC abstracts, so only a few of the top 40 genes (CA9, CD70, NNMT, SLC16A3, SLC6A19, SLC2A1, IGFBP3) have literature relations; many of the best data candidates (SCARB1, ENPP3, FABP6, CYP2J2, HK2, ANGPTL4, PNCK, TNFAIP6, SCD, PSAT1, PCK1, ALDH6A1, PPP1R1A, SLPI, DUSP9) have none.",
-  "Most literature claims are single retrospective, bioinformatic or preclinical studies; none is a randomised clinical validation. The CA9 PET paper explicitly calls for prospective validation.",
-  "CA9, CD70 and ENPP3 are strongly tumour-specific in the data but are not prognostic in TCGA Cox, and DepMap shows no dependency for any top target; their value is as antibody/radioligand/ADC surface targets, not as essential genes.",
-  "The PSAT1 sentence found points to oncogenic enrichment while TCGA/CPTAC show down-regulation in ccRCC; the abstract context was not verified.",
-  "Belzutifan/EPAS1 (HIF-2a) is rank 38 with an approved drug but zero literature relations in the graph; the standard-of-care HIF-2a axis is under-represented in the corpus.",
-  "Search by BM25 returned noisy off-topic chunks for gene-symbol OR queries; absence of hits is weak evidence of absence."
- ]
+  "The bounded abstract corpus is incomplete; absence of extracted relations is not absence of literature.",
+  "An extracted sentence may need full abstract context. PSAT1 pathway enrichment was previously misread as contradictory expression evidence.",
+  "Reported preclinical and observational results do not establish clinical efficacy or independent biomarker validation.",
+  "Drug identity, profile identity and metric identity must match the actual cited record; a matching gene is insufficient."
+ ],
+ "revision": {
+  "method": "Reviewed saved literature-agent statements against cited local source sentences and complete abstracts, with exact bindings for local and curated reported metrics"
+ }
 }

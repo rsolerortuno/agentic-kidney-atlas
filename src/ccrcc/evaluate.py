@@ -151,9 +151,9 @@ def write_results(rec: dict, qa: dict | None, outcomes: dict | None = None, base
                   "the tractable set would be ~"
                   f"{100 / max(outcomes.get('n_predicted_tractable', 1), 1):.1%} per tractable gold gene by chance, and by the "
                   "\"without tractability\" row."]
-        lines += ["", f"### Temporal holdout: first RCC trial on or after {g['cutoff']} "
+        lines += ["", f"### Retrospective post-2016 evaluation: first RCC trial on or after {g['cutoff']} "
                   f"({len(g['temporal_holdout_targets'])} genes: {', '.join(g['temporal_holdout_targets'])})", "",
-                  "Earlier clinical targets are removed from the background.", ""] + _fmt_metrics(outcomes["temporal_holdout"])
+                  "Other eligible clinical targets, including those with incomplete dates, are removed from the background. First observed RCC trial dates use all phases. Features are not frozen before 2016: this is retrospective, not prospective validation.", ""] + _fmt_metrics(outcomes["temporal_holdout"])
         lines += ["", f"### Prognostic biomarkers: ClearCode34 ({len(g['clearcode34'])} of 34 genes mapped; Brooks et al. 2014)", "",
                   "ClearCode34 was validated in TCGA, which the biomarker profile's prognosis component also uses; the last row "
                   "removes that component. A literature-based gold set (verbatim `biomarker_of` relations from the disease-level "
@@ -196,3 +196,14 @@ def write_results(rec: dict, qa: dict | None, outcomes: dict | None = None, base
                                                     "sensitivity": sensitivity, "baselines": baselines},
                                                    indent=1, default=str), encoding="utf-8")
     return out
+
+
+def rebuild_saved_evaluation(run: Path | None = None) -> Path:
+    """Recompute deterministic evaluations; reuse only the frozen model answers."""
+    from .baselines import run as compare_baselines
+    from .outcomes import run as evaluate_outcomes
+
+    qa = grade_answers(EVALS / "qa_answers.json", "saved claude-sonnet-5-5 answers (regex regraded)")
+    sensitivity = json.loads((PROCESSED / "sensitivity_summary.json").read_text(encoding="utf-8"))
+    return write_results(recall(), qa, evaluate_outcomes(compute()),
+                         compare_baselines(cached_only=True, official=run), sensitivity)

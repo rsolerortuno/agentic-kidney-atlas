@@ -50,7 +50,7 @@ def build(store: GraphStore | None = None) -> dict:
             continue
         v = r["ligand_site_validation"]
         for c in r["pockets"][:1]:
-            ids = [evidence_id("mgd_site", r["uniprot"], c["cavity"]), evidence_id("alphafold", r["uniprot"], r["version"])]
+            ids = [evidence_id("structural_context", r["uniprot"], c["cavity"]), evidence_id("alphafold", r["uniprot"], r["version"])]
             if v.get("checked"):
                 ids.append(evidence_id("ligand_sites", r["uniprot"]))
             pocket_rows.append({"gene": r["gene"], "control": bool(r.get("control")), "uniprot": r["uniprot"], "mean_plddt": r["mean_plddt"],
@@ -89,7 +89,7 @@ def discovery_block(store: GraphStore, st: dict, sc: dict) -> dict:
             ids.append(evidence_id("tcga_survival", r.gene))
         pk = pockets.get(r.gene)
         if pk:
-            ids.append(evidence_id("mgd_site", pk_acc(st, r.gene), pk["cavity"]))
+            ids.append(evidence_id("structural_context", pk_acc(st, r.gene), pk["cavity"]))
         why = (f"{r.source_group} cells hold {r.source_share:.0%} of its tumour transcripts ({r.source_pct:.0f} % of cells express it); "
                f"tumor RNA log2FC {r.rna_log2fc:.2f} and protein log2FC {r.protein_log2fc:.2f}; "
                f"{int(r.ccrcc_papers)} ccRCC papers ({int(r.total_papers)} overall); "

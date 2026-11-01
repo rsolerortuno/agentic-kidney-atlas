@@ -34,8 +34,8 @@ Follow these steps exactly. All numbers come from tools/scripts; you never compu
    ```
    - `cells`, `spatial` and `structure` come from `agent_cells.verified.json`: which cell type expresses each
      candidate (tumor-intrinsic vs stromal / immune), what surrounds it in situ, and which candidates have a
-     credible molecular-glue-degrader site. Say explicitly when a bulk-omics candidate is not tumor-intrinsic, and
-     present MGD scores as a ranking of sites, never as evidence that a degrader exists.
+     computationally detected cavity in a predicted monomer. Say explicitly when a bulk-omics candidate is not tumor-intrinsic, and
+     present structural-context scores as descriptive heuristics, never as evidence of a degron or degrader. Use only curated experimental degron/ternary references and distinguish their original protein, ligase and compound from candidate-specific evidence.
    - `discovery` (2–4 paragraphs): from the `role: "discovery"` findings of `agent_cells.verified.json`. Treat each track
      separately (tumor, stroma, immune: the pool is mostly immune genes). For the leading candidates say what makes them
      novel and what the independent layers show — TCGA replication, whether the change survives extrapolation to a pure tumour
@@ -59,15 +59,16 @@ Follow these steps exactly. All numbers come from tools/scripts; you never compu
    - 2–4 summary paragraphs; 1–3 paragraphs per section; 8–12 entries in `targets` ordered by your judgment of
      strength (you may depart from the numeric ranking, but say why in `rationale`). Use the target profile for
      target calls and the biomarker profile for biomarker calls; the overall convergence score mixes both.
-   - Numbers are checked automatically against the evidence each paragraph cites (and that gene's rows in
-     `convergence.json`): copy values exactly, cite the evidence of every value you quote, and do not put one
-     gene's numbers in a paragraph tagged with another gene.
+   - Read `docs/numeric-claims.md`. Bind numbers to their specific metric, evidence ID and context.
+     Include `numeric_claims` with exact canonical annotations for multi-layer/nested metrics. Do not
+     use ranking/global number pools. Preserve signs and units. Passing automatic checks is not
+     complete scientific validation.
    - Every summary/section paragraph and every target MUST cite evidence ids copied from the verified agent files
      or from `convergence.json`. A paragraph that discusses one specific gene should carry `"gene": "<symbol>"`
      and cite only that gene's evidence. Limitations need no ids.
 
 5. Run `uv run python scripts/assemble.py` then `uv run python scripts/verify.py final`.
-   If it reports any unsupported claim, fix `narrative.json` (remove or re-cite the statement) and repeat step 5
-   until it prints `unsupported claims: 0`.
+   If it reports any unsupported claim, review and correct the original agent/narrative inputs (metric, citation, context or interpretation) and repeat step 5
+   and re-run agent verification when its inputs change. Inspect all dropped statements; do not discard substantive results merely to obtain `unsupported claims: 0`.
 
 6. Run `uv run python scripts/render.py` and reply with the report path and a 5-line summary.

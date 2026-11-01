@@ -1,22 +1,2043 @@
-{"agent":"agente-celular","findings":[
-{"gene":"CA9","role":"target_and_biomarker","statement":"CA9 is the top convergence gene (rank 1, score 4.5197). In tumor scRNA-seq 54.7% of RCC cells express it and RCC holds 0.976 of tissue transcripts (cpm_share 0.958); it is tumor-intrinsic. Tumor cells vs proximal tubule: log2FC 7.739 (padj 0.0189, 6 donors). TCGA log2FC 9.712, and 7.787 at purity 1.","evidence_ids":["EV:sc_summary:225a767ebcb5","EV:sc_expr:35b84fee998f","EV:sc_tvp:225a767ebcb5","EV:purity:225a767ebcb5","EV:tcga_de:225a767ebcb5"]},
-{"gene":"CA9","role":"target","statement":"In Visium, RCC explains CA9 in situ (composition-corrected share 0.999); high-CA9 spots are surrounded by RCC (observed neighbor share 0.4757 vs expected 0.3654, padj 0.0017) and slightly by macrophages (log2 enrichment 0.099). The best MGD site (score 0.546, 126.8 A3, pocket pLDDT 90.3, one accessible lysine) is modest; the model mean pLDDT is 76.56 and ligand-site recall is 0.5 (0.221 in top pockets). This is a site ranking, not evidence that a glue exists.","evidence_ids":["EV:spatial_summary:225a767ebcb5","EV:mgd_site:cacfae1940f6","EV:alphafold:6b2a466ed88e","EV:ligand_sites:93360ddb9195"]},
-{"gene":"CD70","role":"target","statement":"CD70 ranks 3 (score 4.2143). TCGA log2FC is 7.09 and 4.278 at purity 1, so the signal is tumor-intrinsic in bulk; the ranking lists clinical-stage antibodies (cusatuzumab PHASE_2, vorsetuzumab PHASE_1). The Visium sections do not cover CD70, so there is no in situ context.","evidence_ids":["EV:purity:908e84663f6a","EV:tcga_de:908e84663f6a","EV:omics_de:97c97f6d7d62"]},
-{"gene":"NNMT","role":"target_and_biomarker","statement":"NNMT ranks 7 (score 3.9643): TCGA log2FC 4.685 and 5.256 at purity 1 (tumor-intrinsic). Adverse prognosis (TCGA Cox log HR 0.301, padj 0.00479). Antibody/small-molecule tractability is only predicted, no clinical drug, and DepMap shows no selective dependency (mean effect 0.316). No structural analysis is available.","evidence_ids":["EV:purity:7dbf93860d9f","EV:tcga_de:7dbf93860d9f","EV:tcga_survival:7dbf93860d9f"]},
-{"gene":"EPAS1","role":"mechanism","statement":"EPAS1 transcripts in tumor scRNA-seq sit mostly in endothelium (81.3% expressing, 0.365 of transcripts, cpm_share 0.626) and fibroblasts (0.081 share); RCC cells express it in only 4.9% of cells (0.051 share). A bulk EPAS1 signal is therefore largely microenvironment, not a clean tumor-cell readout.","evidence_ids":["EV:sc_summary:6a657326c9fd","EV:sc_expr:d00e4a293c7f","EV:sc_expr:ffb74b11de1d"]},
-{"gene":"MET","role":"target","statement":"MET is tumor-cell dominated: RCC holds 0.935 of tumor transcripts (35.2% of cells expressing, cpm_share 0.682); endothelium has 12% expressing cells and 0.03 of transcripts. It is a tumor-cell target, with a minor endothelial component.","evidence_ids":["EV:sc_summary:8314520758de","EV:sc_expr:114c287fd103"]},
-{"gene":"KDR","role":"microenvironment","statement":"KDR is an endothelial target, not a tumor-cell target: endothelium holds 0.951 of transcripts (40.5% expressing, cpm_share 0.979). In Visium endothelium explains 0.99 of KDR (composition-corrected) and RCC 0.002; high-KDR spots are enriched for endothelial neighbors (log2 0.271, padj 0.0017). Its best MGD site scores 0.841 (361.1 A3, 7 accessible lysines, model mean pLDDT 71.12), but in endothelium.","evidence_ids":["EV:sc_summary:fd47891e1c7f","EV:sc_expr:801fa5377cb7","EV:spatial_summary:fd47891e1c7f","EV:mgd_site:baece750032d"]},
-{"gene":"CD74","role":"microenvironment","statement":"CD74 is an immune (antigen-presenting) gene: cDC 100% expressing (cpm_share 0.311), macrophages 99.5% expressing and 0.436 of tumor transcripts, CD8 T cells 0.345 of transcripts. It is not tumor-cell restricted.","evidence_ids":["EV:sc_summary:ee059aa145d0","EV:sc_expr:095e86414820","EV:sc_expr:a2ae18752f02"]},
-{"gene":"CXCR4","role":"microenvironment","statement":"CXCR4 is carried by infiltrating lymphocytes: CD8 T cells hold 0.563 of tumor transcripts (72.9% expressing), CD4 T cells 87.8% expressing (cpm_share 0.17). This is a microenvironment target.","evidence_ids":["EV:sc_summary:a804b568bd15","EV:sc_expr:4e0010bd69bf","EV:sc_expr:52ac4d964066"]},
-{"gene":"ALDOB","role":"biomarker","statement":"ALDOB ranks 2 (score 4.2206) as a loss biomarker, not a target: TCGA log2FC -4.741 and -6.302 at purity 1; lower expression is linked to worse survival (Cox log HR -0.358, padj 0.000023).","evidence_ids":["EV:tcga_de:a46f337f2987","EV:purity:a46f337f2987","EV:tcga_survival:a46f337f2987"]},
-{"gene":"SLC22A8","role":"biomarker","statement":"SLC22A8 ranks 4 (score 4.1667) as a loss biomarker: TCGA log2FC -6.154 (-5.787 at purity 1), with a favourable Cox log HR of -0.402 for higher expression (padj 0.0000433).","evidence_ids":["EV:purity:de6aa3b720b1","EV:tcga_survival:de6aa3b720b1"]},
-{"gene":"SCARB1","role":"target","statement":"SCARB1 ranks 5 (score 4.1052) with the highest target-profile score of the top five (4.1314): TCGA log2FC 3.989, 3.762 at purity 1; it has an Open Targets genetic-association score of 0.519 and no clinical drug.","evidence_ids":["EV:tcga_de:2d66f8e78d0c","EV:purity:2d66f8e78d0c","EV:omics_de:36b227bd1fb6"]},
-{"gene":"COL23A1","role":"discovery","statement":"COL23A1 is the top tumor-track first-in-class candidate (novelty 0.767): 7 ccRCC papers (43 total), no clinical drug, AB/PR tractable, surface or secreted. RCC holds 0.881 of tumor transcripts (17.1% of cells expressing); TCGA log2FC 5.829, 4.88 at purity 1; vital-organ max 3 nTPM (heart muscle). Its best MGD site is poor (score 0.2342, 8 A3, pLDDT 52.9, model mean 58.91), so it is not glue-tractable. No survival or DepMap dependency evidence.","evidence_ids":["EV:discovery:e1532aa1b09c","EV:tcga_de:e1532aa1b09c","EV:purity:e1532aa1b09c","EV:sc_summary:e1532aa1b09c","EV:alphafold:4f8072787076","EV:mgd_site:3a4161457d4f"]},
-{"gene":"RAB42","role":"discovery","statement":"RAB42 (tumor track, novelty 0.705): 2 ccRCC papers (20 total), no clinical drug, RCC holds 0.627 of tumor transcripts, TCGA log2FC 4.371 and 3.189 at purity 1, vital-organ max 2.6 nTPM (lung). Best MGD site scores 0.5348 (37.4 A3, pLDDT 88.8, 3 accessible lysines; model mean 85.31; no ligand-site validation). Hypothesis only, no functional evidence.","evidence_ids":["EV:discovery:f53feb0aa597","EV:tcga_de:f53feb0aa597","EV:purity:f53feb0aa597","EV:alphafold:c7726f37155e","EV:mgd_site:99d1b16599f0"]},
-{"gene":"OLFML2A","role":"discovery","statement":"OLFML2A (stroma track, novelty 0.481): fibroblast-carried (0.647 of tumor transcripts), 2 ccRCC papers (27 total), no clinical drug, antibody-tractable; TCGA log2FC 2.372, 1.527 at purity 1. Colon expression is 27.9 nTPM, so off-tumor risk is not negligible. Stroma target, not a tumor-cell one.","evidence_ids":["EV:discovery:eb3ffaa04212","EV:tcga_de:eb3ffaa04212","EV:purity:eb3ffaa04212"]},
-{"gene":"JAG2","role":"discovery","statement":"JAG2 (stroma track, novelty 0.416) is endothelial (0.487 of tumor transcripts), 9 ccRCC papers (268 total), no clinical drug; TCGA log2FC 1.549, 1.061 at purity 1; Cox log HR -0.177; heart muscle 12.7 nTPM. Selective dependency not shown.","evidence_ids":["EV:discovery:85b9825a2b63","EV:tcga_de:85b9825a2b63","EV:purity:85b9825a2b63","EV:tcga_survival:85b9825a2b63"]},
-{"gene":"GAL3ST4","role":"discovery","statement":"GAL3ST4 (immune track, novelty 0.64) is macrophage-carried (0.972 of tumor transcripts), with 1 ccRCC paper (17 total), no clinical drug and antibody tractability. TCGA log2FC 2.993, but only 0.401 at purity 1, so partly infiltration-linked; adverse prognosis (Cox log HR 0.177). Brain cortex 7.4 nTPM.","evidence_ids":["EV:discovery:b3f34d2662ac","EV:tcga_de:b3f34d2662ac","EV:purity:b3f34d2662ac","EV:tcga_survival:b3f34d2662ac"]},
-{"gene":"LILRB4","role":"discovery","statement":"LILRB4 (immune track) is macrophage-carried (0.933 of transcripts), 7 ccRCC papers (340 total), no clinical drug. TCGA log2FC 3.7 falls to 0.508 at purity 1 and is flagged infiltration-driven (not purity-robust): it marks macrophage abundance, not tumor-cell expression.","evidence_ids":["EV:discovery:3c9bb849285e","EV:tcga_de:3c9bb849285e","EV:purity:3c9bb849285e"]},
-{"gene":"GBP5","role":"discovery","statement":"GBP5 (immune track) is mainly CD8 T cell (0.573 of transcripts), 10 ccRCC papers (280 total), no clinical drug, flagged infiltration-driven (0.417 at purity 1) with adverse prognosis (Cox log HR 0.227). A T-cell activation marker rather than a drug target.","evidence_ids":["EV:discovery:c3ba50cd5fe7","EV:purity:c3ba50cd5fe7","EV:tcga_survival:c3ba50cd5fe7"]}
-],
-"caveats":["Discovery candidates are data-ranked hypotheses: no dependency or functional evidence, literature counted by gene symbol.","MGD scores rank sites only; no glue is claimed. Pockets of COL23A1 and RAB42 are tiny and RAB42 has no ligand-site validation.","Several genes (EGFR not queried, CD70 and NNMT without sc evidence ids) were covered only from ranking rows; scRNA-seq has few PT cells (39) and 5 donors for endothelium/fibroblasts.","Visium does not cover CD70."]}
+{
+ "agent": "agente-celular",
+ "findings": [
+  {
+   "gene": "CA9",
+   "role": "target_and_biomarker",
+   "statement": "Computed convergence ranking: [gene=CA9; type=analysis_ranking; source=ANALYSIS:ranking:convergence:8d5ff79b77e8d233; profile=convergence; rank=1] [gene=CA9; type=analysis_ranking; source=ANALYSIS:ranking:convergence:8d5ff79b77e8d233; profile=convergence; score=4.5197]. RCC cells in the sampled tumour tissue: [gene=CA9; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=RCC; tissue=tumor; pct_expressing=54.7%] [gene=CA9; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=RCC; tissue=tumor; share_of_tumor_transcripts=0.976] [gene=CA9; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=RCC; tissue=tumor; cpm_share=0.958]. Paired-donor tumour-cell versus proximal-tubule comparison: [gene=CA9; type=sc_tumor_vs_pt; source=DATASET:LI2022-SCRNA; log2fc=7.739] [gene=CA9; type=sc_tumor_vs_pt; source=DATASET:LI2022-SCRNA; padj=0.0189] [gene=CA9; type=sc_tumor_vs_pt; source=DATASET:LI2022-SCRNA; n_donors=6]. TCGA RNA effect: [gene=CA9; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=9.7117] [gene=CA9; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; padj=2.58e-30]. RNA effect extrapolated to full tumour purity: [gene=CA9; type=purity; source=DATASET:CPTAC-CCRCC-PURITY; rna_lfc_at_purity1=7.787]. Purity extrapolation alone does not establish cell of origin. These sampled single-cell data support RCC-cell attribution; they do not establish tumour exclusivity across all tissues.",
+   "evidence_ids": [
+    "EV:analysis_ranking:38a090afbce8",
+    "EV:sc_expr:35b84fee998f",
+    "EV:sc_tvp:225a767ebcb5",
+    "EV:tcga_de:225a767ebcb5",
+    "EV:purity:225a767ebcb5"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:analysis_ranking:38a090afbce8",
+     "field": [
+      "rank"
+     ],
+     "display": "1",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:38a090afbce8",
+     "field": [
+      "score"
+     ],
+     "display": "4.5197",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_expr:35b84fee998f",
+     "field": [
+      "pct_expressing"
+     ],
+     "display": "54.7",
+     "unit": "native_percent"
+    },
+    {
+     "evidence_id": "EV:sc_expr:35b84fee998f",
+     "field": [
+      "share_of_tumor_transcripts"
+     ],
+     "display": "0.976",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_expr:35b84fee998f",
+     "field": [
+      "cpm_share"
+     ],
+     "display": "0.958",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_tvp:225a767ebcb5",
+     "field": [
+      "log2fc"
+     ],
+     "display": "7.739",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_tvp:225a767ebcb5",
+     "field": [
+      "padj"
+     ],
+     "display": "0.0189",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_tvp:225a767ebcb5",
+     "field": [
+      "n_donors"
+     ],
+     "display": "6",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:225a767ebcb5",
+     "field": [
+      "log2fc"
+     ],
+     "display": "9.7117",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:225a767ebcb5",
+     "field": [
+      "padj"
+     ],
+     "display": "2.58e-30",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:purity:225a767ebcb5",
+     "field": [
+      "rna_lfc_at_purity1"
+     ],
+     "display": "7.787",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "CA9",
+   "role": "target",
+   "statement": "RCC model-estimated spatial contribution: [gene=CA9; type=spatial_summary; source=DATASET:LI2022-VISIUM; in_situ_expressers.0.composition_corrected_share=0.999]. RCC spatial neighbourhood: [gene=CA9; type=spatial_summary; source=DATASET:LI2022-VISIUM; enriched_neighbors.0.log2_enrichment=0.381] [gene=CA9; type=spatial_summary; source=DATASET:LI2022-VISIUM; enriched_neighbors.0.observed_neighbor_share=0.4757] [gene=CA9; type=spatial_summary; source=DATASET:LI2022-VISIUM; enriched_neighbors.0.expected_neighbor_share=0.3654] [gene=CA9; type=spatial_summary; source=DATASET:LI2022-VISIUM; enriched_neighbors.0.padj=0.0017]. Macrophage spatial neighbourhood: [gene=CA9; type=spatial_summary; source=DATASET:LI2022-VISIUM; enriched_neighbors.1.log2_enrichment=0.099] [gene=CA9; type=spatial_summary; source=DATASET:LI2022-VISIUM; enriched_neighbors.1.observed_neighbor_share=0.174] [gene=CA9; type=spatial_summary; source=DATASET:LI2022-VISIUM; enriched_neighbors.1.expected_neighbor_share=0.1624] [gene=CA9; type=spatial_summary; source=DATASET:LI2022-VISIUM; enriched_neighbors.1.padj=0.0017]. Best detected cavity, descriptive monomer structural context: [gene=CA9; type=structural_context; source=DATASET:ALPHAFOLD-DB; structural_context_score=0.546] [gene=CA9; type=structural_context; source=DATASET:ALPHAFOLD-DB; volume_a3=126.8] [gene=CA9; type=structural_context; source=DATASET:ALPHAFOLD-DB; mean_plddt=90.3] [gene=CA9; type=structural_context; source=DATASET:ALPHAFOLD-DB; n_accessible_lysines=1]. Full predicted-model confidence: [gene=CA9; type=alphafold_model; source=DATASET:ALPHAFOLD-DB; mean_plddt=76.56]. Experimental ligand-contact coverage: [gene=CA9; type=ligand_site_validation; source=PDBe-KB ligand sites (experimental holo structures); recall=0.5] [gene=CA9; type=ligand_site_validation; source=PDBe-KB ligand sites (experimental holo structures); recall_in_top_pockets=0.221]. This evaluates cavity detection, not molecular-glue activity. Neither a cavity, an exposed loop nor this score identifies a degron or establishes productive ternary-complex formation or degradation. A low score also cannot exclude molecular-glue feasibility. Spatial estimates depend on deconvolution and do not resolve expression in individual cells.",
+   "evidence_ids": [
+    "EV:spatial_summary:225a767ebcb5",
+    "EV:structural_context:cacfae1940f6",
+    "EV:alphafold:6b2a466ed88e",
+    "EV:ligand_sites:93360ddb9195"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:spatial_summary:225a767ebcb5",
+     "field": [
+      "in_situ_expressers",
+      0,
+      "composition_corrected_share"
+     ],
+     "display": "0.999",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:spatial_summary:225a767ebcb5",
+     "field": [
+      "enriched_neighbors",
+      0,
+      "log2_enrichment"
+     ],
+     "display": "0.381",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:spatial_summary:225a767ebcb5",
+     "field": [
+      "enriched_neighbors",
+      0,
+      "observed_neighbor_share"
+     ],
+     "display": "0.4757",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:spatial_summary:225a767ebcb5",
+     "field": [
+      "enriched_neighbors",
+      0,
+      "expected_neighbor_share"
+     ],
+     "display": "0.3654",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:spatial_summary:225a767ebcb5",
+     "field": [
+      "enriched_neighbors",
+      0,
+      "padj"
+     ],
+     "display": "0.0017",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:spatial_summary:225a767ebcb5",
+     "field": [
+      "enriched_neighbors",
+      1,
+      "log2_enrichment"
+     ],
+     "display": "0.099",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:spatial_summary:225a767ebcb5",
+     "field": [
+      "enriched_neighbors",
+      1,
+      "observed_neighbor_share"
+     ],
+     "display": "0.174",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:spatial_summary:225a767ebcb5",
+     "field": [
+      "enriched_neighbors",
+      1,
+      "expected_neighbor_share"
+     ],
+     "display": "0.1624",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:spatial_summary:225a767ebcb5",
+     "field": [
+      "enriched_neighbors",
+      1,
+      "padj"
+     ],
+     "display": "0.0017",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:structural_context:cacfae1940f6",
+     "field": [
+      "structural_context_score"
+     ],
+     "display": "0.546",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:structural_context:cacfae1940f6",
+     "field": [
+      "volume_a3"
+     ],
+     "display": "126.8",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:structural_context:cacfae1940f6",
+     "field": [
+      "mean_plddt"
+     ],
+     "display": "90.3",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:structural_context:cacfae1940f6",
+     "field": [
+      "n_accessible_lysines"
+     ],
+     "display": "1",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:alphafold:6b2a466ed88e",
+     "field": [
+      "mean_plddt"
+     ],
+     "display": "76.56",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:ligand_sites:93360ddb9195",
+     "field": [
+      "recall"
+     ],
+     "display": "0.5",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:ligand_sites:93360ddb9195",
+     "field": [
+      "recall_in_top_pockets"
+     ],
+     "display": "0.221",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "CD70",
+   "role": "target",
+   "statement": "Computed convergence ranking: [gene=CD70; type=analysis_ranking; source=ANALYSIS:ranking:convergence:8d5ff79b77e8d233; profile=convergence; rank=3] [gene=CD70; type=analysis_ranking; source=ANALYSIS:ranking:convergence:8d5ff79b77e8d233; profile=convergence; score=4.2143]. TCGA RNA effect: [gene=CD70; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=7.0902] [gene=CD70; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; padj=6.45e-25]. RNA effect extrapolated to full tumour purity: [gene=CD70; type=purity; source=DATASET:CPTAC-CCRCC-PURITY; rna_lfc_at_purity1=4.278]. Purity extrapolation alone does not establish cell of origin. Bulk evidence is insufficient to establish tumour-cell restriction. Single-cell attribution differs between the two analysed cohorts: [gene=CD70; type=sc_replication; source=Zhang et al. 2021 ccRCC single-cell RNA-seq (CZ CELLxGENE); li2022_tumour_cell_share=0.345] [gene=CD70; type=sc_replication; source=Zhang et al. 2021 ccRCC single-cell RNA-seq (CZ CELLxGENE); zhang2021_tumour_cell_share=0.964]. The spatial panel used here does not provide a CD70 result. Clinical antibody programmes are described in the separate external-evidence block.",
+   "evidence_ids": [
+    "EV:analysis_ranking:b1c4545b063b",
+    "EV:tcga_de:908e84663f6a",
+    "EV:purity:908e84663f6a",
+    "EV:sc_replication:908e84663f6a"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:analysis_ranking:b1c4545b063b",
+     "field": [
+      "rank"
+     ],
+     "display": "3",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:b1c4545b063b",
+     "field": [
+      "score"
+     ],
+     "display": "4.2143",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:908e84663f6a",
+     "field": [
+      "log2fc"
+     ],
+     "display": "7.0902",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:908e84663f6a",
+     "field": [
+      "padj"
+     ],
+     "display": "6.45e-25",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:purity:908e84663f6a",
+     "field": [
+      "rna_lfc_at_purity1"
+     ],
+     "display": "4.278",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_replication:908e84663f6a",
+     "field": [
+      "li2022_tumour_cell_share"
+     ],
+     "display": "0.345",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_replication:908e84663f6a",
+     "field": [
+      "zhang2021_tumour_cell_share"
+     ],
+     "display": "0.964",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "NNMT",
+   "role": "target_and_biomarker",
+   "statement": "Computed convergence ranking: [gene=NNMT; type=analysis_ranking; source=ANALYSIS:ranking:convergence:8d5ff79b77e8d233; profile=convergence; rank=7] [gene=NNMT; type=analysis_ranking; source=ANALYSIS:ranking:convergence:8d5ff79b77e8d233; profile=convergence; score=3.9643]. TCGA RNA effect: [gene=NNMT; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=4.6846] [gene=NNMT; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; padj=5.62e-27]. RNA effect extrapolated to full tumour purity: [gene=NNMT; type=purity; source=DATASET:CPTAC-CCRCC-PURITY; rna_lfc_at_purity1=5.256]. Purity extrapolation alone does not establish cell of origin. Overall-survival association: [gene=NNMT; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=0.301] [gene=NNMT; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; padj=0.0048]. Higher expression is associated with worse survival. This univariate analysis does not establish independent prognostic utility. Measured cell-line dependency: [gene=NNMT; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=0.316] [gene=NNMT; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; padj=0.0725]. Selective dependency is not established. Drug-development and modality annotations are reported separately; they do not establish efficacy. No monomer structural result is available in this analysis.",
+   "evidence_ids": [
+    "EV:analysis_ranking:184a1e09f8bd",
+    "EV:tcga_de:7dbf93860d9f",
+    "EV:purity:7dbf93860d9f",
+    "EV:tcga_survival:7dbf93860d9f",
+    "EV:depmap_dependency:7dbf93860d9f"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:analysis_ranking:184a1e09f8bd",
+     "field": [
+      "rank"
+     ],
+     "display": "7",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:184a1e09f8bd",
+     "field": [
+      "score"
+     ],
+     "display": "3.9643",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:7dbf93860d9f",
+     "field": [
+      "log2fc"
+     ],
+     "display": "4.6846",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:7dbf93860d9f",
+     "field": [
+      "padj"
+     ],
+     "display": "5.62e-27",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:purity:7dbf93860d9f",
+     "field": [
+      "rna_lfc_at_purity1"
+     ],
+     "display": "5.256",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:7dbf93860d9f",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "0.301",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:7dbf93860d9f",
+     "field": [
+      "padj"
+     ],
+     "display": "0.0048",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:7dbf93860d9f",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "0.316",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:7dbf93860d9f",
+     "field": [
+      "padj"
+     ],
+     "display": "0.0725",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "EPAS1",
+   "role": "mechanism",
+   "statement": "Endothelial cells in the sampled tumour tissue: [gene=EPAS1; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=Endothelial; tissue=tumor; pct_expressing=81.3%] [gene=EPAS1; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=Endothelial; tissue=tumor; share_of_tumor_transcripts=0.365] [gene=EPAS1; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=Endothelial; tissue=tumor; cpm_share=0.626]. Fibroblast cells in the sampled tumour tissue: [gene=EPAS1; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=Fibroblast; tissue=tumor; pct_expressing=70.3%] [gene=EPAS1; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=Fibroblast; tissue=tumor; share_of_tumor_transcripts=0.081] [gene=EPAS1; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=Fibroblast; tissue=tumor; cpm_share=0.27]. RCC cells in the sampled tumour tissue: [gene=EPAS1; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=RCC; tissue=tumor; pct_expressing=4.9%] [gene=EPAS1; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=RCC; tissue=tumor; share_of_tumor_transcripts=0.051] [gene=EPAS1; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=RCC; tissue=tumor; cpm_share=0.014]. The measured cell-type distribution includes substantial non-tumour-cell expression and does not support tumour-cell restriction.",
+   "evidence_ids": [
+    "EV:sc_expr:d00e4a293c7f",
+    "EV:sc_expr:7a7d0640d3ac",
+    "EV:sc_expr:ffb74b11de1d"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:sc_expr:d00e4a293c7f",
+     "field": [
+      "pct_expressing"
+     ],
+     "display": "81.3",
+     "unit": "native_percent"
+    },
+    {
+     "evidence_id": "EV:sc_expr:d00e4a293c7f",
+     "field": [
+      "share_of_tumor_transcripts"
+     ],
+     "display": "0.365",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_expr:d00e4a293c7f",
+     "field": [
+      "cpm_share"
+     ],
+     "display": "0.626",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_expr:7a7d0640d3ac",
+     "field": [
+      "pct_expressing"
+     ],
+     "display": "70.3",
+     "unit": "native_percent"
+    },
+    {
+     "evidence_id": "EV:sc_expr:7a7d0640d3ac",
+     "field": [
+      "share_of_tumor_transcripts"
+     ],
+     "display": "0.081",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_expr:7a7d0640d3ac",
+     "field": [
+      "cpm_share"
+     ],
+     "display": "0.27",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_expr:ffb74b11de1d",
+     "field": [
+      "pct_expressing"
+     ],
+     "display": "4.9",
+     "unit": "native_percent"
+    },
+    {
+     "evidence_id": "EV:sc_expr:ffb74b11de1d",
+     "field": [
+      "share_of_tumor_transcripts"
+     ],
+     "display": "0.051",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_expr:ffb74b11de1d",
+     "field": [
+      "cpm_share"
+     ],
+     "display": "0.014",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "MET",
+   "role": "target",
+   "statement": "RCC cells in the sampled tumour tissue: [gene=MET; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=RCC; tissue=tumor; pct_expressing=35.2%] [gene=MET; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=RCC; tissue=tumor; share_of_tumor_transcripts=0.935] [gene=MET; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=RCC; tissue=tumor; cpm_share=0.682]. Endothelial cells in the sampled tumour tissue: [gene=MET; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=Endothelial; tissue=tumor; pct_expressing=12.0%] [gene=MET; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=Endothelial; tissue=tumor; share_of_tumor_transcripts=0.03] [gene=MET; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=Endothelial; tissue=tumor; cpm_share=0.283]. RCC cells dominate the measured MET transcript share; this does not by itself validate a therapeutic intervention.",
+   "evidence_ids": [
+    "EV:sc_expr:114c287fd103",
+    "EV:sc_expr:c5d3f61ecb68"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:sc_expr:114c287fd103",
+     "field": [
+      "pct_expressing"
+     ],
+     "display": "35.2",
+     "unit": "native_percent"
+    },
+    {
+     "evidence_id": "EV:sc_expr:114c287fd103",
+     "field": [
+      "share_of_tumor_transcripts"
+     ],
+     "display": "0.935",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_expr:114c287fd103",
+     "field": [
+      "cpm_share"
+     ],
+     "display": "0.682",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_expr:c5d3f61ecb68",
+     "field": [
+      "pct_expressing"
+     ],
+     "display": "12.0",
+     "unit": "native_percent"
+    },
+    {
+     "evidence_id": "EV:sc_expr:c5d3f61ecb68",
+     "field": [
+      "share_of_tumor_transcripts"
+     ],
+     "display": "0.03",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_expr:c5d3f61ecb68",
+     "field": [
+      "cpm_share"
+     ],
+     "display": "0.283",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "KDR",
+   "role": "microenvironment",
+   "statement": "Endothelial cells in the sampled tumour tissue: [gene=KDR; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=Endothelial; tissue=tumor; pct_expressing=40.5%] [gene=KDR; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=Endothelial; tissue=tumor; share_of_tumor_transcripts=0.951] [gene=KDR; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=Endothelial; tissue=tumor; cpm_share=0.979]. Endothelial model-estimated spatial contribution: [gene=KDR; type=spatial_summary; source=DATASET:LI2022-VISIUM; in_situ_expressers.0.composition_corrected_share=0.99]. RCC model-estimated spatial contribution: [gene=KDR; type=spatial_summary; source=DATASET:LI2022-VISIUM; in_situ_expressers.1.composition_corrected_share=0.002]. Endothelial spatial neighbourhood: [gene=KDR; type=spatial_summary; source=DATASET:LI2022-VISIUM; enriched_neighbors.0.log2_enrichment=0.271] [gene=KDR; type=spatial_summary; source=DATASET:LI2022-VISIUM; enriched_neighbors.0.observed_neighbor_share=0.1238] [gene=KDR; type=spatial_summary; source=DATASET:LI2022-VISIUM; enriched_neighbors.0.expected_neighbor_share=0.1026] [gene=KDR; type=spatial_summary; source=DATASET:LI2022-VISIUM; enriched_neighbors.0.padj=0.0017]. Best detected cavity, descriptive monomer structural context: [gene=KDR; type=structural_context; source=DATASET:ALPHAFOLD-DB; structural_context_score=0.841] [gene=KDR; type=structural_context; source=DATASET:ALPHAFOLD-DB; volume_a3=361.1] [gene=KDR; type=structural_context; source=DATASET:ALPHAFOLD-DB; mean_plddt=83.1] [gene=KDR; type=structural_context; source=DATASET:ALPHAFOLD-DB; n_accessible_lysines=7]. Full predicted-model confidence: [gene=KDR; type=alphafold_model; source=DATASET:ALPHAFOLD-DB; mean_plddt=71.12]. Experimental ligand-contact coverage: [gene=KDR; type=ligand_site_validation; source=PDBe-KB ligand sites (experimental holo structures); recall=0.4] [gene=KDR; type=ligand_site_validation; source=PDBe-KB ligand sites (experimental holo structures); recall_in_top_pockets=0.2]. This evaluates cavity detection, not molecular-glue activity. Neither a cavity, an exposed loop nor this score identifies a degron or establishes productive ternary-complex formation or degradation. A low score also cannot exclude molecular-glue feasibility. The cell-attribution data point primarily to endothelium in this sample.",
+   "evidence_ids": [
+    "EV:sc_expr:801fa5377cb7",
+    "EV:spatial_summary:fd47891e1c7f",
+    "EV:structural_context:baece750032d",
+    "EV:alphafold:81956e9ebf17",
+    "EV:ligand_sites:03a0601281b2"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:sc_expr:801fa5377cb7",
+     "field": [
+      "pct_expressing"
+     ],
+     "display": "40.5",
+     "unit": "native_percent"
+    },
+    {
+     "evidence_id": "EV:sc_expr:801fa5377cb7",
+     "field": [
+      "share_of_tumor_transcripts"
+     ],
+     "display": "0.951",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_expr:801fa5377cb7",
+     "field": [
+      "cpm_share"
+     ],
+     "display": "0.979",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:spatial_summary:fd47891e1c7f",
+     "field": [
+      "in_situ_expressers",
+      0,
+      "composition_corrected_share"
+     ],
+     "display": "0.99",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:spatial_summary:fd47891e1c7f",
+     "field": [
+      "in_situ_expressers",
+      1,
+      "composition_corrected_share"
+     ],
+     "display": "0.002",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:spatial_summary:fd47891e1c7f",
+     "field": [
+      "enriched_neighbors",
+      0,
+      "log2_enrichment"
+     ],
+     "display": "0.271",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:spatial_summary:fd47891e1c7f",
+     "field": [
+      "enriched_neighbors",
+      0,
+      "observed_neighbor_share"
+     ],
+     "display": "0.1238",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:spatial_summary:fd47891e1c7f",
+     "field": [
+      "enriched_neighbors",
+      0,
+      "expected_neighbor_share"
+     ],
+     "display": "0.1026",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:spatial_summary:fd47891e1c7f",
+     "field": [
+      "enriched_neighbors",
+      0,
+      "padj"
+     ],
+     "display": "0.0017",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:structural_context:baece750032d",
+     "field": [
+      "structural_context_score"
+     ],
+     "display": "0.841",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:structural_context:baece750032d",
+     "field": [
+      "volume_a3"
+     ],
+     "display": "361.1",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:structural_context:baece750032d",
+     "field": [
+      "mean_plddt"
+     ],
+     "display": "83.1",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:structural_context:baece750032d",
+     "field": [
+      "n_accessible_lysines"
+     ],
+     "display": "7",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:alphafold:81956e9ebf17",
+     "field": [
+      "mean_plddt"
+     ],
+     "display": "71.12",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:ligand_sites:03a0601281b2",
+     "field": [
+      "recall"
+     ],
+     "display": "0.4",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:ligand_sites:03a0601281b2",
+     "field": [
+      "recall_in_top_pockets"
+     ],
+     "display": "0.2",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "CD74",
+   "role": "microenvironment",
+   "statement": "cDC cells in the sampled tumour tissue: [gene=CD74; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=cDC; tissue=tumor; pct_expressing=100.0%] [gene=CD74; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=cDC; tissue=tumor; share_of_tumor_transcripts=0.114] [gene=CD74; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=cDC; tissue=tumor; cpm_share=0.311]. Macrophage cells in the sampled tumour tissue: [gene=CD74; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=Macrophage; tissue=tumor; pct_expressing=99.5%] [gene=CD74; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=Macrophage; tissue=tumor; share_of_tumor_transcripts=0.436] [gene=CD74; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=Macrophage; tissue=tumor; cpm_share=0.191]. CD8_T cells in the sampled tumour tissue: [gene=CD74; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=CD8_T; tissue=tumor; pct_expressing=95.5%] [gene=CD74; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=CD8_T; tissue=tumor; share_of_tumor_transcripts=0.345] [gene=CD74; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=CD8_T; tissue=tumor; cpm_share=0.032]. The measured cell-type distribution includes substantial non-tumour-cell expression and does not support tumour-cell restriction.",
+   "evidence_ids": [
+    "EV:sc_expr:095e86414820",
+    "EV:sc_expr:a2ae18752f02",
+    "EV:sc_expr:4f6619c493da"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:sc_expr:095e86414820",
+     "field": [
+      "pct_expressing"
+     ],
+     "display": "100.0",
+     "unit": "native_percent"
+    },
+    {
+     "evidence_id": "EV:sc_expr:095e86414820",
+     "field": [
+      "share_of_tumor_transcripts"
+     ],
+     "display": "0.114",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_expr:095e86414820",
+     "field": [
+      "cpm_share"
+     ],
+     "display": "0.311",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_expr:a2ae18752f02",
+     "field": [
+      "pct_expressing"
+     ],
+     "display": "99.5",
+     "unit": "native_percent"
+    },
+    {
+     "evidence_id": "EV:sc_expr:a2ae18752f02",
+     "field": [
+      "share_of_tumor_transcripts"
+     ],
+     "display": "0.436",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_expr:a2ae18752f02",
+     "field": [
+      "cpm_share"
+     ],
+     "display": "0.191",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_expr:4f6619c493da",
+     "field": [
+      "pct_expressing"
+     ],
+     "display": "95.5",
+     "unit": "native_percent"
+    },
+    {
+     "evidence_id": "EV:sc_expr:4f6619c493da",
+     "field": [
+      "share_of_tumor_transcripts"
+     ],
+     "display": "0.345",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_expr:4f6619c493da",
+     "field": [
+      "cpm_share"
+     ],
+     "display": "0.032",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "CXCR4",
+   "role": "microenvironment",
+   "statement": "CD8_T cells in the sampled tumour tissue: [gene=CXCR4; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=CD8_T; tissue=tumor; pct_expressing=72.9%] [gene=CXCR4; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=CD8_T; tissue=tumor; share_of_tumor_transcripts=0.563] [gene=CXCR4; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=CD8_T; tissue=tumor; cpm_share=0.153]. CD4_T cells in the sampled tumour tissue: [gene=CXCR4; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=CD4_T; tissue=tumor; pct_expressing=87.8%] [gene=CXCR4; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=CD4_T; tissue=tumor; share_of_tumor_transcripts=0.176] [gene=CXCR4; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=CD4_T; tissue=tumor; cpm_share=0.17]. The measured cell-type distribution includes substantial non-tumour-cell expression and does not support tumour-cell restriction.",
+   "evidence_ids": [
+    "EV:sc_expr:52ac4d964066",
+    "EV:sc_expr:4e0010bd69bf"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:sc_expr:52ac4d964066",
+     "field": [
+      "pct_expressing"
+     ],
+     "display": "72.9",
+     "unit": "native_percent"
+    },
+    {
+     "evidence_id": "EV:sc_expr:52ac4d964066",
+     "field": [
+      "share_of_tumor_transcripts"
+     ],
+     "display": "0.563",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_expr:52ac4d964066",
+     "field": [
+      "cpm_share"
+     ],
+     "display": "0.153",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_expr:4e0010bd69bf",
+     "field": [
+      "pct_expressing"
+     ],
+     "display": "87.8",
+     "unit": "native_percent"
+    },
+    {
+     "evidence_id": "EV:sc_expr:4e0010bd69bf",
+     "field": [
+      "share_of_tumor_transcripts"
+     ],
+     "display": "0.176",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_expr:4e0010bd69bf",
+     "field": [
+      "cpm_share"
+     ],
+     "display": "0.17",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "ALDOB",
+   "role": "biomarker",
+   "statement": "Computed convergence ranking: [gene=ALDOB; type=analysis_ranking; source=ANALYSIS:ranking:convergence:8d5ff79b77e8d233; profile=convergence; rank=2] [gene=ALDOB; type=analysis_ranking; source=ANALYSIS:ranking:convergence:8d5ff79b77e8d233; profile=convergence; score=4.2206]. TCGA RNA effect: [gene=ALDOB; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=-4.7409] [gene=ALDOB; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; padj=6.57e-11]. RNA effect extrapolated to full tumour purity: [gene=ALDOB; type=purity; source=DATASET:CPTAC-CCRCC-PURITY; rna_lfc_at_purity1=-6.302]. Purity extrapolation alone does not establish cell of origin. Overall-survival association: [gene=ALDOB; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=-0.358] [gene=ALDOB; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; padj=2.3e-05]. Higher expression is associated with better survival. This univariate analysis does not establish independent prognostic utility. The expression decrease motivates a tissue-state biomarker hypothesis rather than inhibition of a depleted protein.",
+   "evidence_ids": [
+    "EV:analysis_ranking:726145e20b0a",
+    "EV:tcga_de:a46f337f2987",
+    "EV:purity:a46f337f2987",
+    "EV:tcga_survival:a46f337f2987"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:analysis_ranking:726145e20b0a",
+     "field": [
+      "rank"
+     ],
+     "display": "2",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:726145e20b0a",
+     "field": [
+      "score"
+     ],
+     "display": "4.2206",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:a46f337f2987",
+     "field": [
+      "log2fc"
+     ],
+     "display": "-4.7409",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:a46f337f2987",
+     "field": [
+      "padj"
+     ],
+     "display": "6.57e-11",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:purity:a46f337f2987",
+     "field": [
+      "rna_lfc_at_purity1"
+     ],
+     "display": "-6.302",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:a46f337f2987",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "-0.358",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:a46f337f2987",
+     "field": [
+      "padj"
+     ],
+     "display": "2.3e-05",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "SLC22A8",
+   "role": "biomarker",
+   "statement": "Computed convergence ranking: [gene=SLC22A8; type=analysis_ranking; source=ANALYSIS:ranking:convergence:8d5ff79b77e8d233; profile=convergence; rank=4] [gene=SLC22A8; type=analysis_ranking; source=ANALYSIS:ranking:convergence:8d5ff79b77e8d233; profile=convergence; score=4.1667]. TCGA RNA effect: [gene=SLC22A8; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=-6.1542] [gene=SLC22A8; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; padj=5.42e-13]. RNA effect extrapolated to full tumour purity: [gene=SLC22A8; type=purity; source=DATASET:CPTAC-CCRCC-PURITY; rna_lfc_at_purity1=-5.787]. Purity extrapolation alone does not establish cell of origin. Overall-survival association: [gene=SLC22A8; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=-0.402] [gene=SLC22A8; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; padj=4.33e-05]. Higher expression is associated with better survival. This univariate analysis does not establish independent prognostic utility. The expression decrease motivates a tissue-state biomarker hypothesis rather than inhibition of a depleted protein.",
+   "evidence_ids": [
+    "EV:analysis_ranking:5b3aa698436e",
+    "EV:tcga_de:de6aa3b720b1",
+    "EV:purity:de6aa3b720b1",
+    "EV:tcga_survival:de6aa3b720b1"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:analysis_ranking:5b3aa698436e",
+     "field": [
+      "rank"
+     ],
+     "display": "4",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:5b3aa698436e",
+     "field": [
+      "score"
+     ],
+     "display": "4.1667",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:de6aa3b720b1",
+     "field": [
+      "log2fc"
+     ],
+     "display": "-6.1542",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:de6aa3b720b1",
+     "field": [
+      "padj"
+     ],
+     "display": "5.42e-13",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:purity:de6aa3b720b1",
+     "field": [
+      "rna_lfc_at_purity1"
+     ],
+     "display": "-5.787",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:de6aa3b720b1",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "-0.402",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:de6aa3b720b1",
+     "field": [
+      "padj"
+     ],
+     "display": "4.33e-05",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "SCARB1",
+   "role": "target",
+   "statement": "Computed convergence ranking: [gene=SCARB1; type=analysis_ranking; source=ANALYSIS:ranking:convergence:8d5ff79b77e8d233; profile=convergence; rank=5] [gene=SCARB1; type=analysis_ranking; source=ANALYSIS:ranking:convergence:8d5ff79b77e8d233; profile=convergence; score=4.1052]. Computed target ranking: [gene=SCARB1; type=analysis_ranking; source=ANALYSIS:ranking:target:8d5ff79b77e8d233; profile=target; rank=1] [gene=SCARB1; type=analysis_ranking; source=ANALYSIS:ranking:target:8d5ff79b77e8d233; profile=target; score=4.1314]. TCGA RNA effect: [gene=SCARB1; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=3.9894] [gene=SCARB1; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; padj=1.43e-31]. RNA effect extrapolated to full tumour purity: [gene=SCARB1; type=purity; source=DATASET:CPTAC-CCRCC-PURITY; rna_lfc_at_purity1=3.762]. Purity extrapolation alone does not establish cell of origin. The computed target profile motivates further functional study; it is not proof of target efficacy. External genetic-association and drug annotations require their own cited records in the external block.",
+   "evidence_ids": [
+    "EV:analysis_ranking:c8692741216b",
+    "EV:analysis_ranking:fec77c62f0a2",
+    "EV:tcga_de:2d66f8e78d0c",
+    "EV:purity:2d66f8e78d0c"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:analysis_ranking:c8692741216b",
+     "field": [
+      "rank"
+     ],
+     "display": "5",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:c8692741216b",
+     "field": [
+      "score"
+     ],
+     "display": "4.1052",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:fec77c62f0a2",
+     "field": [
+      "rank"
+     ],
+     "display": "1",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:fec77c62f0a2",
+     "field": [
+      "score"
+     ],
+     "display": "4.1314",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:2d66f8e78d0c",
+     "field": [
+      "log2fc"
+     ],
+     "display": "3.9894",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:2d66f8e78d0c",
+     "field": [
+      "padj"
+     ],
+     "display": "1.43e-31",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:purity:2d66f8e78d0c",
+     "field": [
+      "rna_lfc_at_purity1"
+     ],
+     "display": "3.762",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "COL23A1",
+   "role": "discovery",
+   "statement": "COL23A1 is a data-ranked hypothesis in the tumor track, with source group RCC. Discovery ranking, literature counts and cell attribution: [gene=COL23A1; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=tumor; rank_in_track=1] [gene=COL23A1; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=tumor; novelty_score=0.7672] [gene=COL23A1; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=tumor; ccrcc_papers=7] [gene=COL23A1; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=tumor; total_papers=43] [gene=COL23A1; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=tumor; source_share=0.881]. Fraction of source-group cells expressing the gene: [gene=COL23A1; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=tumor; source_pct=17.1%]. The frozen profile records no clinical drug and modality annotations AB; PR. These annotations do not establish accessibility or efficacy. TCGA RNA effect: [gene=COL23A1; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=5.8291] [gene=COL23A1; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; padj=4.7e-29]. RNA effect extrapolated to full tumour purity: [gene=COL23A1; type=purity; source=DATASET:CPTAC-CCRCC-PURITY; rna_lfc_at_purity1=4.88]. Purity extrapolation alone does not establish cell of origin. Maximum expression in the assayed vital-organ panel (heart muscle), in nTPM: [gene=COL23A1; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=tumor; vital_max_ntpm=3.0]. Normal-tissue expression is a potential exposure concern; this panel does not establish safety. Overall-survival association: [gene=COL23A1; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=-0.123] [gene=COL23A1; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; padj=0.1017]. A survival association is not established at the adjusted significance threshold. This univariate analysis does not establish independent prognostic utility. Measured cell-line dependency: [gene=COL23A1; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=0.167] [gene=COL23A1; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; padj=0.5598]. Selective dependency is not established. Best detected cavity, descriptive monomer structural context: [gene=COL23A1; type=structural_context; source=DATASET:ALPHAFOLD-DB; structural_context_score=0.2342] [gene=COL23A1; type=structural_context; source=DATASET:ALPHAFOLD-DB; volume_a3=8.0] [gene=COL23A1; type=structural_context; source=DATASET:ALPHAFOLD-DB; mean_plddt=52.9] [gene=COL23A1; type=structural_context; source=DATASET:ALPHAFOLD-DB; n_accessible_lysines=2]. Full predicted-model confidence: [gene=COL23A1; type=alphafold_model; source=DATASET:ALPHAFOLD-DB; mean_plddt=58.91]. Experimental ligand-contact validation is unavailable here. Neither a cavity, an exposed loop nor this score identifies a degron or establishes productive ternary-complex formation or degradation. A low score also cannot exclude molecular-glue feasibility.",
+   "evidence_ids": [
+    "EV:discovery:e1532aa1b09c",
+    "EV:tcga_de:e1532aa1b09c",
+    "EV:purity:e1532aa1b09c",
+    "EV:tcga_survival:e1532aa1b09c",
+    "EV:depmap_dependency:e1532aa1b09c",
+    "EV:structural_context:3a4161457d4f",
+    "EV:alphafold:4f8072787076"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:discovery:e1532aa1b09c",
+     "field": [
+      "rank_in_track"
+     ],
+     "display": "1",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:e1532aa1b09c",
+     "field": [
+      "novelty_score"
+     ],
+     "display": "0.7672",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:e1532aa1b09c",
+     "field": [
+      "ccrcc_papers"
+     ],
+     "display": "7",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:e1532aa1b09c",
+     "field": [
+      "total_papers"
+     ],
+     "display": "43",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:e1532aa1b09c",
+     "field": [
+      "source_share"
+     ],
+     "display": "0.881",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:e1532aa1b09c",
+     "field": [
+      "source_pct"
+     ],
+     "display": "17.1",
+     "unit": "native_percent"
+    },
+    {
+     "evidence_id": "EV:tcga_de:e1532aa1b09c",
+     "field": [
+      "log2fc"
+     ],
+     "display": "5.8291",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:e1532aa1b09c",
+     "field": [
+      "padj"
+     ],
+     "display": "4.7e-29",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:purity:e1532aa1b09c",
+     "field": [
+      "rna_lfc_at_purity1"
+     ],
+     "display": "4.88",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:e1532aa1b09c",
+     "field": [
+      "vital_max_ntpm"
+     ],
+     "display": "3.0",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:e1532aa1b09c",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "-0.123",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:e1532aa1b09c",
+     "field": [
+      "padj"
+     ],
+     "display": "0.1017",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:e1532aa1b09c",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "0.167",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:e1532aa1b09c",
+     "field": [
+      "padj"
+     ],
+     "display": "0.5598",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:structural_context:3a4161457d4f",
+     "field": [
+      "structural_context_score"
+     ],
+     "display": "0.2342",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:structural_context:3a4161457d4f",
+     "field": [
+      "volume_a3"
+     ],
+     "display": "8.0",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:structural_context:3a4161457d4f",
+     "field": [
+      "mean_plddt"
+     ],
+     "display": "52.9",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:structural_context:3a4161457d4f",
+     "field": [
+      "n_accessible_lysines"
+     ],
+     "display": "2",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:alphafold:4f8072787076",
+     "field": [
+      "mean_plddt"
+     ],
+     "display": "58.91",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "RAB42",
+   "role": "discovery",
+   "statement": "RAB42 is a data-ranked hypothesis in the tumor track, with source group RCC. Discovery ranking, literature counts and cell attribution: [gene=RAB42; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=tumor; rank_in_track=2] [gene=RAB42; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=tumor; novelty_score=0.7045] [gene=RAB42; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=tumor; ccrcc_papers=2] [gene=RAB42; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=tumor; total_papers=20] [gene=RAB42; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=tumor; source_share=0.627]. Fraction of source-group cells expressing the gene: [gene=RAB42; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=tumor; source_pct=11.6%]. The frozen profile records no clinical drug and modality annotations AB; PR. These annotations do not establish accessibility or efficacy. TCGA RNA effect: [gene=RAB42; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=4.3712] [gene=RAB42; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; padj=4.01e-25]. RNA effect extrapolated to full tumour purity: [gene=RAB42; type=purity; source=DATASET:CPTAC-CCRCC-PURITY; rna_lfc_at_purity1=3.189]. Purity extrapolation alone does not establish cell of origin. Maximum expression in the assayed vital-organ panel (lung), in nTPM: [gene=RAB42; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=tumor; vital_max_ntpm=2.6]. Normal-tissue expression is a potential exposure concern; this panel does not establish safety. Overall-survival association: [gene=RAB42; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=0.058] [gene=RAB42; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; padj=0.5384]. A survival association is not established at the adjusted significance threshold. This univariate analysis does not establish independent prognostic utility. Measured cell-line dependency: [gene=RAB42; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=-0.075] [gene=RAB42; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; padj=0.8221]. Selective dependency is not established. Best detected cavity, descriptive monomer structural context: [gene=RAB42; type=structural_context; source=DATASET:ALPHAFOLD-DB; structural_context_score=0.5348] [gene=RAB42; type=structural_context; source=DATASET:ALPHAFOLD-DB; volume_a3=37.4] [gene=RAB42; type=structural_context; source=DATASET:ALPHAFOLD-DB; mean_plddt=88.8] [gene=RAB42; type=structural_context; source=DATASET:ALPHAFOLD-DB; n_accessible_lysines=3]. Full predicted-model confidence: [gene=RAB42; type=alphafold_model; source=DATASET:ALPHAFOLD-DB; mean_plddt=85.31]. Experimental ligand-contact validation is unavailable here. Neither a cavity, an exposed loop nor this score identifies a degron or establishes productive ternary-complex formation or degradation. A low score also cannot exclude molecular-glue feasibility.",
+   "evidence_ids": [
+    "EV:discovery:f53feb0aa597",
+    "EV:tcga_de:f53feb0aa597",
+    "EV:purity:f53feb0aa597",
+    "EV:tcga_survival:f53feb0aa597",
+    "EV:depmap_dependency:f53feb0aa597",
+    "EV:structural_context:99d1b16599f0",
+    "EV:alphafold:c7726f37155e"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:discovery:f53feb0aa597",
+     "field": [
+      "rank_in_track"
+     ],
+     "display": "2",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:f53feb0aa597",
+     "field": [
+      "novelty_score"
+     ],
+     "display": "0.7045",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:f53feb0aa597",
+     "field": [
+      "ccrcc_papers"
+     ],
+     "display": "2",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:f53feb0aa597",
+     "field": [
+      "total_papers"
+     ],
+     "display": "20",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:f53feb0aa597",
+     "field": [
+      "source_share"
+     ],
+     "display": "0.627",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:f53feb0aa597",
+     "field": [
+      "source_pct"
+     ],
+     "display": "11.6",
+     "unit": "native_percent"
+    },
+    {
+     "evidence_id": "EV:tcga_de:f53feb0aa597",
+     "field": [
+      "log2fc"
+     ],
+     "display": "4.3712",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:f53feb0aa597",
+     "field": [
+      "padj"
+     ],
+     "display": "4.01e-25",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:purity:f53feb0aa597",
+     "field": [
+      "rna_lfc_at_purity1"
+     ],
+     "display": "3.189",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:f53feb0aa597",
+     "field": [
+      "vital_max_ntpm"
+     ],
+     "display": "2.6",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:f53feb0aa597",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "0.058",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:f53feb0aa597",
+     "field": [
+      "padj"
+     ],
+     "display": "0.5384",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:f53feb0aa597",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "-0.075",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:f53feb0aa597",
+     "field": [
+      "padj"
+     ],
+     "display": "0.8221",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:structural_context:99d1b16599f0",
+     "field": [
+      "structural_context_score"
+     ],
+     "display": "0.5348",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:structural_context:99d1b16599f0",
+     "field": [
+      "volume_a3"
+     ],
+     "display": "37.4",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:structural_context:99d1b16599f0",
+     "field": [
+      "mean_plddt"
+     ],
+     "display": "88.8",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:structural_context:99d1b16599f0",
+     "field": [
+      "n_accessible_lysines"
+     ],
+     "display": "3",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:alphafold:c7726f37155e",
+     "field": [
+      "mean_plddt"
+     ],
+     "display": "85.31",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "OLFML2A",
+   "role": "discovery",
+   "statement": "OLFML2A is a data-ranked hypothesis in the stroma track, with source group Fibroblast. Discovery ranking, literature counts and cell attribution: [gene=OLFML2A; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=stroma; rank_in_track=3] [gene=OLFML2A; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=stroma; novelty_score=0.4812] [gene=OLFML2A; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=stroma; ccrcc_papers=2] [gene=OLFML2A; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=stroma; total_papers=27] [gene=OLFML2A; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=stroma; source_share=0.647]. Fraction of source-group cells expressing the gene: [gene=OLFML2A; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=stroma; source_pct=38.3%]. The frozen profile records no clinical drug and modality annotations AB. These annotations do not establish accessibility or efficacy. TCGA RNA effect: [gene=OLFML2A; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=2.3719] [gene=OLFML2A; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; padj=5.63e-25]. RNA effect extrapolated to full tumour purity: [gene=OLFML2A; type=purity; source=DATASET:CPTAC-CCRCC-PURITY; rna_lfc_at_purity1=1.527]. Purity extrapolation alone does not establish cell of origin. Maximum expression in the assayed vital-organ panel (colon), in nTPM: [gene=OLFML2A; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=stroma; vital_max_ntpm=27.9]. Normal-tissue expression is a potential exposure concern; this panel does not establish safety. Overall-survival association: [gene=OLFML2A; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=-0.155] [gene=OLFML2A; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; padj=0.0693]. A survival association is not established at the adjusted significance threshold. This univariate analysis does not establish independent prognostic utility. Measured cell-line dependency: [gene=OLFML2A; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=0.134] [gene=OLFML2A; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; padj=0.7458]. Selective dependency is not established.",
+   "evidence_ids": [
+    "EV:discovery:eb3ffaa04212",
+    "EV:tcga_de:eb3ffaa04212",
+    "EV:purity:eb3ffaa04212",
+    "EV:tcga_survival:eb3ffaa04212",
+    "EV:depmap_dependency:eb3ffaa04212"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:discovery:eb3ffaa04212",
+     "field": [
+      "rank_in_track"
+     ],
+     "display": "3",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:eb3ffaa04212",
+     "field": [
+      "novelty_score"
+     ],
+     "display": "0.4812",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:eb3ffaa04212",
+     "field": [
+      "ccrcc_papers"
+     ],
+     "display": "2",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:eb3ffaa04212",
+     "field": [
+      "total_papers"
+     ],
+     "display": "27",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:eb3ffaa04212",
+     "field": [
+      "source_share"
+     ],
+     "display": "0.647",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:eb3ffaa04212",
+     "field": [
+      "source_pct"
+     ],
+     "display": "38.3",
+     "unit": "native_percent"
+    },
+    {
+     "evidence_id": "EV:tcga_de:eb3ffaa04212",
+     "field": [
+      "log2fc"
+     ],
+     "display": "2.3719",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:eb3ffaa04212",
+     "field": [
+      "padj"
+     ],
+     "display": "5.63e-25",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:purity:eb3ffaa04212",
+     "field": [
+      "rna_lfc_at_purity1"
+     ],
+     "display": "1.527",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:eb3ffaa04212",
+     "field": [
+      "vital_max_ntpm"
+     ],
+     "display": "27.9",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:eb3ffaa04212",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "-0.155",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:eb3ffaa04212",
+     "field": [
+      "padj"
+     ],
+     "display": "0.0693",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:eb3ffaa04212",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "0.134",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:eb3ffaa04212",
+     "field": [
+      "padj"
+     ],
+     "display": "0.7458",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "JAG2",
+   "role": "discovery",
+   "statement": "JAG2 is a data-ranked hypothesis in the stroma track, with source group Endothelial. Discovery ranking, literature counts and cell attribution: [gene=JAG2; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=stroma; rank_in_track=11] [gene=JAG2; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=stroma; novelty_score=0.4164] [gene=JAG2; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=stroma; ccrcc_papers=9] [gene=JAG2; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=stroma; total_papers=268] [gene=JAG2; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=stroma; source_share=0.487]. Fraction of source-group cells expressing the gene: [gene=JAG2; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=stroma; source_pct=25.7%]. The frozen profile records no clinical drug and modality annotations AB. These annotations do not establish accessibility or efficacy. TCGA RNA effect: [gene=JAG2; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=1.5487] [gene=JAG2; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; padj=1.4e-16]. RNA effect extrapolated to full tumour purity: [gene=JAG2; type=purity; source=DATASET:CPTAC-CCRCC-PURITY; rna_lfc_at_purity1=1.061]. Purity extrapolation alone does not establish cell of origin. Maximum expression in the assayed vital-organ panel (heart muscle), in nTPM: [gene=JAG2; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=stroma; vital_max_ntpm=12.7]. Normal-tissue expression is a potential exposure concern; this panel does not establish safety. Overall-survival association: [gene=JAG2; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=-0.177] [gene=JAG2; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; padj=0.0387]. Higher expression is associated with better survival. This univariate analysis does not establish independent prognostic utility. Measured cell-line dependency: [gene=JAG2; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=0.204] [gene=JAG2; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; padj=0.9233]. Selective dependency is not established.",
+   "evidence_ids": [
+    "EV:discovery:85b9825a2b63",
+    "EV:tcga_de:85b9825a2b63",
+    "EV:purity:85b9825a2b63",
+    "EV:tcga_survival:85b9825a2b63",
+    "EV:depmap_dependency:85b9825a2b63"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:discovery:85b9825a2b63",
+     "field": [
+      "rank_in_track"
+     ],
+     "display": "11",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:85b9825a2b63",
+     "field": [
+      "novelty_score"
+     ],
+     "display": "0.4164",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:85b9825a2b63",
+     "field": [
+      "ccrcc_papers"
+     ],
+     "display": "9",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:85b9825a2b63",
+     "field": [
+      "total_papers"
+     ],
+     "display": "268",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:85b9825a2b63",
+     "field": [
+      "source_share"
+     ],
+     "display": "0.487",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:85b9825a2b63",
+     "field": [
+      "source_pct"
+     ],
+     "display": "25.7",
+     "unit": "native_percent"
+    },
+    {
+     "evidence_id": "EV:tcga_de:85b9825a2b63",
+     "field": [
+      "log2fc"
+     ],
+     "display": "1.5487",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:85b9825a2b63",
+     "field": [
+      "padj"
+     ],
+     "display": "1.4e-16",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:purity:85b9825a2b63",
+     "field": [
+      "rna_lfc_at_purity1"
+     ],
+     "display": "1.061",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:85b9825a2b63",
+     "field": [
+      "vital_max_ntpm"
+     ],
+     "display": "12.7",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:85b9825a2b63",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "-0.177",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:85b9825a2b63",
+     "field": [
+      "padj"
+     ],
+     "display": "0.0387",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:85b9825a2b63",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "0.204",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:85b9825a2b63",
+     "field": [
+      "padj"
+     ],
+     "display": "0.9233",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "GAL3ST4",
+   "role": "discovery",
+   "statement": "GAL3ST4 is a data-ranked hypothesis in the immune track, with source group Macrophage. Discovery ranking, literature counts and cell attribution: [gene=GAL3ST4; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=immune; rank_in_track=1] [gene=GAL3ST4; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=immune; novelty_score=0.6399] [gene=GAL3ST4; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=immune; ccrcc_papers=1] [gene=GAL3ST4; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=immune; total_papers=17] [gene=GAL3ST4; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=immune; source_share=0.972]. Fraction of source-group cells expressing the gene: [gene=GAL3ST4; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=immune; source_pct=23.7%]. The frozen profile records no clinical drug and modality annotations AB. These annotations do not establish accessibility or efficacy. TCGA RNA effect: [gene=GAL3ST4; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=2.9929] [gene=GAL3ST4; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; padj=3.59e-26]. RNA effect extrapolated to full tumour purity: [gene=GAL3ST4; type=purity; source=DATASET:CPTAC-CCRCC-PURITY; rna_lfc_at_purity1=0.401]. Purity extrapolation alone does not establish cell of origin. Maximum expression in the assayed vital-organ panel (cerebral cortex), in nTPM: [gene=GAL3ST4; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=immune; vital_max_ntpm=7.4]. Normal-tissue expression is a potential exposure concern; this panel does not establish safety. Overall-survival association: [gene=GAL3ST4; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=0.177] [gene=GAL3ST4; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; padj=0.0433]. Higher expression is associated with worse survival. This univariate analysis does not establish independent prognostic utility. Measured cell-line dependency: [gene=GAL3ST4; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=-0.07] [gene=GAL3ST4; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; padj=0.831]. Selective dependency is not established.",
+   "evidence_ids": [
+    "EV:discovery:b3f34d2662ac",
+    "EV:tcga_de:b3f34d2662ac",
+    "EV:purity:b3f34d2662ac",
+    "EV:tcga_survival:b3f34d2662ac",
+    "EV:depmap_dependency:b3f34d2662ac"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:discovery:b3f34d2662ac",
+     "field": [
+      "rank_in_track"
+     ],
+     "display": "1",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:b3f34d2662ac",
+     "field": [
+      "novelty_score"
+     ],
+     "display": "0.6399",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:b3f34d2662ac",
+     "field": [
+      "ccrcc_papers"
+     ],
+     "display": "1",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:b3f34d2662ac",
+     "field": [
+      "total_papers"
+     ],
+     "display": "17",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:b3f34d2662ac",
+     "field": [
+      "source_share"
+     ],
+     "display": "0.972",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:b3f34d2662ac",
+     "field": [
+      "source_pct"
+     ],
+     "display": "23.7",
+     "unit": "native_percent"
+    },
+    {
+     "evidence_id": "EV:tcga_de:b3f34d2662ac",
+     "field": [
+      "log2fc"
+     ],
+     "display": "2.9929",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:b3f34d2662ac",
+     "field": [
+      "padj"
+     ],
+     "display": "3.59e-26",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:purity:b3f34d2662ac",
+     "field": [
+      "rna_lfc_at_purity1"
+     ],
+     "display": "0.401",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:b3f34d2662ac",
+     "field": [
+      "vital_max_ntpm"
+     ],
+     "display": "7.4",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:b3f34d2662ac",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "0.177",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:b3f34d2662ac",
+     "field": [
+      "padj"
+     ],
+     "display": "0.0433",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:b3f34d2662ac",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "-0.07",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:b3f34d2662ac",
+     "field": [
+      "padj"
+     ],
+     "display": "0.831",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "LILRB4",
+   "role": "discovery",
+   "statement": "LILRB4 is a data-ranked hypothesis in the immune track, with source group Macrophage. Discovery ranking, literature counts and cell attribution: [gene=LILRB4; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=immune; rank_in_track=3] [gene=LILRB4; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=immune; novelty_score=0.6125] [gene=LILRB4; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=immune; ccrcc_papers=7] [gene=LILRB4; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=immune; total_papers=340] [gene=LILRB4; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=immune; source_share=0.933]. Fraction of source-group cells expressing the gene: [gene=LILRB4; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=immune; source_pct=55.5%]. The frozen profile records no clinical drug and modality annotations AB. These annotations do not establish accessibility or efficacy. TCGA RNA effect: [gene=LILRB4; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=3.7] [gene=LILRB4; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; padj=3.41e-23]. RNA effect extrapolated to full tumour purity: [gene=LILRB4; type=purity; source=DATASET:CPTAC-CCRCC-PURITY; rna_lfc_at_purity1=0.508]. Purity extrapolation alone does not establish cell of origin. Maximum expression in the assayed vital-organ panel (lung), in nTPM: [gene=LILRB4; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=immune; vital_max_ntpm=13.1]. Normal-tissue expression is a potential exposure concern; this panel does not establish safety. Overall-survival association: [gene=LILRB4; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=0.136] [gene=LILRB4; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; padj=0.1295]. A survival association is not established at the adjusted significance threshold. This univariate analysis does not establish independent prognostic utility. Measured cell-line dependency: [gene=LILRB4; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=0.15] [gene=LILRB4; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; padj=0.9668]. Selective dependency is not established. Attenuation in the purity model is consistent with an infiltration-associated signal; it is not definitive proof of the producing cell or a causal mechanism.",
+   "evidence_ids": [
+    "EV:discovery:3c9bb849285e",
+    "EV:tcga_de:3c9bb849285e",
+    "EV:purity:3c9bb849285e",
+    "EV:tcga_survival:3c9bb849285e",
+    "EV:depmap_dependency:3c9bb849285e"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:discovery:3c9bb849285e",
+     "field": [
+      "rank_in_track"
+     ],
+     "display": "3",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:3c9bb849285e",
+     "field": [
+      "novelty_score"
+     ],
+     "display": "0.6125",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:3c9bb849285e",
+     "field": [
+      "ccrcc_papers"
+     ],
+     "display": "7",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:3c9bb849285e",
+     "field": [
+      "total_papers"
+     ],
+     "display": "340",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:3c9bb849285e",
+     "field": [
+      "source_share"
+     ],
+     "display": "0.933",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:3c9bb849285e",
+     "field": [
+      "source_pct"
+     ],
+     "display": "55.5",
+     "unit": "native_percent"
+    },
+    {
+     "evidence_id": "EV:tcga_de:3c9bb849285e",
+     "field": [
+      "log2fc"
+     ],
+     "display": "3.7",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:3c9bb849285e",
+     "field": [
+      "padj"
+     ],
+     "display": "3.41e-23",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:purity:3c9bb849285e",
+     "field": [
+      "rna_lfc_at_purity1"
+     ],
+     "display": "0.508",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:3c9bb849285e",
+     "field": [
+      "vital_max_ntpm"
+     ],
+     "display": "13.1",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:3c9bb849285e",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "0.136",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:3c9bb849285e",
+     "field": [
+      "padj"
+     ],
+     "display": "0.1295",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:3c9bb849285e",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "0.15",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:3c9bb849285e",
+     "field": [
+      "padj"
+     ],
+     "display": "0.9668",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "GBP5",
+   "role": "discovery",
+   "statement": "GBP5 is a data-ranked hypothesis in the immune track, with source group CD8_T. Discovery ranking, literature counts and cell attribution: [gene=GBP5; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=immune; rank_in_track=4] [gene=GBP5; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=immune; novelty_score=0.6106] [gene=GBP5; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=immune; ccrcc_papers=10] [gene=GBP5; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=immune; total_papers=280] [gene=GBP5; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=immune; source_share=0.573]. Fraction of source-group cells expressing the gene: [gene=GBP5; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=immune; source_pct=33.1%]. The frozen profile records no clinical drug and modality annotations PR; SM. These annotations do not establish accessibility or efficacy. TCGA RNA effect: [gene=GBP5; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=3.2956] [gene=GBP5; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; padj=2.45e-19]. RNA effect extrapolated to full tumour purity: [gene=GBP5; type=purity; source=DATASET:CPTAC-CCRCC-PURITY; rna_lfc_at_purity1=0.417]. Purity extrapolation alone does not establish cell of origin. Maximum expression in the assayed vital-organ panel (bone marrow), in nTPM: [gene=GBP5; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=immune; vital_max_ntpm=17.1]. Normal-tissue expression is a potential exposure concern; this panel does not establish safety. Overall-survival association: [gene=GBP5; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=0.227] [gene=GBP5; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; padj=0.0071]. Higher expression is associated with worse survival. This univariate analysis does not establish independent prognostic utility. Measured cell-line dependency: [gene=GBP5; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=-0.112] [gene=GBP5; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; padj=0.06]. Selective dependency is not established. Attenuation in the purity model is consistent with an infiltration-associated signal; it is not definitive proof of the producing cell or a causal mechanism.",
+   "evidence_ids": [
+    "EV:discovery:c3ba50cd5fe7",
+    "EV:tcga_de:c3ba50cd5fe7",
+    "EV:purity:c3ba50cd5fe7",
+    "EV:tcga_survival:c3ba50cd5fe7",
+    "EV:depmap_dependency:c3ba50cd5fe7"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:discovery:c3ba50cd5fe7",
+     "field": [
+      "rank_in_track"
+     ],
+     "display": "4",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:c3ba50cd5fe7",
+     "field": [
+      "novelty_score"
+     ],
+     "display": "0.6106",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:c3ba50cd5fe7",
+     "field": [
+      "ccrcc_papers"
+     ],
+     "display": "10",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:c3ba50cd5fe7",
+     "field": [
+      "total_papers"
+     ],
+     "display": "280",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:c3ba50cd5fe7",
+     "field": [
+      "source_share"
+     ],
+     "display": "0.573",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:c3ba50cd5fe7",
+     "field": [
+      "source_pct"
+     ],
+     "display": "33.1",
+     "unit": "native_percent"
+    },
+    {
+     "evidence_id": "EV:tcga_de:c3ba50cd5fe7",
+     "field": [
+      "log2fc"
+     ],
+     "display": "3.2956",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:c3ba50cd5fe7",
+     "field": [
+      "padj"
+     ],
+     "display": "2.45e-19",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:purity:c3ba50cd5fe7",
+     "field": [
+      "rna_lfc_at_purity1"
+     ],
+     "display": "0.417",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:c3ba50cd5fe7",
+     "field": [
+      "vital_max_ntpm"
+     ],
+     "display": "17.1",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:c3ba50cd5fe7",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "0.227",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:c3ba50cd5fe7",
+     "field": [
+      "padj"
+     ],
+     "display": "0.0071",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:c3ba50cd5fe7",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "-0.112",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:c3ba50cd5fe7",
+     "field": [
+      "padj"
+     ],
+     "display": "0.06",
+     "unit": "native"
+    }
+   ]
+  }
+ ],
+ "caveats": [
+  "Cell attribution is specific to the sampled cohorts; bulk purity extrapolation alone cannot establish tumour-cell origin.",
+  "Structural-context scores are descriptive monomer heuristics. Cavities and exposed loops are not experimental degron annotations.",
+  "Drug and genetic-association statements belong to the separately cited external-evidence block.",
+  "Discovery status is a hypothesis based on frozen source annotations, not validated first-in-class efficacy or safety."
+ ],
+ "revision": {
+  "method": "Reviewed metric-specific corrections of saved cell-agent output, not a new historical model execution"
+ }
+}

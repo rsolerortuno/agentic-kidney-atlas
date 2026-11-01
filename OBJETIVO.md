@@ -67,3 +67,24 @@ Capas independientes (mutaciones somáticas CPTAC + TCGA con corrección por lon
 ## Ampliación M14 (pedida tras revisar M13)
 Capa espacial reproducible (semilla por gen y conjunto fijo de exclusión de marcadores), guarda contra narrativas desfasadas (`basis.json` con la huella de cada evidencia citable; la verificación final falla si cambió), descubrimiento v2 con las capas M13 (replicación, pureza, pronóstico, dependencia) y listas por vía, registros resumen por gen para single-cell y espacial, y nueva ejecución de `/informe`.
 - ✔ Resultados espaciales idénticos con otra lista de genes; `run-all` sobre la ejecución nueva da 0 afirmaciones desfasadas; `verify.py final` 0 sin soporte; informe válido; tests en verde.
+
+## Revisión de rigor, reproducción y visualización (2026-11-01)
+
+1. Verificar cada cifra contra su métrica, signo y unidad; probar afirmaciones
+   incorrectas y describir el resultado como controles automáticos, no validación
+   científica completa.
+2. Calcular la primera fecha clínica entre todas las fases y presentar la
+   evaluación como retrospectiva mientras haya datos posteriores al corte.
+3. Congelar fuentes, versiones conocidas, URLs y hashes; exigir esos inputs y
+   demostrar una reconstrucción limpia con las respuestas de modelos guardadas.
+4. Mostrar evidencia ausente, no favorable y contradictoria por candidato, con
+   la finalidad propuesta y su justificación.
+5. Separar la heurística estructural de las predicciones MGD; incorporar degrones
+   y complejos ternarios experimentales, residuos, ligasa, compuesto y fuentes.
+6. Ofrecer un visor de coordenadas reales: superficie gris, región seleccionada
+   roja, enfoque, transparencia/corte y confianza cuando corresponda.
+7. **Limpiar el repositorio al finalizar:** revisar referencias y consumidores de
+   los archivos, retirar intermedios y pruebas obsoletas, ajustar exclusiones para
+   evitar su reaparición y comprobar que la ejecución sigue funcionando. Conservar
+   datos originales, entradas congeladas y evidencias necesarias para reproducir
+   o auditar resultados. Registrar qué se retira y por qué.

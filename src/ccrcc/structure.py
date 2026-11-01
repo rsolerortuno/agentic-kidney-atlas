@@ -1,28 +1,12 @@
-"""Structure and pocket context: AlphaFold DB models, cavity detection and molecular-glue-degrader (MGD) scoring.
+"""AlphaFold cavity analysis and an explicitly unvalidated structural-context heuristic.
 
-Deterministic, no LLM, no local docking software beyond the pyKVFinder wheel:
+Confidence, cavity geometry, nearby accessible lysines and exposed non-helical
+runs describe a monomer. They do not identify a degron, establish E3 compatibility
+or predict productive ubiquitination/degradation. PDBe-KB ligand contacts assess
+cavity detection only. Experimental MGD annotations live in degradation.py.
 
-1. The AlphaFold DB model of each candidate's UniProt accession is downloaded (cached on disk) with its
-   per-residue pLDDT (the PDB B-factor column).
-2. Residues below `structure.min_plddt_keep` are removed: in a model of a mostly disordered protein they are
-   ribbons of spaghetti that create large, meaningless "cavities".
-3. pyKVFinder detects cavities on the trimmed model (volume, area, maximum depth, average hydropathy, lining
-   residues). Cavities are reported in UniProt residue numbering.
-4. Each cavity gets an MGD site score in [0, 1] from four components (weights in config.yaml):
-   - confidence: mean pLDDT of the lining residues (50 -> 0, 90 -> 1). A pocket in disordered model regions
-     cannot be designed against.
-   - geometry: a volume inside `pocket_volume` and a buried, deep cavity (molecular glues bind shallow but
-     well-defined clefts; this prefers real clefts over surface dents and over huge interior voids).
-   - lysines: solvent-accessible lysines within `lysine_radius` of the cavity centroid. A glue that recruits an
-     E3 must leave a lysine the E2~ubiquitin can reach; with none, ubiquitin transfer has no acceptor.
-   - degron: an exposed, non-helical stretch (loop or beta-hairpin) within `hairpin_radius`. Known glue degrons
-     (the IMiD zinc-finger G-loop, the CK1alpha / GSPT1 beta-hairpin) are of that shape.
-   Secondary structure is assigned geometrically from CA distances (P-SEA-style), and relative solvent
-   accessibility with Biopython's Shrake-Rupley, so no DSSP binary is required.
-5. Validation: PDBe-KB ligand-binding residues (experimental holo structures, UniProt numbering) are used as a
-   positive control — how many of them fall in a detected cavity, and in which rank.
-
-This is a prioritization of *sites* for a chemistry campaign, not a prediction that a degrader exists.
+Legacy mgd_score/degron keys are retained for archived artifact compatibility;
+new outputs also expose structural_context_score. No probability is implied.
 """
 from __future__ import annotations
 
@@ -185,7 +169,11 @@ def cavity_table(pdb: Path, st: dict) -> list[dict]:
             "components": {k: round(v, 3) for k, v in comp.items()},
             "mgd_score": round(sum(w[k] * comp[k] for k in w), 4),
         })
-    out.sort(key=lambda c: -c["mgd_score"])
+    for item in out:
+        item["structural_context_score"] = item["mgd_score"]
+        item["exposed_loop_component"] = item["components"]["degron"]
+        item["interpretation"] = "Monomer structural context only; no degron or degradation prediction"
+    out.sort(key=lambda c: -c["structural_context_score"])
     for i, c in enumerate(out, 1):
         c["rank"] = i
     return out
@@ -208,7 +196,7 @@ def validate(cavities: list[dict], sites: dict, top: int) -> dict:
     """Two separate questions, using experimentally ligand-bound residues (PDBe-KB) as ground truth.
 
     detection: do the detected cavities (all of them) cover the known ligand residues? (cavity detector quality)
-    ranking: where does the MGD score place the best-overlapping cavity, and how much is in the top `top`?
+    ranking: where does the structural-context heuristic place the best-overlapping cavity, and how much is in the top `top`?
     (score quality: the score is not trained on this, so a poor rank is a real weakness, not a bug)."""
     if not sites["residues"] or not cavities:
         return {"checked": False}
@@ -267,13 +255,17 @@ def run() -> dict:
                  "pockets": cav, "n_cavities": len(all_cav),
                  "ligand_site_validation": validate(all_cav, sites, cfg["top_pockets"])}
         entry["best_mgd_score"] = cav[0]["mgd_score"] if cav else None
+        entry["best_structural_context_score"] = entry["best_mgd_score"]
         results.append(entry)
         for c in cav:
             rows.append({"gene": gene, "control": gene in controls, "uniprot": acc, "rank": c["rank"], "cavity": c["cavity"],
                          "volume_a3": c["volume_a3"], "area_a2": c["area_a2"], "max_depth_a": c["max_depth_a"],
                          "avg_hydropathy": c["avg_hydropathy"], "mean_plddt": c["mean_plddt"],
                          "n_accessible_lysines": len(c["accessible_lysines"]),
-                         "exposed_loop_run": c["exposed_loop_run"], "mgd_score": c["mgd_score"],
+                         "exposed_loop_run": c["exposed_loop_run"],
+                         "structural_context_score": c["structural_context_score"],
+                         "comp_exposed_loop": c["exposed_loop_component"],
+                         "mgd_score": c["mgd_score"],  # archived-reader compatibility
                          **{f"comp_{k}": v for k, v in c["components"].items()},
                          "residues": ",".join(map(str, c["residues"]))})
     pd.DataFrame(rows).to_parquet(PROCESSED / "structure_pockets.parquet", index=False)
@@ -294,7 +286,7 @@ if __name__ == "__main__":
             continue
         v = r["ligand_site_validation"]
         print(f"{r['gene']:10s} {r['uniprot']:8s} plddt {r['mean_plddt']:5.1f} kept {r['residues_kept_above_plddt']:4d} "
-              f"best MGD {r['best_mgd_score']} | pockets " +
+              f"best structural context {r['best_structural_context_score']} | pockets " +
               ", ".join(f"{c['volume_a3']}A3/d{c['max_depth_a']}/K{len(c['accessible_lysines'])}/{c['mgd_score']}"
                         for c in r["pockets"]) +
               (f" | ligand-site detection recall {v['recall']} top3 {v['recall_in_top_pockets']} (best rank {v['best_cavity_rank']}/{v['n_cavities']})" if v.get("checked") else ""))

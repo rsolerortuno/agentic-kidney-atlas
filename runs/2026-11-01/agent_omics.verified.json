@@ -4,128 +4,1292 @@
   {
    "gene": "CA9",
    "role": "target_and_biomarker",
-   "statement": "CA9 is up in tumour at RNA (log2FC 6.312, padj 1.72e-49) and protein (log2FC 2.269, padj 9.9e-43), replicates in TCGA-KIRC (log2FC 9.712) and persists at purity 1 (RNA log2FC 7.787), so it is tumour-cell intrinsic. Girentuximab reached PHASE_3. CNV loss frequency is 0.145 and the cis rho is 0.224.",
+   "statement": "CA9 has increased RNA and protein abundance in the discovery tumour-versus-normal comparison. Discovery rna: [gene=CA9; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; log2fc=6.3123] [gene=CA9; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; padj=1.72e-49]. Discovery protein: [gene=CA9; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=2.2686] [gene=CA9; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; padj=9.9e-43]. The direction agrees in TCGA-KIRC: [gene=CA9; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=9.7117] [gene=CA9; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; padj=2.58e-30]. RNA effect extrapolated to full tumour purity: [gene=CA9; type=purity; source=DATASET:CPTAC-CCRCC-PURITY; rna_lfc_at_purity1=7.787]. This model-based extrapolation alone does not establish tumour-cell origin. Copy-number loss frequency: [gene=CA9; type=omics_cnv; source=DATASET:CPTAC-CCRCC-CNV; arm=9p; loss_freq=0.145]. RNA copy-number correlation: [gene=CA9; type=cis_dosage; source=DATASET:CPTAC-CCRCC-CNV; arm=9p; rna_rho=0.224]. Correlation does not prove a causal dosage effect. Measured ccRCC cell-line effect: [gene=CA9; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=0.051]; selectivity: [gene=CA9; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; selectivity=0.031]; adjusted p-value: [gene=CA9; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; padj=0.4417]. Selective dependency is not established by these measurements. Girentuximab has a clinical-development record in the frozen Open Targets snapshot; development status is not proof of efficacy. Expression-based candidate status remains a hypothesis requiring modality-specific and functional validation.",
    "evidence_ids": [
     "EV:omics_de:b269736afdb0",
     "EV:omics_de:5afe18b4024b",
     "EV:tcga_de:225a767ebcb5",
     "EV:purity:225a767ebcb5",
-    "EV:open_targets_drug:e1e0c664ada3"
+    "EV:omics_cnv:225a767ebcb5",
+    "EV:cis_dosage:225a767ebcb5",
+    "EV:depmap_dependency:225a767ebcb5",
+    "EV:open_targets_drug:646a0aec5b64"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:omics_de:b269736afdb0",
+     "field": [
+      "log2fc"
+     ],
+     "display": "6.3123",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:b269736afdb0",
+     "field": [
+      "padj"
+     ],
+     "display": "1.72e-49",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:5afe18b4024b",
+     "field": [
+      "log2fc"
+     ],
+     "display": "2.2686",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:5afe18b4024b",
+     "field": [
+      "padj"
+     ],
+     "display": "9.9e-43",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:225a767ebcb5",
+     "field": [
+      "log2fc"
+     ],
+     "display": "9.7117",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:225a767ebcb5",
+     "field": [
+      "padj"
+     ],
+     "display": "2.58e-30",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:purity:225a767ebcb5",
+     "field": [
+      "rna_lfc_at_purity1"
+     ],
+     "display": "7.787",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_cnv:225a767ebcb5",
+     "field": [
+      "loss_freq"
+     ],
+     "display": "0.145",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:cis_dosage:225a767ebcb5",
+     "field": [
+      "rna_rho"
+     ],
+     "display": "0.224",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:225a767ebcb5",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "0.051",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:225a767ebcb5",
+     "field": [
+      "selectivity"
+     ],
+     "display": "0.031",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:225a767ebcb5",
+     "field": [
+      "padj"
+     ],
+     "display": "0.4417",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "CD70",
    "role": "target",
-   "statement": "CD70 is up at RNA (log2FC 4.464, padj 4.13e-35) and protein (log2FC 2.421, padj 1.94e-38), replicates in TCGA-KIRC (log2FC 7.09) and keeps RNA log2FC 4.278 at purity 1. It is a membrane antigen with clinical-stage antibody candidates (cusatuzumab PHASE_2).",
+   "statement": "CD70 has increased RNA and protein abundance in the discovery tumour-versus-normal comparison. Discovery rna: [gene=CD70; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; log2fc=4.4637] [gene=CD70; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; padj=4.13e-35]. Discovery protein: [gene=CD70; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=2.4207] [gene=CD70; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; padj=1.94e-38]. The direction agrees in TCGA-KIRC: [gene=CD70; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=7.0902] [gene=CD70; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; padj=6.45e-25]. RNA effect extrapolated to full tumour purity: [gene=CD70; type=purity; source=DATASET:CPTAC-CCRCC-PURITY; rna_lfc_at_purity1=4.278]. This model-based extrapolation alone does not establish tumour-cell origin. Measured ccRCC cell-line effect: [gene=CD70; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=0.251]; selectivity: [gene=CD70; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; selectivity=0.006]; adjusted p-value: [gene=CD70; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; padj=0.9287]. Selective dependency is not established by these measurements. Cusatuzumab has a clinical-development record in the frozen Open Targets snapshot; development status is not proof of efficacy. Expression-based candidate status remains a hypothesis requiring modality-specific and functional validation.",
    "evidence_ids": [
     "EV:omics_de:97c97f6d7d62",
     "EV:omics_de:8a1dc0572ead",
-    "EV:tcga_de:908e84663f6a"
+    "EV:tcga_de:908e84663f6a",
+    "EV:purity:908e84663f6a",
+    "EV:depmap_dependency:908e84663f6a",
+    "EV:open_targets_drug:0a02c566ec75"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:omics_de:97c97f6d7d62",
+     "field": [
+      "log2fc"
+     ],
+     "display": "4.4637",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:97c97f6d7d62",
+     "field": [
+      "padj"
+     ],
+     "display": "4.13e-35",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:8a1dc0572ead",
+     "field": [
+      "log2fc"
+     ],
+     "display": "2.4207",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:8a1dc0572ead",
+     "field": [
+      "padj"
+     ],
+     "display": "1.94e-38",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:908e84663f6a",
+     "field": [
+      "log2fc"
+     ],
+     "display": "7.0902",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:908e84663f6a",
+     "field": [
+      "padj"
+     ],
+     "display": "6.45e-25",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:purity:908e84663f6a",
+     "field": [
+      "rna_lfc_at_purity1"
+     ],
+     "display": "4.278",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:908e84663f6a",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "0.251",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:908e84663f6a",
+     "field": [
+      "selectivity"
+     ],
+     "display": "0.006",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:908e84663f6a",
+     "field": [
+      "padj"
+     ],
+     "display": "0.9287",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "NNMT",
    "role": "target_and_biomarker",
-   "statement": "NNMT is up at RNA (log2FC 4.67, padj 2.04e-40) and protein (log2FC 2.709, padj 1.23e-43), replicates in TCGA-KIRC (log2FC 4.685) and is prognostic (Cox log HR 0.301, padj 0.00479, higher expression is worse). It ranks 4th in the target profile and 6th in the biomarker profile.",
+   "statement": "NNMT has increased RNA and protein abundance in the discovery tumour-versus-normal comparison. Discovery rna: [gene=NNMT; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; log2fc=4.6697] [gene=NNMT; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; padj=2.04e-40]. Discovery protein: [gene=NNMT; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=2.709] [gene=NNMT; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; padj=1.23e-43]. The direction agrees in TCGA-KIRC: [gene=NNMT; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=4.6846] [gene=NNMT; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; padj=5.62e-27]. Overall-survival association: [gene=NNMT; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=0.301] [gene=NNMT; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; padj=0.0048]. Higher expression is associated with worse survival. This univariate association does not establish an independently validated prognostic biomarker. Computed target rank: [gene=NNMT; type=analysis_ranking; source=ANALYSIS:ranking:target:8d5ff79b77e8d233; profile=target; rank=4]; biomarker rank: [gene=NNMT; type=analysis_ranking; source=ANALYSIS:ranking:biomarker:8d5ff79b77e8d233; profile=biomarker; rank=6]. Measured ccRCC cell-line effect: [gene=NNMT; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=0.316]; selectivity: [gene=NNMT; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; selectivity=-0.075]; adjusted p-value: [gene=NNMT; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; padj=0.0725]. Selective dependency is not established by these measurements. Expression-based candidate status remains a hypothesis requiring modality-specific and functional validation.",
    "evidence_ids": [
     "EV:omics_de:aefc373d6072",
     "EV:omics_de:de39cc0c5ed8",
     "EV:tcga_de:7dbf93860d9f",
-    "EV:tcga_survival:7dbf93860d9f"
+    "EV:tcga_survival:7dbf93860d9f",
+    "EV:analysis_ranking:6d3fe6ac1bbb",
+    "EV:analysis_ranking:628e6d0a6d70",
+    "EV:depmap_dependency:7dbf93860d9f"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:omics_de:aefc373d6072",
+     "field": [
+      "log2fc"
+     ],
+     "display": "4.6697",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:aefc373d6072",
+     "field": [
+      "padj"
+     ],
+     "display": "2.04e-40",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:de39cc0c5ed8",
+     "field": [
+      "log2fc"
+     ],
+     "display": "2.709",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:de39cc0c5ed8",
+     "field": [
+      "padj"
+     ],
+     "display": "1.23e-43",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:7dbf93860d9f",
+     "field": [
+      "log2fc"
+     ],
+     "display": "4.6846",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:7dbf93860d9f",
+     "field": [
+      "padj"
+     ],
+     "display": "5.62e-27",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:7dbf93860d9f",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "0.301",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:7dbf93860d9f",
+     "field": [
+      "padj"
+     ],
+     "display": "0.0048",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:6d3fe6ac1bbb",
+     "field": [
+      "rank"
+     ],
+     "display": "4",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:628e6d0a6d70",
+     "field": [
+      "rank"
+     ],
+     "display": "6",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:7dbf93860d9f",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "0.316",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:7dbf93860d9f",
+     "field": [
+      "selectivity"
+     ],
+     "display": "-0.075",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:7dbf93860d9f",
+     "field": [
+      "padj"
+     ],
+     "display": "0.0725",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "ENPP3",
    "role": "target",
-   "statement": "ENPP3 is up at RNA (log2FC 3.895), protein (log2FC 1.544, padj 3.02e-37) and TCGA-KIRC (log2FC 5.557), with RNA log2FC 5.278 at purity 1. It is a surface enzyme with an antibody-drug conjugate in PHASE_2 (AGS-16C3F). CNV loss frequency is 0.182.",
+   "statement": "ENPP3 has increased RNA and protein abundance in the discovery tumour-versus-normal comparison. Discovery rna: [gene=ENPP3; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; log2fc=3.8951] [gene=ENPP3; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; padj=5.72e-33]. Discovery protein: [gene=ENPP3; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=1.5438] [gene=ENPP3; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; padj=3.02e-37]. The direction agrees in TCGA-KIRC: [gene=ENPP3; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=5.5569] [gene=ENPP3; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; padj=1.66e-22]. RNA effect extrapolated to full tumour purity: [gene=ENPP3; type=purity; source=DATASET:CPTAC-CCRCC-PURITY; rna_lfc_at_purity1=5.278]. This model-based extrapolation alone does not establish tumour-cell origin. Copy-number loss frequency: [gene=ENPP3; type=omics_cnv; source=DATASET:CPTAC-CCRCC-CNV; arm=6q; loss_freq=0.182]. Measured ccRCC cell-line effect: [gene=ENPP3; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=0.091]; selectivity: [gene=ENPP3; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; selectivity=0.026]; adjusted p-value: [gene=ENPP3; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; padj=0.6265]. Selective dependency is not established by these measurements. AGS-16C3F has a clinical-development record in the frozen Open Targets snapshot; development status is not proof of efficacy. Expression-based candidate status remains a hypothesis requiring modality-specific and functional validation.",
    "evidence_ids": [
     "EV:omics_de:d540450c23e1",
     "EV:omics_de:fad29d44ef95",
-    "EV:tcga_de:d5aee88146ed"
+    "EV:tcga_de:d5aee88146ed",
+    "EV:purity:d5aee88146ed",
+    "EV:omics_cnv:d5aee88146ed",
+    "EV:depmap_dependency:d5aee88146ed",
+    "EV:open_targets_drug:49872cd86a77"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:omics_de:d540450c23e1",
+     "field": [
+      "log2fc"
+     ],
+     "display": "3.8951",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:d540450c23e1",
+     "field": [
+      "padj"
+     ],
+     "display": "5.72e-33",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:fad29d44ef95",
+     "field": [
+      "log2fc"
+     ],
+     "display": "1.5438",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:fad29d44ef95",
+     "field": [
+      "padj"
+     ],
+     "display": "3.02e-37",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:d5aee88146ed",
+     "field": [
+      "log2fc"
+     ],
+     "display": "5.5569",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:d5aee88146ed",
+     "field": [
+      "padj"
+     ],
+     "display": "1.66e-22",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:purity:d5aee88146ed",
+     "field": [
+      "rna_lfc_at_purity1"
+     ],
+     "display": "5.278",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_cnv:d5aee88146ed",
+     "field": [
+      "loss_freq"
+     ],
+     "display": "0.182",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:d5aee88146ed",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "0.091",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:d5aee88146ed",
+     "field": [
+      "selectivity"
+     ],
+     "display": "0.026",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:d5aee88146ed",
+     "field": [
+      "padj"
+     ],
+     "display": "0.6265",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "SCARB1",
    "role": "target",
-   "statement": "SCARB1 is the top-ranked target (score 4.1314). It is up at RNA (log2FC 2.974, padj 7.23e-39) and protein (log2FC 1.837, padj 5.08e-37), replicates in TCGA-KIRC (log2FC 3.989) and holds at purity 1 (RNA log2FC 3.762). It is not prognostic (Cox log HR -0.038, padj 0.684).",
+   "statement": "SCARB1 has increased RNA and protein abundance in the discovery tumour-versus-normal comparison. Discovery rna: [gene=SCARB1; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; log2fc=2.9743] [gene=SCARB1; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; padj=7.23e-39]. Discovery protein: [gene=SCARB1; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=1.8371] [gene=SCARB1; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; padj=5.08e-37]. The direction agrees in TCGA-KIRC: [gene=SCARB1; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=3.9894] [gene=SCARB1; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; padj=1.43e-31]. RNA effect extrapolated to full tumour purity: [gene=SCARB1; type=purity; source=DATASET:CPTAC-CCRCC-PURITY; rna_lfc_at_purity1=3.762]. This model-based extrapolation alone does not establish tumour-cell origin. Overall-survival association: [gene=SCARB1; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=-0.038] [gene=SCARB1; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; padj=0.684]. The survival association does not meet the adjusted significance criterion. This univariate association does not establish an independently validated prognostic biomarker. Computed target rank and score: [gene=SCARB1; type=analysis_ranking; source=ANALYSIS:ranking:target:8d5ff79b77e8d233; profile=target; rank=1] [gene=SCARB1; type=analysis_ranking; source=ANALYSIS:ranking:target:8d5ff79b77e8d233; profile=target; score=4.1314]. Measured ccRCC cell-line effect: [gene=SCARB1; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=0.002]; selectivity: [gene=SCARB1; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; selectivity=-0.021]; adjusted p-value: [gene=SCARB1; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; padj=0.798]. Selective dependency is not established by these measurements. Expression-based candidate status remains a hypothesis requiring modality-specific and functional validation.",
    "evidence_ids": [
     "EV:omics_de:36b227bd1fb6",
     "EV:omics_de:cd4a629b011f",
     "EV:tcga_de:2d66f8e78d0c",
-    "EV:purity:2d66f8e78d0c"
+    "EV:purity:2d66f8e78d0c",
+    "EV:tcga_survival:2d66f8e78d0c",
+    "EV:analysis_ranking:fec77c62f0a2",
+    "EV:depmap_dependency:2d66f8e78d0c"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:omics_de:36b227bd1fb6",
+     "field": [
+      "log2fc"
+     ],
+     "display": "2.9743",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:36b227bd1fb6",
+     "field": [
+      "padj"
+     ],
+     "display": "7.23e-39",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:cd4a629b011f",
+     "field": [
+      "log2fc"
+     ],
+     "display": "1.8371",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:cd4a629b011f",
+     "field": [
+      "padj"
+     ],
+     "display": "5.08e-37",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:2d66f8e78d0c",
+     "field": [
+      "log2fc"
+     ],
+     "display": "3.9894",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:2d66f8e78d0c",
+     "field": [
+      "padj"
+     ],
+     "display": "1.43e-31",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:purity:2d66f8e78d0c",
+     "field": [
+      "rna_lfc_at_purity1"
+     ],
+     "display": "3.762",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:2d66f8e78d0c",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "-0.038",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:2d66f8e78d0c",
+     "field": [
+      "padj"
+     ],
+     "display": "0.684",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:fec77c62f0a2",
+     "field": [
+      "rank"
+     ],
+     "display": "1",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:fec77c62f0a2",
+     "field": [
+      "score"
+     ],
+     "display": "4.1314",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:2d66f8e78d0c",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "0.002",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:2d66f8e78d0c",
+     "field": [
+      "selectivity"
+     ],
+     "display": "-0.021",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:2d66f8e78d0c",
+     "field": [
+      "padj"
+     ],
+     "display": "0.798",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "SLC16A3",
    "role": "target",
-   "statement": "SLC16A3 (MCT4) is up at RNA (log2FC 3.435) and protein (log2FC 2.279), replicates in TCGA-KIRC (log2FC 3.291) and has RNA log2FC 3.821 at purity 1. The cis rho is 0.258 and the DepMap ccRCC mean effect is -0.015, so it is not a selective dependency.",
+   "statement": "SLC16A3 has increased RNA and protein abundance in the discovery tumour-versus-normal comparison. Discovery rna: [gene=SLC16A3; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; log2fc=3.4346] [gene=SLC16A3; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; padj=3.3e-49]. Discovery protein: [gene=SLC16A3; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=2.2792] [gene=SLC16A3; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; padj=5.43e-47]. The direction agrees in TCGA-KIRC: [gene=SLC16A3; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=3.2905] [gene=SLC16A3; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; padj=7.66e-28]. RNA copy-number correlation: [gene=SLC16A3; type=cis_dosage; source=DATASET:CPTAC-CCRCC-CNV; arm=17q; rna_rho=0.258]. Correlation does not prove a causal dosage effect. Measured ccRCC cell-line effect: [gene=SLC16A3; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=-0.015]; selectivity: [gene=SLC16A3; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; selectivity=-0.008]; adjusted p-value: [gene=SLC16A3; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; padj=0.9288]. Selective dependency is not established by these measurements. Expression-based candidate status remains a hypothesis requiring modality-specific and functional validation.",
    "evidence_ids": [
     "EV:omics_de:545c6eb28bce",
     "EV:omics_de:d93a2cc11342",
-    "EV:tcga_de:11298113327b"
+    "EV:tcga_de:11298113327b",
+    "EV:cis_dosage:11298113327b",
+    "EV:depmap_dependency:11298113327b"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:omics_de:545c6eb28bce",
+     "field": [
+      "log2fc"
+     ],
+     "display": "3.4346",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:545c6eb28bce",
+     "field": [
+      "padj"
+     ],
+     "display": "3.3e-49",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:d93a2cc11342",
+     "field": [
+      "log2fc"
+     ],
+     "display": "2.2792",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:d93a2cc11342",
+     "field": [
+      "padj"
+     ],
+     "display": "5.43e-47",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:11298113327b",
+     "field": [
+      "log2fc"
+     ],
+     "display": "3.2905",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:11298113327b",
+     "field": [
+      "padj"
+     ],
+     "display": "7.66e-28",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:cis_dosage:11298113327b",
+     "field": [
+      "rna_rho"
+     ],
+     "display": "0.258",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:11298113327b",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "-0.015",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:11298113327b",
+     "field": [
+      "selectivity"
+     ],
+     "display": "-0.008",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:11298113327b",
+     "field": [
+      "padj"
+     ],
+     "display": "0.9288",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "PSAT1",
    "role": "biomarker",
-   "statement": "PSAT1 is the top biomarker (score 5.3696). It is down at RNA (log2FC -3.867, padj 2.54e-29) and protein (log2FC -1.963, padj 1.77e-33), replicates in TCGA-KIRC (log2FC -2.974), and higher expression predicts worse survival (Cox log HR 0.43, padj 5.66e-7). Its direction is opposite to the usual serine-pathway upregulation.",
+   "statement": "PSAT1 has decreased RNA and protein abundance in the discovery tumour-versus-normal comparison. Discovery rna: [gene=PSAT1; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; log2fc=-3.8667] [gene=PSAT1; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; padj=2.54e-29]. Discovery protein: [gene=PSAT1; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=-1.9635] [gene=PSAT1; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; padj=1.77e-33]. The direction agrees in TCGA-KIRC: [gene=PSAT1; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=-2.9737] [gene=PSAT1; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; padj=1.45e-11]. Overall-survival association: [gene=PSAT1; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=0.43] [gene=PSAT1; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; padj=5.66e-07]. Higher expression is associated with worse survival. This univariate association does not establish an independently validated prognostic biomarker. Computed biomarker rank and score: [gene=PSAT1; type=analysis_ranking; source=ANALYSIS:ranking:biomarker:8d5ff79b77e8d233; profile=biomarker; rank=1] [gene=PSAT1; type=analysis_ranking; source=ANALYSIS:ranking:biomarker:8d5ff79b77e8d233; profile=biomarker; score=5.3696]. Measured ccRCC cell-line effect: [gene=PSAT1; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=-0.181]; selectivity: [gene=PSAT1; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; selectivity=0.082]; adjusted p-value: [gene=PSAT1; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; padj=0.404]. Selective dependency is not established by these measurements. The expression decrease motivates a tissue-state biomarker hypothesis, not inhibition of the depleted protein.",
    "evidence_ids": [
     "EV:omics_de:fe09b800ea76",
     "EV:omics_de:8fa49cbb1760",
     "EV:tcga_de:58119698ea36",
-    "EV:tcga_survival:58119698ea36"
+    "EV:tcga_survival:58119698ea36",
+    "EV:analysis_ranking:159ae9ab0bb7",
+    "EV:depmap_dependency:58119698ea36"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:omics_de:fe09b800ea76",
+     "field": [
+      "log2fc"
+     ],
+     "display": "-3.8667",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:fe09b800ea76",
+     "field": [
+      "padj"
+     ],
+     "display": "2.54e-29",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:8fa49cbb1760",
+     "field": [
+      "log2fc"
+     ],
+     "display": "-1.9635",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:8fa49cbb1760",
+     "field": [
+      "padj"
+     ],
+     "display": "1.77e-33",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:58119698ea36",
+     "field": [
+      "log2fc"
+     ],
+     "display": "-2.9737",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:58119698ea36",
+     "field": [
+      "padj"
+     ],
+     "display": "1.45e-11",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:58119698ea36",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "0.43",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:58119698ea36",
+     "field": [
+      "padj"
+     ],
+     "display": "5.66e-07",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:159ae9ab0bb7",
+     "field": [
+      "rank"
+     ],
+     "display": "1",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:159ae9ab0bb7",
+     "field": [
+      "score"
+     ],
+     "display": "5.3696",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:58119698ea36",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "-0.181",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:58119698ea36",
+     "field": [
+      "selectivity"
+     ],
+     "display": "0.082",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:58119698ea36",
+     "field": [
+      "padj"
+     ],
+     "display": "0.404",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "PCK1",
    "role": "biomarker",
-   "statement": "PCK1 is down at RNA (log2FC -4.424) and protein (log2FC -1.859), consistent with loss of proximal tubule gluconeogenic identity. TCGA-KIRC replicates the loss (log2FC -3.079), and low expression is prognostic (Cox log HR -0.415, padj 1.91e-7, higher expression protective).",
+   "statement": "PCK1 has decreased RNA and protein abundance in the discovery tumour-versus-normal comparison. Discovery rna: [gene=PCK1; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; log2fc=-4.4236] [gene=PCK1; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; padj=1.52e-25]. Discovery protein: [gene=PCK1; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=-1.8592] [gene=PCK1; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; padj=1.08e-32]. The direction agrees in TCGA-KIRC: [gene=PCK1; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=-3.0795] [gene=PCK1; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; padj=3.03e-09]. Overall-survival association: [gene=PCK1; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=-0.415] [gene=PCK1; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; padj=1.91e-07]. Higher expression is associated with better survival. This univariate association does not establish an independently validated prognostic biomarker. Measured ccRCC cell-line effect: [gene=PCK1; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=0.109]; selectivity: [gene=PCK1; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; selectivity=-0.037]; adjusted p-value: [gene=PCK1; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; padj=0.4069]. Selective dependency is not established by these measurements. The expression decrease motivates a tissue-state biomarker hypothesis, not inhibition of the depleted protein.",
    "evidence_ids": [
     "EV:omics_de:85b979e6e19a",
     "EV:omics_de:6a1a53a41386",
-    "EV:tcga_survival:fd99b19fe8a6"
+    "EV:tcga_de:fd99b19fe8a6",
+    "EV:tcga_survival:fd99b19fe8a6",
+    "EV:depmap_dependency:fd99b19fe8a6"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:omics_de:85b979e6e19a",
+     "field": [
+      "log2fc"
+     ],
+     "display": "-4.4236",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:85b979e6e19a",
+     "field": [
+      "padj"
+     ],
+     "display": "1.52e-25",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:6a1a53a41386",
+     "field": [
+      "log2fc"
+     ],
+     "display": "-1.8592",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:6a1a53a41386",
+     "field": [
+      "padj"
+     ],
+     "display": "1.08e-32",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:fd99b19fe8a6",
+     "field": [
+      "log2fc"
+     ],
+     "display": "-3.0795",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:fd99b19fe8a6",
+     "field": [
+      "padj"
+     ],
+     "display": "3.03e-09",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:fd99b19fe8a6",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "-0.415",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:fd99b19fe8a6",
+     "field": [
+      "padj"
+     ],
+     "display": "1.91e-07",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:fd99b19fe8a6",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "0.109",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:fd99b19fe8a6",
+     "field": [
+      "selectivity"
+     ],
+     "display": "-0.037",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:fd99b19fe8a6",
+     "field": [
+      "padj"
+     ],
+     "display": "0.4069",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "ALDH6A1",
    "role": "biomarker",
-   "statement": "ALDH6A1 is down at RNA (log2FC -3.399) and protein (log2FC -1.925). Its 14q loss frequency is 0.355 with a positive cis rho of 0.525, so copy loss contributes to the decrease. Higher expression is protective in TCGA-KIRC (Cox log HR -0.554, padj 9.45e-12).",
+   "statement": "ALDH6A1 has decreased RNA and protein abundance in the discovery tumour-versus-normal comparison. Discovery rna: [gene=ALDH6A1; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; log2fc=-3.3994] [gene=ALDH6A1; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; padj=1.06e-33]. Discovery protein: [gene=ALDH6A1; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=-1.9246] [gene=ALDH6A1; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; padj=6.24e-40]. The direction agrees in TCGA-KIRC: [gene=ALDH6A1; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=-2.8053] [gene=ALDH6A1; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; padj=5.84e-20]. Overall-survival association: [gene=ALDH6A1; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=-0.554] [gene=ALDH6A1; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; padj=9.45e-12]. Higher expression is associated with better survival. This univariate association does not establish an independently validated prognostic biomarker. Copy-number frequency and RNA correlation: [gene=ALDH6A1; type=cis_dosage; source=DATASET:CPTAC-CCRCC-CNV; arm=14q; loss_freq=0.355] [gene=ALDH6A1; type=cis_dosage; source=DATASET:CPTAC-CCRCC-CNV; arm=14q; rna_rho=0.525]. These observations are consistent with dosage association; they do not demonstrate causation. Measured ccRCC cell-line effect: [gene=ALDH6A1; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=0.108]; selectivity: [gene=ALDH6A1; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; selectivity=-0.027]; adjusted p-value: [gene=ALDH6A1; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; padj=0.6552]. Selective dependency is not established by these measurements. The expression decrease motivates a tissue-state biomarker hypothesis, not inhibition of the depleted protein.",
    "evidence_ids": [
     "EV:omics_de:1c73c0e9eeb3",
     "EV:omics_de:7ad12e0f6863",
-    "EV:omics_cnv:df75d3108dd0",
+    "EV:tcga_de:df75d3108dd0",
+    "EV:tcga_survival:df75d3108dd0",
     "EV:cis_dosage:df75d3108dd0",
-    "EV:tcga_survival:df75d3108dd0"
+    "EV:depmap_dependency:df75d3108dd0"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:omics_de:1c73c0e9eeb3",
+     "field": [
+      "log2fc"
+     ],
+     "display": "-3.3994",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:1c73c0e9eeb3",
+     "field": [
+      "padj"
+     ],
+     "display": "1.06e-33",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:7ad12e0f6863",
+     "field": [
+      "log2fc"
+     ],
+     "display": "-1.9246",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:7ad12e0f6863",
+     "field": [
+      "padj"
+     ],
+     "display": "6.24e-40",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:df75d3108dd0",
+     "field": [
+      "log2fc"
+     ],
+     "display": "-2.8053",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:df75d3108dd0",
+     "field": [
+      "padj"
+     ],
+     "display": "5.84e-20",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:df75d3108dd0",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "-0.554",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:df75d3108dd0",
+     "field": [
+      "padj"
+     ],
+     "display": "9.45e-12",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:cis_dosage:df75d3108dd0",
+     "field": [
+      "loss_freq"
+     ],
+     "display": "0.355",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:cis_dosage:df75d3108dd0",
+     "field": [
+      "rna_rho"
+     ],
+     "display": "0.525",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:df75d3108dd0",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "0.108",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:df75d3108dd0",
+     "field": [
+      "selectivity"
+     ],
+     "display": "-0.027",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:df75d3108dd0",
+     "field": [
+      "padj"
+     ],
+     "display": "0.6552",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "FABP6",
    "role": "biomarker",
-   "statement": "FABP6 is up at RNA (log2FC 4.006) and protein (log2FC 1.921) and replicates in TCGA-KIRC (log2FC 6.431). The 5q gain frequency is 0.573 with a cis rho of 0.309, so the gain drives the increase. It is a tissue biomarker rather than a dependency (DepMap selectivity 0.033).",
+   "statement": "FABP6 has increased RNA and protein abundance in the discovery tumour-versus-normal comparison. Discovery rna: [gene=FABP6; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; log2fc=4.0057] [gene=FABP6; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; padj=7.4e-38]. Discovery protein: [gene=FABP6; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=1.9208] [gene=FABP6; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; padj=4.61e-19]. The direction agrees in TCGA-KIRC: [gene=FABP6; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=6.431] [gene=FABP6; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; padj=1.02e-27]. Copy-number frequency and RNA correlation: [gene=FABP6; type=cis_dosage; source=DATASET:CPTAC-CCRCC-CNV; arm=5q; gain_freq=0.573] [gene=FABP6; type=cis_dosage; source=DATASET:CPTAC-CCRCC-CNV; arm=5q; rna_rho=0.409]. These observations are consistent with dosage association; they do not demonstrate causation. Protein copy-number correlation: [gene=FABP6; type=cis_dosage; source=DATASET:CPTAC-CCRCC-CNV; arm=5q; protein_rho=0.309]. The previously unspecified correlation referred to protein, not RNA. Measured ccRCC cell-line effect: [gene=FABP6; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=0.233]; selectivity: [gene=FABP6; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; selectivity=0.033]; adjusted p-value: [gene=FABP6; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; padj=0.4684]. Selective dependency is not established by these measurements. Expression-based candidate status remains a hypothesis requiring modality-specific and functional validation.",
    "evidence_ids": [
     "EV:omics_de:0ea3d10905b2",
     "EV:omics_de:12f11b6896c3",
-    "EV:omics_cnv:52f5e4eeb4a8"
+    "EV:tcga_de:52f5e4eeb4a8",
+    "EV:cis_dosage:52f5e4eeb4a8",
+    "EV:depmap_dependency:52f5e4eeb4a8"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:omics_de:0ea3d10905b2",
+     "field": [
+      "log2fc"
+     ],
+     "display": "4.0057",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:0ea3d10905b2",
+     "field": [
+      "padj"
+     ],
+     "display": "7.4e-38",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:12f11b6896c3",
+     "field": [
+      "log2fc"
+     ],
+     "display": "1.9208",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:12f11b6896c3",
+     "field": [
+      "padj"
+     ],
+     "display": "4.61e-19",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:52f5e4eeb4a8",
+     "field": [
+      "log2fc"
+     ],
+     "display": "6.431",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:52f5e4eeb4a8",
+     "field": [
+      "padj"
+     ],
+     "display": "1.02e-27",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:cis_dosage:52f5e4eeb4a8",
+     "field": [
+      "gain_freq"
+     ],
+     "display": "0.573",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:cis_dosage:52f5e4eeb4a8",
+     "field": [
+      "rna_rho"
+     ],
+     "display": "0.409",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:cis_dosage:52f5e4eeb4a8",
+     "field": [
+      "protein_rho"
+     ],
+     "display": "0.309",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:52f5e4eeb4a8",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "0.233",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:52f5e4eeb4a8",
+     "field": [
+      "selectivity"
+     ],
+     "display": "0.033",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:52f5e4eeb4a8",
+     "field": [
+      "padj"
+     ],
+     "display": "0.4684",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "HK2",
    "role": "target",
-   "statement": "HK2 is up at RNA (log2FC 3.351) and protein (log2FC 2.106) and replicates in TCGA-KIRC (log2FC 3.974). It marks the glycolytic Warburg shift but shows no selective DepMap dependency (mean effect -0.123).",
+   "statement": "HK2 has increased RNA and protein abundance in the discovery tumour-versus-normal comparison. Discovery rna: [gene=HK2; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; log2fc=3.3512] [gene=HK2; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; padj=4.6e-42]. Discovery protein: [gene=HK2; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=2.1063] [gene=HK2; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; padj=1.13e-45]. The direction agrees in TCGA-KIRC: [gene=HK2; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=3.9745] [gene=HK2; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; padj=4.35e-29]. Measured ccRCC cell-line effect: [gene=HK2; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=-0.123]; selectivity: [gene=HK2; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; selectivity=-0.073]; adjusted p-value: [gene=HK2; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; padj=0.4459]. Selective dependency is not established by these measurements. The discovery expression increase is not sufficient to establish a therapeutic vulnerability; the separate confirmatory protein result must also be considered.",
    "evidence_ids": [
     "EV:omics_de:feaa13f13e99",
     "EV:omics_de:839dae331bb6",
-    "EV:tcga_de:c5d66c7fafe1"
+    "EV:tcga_de:c5d66c7fafe1",
+    "EV:depmap_dependency:c5d66c7fafe1"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:omics_de:feaa13f13e99",
+     "field": [
+      "log2fc"
+     ],
+     "display": "3.3512",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:feaa13f13e99",
+     "field": [
+      "padj"
+     ],
+     "display": "4.6e-42",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:839dae331bb6",
+     "field": [
+      "log2fc"
+     ],
+     "display": "2.1063",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:839dae331bb6",
+     "field": [
+      "padj"
+     ],
+     "display": "1.13e-45",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:c5d66c7fafe1",
+     "field": [
+      "log2fc"
+     ],
+     "display": "3.9745",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:c5d66c7fafe1",
+     "field": [
+      "padj"
+     ],
+     "display": "4.35e-29",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:c5d66c7fafe1",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "-0.123",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:c5d66c7fafe1",
+     "field": [
+      "selectivity"
+     ],
+     "display": "-0.073",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:c5d66c7fafe1",
+     "field": [
+      "padj"
+     ],
+     "display": "0.4459",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "CA4",
    "role": "biomarker",
-   "statement": "CA4 is down at RNA (log2FC -2.312) and protein (log2FC -1.658) and replicates in TCGA-KIRC (log2FC -2.815). Higher expression is protective (Cox log HR -0.402, padj 0.0000014). This reflects loss of tubule identity, in contrast to CA9, which is up.",
+   "statement": "CA4 has decreased RNA and protein abundance in the discovery tumour-versus-normal comparison. Discovery rna: [gene=CA4; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; log2fc=-2.3117] [gene=CA4; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; padj=3.87e-23]. Discovery protein: [gene=CA4; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=-1.658] [gene=CA4; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; padj=2.88e-32]. The direction agrees in TCGA-KIRC: [gene=CA4; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=-2.8154] [gene=CA4; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; padj=1.43e-13]. Overall-survival association: [gene=CA4; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=-0.402] [gene=CA4; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; padj=1.4e-06]. Higher expression is associated with better survival. This univariate association does not establish an independently validated prognostic biomarker. Measured ccRCC cell-line effect: [gene=CA4; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=0.183]; selectivity: [gene=CA4; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; selectivity=-0.066]; adjusted p-value: [gene=CA4; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; padj=0.2453]. Selective dependency is not established by these measurements. The expression decrease motivates a tissue-state biomarker hypothesis, not inhibition of the depleted protein.",
    "evidence_ids": [
     "EV:omics_de:373c8d5ee500",
     "EV:omics_de:558966af56e8",
-    "EV:tcga_survival:46d1240b817d"
+    "EV:tcga_de:46d1240b817d",
+    "EV:tcga_survival:46d1240b817d",
+    "EV:depmap_dependency:46d1240b817d"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:omics_de:373c8d5ee500",
+     "field": [
+      "log2fc"
+     ],
+     "display": "-2.3117",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:373c8d5ee500",
+     "field": [
+      "padj"
+     ],
+     "display": "3.87e-23",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:558966af56e8",
+     "field": [
+      "log2fc"
+     ],
+     "display": "-1.658",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:558966af56e8",
+     "field": [
+      "padj"
+     ],
+     "display": "2.88e-32",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:46d1240b817d",
+     "field": [
+      "log2fc"
+     ],
+     "display": "-2.8154",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:46d1240b817d",
+     "field": [
+      "padj"
+     ],
+     "display": "1.43e-13",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:46d1240b817d",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "-0.402",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:46d1240b817d",
+     "field": [
+      "padj"
+     ],
+     "display": "1.4e-06",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:46d1240b817d",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "0.183",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:46d1240b817d",
+     "field": [
+      "selectivity"
+     ],
+     "display": "-0.066",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:46d1240b817d",
+     "field": [
+      "padj"
+     ],
+     "display": "0.2453",
+     "unit": "native"
+    }
    ]
   }
  ],
@@ -135,5 +1299,13 @@
   "Only the top 15 rows of the target and biomarker profiles were reviewed in detail. The top-40 convergence output was too large to read in full.",
   "Phospho values are gene-level and not adjusted for protein abundance. They were not quoted, and site-level phosphorylation and kinase activity were not analysed.",
   "VHL, PBRM1, SETD2 and BAP1 driver status and 3p loss were not queried in this pass."
- ]
+ ],
+ "revision": {
+  "method": "Reviewed deterministic metric bindings against the current local graph; scientific interpretations corrected",
+  "changes": [
+   "Retained all original genes and major quantitative topics; expanded non-favorable evidence",
+   "Added missing source citations; use stored source precision",
+   "Changed causal and prognostic certainty to observational/hypothesis wording"
+  ]
+ }
 }

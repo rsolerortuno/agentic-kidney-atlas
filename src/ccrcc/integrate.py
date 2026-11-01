@@ -172,6 +172,8 @@ def write(n: int | None = None, day: str | None = None) -> dict:
            "universe_size": int(len(t)), "ranking": ranking, "profiles": profiles}
     path = run_dir(day) / "convergence.json"
     path.write_text(json.dumps(out, indent=1))
+    from .ranking_evidence import load as load_ranking_evidence
+    load_ranking_evidence(out, store)
     return {"path": str(path), "top10": [r["gene"] for r in ranking[:10]], "universe": len(t),
             **{f"{k}_top10": [r["gene"] for r in v[:10]] for k, v in profiles.items()}}
 

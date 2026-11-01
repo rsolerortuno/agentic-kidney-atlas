@@ -1,0 +1,42 @@
+[
+  {
+    "id": "q01",
+    "answer": "Chromosome arm 3p is the most frequently lost in the CPTAC ccRCC tumors. VHL is lost in 79.1% and PBRM1 in 80.0% of the 110 tumors (evidence IDs EV:omics_cnv:52e5aeb6c197 and EV:omics_cnv:07b6205e67e5).\n\nThe copy-number tool works one gene at a time, so I checked only these two 3p genes and did not compare 3p against other arms."
+  },
+  {
+    "id": "q02",
+    "answer": "CA9 protein is increased in ccRCC tumors versus matched normal kidney in CPTAC (log2FC +2.27, padj 9.9e-43, 84 pairs; evidence EV:omics_de:5afe18b4024b)."
+  },
+  {
+    "id": "q03",
+    "answer": "Open Targets lists **girentuximab** (CHEMBL1743027) as the CA9-targeting antibody that reached phase 3 (evidence ID EV:open_targets_drug:646a0aec5b64)."
+  },
+  {
+    "id": "q04",
+    "answer": "VHL has the highest Open Targets association score with clear cell renal carcinoma, at 0.6466 (evidence ID EV:open_targets_assoc:730901c424b4)."
+  },
+  {
+    "id": "q05",
+    "answer": "No. The project's CPTAC ccRCC results for EGLN3 include only an RNA entry (log2FC 4.41, padj 1.4e-42). There is no proteome entry for it."
+  },
+  {
+    "id": "q06",
+    "answer": "VHL has copy-number loss in 0.79 of CPTAC ccRCC tumors (loss frequency 0.791 across 110 tumors, on chromosome arm 3p; evidence ID EV:omics_cnv:52e5aeb6c197)."
+  },
+  {
+    "id": "q07",
+    "answer": "According to Open Targets, the approved drug targeting EPAS1 (HIF-2alpha) is belzutifan (CHEMBL4585668, max stage APPROVAL, evidence ID EV:open_targets_drug:199c475802ce)."
+  },
+  {
+    "id": "q08",
+    "answer": "**CA9** ranks first in the project's deterministic convergence ranking, with a score of 4.52 across 5 evidence streams."
+  },
+  {
+    "id": "q09",
+    "answer": "UMOD protein is decreased in ccRCC tumors versus matched normal kidney in CPTAC (log2FC −2.235, padj 3.18e-33, 84 pairs; evidence ID EV:omics_de:e6e9e4ef8e40)."
+  },
+  {
+    "id": "q10",
+    "answer": "HIF1A is a high-confidence STRING partner of CA9 (score 0.972, evidence ID EV:string:9e9468e265e0). EPAS1, which encodes HIF-2α, also scores high at 0.923."
+  }
+]

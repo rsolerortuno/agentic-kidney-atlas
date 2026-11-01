@@ -52,18 +52,18 @@ The target and biomarker profiles use measurements only (no literature, no drug 
 
 Predicted tractability (strong SM / AB buckets) flags 5,301 genes. It alone gives most of the AUROC — clinical targets are, almost by definition, druggable proteins — so the data layers should be judged by early enrichment: the share of gold genes in the top 100, which within the tractable set would be ~1.9% per tractable gold gene by chance, and by the "without tractability" row.
 
-### Temporal holdout: first RCC trial on or after 2016-01-01 (13 genes: CCND1, CDK4, CDK6, EPAS1, FOLH1, GLS, IDO1, LAG3, PARP1, PARP2, PARP3, TIGIT, TNFSF11)
+### Retrospective post-2016 evaluation: first RCC trial on or after 2016-01-01 (6 genes: CCND1, PARP1, PARP2, PARP3, TIGIT, TNFSF11)
 
-Earlier clinical targets are removed from the background.
+Other eligible clinical targets, including those with incomplete dates, are removed from the background. First observed RCC trial dates use all phases. Features are not frozen before 2016: this is retrospective, not prospective validation.
 
 | Score | Gold genes | AUROC (95 % CI) | Recall@100 | Recall@500 | Median rank | Enrichment@100 | Gold genes in top 100 |
 |---|---|---|---|---|---|---|---|
-| target profile | 13 | 0.908 (0.87–0.94) | 31% | 31% | 1,905 | 58.8× | IDO1, CCND1, EPAS1, CDK6 |
-| biomarker profile | 13 | 0.652 (0.51–0.77) | 0% | 15% | 6,821 | 0.0× | — |
-| convergence v3 (incl. literature + drugs) | 13 | 0.895 (0.86–0.94) | 15% | 31% | 2,477 | 29.4× | EPAS1, IDO1 |
-| convergence v3 without literature/tractability | 13 | 0.662 (0.51–0.82) | 0% | 31% | 6,577 | 0.0× | — |
-| target profile without tractability | 13 | 0.714 (0.57–0.83) | 23% | 31% | 5,565 | 44.1× | IDO1, CCND1, EPAS1 |
-| predicted tractability alone | 13 | 0.836 (0.80–0.87) | 0% | 0% | 3,651 | 0.0× | — |
+| target profile | 6 | 0.887 (0.84–0.94) | 17% | 17% | 2,182 | 31.8× | CCND1 |
+| biomarker profile | 6 | 0.691 (0.58–0.83) | 0% | 17% | 6,484 | 0.0× | — |
+| convergence v3 (incl. literature + drugs) | 6 | 0.866 (0.83–0.92) | 0% | 17% | 2,913 | 0.0× | — |
+| convergence v3 without literature/tractability | 6 | 0.632 (0.46–0.81) | 0% | 17% | 7,576 | 0.0× | — |
+| target profile without tractability | 6 | 0.645 (0.48–0.82) | 17% | 17% | 6,545 | 31.8× | CCND1 |
+| predicted tractability alone | 6 | 0.841 (0.80–0.89) | 0% | 0% | 3,671 | 0.0× | — |
 
 ### Prognostic biomarkers: ClearCode34 (33 of 34 genes mapped; Brooks et al. 2014)
 
@@ -93,7 +93,7 @@ ClearCode34 was validated in TCGA, which the biomarker profile's prognosis compo
 | Mean pairwise Jaccard of candidate lists | 0.667 | 0.944 |
 | Candidates that are RCC clinical targets | 60%, 60%, 60% | 18%, 17%, 17% |
 | Candidates in the data-only target or biomarker top 500 | 80%, 70%, 80% | 100%, 100%, 100% |
-| Statements citing checkable evidence | 0 | 118 checked, 0 unsupported |
+| Statements citing checkable evidence | 0 | 130 checked, 0 unsupported |
 
 Closed-book candidates: VHL, EPAS1, VEGFA, KDR, CD274, PBRM1, BAP1, SETD2, CA9, MET; VHL, EPAS1, VEGFA, PDCD1, CD274, PBRM1, BAP1, SETD2, MET, MTOR; EPAS1, VHL, VEGFA, KDR, PDCD1, MTOR, PBRM1, BAP1, SETD2, CA9.
 
@@ -101,7 +101,7 @@ Pipeline final targets: CA9, NNMT, CD70, SCARB1, PSAT1, ENPP3, PCK1, SLC16A3, AL
 
 ## (e) Known-answer questions (`claude -p` + project MCP servers)
 
-- Model: claude-sonnet-5-5
+- Model: saved claude-sonnet-5-5 answers (regex regraded)
 - **Correct: 10/10**
 
 | ID | Question | Expected | Correct | Answer / error |

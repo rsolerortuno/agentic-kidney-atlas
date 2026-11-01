@@ -1,0 +1,40 @@
+[
+  {
+    "pmid": 37523719,
+    "gene": "NNMT",
+    "title": "Structure-Activity Relationship Studies on Cell-Potent Nicotinamide N-Methyltransferase Bisubstrate Inhibitors.",
+    "abstract_sha256": "d6df977d3d5ff8bccd3887bc29fbfc984d417260375ee82b7d956fa1829e1f8a",
+    "source_quotes": [
+      "II559 (Ki = 1.2 nM) and II802 (Ki = 1.6 nM)",
+      "over 5000-fold selectivity for NNMT"
+    ],
+    "interpretation": "Reported enzyme-assay affinity/selectivity, not a clinical endpoint. The abstract also describes clear-cell renal cancer cell-line experiments.",
+    "reported_metrics": {
+      "II559_Ki_nM": 1.2,
+      "II802_Ki_nM": 1.6,
+      "selectivity_fold_lower_bound": 5000
+    }
+  },
+  {
+    "pmid": 41971124,
+    "gene": "PSAT1",
+    "title": "A multi-omics prognostic model and functional validation of HPGD in clear cell renal cell carcinoma.",
+    "abstract_sha256": "2ebb498323da84a02714bfb01289166893c42d7b6d24a6932a431bf2db729f35",
+    "source_quotes": [
+      "All four genes were consistently downregulated in ccRCC at both mRNA and protein levels."
+    ],
+    "interpretation": "PSAT1 is included in the downregulated signature. Pathway enrichment is a different comparison and does not contradict tumour-versus-normal downregulation. Functional intervention in this abstract concerns HPGD.",
+    "reported_metrics": {}
+  },
+  {
+    "gene": "NNMT",
+    "pmid": 42440812,
+    "title": "Nicotinamide N-Methyltransferase Epigenetically Activates Fibronectin 1 Through H3K9me3 Remodeling in Clear Cell Renal Cell Carcinoma.",
+    "abstract_sha256": "4256b192404dff5f96b49ad4288862c56811cb8bd6a190ffc8841ded01a06b66",
+    "source_quotes": [
+      "NNMT inhibitor suppressed FN1 expression and tumor progression both in vitro and in vivo."
+    ],
+    "interpretation": "Reported preclinical intervention in experimental models; not evidence of clinical efficacy.",
+    "reported_metrics": {}
+  }
+]

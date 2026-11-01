@@ -1,0 +1,34 @@
+<style>
+.pv-shell{border:1px solid #d9dde3;border-radius:18px;overflow:hidden;margin:20px 0;background:#f7f8fa}
+.pv-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:16px;background:white;border-bottom:1px solid #dde2e8}
+.pv-toolbar label{display:flex;align-items:center;gap:7px;font-size:13px}
+.pv-toolbar select,.pv-toolbar button{padding:9px 12px;border:1px solid #ccd2dc;border-radius:8px;background:white;color:#18283c;font:inherit;cursor:pointer}
+.pv-body{display:grid;grid-template-columns:minmax(0,1fr) 280px}
+#protein-canvas{position:relative;height:510px;min-width:0;background:#f3f5f7}
+.pv-detail{padding:22px;border-left:1px solid #dde2e8;font-size:13px;overflow-wrap:anywhere;background:white}
+.pv-detail h3{margin:0 0 12px}.pv-detail p{margin:10px 0}.pv-residues{max-height:75px;overflow:auto}
+.pv-legend{display:flex;flex-wrap:wrap;gap:12px;padding:12px 18px;font-size:12px;border-top:1px solid #dde2e8}
+.pv-dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px}
+#protein-status{padding:8px 18px;font-size:12px;color:#526075;min-height:32px}
+@media(max-width:760px){.pv-body{grid-template-columns:1fr}.pv-detail{border-left:0;border-top:1px solid #dde2e8}#protein-canvas{height:380px}}
+</style>
+<div class="pv-shell" id="protein-explorer">
+<div class="pv-toolbar">
+<label>Protein <select id="pv-protein" aria-label="Protein"></select></label>
+<label>Region <select id="pv-pocket" aria-label="Pocket"></select></label>
+<button id="pv-whole" type="button">Whole protein</button>
+<button id="pv-focus" type="button">Focus pocket</button>
+<button id="pv-confidence" type="button" aria-pressed="false">Model confidence</button>
+<label>Opacity <input id="pv-opacity" type="range" min="15" max="100" value="90" aria-label="Surface opacity"></label>
+<label>Cut surface <input id="pv-cut" type="range" min="0" max="100" value="0" aria-label="Clipping depth"></label>
+</div>
+<div class="pv-body"><div id="protein-canvas" role="img" aria-label="Interactive protein structure; drag to rotate and scroll to zoom"></div>
+<aside class="pv-detail"><h3 id="pv-title">Protein explorer</h3><div id="pv-description"></div>
+<p><strong>Red marks the selected region.</strong> It does not mean validated binding or degradation.</p>
+<p>For predicted monomers, pocket detection excluded low-confidence residues; trimming can alter apparent cavities. Experimental references use the deposited complex and author residue numbering. No cavity-volume mesh or ternary complex is invented.</p></aside></div>
+<div class="pv-legend" id="pv-legend"><span><i class="pv-dot" style="background:#bcc3cc"></i>Protein surface</span><span><i class="pv-dot" style="background:#e05454"></i>Selected pocket walls</span></div>
+<div id="protein-status" role="status" aria-live="polite">Open the Structure tab to load the 3D explorer. Drag to rotate; scroll to zoom.</div>
+</div>
+<script>{{ protein_library_js | safe }}</script>
+<script id="protein-data" type="application/json">{{ protein_json | safe }}</script>
+<script>{{ protein_viewer_js | safe }}</script>

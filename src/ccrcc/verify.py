@@ -17,30 +17,12 @@ from .literature_entities import resolve_gene
 AGENT_FILES = ("agent_omics.json", "agent_literature.json", "agent_external.json", "agent_cells.json", "agent_applied.json")
 
 
-def _ranking_values(conv_path: Path | None) -> dict[str, set[float]]:
-    """Numeric values of each gene's convergence row (rank, score, components, fold changes) that statements
-    may quote in addition to their evidence."""
-    if not conv_path or not Path(conv_path).exists():
-        return {}
-    conv = json.loads(Path(conv_path).read_text(encoding="utf-8"))
-    out = {}
-    for r in conv.get("ranking", []):
-        row = {k: v for k, v in r.items() if k != "evidence_ids"}
-        out[r["gene"]] = semantic._numeric_leaves(row, set())
-    for name in ("profiles",):
-        for prof, rows in (conv.get(name) or {}).items():
-            for r in rows:
-                out.setdefault(r["gene"], set()).update(semantic._numeric_leaves(r, set()))
-    return out
-
-
 class Verifier:
     def __init__(self, store: GraphStore | None = None, conv_path: Path | None = None, semantic_check: bool = True,
                  basis: dict | None = None):
         self.store = store or GraphStore()
         self._gene_ev: dict[str, set[str]] = {}
         self.semantic_check = semantic_check
-        self.ranking = _ranking_values(conv_path)
         self.basis = (basis or {}).get("evidence") if basis else None
 
     def _gene_evidence(self, gene: str) -> set[str] | None:
@@ -76,12 +58,10 @@ class Verifier:
                 return None, log
         if valid and self.semantic_check:
             ev = self.store.get_evidence(valid)
-            extra: set[float] = set()
-            for g in {gene, *[e.get("gene") for e in ev]} - {None}:
-                extra |= self.ranking.get(resolve_gene(g) or g, set())
-            sem = semantic.check(text, resolve_gene(gene) or gene if gene else None, ev, extra)
+            sem = semantic.check(text, resolve_gene(gene) or gene if gene else None, ev,
+                                 numeric_claims=stmt.get("numeric_claims"))
             log.update(sem)
-            if sem["unmatched_numbers"] or sem["direction_contradiction"]:
+            if sem["unmatched_numbers"] or sem["direction_contradiction"] or sem["numeric_binding_errors"]:
                 log["kept"] = False
                 log["semantic_failure"] = True
                 return None, log
@@ -150,17 +130,18 @@ def verify_final(path: Path) -> dict:
         ok, log = v.check_statement(stmt)
         if not ok or len(ok["evidence_ids"]) != len(stmt.get("evidence_ids", [])):
             unsupported.append({"location": loc, **log})
-    # statements dropped earlier because their evidence changed after the agent run are not "cleaned up": they mean the
-    # narrative is stale, so they count here and make the run fail until /informe is re-run
+    # Earlier rejected statements remain failures: filtering must not manufacture a clean report.
     agent_rep = path.parent / "verification_agents.json"
     earlier = findings.get("dropped_during_assembly", [])
     if agent_rep.exists():
         for name, a in json.loads(agent_rep.read_text(encoding="utf-8")).get("agents", {}).items():
             earlier += [{**d, "where": name} for d in a.get("dropped_detail", [])]
     for d in earlier:
-        if d.get("stale_evidence"):
+        if not d.get("kept", False):
             unsupported.append({"location": f"dropped earlier ({d.get('where')})", **d})
     report = {"file": str(path), "statements": total, "unsupported": len(unsupported),
+              "interpretation": "No failures detected by the automatic checks" if not unsupported else "Automatic checks detected failures",
+              "scope": "Evidence linkage, metric bindings, numeric precision and limited direction checks; not complete scientific validation",
               "semantic_failures": sum(1 for u in unsupported if u.get("semantic_failure")),
               "stale": sum(1 for u in unsupported if u.get("stale_evidence")),
               "basis": None if basis is None else {"started_utc": basis["started_utc"], "evidence": len(basis["evidence"])},

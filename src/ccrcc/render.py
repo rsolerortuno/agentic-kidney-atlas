@@ -118,20 +118,20 @@ def evidence_view(e: dict) -> dict:
         link = e.get("url")
         detail = (f"{e['gene']} ({e['accession']}) AlphaFold {e['model']} v{e['version']}: mean pLDDT "
                   f"{e['mean_plddt']}, {e['fraction_confident_residues']} of {e['length']} residues confident")
-    elif t == "mgd_site":
+    elif t in ("mgd_site", "structural_context"):
         link = f"https://alphafold.ebi.ac.uk/entry/{e['accession']}"
         c = e["components"]
         detail = (f"{e['gene']} pocket {e['rank']} ({e['cavity']}): {e['volume_a3']} Å³, depth {e['max_depth_a']} Å, "
                   f"mean pLDDT {e['mean_plddt']}, {len(e['accessible_lysines'])} accessible lysines, exposed loop run "
-                  f"{e['exposed_loop_run']} → MGD score {e['mgd_score']} (confidence {c['confidence']}, geometry "
-                  f"{c['geometry']}, lysines {c['lysines']}, degron {c['degron']}); residues "
+                  f"{e['exposed_loop_run']} → structural-context score {e.get('structural_context_score', e.get('mgd_score'))} (confidence {c['confidence']}, geometry "
+                  f"{c['geometry']}, lysines {c['lysines']}, exposed loop {c.get('exposed_loop', c.get('degron'))}); residues "
                   f"{', '.join(map(str, e['residues'][:10]))}")
     elif t == "ligand_site_validation":
         link = e.get("url")
         detail = (f"{e['gene']} ({e['accession']}): the {e['n_cavities']} detected cavities cover {e['recall']} of "
                   f"{e['n_known_residues']} experimentally ligand-bound residues from {e['n_ligands']} ligands "
                   f"(top pockets alone: {e['recall_in_top_pockets']}); best-matching cavity ranked "
-                  f"{e['best_cavity_rank']} of {e['n_cavities']} by the MGD score")
+                  f"{e['best_cavity_rank']} of {e['n_cavities']} by the structural-context score")
     elif t == "sc_summary":
         gr = ", ".join(f"{x['cell_group']} {x['share_of_tumor_transcripts']} of transcripts ({x['pct_expressing']} % expressing)"
                        for x in e["groups"][:5])
@@ -340,11 +340,22 @@ def render(findings_path: Path, out: Path | None = None) -> Path:
     env.globals["H"] = HELP
     env.globals["PLAIN"] = PLAIN
     env.filters["cite"] = cite
+    from .claim_display import statement_html
+    env.filters["statement_html"] = lambda statement: statement_html(statement, records)
     env.filters["evattr"] = lambda ev_ids: " ".join(ev_ids)
     env.filters["fmt"] = lambda x: "—" if x is None or (isinstance(x, float) and math.isnan(x)) else x
     tpl = env.get_template("report.html.j2")
     vpath = findings_path.parent / "verification_final.json"
+    from .degradation import build as build_degradation
+    degradation_data = build_degradation()
+    from .candidate_evidence import build as build_candidate_evidence
+    from .protein_viewer import build as build_protein_viewer, script_json
     html_out = tpl.render(
+        degradation=degradation_data,
+        candidate_evidence=build_candidate_evidence(cand),
+        protein_json=script_json(build_protein_viewer(references=degradation_data["references"])),
+        protein_library_js=(ASSETS / "3Dmol-min.js").read_text(encoding="utf-8"),
+        protein_viewer_js=(ASSETS / "protein_viewer.js").read_text(encoding="utf-8"),
         f=f, top25=top25, evidence=ev_views, cell=cell, figs=figs, kpis=kpis, badges=badges(f), controls=controls_view,
         network_json=json.dumps(network(top_genes, store)),
         plotly_js=get_plotlyjs(), cytoscape_js=(ASSETS / "cytoscape.min.js").read_text(encoding="utf-8"),

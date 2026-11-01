@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "references": [
+    {
+      "id": "GSPT1_CC885",
+      "gene": "GSPT1",
+      "ligase": "CRBN",
+      "compound": "CC-885",
+      "pdb_id": "5HXB",
+      "target_chain": "X",
+      "ligase_chain": "Z",
+      "adaptor_chain": "Y",
+      "ligand_resname": "85C",
+      "key_residues": {
+        "575": "GLY"
+      },
+      "numbering": "PDB author numbering, chain X; not transferred to the local 499-residue AlphaFold model",
+      "region": "Glycine-bearing structural turn; G575 is a functional determinant, not the entire degron",
+      "source": "https://www.nature.com/articles/nature18611",
+      "negative_control": "GSPT1 G575N blocks CC-885-induced degradation in the cited reporter system",
+      "control_source": "https://www.jci.org/articles/view/153514",
+      "coordinates_url": "https://files.rcsb.org/download/5HXB.pdb",
+      "coordinates_sha256": "fd9305583629f823edd88729d74a882b31b92e855716b730adc6b707eadb3566",
+      "evidence_type": "experimental_reference",
+      "scope": "Published reference system; no ccRCC efficacy or candidate transfer inferred"
+    },
+    {
+      "id": "IKZF1_POM",
+      "gene": "IKZF1",
+      "ligase": "CRBN",
+      "compound": "pomalidomide",
+      "pdb_id": "6H0F",
+      "target_chain": "C",
+      "ligase_chain": "B",
+      "adaptor_chain": "A",
+      "ligand_resname": "Y70",
+      "key_residues": {
+        "146": "GLN",
+        "148": "ASN",
+        "149": "GLN",
+        "152": "ALA",
+        "166": "LEU"
+      },
+      "numbering": "PDB author numbering, chain C; published interface residues, not a minimal degron definition",
+      "region": "ZF2 structural degron; highlighted residues contact the drug or CRBN",
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6326779/",
+      "negative_control": "Related IKZF3 ZF2 Q147I/A/H reporter mutants are stabilized under the tested compounds; distinct protein/assay, not a universal negative",
+      "control_source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6326779/",
+      "coordinates_url": "https://files.rcsb.org/download/6H0F.pdb",
+      "coordinates_sha256": "f8ee9b7e06e5bd91c171bc56e05651845ae00e23cdc877aac9ee852690b91144",
+      "evidence_type": "experimental_reference",
+      "scope": "Published reference system; no ccRCC efficacy or candidate transfer inferred"
+    },
+    {
+      "id": "CK1A_LEN",
+      "gene": "CSNK1A1",
+      "ligase": "CRBN",
+      "compound": "lenalidomide",
+      "pdb_id": "5FQD",
+      "target_chain": "C",
+      "ligase_chain": "B",
+      "adaptor_chain": "A",
+      "ligand_resname": "LVY",
+      "key_residues": {},
+      "numbering": "PDB author numbering, chain C",
+      "region": "Experimental ternary reference; no residue-level degron annotation assigned in this catalog",
+      "source": "https://www.rcsb.org/structure/5FQD",
+      "negative_control": null,
+      "control_source": null,
+      "coordinates_url": "https://files.rcsb.org/download/5FQD.pdb",
+      "coordinates_sha256": "f7f926993365242a22f4a994c695c48f197a459a80d20e6b977f983221b4928d",
+      "evidence_type": "experimental_reference",
+      "scope": "Published reference system; no ccRCC efficacy or candidate transfer inferred"
+    }
+  ]
+}

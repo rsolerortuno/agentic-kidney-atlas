@@ -21,6 +21,8 @@ if __name__ == "__main__":
     else:
         rep = verify_final(d / "findings.json")
         print(f"statements checked: {rep['statements']}")
+        print(rep["interpretation"])
+        print(rep["scope"])
         print(f"unsupported claims: {rep['unsupported']} (of which semantic: numbers or direction not matching the "
               f"cited evidence: {rep.get('semantic_failures', 0)}; stale: cited evidence changed since the agent run: "
               f"{rep.get('stale', 0)})")

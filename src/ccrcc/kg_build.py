@@ -75,16 +75,15 @@ def build(store: GraphStore | None = None) -> dict:
 
         cnv = pd.read_parquet(PROCESSED / "cnv_frequencies.parquet").dropna(subset=["hgnc_symbol"])
         for r in cnv.drop_duplicates("hgnc_symbol").itertuples():
-            if max(r.loss_freq, r.gain_freq) < 0.3:
-                continue
             gid = gene(r.hgnc_symbol)
             if gid is None:
                 continue
-            pred = "lost_in" if r.loss_freq >= r.gain_freq else "gained_in"
+            recurrent = max(r.loss_freq, r.gain_freq) >= 0.3
+            pred = ("lost_in" if r.loss_freq >= r.gain_freq else "gained_in") if recurrent else "copy_number_assessed_in"
             ev = store.add_evidence(evidence_id("omics_cnv", r.hgnc_symbol), "omics_cnv", DATASETS["cnv"][0], TODAY,
                                     gene=r.hgnc_symbol, loss_freq=round(r.loss_freq, 3), gain_freq=round(r.gain_freq, 3),
                                     n_tumor=int(r.n_tumor), arm=r.arm, threshold_abs_log2ratio=0.2)
-            store.add_claim(gid, pred, DISEASE, ev)
+            store.add_claim(gid, pred, DISEASE if recurrent else DATASETS["cnv"][0], ev)
 
         corr = pd.read_parquet(PROCESSED / "rna_protein_correlation.parquet").dropna(subset=["hgnc_symbol"])
         for r in corr.drop_duplicates("hgnc_symbol").itertuples():
@@ -219,6 +218,8 @@ def build(store: GraphStore | None = None) -> dict:
                                         url=f"https://www.uniprot.org/uniprotkb/{u['accession']}")
                 store.add_claim(gid, "encodes", prot, ev)
 
+    from .literature_review import load as load_reviewed_literature
+    load_reviewed_literature(store)
     stats = store.stats()
     (PROCESSED / "graph_stats.json").write_text(json.dumps(stats, indent=1))
     return stats
