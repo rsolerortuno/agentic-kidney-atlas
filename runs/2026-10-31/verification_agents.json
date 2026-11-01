@@ -26,8 +26,8 @@
   },
   "agent_cells.json": {
    "submitted": 19,
-   "kept": 17,
-   "dropped": 2,
+   "kept": 16,
+   "dropped": 3,
    "dropped_detail": [
     {
      "text": "In Visium, the high-CA9 spots are surrounded by RCC (log2 enrichment 0.377, padj 0.00173) and the RCC composition-corrected share is 0.998. Macrophage neighbor ",
@@ -37,6 +37,9 @@
      "not_linked_to_gene": [],
      "kept": false,
      "unmatched_numbers": [
+      "0.377",
+      "0.00173",
+      "0.998",
       "0.084"
      ],
      "direction_contradiction": null,
@@ -54,10 +57,27 @@
      ],
      "direction_contradiction": null,
      "semantic_failure": true
+    },
+    {
+     "text": "LRRC25 is an immune-track candidate carried by macrophages (0.787 of tumor transcripts) with 0 ccRCC papers, no clinical drug, and a bone marrow nTPM of 31, so ",
+     "gene": "LRRC25",
+     "cited": 3,
+     "nonexistent": [
+      "EV:alphafold:cb46e7a63e4b",
+      "EV:mgd_site:f8bf52186dbd"
+     ],
+     "not_linked_to_gene": [],
+     "kept": false,
+     "unmatched_numbers": [
+      "0.4825",
+      "70.31"
+     ],
+     "direction_contradiction": null,
+     "semantic_failure": true
     }
    ],
-   "semantic_failures": 2,
-   "ids_removed": 0
+   "semantic_failures": 3,
+   "ids_removed": 2
   }
  }
 }

@@ -22,7 +22,12 @@ if __name__ == "__main__":
         rep = verify_final(d / "findings.json")
         print(f"statements checked: {rep['statements']}")
         print(f"unsupported claims: {rep['unsupported']} (of which semantic: numbers or direction not matching the "
-              f"cited evidence: {rep.get('semantic_failures', 0)})")
+              f"cited evidence: {rep.get('semantic_failures', 0)}; stale: cited evidence changed since the agent run: "
+              f"{rep.get('stale', 0)})")
+        if rep.get("basis") is None:
+            print("note: no basis.json for this run (agent step predates M14): staleness not checked")
+        if rep.get("stale"):
+            print("the graph changed after the agents wrote this run: re-run /informe (scripts/run_informe.*)")
         if rep["unsupported"]:
             print(json.dumps(rep["detail"][:10], indent=1))
             sys.exit(1)

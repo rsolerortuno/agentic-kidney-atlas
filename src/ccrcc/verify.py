@@ -10,7 +10,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from . import semantic
+from . import provenance, semantic
 from .graph import GraphStore
 from .literature_entities import resolve_gene
 
@@ -35,11 +35,13 @@ def _ranking_values(conv_path: Path | None) -> dict[str, set[float]]:
 
 
 class Verifier:
-    def __init__(self, store: GraphStore | None = None, conv_path: Path | None = None, semantic_check: bool = True):
+    def __init__(self, store: GraphStore | None = None, conv_path: Path | None = None, semantic_check: bool = True,
+                 basis: dict | None = None):
         self.store = store or GraphStore()
         self._gene_ev: dict[str, set[str]] = {}
         self.semantic_check = semantic_check
         self.ranking = _ranking_values(conv_path)
+        self.basis = (basis or {}).get("evidence") if basis else None
 
     def _gene_evidence(self, gene: str) -> set[str] | None:
         sym = resolve_gene(gene) or gene
@@ -65,6 +67,13 @@ class Verifier:
         log = {"text": text[:160], "gene": gene,
                "cited": len(ids), "nonexistent": sorted(set(ids) - existing),
                "not_linked_to_gene": sorted(existing - linked), "kept": bool(valid)}
+        if valid and self.basis is not None:
+            ev_now = self.store.get_evidence(valid)
+            stale = sorted(e["evidence_id"] for e in ev_now if e["evidence_id"] in self.basis
+                           and provenance.fingerprint(e) != self.basis[e["evidence_id"]])
+            if stale:
+                log.update({"kept": False, "stale_evidence": stale, "semantic_failure": True})
+                return None, log
         if valid and self.semantic_check:
             ev = self.store.get_evidence(valid)
             extra: set[float] = set()
@@ -82,7 +91,16 @@ class Verifier:
 
 
 def verify_agents(run_dir: Path) -> dict:
-    v = Verifier(conv_path=run_dir / "convergence.json")
+    store = GraphStore()
+    # complete the basis with the ids the agents cite (agent-time values; existing entries are never refreshed)
+    cited = []
+    for name in AGENT_FILES:
+        p = run_dir / name
+        if p.exists():
+            for f in json.loads(p.read_text(encoding="utf-8")).get("findings", []):
+                cited += [i for i in f.get("evidence_ids", []) if isinstance(i, str)]
+    basis = provenance.extend_basis(run_dir, store, cited)
+    v = Verifier(store=store, conv_path=run_dir / "convergence.json", basis=basis)
     report = {"agents": {}}
     for name in AGENT_FILES:
         path = run_dir / name
@@ -123,7 +141,8 @@ def _statements(findings: dict):
 
 def verify_final(path: Path) -> dict:
     """Final check on findings.json: count statements without valid, gene-linked evidence."""
-    v = Verifier(conv_path=path.parent / "convergence.json")
+    basis = provenance.load_basis(path.parent)
+    v = Verifier(conv_path=path.parent / "convergence.json", basis=basis)
     findings = json.loads(path.read_text(encoding="utf-8"))
     unsupported, total = [], 0
     for loc, stmt in _statements(findings):
@@ -131,7 +150,20 @@ def verify_final(path: Path) -> dict:
         ok, log = v.check_statement(stmt)
         if not ok or len(ok["evidence_ids"]) != len(stmt.get("evidence_ids", [])):
             unsupported.append({"location": loc, **log})
+    # statements dropped earlier because their evidence changed after the agent run are not "cleaned up": they mean the
+    # narrative is stale, so they count here and make the run fail until /informe is re-run
+    agent_rep = path.parent / "verification_agents.json"
+    earlier = findings.get("dropped_during_assembly", [])
+    if agent_rep.exists():
+        for name, a in json.loads(agent_rep.read_text(encoding="utf-8")).get("agents", {}).items():
+            earlier += [{**d, "where": name} for d in a.get("dropped_detail", [])]
+    for d in earlier:
+        if d.get("stale_evidence"):
+            unsupported.append({"location": f"dropped earlier ({d.get('where')})", **d})
     report = {"file": str(path), "statements": total, "unsupported": len(unsupported),
-              "semantic_failures": sum(1 for u in unsupported if u.get("semantic_failure")), "detail": unsupported}
+              "semantic_failures": sum(1 for u in unsupported if u.get("semantic_failure")),
+              "stale": sum(1 for u in unsupported if u.get("stale_evidence")),
+              "basis": None if basis is None else {"started_utc": basis["started_utc"], "evidence": len(basis["evidence"])},
+              "detail": unsupported}
     (path.parent / "verification_final.json").write_text(json.dumps(report, indent=1), encoding="utf-8")
     return report

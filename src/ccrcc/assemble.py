@@ -26,7 +26,9 @@ def assemble(run_dir: Path) -> dict:
         if p.exists():
             agents[name.removeprefix("agent_").removesuffix(".json")] = json.loads(p.read_text(encoding="utf-8"))
 
-    v = Verifier(conv_path=run_dir / "convergence.json")
+    from .provenance import load_basis
+    basis = load_basis(run_dir)
+    v = Verifier(conv_path=run_dir / "convergence.json", basis=basis)
     narrative_path = run_dir / "narrative.json"
     narrative = json.loads(narrative_path.read_text(encoding="utf-8")) if narrative_path.exists() else {}
     dropped = []
@@ -61,6 +63,8 @@ def assemble(run_dir: Path) -> dict:
         "narrative": narrative_v,
         "targets": targets,
         "dropped_during_assembly": dropped,
+        "basis": None if basis is None else {"started_utc": basis["started_utc"], "config_sha256": basis["config_sha256"],
+                                             "evidence": len(basis["evidence"])},
     }
     out = run_dir / "findings.json"
     out.write_text(json.dumps(findings, indent=1, ensure_ascii=False), encoding="utf-8")

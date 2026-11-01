@@ -6,6 +6,7 @@ from __future__ import annotations
 
 import json
 
+import numpy as np
 import pandas as pd
 
 from .graph import GraphStore, evidence_id
@@ -82,7 +83,10 @@ def discovery_block(store: GraphStore, st: dict, sc: dict) -> dict:
 
     def row(r):
         ids = [evidence_id("discovery", r.gene), evidence_id("omics_de", "rna", r.gene),
-               evidence_id("omics_de", "protein", r.gene), evidence_id("sc_expr", r.gene, r.source_group)]
+               evidence_id("omics_de", "protein", r.gene), evidence_id("sc_expr", r.gene, r.source_group),
+               evidence_id("tcga_de", r.gene), evidence_id("purity", r.gene)]
+        if getattr(r, "adverse_prognosis", False) is True:
+            ids.append(evidence_id("tcga_survival", r.gene))
         pk = pockets.get(r.gene)
         if pk:
             ids.append(evidence_id("mgd_site", pk_acc(st, r.gene), pk["cavity"]))
@@ -94,7 +98,13 @@ def discovery_block(store: GraphStore, st: dict, sc: dict) -> dict:
                + ("; surface/secreted" if r.surface_or_secreted else "")
                + (f"; highest vital-organ expression {r.vital_max_ntpm:.0f} nTPM ({r.vital_max_tissue})"
                   if pd.notna(r.vital_max_ntpm) else "")
-               + (f"; {r.clin_variable} rho {r.clin_rho:.2f}" if pd.notna(r.clin_rho) and r.clin_rho > 0 else ""))
+               + (f"; {r.clin_variable} rho {r.clin_rho:.2f}" if pd.notna(r.clin_rho) and r.clin_rho > 0 else "")
+               + (f"; TCGA-KIRC log2FC {r.tcga_log2fc:.2f}" + ("" if r.replicated else " (not replicated)")
+                  if pd.notna(getattr(r, "tcga_log2fc", np.nan)) else "")
+               + (f"; log2FC at purity 1 {r.rna_lfc_at_purity1:.2f}" + (" (purity-robust)" if r.purity_robust else
+                  " (not purity-robust)") if pd.notna(getattr(r, "rna_lfc_at_purity1", np.nan)) else "")
+               + ("; higher expression, worse TCGA survival" if getattr(r, "adverse_prognosis", False) is True else "")
+               + ("; selective DepMap dependency" if getattr(r, "selective_dependency", False) is True else ""))
         return {"gene": r.gene, "track": r.track, "status": r.status, "novelty": _round(r.novelty_score),
                 "source_group": r.source_group, "source_share": _round(r.source_share), "source_pct": _round(r.source_pct, 0),
                 "rna": _round(r.rna_log2fc), "protein": _round(r.protein_log2fc), "papers": int(r.ccrcc_papers),
@@ -103,13 +113,23 @@ def discovery_block(store: GraphStore, st: dict, sc: dict) -> dict:
                 "grade": _round(r.clin_rho), "name": r.protein_name, "uniprot": r.uniprot,
                 "mgd": _round(pk["mgd_score"]) if pk else None, "why": why,
                 "components": {k: _round(getattr(r, f"c_{k}")) for k in ("omics", "cell_specificity", "understudied",
-                                                                         "undrugged", "druggable", "safety", "aggressiveness")},
+                                                                         "undrugged", "druggable", "safety", "aggressiveness",
+                                                                         "replication", "tumor_intrinsic", "prognosis",
+                                                                         "dependency") if hasattr(r, f"c_{k}")},
+                "rank_in_track": int(getattr(r, "rank_in_track", 0) or 0),
+                "tcga": _round(getattr(r, "tcga_log2fc", None)), "pure": _round(getattr(r, "rna_lfc_at_purity1", None)),
+                "replicated": bool(getattr(r, "replicated", False) is True),
+                "purity_robust": bool(getattr(r, "purity_robust", False) is True),
+                "adverse_prognosis": bool(getattr(r, "adverse_prognosis", False) is True),
+                "infiltration": bool(getattr(r, "infiltration_driven", False) is True),
                 "evidence_ids": valid(ids)}
 
-    table = [row(r) for r in d.head(80).itertuples()]
+    # table: top 30 per track (the pool is ~75 % immune, so a global top 80 hid the tumour and stroma tracks)
+    table = [row(r) for r in d.sort_values("novelty_score", ascending=False).groupby("track", sort=False).head(30)
+             .sort_values(["track", "novelty_score"], ascending=[True, False]).itertuples()]
     cards = []
     for track, n in (("tumor", 6), ("stroma", 3), ("immune", 3)):
-        sub = d[(d.track == track) & d.novel & d.druggable_core].head(n)
+        sub = d[(d.track == track) & d.novel & d.druggable_core].sort_values("novelty_score", ascending=False).head(n)
         cards += [row(r) for r in sub.itertuples()]
     return {"discovery": {k: v for k, v in summ.items()}, "discovery_rows": table, "discovery_cards": cards}
 

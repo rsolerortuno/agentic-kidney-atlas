@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-31",
+ "generated": "2026-11-01",
  "config": {
   "omics_layer_weights": {
    "rna": 1.0,
@@ -148,56 +148,56 @@
     {
      "gene": "CA9",
      "rank_p05": 1.0,
-     "rank_p95": 13.049999999999955,
-     "p_top10": 0.939
+     "rank_p95": 13.0,
+     "p_top10": 0.941
     },
     {
      "gene": "SLC16A3",
      "rank_p05": 2.0,
      "rank_p95": 20.0,
-     "p_top10": 0.879
+     "p_top10": 0.881
     },
     {
      "gene": "CD70",
      "rank_p05": 3.0,
-     "rank_p95": 23.0,
-     "p_top10": 0.878
+     "rank_p95": 22.049999999999955,
+     "p_top10": 0.88
     },
     {
      "gene": "NNMT",
      "rank_p05": 3.0,
-     "rank_p95": 23.0,
-     "p_top10": 0.878
+     "rank_p95": 22.049999999999955,
+     "p_top10": 0.88
     },
     {
      "gene": "ENPP3",
      "rank_p05": 5.0,
-     "rank_p95": 25.049999999999955,
+     "rank_p95": 24.049999999999955,
      "p_top10": 0.823
     },
     {
      "gene": "FABP6",
      "rank_p05": 7.0,
-     "rank_p95": 27.0,
-     "p_top10": 0.8
+     "rank_p95": 26.049999999999955,
+     "p_top10": 0.803
     },
     {
      "gene": "CYP2J2",
      "rank_p05": 8.0,
-     "rank_p95": 29.0,
-     "p_top10": 0.757
+     "rank_p95": 28.049999999999955,
+     "p_top10": 0.764
     },
     {
      "gene": "HK2",
      "rank_p05": 9.0,
-     "rank_p95": 32.0,
-     "p_top10": 0.676
+     "rank_p95": 31.049999999999955,
+     "p_top10": 0.697
     },
     {
      "gene": "ANGPTL4",
      "rank_p05": 10.0,
-     "rank_p95": 33.049999999999955,
-     "p_top10": 0.54
+     "rank_p95": 33.0,
+     "p_top10": 0.598
     }
    ]
   },
@@ -1741,13 +1741,13 @@
     "omics_up": 1.0,
     "tumor_intrinsic": 0.0,
     "kinase": 0.0,
-    "tractability_predicted": 1.0,
+    "tractability_predicted": 0.0,
     "prognosis": 0.0,
     "grade": 0.0,
     "measurable": 1.0
    },
    "profile_scores": {
-    "target": 3.0,
+    "target": 2.0,
     "biomarker": 2.5
    },
    "rank_interval_90": {
@@ -4051,13 +4051,13 @@
     "omics_up": 0.0,
     "tumor_intrinsic": 0.0,
     "kinase": 0.0,
-    "tractability_predicted": 1.0,
+    "tractability_predicted": 0.0,
     "prognosis": 0.0,
     "grade": 0.0,
     "measurable": 0.482
    },
    "profile_scores": {
-    "target": 1.0,
+    "target": 0.0,
     "biomarker": 3.4292
    },
    "rank_interval_90": {
@@ -5244,13 +5244,13 @@
     "omics_up": 0.0,
     "tumor_intrinsic": 0.0,
     "kinase": 0.0,
-    "tractability_predicted": 1.0,
+    "tractability_predicted": 0.0,
     "prognosis": 0.0,
     "grade": 0.0,
     "measurable": 0.0
    },
    "profile_scores": {
-    "target": 1.0,
+    "target": 0.0,
     "biomarker": 3.0088
    },
    "rank_interval_90": {
@@ -8433,13 +8433,13 @@
     "omics_up": 0.333,
     "tumor_intrinsic": 0.335,
     "kinase": 0.0,
-    "tractability_predicted": 1.0,
+    "tractability_predicted": 0.0,
     "prognosis": 0.616,
     "grade": 0.0,
     "measurable": 0.0
    },
    "profile_scores": {
-    "target": 2.5558,
+    "target": 1.5558,
     "biomarker": 1.8916
    },
    "rank_interval_90": {
@@ -8634,13 +8634,13 @@
     "omics_up": 0.0,
     "tumor_intrinsic": 0.0,
     "kinase": 0.0,
-    "tractability_predicted": 1.0,
+    "tractability_predicted": 0.0,
     "prognosis": 0.0,
     "grade": 0.0,
     "measurable": 0.951
    },
    "profile_scores": {
-    "target": 1.0,
+    "target": 0.0,
     "biomarker": 3.1855
    },
    "rank_interval_90": {
@@ -9410,8 +9410,8 @@
      "rank_p05": 1,
      "rank_median": 2.0,
      "rank_p95": 13,
-     "p_top10": 0.939,
-     "p_top25": 0.971,
+     "p_top10": 0.941,
+     "p_top25": 0.973,
      "p_top100": 0.999
     },
     "mutation_freq": 0.002,
@@ -9520,7 +9520,7 @@
      "rank_p05": 2,
      "rank_median": 3.0,
      "rank_p95": 20,
-     "p_top10": 0.879,
+     "p_top10": 0.881,
      "p_top25": 0.958,
      "p_top100": 0.999
     },
@@ -9579,6 +9579,93 @@
    },
    {
     "rank": 4,
+    "gene": "NNMT",
+    "score": 3.7143,
+    "n_streams": 4,
+    "components": {
+     "omics": 0.857,
+     "cnv": 0.0,
+     "literature": 1.0,
+     "genetics": 0.0,
+     "tractability": 0.5,
+     "dependency": 0.0,
+     "replication": 1.0,
+     "omics_up": 0.857,
+     "tumor_intrinsic": 1.0,
+     "kinase": 0.0,
+     "tractability_predicted": 1.0,
+     "prognosis": 0.601,
+     "grade": 0.918,
+     "measurable": 1.0
+    },
+    "profile_scores": {
+     "target": 3.7143,
+     "biomarker": 4.7744
+    },
+    "rank_interval_90": {
+     "rank_p05": 3,
+     "rank_median": 4.0,
+     "rank_p95": 22,
+     "p_top10": 0.88,
+     "p_top25": 0.954,
+     "p_top100": 0.999
+    },
+    "mutation_freq": 0.004,
+    "mutation_padj": 0.958,
+    "cis_rho": null,
+    "depmap_mean_effect_ccrcc": 0.316,
+    "depmap_selectivity": -0.075,
+    "tcga_log2fc": 4.685,
+    "tcga_padj": 5.62e-27,
+    "tcga_cox_log_hr": 0.301,
+    "tcga_cox_padj": 0.00479,
+    "kinase_z": null,
+    "rna_lfc_at_purity1": 5.256,
+    "rna_lfc_at_purity1_se": 0.617,
+    "rna_purity_rho": -0.03,
+    "rna_log2fc": 4.67,
+    "protein_log2fc": 2.709,
+    "cnv_loss_freq": 0.045,
+    "cnv_gain_freq": 0.027,
+    "open_targets_score": 0.0598,
+    "ot_genetic_association": 0.0,
+    "ot_somatic_mutation": 0.0,
+    "ot_literature": 0.1796,
+    "n_literature_relations": 4,
+    "drugs": [],
+    "evidence_ids": {
+     "omics": [
+      "EV:omics_de:aefc373d6072",
+      "EV:omics_de:de39cc0c5ed8"
+     ],
+     "cnv": [],
+     "literature": [
+      "EV:literature:111b19cdfe29",
+      "EV:literature:5d5690eab84a",
+      "EV:literature:8945a590eaca",
+      "EV:literature:c57be95f20a6",
+      "EV:open_targets_assoc:719ce7782338"
+     ],
+     "genetics": [],
+     "tractability": [
+      "EV:open_targets_tract:7dbf93860d9f"
+     ],
+     "dependency": [],
+     "replication": [
+      "EV:tcga_de:7dbf93860d9f"
+     ],
+     "prognosis": [
+      "EV:tcga_survival:7dbf93860d9f"
+     ],
+     "kinase": [],
+     "tumor_intrinsic": [
+      "EV:purity:7dbf93860d9f"
+     ],
+     "cis_dosage": []
+    }
+   },
+   {
+    "rank": 5,
     "gene": "CD70",
     "score": 3.7143,
     "n_streams": 4,
@@ -9605,8 +9692,8 @@
     "rank_interval_90": {
      "rank_p05": 3,
      "rank_median": 4.0,
-     "rank_p95": 23,
-     "p_top10": 0.878,
+     "rank_p95": 22,
+     "p_top10": 0.88,
      "p_top25": 0.954,
      "p_top100": 0.999
     },
@@ -9685,93 +9772,6 @@
     }
    },
    {
-    "rank": 5,
-    "gene": "NNMT",
-    "score": 3.7143,
-    "n_streams": 4,
-    "components": {
-     "omics": 0.857,
-     "cnv": 0.0,
-     "literature": 1.0,
-     "genetics": 0.0,
-     "tractability": 0.5,
-     "dependency": 0.0,
-     "replication": 1.0,
-     "omics_up": 0.857,
-     "tumor_intrinsic": 1.0,
-     "kinase": 0.0,
-     "tractability_predicted": 1.0,
-     "prognosis": 0.601,
-     "grade": 0.918,
-     "measurable": 1.0
-    },
-    "profile_scores": {
-     "target": 3.7143,
-     "biomarker": 4.7744
-    },
-    "rank_interval_90": {
-     "rank_p05": 3,
-     "rank_median": 4.0,
-     "rank_p95": 23,
-     "p_top10": 0.878,
-     "p_top25": 0.954,
-     "p_top100": 0.999
-    },
-    "mutation_freq": 0.004,
-    "mutation_padj": 0.958,
-    "cis_rho": null,
-    "depmap_mean_effect_ccrcc": 0.316,
-    "depmap_selectivity": -0.075,
-    "tcga_log2fc": 4.685,
-    "tcga_padj": 5.62e-27,
-    "tcga_cox_log_hr": 0.301,
-    "tcga_cox_padj": 0.00479,
-    "kinase_z": null,
-    "rna_lfc_at_purity1": 5.256,
-    "rna_lfc_at_purity1_se": 0.617,
-    "rna_purity_rho": -0.03,
-    "rna_log2fc": 4.67,
-    "protein_log2fc": 2.709,
-    "cnv_loss_freq": 0.045,
-    "cnv_gain_freq": 0.027,
-    "open_targets_score": 0.0598,
-    "ot_genetic_association": 0.0,
-    "ot_somatic_mutation": 0.0,
-    "ot_literature": 0.1796,
-    "n_literature_relations": 4,
-    "drugs": [],
-    "evidence_ids": {
-     "omics": [
-      "EV:omics_de:aefc373d6072",
-      "EV:omics_de:de39cc0c5ed8"
-     ],
-     "cnv": [],
-     "literature": [
-      "EV:literature:111b19cdfe29",
-      "EV:literature:5d5690eab84a",
-      "EV:literature:8945a590eaca",
-      "EV:literature:c57be95f20a6",
-      "EV:open_targets_assoc:719ce7782338"
-     ],
-     "genetics": [],
-     "tractability": [
-      "EV:open_targets_tract:7dbf93860d9f"
-     ],
-     "dependency": [],
-     "replication": [
-      "EV:tcga_de:7dbf93860d9f"
-     ],
-     "prognosis": [
-      "EV:tcga_survival:7dbf93860d9f"
-     ],
-     "kinase": [],
-     "tumor_intrinsic": [
-      "EV:purity:7dbf93860d9f"
-     ],
-     "cis_dosage": []
-    }
-   },
-   {
     "rank": 6,
     "gene": "ENPP3",
     "score": 3.6933,
@@ -9799,9 +9799,9 @@
     "rank_interval_90": {
      "rank_p05": 5,
      "rank_median": 6.0,
-     "rank_p95": 25,
+     "rank_p95": 24,
      "p_top10": 0.823,
-     "p_top25": 0.95,
+     "p_top25": 0.951,
      "p_top100": 0.999
     },
     "mutation_freq": 0.006,
@@ -9887,9 +9887,9 @@
     "rank_interval_90": {
      "rank_p05": 7,
      "rank_median": 7.0,
-     "rank_p95": 27,
-     "p_top10": 0.8,
-     "p_top25": 0.946,
+     "rank_p95": 26,
+     "p_top10": 0.803,
+     "p_top25": 0.948,
      "p_top100": 0.999
     },
     "mutation_freq": null,
@@ -9972,9 +9972,9 @@
     "rank_interval_90": {
      "rank_p05": 8,
      "rank_median": 8.0,
-     "rank_p95": 29,
-     "p_top10": 0.757,
-     "p_top25": 0.937,
+     "rank_p95": 28,
+     "p_top10": 0.764,
+     "p_top25": 0.939,
      "p_top100": 0.999
     },
     "mutation_freq": 0.002,
@@ -10053,9 +10053,9 @@
     "rank_interval_90": {
      "rank_p05": 9,
      "rank_median": 9.0,
-     "rank_p95": 32,
-     "p_top10": 0.676,
-     "p_top25": 0.927,
+     "rank_p95": 31,
+     "p_top10": 0.697,
+     "p_top25": 0.93,
      "p_top100": 0.999
     },
     "mutation_freq": 0.002,
@@ -10135,8 +10135,8 @@
      "rank_p05": 10,
      "rank_median": 10.0,
      "rank_p95": 33,
-     "p_top10": 0.54,
-     "p_top25": 0.922,
+     "p_top10": 0.598,
+     "p_top25": 0.925,
      "p_top100": 0.999
     },
     "mutation_freq": 0.002,
@@ -10214,10 +10214,10 @@
     },
     "rank_interval_90": {
      "rank_p05": 11,
-     "rank_median": 12.0,
-     "rank_p95": 36,
+     "rank_median": 11.0,
+     "rank_p95": 35,
      "p_top10": 0.004,
-     "p_top25": 0.915,
+     "p_top25": 0.917,
      "p_top100": 0.998
     },
     "mutation_freq": null,
@@ -10296,9 +10296,9 @@
     "rank_interval_90": {
      "rank_p05": 12,
      "rank_median": 13.0,
-     "rank_p95": 37,
+     "rank_p95": 36,
      "p_top10": 0.0,
-     "p_top25": 0.912,
+     "p_top25": 0.913,
      "p_top100": 0.998
     },
     "mutation_freq": 0.002,
@@ -10377,9 +10377,9 @@
     "rank_interval_90": {
      "rank_p05": 13,
      "rank_median": 14.0,
-     "rank_p95": 38,
+     "rank_p95": 37,
      "p_top10": 0.0,
-     "p_top25": 0.904,
+     "p_top25": 0.908,
      "p_top100": 0.998
     },
     "mutation_freq": null,
@@ -10457,11 +10457,11 @@
      "biomarker": 3.2016
     },
     "rank_interval_90": {
-     "rank_p05": 12,
+     "rank_p05": 11,
      "rank_median": 16.0,
      "rank_p95": 42,
-     "p_top10": 0.016,
-     "p_top25": 0.847,
+     "p_top10": 0.034,
+     "p_top25": 0.849,
      "p_top100": 0.999
     },
     "mutation_freq": null,
@@ -10545,10 +10545,10 @@
     },
     "rank_interval_90": {
      "rank_p05": 14,
-     "rank_median": 17.0,
+     "rank_median": 16.0,
      "rank_p95": 44,
      "p_top10": 0.0,
-     "p_top25": 0.82,
+     "p_top25": 0.833,
      "p_top100": 0.998
     },
     "mutation_freq": null,
@@ -10631,9 +10631,9 @@
     "rank_interval_90": {
      "rank_p05": 15,
      "rank_median": 18.0,
-     "rank_p95": 46,
+     "rank_p95": 45,
      "p_top10": 0.0,
-     "p_top25": 0.789,
+     "p_top25": 0.805,
      "p_top100": 0.998
     },
     "mutation_freq": null,
@@ -10712,10 +10712,10 @@
     },
     "rank_interval_90": {
      "rank_p05": 17,
-     "rank_median": 23.0,
+     "rank_median": 22.0,
      "rank_p95": 53,
      "p_top10": 0.0,
-     "p_top25": 0.625,
+     "p_top25": 0.637,
      "p_top100": 0.998
     },
     "mutation_freq": null,
@@ -10797,11 +10797,11 @@
      "biomarker": 2.8463
     },
     "rank_interval_90": {
-     "rank_p05": 18,
+     "rank_p05": 17,
      "rank_median": 23.0,
-     "rank_p95": 54,
+     "rank_p95": 53,
      "p_top10": 0.0,
-     "p_top25": 0.58,
+     "p_top25": 0.595,
      "p_top100": 0.998
     },
     "mutation_freq": 0.004,
@@ -10884,11 +10884,11 @@
     },
     "rank_interval_90": {
      "rank_p05": 19,
-     "rank_median": 27.0,
-     "rank_p95": 59,
+     "rank_median": 26.0,
+     "rank_p95": 58,
      "p_top10": 0.0,
-     "p_top25": 0.447,
-     "p_top100": 0.993
+     "p_top25": 0.461,
+     "p_top100": 0.994
     },
     "mutation_freq": 0.018,
     "mutation_padj": 0.958,
@@ -10988,11 +10988,11 @@
     },
     "rank_interval_90": {
      "rank_p05": 17,
-     "rank_median": 29.5,
+     "rank_median": 29.0,
      "rank_p95": 69,
      "p_top10": 0.0,
-     "p_top25": 0.374,
-     "p_top100": 0.992
+     "p_top25": 0.396,
+     "p_top100": 0.993
     },
     "mutation_freq": 0.002,
     "mutation_padj": 0.958,
@@ -11066,11 +11066,11 @@
      "biomarker": 4.4084
     },
     "rank_interval_90": {
-     "rank_p05": 17,
+     "rank_p05": 16,
      "rank_median": 27.0,
      "rank_p95": 67,
      "p_top10": 0.0,
-     "p_top25": 0.429,
+     "p_top25": 0.456,
      "p_top100": 0.992
     },
     "mutation_freq": null,
@@ -11158,12 +11158,12 @@
      "biomarker": 3.3507
     },
     "rank_interval_90": {
-     "rank_p05": 22,
-     "rank_median": 30.0,
+     "rank_p05": 21,
+     "rank_median": 29.0,
      "rank_p95": 62,
      "p_top10": 0.0,
-     "p_top25": 0.331,
-     "p_top100": 0.992
+     "p_top25": 0.354,
+     "p_top100": 0.993
     },
     "mutation_freq": 0.004,
     "mutation_padj": 0.958,
@@ -11254,7 +11254,7 @@
      "rank_median": 31.0,
      "rank_p95": 63,
      "p_top10": 0.0,
-     "p_top25": 0.269,
+     "p_top25": 0.306,
      "p_top100": 0.992
     },
     "mutation_freq": null,
@@ -11316,110 +11316,6 @@
    },
    {
     "rank": 24,
-    "gene": "COXFA4L2",
-    "score": 3.0,
-    "n_streams": 3,
-    "components": {
-     "omics": 1.0,
-     "cnv": 0.0,
-     "literature": 1.0,
-     "genetics": 0.0,
-     "tractability": 1.0,
-     "dependency": 0.0,
-     "replication": 0.0,
-     "omics_up": 1.0,
-     "tumor_intrinsic": 0.0,
-     "kinase": 0.0,
-     "tractability_predicted": 1.0,
-     "prognosis": 0.0,
-     "grade": 0.0,
-     "measurable": 1.0
-    },
-    "profile_scores": {
-     "target": 3.0,
-     "biomarker": 2.5
-    },
-    "rank_interval_90": {
-     "rank_p05": 4,
-     "rank_median": 33.0,
-     "rank_p95": 173,
-     "p_top10": 0.138,
-     "p_top25": 0.417,
-     "p_top100": 0.835
-    },
-    "mutation_freq": null,
-    "mutation_padj": null,
-    "cis_rho": null,
-    "depmap_mean_effect_ccrcc": -0.035,
-    "depmap_selectivity": -0.042,
-    "tcga_log2fc": null,
-    "tcga_padj": null,
-    "tcga_cox_log_hr": null,
-    "tcga_cox_padj": null,
-    "kinase_z": null,
-    "rna_lfc_at_purity1": null,
-    "rna_lfc_at_purity1_se": null,
-    "rna_purity_rho": null,
-    "rna_log2fc": 6.752,
-    "protein_log2fc": 3.768,
-    "cnv_loss_freq": 0.0,
-    "cnv_gain_freq": 0.118,
-    "open_targets_score": 0.066,
-    "ot_genetic_association": 0.0,
-    "ot_somatic_mutation": 0.0,
-    "ot_literature": 0.2785,
-    "n_literature_relations": 10,
-    "drugs": [
-     {
-      "name": "ME-344",
-      "max_stage": "PHASE_1_2"
-     },
-     {
-      "name": "METFORMIN HYDROCHLORIDE",
-      "max_stage": "WITHDRAWAL"
-     },
-     {
-      "name": "METFORMIN",
-      "max_stage": "WITHDRAWAL"
-     }
-    ],
-    "evidence_ids": {
-     "omics": [
-      "EV:omics_de:c256227d9408",
-      "EV:omics_de:82b179f21539",
-      "EV:omics_de:4b096717bfc0"
-     ],
-     "cnv": [],
-     "literature": [
-      "EV:literature:1741cd200f2a",
-      "EV:literature:1f4e8bd4d272",
-      "EV:literature:533012368b9c",
-      "EV:literature:5722b2746d48",
-      "EV:literature:7ada5d5028c8",
-      "EV:literature:b324d5280bd3",
-      "EV:literature:b9de06a6f23b",
-      "EV:literature:e96e4e9f0aff",
-      "EV:literature:ec673e405bc1",
-      "EV:literature:fddf853d5604",
-      "EV:open_targets_assoc:acbb0be5791e"
-     ],
-     "genetics": [],
-     "tractability": [
-      "EV:open_targets_tract:f0a8d64901b6",
-      "EV:open_targets_drug:5ffdf87227c5",
-      "EV:open_targets_drug:48a4a989c779",
-      "EV:open_targets_drug:164986a1f90f"
-     ],
-     "dependency": [],
-     "replication": [],
-     "prognosis": [],
-     "kinase": [],
-     "tumor_intrinsic": [],
-     "cis_dosage": []
-    }
-   },
-   {
-    "rank": 25,
     "gene": "CCND1",
     "score": 2.9759,
     "n_streams": 5,
@@ -11445,10 +11341,10 @@
     },
     "rank_interval_90": {
      "rank_p05": 24,
-     "rank_median": 37.0,
+     "rank_median": 36.0,
      "rank_p95": 66,
      "p_top10": 0.0,
-     "p_top25": 0.094,
+     "p_top25": 0.103,
      "p_top100": 0.998
     },
     "mutation_freq": null,
@@ -11511,6 +11407,101 @@
      "kinase": [],
      "tumor_intrinsic": [
       "EV:purity:69fdca4a102c"
+     ],
+     "cis_dosage": []
+    }
+   },
+   {
+    "rank": 25,
+    "gene": "TYMP",
+    "score": 2.9749,
+    "n_streams": 4,
+    "components": {
+     "omics": 0.705,
+     "cnv": 0.0,
+     "literature": 0.373,
+     "genetics": 0.0,
+     "tractability": 1.0,
+     "dependency": 0.0,
+     "replication": 0.722,
+     "omics_up": 0.705,
+     "tumor_intrinsic": 0.565,
+     "kinase": 0.0,
+     "tractability_predicted": 1.0,
+     "prognosis": 0.794,
+     "grade": 0.81,
+     "measurable": 1.0
+    },
+    "profile_scores": {
+     "target": 2.9749,
+     "biomarker": 4.1935
+    },
+    "rank_interval_90": {
+     "rank_p05": 22,
+     "rank_median": 35.0,
+     "rank_p95": 75,
+     "p_top10": 0.0,
+     "p_top25": 0.188,
+     "p_top100": 0.988
+    },
+    "mutation_freq": 0.002,
+    "mutation_padj": 0.958,
+    "cis_rho": null,
+    "depmap_mean_effect_ccrcc": 0.13,
+    "depmap_selectivity": -0.026,
+    "tcga_log2fc": 2.89,
+    "tcga_padj": 3.14e-23,
+    "tcga_cox_log_hr": 0.397,
+    "tcga_cox_padj": 0.000122,
+    "kinase_z": null,
+    "rna_lfc_at_purity1": 2.259,
+    "rna_lfc_at_purity1_se": 0.345,
+    "rna_purity_rho": -0.34,
+    "rna_log2fc": 2.59,
+    "protein_log2fc": 1.624,
+    "cnv_loss_freq": 0.027,
+    "cnv_gain_freq": 0.045,
+    "open_targets_score": 0.0502,
+    "ot_genetic_association": 0.0,
+    "ot_somatic_mutation": 0.0,
+    "ot_literature": 0.3728,
+    "n_literature_relations": 0,
+    "drugs": [
+     {
+      "name": "TIPIRACIL HYDROCHLORIDE",
+      "max_stage": "APPROVAL"
+     },
+     {
+      "name": "TIPIRACIL",
+      "max_stage": "APPROVAL"
+     }
+    ],
+    "evidence_ids": {
+     "omics": [
+      "EV:omics_de:660f83228196",
+      "EV:omics_de:8421c263805a",
+      "EV:omics_de:ba2f836a2bf1"
+     ],
+     "cnv": [],
+     "literature": [
+      "EV:open_targets_assoc:c06ddc699632"
+     ],
+     "genetics": [],
+     "tractability": [
+      "EV:open_targets_tract:fc212642254e",
+      "EV:open_targets_drug:424d38a40140",
+      "EV:open_targets_drug:e1cd743aa43c"
+     ],
+     "dependency": [],
+     "replication": [
+      "EV:tcga_de:fc212642254e"
+     ],
+     "prognosis": [
+      "EV:tcga_survival:fc212642254e"
+     ],
+     "kinase": [],
+     "tumor_intrinsic": [
+      "EV:purity:fc212642254e"
      ],
      "cis_dosage": []
     }

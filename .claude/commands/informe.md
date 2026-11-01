@@ -35,9 +35,11 @@ Follow these steps exactly. All numbers come from tools/scripts; you never compu
      candidate (tumor-intrinsic vs stromal / immune), what surrounds it in situ, and which candidates have a
      credible molecular-glue-degrader site. Say explicitly when a bulk-omics candidate is not tumor-intrinsic, and
      present MGD scores as a ranking of sites, never as evidence that a degrader exists.
-   - `discovery` (2–3 paragraphs) comes from the `role: "discovery"` findings of `agent_cells.verified.json`: the most promising
-     under-studied, undrugged candidates per track, what makes them novel, and the caveat that they are data-ranked hypotheses
-     (no dependency or functional evidence).
+   - `discovery` (2–4 paragraphs): from the `role: "discovery"` findings of `agent_cells.verified.json`. Treat each track
+     separately (tumor, stroma, immune: the pool is mostly immune genes). For the leading candidates say what makes them
+     novel and what the M14 layers show — TCGA replication, whether the change survives extrapolation to a pure tumour
+     (immune genes that vanish at purity 1 are infiltration-driven), survival and DepMap dependency — and keep the caveat
+     that they are data-ranked hypotheses (no candidate is a selective dependency).
    - `validation` (2–3 paragraphs, M13): what the independent layers say about the candidates — external replication
      in TCGA-KIRC and prognosis, somatic driver status, selective DepMap dependency, protein-adjusted kinase activity,
      and the purity check (does a bulk change survive extrapolation to a pure tumour or is it infiltration?). Name the

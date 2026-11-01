@@ -23,7 +23,9 @@ TRACK_COLOR = {"tumor": CAT[0], "stroma": CAT[1], "immune": CAT[2]}
 STREAM_COLOR = {"omics": CAT[0], "cnv": CAT[1], "literature": CAT[2], "genetics": CAT[3], "tractability": CAT[4],
                 "dependency": CAT[5], "replication": CAT[6]}
 COMPONENT_COLOR = {"omics": CAT[0], "cell_specificity": CAT[1], "understudied": CAT[2], "undrugged": CAT[3],
-                   "druggable": CAT[4], "safety": CAT[5], "aggressiveness": CAT[6]}
+                   "druggable": CAT[4], "safety": CAT[5], "aggressiveness": CAT[6],
+                   # M14 independent layers: one hue (last slot) in light-to-dark steps, read as one family
+                   "replication": "#f1a3a2", "tumor_intrinsic": "#e34948", "prognosis": "#a92e2d", "dependency": "#6e1c1b"}
 # cell groups displayed in stacked bars: fixed colour per entity, the rest folds into "other"
 SHARE_GROUPS = [("RCC", "ccRCC tumor cell", CAT[0]), ("Endothelial", "Endothelial", CAT[1]),
                 ("Macrophage", "Macrophage", CAT[2]), ("T", "T cell", CAT[3]), ("Fibroblast", "Fibroblast", CAT[5]),
@@ -328,7 +330,10 @@ def discovery_scatter() -> str:
 
 def discovery_bars(weights: dict, n: int = 16) -> str:
     d = pd.read_parquet(PROCESSED / "discovery_candidates.parquet")
-    d = d[d["status"] == "first-in-class opportunity"].head(n)[::-1]
+    fic = d[d["status"] == "first-in-class opportunity"]
+    # all tumour and stroma first-in-class genes, then immune ones to fill: the immune track would fill the chart alone
+    d = pd.concat([fic[fic.track != "immune"], fic[fic.track == "immune"]]).head(n)[::-1]
+    weights = {k: v for k, v in weights.items() if f"c_{k}" in d.columns}
     tot = sum(weights.values())
     fig = go.Figure()
     for k, w in weights.items():
@@ -336,8 +341,8 @@ def discovery_bars(weights: dict, n: int = 16) -> str:
                              marker_color=COMPONENT_COLOR[k], marker_line=dict(width=1.5, color="rgba(255,255,255,.9)"),
                              hovertemplate="%{y} · " + k + ": %{x:.3f}<extra></extra>"))
     fig.update_layout(barmode="stack")
-    fig.update_xaxes(title="weighted component (sums to the novelty score)")
-    return _html(fig, max(420, 24 * len(d) + 120), "What makes a first-in-class candidate score high")
+    fig.update_xaxes(title="weighted component (weight × component ÷ total weight)")
+    return _html(fig, max(420, 24 * len(d) + 120), "What makes a first-in-class candidate score high (tumour and stroma first)")
 
 
 def safety_scatter() -> str:

@@ -1,7 +1,9 @@
 {
  "file": "/home/claude/ccrcc-agentic-multiomics-graphrag/runs/2026-10-31/findings.json",
- "statements": 91,
+ "statements": 87,
  "unsupported": 0,
  "semantic_failures": 0,
+ "stale": 0,
+ "basis": null,
  "detail": []
 }

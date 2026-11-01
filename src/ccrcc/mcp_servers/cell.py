@@ -45,7 +45,9 @@ def celltype_expression(gene: str, tissue: str = "tumor", n: int = 6) -> list[di
     all transcripts of that gene in the tissue — the last one answers whether a bulk signal is tumor-intrinsic
     or contributed by infiltrating cells. cpm_share is the abundance-independent version (per-cell level of the
     group relative to the other groups): use it to say which cell type expresses the gene most per cell, since
-    transcript shares also depend on how many cells of each type were captured. evidence_id is present for groups
+    transcript shares also depend on how many cells of each type were captured. evidence_id_summary (tumour tissue)
+    holds every group of the gene plus the tumour-vs-proximal-tubule result: cite it when a sentence mentions more than
+    one cell group. evidence_id is present for groups
     loaded into the graph."""
     g = canonical_gene(gene)
     d = _ct()
@@ -60,6 +62,7 @@ def celltype_expression(gene: str, tissue: str = "tumor", n: int = 6) -> list[di
                    "share_of_tissue_transcripts": round(float(r.share_of_tissue_transcripts), 3),
                    "cpm_share": None if pd.isna(getattr(r, "cpm_share", None)) else round(float(r.cpm_share), 3),
                    "n_cells": int(r.n_cells), "n_donors": int(r.n_donors),
+                   "evidence_id_summary": existing(evidence_id("sc_summary", g)) if tissue == "tumor" else None,
                    "evidence_id": existing(evidence_id("sc_expr", g, r.cell_group)) if tissue == "tumor" else None})
             for r in sub.itertuples()]
 
@@ -89,7 +92,8 @@ def spatial_context(gene: str) -> dict:
     'in_situ_expressers': cell groups whose spot abundance explains the gene's spot expression (NNLS), with the
     composition-corrected share of its transcripts. 'enriched_neighbors': cell groups over-represented in the
     ring-1 neighbours of the gene's high-expression spots relative to section-matched random spots
-    (observed/expected, so abundant cell types are not favoured), BH-adjusted over all targets x groups."""
+    (observed/expected, so abundant cell types are not favoured), BH-adjusted over all targets x groups.
+    'evidence_id_summary' covers every value returned here: cite it when a sentence mentions more than one cell group."""
     g = canonical_gene(gene)
     sx, nb, summ = _spatial()
     e, n = sx[sx["gene"] == g], nb[nb["gene"] == g]
@@ -97,6 +101,7 @@ def spatial_context(gene: str) -> dict:
         return {"gene": g, "message": "not covered by the Visium sections"}
     return clean({
         "gene": g, "spots": summ["spots"], "sections": summ["sections"], "donors": summ["donors"],
+        "evidence_id_summary": existing(evidence_id("spatial_summary", g)),
         "in_situ_expressers": [{"cell_group": r.cell_group,
                                 "in_situ_contribution": round(float(r.in_situ_contribution), 3),
                                 "composition_corrected_share": round(float(r.composition_corrected_share), 3),
@@ -190,7 +195,26 @@ def _disc_row(r) -> dict:
         "vital_organ_max_ntpm": None if pd.isna(r.vital_max_ntpm) else round(float(r.vital_max_ntpm), 1),
         "vital_organ_tissue": None if pd.isna(r.vital_max_tissue) else r.vital_max_tissue,
         "grade_association": None if pd.isna(r.clin_rho) else f"{r.clin_variable} rho {r.clin_rho:.2f}",
-        "evidence_id": existing(evidence_id("discovery", r.gene))})
+        "rank_in_track": getattr(r, "rank_in_track", None),
+        "tcga_log2fc": _f(getattr(r, "tcga_log2fc", None)), "replicated_in_tcga": _b(getattr(r, "replicated", None)),
+        "rna_log2fc_at_purity1": _f(getattr(r, "rna_lfc_at_purity1", None)),
+        "purity_robust": _b(getattr(r, "purity_robust", None)),
+        "infiltration_driven": _b(getattr(r, "infiltration_driven", None)),
+        "tcga_cox_log_hr": _f(getattr(r, "tcga_cox_log_hr", None)), "adverse_prognosis": _b(getattr(r, "adverse_prognosis", None)),
+        "depmap_mean_effect_ccrcc": _f(getattr(r, "depmap_mean_effect_ccrcc", None)),
+        "selective_dependency": _b(getattr(r, "selective_dependency", None)),
+        "evidence_id": existing(evidence_id("discovery", r.gene)),
+        "evidence_id_tcga": existing(evidence_id("tcga_de", r.gene)),
+        "evidence_id_purity": existing(evidence_id("purity", r.gene)),
+        "evidence_id_survival": existing(evidence_id("tcga_survival", r.gene))})
+
+
+def _f(x, nd=3):
+    return None if x is None or pd.isna(x) else round(float(x), nd)
+
+
+def _b(x):
+    return None if x is None or (isinstance(x, float) and pd.isna(x)) else bool(x)
 
 
 @mcp.tool()
@@ -200,9 +224,13 @@ def novel_targets(track: str | None = None, status: str = "first-in-class opport
     The screen covers genes up in ccRCC tumors in both CPTAC RNA and protein that scRNA-seq attributes mostly to one cell
     type. track: 'tumor' (expressed by tumor cells), 'stroma' (endothelium / fibroblasts / normal epithelium) or 'immune';
     omit for all. status: 'first-in-class opportunity' (no clinical drug, <= 15 ccRCC papers, small-molecule or antibody
-    tractable, low vital-organ expression), 'novel, off-tumor risk (vital-organ expression)', 'novel, harder to drug',
+    tractable, low vital-organ expression, replicated in TCGA-KIRC and, for tumor / stroma genes, purity-robust),
+    'novel, not replicated in TCGA', 'novel, not purity-robust (may be stromal / immune signal)',
+    'novel, off-tumor risk (vital-organ expression)', 'novel, harder to drug',
     'has clinical drug (repurposing)', 'under-studied vs. established', or 'any' for no filter. n <= 30. These are
-    data-ranked hypotheses: concordant tumor-up expression does not show that the gene is required for tumor growth."""
+    data-ranked hypotheses: concordant tumor-up expression does not show that the gene is required for tumor growth.
+    Ranked within the chosen track (the pool is mostly immune genes); each row carries the M14 layers: TCGA replication,
+    log2FC at purity 1 (infiltration check), TCGA survival and DepMap dependency, with their evidence ids."""
     d = _discovery()
     if track:
         d = d[d["track"] == track]

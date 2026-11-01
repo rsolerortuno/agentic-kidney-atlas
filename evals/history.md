@@ -143,3 +143,51 @@ runs on the same graph (official + `runs/replicates/rep1`, `rep2`) wrote differe
 (summary text similarity 0.61 between two of them) but converged on the same 11 genes; rep2 added ENO2 and reordered
 the middle of the list (mean pairwise Jaccard 0.94; CA9, CD70, NNMT first in all three). 91, 93 and 87 statements
 were checked, 0 unsupported in each; the semantic check dropped 3, 0 and 2 statements respectively.
+
+## M14: reproducibility, stale-narrative guard, discovery v2 (2026-11-01)
+
+Five items from the post-M13 review, in order of confidence.
+
+**1. Spatial statistics depended on which genes were analysed.** Two causes, both found by re-running the spatial layer
+with a different target list and comparing CA9:
+- one random generator was shared by all genes, so each gene's permutation draws depended on how many genes came
+  before it. Now each gene has its own generator seeded from (config seed, gene symbol);
+- the deconvolution excluded *the genes analysed in this run* from its markers, so changing the discovery shortlist
+  changed the deconvolution itself and every gene's observed neighbour shares. The exclusion set is now fixed by the
+  data: configured targets, structure controls and the whole discovery pool.
+After both fixes CA9's neighbourhood statistics are identical whatever the target list (max difference 0). The held-out
+deconvolution checks stay positive with the larger exclusion set: CA9 vs tumour share ρ 0.277 (was 0.273), KDR vs
+endothelium 0.205 (0.22), CD74 vs macrophage 0.304 (0.333), PTPRC vs T cells 0.123 (0.156).
+
+**2. Stale-narrative guard** (`src/ccrcc/provenance.py`). `scripts/integrate.py`, the first step of `/informe`, writes
+`runs/<run>/basis.json` with a fingerprint of every convergence evidence record (all values except the build date);
+`verify.py agents` adds the ids the agents cite, never refreshing existing entries. `verify.py final` fails any
+statement citing evidence whose values changed since then, including statements dropped earlier for that reason, and
+tells the user to re-run `/informe`. Re-running the M13 narrative on the M14 graph shows why it is needed: 4 of 91
+statements quote spatial values that changed (caught here by the numeric check, since that run has no basis).
+
+**3–4. Discovery v2.** The novelty score gains four components from the M13 layers (weights fixed before measuring):
+TCGA-KIRC replication 1.0, purity-robust up-regulation 1.0 (tumour and stroma tracks only), adverse TCGA prognosis 0.5
+and selective DepMap dependency 1.0. "First-in-class" now also requires replication and, for tumour and stroma genes, a
+change that survives extrapolation to a pure tumour. Rankings, table and cards are per track.
+- Result: 60 first-in-class (was 66): 4 lost for not replicating in TCGA, 2 tumour/stroma genes for not being
+  purity-robust. By track: immune 54, tumour 3 (COL23A1, RAB42, COL8A1), stroma 3 (OLFML2A, COX4I2, JAG2).
+- Of the 410-gene pool, 384 replicate, 257 are purity-robust, 150 have adverse prognosis and 131 immune genes vanish at
+  purity 1 (labelled infiltration-driven). Two genes pass the dependency gate (ARL4C, CD53), but only 1 of 24 lines
+  depends on each and the mean effect is ~0: not real dependencies.
+- Why the tumour track stays small: most novel tumour-cell genes are expressed above 50 nTPM in a vital organ
+  (16 of 31 novel tumour genes). The threshold was not changed after seeing this; the report shows the best novel
+  genes of each track with their flags instead.
+- Tried and not adopted: assigning tracks by abundance-independent per-cell share (`cpm_share`) instead of transcript
+  share. It removes the dissociation bias but splits pan-immune genes across 12 immune subgroups, so 252 of 313 immune
+  genes would drop out of the pool. The track keeps answering "where does the bulk signal come from".
+
+**5. Regenerated narrative, and why it took three agent runs.** The first M14 `/informe` lost its spatial paragraphs
+again: the agent described a niche with several cell groups ("RCC ... and weakly macrophage 0.099") but cited only the
+main group's record, and the numeric check rejected the sentence. The second run hit the same pattern for single-cell
+comparisons. The fix was on the data side, not the prompt: one gene-level record each for single-cell (`sc_summary`)
+and spatial context (`spatial_summary`) holding every group, returned by the MCP tools as `evidence_id_summary`. The
+third run (`runs/2026-11-01/`): 98 statements, 0 unsupported, 0 stale, every narrative section filled (spatial 2,
+cells 3, discovery 3); the numeric check still dropped 2 of 21 cell-agent findings, both genuine (a normal-tissue value
+absent from the tumour summary; a whole-model pLDDT cited with a pocket record). A full `run-all` on top of that run
+re-verified it with 0 stale statements across 1,124 fingerprinted evidence records.

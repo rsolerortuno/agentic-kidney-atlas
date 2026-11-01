@@ -125,5 +125,13 @@ discovery:
   novel_max_ccrcc_papers: 15     # "little bibliographic support": <= 15 Europe PMC records for gene AND ccRCC terms
   saturation_papers: 50          # understudied component reaches 0 at this many ccRCC papers
   safe_max_ntpm: 50              # vital-organ expression (HPA nTPM) above which a target carries off-tumor risk
-  weights: {omics: 2.0, cell_specificity: 2.0, understudied: 1.5, undrugged: 1.0, druggable: 1.0, safety: 1.5, aggressiveness: 0.5}
+  # v2 (M14): + replication (TCGA-KIRC, same direction), tumour_intrinsic (purity-robust up-regulation; tumour and stroma
+  # tracks only, since immune-cell genes are infiltration by definition), prognosis (higher expression, worse overall
+  # survival in TCGA) and dependency (selective DepMap dependency). Added weights decided before measuring.
+  weights: {omics: 2.0, cell_specificity: 2.0, understudied: 1.5, undrugged: 1.0, druggable: 1.0, safety: 1.5, aggressiveness: 0.5,
+            replication: 1.0, tumor_intrinsic: 1.0, prognosis: 0.5, dependency: 1.0}
+  # first-in-class also needs external replication, and (tumour / stroma tracks) up-regulation that survives purity
+  # extrapolation; immune-track genes whose change disappears at purity 1 are labelled infiltration-driven
+  require_replication: true
+  require_purity_robust_tracks: [tumor, stroma]
   shortlist_per_track: {tumor: 12, stroma: 5, immune: 5}   # novel candidates that also get spatial and structure analysis

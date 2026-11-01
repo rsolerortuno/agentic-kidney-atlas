@@ -95,6 +95,32 @@ def load(store: GraphStore | None = None) -> dict:
             store.add_claim(gid, "upregulated_in" if r.log2fc > 0 else "downregulated_in", cid, ev)
             counts["tumor_vs_pt"] += 1
 
+        # ------------------------------------------------- scRNA: one gene-level summary (M14)
+        # Same reason as the spatial summary below: a sentence comparing cell groups needs one id that holds them all.
+        for g, gs in sub.groupby("hgnc_symbol"):
+            gid = gene_ids.get(g)
+            if gid is None:
+                continue
+            gs = gs.sort_values("share_of_tissue_transcripts", ascending=False)
+            gs = gs[(gs.pct_expressing >= MIN_PCT) | (gs.share_of_tissue_transcripts >= MIN_SHARE)]
+            if gs.empty:
+                continue
+            tv = tvp.loc[g] if g in tvp.index else None
+            if isinstance(tv, pd.DataFrame):
+                tv = tv.iloc[0]
+            ev = store.add_evidence(
+                evidence_id("sc_summary", g), "sc_summary", DATASETS["scrna"][0], TODAY, gene=g, tissue="tumor",
+                groups=[{"cell_group": r.cell_group, "pct_expressing": round(float(r.pct_expressing), 1),
+                         "mean_lognorm": round(float(r.mean_lognorm), 3),
+                         "share_of_tumor_transcripts": round(float(r.share_of_tissue_transcripts), 3),
+                         "cpm_share": None if pd.isna(r.cpm_share) else round(float(r.cpm_share), 3),
+                         "n_cells": int(r.n_cells)} for r in gs.itertuples()],
+                tumor_vs_pt=None if tv is None else {"log2fc": round(float(tv.log2fc), 3), "padj": float(f"{tv.padj:.3g}"),
+                                                     "n_donors": int(tv.n_donors)},
+                method="summary of sc_celltype_expression (tumour compartment) and sc_tumor_vs_pt for this gene")
+            store.add_claim(gid, "cell_context_in", DATASETS["scrna"][0], ev)
+            counts["sc_summary"] = counts.get("sc_summary", 0) + 1
+
         # ------------------------------------------------- spatial: in situ expressers
         for r in sx.itertuples():
             gid = gene_ids.get(r.gene)
@@ -127,6 +153,35 @@ def load(store: GraphStore | None = None) -> dict:
                                            "permutations (1000), observed/expected, BH-adjusted")
             store.add_claim(gid, "enriched_near", cid, ev)
             counts["spatial_neighborhood"] += 1
+
+        # ------------------------------------------------- spatial: one gene-level summary (M14)
+        # Agents describing a niche quote several groups at once ("RCC ... and weakly macrophage") but tended to cite
+        # only the main group's record, which the numeric check then rejected. One record per gene holds every
+        # in-situ expresser and every significant enriched neighbour, so one id supports the whole sentence.
+        for gene, g_nb in nb.groupby("gene"):
+            gid = gene_ids.get(gene)
+            if gid is None:
+                continue
+            sig = g_nb[(g_nb.padj < 0.05) & (g_nb.log2_enrichment > 0)].sort_values("log2_enrichment", ascending=False)
+            g_sx = sx[(sx.gene == gene) & (sx.in_situ_contribution >= MIN_SHARE)].sort_values("in_situ_contribution",
+                                                                                               ascending=False)
+            if sig.empty and g_sx.empty:
+                continue
+            ev = store.add_evidence(
+                evidence_id("spatial_summary", gene), "spatial_summary", DATASETS["visium"][0], TODAY, gene=gene,
+                n_high_spots=int(g_nb.n_high_spots.iloc[0]), n_sections=int(g_nb.n_sections.iloc[0]),
+                enriched_neighbors=[{"cell_group": r.cell_group, "log2_enrichment": round(float(r.log2_enrichment), 3),
+                                     "observed_neighbor_share": round(float(r.observed_neighbor_share), 4),
+                                     "expected_neighbor_share": round(float(r.expected_neighbor_share), 4),
+                                     "padj": float(f"{r.padj:.3g}")} for r in sig.itertuples()],
+                in_situ_expressers=[{"cell_group": r.cell_group,
+                                     "in_situ_contribution": round(float(r.in_situ_contribution), 3),
+                                     "composition_corrected_share": round(float(r.composition_corrected_share), 3),
+                                     "spearman_with_share": round(float(r.spearman_with_share), 3)}
+                                    for r in g_sx.itertuples()],
+                method="summary of spatial_expresser and spatial_neighborhood records for this gene")
+            store.add_claim(gid, "spatial_context_in", DATASETS["visium"][0], ev)
+            counts["spatial_summary"] = counts.get("spatial_summary", 0) + 1
 
         # ------------------------------------------------- structure: AlphaFold model and MGD pockets
         for res in struct["results"]:

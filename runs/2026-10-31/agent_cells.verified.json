@@ -118,16 +118,6 @@
    ]
   },
   {
-   "gene": "LRRC25",
-   "role": "discovery",
-   "statement": "LRRC25 is an immune-track candidate carried by macrophages (0.787 of tumor transcripts) with 0 ccRCC papers, no clinical drug, and a bone marrow nTPM of 31, so there is an off-tumor hematopoietic risk. Its best MGD site scores 0.4825 (mean pLDDT 70.31, volume 43.0 A3). It is a macrophage microenvironment hypothesis, and ligand-site validation was not checked.",
-   "evidence_ids": [
-    "EV:discovery:bbbe73889f70",
-    "EV:alphafold:cb46e7a63e4b",
-    "EV:mgd_site:f8bf52186dbd"
-   ]
-  },
-  {
    "gene": "GAL3ST4",
    "role": "discovery",
    "statement": "GAL3ST4 is an immune-track candidate: macrophages hold 0.972 of tumor transcripts, there is 1 ccRCC paper, no clinical drug, and it is antibody-tractable. It is a hypothesis with no functional evidence.",
