@@ -12,26 +12,38 @@ figure, table and counter) · [`evals/results.md`](evals/results.md) · [`evals/
 
 ## Design in one picture
 
-```
- CPTAC ccRCC (LinkedOmics)       PubMed via PubTator3          Open Targets, ChEMBL, STRING, UniProt, HPA
- RNA, proteome, phospho, CNV     normalized annotations        (disk-cached)
-          |                          |                                 |
- deterministic statistics      closed-schema relation            external client
- paired DE, CNV, RNA-protein   extraction (Sonnet) with
- + independent layers: somatic recurrence, cis copy number, DepMap, TCGA-KIRC replication and survival,
-   phosphosites -> kinases, purity, treatment response (IMmotion150), subtypes (VHL/PBRM1/BAP1/SETD2, ccA/ccB),
-   immune deconvolution (CIBERSORT, xCell), ADC suitability, second single-cell dataset
-          +--------------+-----------+---------------------------------+
-                         v
-        knowledge graph (SQLite + NetworkX behind GraphStore); every claim points to an Evidence record
-                         |
-        MCP servers: omics-mcp, kg-mcp, external-mcp, cell-mcp
-                         |
-        Claude Code: orchestrator (Opus 5.5) -> four Sonnet 5.5 agents; integrate.py (convergence, target and biomarker
-                         |   profiles, weight sensitivity) and verify.py (ids, gene links, numbers, direction, staleness)
-                         v
-        Jinja2 HTML report: the LLM writes only interpretive text; numbers, tables, figures and citations are code
-```
+Core architecture (the treatment, subtype, ADC, immune and second single-cell analyses sit in the independent-layers box). Code computes the statistics, rankings and report assets; Claude Code
+extracts literature relations and writes interpretations grounded in the processed results and their evidence.
+
+![ccRCC agentic multi-omics GraphRAG architecture: omics, single-cell and Visium spatial analysis, literature, external evidence, knowledge graph, MCP servers, Claude Code agents and HTML report](assets/ccrcc-architecture.png)
+
+**How to read the diagram**
+
+- **The independent layers combine complementary measurements with shared cohorts.** Somatic recurrence uses CPTAC + TCGA
+  (cBioPortal; coding-length correction); CNV cis effects reuse CPTAC; dependency comes from DepMap;
+  replication and univariate overall-survival analysis use TCGA-KIRC (Xena); protein-adjusted kinase activity
+  uses CPTAC phosphosites + OmniPath; purity effects use CPTAC ESTIMATE. These layers feed the
+  [configured convergence and profile components](config.yaml). The target and biomarker profiles exclude
+  literature and drug history; convergence v3 still includes a literature stream.
+- **Cell, spatial and structure results contextualize candidates; discovery has its own ranking.** cell and spatial context
+  and the discovery novelty scores do not enter convergence v3. Discovery combines bulk and scRNA evidence with
+  tractability, clinical drugs, off-tumour expression, grade/stage, TCGA replication/prognosis, purity and
+  dependency, and expands the spatial/structure shortlist. Spatial analysis uses fixed marker exclusions and
+  per-gene seeded permutations. MGD scores prioritize sites; they do not demonstrate degradation.
+- **Four analysis agents share four MCP servers.** `agente-omico`, `agente-literatura`, `agente-externo` and
+  `agente-celular` run in parallel under `/informe`; `extractor-relaciones` is the separate extraction
+  subagent. Agent findings are checked before Opus writes the narrative, and the assembled findings are checked
+  again before rendering. `basis.json` fingerprints evidence so changed values invalidate stale text.
+- **Rebuild and LLM regeneration are separate operations.** `ccrcc run-all` rebuilds deterministic artifacts
+  and revalidates saved extraction/agent outputs; `scripts/run_informe.sh` (or `.ps1`) regenerates the four-agent
+  analysis and narrative. relation extraction is a separate saved LLM step. Verification checks citation
+  linkage, numeric/direction consistency and evidence freshness; it does not establish biological causality.
+
+Implementation: [`cli.py`](src/ccrcc/cli.py) · [`discovery.py`](src/ccrcc/discovery.py) ·
+[`integrate.py`](src/ccrcc/integrate.py) / [`scores.py`](src/ccrcc/scores.py) ·
+[MCP configuration](.mcp.json) · [`/informe`](.claude/commands/informe.md) ·
+[`verify.py`](src/ccrcc/verify.py) / [`provenance.py`](src/ccrcc/provenance.py) ·
+[`render.py`](src/ccrcc/render.py)
 
 ## Key design decisions
 
