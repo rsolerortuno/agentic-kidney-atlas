@@ -1,0 +1,9 @@
+{#- "?" button: the help text lives in data attributes, the page script builds the panel on click. -#}
+{% macro q(key) -%}
+{%- set h = H.get(key) -%}
+{%- if h -%}<button class="q" type="button" aria-expanded="false" aria-label="What is this?" data-what="{{ h.what | e }}" data-read="{{ h.read | e }}" data-watch="{{ h.watch | e }}">?</button>{%- endif -%}
+{%- endmacro %}
+
+{% macro plot(key, html) -%}
+{%- if html -%}<div class="plot" data-key="{{ key }}"><div class="plot-q">{{ q(key) }}</div>{{ html | safe }}</div>{%- endif -%}
+{%- endmacro %}

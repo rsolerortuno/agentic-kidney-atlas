@@ -22,6 +22,7 @@ import pandas as pd
 
 from .config import load
 from .graph import GraphStore, evidence_id
+from .layers import selective_dependency
 from .paths import PROCESSED, RAW
 
 DISEASE = "MONDO:0005005"
@@ -106,10 +107,12 @@ def load_layers(store: GraphStore | None = None) -> dict:
         if p.exists():
             dc = cfg["dependency"]
             lines = json.loads((PROCESSED / "layer_dependency_lines.json").read_text())
-            for r in pd.read_parquet(p).itertuples():
+            dep = pd.read_parquet(p)
+            dep["selective"] = selective_dependency(dep, dc)
+            for r in dep.itertuples():
                 if r.n_ccrcc_lines < dc["min_lines"] or not np.isfinite(r.pvalue):
                     continue
-                sel = r.padj < dc["padj"] and r.selectivity > 0 and r.frac_ccrcc_dependent > 0 and not r.common_essential
+                sel = bool(r.selective)
                 if not sel and r.frac_ccrcc_dependent < 0.25 and not r.common_essential:
                     continue   # keep the graph small: non-dependencies are not stored
                 claim(r.gene, "selective_dependency_in" if sel else "dependency_assessed_in",
@@ -117,6 +120,7 @@ def load_layers(store: GraphStore | None = None) -> dict:
                       gene=r.gene, mean_effect_ccrcc=_f(r.mean_effect_ccrcc, 3), mean_effect_other=_f(r.mean_effect_other, 3),
                       selectivity=_f(r.selectivity, 3), frac_ccrcc_dependent=_f(r.frac_ccrcc_dependent, 3),
                       frac_all_dependent=_f(r.frac_all_dependent, 3), n_ccrcc_lines=int(r.n_ccrcc_lines),
+                      n_ccrcc_dependent=int(round(r.frac_ccrcc_dependent * r.n_ccrcc_lines)),
                       padj=_f(r.padj), common_essential=bool(r.common_essential), release=lines["release"])
 
         p = PROCESSED / "layer_tcga.parquet"

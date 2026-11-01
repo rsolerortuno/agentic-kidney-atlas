@@ -34,8 +34,9 @@ import numpy as np
 import pandas as pd
 
 from .config import load
-from .external import CCRCC_TERMS, europepmc_count, ot_target, uniprot
+from .external import CCRCC_TERMS, chembl_target_summary, europepmc_count, ot_target, uniprot
 from .graph import GraphStore, evidence_id
+from .layers import selective_dependency
 from .paths import PROCESSED, RAW
 from .singlecell import CELL_GROUPS
 
@@ -56,6 +57,39 @@ def _gene_terms(symbol: str, hg: pd.DataFrame) -> str:
                 if len(a) >= 4 and (re.search(r"\d", a) or len(a) >= 6) and a.isupper():
                     names.add(a)
     return "(" + " OR ".join(f'TITLE_ABS:"{n}"' for n in sorted(names)) + ")"
+
+
+def alias_index(hg: pd.DataFrame) -> dict[str, set[str]]:
+    """alias / previous symbol -> approved symbols that use it (an alias used by several genes is ambiguous)."""
+    idx: dict[str, set[str]] = {}
+    for sym in hg.index:
+        for col in ("prev_symbol", "alias_symbol"):
+            v = hg.loc[sym, col]
+            for a in (v.split("|") if isinstance(v, str) else []):
+                idx.setdefault(a.strip(), set()).add(sym)
+    return idx
+
+
+def gene_terms_v2(symbol: str, hg: pd.DataFrame, aliases: dict[str, set[str]]) -> str:
+    """Disambiguated Europe PMC term: the symbol plus aliases that belong to this gene only, are not another gene's
+    approved symbol and are at least 3 characters. Short all-letter names (MET, CAT, SET...) also need a molecular
+    context word in the same record, so ordinary-word matches are not counted."""
+    names = {symbol}
+    if symbol in hg.index:
+        for col in ("prev_symbol", "alias_symbol"):
+            v = hg.loc[symbol, col]
+            for a in (v.split("|") if isinstance(v, str) else []):
+                a = a.strip()
+                if (len(a) >= 3 and a.replace("-", "").isalnum() and a.upper() == a and a not in hg.index
+                        and aliases.get(a, set()) == {symbol}):
+                    names.add(a)
+    terms = []
+    for n in sorted(names):
+        t = f'TITLE_ABS:"{n}"'
+        if n.isalpha() and len(n) <= 4:
+            t = f'({t} AND (gene OR protein OR expression OR receptor OR kinase))'
+        terms.append(t)
+    return "(" + " OR ".join(terms) + ")"
 
 
 def pool() -> pd.DataFrame:
@@ -84,12 +118,15 @@ def annotate(d: pd.DataFrame) -> pd.DataFrame:
                      usecols=["symbol", "ensembl_gene_id", "prev_symbol", "alias_symbol"]).dropna(subset=["symbol"])
     hg = hg.drop_duplicates("symbol").set_index("symbol")
     ot_assoc = pd.read_parquet(PROCESSED / "external_ot_associations.parquet").set_index("symbol")
+    aliases = alias_index(hg)
     rows = []
     for g in d["gene"]:
         terms = _gene_terms(g, hg)
+        terms2 = gene_terms_v2(g, hg, aliases)
         rec = {"gene": g,
-               "ccrcc_papers": europepmc_count(f"{terms} AND {CCRCC_TERMS}"),
-               "total_papers": europepmc_count(terms)}
+               "ccrcc_papers_v1": europepmc_count(f"{terms} AND {CCRCC_TERMS}"),
+               "ccrcc_papers": europepmc_count(f"{terms2} AND {CCRCC_TERMS}"),
+               "total_papers": europepmc_count(terms2)}
         ens = hg.loc[g, "ensembl_gene_id"] if g in hg.index else None
         t = ot_target(ens) if isinstance(ens, str) else None
         drugs = (t or {}).get("drugs", [])
@@ -104,6 +141,9 @@ def annotate(d: pd.DataFrame) -> pd.DataFrame:
         loc = (u or {}).get("subcellular_location", [])
         rec.update({"uniprot": (u or {}).get("accession"), "protein_name": (u or {}).get("name"),
                     "locations": loc, "surface_or_secreted": any(SURFACE.search(x) for x in loc)})
+        ch = chembl_target_summary(u["accession"]) if u else {}
+        rec.update({"chembl_target": ch.get("chembl_target"), "potent_activities": ch.get("potent_activities", 0),
+                    "potent_molecules": ch.get("potent_molecules", 0), "patent_activities": ch.get("patent_activities", 0)})
         rec["ensembl"] = ens if isinstance(ens, str) else None
         rows.append(rec)
     out = d.merge(pd.DataFrame(rows), on="gene")
@@ -156,10 +196,10 @@ def m13_flags(d: pd.DataFrame) -> pd.DataFrame:
     d["replicated"] = (d["tcga_padj"] < 0.05) & (d["tcga_log2fc"] > 0)
     d["purity_robust"] = (d["rna_lfc_at_purity1"] - 1.96 * d["rna_lfc_at_purity1_se"]) > 0
     d["adverse_prognosis"] = (d["tcga_cox_padj"] < 0.05) & (d["tcga_cox_log_hr"] > 0)
-    dc = load()["convergence"]["dependency"]
-    ess = d["depmap_common_essential"].astype("boolean").fillna(False).astype(bool)
-    d["selective_dependency"] = ((d["depmap_padj"] < dc["padj"]) & (d["depmap_selectivity"] > 0)
-                                 & (d["depmap_frac_dependent"] > 0) & ~ess)
+    view = pd.DataFrame({"n_ccrcc_lines": d["depmap_n_lines"], "padj": d["depmap_padj"],
+                         "selectivity": d["depmap_selectivity"], "frac_ccrcc_dependent": d["depmap_frac_dependent"],
+                         "common_essential": d["depmap_common_essential"]}, index=d.index)
+    d["selective_dependency"] = selective_dependency(view)
     return d
 
 
@@ -177,7 +217,13 @@ def score(d: pd.DataFrame) -> pd.DataFrame:
     d["c_omics"] = omics
     d["c_cell_specificity"] = 0.6 * d.source_share.clip(upper=1) + 0.4 * sc
     d["c_understudied"] = 1 - (np.log10(1 + d.ccrcc_papers) / math.log10(1 + cfg["saturation_papers"])).clip(upper=1)
-    d["c_undrugged"] = (d.clinical_drugs.map(len) == 0).astype(float)
+    # undrugged, graded (v3): no clinical drug and no potent chemical matter = 1; potent preclinical compounds or patent
+    # bioactivities (ChEMBL, pChEMBL >= 6) but no clinical drug = 0.5; clinical-stage drug = 0
+    no_clin = d.clinical_drugs.map(len) == 0
+    chem = d.get("potent_molecules", pd.Series(0, index=d.index)).fillna(0) >= cfg.get("chemical_matter_min_molecules", 3)
+    pat = d.get("patent_activities", pd.Series(0, index=d.index)).fillna(0) > 0
+    d["chemical_matter"] = np.select([~no_clin, chem | pat], ["clinical drug", "preclinical compounds"], "none")
+    d["c_undrugged"] = np.where(~no_clin, 0.0, np.where(chem | pat, 0.5, 1.0))
     # Open Targets modality codes: SM small molecule, AB antibody, PR PROTAC/degrader, OC other clinical. PR is called for
     # ~90 % of genes, so it only adds a little; SM/AB tractability and surface/secreted location carry the component.
     core = d.modalities.map(lambda m: bool({"SM", "AB"} & set(m)))
@@ -240,6 +286,11 @@ def run() -> dict:
                        "adverse_prognosis": int(d.adverse_prognosis.fillna(False).sum()),
                        "selective_dependency": int(d.selective_dependency.fillna(False).sum()),
                        "infiltration_driven": int(d.infiltration_driven.sum())},
+               "chemical_matter": d["chemical_matter"].value_counts().to_dict(),
+               "literature_v2_vs_v1": {"median_v1": float(d["ccrcc_papers_v1"].median()),
+                                       "median_v2": float(d["ccrcc_papers"].median()),
+                                       "changed_novel_status": int(((d["ccrcc_papers_v1"] <= cfg["novel_max_ccrcc_papers"])
+                                                                    != (d["ccrcc_papers"] <= cfg["novel_max_ccrcc_papers"])).sum())},
                "thresholds": {k: cfg[k] for k in ("min_rna_log2fc", "min_protein_log2fc", "min_source_share",
                                                    "min_source_pct", "novel_max_ccrcc_papers", "saturation_papers")},
                "weights": cfg["weights"]}
@@ -263,6 +314,10 @@ def load_graph(store: GraphStore | None = None) -> dict:
                 evidence_id("discovery", r.gene), "discovery_profile", "Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq",
                 TODAY, gene=r.gene, track=r.track, status=r.status, novelty_score=round(float(r.novelty_score), 4),
                 ccrcc_papers=int(r.ccrcc_papers), total_papers=int(r.total_papers),
+                ccrcc_papers_v1=int(r.ccrcc_papers_v1) if pd.notna(getattr(r, "ccrcc_papers_v1", None)) else None,
+                chemical_matter=getattr(r, "chemical_matter", None),
+                potent_molecules=int(getattr(r, "potent_molecules", 0) or 0),
+                patent_activities=int(getattr(r, "patent_activities", 0) or 0),
                 clinical_drugs=r.clinical_drugs or None, max_drug_stage=r.max_drug_stage, modalities=r.modalities,
                 surface_or_secreted=bool(r.surface_or_secreted), locations=r.locations,
                 source_group=r.source_group, source_share=round(float(r.source_share), 3),

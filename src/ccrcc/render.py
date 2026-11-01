@@ -15,10 +15,14 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 from plotly.offline import get_plotlyjs
 
 from . import report_figures as F
+from . import report_figures_m15 as F15
+from .m15_tables import build as build_m15
+from .report_help import HELP
 from .graph import GraphStore
 from .paths import PROCESSED, REPORTS
 
 ASSETS = Path(__file__).parent / "report_assets"
+RELEASE = {"version": "15", "date": "1 November 2026"}
 
 
 def anchor(ev_id: str) -> str:
@@ -87,7 +91,9 @@ def evidence_view(e: dict) -> dict:
     elif t == "discovery_profile":
         link = e.get("url")
         detail = (f"{e['gene']} ({e['track']}, {e['status']}): novelty {e['novelty_score']}; {e['ccrcc_papers']} ccRCC / "
-                  f"{e['total_papers']} total papers; clinical drugs {e.get('clinical_drugs') or 'none'}; tractability "
+                  f"{e['total_papers']} total papers; clinical drugs {e.get('clinical_drugs') or 'none'}; chemical matter "
+                  f"{e.get('chemical_matter') or 'NA'} ({e.get('potent_molecules', 0)} potent ChEMBL molecules, "
+                  f"{e.get('patent_activities', 0)} patent records); tractability "
                   f"{e.get('modalities') or 'none'}; surface/secreted {e['surface_or_secreted']}; vital-organ max "
                   f"{e.get('vital_max_ntpm')} nTPM ({e.get('vital_max_tissue')}); "
                   f"{e.get('clinical_association') or 'no grade association'}")
@@ -265,6 +271,16 @@ def render(findings_path: Path, out: Path | None = None) -> Path:
         "purity": F.purity_shift(list(dict.fromkeys(cand + [r["gene"] for r in profiles.get("target", [])[:8]]))),
         "kinases": F.kinase_bars(), "outcomes": F.outcome_auroc(evals.get("outcomes")),
     })
+    m15 = build_m15(cand + top_genes)
+    figs.update({
+        "treatment_arms": F15.treatment_arms(set(cand + top_genes[:10])),
+        "treatment_controls": F15.treatment_controls(m15.get("treatment") or {}),
+        "subtype_counts": F15.subtype_counts(m15.get("subtypes") or {}), "ccab": F15.ccab_figure(),
+        "adc": F15.adc_figure(), "immune_classes": F15.immune_classes_figure(),
+        "sc_replication": F15.sc_replication_figure(),
+    })
+    viewer_p = PROCESSED / "spatial_viewer.json"
+    viewer_json = viewer_p.read_text(encoding="utf-8") if viewer_p.exists() else "null"
     layers_p = PROCESSED / "layers_summary.json"
     layers = json.loads(layers_p.read_text()) if layers_p.exists() else {}
     pockets = pd.read_parquet(PROCESSED / "structure_pockets.parquet")
@@ -287,6 +303,7 @@ def render(findings_path: Path, out: Path | None = None) -> Path:
                  for i in ev_ids if i in number]
         return "<sup>[" + ",".join(parts) + "]</sup>" if parts else ""
 
+    env.globals["H"] = HELP
     env.filters["cite"] = cite
     env.filters["evattr"] = lambda ev_ids: " ".join(ev_ids)
     env.filters["fmt"] = lambda x: "—" if x is None or (isinstance(x, float) and math.isnan(x)) else x
@@ -299,6 +316,7 @@ def render(findings_path: Path, out: Path | None = None) -> Path:
         verification=json.loads(vpath.read_text(encoding="utf-8")) if vpath.exists() else None,
         graph_stats=json.loads((PROCESSED / "graph_stats.json").read_text()),
         profiles=profiles, profile_weights=f["convergence"].get("profile_weights") or {}, evals=evals, layers=layers,
+        m15=m15, viewer_json=viewer_json, release=RELEASE,
     )
     out = out or REPORTS / "ccrcc_report.html"
     out.write_text(html_out, encoding="utf-8")

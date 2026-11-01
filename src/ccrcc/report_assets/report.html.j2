@@ -1,4 +1,4 @@
-<!doctype html>
+{% from "macros.j2" import q, plot %}<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -7,19 +7,11 @@
 <style>
 :root{
   color-scheme:light;
-  --bg:#f9f9f7;--surface:#fcfcfb;--ink:#0b0b0b;--ink2:#52514e;--muted:#898781;--line:#e1e0d9;--axis:#c3c2b7;
+  --bg:#fbfbfa;--surface:#ffffff;--ink:#1c1c1b;--ink2:#4d4c49;--muted:#85837d;--line:#e6e5e0;--axis:#c9c8c0;
   --s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;--s4:#eda100;--s5:#e87ba4;--s6:#008300;--s7:#6250d6;--s8:#e34948;
-  --chip:#efeee9;--good:#006300;--warn:#8a5a00;--bad:#b02e2e;--shadow:0 1px 2px rgba(11,11,11,.06),0 4px 14px rgba(11,11,11,.05);
+  --chip:#f1f0ec;--good:#006300;--warn:#8a5a00;--bad:#b02e2e;--shadow:0 1px 2px rgba(28,28,27,.05);
   --grid:rgba(137,135,129,.22);
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  color-scheme:dark;--bg:#0d0d0d;--surface:#1a1a19;--ink:#f0efec;--ink2:#c3c2b7;--muted:#898781;--line:#2c2c2a;--axis:#383835;
-  --s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#c98500;--s5:#d55181;--s6:#008300;--s7:#9085e9;--s8:#e66767;
-  --chip:#262624;--good:#0ca30c;--warn:#fab219;--bad:#ec835a;--shadow:none;--grid:rgba(137,135,129,.2)}}
-:root[data-theme="dark"]{
-  color-scheme:dark;--bg:#0d0d0d;--surface:#1a1a19;--ink:#f0efec;--ink2:#c3c2b7;--muted:#898781;--line:#2c2c2a;--axis:#383835;
-  --s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#c98500;--s5:#d55181;--s6:#008300;--s7:#9085e9;--s8:#e66767;
-  --chip:#262624;--good:#0ca30c;--warn:#fab219;--bad:#ec835a;--shadow:none;--grid:rgba(137,135,129,.2)}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
@@ -82,6 +74,28 @@ tbody tr:hover{background:var(--chip)}
 .ev:target{background:color-mix(in srgb,var(--s4) 22%,transparent)}
 ul.roadmap li{margin:.5em 0;max-width:90ch}
 footer{color:var(--muted);font-size:.8rem;padding:10px 0 50px;border-top:1px solid var(--line)}
+
+.q{width:22px;height:22px;border-radius:50%;border:1px solid var(--axis);background:var(--surface);color:var(--ink2);font:600 .75rem/1 system-ui;cursor:pointer;padding:0;margin-left:8px;vertical-align:middle}
+.q:hover,.q[aria-expanded="true"]{background:var(--s1);border-color:var(--s1);color:#fff}
+.plot,.kpi,.card{position:relative}
+.plot-q{position:absolute;top:8px;right:8px;z-index:5}
+.kpi .q{position:absolute;top:8px;right:8px;margin:0}
+.helpbox{background:var(--chip);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:8px 0;font-size:.85rem;color:var(--ink2);line-height:1.55;text-align:left;font-weight:400;letter-spacing:0}
+.helpbox p{margin:.3em 0}.helpbox b{color:var(--ink)}
+.whatsnew{border:1px solid var(--line);border-left:4px solid var(--s1);background:var(--surface);border-radius:10px;padding:14px 18px;margin:0 0 22px}
+.whatsnew h3{margin:.1em 0 .5em}.whatsnew ul{margin:.3em 0 0 1.1em;padding:0}.whatsnew li{margin:.35em 0;max-width:95ch}
+.vwrap{display:grid;gap:14px;grid-template-columns:minmax(0,1.6fr) minmax(280px,1fr)}
+@media (max-width:900px){.vwrap{grid-template-columns:1fr}}
+.vctl{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:10px 0}
+.vctl label{font-size:.8rem;color:var(--muted)}
+.vctl select,.vctl input[type=range]{font:inherit;font-size:.85rem}
+.vctl select{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:5px 8px}
+#vcanvas{width:100%;border:1px solid var(--line);border-radius:12px;background:var(--surface);cursor:crosshair;display:block}
+.bar{display:flex;align-items:center;gap:8px;font-size:.78rem;margin:3px 0}
+.bar .lab{width:84px;color:var(--ink2);flex:none}.bar .track{flex:1;background:var(--chip);border-radius:4px;height:11px;position:relative}
+.bar .fill{height:100%;border-radius:4px;background:var(--s1)}.bar .fill.b{background:var(--s2)}
+.bar .val{width:84px;text-align:right;color:var(--muted);font-variant-numeric:tabular-nums;flex:none}
+#vtip{position:fixed;pointer-events:none;background:#1c1c1b;color:#fff;font-size:.75rem;padding:5px 8px;border-radius:6px;display:none;z-index:50;max-width:260px}
 @media (max-width:640px){.brand .sub{display:none}.kpi b{font-size:1.35rem}}
 @media print{.top{position:static}.panel{display:block!important}.themebtn,.filters{display:none}}
 </style>
@@ -91,8 +105,7 @@ footer{color:var(--muted);font-size:.8rem;padding:10px 0 50px;border-top:1px sol
 <body>
 <div class="top"><div class="wrap">
   <div class="brand"><h1>ccRCC Target Atlas</h1>
-    <span class="sub">{{ f.disease.name }} · multi-omics GraphRAG · generated {{ f.generated_utc[:10] }} · config <code>{{ f.config_sha256[:8] }}</code></span>
-    <button class="themebtn" id="themebtn" type="button" aria-label="Toggle light and dark theme">Theme</button></div>
+    <span class="sub">{{ f.disease.name }} · multi-omics GraphRAG · generated {{ f.generated_utc[:10] }} · config <code>{{ f.config_sha256[:8] }}</code></span></div>
   <div class="tabs" role="tablist">
     <button class="tab" role="tab" data-tab="overview">Overview</button>
     <button class="tab" role="tab" data-tab="candidates">Candidates</button>
@@ -100,6 +113,9 @@ footer{color:var(--muted);font-size:.8rem;padding:10px 0 50px;border-top:1px sol
     <button class="tab" role="tab" data-tab="cells">Cells &amp; space</button>
     <button class="tab" role="tab" data-tab="structure">Structure &amp; MGD</button>
     <button class="tab" role="tab" data-tab="discovery">Discovery<span class="n">{{ kpis.fic }}</span></button>
+    <button class="tab" role="tab" data-tab="viewer">Tissue viewer</button>
+    <button class="tab" role="tab" data-tab="response">Treatment &amp; subtypes</button>
+    <button class="tab" role="tab" data-tab="adcimmune">ADC &amp; immune</button>
     <button class="tab" role="tab" data-tab="validation">Validation &amp; robustness</button>
     <button class="tab" role="tab" data-tab="literature">Literature &amp; drugs</button>
     <button class="tab" role="tab" data-tab="network">Network</button>
@@ -111,13 +127,14 @@ footer{color:var(--muted);font-size:.8rem;padding:10px 0 50px;border-top:1px sol
 
 <section class="panel" id="tab-overview" data-name="overview">
 <p class="lede">{{ f.question }}</p>
+{% include "whatsnew.html.j2" %}
 <div class="kpis">
-  <div class="kpi"><b>{{ "{:,}".format(kpis.universe) }}</b><span>genes scored</span></div>
-  <div class="kpi"><b>{{ "{:,}".format(kpis.claims) }}</b><span>evidence-backed claims in the graph</span></div>
-  <div class="kpi"><b>{{ "{:,}".format(kpis.cells) }}</b><span>single cells (scRNA-seq)</span></div>
-  <div class="kpi"><b>{{ "{:,}".format(kpis.spots) }}</b><span>Visium spots</span></div>
-  <div class="kpi"><b>{{ kpis.proteins }}</b><span>AlphaFold models analysed</span></div>
-  <div class="kpi"><b>{{ kpis.fic }}</b><span>first-in-class opportunities (of {{ kpis.pool }} screened)</span></div>
+  <div class="kpi">{{ q("kpi_universe") }}<b>{{ "{:,}".format(kpis.universe) }}</b><span>genes scored</span></div>
+  <div class="kpi">{{ q("kpi_claims") }}<b>{{ "{:,}".format(kpis.claims) }}</b><span>evidence-backed claims in the graph</span></div>
+  <div class="kpi">{{ q("kpi_cells") }}<b>{{ "{:,}".format(kpis.cells) }}</b><span>single cells (scRNA-seq)</span></div>
+  <div class="kpi">{{ q("kpi_spots") }}<b>{{ "{:,}".format(kpis.spots) }}</b><span>Visium spots</span></div>
+  <div class="kpi">{{ q("kpi_proteins") }}<b>{{ kpis.proteins }}</b><span>AlphaFold models analysed</span></div>
+  <div class="kpi">{{ q("kpi_fic") }}<b>{{ kpis.fic }}</b><span>first-in-class opportunities (of {{ kpis.pool }} screened)</span></div>
 </div>
 <h2>Summary</h2>
 {% for p in f.narrative.summary %}
@@ -144,15 +161,12 @@ footer{color:var(--muted);font-size:.8rem;padding:10px 0 50px;border-top:1px sol
 
 <section class="panel" id="tab-candidates" data-name="candidates">
 <h2>Deterministic convergence ranking</h2>
-<p class="lede">Convergence v{{ f.convergence.config.version or 2 }}. Score = Σ stream weight × component (each in [0, 1]) over omics (continuous: RNA, protein,
-phospho and concordance, each min(1, |log2FC| / cap) when significant), copy number × its cis effect on the gene product, literature, genetics
-(germline association or measured somatic recurrence), tractability (all genes), selective DepMap dependency and TCGA-KIRC replication. Weights ({% for k, v in f.convergence.config.stream_weights.items() %}{{ k }} {{ v }}{% if not loop.last %}, {% endif %}{% endfor %}) are in
-<code>config.yaml</code>. Universe: {{ "{:,}".format(f.convergence.universe_size) }} genes.</p>
+<p class="lede">Each gene gets one score built from seven kinds of evidence: how much it changes in tumour (RNA, protein and phospho), whether a copy-number change really moves its product, what the literature says, genetics, how druggable the protein looks, whether cancer cell lines need it, and whether a second cohort (TCGA-KIRC) sees the same change. Every kind is scaled from 0 to 1 and multiplied by a weight ({% for k, v in f.convergence.config.stream_weights.items() %}{{ k }} {{ v }}{% if not loop.last %}, {% endif %}{% endfor %}). The weights live in <code>config.yaml</code> and were set before the results were known. {{ "{:,}".format(f.convergence.universe_size) }} genes are scored.</p>
 <div class="grid two">
-  <div class="plot">{{ figs.stream_stack | safe }}</div>
-  <div class="plot">{{ figs.component_heatmap | safe }}</div>
+  {{ plot('stream_stack', figs.stream_stack) }}
+  {{ plot('component_heatmap', figs.component_heatmap) }}
 </div>
-<h3>Top 25</h3>
+<h3>Top 25 {{ q('top25') }}</h3>
 <div class="tw"><table>
 <thead><tr><th>#</th><th>Gene</th><th>Score</th><th>Omics</th><th>CNV</th><th>Lit.</th><th>Genetics</th><th>Tract.</th><th>Dep.</th><th>Repl.</th><th>Rank 90 % interval</th>
 <th>RNA log2FC</th><th>Protein log2FC</th><th>Drugs (max stage)</th><th>Evidence</th></tr></thead>
@@ -182,13 +196,12 @@ phospho and concordance, each min(1, |log2FC| / cap) when significant), copy num
 <p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
 {% endfor %}
 <div class="grid two">
-  <div class="plot">{{ figs.volcano_rna | safe }}</div><div class="plot">{{ figs.volcano_protein | safe }}</div>
-  <div class="plot">{{ figs.rna_vs_protein | safe }}</div><div class="plot">{{ figs.arm_loss | safe }}</div>
+  {{ plot('volcano_rna', figs.volcano_rna) }}{{ plot('volcano_protein', figs.volcano_protein) }}
+  {{ plot('rna_vs_protein', figs.rna_vs_protein) }}{{ plot('arm_loss', figs.arm_loss) }}
 </div>
-<h3>Association with tumor grade</h3>
-<p class="small">Spearman correlation of tumor RNA and protein with histologic grade (G1–G4) across the discovery tumors. The CPTAC clinical file has grade, stage
-and tumor size but no survival, so this is the only clinical read-out available.</p>
-<div class="plot">{{ figs.grade | safe }}</div>
+<h3>Association with tumour grade {{ q('grade') }}</h3>
+<p class="small">This shows how closely each gene follows tumour grade (G1 to G4) across the discovery tumours, for RNA and for protein. The CPTAC clinical file has grade, stage and tumour size but no survival, so grade is the only outcome-like measure available here. The survival analysis uses TCGA-KIRC instead.</p>
+{{ plot('grade', figs.grade) }}
 {% if f.agent_findings.omics %}<h3>Omics agent findings (verified)</h3>
 {% for x in f.agent_findings.omics.findings %}
 <p class="claim" data-evidence="{{ x.evidence_ids | evattr }}"><strong>{{ x.gene }}</strong> <span class="tag">{{ x.role | replace("_"," ") }}</span> {{ x.statement }} {{ x.evidence_ids | cite | safe }}</p>
@@ -197,15 +210,12 @@ and tumor size but no survival, so this is the only clinical read-out available.
 
 <section class="panel" id="tab-cells" data-name="cells">
 <h2>Which cells express each candidate?</h2>
-<p class="lede">Li et al. 2022 scRNA-seq via CZ CELLxGENE Discover: {{ "{:,}".format(cell.sc.cells_used) }} cells, {{ cell.sc.donors }} donors,
-{{ "{:,}".format(cell.sc.cells_by_tissue.tumor) }} from tumour tissue. “Share of tumour transcripts” is the fraction of a gene's tumour-compartment
-transcripts contributed by each cell group: it separates tumor-intrinsic targets from signal donated by infiltrating cells. Tumour cell vs proximal tubule is a
-donor-paired pseudobulk comparison against the cell of origin ({{ cell.sc.tumor_vs_pt_donors }} donors with both).</p>
+<p class="lede">The cell-type calls come from single-cell data of Li et al. 2022: {{ "{:,}".format(cell.sc.cells_used) }} cells from {{ cell.sc.donors }} donors, {{ "{:,}".format(cell.sc.cells_by_tissue.tumor) }} of them from tumour tissue. "Share of tumour transcripts" is the part of a gene's tumour RNA that each cell type makes. It separates a gene the tumour cells make themselves from one whose signal comes from infiltrating cells. "Tumour cell vs proximal tubule" compares the cancer cells with the normal cell they most likely came from, donor by donor ({{ cell.sc.tumor_vs_pt_donors }} donors had both). The last block on this tab repeats the attribution in a second, independent dataset.</p>
 {% for p in f.narrative.sections.cells or [] %}
 <p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
 {% endfor %}
 <div class="grid two">
-  <div class="plot">{{ figs.dotplot | safe }}</div><div class="plot">{{ figs.share_stack | safe }}</div>
+  {{ plot('dotplot', figs.dotplot) }}{{ plot('share_stack', figs.share_stack) }}
 </div>
 <div class="tw" style="margin-top:14px"><table>
 <thead><tr><th>Gene</th><th>Highest-expressing cell type (mean)</th><th>% cells</th><th>Share of tumour transcripts</th><th>Tumour-cell share</th><th>τ</th>
@@ -217,23 +227,29 @@ donor-paired pseudobulk comparison against the cell of origin ({{ cell.sc.tumor_
 <td class="num">{% if t.tvp %}log2FC {{ t.tvp.log2fc }} (padj {{ t.tvp.padj }}){% else %}—{% endif %}</td><td>{{ t.evidence_ids[:4] | cite | safe }}</td></tr>
 {% endfor %}</tbody></table></div>
 
+<h2>Does a second dataset agree?</h2>
+{% set R = m15.sc_rep %}
+{% if R %}<p class="lede">Zhang et al. 2021 profiled {{ R.zhang.tumour_donors }} ccRCC donors ({{ "{:,}".format(R.zhang.tumour_cells) }} cells) and {{ R.zhang.normal_donors }} normal kidneys, with {{ R.zhang.paired_donors }} donors in both. The two studies name cell types differently, so both were folded into seven shared groups. For genes in the discovery screen, the dominant source in Zhang matches the track from Li in {% for t, v in R.discovery_by_track.items() %}{{ v.same_track_in_zhang }} of {{ v.measured }} {{ t }} genes{% if not loop.last %}, {% endif %}{% endfor %}. Across {{ "{:,}".format(R.genes_compared) }} genes the tumour-cell share correlates between studies at rho {{ R.rcc_share_spearman }}, and the tumour-versus-tubule fold change at rho {{ R.tvp_log2fc_spearman }}. Immune genes agree least: the two studies capture very different amounts of immune cells.</p>
+<div class="grid two">
+  {{ plot('sc_replication', figs.sc_replication) }}
+  <div class="tw"><table><thead><tr><th>Gene</th><th>Li 2022 source</th><th>Zhang 2021 source</th><th>Tumour share Li</th><th>Tumour share Zhang</th></tr></thead><tbody>
+  {% for r in m15.sc_rep_targets %}<tr><td><strong>{{ r.gene }}</strong></td><td>{{ r.li_top }}</td><td>{{ r.zhang_top }}</td><td class="num">{{ r.li_rcc_share }}</td><td class="num">{{ r.zhang_rcc_share }}</td></tr>{% endfor %}
+  </tbody></table></div>
+</div>{% endif %}
+
 <h2>Where are they in the tissue?</h2>
-<p class="lede">{{ "{:,}".format(cell.spatial.spots) }} Visium spots, {{ cell.spatial.sections }} sections, {{ cell.spatial.donors }} donors. Spot composition by non-negative
-least squares against the study's own scRNA-seq profiles; candidate genes are excluded from the marker sets, so their agreement with the deconvolved shares is an
-independent check (CA9–tumour ρ {{ cell.spatial.validation.spearman_CA9_vs_RCC }}, KDR–endothelium ρ {{ cell.spatial.validation.spearman_KDR_vs_Endothelial }},
-CD74–macrophage ρ {{ cell.spatial.validation.spearman_CD74_vs_Macrophage }}, PTPRC–T cell ρ {{ cell.spatial.validation.spearman_PTPRC_vs_T_cell }}).</p>
+<p class="lede">The tissue data are {{ "{:,}".format(cell.spatial.spots) }} Visium spots from {{ cell.spatial.sections }} sections and {{ cell.spatial.donors }} donors. Each spot mixes a few cells, so its cell makeup is estimated by fitting it to the study's own single-cell profiles. The candidate genes were left out of that fit, which makes them a fair test of it: CA9 follows the tumour-cell share (rho {{ cell.spatial.validation.spearman_CA9_vs_RCC }}), KDR follows endothelium ({{ cell.spatial.validation.spearman_KDR_vs_Endothelial }}), CD74 follows macrophages ({{ cell.spatial.validation.spearman_CD74_vs_Macrophage }}) and PTPRC follows T cells ({{ cell.spatial.validation.spearman_PTPRC_vs_T_cell }}). The correlations are positive but modest. The Tissue viewer tab shows the same data on the real H&E sections.</p>
 {% for p in f.narrative.sections.spatial or [] %}
 <p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
 {% endfor %}
 {% if figs.map_core or figs.map_interface %}
-<p class="small">Pick a variable from the menu above each map: deconvolved cell share or the expression of a candidate gene (CPM). Largest section of each region.</p>
+<p class="small">Use the menu above each map to pick a cell share or a candidate gene. These are the largest core and interface sections.</p>
 <div class="grid two">
-  {% if figs.map_core %}<div class="plot">{{ figs.map_core | safe }}</div>{% endif %}
-  {% if figs.map_interface %}<div class="plot">{{ figs.map_interface | safe }}</div>{% endif %}
+  {{ plot('map_core', figs.map_core) }}
+  {{ plot('map_interface', figs.map_interface) }}
 </div>{% endif %}
-<div class="plot" style="margin-top:14px">{{ figs.neighbors | safe }}</div>
-<p class="small">Neighbour enrichment compares the ring-1 neighbours (~100 µm) of each gene's top-decile spots with section-matched random spots (observed/expected, so abundant cell types are
-not favoured); 1000 permutations per section, Benjamini–Hochberg over all genes × cell types.</p>
+{{ plot('neighbors', figs.neighbors) }}
+<p class="small">For each gene, we take the top tenth of spots and look at the ring of six spots around each one (about 100 micrometres). We compare the cell makeup of those rings with rings around random spots from the same sections, as a ratio, so common cell types get no head start. A permutation test with 1,000 shuffles gives each p-value, adjusted over all genes and cell types.</p>
 <div class="tw"><table>
 <thead><tr><th>Gene</th><th>In situ expresser (NNLS)</th><th>Composition-corrected source</th><th>High spots</th><th>Enriched neighbours (log₂ obs/exp, padj &lt; 0.05)</th><th>Evidence</th></tr></thead><tbody>
 {% for t in cell.spatial_rows %}
@@ -269,9 +285,9 @@ validation chart). No E3 ligase compatibility, ternary-complex or degron-sequenc
 real glue targets from other proteins, and its use here is limited to ordering sites within a protein.</p>
 {% endif %}
 <div class="grid two">
-  <div class="plot">{{ figs.mgd_bubble | safe }}</div><div class="plot">{{ figs.mgd_components | safe }}</div>
-  <div class="plot">{{ figs.ligand_validation | safe }}</div>
-  {% if figs.control_ranking %}<div class="plot">{{ figs.control_ranking | safe }}</div>{% endif %}
+  {{ plot('mgd_bubble', figs.mgd_bubble) }}{{ plot('mgd_components', figs.mgd_components) }}
+  {{ plot('ligand_validation', figs.ligand_validation) }}
+  {{ plot('control_ranking', figs.control_ranking) }}
 </div>
 <h3>Best pocket per protein</h3>
 <div class="tw"><table>
@@ -288,14 +304,7 @@ real glue targets from other proteins, and its use here is limited to ordering s
 
 <section class="panel" id="tab-discovery" data-name="discovery">
 <h2>Target discovery: promising, under-studied, undrugged</h2>
-<p class="lede">A screen of <strong>{{ cell.discovery.pool }}</strong> genes that are up in tumor in both CPTAC RNA (log2FC ≥ {{ cell.discovery.thresholds.min_rna_log2fc }}) and protein
-(≥ {{ cell.discovery.thresholds.min_protein_log2fc }}) and that scRNA-seq attributes mostly to one cell type (≥ {{ (cell.discovery.thresholds.min_source_share * 100) | int }} % of their tumour transcripts).
-Each gene is annotated with the volume of ccRCC literature (Europe PMC), clinical-stage drugs and tractability (Open Targets), location (UniProt), expression in vital organs
-(Human Protein Atlas), association with grade and, since M14, the independent layers: TCGA-KIRC replication, purity extrapolation, TCGA survival and DepMap dependency.
-<strong>Novel</strong> = no clinical-stage drug and ≤ {{ cell.discovery.thresholds.novel_max_ccrcc_papers }} ccRCC papers ({{ cell.discovery.novel }} genes);
-<strong>first-in-class opportunity</strong> adds small-molecule or antibody tractability, ≤ 50 nTPM in every vital organ, replication in TCGA-KIRC and, for tumour and stroma genes,
-an up-regulation that survives extrapolation to a pure tumour ({{ kpis.fic }} genes: {% for t, n in (cell.discovery.first_in_class_by_track or {}).items() %}{{ n }} {{ t }}{% if not loop.last %}, {% endif %}{% endfor %}).
-These are hypotheses ranked by data, not validated targets.</p>
+<p class="lede">The screen starts from <strong>{{ cell.discovery.pool }}</strong> genes that are up in tumour in both CPTAC RNA (log2 fold change at least {{ cell.discovery.thresholds.min_rna_log2fc }}) and protein (at least {{ cell.discovery.thresholds.min_protein_log2fc }}) and that single-cell data tie mostly to one cell type (at least {{ (cell.discovery.thresholds.min_source_share * 100) | int }} % of the gene's tumour transcripts). Each gene is then checked for how much ccRCC literature it has (Europe PMC, counting only aliases that belong to that gene), whether a clinical drug or potent compounds already exist (Open Targets, ChEMBL), where the protein sits (UniProt), how much it is expressed in vital organs (Human Protein Atlas), and whether it follows grade, replicates in TCGA-KIRC, survives correction for tumour purity, tracks survival or is a selective cell-line dependency. A gene is <strong>novel</strong> when it has no clinical-stage drug and at most {{ cell.discovery.thresholds.novel_max_ccrcc_papers }} ccRCC papers ({{ cell.discovery.novel }} genes). It is a <strong>first-in-class opportunity</strong> when it is also tractable by a small molecule or an antibody, stays at or below 50 nTPM in every vital organ, replicates in TCGA-KIRC and, for tumour and stroma genes, keeps its up-regulation at purity one ({{ kpis.fic }} genes: {% for t, n in (cell.discovery.first_in_class_by_track or {}).items() %}{{ n }} {{ t }}{% if not loop.last %}, {% endif %}{% endfor %}). These are hypotheses ranked by data, not validated targets.</p>
 {% for p in f.narrative.sections.discovery or [] %}
 <p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
 {% endfor %}
@@ -314,12 +323,10 @@ These are hypotheses ranked by data, not validated targets.</p>
   <div class="kpi"><b>{{ cell.discovery.m13.selective_dependency }}</b><span>selective DepMap dependency</span></div>
 </div>{% endif %}
 <div class="grid two">
-  <div class="plot">{{ figs.discovery_scatter | safe }}</div><div class="plot">{{ figs.discovery_bars | safe }}</div>
+  {{ plot('discovery_scatter', figs.discovery_scatter) }}{{ plot('discovery_bars', figs.discovery_bars) }}
 </div>
 <h3>Spotlight: novel, tractable candidates</h3>
-<p class="small">Top candidates per track (ranked within the track) that have no clinical-stage drug, few ccRCC papers and small-molecule or antibody tractability, whatever
-their other flags: “off-tumor risk” = expressed in a vital organ (&gt; 50 nTPM); “not replicated” / “not purity-robust” = failed the M14 gates. Most novel tumour-cell genes
-are expressed in some vital organ, which is why only a few reach first-in-class.</p>
+<p class="small">These are the best candidates of each track (ranked inside the track) with no clinical-stage drug, few ccRCC papers and a small-molecule or antibody route, whatever their other flags. "Off-tumor risk" means expression above 50 nTPM in a vital organ. "Not replicated" and "not purity-robust" mean the gene failed one of those two tests. Most novel tumour-cell genes are expressed in some vital organ, which is why only a few reach first-in-class.</p>
 <div class="grid">
 {% for r in cell.discovery_cards %}
 <div class="card cand claim" data-evidence="{{ r.evidence_ids | evattr }}">
@@ -333,8 +340,8 @@ are expressed in some vital organ, which is why only a few reach first-in-class.
 </div>
 {% endfor %}
 </div>
-<div class="plot" style="margin-top:14px">{{ figs.safety | safe }}</div>
-<h3>Screen results (top 30 per track by novelty score)</h3>
+{{ plot('safety', figs.safety) }}
+<h3>Screen results (top 30 per track by novelty score) {{ q('discovery_table') }}</h3>
 <div class="filters">
   <span class="small">Track</span>
   <button class="chip" aria-pressed="true" data-ftrack="all">all</button><button class="chip" aria-pressed="false" data-ftrack="tumor">tumor</button>
@@ -364,29 +371,24 @@ Cell-type attribution comes from a different cohort than CPTAC (12 donors, disso
 DepMap tests dependency in cell lines grown in normoxia; no candidate here is a selective dependency, so these are targeting handles (antibody, ADC, radioligand), not genes the tumour needs.</div>
 </section>
 
+{% include "new_tabs.html.j2" %}
+
 <section class="panel" id="tab-validation" data-name="validation">
-<h2>Independent validation layers and robustness (M13)</h2>
-<p class="lede">Layers added after the first evaluation, each a different kind of evidence than tumour-vs-normal expression:
-somatic recurrence in {{ layers.mutations.genes | default("—") }} genes tested across CPTAC + TCGA-KIRC (length-corrected), DepMap 26Q1 dependency in
-{{ (layers.dependency.ccrcc_lines | default([])) | length }} clear cell RCC lines vs {{ layers.dependency.other_lines | default("—") }} others, TCGA-KIRC replication
-({{ layers.tcga.pairs | default("—") }} tumour–normal pairs) and overall survival ({{ layers.tcga.survival_patients | default("—") }} patients),
-{{ "{:,}".format(layers.phosphosites.sites) if layers.phosphosites else "—" }} phosphosites with protein-adjusted kinase activity, and ESTIMATE tumour purity.</p>
+<h2>Independent validation and robustness</h2>
+<p class="lede">Expression differences between tumour and normal kidney are only one kind of evidence, so this tab collects the others: somatic mutation recurrence in {{ layers.mutations.genes | default("—") }} genes across CPTAC and TCGA-KIRC (corrected for gene length), DepMap 26Q1 dependency in {{ (layers.dependency.ccrcc_lines | default([])) | length }} clear cell lines against {{ layers.dependency.other_lines | default("—") }} others, TCGA-KIRC replication ({{ layers.tcga.pairs | default("—") }} tumour-normal pairs) and overall survival ({{ layers.tcga.survival_patients | default("—") }} patients), {{ "{:,}".format(layers.phosphosites.sites) if layers.phosphosites else "—" }} phosphosites turned into kinase activity, and ESTIMATE tumour purity.</p>
 {% for p in f.narrative.sections.validation or [] %}
 <p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
 {% endfor %}
 <div class="grid two">
-  {% if figs.tcga %}<div class="plot">{{ figs.tcga | safe }}</div>{% endif %}
-  {% if figs.purity %}<div class="plot">{{ figs.purity | safe }}</div>{% endif %}
-  {% if figs.mutations %}<div class="plot">{{ figs.mutations | safe }}</div>{% endif %}
-  {% if figs.dependency %}<div class="plot">{{ figs.dependency | safe }}</div>{% endif %}
-  {% if figs.kinases %}<div class="plot">{{ figs.kinases | safe }}</div>{% endif %}
+  {{ plot('tcga', figs.tcga) }}
+  {{ plot('purity', figs.purity) }}
+  {{ plot('mutations', figs.mutations) }}
+  {{ plot('dependency', figs.dependency) }}
+  {{ plot('kinases', figs.kinases) }}
 </div>
 
 <h2>Two questions, two scores</h2>
-<p class="small">The overall convergence score mixes target and biomarker evidence. The <strong>target</strong> profile weights
-({% for k, v in profile_weights.target.items() %}{{ k | replace("_", " ") }} {{ v }}{% if not loop.last %}, {% endif %}{% endfor %}) and the
-<strong>biomarker</strong> profile ({% for k, v in profile_weights.biomarker.items() %}{{ k | replace("_", " ") }} {{ v }}{% if not loop.last %}, {% endif %}{% endfor %})
-use measurements only, without literature or drug history, so they can be evaluated against clinical outcomes (below).</p>
+<p class="small">The overall score mixes target and biomarker evidence, so there are two separate profiles. The <strong>target</strong> profile weighs ({% for k, v in profile_weights.target.items() %}{{ k | replace("_", " ") }} {{ v }}{% if not loop.last %}, {% endif %}{% endfor %}). The <strong>biomarker</strong> profile weighs ({% for k, v in profile_weights.biomarker.items() %}{{ k | replace("_", " ") }} {{ v }}{% if not loop.last %}, {% endif %}{% endfor %}). Neither uses literature or drug history, which lets us test them against clinical outcomes below without the answer leaking into the score.</p>
 {% for name in ["target", "biomarker"] %}{% if profiles[name] %}
 <h3>{{ name | capitalize }} profile — top 25</h3>
 <div class="tw"><table>
@@ -404,21 +406,20 @@ use measurements only, without literature or drug history, so they can be evalua
 {% for p in f.narrative.sections.robustness or [] %}
 <p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
 {% endfor %}
-<p class="small">Each ranking is recomputed under 1,000 random weightings drawn around the configured weights (Dirichlet, κ = 20). Points are median ranks,
-bars the 5th–95th percentile; a narrow bar near the top means the position does not depend on the chosen weights.</p>
+<p class="small">Each ranking is recomputed 1,000 times with weights drawn at random around the chosen ones. Dots are median ranks and bars cover the 5th to 95th percentile. A short bar near the top means the gene stays there whatever the weights.</p>
 <div class="grid two">
-  {% if figs.rank_target %}<div class="plot">{{ figs.rank_target | safe }}</div>{% endif %}
-  {% if figs.rank_biomarker %}<div class="plot">{{ figs.rank_biomarker | safe }}</div>{% endif %}
+  {{ plot('rank_target', figs.rank_target) }}
+  {{ plot('rank_biomarker', figs.rank_biomarker) }}
 </div>
-{% if figs.rank_conv %}<div class="plot">{{ figs.rank_conv | safe }}</div>{% endif %}
+{{ plot('rank_conv', figs.rank_conv) }}
 
 {% if evals.outcomes %}
-<h2>Evaluation against outcomes the scores do not see</h2>
+<h2>Evaluation against outcomes the scores do not see {{ q('outcomes') }}</h2>
 <p class="small">Gold sets: {{ evals.outcomes.gold_sets.rcc_clinical_targets | length }} RCC clinical targets (phase ≥ 2, ≥ 2 trials or approval, drugs with ≤ 5 targets),
 the {{ evals.outcomes.gold_sets.temporal_holdout_targets | length }} of them whose first RCC trial started on or after {{ evals.outcomes.gold_sets.cutoff }}
 ({{ evals.outcomes.gold_sets.temporal_holdout_targets | join(", ") }}), and the {{ evals.outcomes.gold_sets.clearcode34 | length }} mapped genes of the ClearCode34 prognostic classifier (Brooks et al. 2014; validated in TCGA,
 so the biomarker profile's prognosis component makes that comparison partly optimistic: see the row without it). The convergence score includes literature and drug history, so its clinical-target AUROC is partly circular.</p>
-{% if figs.outcomes %}<div class="plot">{{ figs.outcomes | safe }}</div>{% endif %}
+{{ plot('outcomes', figs.outcomes) }}
 <div class="tw"><table><thead><tr><th>Gold set</th><th>Score</th><th>n</th><th>AUROC (95 % CI)</th><th>Recall@100</th><th>Recall@500</th><th>Median rank</th></tr></thead><tbody>
 {% for key, label in [("clinical_targets", "RCC clinical targets"), ("temporal_holdout", "Temporal holdout"), ("clearcode34", "ClearCode34 (prognostic)")] %}
 {% for sname, m in evals.outcomes[key].items() %}<tr><td>{{ label }}</td><td>{{ sname }}</td><td class="num">{{ m.n_gold }}</td>
@@ -457,7 +458,7 @@ Pipeline targets: {% for c in pl.targets %}{{ c | join(", ") }}{% if not loop.la
 {% for p in f.narrative.sections.literature or [] %}
 <p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
 {% endfor %}
-<div class="grid two"><div class="plot">{{ figs.lit_relations | safe }}</div><div class="plot">{{ figs.lit_years | safe }}</div></div>
+<div class="grid two">{{ plot('lit_relations', figs.lit_relations) }}{{ plot('lit_years', figs.lit_years) }}</div>
 {% if f.agent_findings.literature %}<h3>Literature agent findings (verified)</h3>
 {% for x in f.agent_findings.literature.findings %}
 <p class="claim" data-evidence="{{ x.evidence_ids | evattr }}"><strong>{{ x.gene }}</strong> <span class="tag">{{ x.role | replace("_"," ") }}</span> {{ x.statement }} {{ x.evidence_ids | cite | safe }}</p>
@@ -466,7 +467,7 @@ Pipeline targets: {% for c in pl.targets %}{{ c | join(", ") }}{% if not loop.la
 {% for p in f.narrative.sections.external or [] %}
 <p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
 {% endfor %}
-<div class="plot">{{ figs.drug_stage | safe }}</div>
+{{ plot('drug_stage', figs.drug_stage) }}
 {% if f.agent_findings.external %}<h3>External-knowledge agent findings (verified)</h3>
 {% for x in f.agent_findings.external.findings %}
 <p class="claim" data-evidence="{{ x.evidence_ids | evattr }}"><strong>{{ x.gene }}</strong> <span class="tag">{{ x.role | replace("_"," ") }}</span> {{ x.statement }} {{ x.evidence_ids | cite | safe }}</p>
@@ -474,7 +475,7 @@ Pipeline targets: {% for c in pl.targets %}{{ c | join(", ") }}{% if not loop.la
 </section>
 
 <section class="panel" id="tab-network" data-name="network">
-<h2>Network of top candidates</h2>
+<h2>Network of top candidates {{ q('network') }}</h2>
 <p class="small">● gene (top 25) · ◆ drug (Open Targets, max 3 per gene) · ■ ccRCC. Edges: drug→target, STRING interactions (score ≥ 0.7), up/down-regulation in ccRCC (CPTAC). Click an edge to see its evidence id.</p>
 <div id="cy"></div>
 <p class="small" id="cy-info">&nbsp;</p>
@@ -491,16 +492,13 @@ All statistics are computed by deterministic Python code; the LLMs only chose wh
 {% for name, a in f.agent_findings.items() %} Agent {{ name }}: {{ a.findings | length }} verified findings.{% endfor %}</p>
 <h2>Limitations</h2>
 <ul>{% for l in f.narrative.limitations %}<li>{{ l.text }}</li>{% endfor %}</ul>
-<h2>What would improve this</h2>
+<h2>What is still missing</h2>
 <ul class="roadmap">
-<li><strong>Done in M13.</strong> Somatic mutation layer, DepMap dependency, TCGA-KIRC replication and survival, site-level phosphorylation with kinase activity,
-tumour purity, separate target / biomarker scores, weight-sensitivity intervals, numeric and direction checks of every narrative sentence, and
-evaluation against clinical targets with a temporal holdout. See the Validation &amp; robustness tab.</li>
-<li><strong>Second proteogenomic cohort.</strong> TCGA replicates RNA only; the CPTAC confirmatory ccRCC cohort would replicate protein and phosphosite changes.</li>
-<li><strong>MGD scoring.</strong> The score is a heuristic and its known-substrate controls rank unevenly (see the Structure tab). Next steps: degron-motif search (C2H2 zinc-finger G-loops, β-hairpins), ternary-complex modelling with CRBN/DCAF15/DCAF16, and better models for disordered or low-pLDDT regions.</li>
-<li><strong>Subtype-aware scores.</strong> Stratify by VHL / PBRM1 / BAP1 / SETD2 status (now available from the mutation layer) to find subgroup-specific targets.</li>
-<li><strong>Literature and drug gaps.</strong> Europe PMC counts depend on gene symbols; add alias disambiguation, patents, ChEMBL preclinical compounds and trial registries so “undrugged” is not only “no clinical-stage drug in Open Targets”.</li>
-<li><strong>Spatial resolution.</strong> Visium spots mix cells and the 23 sections come from few donors. Higher-resolution data (Slide-seq, Xenium) and probabilistic deconvolution would sharpen neighbourhood claims.</li>
+<li>The confirmatory CPTAC ccRCC cohort would replicate protein and phosphosite changes, which TCGA cannot do. Its proteomics sits in the Proteomic Data Commons, which was not reachable (HTTP 503) when this version was built.</li>
+<li>The treatment-response data are two small trials, and only IMmotion150 has enough patients for gene-level tests. No gene separates the two arms after correction for testing 20,000 genes.</li>
+<li>Visium spots mix several cells and the 23 sections come from a few donors. Higher-resolution spatial data would sharpen the neighbourhood claims.</li>
+<li>The pocket-based scores are only a heuristic for ordering sites in one protein. This version does not extend them.</li>
+<li>"Undrugged" now uses Open Targets and ChEMBL, but not company pipelines, trial registries or full patent text.</li>
 </ul>
 <h2>Evidence ({{ evidence | length }} records cited)</h2>
 <div class="filters"><input class="search" id="esearch" type="search" placeholder="Filter evidence (gene, type, id)" aria-label="Filter evidence records"><span class="small" id="ecount"></span></div>
@@ -550,7 +548,7 @@ evaluation against clinical targets with a temporal holdout. See the Validation 
     panels.forEach(function(x){x.classList.toggle('on',x===p);});
     tabs.forEach(function(t){t.setAttribute('aria-selected',t.getAttribute('data-tab')===name?'true':'false');});
     if(name==='network'){initCy(); if(cy){cy.resize();cy.fit(undefined,30);}}
-    resizePlots(p); applyTheme();
+    resizePlots(p); applyTheme(); if(name==='viewer'&&window.viewerShow) window.viewerShow();
     if(push!==false){try{history.replaceState(null,'','#tab='+name);}catch(e){}}
   }
   tabs.forEach(function(t){t.addEventListener('click',function(){show(t.getAttribute('data-tab'));window.scrollTo(0,0);});});
@@ -562,15 +560,20 @@ evaluation against clinical targets with a temporal holdout. See the Validation 
     el.scrollIntoView({behavior:'smooth',block:'center'});
     try{history.replaceState(null,'','#'+id);}catch(x){}
   });
-  var saved=null; try{saved=localStorage.getItem('ccrcc-theme');}catch(e){}
-  if(saved) root.setAttribute('data-theme',saved);
-  document.getElementById('themebtn').addEventListener('click',function(){
-    var dark=root.getAttribute('data-theme')==='dark'||(!root.getAttribute('data-theme')&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches);
-    var next=dark?'light':'dark'; root.setAttribute('data-theme',next);
-    try{localStorage.setItem('ccrcc-theme',next);}catch(e){}
-    setTimeout(applyTheme,30);
+  document.addEventListener('click',function(e){
+    var b=e.target.closest('button.q'); if(!b) return;
+    var host=b.closest('.plot,.kpi,.card,h2,h3'); if(!host) return;
+    var open=b.getAttribute('aria-expanded')==='true', box=host._help;
+    if(open){b.setAttribute('aria-expanded','false'); if(box) box.hidden=true; return;}
+    if(!box){box=document.createElement('div'); box.className='helpbox';
+      function esc(t){var d=document.createElement('div'); d.textContent=t; return d.innerHTML;}
+      box.innerHTML='<p><b>What it shows.</b> '+esc(b.dataset.what)+'</p><p><b>How to read it.</b> '+esc(b.dataset.read)+'</p><p><b>Keep in mind.</b> '+esc(b.dataset.watch)+'</p>';
+      if(host.matches('h2,h3')) host.insertAdjacentElement('afterend',box);
+      else if(host.classList.contains('plot')) host.insertBefore(box,host.children[1]);
+      else host.appendChild(box);
+      host._help=box;}
+    box.hidden=false; b.setAttribute('aria-expanded','true');
   });
-  if(window.matchMedia){window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(){setTimeout(applyTheme,30);});}
   var rows=[].slice.call(document.querySelectorAll('#dtable tbody tr')), ft='all', fs='', q='';
   function filt(){
     var n=0;

@@ -26,6 +26,7 @@ import pandas as pd
 from scipy import stats
 from statsmodels.stats.multitest import multipletests
 
+from .config import load as load_cfg
 from .omics import LAYERS, load_hgnc, read_matrix
 from .paths import PROCESSED, RAW
 
@@ -212,6 +213,20 @@ def ccrcc_lines() -> pd.DataFrame:
     return df[df["clear_cell"] & df["ach"].notna()].drop_duplicates("ach")
 
 
+def selective_dependency(dep: pd.DataFrame, cfg: dict | None = None) -> pd.Series:
+    """The one definition of "selective DepMap dependency of ccRCC" used by the scores, the graph and discovery.
+
+    ccRCC lines depend on the gene more than other lines (BH q < padj, positive selectivity), the gene is not common
+    essential, and at least `min_dependent_lines` ccRCC lines are dependent (Chronos < -0.5). The last condition was
+    added after looking at the M14 results: a "selective" call carried by one or two lines out of 24 is too fragile
+    (documented as a post-hoc criterion change in evals/history.md)."""
+    dc = cfg or load_cfg()["convergence"]["dependency"]
+    ess = dep["common_essential"].astype("boolean").fillna(False).astype(bool)
+    n_dep = dep["n_ccrcc_dependent"] if "n_ccrcc_dependent" in dep else dep["frac_ccrcc_dependent"] * dep["n_ccrcc_lines"]
+    return ((dep["n_ccrcc_lines"] >= dc["min_lines"]) & (dep["padj"] < dc["padj"]) & (dep["selectivity"] > 0)
+            & (n_dep.round() >= dc.get("min_dependent_lines", 1)) & ~ess).fillna(False).astype(bool)
+
+
 def dependency() -> pd.DataFrame:
     ge = pd.read_csv(EXTRA / "depmap_26Q1_gene_effect.csv", index_col=0, dtype={0: str})
     ge.columns = [c.split(" (")[0] for c in ge.columns]
@@ -224,6 +239,7 @@ def dependency() -> pd.DataFrame:
     df = pd.DataFrame({
         "gene": ge.columns, "n_ccrcc_lines": R.notna().sum().to_numpy(), "mean_effect_ccrcc": R.mean().to_numpy(),
         "mean_effect_other": O.mean().to_numpy(), "frac_ccrcc_dependent": (R < -0.5).mean().to_numpy(),
+        "n_ccrcc_dependent": (R < -0.5).sum().to_numpy(),
         "frac_all_dependent": (ge < -0.5).mean().to_numpy(), "pvalue": np.asarray(res.pvalue, float)})
     df["selectivity"] = df["mean_effect_other"] - df["mean_effect_ccrcc"]
     df["padj"] = bh(df["pvalue"])
@@ -264,9 +280,9 @@ def replication() -> pd.DataFrame:
     return df
 
 
-def cox_univariate(Z: np.ndarray, T: np.ndarray, E: np.ndarray, iters: int = 25):
+def cox_univariate(Z: np.ndarray, T: np.ndarray, E: np.ndarray, iters: int = 25, return_se: bool = False):
     """Vectorized univariate Cox regression (Breslow ties) for many covariates at once (Newton-Raphson).
-    Z: n x g standardized covariates. Returns (beta, Wald p-value) per covariate."""
+    Z: n x g standardized covariates. Returns (beta, Wald p-value) per covariate, plus the standard error if asked."""
     order = np.argsort(-T, kind="mergesort")            # descending time: risk sets are prefixes
     T, E, Z = T[order], E[order], Z[order]
     beta = np.zeros(Z.shape[1])
@@ -288,7 +304,7 @@ def cox_univariate(Z: np.ndarray, T: np.ndarray, E: np.ndarray, iters: int = 25)
             break
     se = 1 / np.sqrt(np.maximum(info, 1e-12))
     p = 2 * stats.norm.sf(np.abs(beta / se))
-    return beta, p
+    return (beta, p, se) if return_se else (beta, p)
 
 
 # ---------------------------------------------------------------- phosphosites and kinase activity

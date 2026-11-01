@@ -1,35 +1,49 @@
 {
  "agents": {
   "agent_omics.json": {
-   "submitted": 13,
-   "kept": 13,
+   "submitted": 14,
+   "kept": 14,
    "dropped": 0,
    "dropped_detail": [],
    "semantic_failures": 0,
    "ids_removed": 0
   },
   "agent_literature.json": {
-   "submitted": 12,
-   "kept": 12,
+   "submitted": 14,
+   "kept": 14,
    "dropped": 0,
    "dropped_detail": [],
    "semantic_failures": 0,
    "ids_removed": 1
   },
   "agent_external.json": {
-   "submitted": 12,
-   "kept": 12,
+   "submitted": 10,
+   "kept": 10,
    "dropped": 0,
    "dropped_detail": [],
    "semantic_failures": 0,
    "ids_removed": 0
   },
   "agent_cells.json": {
-   "submitted": 17,
-   "kept": 17,
-   "dropped": 0,
-   "dropped_detail": [],
-   "semantic_failures": 0,
+   "submitted": 21,
+   "kept": 20,
+   "dropped": 1,
+   "dropped_detail": [
+    {
+     "text": "KDR has a high-scoring site (MGD score 0.841, pocket volume 361.1 A3, 7 accessible lysines, mean pLDDT 71.12), but it sits in endothelium, so any degrader would",
+     "gene": "KDR",
+     "cited": 2,
+     "nonexistent": [],
+     "not_linked_to_gene": [],
+     "kept": false,
+     "unmatched_numbers": [
+      "71.12"
+     ],
+     "direction_contradiction": null,
+     "semantic_failure": true
+    }
+   ],
+   "semantic_failures": 1,
    "ids_removed": 0
   }
  }

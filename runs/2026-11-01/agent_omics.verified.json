@@ -4,11 +4,10 @@
   {
    "gene": "CA9",
    "role": "target_and_biomarker",
-   "statement": "CA9 is up in tumour at RNA (log2FC 6.312) and protein (log2FC 2.269), replicates in TCGA-KIRC (log2FC 9.712) and stays high at purity 1 (RNA log2FC 7.787), so it is tumour-intrinsic; girentuximab reached PHASE_3.",
+   "statement": "CA9 is up-regulated in tumor at RNA (log2FC 6.312, padj 1.72e-49) and protein (log2FC 2.269, padj 9.9e-43); it replicates in TCGA-KIRC (log2FC 9.712) and survives purity extrapolation (RNA log2FC at purity 1 of 7.787). Girentuximab reached PHASE_3.",
    "evidence_ids": [
     "EV:omics_de:b269736afdb0",
     "EV:omics_de:5afe18b4024b",
-    "EV:omics_de:29dfc93ac765",
     "EV:tcga_de:225a767ebcb5",
     "EV:purity:225a767ebcb5",
     "EV:open_targets_drug:e1e0c664ada3"
@@ -17,11 +16,10 @@
   {
    "gene": "SCARB1",
    "role": "target",
-   "statement": "SCARB1 is up at RNA (log2FC 2.974) and protein (log2FC 1.837); TCGA-KIRC replicates (log2FC 3.989) and purity-1 RNA log2FC is 3.762, so the signal is tumour-cell derived. Top of the target profile, with no CNV loss (loss frequency 0).",
+   "statement": "SCARB1 is the top-ranked gene in the target profile (score 4.1314): RNA log2FC 2.974 and protein log2FC 1.837 up in tumor, TCGA-KIRC log2FC 3.989 and RNA log2FC at purity 1 of 3.762, indicating tumor-intrinsic expression. It has no DepMap dependency (mean effect 0.002) and no prognostic signal (Cox padj 0.684).",
    "evidence_ids": [
     "EV:omics_de:36b227bd1fb6",
     "EV:omics_de:cd4a629b011f",
-    "EV:omics_de:e9e9896d9499",
     "EV:tcga_de:2d66f8e78d0c",
     "EV:purity:2d66f8e78d0c"
    ]
@@ -29,41 +27,31 @@
   {
    "gene": "CD70",
    "role": "target",
-   "statement": "CD70 is up at RNA (log2FC 4.464) and protein (log2FC 2.421), replicates in TCGA-KIRC (log2FC 7.09) and is tumour-intrinsic (purity-1 RNA log2FC 4.278). It is a membrane ligand with clinical-stage CD70-directed agents (cusatuzumab, PHASE_2).",
+   "statement": "CD70 is up in tumor at RNA (log2FC 4.464) and protein (log2FC 2.421), replicates in TCGA-KIRC (log2FC 7.09) and remains high at purity 1 (4.278). It is an antibody-drug target with agents such as cusatuzumab (PHASE_2) and vorsetuzumab mafodotin (PHASE_1).",
    "evidence_ids": [
     "EV:omics_de:97c97f6d7d62",
     "EV:omics_de:8a1dc0572ead",
     "EV:tcga_de:908e84663f6a",
-    "EV:open_targets_drug:fcadbe214e8c"
+    "EV:purity:908e84663f6a",
+    "EV:open_targets_drug:289429f80a55"
    ]
   },
   {
    "gene": "ENPP3",
    "role": "target",
-   "statement": "ENPP3 is up at RNA (log2FC 3.895) and protein (log2FC 1.544); TCGA-KIRC log2FC is 5.557 and purity-1 RNA log2FC 5.278. A membrane enzyme with an antibody-drug conjugate (AGS-16C3F, PHASE_2) already tested.",
+   "statement": "ENPP3 is up in tumor at RNA (log2FC 3.895) and protein (log2FC 1.544), with TCGA-KIRC log2FC 5.557 and RNA log2FC at purity 1 of 5.278. The antibody-drug conjugate AGS-16C3F reached PHASE_2, and copy-number loss frequency is 0.182.",
    "evidence_ids": [
     "EV:omics_de:d540450c23e1",
     "EV:omics_de:fad29d44ef95",
-    "EV:omics_de:6848a05e619b",
     "EV:tcga_de:d5aee88146ed",
+    "EV:purity:d5aee88146ed",
     "EV:open_targets_drug:49872cd86a77"
-   ]
-  },
-  {
-   "gene": "SLC16A3",
-   "role": "target",
-   "statement": "SLC16A3 (MCT4, lactate transporter) is up at RNA (log2FC 3.435) and protein (log2FC 2.279), replicates in TCGA-KIRC (log2FC 3.291), and has a positive cis copy-number correlation (rho 0.258). It reflects Warburg-type metabolic rewiring.",
-   "evidence_ids": [
-    "EV:omics_de:545c6eb28bce",
-    "EV:omics_de:d93a2cc11342",
-    "EV:omics_de:9600512e806d",
-    "EV:tcga_de:11298113327b"
    ]
   },
   {
    "gene": "NNMT",
    "role": "target_and_biomarker",
-   "statement": "NNMT is up at RNA (log2FC 4.67) and protein (log2FC 2.709), replicates in TCGA-KIRC (log2FC 4.685), and higher expression is prognostic for worse survival (log HR 0.301, padj 0.00479). It ranks 2nd in the biomarker profile.",
+   "statement": "NNMT is strongly up in tumor at RNA (log2FC 4.67) and protein (log2FC 2.709). It replicates in TCGA-KIRC (log2FC 4.685) and higher expression is associated with worse survival (Cox log HR 0.301, padj 0.00479). It ranks 4th in the target profile and 6th in the biomarker profile.",
    "evidence_ids": [
     "EV:omics_de:aefc373d6072",
     "EV:omics_de:de39cc0c5ed8",
@@ -72,36 +60,46 @@
    ]
   },
   {
-   "gene": "FABP6",
-   "role": "biomarker",
-   "statement": "FABP6 is up at RNA (log2FC 4.006) and protein (log2FC 1.921), with a CNV gain frequency of 0.573 and a positive cis effect (rho 0.309), so gain contributes to up-regulation. TCGA-KIRC log2FC is 6.431.",
+   "gene": "SLC16A3",
+   "role": "target",
+   "statement": "SLC16A3 (MCT4) is up in tumor at RNA (log2FC 3.435) and protein (log2FC 2.279), with TCGA-KIRC log2FC 3.291 and RNA log2FC at purity 1 of 3.821. It has a positive CNV-to-RNA cis effect (rho 0.258) and no drugs yet.",
    "evidence_ids": [
-    "EV:omics_de:0ea3d10905b2",
-    "EV:omics_de:12f11b6896c3",
-    "EV:omics_cnv:52f5e4eeb4a8",
-    "EV:cis_dosage:52f5e4eeb4a8",
-    "EV:tcga_de:52f5e4eeb4a8"
+    "EV:omics_de:545c6eb28bce",
+    "EV:omics_de:d93a2cc11342",
+    "EV:tcga_de:11298113327b",
+    "EV:purity:11298113327b",
+    "EV:cis_dosage:11298113327b"
+   ]
+  },
+  {
+   "gene": "HK2",
+   "role": "target",
+   "statement": "HK2 is up in tumor at RNA (log2FC 3.351) and protein (log2FC 2.106). It replicates in TCGA-KIRC (log2FC 3.974) and shows tumor-intrinsic expression (RNA log2FC at purity 1 of 3.989). The DepMap mean effect in ccRCC is -0.123, so there is no strong selective dependency.",
+   "evidence_ids": [
+    "EV:omics_de:feaa13f13e99",
+    "EV:omics_de:839dae331bb6",
+    "EV:tcga_de:c5d66c7fafe1",
+    "EV:purity:c5d66c7fafe1"
    ]
   },
   {
    "gene": "PSAT1",
    "role": "biomarker",
-   "statement": "PSAT1 is down in tumour at RNA (log2FC -3.867) and protein (log2FC -1.963). It tops the biomarker profile; TCGA-KIRC log2FC is -2.974 and the survival log HR is 0.43 (padj 5.66e-7).",
+   "statement": "PSAT1 is down in tumor at RNA (log2FC -3.867) and protein (log2FC -1.963), tops the biomarker profile (score 5.3696), replicates in TCGA-KIRC (log2FC -2.974), and its expression associates with worse survival (Cox log HR 0.43, padj 5.66e-7).",
    "evidence_ids": [
     "EV:omics_de:fe09b800ea76",
     "EV:omics_de:8fa49cbb1760",
-    "EV:omics_de:db1b50d34635",
+    "EV:tcga_de:58119698ea36",
     "EV:tcga_survival:58119698ea36"
    ]
   },
   {
    "gene": "ALDH6A1",
    "role": "biomarker",
-   "statement": "ALDH6A1 is down at RNA (log2FC -3.399) and protein (log2FC -1.925), with CNV loss frequency 0.355 and a positive cis effect (rho 0.525), consistent with 3p/arm loss dosage. Lower expression goes with worse survival (log HR -0.554, padj 9.45e-12).",
+   "statement": "ALDH6A1 is down in tumor at RNA (log2FC -3.399) and protein (log2FC -1.925); the CNV loss frequency is 0.355 with a positive cis effect (rho 0.525), consistent with a 3p-linked dosage effect. Higher expression is protective (TCGA Cox log HR -0.554, padj 9.45e-12). This loss of tubule identity makes it a biomarker rather than a target.",
    "evidence_ids": [
     "EV:omics_de:1c73c0e9eeb3",
     "EV:omics_de:7ad12e0f6863",
-    "EV:omics_de:0cf60d8afc1c",
     "EV:omics_cnv:df75d3108dd0",
     "EV:cis_dosage:df75d3108dd0",
     "EV:tcga_survival:df75d3108dd0"
@@ -110,52 +108,47 @@
   {
    "gene": "PCK1",
    "role": "biomarker",
-   "statement": "PCK1 is strongly down at RNA (log2FC -4.424) and protein (log2FC -1.859), reflecting loss of proximal tubule gluconeogenic identity. Lower expression goes with worse survival (log HR -0.415, padj 1.91e-7).",
+   "statement": "PCK1 is down in tumor at RNA (log2FC -4.424) and protein (log2FC -1.859), replicates in TCGA-KIRC (log2FC -3.079), and higher expression associates with better survival (Cox log HR -0.415, padj 1.91e-7). This reflects loss of proximal tubule gluconeogenic identity.",
    "evidence_ids": [
     "EV:omics_de:85b979e6e19a",
     "EV:omics_de:6a1a53a41386",
-    "EV:omics_de:57ca58988568",
+    "EV:tcga_de:fd99b19fe8a6",
     "EV:tcga_survival:fd99b19fe8a6"
    ]
   },
   {
-   "gene": "SLC22A8",
+   "gene": "SLC6A19",
    "role": "biomarker",
-   "statement": "SLC22A8 (OAT3) is down at RNA (log2FC -6.715) and protein (log2FC -2.264), a tubule-identity loss marker; TCGA-KIRC log2FC is -6.154 and lower expression is prognostic for worse survival (log HR -0.402).",
+   "statement": "SLC6A19 is down in tumor at RNA (log2FC -4.574) and protein (log2FC -1.48), replicates in TCGA-KIRC (log2FC -3.221), and higher expression associates with better survival (Cox log HR -0.456, padj 1.07e-7). It is a proximal tubule marker lost in ccRCC.",
    "evidence_ids": [
-    "EV:omics_de:f6425bf6fff5",
-    "EV:omics_de:e21e0047e1af",
-    "EV:omics_de:451e80bb9cb6",
-    "EV:tcga_survival:de6aa3b720b1"
+    "EV:omics_de:a685c4c3e10e",
+    "EV:omics_de:1e23b7dfbd84",
+    "EV:tcga_de:a68c82cb3c87",
+    "EV:tcga_survival:a68c82cb3c87"
    ]
   },
   {
-   "gene": "HSD11B2",
-   "role": "biomarker",
-   "statement": "HSD11B2 is down at RNA (log2FC -3.618) and protein (log2FC -1.715); TCGA-KIRC log2FC is -4.456 and lower expression goes with worse survival (log HR -0.356). Carbenoxolone is approved but it inhibits this enzyme, so it does not fit a target role.",
+   "gene": "VHL",
+   "role": "mechanism",
+   "statement": "VHL loses a copy in 0.791 of tumors (3p) and is mutated in 247 of 511 patients (frequency 0.483, padj 0.0), which explains the HIF-driven program (CA9, ANGPTL4, NNMT).",
    "evidence_ids": [
-    "EV:omics_de:eb37edc0c198",
-    "EV:omics_de:3c485401582c",
-    "EV:omics_de:695672cb9e8d",
-    "EV:tcga_survival:82a4f6572710"
+    "EV:omics_cnv:52e5aeb6c197",
+    "EV:somatic_recurrence:52e5aeb6c197"
    ]
   },
   {
-   "gene": "VWF",
-   "role": "biomarker",
-   "statement": "VWF is up at RNA (log2FC 3.605) and protein (log2FC 1.284), likely endothelial and vascular. Higher expression goes with better survival (log HR -0.397, padj 1.97e-7), so it is better as a prognostic biomarker than as a target.",
+   "gene": "PBRM1",
+   "role": "mechanism",
+   "statement": "PBRM1 is recurrently mutated in 185 of 511 patients (frequency 0.362, padj 4.59e-239), making it the second major driver after VHL on 3p.",
    "evidence_ids": [
-    "EV:omics_de:af4ee005eda7",
-    "EV:omics_de:b2ad6c302a0f",
-    "EV:tcga_survival:542bd3ecd7ad"
+    "EV:somatic_recurrence:07b6205e67e5"
    ]
   }
  ],
  "caveats": [
-  "Values come from the convergence_ranking rows (target and biomarker profiles); no per-gene calls to get_de_results, phosphosites or kinase_activity were made, so phospho and kinase layers are not covered.",
-  "Mutation recurrence is low for the listed genes; the 3p drivers (VHL, PBRM1, SETD2, BAP1) were not queried here.",
-  "DepMap mean effects in ccRCC are weak or non-selective for the top up-regulated genes, so none has demonstrated dependency.",
-  "Cohort sizes are small (110 tumours, 75 to 84 matched normals); tumour-vs-normal differences do not prove therapeutic benefit.",
-  "Immune and stroma-linked genes (VWF, FCGR3A, FCER1G) partly reflect infiltration rather than tumour-cell expression."
+  "Tumor-up targets show no selective DepMap dependency in ccRCC lines (mean effects near 0), so target status rests on expression, tractability and tumor-intrinsic signal rather than essentiality.",
+  "Protein log2FC (TMT) is compressed relative to RNA log2FC, so magnitudes across layers are not directly comparable.",
+  "Down-regulated genes mostly reflect loss of normal tubule identity, so they are biomarker candidates and not therapeutic targets.",
+  "Only 9 convergence genes were queried in depth; I did not run phosphosite or kinase analyses for this output. The convergence_ranking(n=40) output was saved to a file and I used the target and biomarker profile rows."
  ]
 }

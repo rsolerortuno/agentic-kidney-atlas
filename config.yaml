@@ -44,8 +44,11 @@ convergence:
   prognosis_log_hr_saturation: 0.5   # |log HR per SD| (TCGA overall survival)
   kinase_z_saturation: 4.0           # KSEA z-score
   grade_rho_saturation: 0.4          # |Spearman rho| with grade or stage
+  ccab_diff_saturation: 2.0          # |log2 difference ccB - ccA| (TCGA RNA) at which the ccA/ccB component reaches 1 (M15)
   rna_protein_rho_saturation: 0.6
-  dependency: {min_lines: 10, padj: 0.1, selectivity_saturation: 0.5, fraction_saturation: 0.5}
+  # min_dependent_lines (M15): at least 3 ccRCC lines with Chronos < -0.5. Added AFTER seeing the M14 results, where
+  # "selective" calls could rest on one or two of 24 lines; a post-hoc criterion change, logged in evals/history.md.
+  dependency: {min_lines: 10, padj: 0.1, selectivity_saturation: 0.5, fraction_saturation: 0.5, min_dependent_lines: 3}
   stream_weights:
     omics: 2.0         # CPTAC tumor-vs-normal expression, continuous (above)
     cnv: 0.5           # max(loss, gain) frequency x cis effect on protein (or RNA)
@@ -72,6 +75,7 @@ profiles:
     replication: 1.5              # TCGA-KIRC same direction
     prognosis: 1.0                # TCGA overall survival (Cox)
     grade: 0.5                    # CPTAC grade / stage association
+    ccab: 0.5                     # ccA/ccB subtype difference replicated in CPTAC + TCGA (ClearCode34 genes excluded; M15)
     measurable: 0.5               # RNA-protein agreement across tumours
     cnv: 0.5                      # cis copy-number effect
 
@@ -123,6 +127,10 @@ discovery:
   min_source_share: 0.4          # the dominant cell group must hold >= 40 % of the gene's tumour transcripts
   min_source_pct: 10             # ... and >= 10 % of its cells must express it
   novel_max_ccrcc_papers: 15     # "little bibliographic support": <= 15 Europe PMC records for gene AND ccRCC terms
+  # v3 (M15): paper counts use only aliases unique to the gene (short word-like symbols need a molecular context word);
+  # 'undrugged' is graded with ChEMBL: potent preclinical compounds (>= 3 molecules at pChEMBL >= 6) or patent
+  # bioactivities halve the component. The literature threshold above was not changed.
+  chemical_matter_min_molecules: 3
   saturation_papers: 50          # understudied component reaches 0 at this many ccRCC papers
   safe_max_ntpm: 50              # vital-organ expression (HPA nTPM) above which a target carries off-tumor risk
   # v2 (M14): + replication (TCGA-KIRC, same direction), tumour_intrinsic (purity-robust up-regulation; tumour and stroma

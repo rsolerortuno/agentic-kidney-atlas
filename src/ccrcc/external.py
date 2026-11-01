@@ -154,3 +154,36 @@ def europepmc_count(query: str) -> int:
                    lambda: _request("GET", EPMC_URL, params=params).json())["data"]
     time.sleep(0.05)
     return int(data["hitCount"])
+
+
+# ---------------------------------------------------------------- ChEMBL (preclinical chemical matter and patents)
+CHEMBL_URL = "https://www.ebi.ac.uk/chembl/api/data/"
+PATENT_SOURCES = {37, 38}    # BindingDB patent bioactivities, SureChEMBL patent bioactivities
+
+
+def _chembl(endpoint: str, params: dict) -> dict:
+    params = {**params, "format": "json"}
+    return _cached("chembl", endpoint + json.dumps(params, sort_keys=True),
+                   lambda: _request("GET", CHEMBL_URL + endpoint, params=params).json())["data"]
+
+
+def chembl_target_summary(accession: str, min_pchembl: float = 6.0) -> dict:
+    """Potent compounds (pChEMBL >= min_pchembl, i.e. <= 1 uM) reported against the single-protein ChEMBL target of a
+    UniProt accession. `potent_activities` counts all such records; molecules and patent records (BindingDB / SureChEMBL
+    patent sources) are counted in the first and last 1,000 records, which is enough to tell 'none', 'a few' and 'a series'."""
+    t = _chembl("target.json", {"target_components__accession": accession, "target_type": "SINGLE PROTEIN",
+                                "organism": "Homo sapiens", "limit": 5})
+    targets = [x["target_chembl_id"] for x in t.get("targets", [])]
+    if not targets:
+        return {"chembl_target": None, "potent_activities": 0, "potent_molecules": 0, "patent_activities": 0}
+    acts = _chembl("activity.json", {"target_chembl_id": targets[0], "pchembl_value__gte": min_pchembl, "limit": 1000,
+                                     "only": "molecule_chembl_id,src_id"})
+    rows = acts.get("activities", [])
+    total = int(acts["page_meta"]["total_count"])
+    if total > 1000:   # patent records were loaded last (highest activity ids): look at the last page as well
+        rows = rows + _chembl("activity.json", {"target_chembl_id": targets[0], "pchembl_value__gte": min_pchembl,
+                                                "limit": 1000, "offset": total - 1000,
+                                                "only": "molecule_chembl_id,src_id"}).get("activities", [])
+    return {"chembl_target": targets[0], "potent_activities": int(acts["page_meta"]["total_count"]),
+            "potent_molecules": len({a["molecule_chembl_id"] for a in rows}),
+            "patent_activities": sum(1 for a in rows if a.get("src_id") in PATENT_SOURCES)}

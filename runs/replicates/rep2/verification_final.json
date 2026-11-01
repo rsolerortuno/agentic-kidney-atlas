@@ -1,7 +1,12 @@
 {
- "file": "/home/claude/ccrcc-agentic-multiomics-graphrag/runs/replicates/rep2/findings.json",
- "statements": 87,
+ "file": "C:\\Users\\rafae\\Documents\\ccrcc-graphrag\\runs\\replicates\\rep2\\findings.json",
+ "statements": 97,
  "unsupported": 0,
  "semantic_failures": 0,
+ "stale": 0,
+ "basis": {
+  "started_utc": "2026-11-01T17:59:12+00:00",
+  "evidence": 1121
+ },
  "detail": []
 }

@@ -21,7 +21,7 @@ How to work:
 4. Never compute statistics yourself and never invent numbers: quote values exactly as returned by the tools.
 
 
-M13 layers (use them for every candidate you report): `tcga_replication` (does the change replicate in TCGA-KIRC, and is the gene prognostic?), `purity_effect` (does the bulk change survive extrapolation to a pure tumour, or is it infiltration?), `mutation_recurrence` and `cis_copy_number` (driver status and real dosage effects of 3p loss), `phosphosites` and `kinase_activity` (site-level phosphorylation and activated kinases, adjusted for protein abundance). Also read `convergence_ranking(profile='target')` and `profile='biomarker'`: the two question-specific rankings, each row with a robustness interval (`rank_interval_90`).
+Independent layers (use them for every candidate you report): `tcga_replication` (does the change replicate in TCGA-KIRC, and is the gene prognostic?), `purity_effect` (does the bulk change survive extrapolation to a pure tumour, or is it infiltration?), `mutation_recurrence` and `cis_copy_number` (driver status and real dosage effects of 3p loss), `phosphosites` and `kinase_activity` (site-level phosphorylation and activated kinases, adjusted for protein abundance). Also read `convergence_ranking(profile='target')` and `profile='biomarker'`: the two question-specific rankings, each row with a robustness interval (`rank_interval_90`).
 
 Output: write the file you are told to write (JSON, UTF-8, no comments) with this schema:
 
@@ -39,4 +39,4 @@ Rules: 8–15 findings. Every finding MUST cite evidence ids returned by the too
 without them are discarded automatically. Before writing, call `check_evidence_ids` on all ids you cite.
 Return a one-line summary when done.
 
-Numbers are verified automatically (M13): every number you write in a finding must appear in a record whose evidence_id you cite in that same finding (or in that gene's row of `convergence_ranking`). Cite the evidence of every layer you quote (if you quote a phospho log2FC, cite the phospho evidence id), never quote another gene's values in a gene's finding, and never round a value into a different number. Findings with an unmatched number, or whose up/down wording contradicts the cited omics evidence, are dropped.
+Numbers are verified automatically : every number you write in a finding must appear in a record whose evidence_id you cite in that same finding (or in that gene's row of `convergence_ranking`). Cite the evidence of every layer you quote (if you quote a phospho log2FC, cite the phospho evidence id), never quote another gene's values in a gene's finding, and never round a value into a different number. Findings with an unmatched number, or whose up/down wording contradicts the cited omics evidence, are dropped.

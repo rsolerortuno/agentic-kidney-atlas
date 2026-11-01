@@ -14,6 +14,14 @@ Sources, all public and redistributable only through the original providers (not
 - OmniPath enzyme-substrate relations (kinase -> phosphosite).
 - Open Targets Platform 26.09 bulk tables: target tractability (all targets), clinical targets and clinical
   precedence (trial start dates, used for the temporal holdout).
+
+Added for the treatment, subtype, immune, cell-replication and tissue-viewer analyses (same manifest):
+- Treatment response: cBioPortal datahub (GitHub LFS) for IMmotion150 (atezolizumab +/- bevacizumab vs sunitinib,
+  McDermott et al. 2018) and the nivolumab biomarker trial of Choueiri et al. 2016, both iAtlas-harmonized.
+- Immune deconvolution of the CPTAC tumours: CIBERSORT (absolute) and xCell from the same cptac Zenodo record.
+- Human Protein Atlas normal-tissue immunohistochemistry (protein in normal organs, for ADC / radioligand safety).
+- Second single-cell dataset: Zhang et al. 2021 PNAS ccRCC and normal kidney (CZ CELLxGENE).
+- Four single-section Visium datasets of Li et al. 2022 that carry the H&E image (CZ CELLxGENE), for the tissue viewer.
 """
 from __future__ import annotations
 
@@ -48,7 +56,24 @@ FILES = {
         "washu-all_cancers-tumor_purity-CPTAC_pancan_RNA_tumor_purity_ESTIMATE_WashU.tsv.gz"),
     "omnipath_enzsub.tsv": "https://omnipathdb.org/enzsub?format=tsv&genesymbols=yes&types=phosphorylation",
     "ot_clinical_target.parquet": OT + "clinical_target/00000000.parquet",
+    "cptac_ccrcc_cibersort_abs.txt.gz": ZENODO.format("washu-ccrcc-cibersort-CIBERSORT.Output_Abs_ccRCC.txt.gz"),
+    "cptac_ccrcc_xcell.txt.gz": ZENODO.format("washu-ccrcc-xcell-ccRCC_xCell.txt.gz"),
+    "hpa_normal_ihc.tsv.zip": "https://www.proteinatlas.org/download/tsv/normal_ihc_data.tsv.zip",
 }
+DATAHUB = "https://media.githubusercontent.com/media/cBioPortal/datahub/master/public/{}/{}"
+TREATMENT_STUDIES = {"immotion150": ("rcc_iatlas_immotion150_2018", "data_mrna_seq_tpm.txt"),
+                     "choueiri2016": ("ccrcc_iatlas_choueiri_2016", None)}
+CXG = "https://datasets.cellxgene.cziscience.com/{}.h5ad"
+SINGLECELL_EXTRA = {   # file -> CZ CELLxGENE dataset asset id
+    "zhang2021_ccrcc.h5ad": "f77a9049-7cbe-477d-8d3f-b417bba03147",
+    "zhang2021_normal.h5ad": "5f0b9675-aed8-4870-8ad8-7a3f38037486",
+    "li2022_visium_section_6800STDY12499406.h5ad": "3cb22696-5867-4001-ba23-3a24da12f4ab",
+}
+# single-section Visium datasets (with H&E) whose asset id is looked up from the collection at download time
+VISIUM_SECTIONS = {"6800STDY12499408": "252438d3-8143-48a9-9ac2-ef5991fb21b8",
+                   "6800STDY12499410": "a6046b15-a095-43b0-9fb5-b36899d87fdb",
+                   "6800STDY12499508": "104cfa2a-8f7e-4dcc-a0a3-8fd46711c904"}
+LI2022 = "https://api.cellxgene.cziscience.com/curation/v1/collections/f7cecffa-00b4-4560-a29a-8ad626b8ee08/datasets/{}"
 OT_MULTIPART = {"ot_target_tractability": "target_tractability", "ot_clinical_precedence": "evidence_clinical_precedence"}
 CBIO_STUDIES = {"cptac": ("rcc_cptac_gdc_mutations", "rcc_cptac_gdc_all"),
                 "tcga": ("kirc_tcga_pan_can_atlas_2018_mutations", "kirc_tcga_pan_can_atlas_2018_sequenced")}
@@ -103,6 +128,31 @@ def _cbio_mutations(profile: str, sample_list: str, dest) -> None:
     dest.with_suffix(".samples.json").write_text(json.dumps(samples))
 
 
+def _treatment_studies() -> None:
+    for key, (study, expr) in TREATMENT_STUDIES.items():
+        if expr is None:   # pick the non-z-score expression file from the datahub listing
+            listing = requests.get(f"https://api.github.com/repos/cBioPortal/datahub/contents/public/{study}",
+                                   timeout=60).json()
+            expr = next(x["name"] for x in listing if x["name"].startswith("data_mrna") and "zscores" not in x["name"])
+        for name, dest in ((expr, f"{key}_expression.txt"), ("data_clinical_patient.txt", f"{key}_clinical_patient.txt"),
+                           ("data_clinical_sample.txt", f"{key}_clinical_sample.txt")):
+            _get(DATAHUB.format(study, name), EXTRA / dest)
+            if (EXTRA / dest).stat().st_size < 1000 and (EXTRA / dest).read_text(errors="ignore").startswith("version"):
+                raise RuntimeError(f"{dest}: got a git-lfs pointer instead of the file")
+
+
+def _singlecell_extra() -> None:
+    sc = RAW / "singlecell"
+    for name, asset in SINGLECELL_EXTRA.items():
+        _get(CXG.format(asset), sc / name)
+    for section, ds in VISIUM_SECTIONS.items():
+        dest = sc / f"li2022_visium_section_{section}.h5ad"
+        if dest.exists() and dest.stat().st_size > 0:
+            continue
+        assets = requests.get(LI2022.format(ds), timeout=60).json()["assets"]
+        _get(next(a["url"] for a in assets if a["filetype"] == "H5AD"), dest)
+
+
 def download_extra() -> dict:
     EXTRA.mkdir(parents=True, exist_ok=True)
     previous = json.loads(MANIFEST.read_text()) if MANIFEST.exists() else {}
@@ -118,6 +168,8 @@ def download_extra() -> dict:
     for key, (profile, slist) in CBIO_STUDIES.items():
         _cbio_mutations(profile, slist, EXTRA / f"mutations_{key}.parquet")
     _get(CELLOSAURUS, EXTRA / "cellosaurus_rcc.txt")
+    _treatment_studies()
+    _singlecell_extra()
     # the BCM tumour phosphosite table is published uncompressed (~0.3 GB); keep a gzip copy only
     raw = EXTRA / "cptac_ccrcc_phosphosite_tumor.txt"
     gz = EXTRA / "cptac_ccrcc_phosphosite_tumor.txt.gz"
@@ -131,10 +183,20 @@ def download_extra() -> dict:
             continue
         url = dict(targets).get(f.name) or ("cBioPortal API" if f.name.startswith("mutations_") else
                                             CELLOSAURUS if f.name.startswith("cellosaurus") else
+                                            "cBioPortal datahub" if f.name.split("_")[0] in TREATMENT_STUDIES else
                                             dict(targets).get(f.name.removesuffix(".gz"), "derived"))
         p = prev.get(f.name)
         same = p and p.get("bytes") == f.stat().st_size
         entries.append({"file": f.name, "url": url,
+                        "downloaded_utc": p["downloaded_utc"] if same else
+                        datetime.now(timezone.utc).isoformat(timespec="seconds"),
+                        "sha256": p["sha256"] if same else _sha256(f), "bytes": f.stat().st_size})
+    for f in sorted((RAW / "singlecell").glob("*.h5ad")):
+        if not (f.name in SINGLECELL_EXTRA or f.name.startswith("li2022_visium_section_")):
+            continue
+        p = prev.get("singlecell/" + f.name)
+        same = p and p.get("bytes") == f.stat().st_size
+        entries.append({"file": "singlecell/" + f.name, "url": "CZ CELLxGENE Discover",
                         "downloaded_utc": p["downloaded_utc"] if same else
                         datetime.now(timezone.utc).isoformat(timespec="seconds"),
                         "sha256": p["sha256"] if same else _sha256(f), "bytes": f.stat().st_size})
