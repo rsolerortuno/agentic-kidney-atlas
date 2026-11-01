@@ -7,6 +7,8 @@ question and these data.
 
 > **Question:** *What are the candidate therapeutic targets and biomarkers in ccRCC with the strongest convergent evidence?*
 
+Live report: https://rsolerortuno.github.io/ccrcc-multiomics-graphrag/
+
 Outputs: [`reports/ccrcc_report.html`](reports/ccrcc_report.html) (one self-contained file, 13 tabs, a "?" button on every
 figure, table and counter) · [`evals/results.md`](evals/results.md) · [`evals/history.md`](evals/history.md) · [`PROGRESS.md`](PROGRESS.md)
 
