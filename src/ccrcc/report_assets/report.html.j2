@@ -291,8 +291,10 @@ real glue targets from other proteins, and its use here is limited to ordering s
 <p class="lede">A screen of <strong>{{ cell.discovery.pool }}</strong> genes that are up in tumor in both CPTAC RNA (log2FC ≥ {{ cell.discovery.thresholds.min_rna_log2fc }}) and protein
 (≥ {{ cell.discovery.thresholds.min_protein_log2fc }}) and that scRNA-seq attributes mostly to one cell type (≥ {{ (cell.discovery.thresholds.min_source_share * 100) | int }} % of their tumour transcripts).
 Each gene is annotated with the volume of ccRCC literature (Europe PMC), clinical-stage drugs and tractability (Open Targets), location (UniProt), expression in vital organs
-(Human Protein Atlas) and association with grade. <strong>Novel</strong> = no clinical-stage drug and ≤ {{ cell.discovery.thresholds.novel_max_ccrcc_papers }} ccRCC papers
-({{ cell.discovery.novel }} genes); <strong>first-in-class opportunity</strong> adds small-molecule or antibody tractability and ≤ 50 nTPM in every vital organ ({{ kpis.fic }} genes).
+(Human Protein Atlas), association with grade and, since M14, the independent layers: TCGA-KIRC replication, purity extrapolation, TCGA survival and DepMap dependency.
+<strong>Novel</strong> = no clinical-stage drug and ≤ {{ cell.discovery.thresholds.novel_max_ccrcc_papers }} ccRCC papers ({{ cell.discovery.novel }} genes);
+<strong>first-in-class opportunity</strong> adds small-molecule or antibody tractability, ≤ 50 nTPM in every vital organ, replication in TCGA-KIRC and, for tumour and stroma genes,
+an up-regulation that survives extrapolation to a pure tumour ({{ kpis.fic }} genes: {% for t, n in (cell.discovery.first_in_class_by_track or {}).items() %}{{ n }} {{ t }}{% if not loop.last %}, {% endif %}{% endfor %}).
 These are hypotheses ranked by data, not validated targets.</p>
 {% for p in f.narrative.sections.discovery or [] %}
 <p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
@@ -304,24 +306,35 @@ These are hypotheses ranked by data, not validated targets.</p>
   <div class="kpi"><b>{{ cell.discovery.novel }}</b><span>novel (no drug, little literature)</span></div>
   <div class="kpi"><b>{{ cell.discovery.by_status["novel, off-tumor risk (vital-organ expression)"] or 0 }}</b><span>novel but expressed in vital organs</span></div>
 </div>
+{% if cell.discovery.m13 %}<div class="kpis">
+  <div class="kpi"><b>{{ cell.discovery.m13.replicated }}</b><span>replicate in TCGA-KIRC (of {{ cell.discovery.pool }})</span></div>
+  <div class="kpi"><b>{{ cell.discovery.m13.purity_robust }}</b><span>purity-robust up-regulation</span></div>
+  <div class="kpi"><b>{{ cell.discovery.m13.infiltration_driven }}</b><span>immune genes that vanish at purity 1 (infiltration-driven)</span></div>
+  <div class="kpi"><b>{{ cell.discovery.m13.adverse_prognosis }}</b><span>higher expression, worse survival</span></div>
+  <div class="kpi"><b>{{ cell.discovery.m13.selective_dependency }}</b><span>selective DepMap dependency</span></div>
+</div>{% endif %}
 <div class="grid two">
   <div class="plot">{{ figs.discovery_scatter | safe }}</div><div class="plot">{{ figs.discovery_bars | safe }}</div>
 </div>
 <h3>Spotlight: novel, tractable candidates</h3>
-<p class="small">Top candidates per track that have no clinical-stage drug, few ccRCC papers and small-molecule or antibody tractability. Those marked “off-tumor risk” are also expressed in a vital organ (&gt; 50 nTPM).</p>
+<p class="small">Top candidates per track (ranked within the track) that have no clinical-stage drug, few ccRCC papers and small-molecule or antibody tractability, whatever
+their other flags: “off-tumor risk” = expressed in a vital organ (&gt; 50 nTPM); “not replicated” / “not purity-robust” = failed the M14 gates. Most novel tumour-cell genes
+are expressed in some vital organ, which is why only a few reach first-in-class.</p>
 <div class="grid">
 {% for r in cell.discovery_cards %}
 <div class="card cand claim" data-evidence="{{ r.evidence_ids | evattr }}">
   <h3>{{ r.gene }} <span class="small">{{ r.name or "" }}</span></h3>
-  <div class="meta"><span class="tag {{ r.track }}">{{ r.track }}</span>{% if r.status == "first-in-class opportunity" %}<span class="tag fic">first-in-class</span>{% else %}<span class="tag warn">novel · off-tumor risk</span>{% endif %}
+  <div class="meta"><span class="tag {{ r.track }}">{{ r.track }} #{{ r.rank_in_track }}</span>{% if r.status == "first-in-class opportunity" %}<span class="tag fic">first-in-class</span>{% else %}<span class="tag warn">{{ r.status | replace("novel, ", "") }}</span>{% endif %}
     <span class="tag">novelty {{ r.novelty }}</span>
+    {% if r.replicated %}<span class="tag">TCGA ✓</span>{% endif %}{% if r.purity_robust %}<span class="tag">purity-robust</span>{% elif r.infiltration %}<span class="tag warn">infiltration-driven</span>{% endif %}
+    {% if r.adverse_prognosis %}<span class="tag warn">worse survival</span>{% endif %}
     {% if r.mgd %}<span class="tag">MGD {{ r.mgd }}</span>{% endif %}</div>
   <p>{{ r.why }}. {{ r.evidence_ids | cite | safe }}</p>
 </div>
 {% endfor %}
 </div>
 <div class="plot" style="margin-top:14px">{{ figs.safety | safe }}</div>
-<h3>Screen results (top 80 by novelty score)</h3>
+<h3>Screen results (top 30 per track by novelty score)</h3>
 <div class="filters">
   <span class="small">Track</span>
   <button class="chip" aria-pressed="true" data-ftrack="all">all</button><button class="chip" aria-pressed="false" data-ftrack="tumor">tumor</button>
@@ -334,7 +347,7 @@ These are hypotheses ranked by data, not validated targets.</p>
 </div>
 <div class="tw"><table id="dtable">
 <thead><tr><th>Gene</th><th>Track</th><th>Cell type (share)</th><th>Novelty</th><th>ccRCC / all papers</th><th>Clinical drugs</th><th>Tractability</th><th>Surface</th>
-<th>Vital-organ max</th><th>Grade ρ</th><th>MGD</th><th>Status</th><th>Evidence</th></tr></thead><tbody>
+<th>Vital-organ max</th><th>Grade ρ</th><th>TCGA log2FC</th><th>At purity 1</th><th>MGD</th><th>Status</th><th>Evidence</th></tr></thead><tbody>
 {% for r in cell.discovery_rows %}
 <tr class="claim" data-evidence="{{ r.evidence_ids | evattr }}" data-track="{{ r.track }}" data-status="{{ r.status }}" data-text="{{ (r.gene ~ ' ' ~ r.source_group ~ ' ' ~ (r.name or '')) | lower }}">
 <td><strong>{{ r.gene }}</strong></td><td><span class="tag {{ r.track }}">{{ r.track }}</span></td>
@@ -342,11 +355,13 @@ These are hypotheses ranked by data, not validated targets.</p>
 <td class="num"><span class="score" style="width:{{ (r.novelty * 50) | round(0) | int }}px"></span>{{ r.novelty }}</td>
 <td class="num">{{ r.papers }} / {{ "{:,}".format(r.total_papers) }}</td><td>{{ r.drugs or "none" }}</td><td>{{ r.modalities or "—" }}</td>
 <td>{{ "yes" if r.surface else "no" }}</td><td class="num">{% if r.vital is not none %}{{ r.vital | int }} ({{ r.vital_tissue }}){% else %}—{% endif %}</td>
-<td class="num">{{ r.grade | fmt }}</td><td class="num">{{ r.mgd | fmt }}</td><td>{{ r.status }}</td><td>{{ r.evidence_ids[:3] | cite | safe }}</td></tr>
+<td class="num">{{ r.grade | fmt }}</td><td class="num">{{ r.tcga | fmt }}{% if r.tcga is not none and not r.replicated %}*{% endif %}</td>
+<td class="num">{{ r.pure | fmt }}{% if r.infiltration %} ↓{% endif %}</td><td class="num">{{ r.mgd | fmt }}</td><td>{{ r.status }}</td><td>{{ r.evidence_ids[:3] | cite | safe }}</td></tr>
 {% endfor %}</tbody></table></div>
 <div class="note"><strong>Caveats.</strong> Literature volume is a Europe PMC title/abstract count for the gene symbol (plus specific aliases) and ccRCC terms; ambiguous or recently renamed symbols can under- or
 over-count. “No clinical drug” and tractability come from Open Targets (predicted tractability, not experimental). Vital-organ expression is RNA (HPA consensus), not protein.
-Cell-type attribution comes from a different cohort than CPTAC (12 donors, dissociation bias). Concordant tumor-up expression does not imply dependency: nothing here tests that the gene is required for tumor growth.</div>
+Cell-type attribution comes from a different cohort than CPTAC (12 donors, dissociation bias). TCGA log2FC marked * did not replicate; ↓ = immune gene whose change vanishes at purity 1.
+DepMap tests dependency in cell lines grown in normoxia; no candidate here is a selective dependency, so these are targeting handles (antibody, ADC, radioligand), not genes the tumour needs.</div>
 </section>
 
 <section class="panel" id="tab-validation" data-name="validation">

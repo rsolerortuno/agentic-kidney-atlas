@@ -125,6 +125,17 @@ def evidence_view(e: dict) -> dict:
                   f"{e['n_known_residues']} experimentally ligand-bound residues from {e['n_ligands']} ligands "
                   f"(top pockets alone: {e['recall_in_top_pockets']}); best-matching cavity ranked "
                   f"{e['best_cavity_rank']} of {e['n_cavities']} by the MGD score")
+    elif t == "sc_summary":
+        gr = ", ".join(f"{x['cell_group']} {x['share_of_tumor_transcripts']} of transcripts ({x['pct_expressing']} % expressing)"
+                       for x in e["groups"][:5])
+        tv = e.get("tumor_vs_pt")
+        detail = f"{e['gene']} in tumour scRNA-seq: {gr}" + (
+            f"; tumour cells vs proximal tubule log2FC {tv['log2fc']} (padj {tv['padj']}, {tv['n_donors']} donors)" if tv else "")
+    elif t == "spatial_summary":
+        nbs = ", ".join(f"{x['cell_group']} (log2 {x['log2_enrichment']}, padj {x['padj']})" for x in e["enriched_neighbors"]) or "none"
+        exs = ", ".join(f"{x['cell_group']} ({x['in_situ_contribution']}; corrected share {x['composition_corrected_share']})"
+                        for x in e["in_situ_expressers"]) or "none"
+        detail = f"{e['gene']} in situ ({e['n_high_spots']} high spots, {e['n_sections']} sections): expressed by {exs}; enriched neighbours {nbs}"
     elif t == "somatic_recurrence":
         detail = (f"{e['gene']}: nonsynonymous mutation in {e['mutated_patients']}/{e['patients']} tumours "
                   f"(CPTAC {e['cptac_mutated']}, TCGA {e['tcga_mutated']}); observed/expected {e['obs_exp']} for "

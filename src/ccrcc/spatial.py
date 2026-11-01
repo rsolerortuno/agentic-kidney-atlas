@@ -51,6 +51,20 @@ def reference() -> pd.DataFrame:
     return cpm
 
 
+def marker_exclusion(targets: list[str]) -> set[str]:
+    """Genes kept out of the deconvolution markers, so their in-situ checks stay held out.
+
+    A fixed set that depends only on the data: configured report targets, structure controls and the whole discovery
+    pool. Excluding just the genes analysed in this run (the M11 design) made the deconvolution, and with it every
+    gene's spatial statistics, change whenever the discovery shortlist changed (M14; see evals/history.md)."""
+    cfg = load()
+    out = set(cfg["cell_context"]["targets"]) | set(cfg["structure"].get("controls", [])) | set(targets)
+    pool = PROCESSED / "discovery_candidates.parquet"
+    if pool.exists():
+        out |= set(pd.read_parquet(pool, columns=["gene"])["gene"])
+    return out
+
+
 def select_markers(ref: pd.DataFrame, exclude: set[str], genes_in_spots: set[str]) -> dict[str, list[str]]:
     cfg = load()["cell_context"]["spatial"]
     x = ref.drop(columns="hgnc_symbol")
@@ -120,6 +134,12 @@ def target_expression(counts: sp.csr_matrix, var: pd.Index, ens: str) -> tuple[n
     return umi, umi / np.maximum(lib, 1) * 1e6
 
 
+def gene_rng(seed: int, gene: str) -> np.random.Generator:
+    """Deterministic per-gene generator, independent of the order or number of analysed genes."""
+    import hashlib
+    return np.random.default_rng([int(seed), int(hashlib.sha256(gene.encode()).hexdigest()[:8], 16)])
+
+
 def neighborhood_enrichment(high: np.ndarray, sections: np.ndarray, NP: np.ndarray, has_nb: np.ndarray,
                             rng: np.random.Generator, n_perm: int) -> dict:
     """Observed vs section-stratified expected neighbour composition of target-high spots."""
@@ -147,10 +167,12 @@ def run() -> dict:
     cfg_all = load()["cell_context"]
     cfg = cfg_all["spatial"]
     targets = analysis_targets()
-    rng = np.random.default_rng(cfg["seed"])
+    # One generator per gene, seeded from (config seed, gene symbol). A single shared generator made each gene's
+    # permutation draws depend on how many genes were analysed before it, so adding a gene to the target list
+    # changed the neighbourhood statistics of all later genes (M14; see evals/history.md).
     ref = reference()
     spots, counts, var = load_spots()
-    markers = select_markers(ref, set(targets), set(var))
+    markers = select_markers(ref, marker_exclusion(targets), set(var))
     groups = list(SPATIAL_GROUPS)
     P = deconvolve(counts, var, ref, markers)
     dec = spots.copy()
@@ -200,7 +222,7 @@ def run() -> dict:
                  "top_in_situ_expresser": groups[int(np.argmax(contrib))] if contrib.sum() > 0 else None,
                  "top_corrected_source": groups[int(np.argmax(corrected))] if corrected.sum() > 0 else None}
         if used_sections:
-            e = neighborhood_enrichment(high, sections, NP, has_nb, rng, cfg["permutations"])
+            e = neighborhood_enrichment(high, sections, NP, has_nb, gene_rng(cfg["seed"], gene), cfg["permutations"])
             for k, g in enumerate(groups):
                 nb_rows.append({"gene": gene, "cell_group": g, "observed_neighbor_share": float(e["observed"][k]),
                                 "expected_neighbor_share": float(e["expected"][k]),

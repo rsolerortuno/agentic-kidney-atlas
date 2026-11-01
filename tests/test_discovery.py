@@ -18,7 +18,11 @@ def _frame(**over):
     base = dict(gene=["A", "B"], rna_log2fc=[3.0, 3.0], protein_log2fc=[1.5, 1.5], source_share=[0.9, 0.9],
                 sc_tvp_log2fc=[4.0, 4.0], sc_tvp_padj=[0.01, 0.01], ccrcc_papers=[2, 500], total_papers=[50, 5000],
                 clinical_drugs=[[], []], any_drugs=[[], []], modalities=[["AB"], ["AB"]], surface_or_secreted=[True, True],
-                vital_max_ntpm=[2.0, 2.0], clin_rho=[0.4, 0.4])
+                vital_max_ntpm=[2.0, 2.0], clin_rho=[0.4, 0.4],
+                # M14 inputs: tumour track, replicated in TCGA, purity-robust, not prognostic, no DepMap data
+                track=["tumor", "tumor"], tcga_log2fc=[3.0, 3.0], tcga_padj=[1e-6, 1e-6], rna_lfc_at_purity1=[3.0, 3.0],
+                rna_lfc_at_purity1_se=[0.3, 0.3], rna_purity_rho=[0.2, 0.2], tcga_cox_log_hr=[0.1, 0.1],
+                tcga_cox_padj=[0.5, 0.5])
     base.update(over)
     return pd.DataFrame(base)
 
@@ -48,8 +52,27 @@ def test_untractable_is_harder_to_drug():
 
 def test_components_are_bounded():
     s = score(_frame(rna_log2fc=[20.0, -3.0], protein_log2fc=[9.0, 0.0], clin_rho=[0.99, -0.8]))
-    for k in ("omics", "cell_specificity", "understudied", "undrugged", "druggable", "safety", "aggressiveness"):
+    for k in ("omics", "cell_specificity", "understudied", "undrugged", "druggable", "safety", "aggressiveness",
+              "replication", "tumor_intrinsic", "prognosis", "dependency"):
         assert s[f"c_{k}"].between(0, 1).all(), k
+
+
+def test_not_replicated_blocks_first_in_class():
+    s = score(_frame(tcga_padj=[0.5, 1e-6])).set_index("gene")
+    assert s.loc["A", "status"] == "novel, not replicated in TCGA"
+
+
+def test_purity_gate_applies_to_tumour_not_immune():
+    s = score(_frame(rna_lfc_at_purity1=[0.1, 0.1], track=["tumor", "immune"], ccrcc_papers=[2, 2],
+                     rna_purity_rho=[-0.5, -0.5])).set_index("gene")
+    assert s.loc["A", "status"].startswith("novel, not purity-robust")
+    assert s.loc["B", "status"] == "first-in-class opportunity" and bool(s.loc["B", "infiltration_driven"])
+    assert s.loc["B", "c_tumor_intrinsic"] == 0
+
+
+def test_adverse_prognosis_raises_novelty():
+    a = score(_frame(tcga_cox_log_hr=[0.5, 0.5], tcga_cox_padj=[1e-4, 0.5], ccrcc_papers=[2, 2])).set_index("gene")
+    assert bool(a.loc["A", "adverse_prognosis"]) and a.loc["A", "novelty_score"] > a.loc["B", "novelty_score"]
 
 
 def test_gene_terms_use_specific_aliases_only():

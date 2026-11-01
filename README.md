@@ -71,10 +71,10 @@ See the report for the full, cited analysis. Headlines (convergence v3, M13):
 - **Evaluation** ([`evals/results.md`](evals/results.md), [`evals/history.md`](evals/history.md)): recall of 23 known ccRCC genes in the top 100 rises from 22 % (v2) to **39 %** (median rank 309 → 171). The data-only target profile ranks RCC clinical targets at AUROC 0.90 and a **temporal holdout** of targets first trialled in 2016 or later at 0.91 (4 of 13 in the top 100); predicted tractability alone gives 0.85, so the gain of the data layers is in early enrichment (17 % vs 4 % of clinical targets in the top 100). Known-answer QA with `claude -p` (Sonnet 5.5) and the MCP servers: **10/10**.
 - **What the agents add:** a closed-book LLM gives the textbook list (60 % clinical targets, no evidence); the pipeline gives data-supported candidates with every statement verified, and three independent runs agree (Jaccard 0.94, same top 3).
 
-> The agent analysis in `runs/2026-10-31/` was produced headless with `claude -p "/informe"` (Opus 5.5 orchestrator,
-> four Sonnet 5.5 subagents, project MCP servers); log in `runs/2026-10-31/informe_headless_m13.log`. Replicates in
-> `runs/replicates/`; the earlier runs (session-orchestrated, and the M11-era headless run behind the M12 report) are in
-> `runs/archive/`.
+> The current agent analysis is `runs/2026-11-01/` (M14), produced headless with `claude -p "/informe"` (Opus 5.5
+> orchestrator, four Sonnet 5.5 subagents, project MCP servers); log in `runs/2026-11-01/informe_headless_m14.log`, and
+> `basis.json` records the evidence values the agents saw. The M13 run and its replicates are in `runs/2026-10-31/` and
+> `runs/replicates/`; older runs are in `runs/archive/`.
 
 ## Reproduce
 
@@ -118,6 +118,7 @@ Relation extraction (M3) is an LLM step done once with the `extractor-relaciones
 | `src/ccrcc/extra_download.py` · `layers.py` · `kg_layers.py` | M13 downloads, statistics (mutations, cis dosage, DepMap, TCGA, phosphosites, kinases, purity) and graph loading |
 | `src/ccrcc/scores.py` · `semantic.py` | M13 v3 components, target / biomarker profiles, sensitivity; numeric and direction verification |
 | `src/ccrcc/outcomes.py` · `baselines.py` | M13 evaluation against clinical targets, temporal holdout and ClearCode34; agentic baselines |
+| `src/ccrcc/provenance.py` | M14 stale-narrative guard (`basis.json`) |
 | `.claude/agents/*.md` · `.claude/commands/informe.md` | Subagents (Sonnet 5.5) and orchestrator command |
 | `config.yaml` | Thresholds, convergence weights (v3), profile weights, sensitivity settings |
 | `evals/` | Known-answer questions, results, evaluation history |
@@ -193,6 +194,21 @@ Added after a review of v2. Everything numeric is deterministic code; weights we
 | Numeric and direction verification of every statement | Ids were checked, content was not | 22 / 96 statements of the M11-era run fail; 3 / 94 in the new run, dropped |
 | Outcome evaluation: RCC clinical targets, temporal holdout (≥ 2016), ClearCode34 | Recall of a mixed known-gene list is partly circular | target profile AUROC 0.90 / holdout 0.91, with a tractability-only control |
 | Closed-book LLM baseline and replicate runs | The value of the agentic layer was asserted, not measured | see `evals/results.md` (d) |
+
+## Reproducibility guard and discovery v2 (M14)
+
+- **Spatial statistics no longer depend on which genes are analysed.** One random generator per gene (seeded from the
+  gene symbol) and a fixed marker-exclusion set for the deconvolution; previously a different discovery shortlist
+  changed every gene's neighbourhood numbers. Checked by re-running with another target list: identical results.
+- **Stale-narrative guard.** `runs/<run>/basis.json` fingerprints every evidence record the agents could cite when the
+  agent step starts; `verify.py final` fails any statement whose cited evidence changed since, and asks for a new
+  `/informe`. A full `run-all` on top of the M14 run reports 0 stale statements, so rebuilding alone does not trigger it.
+- **Gene-level summary records** (`sc_summary`, `spatial_summary`) let one evidence id support a sentence that compares
+  several cell groups; before, the numeric check kept rejecting such sentences and the report lost its spatial text.
+- **Discovery v2.** TCGA replication, purity-robust up-regulation (tumour and stroma tracks), adverse prognosis and
+  DepMap dependency enter the novelty score; first-in-class also needs replication and, outside the immune track, a
+  purity-robust change. Lists, cards and the table are per track; immune genes that vanish at purity 1 are labelled
+  infiltration-driven. 60 first-in-class candidates: immune 54, tumour 3 (COL23A1, RAB42, COL8A1), stroma 3.
 
 ## Limitations
 

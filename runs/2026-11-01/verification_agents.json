@@ -1,0 +1,63 @@
+{
+ "agents": {
+  "agent_omics.json": {
+   "submitted": 13,
+   "kept": 13,
+   "dropped": 0,
+   "dropped_detail": [],
+   "semantic_failures": 0,
+   "ids_removed": 0
+  },
+  "agent_literature.json": {
+   "submitted": 14,
+   "kept": 14,
+   "dropped": 0,
+   "dropped_detail": [],
+   "semantic_failures": 0,
+   "ids_removed": 0
+  },
+  "agent_external.json": {
+   "submitted": 13,
+   "kept": 13,
+   "dropped": 0,
+   "dropped_detail": [],
+   "semantic_failures": 0,
+   "ids_removed": 0
+  },
+  "agent_cells.json": {
+   "submitted": 21,
+   "kept": 19,
+   "dropped": 2,
+   "dropped_detail": [
+    {
+     "text": "CA9 ranks 1 in the convergence ranking. In tumor scRNA-seq, RCC cells hold 0.976 of tissue transcripts (54.7% of RCC cells express it, cpm_share 0.958); PT show",
+     "gene": "CA9",
+     "cited": 2,
+     "nonexistent": [],
+     "not_linked_to_gene": [],
+     "kept": false,
+     "unmatched_numbers": [
+      "2.6%"
+     ],
+     "direction_contradiction": null,
+     "semantic_failure": true
+    },
+    {
+     "text": "GAL3ST4 is the top immune-track candidate (novelty 0.64). Macrophages hold 0.972 of tumor transcripts. It has 1 ccRCC paper and no clinical drug, and the Cox lo",
+     "gene": "GAL3ST4",
+     "cited": 5,
+     "nonexistent": [],
+     "not_linked_to_gene": [],
+     "kept": false,
+     "unmatched_numbers": [
+      "79.31"
+     ],
+     "direction_contradiction": null,
+     "semantic_failure": true
+    }
+   ],
+   "semantic_failures": 2,
+   "ids_removed": 0
+  }
+ }
+}

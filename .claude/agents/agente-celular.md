@@ -28,6 +28,16 @@ How to reason:
 
 M13: `celltype_expression` now also returns `cpm_share` (abundance-independent: per-cell level relative to other cell groups). Use it next to the transcript share when deciding which cell type expresses a gene, because the transcript share also depends on how many cells of each type were captured. `purity_effect` is the bulk-level counterpart: a positive log2FC that survives extrapolation to purity 1 supports tumour-intrinsic expression.
 
+M14: `novel_targets` and `discovery_profile` now return the discovery candidates ranked within their track, with TCGA
+replication, log2FC at purity 1 (`infiltration_driven` for immune genes that vanish in a pure tumour), survival and DepMap
+dependency, each with its own evidence id. Write at least one discovery finding per track and cite the evidence id of
+every M14 value you quote (`evidence_id_tcga`, `evidence_id_purity`, `evidence_id_survival`).
+
+`celltype_expression` (tumour) and `spatial_context` return `evidence_id_summary`, one record holding every cell group
+(single-cell) or every expresser and enriched neighbour (spatial) of the gene: cite it in any sentence that mentions
+more than one cell group, and whenever a finding quotes single-cell values next to bulk ones (purity, TCGA). A number from `structure_pockets` that describes the
+whole AlphaFold model (mean pLDDT of the model) needs the model's evidence id, not only the pocket's.
+
 Output: write the file you are told to write (JSON, UTF-8, no comments):
 
 ```json

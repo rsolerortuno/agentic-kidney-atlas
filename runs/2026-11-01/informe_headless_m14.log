@@ -1,0 +1,13 @@
+The report is at `/home/claude/ccrcc-agentic-multiomics-graphrag/reports/ccrcc_report.html`. Final verification checked 98 statements and found 0 unsupported claims. Before verification, the checker dropped 2 of the cell agent's findings because their numbers didn't match the cited evidence: a CA9 single-cell summary and the GAL3ST4 immune candidate. Neither is in the report.
+
+1. **Strongest convergence:** CA9 leads on every layer (score 4.5197). It is the only gene that stays in the overall top 10 when the weights are randomly varied (p_top10 0.894). CD70 (Phase 2 antibodies) and NNMT (worse survival: Cox log HR 0.301, padj 0.00479) follow.
+2. **Second-tier targets:** SCARB1 is first in the target profile (p_top10 0.968), followed by ENPP3 (an antibody-drug conjugate reached Phase 2) and SLC16A3 (MCT4). The data support them strongly, but the literature corpus says almost nothing about them.
+3. **Biomarkers:** PSAT1, NNMT and ALDH6A1 are the stable picks. ALDOB and SLC22A8 are proximal-tubule genes lost in tumour that track with survival, so they are biomarkers only, not targets.
+4. **No candidate is a selective dependency:** No top candidate is a selective DepMap dependency. EPAS1 (belzutifan) is the only partly selective one (padj 0.061), so the case for CA9, CD70, SCARB1 and ENPP3 rests on surface expression in tumour cells. In the cell data, KDR, CXCR4 and CD74 come from the microenvironment, not the tumour, and EPAS1 RNA sits mostly in stroma.
+5. **Discovery hypotheses:** COL23A1 (tumour) and OLFML2A and JAG2 (stroma) are data-ranked ideas only. LILRB4's signal comes from macrophage infiltration. The glue-degrader scores only rank possible binding sites: KDR's scores 0.841 and CA9's 0.546, and neither is evidence that a degrader exists.
+
+**Gaps:**
+- The phospho, kinase and STRING layers weren't explored.
+- EGFR wasn't queried.
+- The external agent only read the top 12 rows of the ranking.
+EXIT 0
