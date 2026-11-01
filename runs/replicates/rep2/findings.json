@@ -6,10 +6,10 @@
   "open_targets_id": "MONDO_0005005",
   "open_targets_top": 2000
  },
- "generated_utc": "2026-11-01T18:03:26+00:00",
+ "generated_utc": "2026-11-01T19:53:39+00:00",
  "models": {
   "orchestrator": "Claude Opus 5.5 (effort medium) — Claude Code main session",
-  "agents": "Claude Sonnet 5.5 — Claude Code subagents (agente-omico, agente-literatura, agente-externo, agente-celular)",
+  "agents": "Claude Sonnet 5.5 — Claude Code subagents (agente-omico, agente-literatura, agente-externo, agente-celular, agente-aplicado)",
   "relation_extraction": "Claude Sonnet 5.5 — extractor-relaciones subagent"
  },
  "config_sha256": "92a60b6c9eb179043b45b85963f13659ff698fcb6133cd5f33cdd052e9d99329",
@@ -25320,21 +25320,19 @@
     {
      "gene": "CA9",
      "role": "target_and_biomarker",
-     "statement": "CA9 is up-regulated in tumour at RNA (log2FC 6.312) and protein (log2FC 2.269), replicates in TCGA-KIRC (log2FC 9.712) and persists at purity 1 (7.787), so it is tumour-cell intrinsic; girentuximab reached PHASE_3. It is not prognostic (Cox log HR -0.009).",
+     "statement": "CA9 is up in tumour at RNA (log2FC 6.312) and protein (log2FC 2.269), replicates in TCGA-KIRC (log2FC 9.712) and survives purity extrapolation (RNA log2FC at purity 1 of 7.787). It has clinical-stage agents (girentuximab PHASE_3). It is not prognostic in TCGA (Cox log HR -0.009).",
      "evidence_ids": [
       "EV:omics_de:b269736afdb0",
-      "EV:omics_de:5afe18b4024b",
       "EV:tcga_de:225a767ebcb5",
-      "EV:open_targets_drug:e1e0c664ada3"
+      "EV:purity:225a767ebcb5"
      ]
     },
     {
      "gene": "SCARB1",
      "role": "target",
-     "statement": "SCARB1 ranks first in the target profile: RNA log2FC 2.974, protein log2FC 1.837, TCGA log2FC 3.989 and a purity-1 RNA log2FC of 3.762 (SE 0.408), indicating tumour-intrinsic overexpression. It has no ccRCC dependency signal (DepMap mean effect 0.002) and no drugs.",
+     "statement": "SCARB1 tops the target profile (rank 1, score 4.1314): RNA log2FC 2.974, protein log2FC 1.837, TCGA log2FC 3.989, and RNA log2FC at purity 1 of 3.762, so the signal is tumour-intrinsic. CNV loss frequency is 0, and it is not prognostic (Cox log HR -0.038).",
      "evidence_ids": [
       "EV:omics_de:36b227bd1fb6",
-      "EV:omics_de:cd4a629b011f",
       "EV:tcga_de:2d66f8e78d0c",
       "EV:purity:2d66f8e78d0c"
      ]
@@ -25342,130 +25340,113 @@
     {
      "gene": "CD70",
      "role": "target",
-     "statement": "CD70 is up-regulated at RNA (log2FC 4.464) and protein (log2FC 2.421), replicates in TCGA (log2FC 7.09) and keeps a purity-1 RNA log2FC of 4.278. It is a membrane ligand with clinical-stage antibodies (cusatuzumab PHASE_2, vorsetuzumab mafodotin PHASE_1).",
+     "statement": "CD70 is up in tumour at RNA (log2FC 4.464) and protein (log2FC 2.421), replicates in TCGA (log2FC 7.09), and holds at purity 1 (RNA log2FC 4.278). It has clinical-stage antibody agents (cusatuzumab PHASE_2). It is not prognostic (Cox log HR 0.126, padj 0.175).",
      "evidence_ids": [
       "EV:omics_de:97c97f6d7d62",
-      "EV:omics_de:8a1dc0572ead",
-      "EV:tcga_de:908e84663f6a",
-      "EV:open_targets_drug:fcadbe214e8c"
+      "EV:tcga_de:908e84663f6a"
      ]
     },
     {
      "gene": "ENPP3",
-     "role": "target",
-     "statement": "ENPP3 is up at RNA (log2FC 3.895) and protein (log2FC 1.544), replicates in TCGA (log2FC 5.557) and has a purity-1 RNA log2FC of 5.278. It has a 18.2% copy-number loss rate (cnv_loss_freq 0.182) and an ADC (AGS-16C3F, PHASE_2).",
+     "role": "target_and_biomarker",
+     "statement": "ENPP3 is a membrane enzyme up in tumour at RNA (log2FC 3.895) and protein (log2FC 1.544), with TCGA log2FC 5.557 and RNA log2FC at purity 1 of 5.278. CNV loss frequency is 0.182, and an ADC (AGS-16C3F) reached PHASE_2.",
      "evidence_ids": [
       "EV:omics_de:d540450c23e1",
-      "EV:omics_de:fad29d44ef95",
-      "EV:tcga_de:d5aee88146ed",
-      "EV:open_targets_drug:49872cd86a77"
-     ]
-    },
-    {
-     "gene": "SLC16A3",
-     "role": "target",
-     "statement": "SLC16A3 (a lactate transporter) is up at RNA (log2FC 3.435) and protein (log2FC 2.279), replicates in TCGA (log2FC 3.291) with a purity-1 RNA log2FC of 3.821, and shows a positive cis copy-number effect (rho 0.258). It is undrugged and not prognostic at BH<0.05 (Cox padj 0.0887).",
-     "evidence_ids": [
-      "EV:omics_de:545c6eb28bce",
-      "EV:omics_de:d93a2cc11342",
-      "EV:tcga_de:11298113327b"
+      "EV:tcga_de:d5aee88146ed"
      ]
     },
     {
      "gene": "NNMT",
      "role": "target_and_biomarker",
-     "statement": "NNMT is strongly up at RNA (log2FC 4.67) and protein (log2FC 2.709), replicates in TCGA (log2FC 4.685) and high expression is associated with worse survival (Cox log HR 0.301, padj 0.00479), giving the top biomarker-profile score among up-regulated genes. DepMap mean effect in ccRCC is 0.316, so a dependency is not supported.",
+     "statement": "NNMT is up at RNA (log2FC 4.67) and protein (log2FC 2.709), replicates in TCGA (log2FC 4.685), and is prognostic (Cox log HR 0.301, padj 0.00479, higher expression means worse survival). RNA log2FC at purity 1 is 5.256.",
      "evidence_ids": [
       "EV:omics_de:aefc373d6072",
-      "EV:omics_de:de39cc0c5ed8",
+      "EV:tcga_de:7dbf93860d9f",
       "EV:tcga_survival:7dbf93860d9f"
+     ]
+    },
+    {
+     "gene": "SLC16A3",
+     "role": "target",
+     "statement": "SLC16A3 (MCT4, a lactate exporter) is up at RNA (log2FC 3.435) and protein (log2FC 2.279), with TCGA log2FC 3.291 and RNA log2FC at purity 1 of 3.821. Its CNV loss frequency is 0.018 and its cis CNV-RNA rho is 0.258.",
+     "evidence_ids": [
+      "EV:omics_de:545c6eb28bce",
+      "EV:tcga_de:11298113327b"
      ]
     },
     {
      "gene": "FABP6",
      "role": "biomarker",
-     "statement": "FABP6 is up at RNA (log2FC 4.006) and protein (log2FC 1.921) and replicates in TCGA (log2FC 6.431). It shows frequent copy-number gain (cnv_gain_freq 0.573) with a positive cis effect (rho 0.309), so gain is a plausible dosage driver.",
+     "statement": "FABP6 is up at RNA (log2FC 4.006) and protein (log2FC 1.921), with TCGA log2FC 6.431. CNV gain frequency is 0.573 and cis rho is 0.309, so part of the increase is a dosage effect. It is a tumour biomarker rather than a validated target.",
      "evidence_ids": [
       "EV:omics_de:0ea3d10905b2",
       "EV:omics_cnv:52f5e4eeb4a8",
-      "EV:cis_dosage:52f5e4eeb4a8"
+      "EV:tcga_de:52f5e4eeb4a8"
+     ]
+    },
+    {
+     "gene": "HK2",
+     "role": "target",
+     "statement": "HK2 is up at RNA (log2FC 3.351) and protein (log2FC 2.106), with TCGA log2FC 3.974 and RNA log2FC at purity 1 of 3.989. It is a metabolic reprogramming candidate, but its DepMap mean effect is -0.123 and it is not prognostic (Cox padj 0.253).",
+     "evidence_ids": [
+      "EV:omics_de:feaa13f13e99",
+      "EV:tcga_de:c5d66c7fafe1"
      ]
     },
     {
      "gene": "PSAT1",
      "role": "biomarker",
-     "statement": "PSAT1 is down in tumour at RNA (log2FC -3.867) and protein (log2FC -1.963), replicates in TCGA (log2FC -2.974) and low expression predicts worse survival (Cox log HR 0.43, padj 5.66e-7). It is the top biomarker-profile gene.",
+     "statement": "PSAT1 is down in tumour at RNA (log2FC -3.867) and protein (log2FC -1.963) and tops the biomarker profile (rank 1, score 5.3696). TCGA log2FC is -2.974, and higher expression predicts worse survival (Cox log HR 0.43, padj 5.66e-7).",
      "evidence_ids": [
       "EV:omics_de:fe09b800ea76",
-      "EV:omics_de:8fa49cbb1760",
+      "EV:tcga_de:58119698ea36",
       "EV:tcga_survival:58119698ea36"
      ]
     },
     {
      "gene": "ALDH6A1",
      "role": "biomarker",
-     "statement": "ALDH6A1, a loss-of-tubule-identity marker, is down at RNA (log2FC -3.399) and protein (log2FC -1.925), with 0.355 copy-number loss frequency and a strong positive cis effect (rho 0.525). Low expression is associated with worse survival (Cox log HR -0.554, padj 9.45e-12), but the purity-1 RNA log2FC shrinks to -1.973.",
+     "statement": "ALDH6A1 is down at RNA (log2FC -3.399) and protein (log2FC -1.925) and sits on 14q with CNV loss frequency 0.355. Its cis rho is 0.525, a real dosage effect. Higher expression predicts better survival (Cox log HR -0.554, padj 9.45e-12), so it is a prognostic tubule-identity biomarker.",
      "evidence_ids": [
       "EV:omics_de:1c73c0e9eeb3",
-      "EV:omics_de:7ad12e0f6863",
       "EV:omics_cnv:df75d3108dd0",
-      "EV:cis_dosage:df75d3108dd0",
-      "EV:tcga_survival:df75d3108dd0"
+      "EV:tcga_survival:df75d3108dd0",
+      "EV:cis_dosage:df75d3108dd0"
      ]
     },
     {
-     "gene": "VWF",
+     "gene": "SLC6A19",
      "role": "biomarker",
-     "statement": "VWF is up at RNA (log2FC 3.605) and protein (log2FC 1.284) and is associated with better survival (Cox log HR -0.397, padj 1.97e-7). It is an endothelial/vascular signal and its tumour-cell origin is less certain (purity-1 RNA log2FC 3.521), making it a biomarker rather than a tumour-cell target despite approved vWF-directed drugs.",
+     "statement": "SLC6A19, a proximal tubule transporter, is down at RNA (log2FC -4.574) and protein (log2FC -1.48). TCGA log2FC is -3.221, and higher expression predicts better survival (Cox log HR -0.456, padj 1.07e-7). It marks loss of normal tubule identity.",
      "evidence_ids": [
-      "EV:omics_de:af4ee005eda7",
-      "EV:omics_de:b2ad6c302a0f",
-      "EV:tcga_survival:542bd3ecd7ad"
-     ]
-    },
-    {
-     "gene": "L1CAM",
-     "role": "biomarker",
-     "statement": "L1CAM is down in tumour at RNA (log2FC -2.623) and protein (log2FC -1.714), replicates in TCGA (log2FC -5.785) and low expression is associated with worse survival (Cox log HR 0.328, padj 0.00000567); its loss is a biomarker, not a target.",
-     "evidence_ids": [
-      "EV:omics_de:1f1858b16c12",
-      "EV:omics_de:a09b360260c7",
-      "EV:tcga_survival:0cb401d893be"
-     ]
-    },
-    {
-     "gene": "PCK1",
-     "role": "biomarker",
-     "statement": "PCK1 is down at RNA (log2FC -4.424) and protein (log2FC -1.859), reflecting loss of proximal-tubule gluconeogenic identity, replicates in TCGA (log2FC -3.079) and is associated with worse survival when low (Cox log HR -0.415, padj 1.91e-7).",
-     "evidence_ids": [
-      "EV:omics_de:85b979e6e19a",
-      "EV:tcga_survival:fd99b19fe8a6"
-     ]
-    },
-    {
-     "gene": "VHL",
-     "role": "mechanism",
-     "statement": "VHL is somatically mutated in 247 of 511 ccRCC tumours (frequency 0.483, padj 0.0), the dominant driver behind the HIF-driven up-regulation of CA9, ANGPTL4 and related genes.",
-     "evidence_ids": [
-      "EV:somatic_recurrence:52e5aeb6c197"
+      "EV:omics_de:a685c4c3e10e",
+      "EV:tcga_survival:a68c82cb3c87"
      ]
     },
     {
      "gene": "PBRM1",
      "role": "mechanism",
-     "statement": "PBRM1 is mutated in 185 of 511 tumours (frequency 0.362, padj 4.59e-239) and lies on 3p with a copy-number loss frequency of 0.8 in CPTAC, consistent with the two-hit 3p loss plus mutation mechanism.",
+     "statement": "PBRM1 is mutated in 185 of 511 tumours (freq 0.362, padj 4.59e-239) and has 3p CNV loss frequency 0.8 in CPTAC.",
      "evidence_ids": [
       "EV:somatic_recurrence:07b6205e67e5",
       "EV:omics_cnv:07b6205e67e5"
      ]
+    },
+    {
+     "gene": "VHL",
+     "role": "mechanism",
+     "statement": "VHL is mutated in 247 of 511 tumours (freq 0.483, obs/exp 462.707) and has 3p CNV loss frequency 0.791 in CPTAC, consistent with a biallelic hit that drives the HIF-dependent up-regulation of CA9.",
+     "evidence_ids": [
+      "EV:somatic_recurrence:52e5aeb6c197",
+      "EV:omics_cnv:52e5aeb6c197"
+     ]
     }
    ],
    "caveats": [
-    "Dependency (DepMap) evidence is weak for the top up-regulated genes (mean ccRCC effects near zero or positive except SCD, -0.501), so target claims rest on expression, replication and tractability, not essentiality.",
-    "Bulk tumour comparisons can include stromal/endothelial contributions (e.g. VWF); purity-1 extrapolations have wide SEs.",
-    "Protein log2FC values are TMT ratios and are compressed relative to RNA log2FC.",
-    "Safety in normal tissue was not assessed by the omics layers; prognosis is from univariate Cox in TCGA-KIRC only.",
-    "Not all ranked genes had individual calls to rna_protein_correlation; values come from the convergence ranking rows and per-gene DE queries."
+    "Statistics are quoted from the integration rows and tools; no independent testing was done.",
+    "Up-regulated membrane candidates (CA9, CD70, ENPP3, SCARB1) have DepMap effects near 0 or positive, so tumour dependency is not demonstrated.",
+    "Down-regulated genes (PSAT1, ALDH6A1, SLC6A19) reflect loss of tubule identity and suit biomarker rather than target use.",
+    "Only the top of the convergence, target and biomarker rankings was reviewed, and phospho and kinase layers were not queried."
    ]
   },
   "literature": {
@@ -25474,45 +25455,29 @@
     {
      "gene": "CA9",
      "role": "target_and_biomarker",
-     "statement": "CA9 is the top-ranked convergent gene and the literature agrees with the omics (tumour-up). PMID:42473996 reports CA9 is preferentially enriched in ccRCC tumor cells with low background expression in normal kidney tissue. PMID:42205867 calls CA9 a promising target for site-specific drug delivery. Evidence is mostly imaging/delivery proof-of-concept, not a validated clinical biomarker in this corpus.",
+     "statement": "CA9 ranks first in the convergence ranking and the literature agrees: PMID:42473996 reports CA9 is preferentially enriched in ccRCC tumor cells with low background expression in normal kidney, and that CA9-targeted PET gives proof-of-concept noninvasive discrimination of ccRCC 'warranting prospective validation'. High CA9 PET uptake is associated with PBRM1 loss-of-function. Evidence is a single imaging proof-of-concept study, not a validated clinical biomarker in this corpus.",
      "evidence_ids": [
       "EV:literature:534430b0156d",
-      "EV:chunk:c9bef5b2882d"
-     ]
-    },
-    {
-     "gene": "CA9",
-     "role": "biomarker",
-     "statement": "PMID:42473996: CA9-targeted PET gives proof-of-concept evidence for noninvasive discrimination of ccRCC, 'warranting prospective validation'; high uptake is associated with PBRM1 loss-of-function alterations. A single early study; prospective validation is still pending. The Ndufa4l2 paper (PMID:34970493) links Ndufa4l2 to Ca9 expression in a mouse early-ccRCC model (mechanism).",
-     "evidence_ids": [
       "EV:literature:7f2628a50d15",
-      "EV:literature:687723b4e539",
-      "EV:literature:b324d5280bd3"
+      "EV:literature:687723b4e539"
      ]
     },
     {
      "gene": "CD70",
-     "role": "target",
-     "statement": "CD70 is described as commonly overexpressed in RCC and minimally expressed in normal tissue, making it a potential therapeutic target (PMID:38195301); PMID:39510586 says its high and specific ccRCC expression makes it a potential diagnostic and therapeutic target. Omics (tumour-up, purity-robust) and tractability (antibody drugs in the ranking) are concordant. Literature is preclinical/early-clinical in this corpus.",
+     "role": "target_and_biomarker",
+     "statement": "CD70 is reported as commonly overexpressed in renal cell carcinoma and minimally expressed in normal tissue, making it a potential therapeutic target (PMID:38195301). PMID:39510586 describes high and specific ccRCC expression as a diagnostic and therapeutic target, developed 68Ga-labelled CD70-specific single-domain antibodies (RCCB3, RCCB6) as radiotracers, and links CD70 expression to overall survival. CD70 correlates with hypoxia pathway proteins and is described as an HIF downstream target. Preclinical or early translational literature.",
      "evidence_ids": [
       "EV:literature:92dc16d8b33c",
-      "EV:literature:3db6a5b218c7"
-     ]
-    },
-    {
-     "gene": "CD70",
-     "role": "mechanism",
-     "statement": "PMID:38195301: CD70 expression correlates with hypoxia pathway proteins in ccRCC, consistent with CD70 being a downstream HIF target. PMID:39510586 developed 68Ga-labelled CD70-specific single-domain antibodies (RCCB3, RCCB6) as radiotracers, and reports CD70 expression associated with overall survival of RCC patients (direction not stated in the sentence).",
-     "evidence_ids": [
-      "EV:literature:012242579349",
+      "EV:literature:3db6a5b218c7",
       "EV:literature:453d456e73e3",
-      "EV:literature:e23d2f8cb981"
+      "EV:literature:e23d2f8cb981",
+      "EV:literature:012242579349"
      ]
     },
     {
      "gene": "NNMT",
      "role": "target_and_biomarker",
-     "statement": "NNMT is upregulated in ccRCC tumour tissue and high expression correlated with worse overall and disease-specific survival (PMID:41399267), which matches the TCGA Cox signal in the ranking. The authors call it a promising prognostic biomarker and potential therapeutic target. Selective NNMT inhibitors (II559, II802) exist with >5000-fold selectivity (PMID:37523719, general chemistry paper), but no clinical drug is listed. NNMT is also the best biomarker-profile gene in the top set. Single retrospective study.",
+     "statement": "PMID:41399267 reports NNMT significantly upregulated in ccRCC tumor tissue and high NNMT expression correlating with worse overall and disease-specific survival, concluding it is a promising prognostic biomarker and potential therapeutic target with transcriptomic, clinical and functional validation. PMID:37523719 describes NNMT inhibitors (II559, II802) with over 5000-fold selectivity over related methyltransferases, so tractability is chemically supported, though that paper is not ccRCC-specific in the returned sentence.",
      "evidence_ids": [
       "EV:literature:111b19cdfe29",
       "EV:literature:8945a590eaca",
@@ -25523,31 +25488,53 @@
     {
      "gene": "ALDOB",
      "role": "biomarker",
-     "statement": "ALDOB is downregulated in ccRCC (IHC notably diminished versus adjacent normal tissue, PMID:40852386) and proposed as prognostic biomarker and potential immunotherapy target; PMID:38655323 calls it an independent predictor of prognosis in KIRC. Associated with infiltrating Treg, Th17 cells and neutrophils. Both are bioinformatic plus limited IHC studies; a lost-expression gene is a poor direct drug target, consistent with the data-only target profile being low.",
+     "statement": "ALDOB is reported downregulated in ccRCC by IHC relative to adjacent normal tissue and called a prognostic biomarker and potential immunotherapy target (PMID:40852386); PMID:38655323 calls it an independent predictor of prognosis in KIRC. It associates with infiltrating Treg, Th17 cells and neutrophils. Evidence is largely bioinformatic plus one IHC cohort. The loss-of-expression direction means it is a biomarker, not a drug target by inhibition.",
      "evidence_ids": [
-      "EV:literature:c73e5613ede3",
       "EV:literature:f834882a57a7",
+      "EV:literature:c73e5613ede3",
       "EV:literature:dd489b3df02e",
       "EV:literature:58d7b6f6e786"
      ]
     },
     {
+     "gene": "COXFA4L2",
+     "role": "target_and_biomarker",
+     "statement": "COXFA4L2 (NDUFA4L2) has the densest mechanistic literature: over 90% of ccRCCs overexpress it (PMID:36722045), hypoxic signaling and HIF-1alpha induce it, it predicts poor survival and supports proliferation (PMID:34970493), increases glycolysis, enhances lipid deposition and Ca9 expression in the TRACK model, and suppresses mitochondria-associated ferroptosis; PMID:42331208 proposes targeting the NDUFA4L2/LDHB axis, particularly with radiotherapy. It is also listed as a marker of low- and high-grade ccRCC in tumour-derived extracellular vesicles (PMID:41656939). Preclinical only.",
+     "evidence_ids": [
+      "EV:literature:ec673e405bc1",
+      "EV:literature:533012368b9c",
+      "EV:literature:1741cd200f2a",
+      "EV:literature:b324d5280bd3",
+      "EV:literature:1f4e8bd4d272"
+     ]
+    },
+    {
+     "gene": "ENO2",
+     "role": "target_and_biomarker",
+     "statement": "PMID:37760940 concludes ENO2 is a potential diagnostic biomarker that independently predicts ccRCC prognosis and promotes progression via the Warburg effect; PMID:39091581 shows ENO2 knockdown inhibits glycolysis, promotes ferroptosis and affects mitochondrial function in ccRCC cells. A separate study reports serum NSE as an independent risk factor for intraocular metastasis in RCC. Evidence is cell-line and database based.",
+     "evidence_ids": [
+      "EV:literature:cfa400884c1b",
+      "EV:literature:26df25eedf25",
+      "EV:literature:3b3e46e581b5",
+      "EV:literature:078ba2a5ff38"
+     ]
+    },
+    {
      "gene": "MT1G",
      "role": "mechanism",
-     "statement": "Contradictory directionality: MT1G is downregulated in ccRCC versus normal kidney (PMID:36204178; PMID:38906969), yet high MT1G correlates with advanced stage and poorer prognosis, and elevated MT1G promoted growth and metastasis in vitro and in vivo. Mechanisms: MT1G inhibits CPT1B via H3K14 trimethylation to enhance lipid droplet accumulation; it is a negative regulator of ferroptosis; SAP30 inhibits MT1G transcription and thus p53 zinc delivery (PMID:40247376). Biomarker use needs care because the tumour-vs-normal and prognostic directions differ.",
+     "statement": "MT1G shows an apparent paradox that the literature itself states. It is downregulated in ccRCC tissue versus normal (PMID:36204178, PMID:38906969), yet high MT1G correlates with advanced stage and poorer prognosis, and elevated MT1G promoted ccRCC growth and metastasis in vitro and in vivo. MT1G inhibits CPT1B via H3K14 trimethylation, increasing lipid droplet accumulation. It is also proposed as a negative regulator of ferroptosis. Direction (low in tumor, high-is-bad) makes it a prognostic marker rather than a straightforward target.",
      "evidence_ids": [
       "EV:literature:01828633a99d",
       "EV:literature:de9d334b7b1c",
       "EV:literature:0a8bb8c4711b",
       "EV:literature:347e445b0c25",
-      "EV:literature:f6c45de2c4dd",
-      "EV:literature:84b4bf458a59"
+      "EV:literature:f6c45de2c4dd"
      ]
     },
     {
      "gene": "ABAT",
      "role": "biomarker",
-     "statement": "ABAT is significantly underexpressed in KIRC among 11 cancers and predicted poor prognosis in KIRC (pan-cancer analysis, PMID:41158242, bioinformatic). Mechanistic work (PMID:41813748) shows ABAT overexpression suppresses tumor growth in vitro and in vivo, mediating cGAS-STING and interacting with PRMT5 to enhance interferon signaling. Tumour-suppressor-like; the tumour type of the functional work is not stated in the returned sentences. Vigabatrin is listed as a drug in the ranking, but no ccRCC therapeutic literature was found.",
+     "statement": "ABAT is reported significantly underexpressed in KIRC among 11 cancers (PMID:41158242), and in that pan-cancer study 'predicted poor prognosis in KIRC'; PMID:41813748 shows ABAT overexpression suppresses tumor growth and that it mediates cGAS-STING and interacts with PRMT5. The statement that ABAT predicts poor prognosis while being tumour-suppressive and low in tumour is internally awkward in the literature and should be checked against the omics survival direction in the ranking row before use.",
      "evidence_ids": [
       "EV:literature:22349683c148",
       "EV:literature:6295ed0b0e37",
@@ -25556,58 +25543,64 @@
      ]
     },
     {
+     "gene": "FCER1G",
+     "role": "biomarker",
+     "statement": "PMID:35120484 reports FCER1G abundantly expressed in ccRCC tumors, positively related to macrophage infiltration, linked to T cell suppression and unfavorable prognosis, with prognostic importance in nivolumab-treated but not everolimus-treated patients; combining FCER1G with CD68 is proposed as a postoperative prognostic index. Single bioinformatic and IHC study. The signal is likely immune-cell derived (stromal), so it is a microenvironment marker rather than a tumour-cell target.",
+     "evidence_ids": [
+      "EV:literature:4acd42679460",
+      "EV:literature:d1d97e1a9042",
+      "EV:literature:f2ede5da8622",
+      "EV:literature:bf184fc9a3bd"
+     ]
+    },
+    {
+     "gene": "PFKP",
+     "role": "biomarker",
+     "statement": "PFKP is highly expressed in kidney cancer especially ccRCC (PMID:34321910) and among the most consistently upregulated genes in a meta-analysis (PMID:36901940), and PMID:40341002 lists it among glycolysis-related genes with diagnostic and prognostic potential. Contradiction: PMID:34321910 also reports that low PFKP expression correlated with poor 5- and 10-year overall survival, i.e. higher expression in tumor but protective, which weakens it as a target.",
+     "evidence_ids": [
+      "EV:literature:2fceed76c9b4",
+      "EV:literature:292de8367805",
+      "EV:literature:a55b9a38e327",
+      "EV:literature:fa5e4add4a84"
+     ]
+    },
+    {
+     "gene": "PLIN2",
+     "role": "biomarker",
+     "statement": "PLIN2 is among the most consistently upregulated genes in ccRCC (PMID:36901940), is associated with prognosis by GEPIA Kaplan-Meier analysis (PMID:35314744), and PMID:34482820 validated PLIN2 with TUBB3, LAMP1 and HK1 by IHC as diagnostic markers for renal neoplasms in a 128-sample tissue microarray. Diagnostic marker evidence only; no therapeutic literature.",
+     "evidence_ids": [
+      "EV:literature:dbfbe45c8391",
+      "EV:literature:821636f02856",
+      "EV:literature:e3ae1997555f"
+     ]
+    },
+    {
      "gene": "SLC22A8",
      "role": "biomarker",
-     "statement": "SLC22A8 protein, phosphorylated protein and DNA methylation levels were lower in ccRCC than normal tissue, low methylation predicted poor overall survival, and it 'can be used as a prognostic biomarker' (PMID:36123895). Single bioinformatic-plus-validation report; omics and TCGA survival are concordant (down in tumour, favourable-with-high-expression).",
+     "statement": "PMID:36123895 reports SLC22A8 protein, phosphoprotein and DNA methylation levels lower in ccRCC than normal tissue, low methylation predicting poor overall survival, and SLC22A8 correlated with survival and immune infiltration and usable as a prognostic biomarker. Single database-driven study; loss-of-expression marker, not a direct target.",
      "evidence_ids": [
       "EV:literature:9266416c15be",
       "EV:literature:a9921428c938"
-     ]
+     ],
+     "note": "bioinformatic"
     },
     {
-     "gene": "UMOD",
-     "role": "biomarker",
-     "statement": "UMOD downregulation in ccRCC is reproduced across independent studies (PMID:36899967 methylation/expression clusters; PMID:37275334 validation; PMID:35795483 in HIV-associated kidney cancer). It is a robust tumour-vs-normal marker of lost nephron differentiation, but no prognostic or therapeutic claim is made, and TCGA Cox is not significant in the ranking.",
-     "evidence_ids": [
-      "EV:literature:48591fee7d17",
-      "EV:literature:690c9ee462f0",
-      "EV:literature:edbfbecae6d9"
-     ]
-    },
-    {
-     "gene": "NPHS2",
+     "gene": "VHL",
      "role": "mechanism",
-     "statement": "PMID:42769428: promoter hypermethylation is associated with NPHS2 downregulation in ccRCC; NPHS2 overexpression suppressed malignant behaviour, attenuated EMT and weakened immune evasion in vitro, and NPHS2 loss may reduce sunitinib sensitivity. Single preprint-like study, in vitro, hypothesis-level.",
+     "statement": "For VHL and EPAS1 (HIF-2alpha) the corpus gives clinical-level context via sentence chunks, though no gene-linked relations: VHL inactivation leads to HIF-2alpha accumulation, and the HIF-2alpha inhibitor belzutifan is described as FDA-approved for VHL-associated disease including advanced ccRCC. This is the only validated clinical targeting in the candidate set and is not captured by the expression-driven top-ranked genes (CA9, CD70, NNMT).",
      "evidence_ids": [
-      "EV:literature:c79545e287b8",
-      "EV:literature:bcbe233db0ed"
-     ]
-    },
-    {
-     "gene": "FABP1",
-     "role": "biomarker",
-     "statement": "The FABP1 literature relations in this corpus concern colorectal and lung adenocarcinoma (PMID:35951102: reduced expression in colorectal cancer; IHC helps identify metastatic colorectal/GI adenocarcinoma to the lung), not ccRCC. The omics/TCGA support for FABP1 in ccRCC is therefore not corroborated by ccRCC-specific literature here.",
-     "evidence_ids": [
-      "EV:literature:1fd9be308744",
-      "EV:literature:39f80ba0f2a4"
-     ]
-    },
-    {
-     "gene": "SCARB1",
-     "role": "target",
-     "statement": "SCARB1 (rank 5, target-profile score highest in the top 12, tumour-up and purity-robust, Open Targets genetic association) and PIGR (rank 6) have no literature relations in the corpus (only Open Targets association records); searches returned only generic ccRCC sentences. These are data-supported candidates with essentially no corpus literature, i.e. potentially novel.",
-     "evidence_ids": [
-      "EV:open_targets_assoc:ee2e17841173"
+      "EV:chunk:726228166de6",
+      "EV:chunk:cc1828348462"
      ]
     }
    ],
    "caveats": [
-    "Only the top 12 of the convergence ranking were examined in detail; ranks 13-40 were not reviewed.",
-    "Most gene-level claims come from single bioinformatic (TCGA-based) or small IHC studies; only CA9 and CD70 have imaging/targeting translational work, and these are early (proof-of-concept, radiotracer, delivery).",
-    "MT1G has an apparent contradiction: downregulated in tumour but high expression associated with poor prognosis and tumour promotion.",
-    "FABP1 literature is not about ccRCC; SCARB1 and PIGR have no literature relations; ABAT functional evidence may derive from non-ccRCC models.",
-    "gene_scores was not queried separately; profile scores were taken from the convergence_ranking rows. Down-regulated genes (ALDOB, SLC22A8, UMOD, FABP1, NPHS2, MT1G, ABAT) score high as biomarkers but low as targets in the data-only profile, so literature 'potential target' claims for them are not supported by the data.",
-    "DepMap dependency is near zero for CA9, so CA9 is a delivery/imaging target (antibody, PET) rather than a functional dependency."
+    "Most literature support for the top-ranked genes is single-study, retrospective or bioinformatic (TCGA/GEPIA); none of the claims here is a prospective validation, and CA9 PET explicitly awaits prospective validation.",
+    "SCARB1, PIGR, SLC12A1, CASR, DPEP1, AQP2, SLC5A2, FGF1, ENPP3, SLC13A3, SLC36A2 and ENPP6 have strong omics or Open Targets support but zero or near-zero literature relations in this corpus (n_literature_relations 0 in the ranking); this is a literature gap, not evidence against them. ENPP3 has an antibody-drug conjugate (AGS-16C3F, phase 2) in the ranking but no corpus sentences.",
+    "Several top-ranked genes are kidney proximal-tubule or loop-of-Henle genes (ALDOB, SLC22A8, UMOD, NPHS2, SLC12A1, AQP2) lost in ccRCC; they are plausible lineage-loss diagnostic markers but poor therapeutic targets, since inhibition cannot restore loss.",
+    "Contradictions in the literature: MT1G (low in tumor yet high expression linked to worse prognosis and growth), PFKP (up in tumor, low expression linked to worse survival), ABAT (underexpressed, tumour-suppressive, yet reported to predict poor prognosis in KIRC).",
+    "gene_scores were not queried per gene; direction and profile statements rely on the convergence_ranking rows only. Literature extraction is by an LLM extractor over a limited abstract set (~320 abstracts), so absence of a relation does not mean absence of published work.",
+    "Immune-derived genes (FCER1G, TYROBP) reflect tumor microenvironment and purity-confounded signal; the literature (PMID:35120484) frames them as immune prognostic markers."
    ]
   },
   "external": {
@@ -25616,12 +25609,13 @@
     {
      "gene": "CA9",
      "role": "target_and_biomarker",
-     "statement": "CA9 is rank 1 in convergence (score 4.5197, 5 streams). TCGA tumour-up log2FC 9.712 (padj 2.58e-30); protein log2FC 2.269. Open Targets score 0.3088. Tractable as antibody, small molecule and PROTAC (AB Advanced Clinical, SM Approved Drug). Drugs as returned: GIRENTUXIMAB PHASE_3, IODINE I 124 GIRENTUXIMAB PHASE_2, SULTHIAME PHASE_4, ETHOXZOLAMIDE WITHDRAWAL. UniProt: cell membrane and microvillus membrane, so it suits antibody/imaging use and is measurable as a tumour marker. DepMap shows no ccRCC dependency (mean effect 0.051, selectivity 0.031), so it is a surface antigen and biomarker rather than an essential gene.",
+     "statement": "Convergence rank 1 (score 4.5197, 5 streams). Open Targets association score 0.3088, rank 79 of 1998. TCGA tumour-vs-normal log2FC 9.712 (padj 2.58e-30); protein log2FC 2.269. UniProt: cell membrane / microvillus membrane (antibody-accessible). Drugs: GIRENTUXIMAB PHASE_3, IODINE I 124 GIRENTUXIMAB PHASE_2, SULTHIAME PHASE_4, ETHOXZOLAMIDE WITHDRAWAL. DepMap: ccRCC mean effect 0.051, 0 of 24 lines dependent, so it is a surface/imaging target and biomarker, not a survival dependency.",
      "evidence_ids": [
       "EV:open_targets_assoc:dcacc6a531bf",
-      "EV:open_targets_tract:225a767ebcb5",
+      "EV:open_targets_drug:e1e0c664ada3",
       "EV:open_targets_drug:646a0aec5b64",
       "EV:open_targets_drug:7ed1f57af7b2",
+      "EV:open_targets_drug:f9761355ae59",
       "EV:uniprot:93360ddb9195",
       "EV:tcga_de:225a767ebcb5"
      ]
@@ -25629,60 +25623,42 @@
     {
      "gene": "CD70",
      "role": "target_and_biomarker",
-     "statement": "CD70 is rank 3 in convergence (score 4.2143). TCGA tumour-up log2FC 7.09 (padj 6.45e-25); protein log2FC 2.421. Open Targets score 0.0572, so the association is mainly literature. Tractability: AB and OC Advanced Clinical. Drugs as returned: CUSATUZUMAB PHASE_2, VORSETUZUMAB MAFODOTIN PHASE_1, VORSETUZUMAB PHASE_1, MDX-1411 PHASE_1. UniProt: cell membrane, so it is accessible to antibodies and ADCs. DepMap selectivity is 0.006 (not a dependency). This is an antigen-type target, not a lineage driver.",
+     "statement": "Convergence rank 3 (score 4.2143). Open Targets association score 0.0572. TCGA log2FC 7.09 (padj 6.45e-25); protein log2FC 2.421. UniProt: cell membrane ligand of CD27. Drugs: CUSATUZUMAB PHASE_2, VORSETUZUMAB PHASE_1, VORSETUZUMAB MAFODOTIN PHASE_1, MDX-1411 PHASE_1. DepMap ccRCC mean effect 0.251, so no intrinsic dependency; it is an antibody/ADC/immune target, tractable but untested clinically in this analysis.",
      "evidence_ids": [
       "EV:open_targets_assoc:255532a611b4",
-      "EV:open_targets_tract:908e84663f6a",
-      "EV:open_targets_drug:0a02c566ec75",
+      "EV:open_targets_drug:fcadbe214e8c",
       "EV:open_targets_drug:289429f80a55",
-      "EV:uniprot:e21e5815e1a4"
+      "EV:open_targets_drug:48624a88569c",
+      "EV:open_targets_drug:0a02c566ec75",
+      "EV:uniprot:e21e5815e1a4",
+      "EV:tcga_de:908e84663f6a"
      ]
     },
     {
-     "gene": "EPAS1",
-     "role": "target",
-     "statement": "EPAS1 (HIF-2alpha) is an established ccRCC drug target. Open Targets score 0.4871 (genetic 0.5677, somatic 0.4559). Drug: BELZUTIFAN, APPROVAL. Tractability is small molecule (SM Approved Drug) plus PROTAC-type. DepMap is the only dependency signal among the top genes: ccRCC mean effect -0.143 versus 0.157 in other lines, selectivity 0.3, 0.208 of ccRCC lines dependent, padj 0.061, not common essential. Convergence rank 38; the tumour-vs-normal expression change is small (TCGA log2FC 0.461), so it is a target but not a differential-expression biomarker.",
+     "gene": "NNMT",
+     "role": "biomarker",
+     "statement": "Convergence rank 7 (score 3.9643). TCGA log2FC 4.685 (padj 5.62e-27); protein log2FC 2.709; Cox log HR 0.301 (padj 0.00479, higher expression linked to worse survival). Open Targets score 0.0598, no drugs listed. DepMap ccRCC mean effect 0.316 (no dependency). Association/prognostic biomarker, weak target case.",
      "evidence_ids": [
-      "EV:open_targets_assoc:61983038a898",
-      "EV:open_targets_drug:199c475802ce",
-      "EV:open_targets_tract:6a657326c9fd",
-      "EV:depmap_dependency:6a657326c9fd"
+      "EV:open_targets_assoc:719ce7782338",
+      "EV:open_targets_tract:7dbf93860d9f",
+      "EV:tcga_de:7dbf93860d9f",
+      "EV:tcga_survival:7dbf93860d9f"
      ]
     },
     {
-     "gene": "ENPP3",
+     "gene": "SCARB1",
      "role": "target_and_biomarker",
-     "statement": "ENPP3 is rank 29 in convergence (score 3.2997). TCGA tumour-up log2FC 5.557 (padj 1.66e-22); protein log2FC 1.544. Open Targets score 0.0356, so the association is weak. Tractability: AB and OC (OC Advanced Clinical). Drug: AGS-16C3F, PHASE_2 (antibody-drug conjugate). UniProt: apical cell membrane and secreted. DepMap selectivity is 0.026, so there is no dependency. An ADC antigen candidate for ccRCC.",
+     "statement": "Convergence rank 5 (score 4.1052); Open Targets association 0.4049 (genetic association component 0.519). TCGA log2FC 3.989 (padj 1.43e-31); protein log2FC 1.837. No drugs in the ranking row; predicted tractability only. DepMap ccRCC mean effect 0.002, selectivity -0.021, so no dependency: tractable-but-untested, weak target case.",
      "evidence_ids": [
-      "EV:open_targets_assoc:9b858f1ca9f1",
-      "EV:open_targets_tract:d5aee88146ed",
-      "EV:open_targets_drug:49872cd86a77",
-      "EV:uniprot:61e515f3c5a3"
-     ]
-    },
-    {
-     "gene": "SLC16A3",
-     "role": "target_and_biomarker",
-     "statement": "SLC16A3 (MCT4) is rank 15 in convergence (score 3.5532). TCGA tumour-up log2FC 3.291 (padj 7.66e-28); protein log2FC 2.279. Open Targets score 0.0491. Predicted tractable but no drug is listed. UniProt: lactate efflux transporter of the cell membrane, basolateral. No DepMap dependency (selectivity -0.008), so the target case is weak despite the glycolytic-phenotype rationale.",
-     "evidence_ids": [
-      "EV:open_targets_assoc:ff9e96b08fbf",
-      "EV:open_targets_tract:11298113327b",
-      "EV:uniprot:4c6de5780cc4"
-     ]
-    },
-    {
-     "gene": "VHL",
-     "role": "mechanism",
-     "statement": "VHL is the ccRCC driver. Mutated in 247 of 511 tumours (frequency 0.483, padj 0.0, recurrent). Open Targets score 0.6466 (top association), somatic 0.814. Convergence rank 16 (score 3.5434), with 0.791 CNV-loss frequency. No drug is returned and it is a tumour suppressor, so it is not directly druggable. It is a mechanism and context gene; loss of VHL stabilises HIF-2alpha (EPAS1).",
-     "evidence_ids": [
-      "EV:open_targets_assoc:730901c424b4",
-      "EV:somatic_recurrence:52e5aeb6c197"
+      "EV:open_targets_assoc:ee2e17841173",
+      "EV:open_targets_tract:2d66f8e78d0c",
+      "EV:tcga_de:2d66f8e78d0c"
      ]
     },
     {
      "gene": "ALDOB",
      "role": "biomarker",
-     "statement": "ALDOB is rank 2 in convergence (score 4.2206), a tumour-down biomarker. TCGA log2FC -4.741 (padj 6.57e-11); protein log2FC -2.273. Cox log HR -0.358 (padj 0.000023), so higher expression is associated with better survival. Open Targets score 0.0701. No drugs. Proximal-tubule loss marker with prognostic value, not a target.",
+     "statement": "Convergence rank 2 (score 4.2206). Down in tumour: TCGA log2FC -4.741 (padj 6.57e-11); protein log2FC -2.273. Cox log HR -0.358 (padj 0.000023), higher expression associated with better survival. Open Targets score 0.0701; no drugs. DepMap mean effect 0.156, so a loss-type biomarker rather than target.",
      "evidence_ids": [
       "EV:open_targets_assoc:7d82917bd537",
       "EV:tcga_de:a46f337f2987",
@@ -25690,41 +25666,61 @@
      ]
     },
     {
-     "gene": "SCARB1",
-     "role": "target_and_biomarker",
-     "statement": "SCARB1 is rank 5 in convergence (score 4.1052) and has the top target-profile score (4.1314) among these candidates. Open Targets score 0.4049 (genetic 0.519). TCGA tumour-up log2FC 3.989 (padj 1.43e-31); protein log2FC 1.837. Predicted tractable; no drug listed. DepMap selectivity is -0.021, so there is no dependency. Association is mostly genetic rather than direct ccRCC clinical evidence.",
-     "evidence_ids": [
-      "EV:open_targets_assoc:ee2e17841173",
-      "EV:open_targets_tract:2d66f8e78d0c"
-     ]
-    },
-    {
-     "gene": "NNMT",
-     "role": "biomarker",
-     "statement": "NNMT is rank 7 in convergence (score 3.9643) and has the best biomarker-profile score here (4.7744). TCGA tumour-up log2FC 4.685 (padj 5.62e-27); protein log2FC 2.709. Cox log HR 0.301 (padj 0.00479), so higher expression is associated with worse survival. Open Targets score 0.0598. No drug listed. DepMap mean effect 0.316 (not a dependency).",
-     "evidence_ids": [
-      "EV:open_targets_assoc:719ce7782338",
-      "EV:tcga_survival:7dbf93860d9f",
-      "EV:open_targets_tract:7dbf93860d9f"
-     ]
-    },
-    {
      "gene": "SLC22A8",
      "role": "biomarker",
-     "statement": "SLC22A8 (OAT3) is rank 4 in convergence (score 4.1667), a tumour-down transporter. TCGA log2FC -6.154 (padj 5.42e-13); protein log2FC -2.264. Cox log HR -0.402 (padj 0.0000433). Open Targets score 0.0662. Existing drugs for the family: PROBENECID PHASE_4, PRATOSARTAN PHASE_3. This is a loss biomarker; the drugs inhibit the transporter and are not useful for ccRCC, so it is not a therapeutic target.",
+     "statement": "Convergence rank 4 (score 4.1667). Down in tumour: TCGA log2FC -6.154 (padj 5.42e-13); protein log2FC -2.264. Cox log HR -0.402. Drugs: PROBENECID PHASE_4, PRATOSARTAN PHASE_3 (transporter substrates/inhibitors, not tumour-directed). Open Targets score 0.0662. DepMap mean effect -0.019: no dependency. Proximal-tubule loss marker.",
      "evidence_ids": [
       "EV:open_targets_assoc:b2aea712fd45",
+      "EV:tcga_de:de6aa3b720b1",
       "EV:open_targets_drug:31dfa11d1505",
-      "EV:tcga_survival:de6aa3b720b1"
+      "EV:open_targets_drug:c5aeb8a46f99"
+     ]
+    },
+    {
+     "gene": "EPAS1",
+     "role": "target",
+     "statement": "Established ccRCC target (HIF-2alpha). Open Targets association score 0.4871. Drug: BELZUTIFAN APPROVAL. Tractability: SM approved drug, high-quality ligand. Reactome: Regulation of gene expression by Hypoxia-inducible Factor. DepMap: ccRCC mean effect -0.143 vs other 0.157, selectivity 0.3, 0.208 of 24 lines dependent, padj 0.061, not common essential: selective but partial dependency.",
+     "evidence_ids": [
+      "EV:open_targets_assoc:61983038a898",
+      "EV:open_targets_drug:199c475802ce",
+      "EV:depmap_dependency:6a657326c9fd"
+     ]
+    },
+    {
+     "gene": "MTOR",
+     "role": "target",
+     "statement": "Established ccRCC target. Open Targets association score 0.525. Drug stages include RIDAFOROLIMUS APPROVAL. DepMap: ccRCC mean effect -1.52, all 24 lines dependent (fraction 1.0) but common_essential true, selectivity 0.354: strong dependency with toxicity risk.",
+     "evidence_ids": [
+      "EV:open_targets_assoc:900f88933f86",
+      "EV:open_targets_drug:47a49b68dd99",
+      "EV:depmap_dependency:95bc7fa85685"
+     ]
+    },
+    {
+     "gene": "PBRM1",
+     "role": "mechanism",
+     "statement": "Top-2 Open Targets ccRCC association (score 0.6348). Recurrent driver: mutated in 185 of 511 tumours (freq 0.362), obs/exp 43.498, padj 4.59e-239. Association and driver only; no direct drug, loss-of-function context (synthetic-lethal opportunities).",
+     "evidence_ids": [
+      "EV:open_targets_assoc:a61ad112b8ec",
+      "EV:somatic_recurrence:07b6205e67e5"
+     ]
+    },
+    {
+     "gene": "VHL",
+     "role": "mechanism",
+     "statement": "Top Open Targets ccRCC association (score 0.6466). Mutated in 247 of 511 tumours (freq 0.483), padj 0.0; the founding driver whose loss stabilises HIF-2alpha (EPAS1), linking to belzutifan.",
+     "evidence_ids": [
+      "EV:open_targets_assoc:730901c424b4",
+      "EV:somatic_recurrence:52e5aeb6c197"
      ]
     }
    ],
    "caveats": [
-    "Only CA9, SLC16A3, EPAS1 and VHL were checked directly with DepMap and mutation recurrence; for the other genes the DepMap values quoted come from the convergence ranking row. CA9 and SLC16A3 DepMap records returned evidence_id null and were not cited.",
-    "No candidate other than EPAS1 shows selective ccRCC dependency (DepMap), so antigen targets (CA9, CD70, ENPP3) rest on tumour-restricted surface expression and ADC/antibody rationale, not on gene essentiality.",
-    "Open Targets scores for most convergence-top genes are low (literature-driven); high Open Targets scores belong to driver genes (VHL, PBRM1, KDM5C, BAP1, SETD2) that are mostly not druggable.",
-    "STRING interactions were not queried; subcellular locations are from UniProt only for CA9, CD70, ENPP3 and SLC16A3.",
-    "Many top-ranked biomarkers are tumour-down proximal-tubule genes (ALDOB, SLC22A8, UMOD) that may reflect normal-tissue contamination or lineage loss."
+    "Only genes in the first 12 ranks of convergence_ranking were inspected plus established targets; larger ranking slice exceeded output limits.",
+    "DepMap for CA9 and KDR returned null evidence ids; their dependency numbers are quoted from the ranking row where possible.",
+    "Drug stage for KDR/MTOR lists include non-selective multi-kinase agents; indication in ccRCC not confirmed by Open Targets.",
+    "Open Targets association ranks are disease-wide literature/genetics and not independent of the convergence literature stream.",
+    "STRING interactions were not queried."
    ]
   },
   "cells": {
@@ -25733,349 +25729,7 @@
     {
      "gene": "CA9",
      "role": "target_and_biomarker",
-     "statement": "CA9 is tumor-cell intrinsic: RCC cells hold 0.976 of tumor transcripts (54.7% of RCC cells express it) and the pure-tumour RNA log2FC extrapolated to purity 1 is 7.787, so the bulk signal (log2FC 6.312) is not stromal.",
-     "evidence_ids": [
-      "EV:sc_summary:225a767ebcb5",
-      "EV:sc_expr:35b84fee998f",
-      "EV:purity:225a767ebcb5",
-      "EV:omics_de:b269736afdb0"
-     ]
-    },
-    {
-     "gene": "CA9",
-     "role": "biomarker",
-     "statement": "In paired tumor cell vs proximal tubule pseudobulk CA9 has log2FC 7.739 (padj 0.0189, 6 donors), and TCGA-KIRC replicates it (log2FC 9.712), supporting a tumor-vs-cell-of-origin biomarker.",
-     "evidence_ids": [
-      "EV:sc_tvp:225a767ebcb5",
-      "EV:tcga_de:225a767ebcb5"
-     ]
-    },
-    {
-     "gene": "CA9",
-     "role": "mechanism",
-     "statement": "In Visium, CA9 expression is assigned to RCC spots (composition-corrected share 0.999) and high spots are enriched for RCC neighbours (log2 enrichment 0.381, padj 0.0017), i.e. a tumor-cell niche.",
-     "evidence_ids": [
-      "EV:spatial_summary:225a767ebcb5",
-      "EV:spatial_nb:35b84fee998f"
-     ]
-    },
-    {
-     "gene": "CA9",
-     "role": "target",
-     "statement": "CA9 best MGD site score is 0.546 (pocket 126.8 A3, pLDDT 90.3, 1 accessible lysine, model mean pLDDT 76.56); ligand-site recall is 0.5 but only 0.221 within top pockets. This ranks a site, not a glue; the pocket is small and likely the catalytic zinc site.",
-     "evidence_ids": [
-      "EV:mgd_site:cacfae1940f6",
-      "EV:ligand_sites:93360ddb9195",
-      "EV:alphafold:6b2a466ed88e"
-     ]
-    },
-    {
-     "gene": "CD70",
-     "role": "target",
-     "statement": "CD70 is up in ccRCC (TCGA log2FC 7.09) and survives purity extrapolation (RNA log2FC at purity 1 of 4.278), consistent with tumor-intrinsic expression; clinical-stage antibodies exist (vorsetuzumab, cusatuzumab, up to phase 2). Single-cell shows some T/B-cell expression, so an off-tumor immune caveat applies.",
-     "evidence_ids": [
-      "EV:tcga_de:908e84663f6a",
-      "EV:purity:908e84663f6a",
-      "EV:omics_de:97c97f6d7d62"
-     ]
-    },
-    {
-     "gene": "NNMT",
-     "role": "target_and_biomarker",
-     "statement": "NNMT is tumor-cell intrinsic: the RNA log2FC at purity 1 is 5.256 (bulk RNA log2FC 4.67, protein 2.709) and TCGA log2FC is 4.685, with adverse prognosis (Cox log HR 0.301); no clinical drug is listed.",
-     "evidence_ids": [
-      "EV:omics_de:aefc373d6072",
-      "EV:purity:7dbf93860d9f",
-      "EV:tcga_de:7dbf93860d9f",
-      "EV:tcga_survival:7dbf93860d9f"
-     ]
-    },
-    {
-     "gene": "KDR",
-     "role": "microenvironment",
-     "statement": "KDR is an endothelial gene, not a tumor-cell target: endothelium holds 0.951 of tumor transcripts (40.5% of endothelial cells express it) and Visium shows endothelial composition-corrected share 0.99 versus 0.002 for RCC.",
-     "evidence_ids": [
-      "EV:sc_summary:fd47891e1c7f",
-      "EV:spatial_summary:fd47891e1c7f"
-     ]
-    },
-    {
-     "gene": "CD74",
-     "role": "microenvironment",
-     "statement": "CD74 transcripts are immune: macrophages hold 0.436 and CD8 T cells 0.345 of tumor transcripts (cDC 0.114), and Visium assigns a composition-corrected share of 0.637 to macrophages, so the bulk signal is infiltrating immune cells, not tumor cells.",
-     "evidence_ids": [
-      "EV:sc_summary:ee059aa145d0",
-      "EV:spatial_summary:ee059aa145d0"
-     ]
-    },
-    {
-     "gene": "CXCR4",
-     "role": "microenvironment",
-     "statement": "CXCR4 is expressed by lymphocytes: CD8 T cells hold 0.563 of tumor transcripts and CD4 T cells have the highest expressing fraction (87.8%), so it is an immune microenvironment target.",
-     "evidence_ids": [
-      "EV:sc_summary:a804b568bd15"
-     ]
-    },
-    {
-     "gene": "MET",
-     "role": "target",
-     "statement": "MET is mostly tumor-cell expressed: RCC cells hold 0.935 of tumor transcripts but only 35.2% of RCC cells express it (cpm_share 0.682); endothelium has 12% expressing cells.",
-     "evidence_ids": [
-      "EV:sc_summary:8314520758de",
-      "EV:sc_expr:114c287fd103"
-     ]
-    },
-    {
-     "gene": "EPAS1",
-     "role": "mechanism",
-     "statement": "EPAS1 transcripts in tumor are mostly non-tumor: endothelium holds 0.365 and fibroblasts 0.081 of transcripts, RCC cells only 0.051 (4.9% expressing), so EPAS1 is not a clean tumor-cell expression marker in this dataset.",
-     "evidence_ids": [
-      "EV:sc_summary:6a657326c9fd",
-      "EV:sc_expr:ffb74b11de1d"
-     ]
-    },
-    {
-     "gene": "COL23A1",
-     "role": "discovery",
-     "statement": "COL23A1 is the top tumor-track first-in-class candidate: RCC cells hold 0.881 of tumor transcripts, 7 ccRCC papers, no clinical drug, AB/PR tractable, surface/secreted, max vital-organ nTPM 3 (heart muscle), TCGA log2FC 5.829, log2FC at purity 1 of 4.88. Hypothesis only: no dependency evidence (DepMap mean effect 0.167, not selective); literature counted by gene symbol. AlphaFold model is poor (mean pLDDT 58.91; best MGD site 0.2342, 8.0 A3), so not a glue candidate.",
-     "evidence_ids": [
-      "EV:discovery:e1532aa1b09c",
-      "EV:tcga_de:e1532aa1b09c",
-      "EV:purity:e1532aa1b09c",
-      "EV:mgd_site:3a4161457d4f",
-      "EV:alphafold:4f8072787076"
-     ]
-    },
-    {
-     "gene": "RAB42",
-     "role": "discovery",
-     "statement": "RAB42 is a second tumor-track candidate: RCC cells hold 0.627 of tumor transcripts, 2 ccRCC papers (20 total), no clinical drug, TCGA log2FC 4.371 and log2FC at purity 1 of 3.189; vital-organ max 2.6 nTPM (lung). Best MGD site is 0.5348 (37.4 A3, 3 accessible lysines, model pLDDT 85.31) with no ligand-site validation. Hypothesis; no functional or dependency evidence.",
-     "evidence_ids": [
-      "EV:discovery:f53feb0aa597",
-      "EV:tcga_de:f53feb0aa597",
-      "EV:purity:f53feb0aa597",
-      "EV:mgd_site:99d1b16599f0",
-      "EV:alphafold:c7726f37155e"
-     ]
-    },
-    {
-     "gene": "OLFML2A",
-     "role": "discovery",
-     "statement": "OLFML2A is a stroma-track candidate carried by fibroblasts (0.647 of tumor transcripts), 2 ccRCC papers, no clinical drug, antibody-tractable; TCGA log2FC 2.372, log2FC at purity 1 of 1.527. Vital-organ max 27.9 nTPM (colon) is an off-tumor caveat, and it targets the microenvironment rather than tumor cells. Hypothesis only.",
-     "evidence_ids": [
-      "EV:discovery:eb3ffaa04212",
-      "EV:tcga_de:eb3ffaa04212",
-      "EV:purity:eb3ffaa04212"
-     ]
-    },
-    {
-     "gene": "JAG2",
-     "role": "discovery",
-     "statement": "JAG2 is an endothelial stroma-track candidate (0.487 of tumor transcripts), 9 ccRCC papers, no clinical drug, antibody-tractable; TCGA log2FC 1.549, log2FC at purity 1 of 1.061, TCGA survival layer present; vital-organ max 12.7 nTPM (heart muscle). Hypothesis; DepMap mean effect 0.204, not a selective dependency.",
-     "evidence_ids": [
-      "EV:discovery:85b9825a2b63",
-      "EV:tcga_de:85b9825a2b63",
-      "EV:purity:85b9825a2b63",
-      "EV:tcga_survival:85b9825a2b63"
-     ]
-    },
-    {
-     "gene": "SLC37A2",
-     "role": "discovery",
-     "statement": "SLC37A2 is a macrophage immune-track candidate (0.886 of tumor transcripts), 2 ccRCC papers, no clinical drug, AB/PR tractable; TCGA log2FC 3.093 and log2FC at purity 1 of 0.619 (purity robust). Best MGD site 0.7403 (228.1 A3, depth 11.79, 4 accessible lysines, model pLDDT 83.94), ligand-site recall 1.0 from a single ligand. Immune-cell target; hypothesis only.",
-     "evidence_ids": [
-      "EV:discovery:cdf9c58accd5",
-      "EV:tcga_de:cdf9c58accd5",
-      "EV:purity:cdf9c58accd5",
-      "EV:mgd_site:5e10ec281010",
-      "EV:ligand_sites:bf1662e326e4",
-      "EV:alphafold:66b9247fa94d"
-     ]
-    },
-    {
-     "gene": "LILRB4",
-     "role": "discovery",
-     "statement": "LILRB4 is flagged infiltration-driven: macrophages hold 0.933 of tumor transcripts, TCGA log2FC 3.7 but log2FC at purity 1 only 0.508 (not purity-robust), so its bulk up-regulation reflects immune infiltration rather than tumor-cell expression.",
-     "evidence_ids": [
-      "EV:discovery:3c9bb849285e",
-      "EV:tcga_de:3c9bb849285e",
-      "EV:purity:3c9bb849285e"
-     ]
-    }
-   ],
-   "caveats": [
-    "Discovery candidates are data-ranked hypotheses: concordant tumor-up expression does not show functional requirement; literature counts are by gene symbol; DepMap shows no selective dependency for the quoted genes.",
-    "MGD scores rank pockets only and do not imply a glue exists; several pockets are small (<130 A3) or have low-confidence models, and ligand-site recall from few ligands is weak evidence.",
-    "CD70 and NNMT single-cell and tumor-vs-PT values returned without evidence ids, so they are not quoted; their tumor-intrinsic claim rests on purity-extrapolated bulk data. Convergence top ranks ALDOB, SLC22A8, PIGR, UMOD, FABP1 are down in tumor (normal-tubule markers) and were not profiled at single-cell level.",
-    "EGFR was not profiled within the tool budget; tumour-cell scRNA has only one PT donor (39 cells) in some comparisons."
-   ]
-  }
- },
- "narrative": {
-  "summary": [
-   {
-    "gene": "CA9",
-    "text": "CA9 is the candidate with the strongest and most robust convergent evidence. It leads the overall convergence ranking (score 4.5197) and is the only gene that stays in the overall top ten under random re-weighting (p_top10 0.894). It is up in tumour at RNA (log2FC 6.312) and protein (log2FC 2.269), replicates in TCGA-KIRC (log2FC 9.712), survives extrapolation to a pure tumour (RNA log2FC at purity 1 of 7.787), and single-cell data place 0.976 of its tumour transcripts in RCC cells. Girentuximab reached PHASE_3. DepMap shows no dependency (mean effect 0.051), so CA9 is an antibody, imaging and diagnostic target rather than an essential gene.",
-    "evidence_ids": [
-     "EV:omics_de:b269736afdb0",
-     "EV:omics_de:5afe18b4024b",
-     "EV:tcga_de:225a767ebcb5",
-     "EV:purity:225a767ebcb5",
-     "EV:sc_summary:225a767ebcb5",
-     "EV:open_targets_drug:e1e0c664ada3"
-    ]
-   },
-   {
-    "text": "A second tier of tumour-up candidates is protein-confirmed, replicated in TCGA-KIRC and purity-robust: SCARB1 (top of the target profile), CD70, NNMT, SLC16A3 (MCT4) and ENPP3. CD70 and ENPP3 already have antibody or ADC programmes. NNMT adds adverse prognosis and supportive ccRCC literature. SCARB1 has no ccRCC literature relations in the corpus, which makes it the most novel of the group. None of these genes is a selective DepMap dependency, so the target calls rest on tumour-restricted expression and tractability, not on essentiality.",
-    "evidence_ids": [
-     "EV:omics_de:36b227bd1fb6",
-     "EV:omics_de:97c97f6d7d62",
-     "EV:omics_de:aefc373d6072",
-     "EV:omics_de:545c6eb28bce",
-     "EV:omics_de:d540450c23e1",
-     "EV:open_targets_drug:fcadbe214e8c",
-     "EV:open_targets_drug:49872cd86a77",
-     "EV:literature:111b19cdfe29",
-     "EV:open_targets_assoc:ee2e17841173"
-    ]
-   },
-   {
-    "text": "The biomarker profile is led by genes lost with proximal-tubule identity: PSAT1, PCK1, ALDH6A1, SLC6A19 and PPP1R1A, together with ALDOB and SLC22A8 in the overall ranking. They are down in tumour at RNA and protein, replicate in TCGA-KIRC and carry significant TCGA survival associations. They are diagnostic and prognostic candidates, not therapeutic targets.",
-    "evidence_ids": [
-     "EV:omics_de:fe09b800ea76",
-     "EV:omics_de:85b979e6e19a",
-     "EV:omics_de:1c73c0e9eeb3",
-     "EV:omics_de:a685c4c3e10e",
-     "EV:omics_de:7a907fa55dbb",
-     "EV:tcga_de:a46f337f2987",
-     "EV:tcga_survival:de6aa3b720b1"
-    ]
-   },
-   {
-    "text": "The clinically validated ccRCC axes appear as context, not as data-led discoveries. VHL is the dominant somatic driver, EPAS1 (belzutifan, approved) is the only candidate with ccRCC-selective DepMap dependency, and KDR is an endothelial angiogenesis target. Discovery candidates (COL23A1 and RAB42 in tumour, OLFML2A and JAG2 in stroma, SLC37A2 and LILRB4 in the immune track) are data-ranked hypotheses without dependency evidence.",
-    "evidence_ids": [
-     "EV:somatic_recurrence:52e5aeb6c197",
-     "EV:depmap_dependency:6a657326c9fd",
-     "EV:open_targets_drug:199c475802ce",
-     "EV:sc_summary:fd47891e1c7f",
-     "EV:discovery:e1532aa1b09c",
-     "EV:discovery:f53feb0aa597",
-     "EV:discovery:eb3ffaa04212",
-     "EV:discovery:85b9825a2b63",
-     "EV:discovery:cdf9c58accd5",
-     "EV:discovery:3c9bb849285e"
-    ]
-   }
-  ],
-  "sections": {
-   "omics": [
-    {
-     "gene": "CA9",
-     "text": "In CPTAC tumour-vs-normal data CA9 is the clearest up-regulated candidate: RNA log2FC 6.312 and protein log2FC 2.269, with a modest positive copy-number cis effect (rho 0.224).",
-     "evidence_ids": [
-      "EV:omics_de:b269736afdb0",
-      "EV:omics_de:5afe18b4024b",
-      "EV:cis_dosage:225a767ebcb5"
-     ]
-    },
-    {
-     "text": "Other tumour-up genes with protein confirmation are SCARB1 (RNA log2FC 2.974, protein 1.837), CD70 (RNA 4.464, protein 2.421), NNMT (RNA 4.67, protein 2.709), SLC16A3 (RNA 3.435, protein 2.279) and ENPP3 (RNA 3.895, protein 1.544).",
-     "evidence_ids": [
-      "EV:omics_de:36b227bd1fb6",
-      "EV:omics_de:cd4a629b011f",
-      "EV:omics_de:97c97f6d7d62",
-      "EV:omics_de:8a1dc0572ead",
-      "EV:omics_de:aefc373d6072",
-      "EV:omics_de:de39cc0c5ed8",
-      "EV:omics_de:545c6eb28bce",
-      "EV:omics_de:d93a2cc11342",
-      "EV:omics_de:d540450c23e1",
-      "EV:omics_de:fad29d44ef95"
-     ]
-    },
-    {
-     "gene": "FABP6",
-     "text": "FABP6 is up at RNA (log2FC 4.006) and protein (log2FC 1.921), and its copy number is gained in 0.573 of tumours with a cis effect of rho 0.309, a plausible dosage contribution.",
-     "evidence_ids": [
-      "EV:omics_de:0ea3d10905b2",
-      "EV:omics_de:12f11b6896c3",
-      "EV:omics_cnv:52f5e4eeb4a8",
-      "EV:cis_dosage:52f5e4eeb4a8"
-     ]
-    },
-    {
-     "gene": "ALDH6A1",
-     "text": "On the loss side, ALDH6A1 is down at RNA (log2FC -3.399) and protein (log2FC -1.925), with CNV loss frequency 0.355 and a positive cis effect (rho 0.525), consistent with a copy-loss dosage effect.",
-     "evidence_ids": [
-      "EV:omics_de:1c73c0e9eeb3",
-      "EV:omics_de:7ad12e0f6863",
-      "EV:omics_cnv:df75d3108dd0",
-      "EV:cis_dosage:df75d3108dd0"
-     ]
-    }
-   ],
-   "literature": [
-    {
-     "text": "Literature support is concentrated on CA9, CD70 and NNMT. CA9-targeted PET is described as proof-of-concept warranting prospective validation. CD70 is reported as overexpressed in RCC with minimal normal-tissue expression, as a downstream HIF target, and as the subject of 68Ga-labelled single-domain-antibody tracers. NNMT is described as a prognostic biomarker and potential therapeutic target, and selective tool inhibitors exist in a non-ccRCC chemistry paper.",
-     "evidence_ids": [
-      "EV:literature:534430b0156d",
-      "EV:literature:7f2628a50d15",
-      "EV:literature:92dc16d8b33c",
-      "EV:literature:012242579349",
-      "EV:literature:111b19cdfe29",
-      "EV:literature:8945a590eaca"
-     ]
-    },
-    {
-     "text": "Biomarker literature for the down-regulated genes (ALDOB, SLC22A8, UMOD, ABAT) rests mostly on single bioinformatic or IHC studies. UMOD loss is the most reproduced across independent studies. The corpus has a contradiction for MT1G, which is low in tumour yet linked to poor prognosis when high. FABP1 relations concern colorectal and lung cancer rather than ccRCC, and SCARB1 has no extracted ccRCC literature relations despite strong data support.",
-     "evidence_ids": [
-      "EV:literature:c73e5613ede3",
-      "EV:literature:9266416c15be",
-      "EV:literature:48591fee7d17",
-      "EV:literature:690c9ee462f0",
-      "EV:literature:22349683c148",
-      "EV:literature:01828633a99d",
-      "EV:literature:1fd9be308744",
-      "EV:open_targets_assoc:ee2e17841173"
-     ]
-    }
-   ],
-   "external": [
-    {
-     "text": "Open Targets drug records separate candidates with clinical programmes from untested ones. CA9 (girentuximab, PHASE_3), CD70 (cusatuzumab, PHASE_2) and ENPP3 (AGS-16C3F, PHASE_2) are membrane proteins accessible to antibodies or ADCs. NNMT, SCARB1 and SLC16A3 have predicted tractability only and no drugs listed.",
-     "evidence_ids": [
-      "EV:open_targets_drug:e1e0c664ada3",
-      "EV:uniprot:93360ddb9195",
-      "EV:open_targets_drug:0a02c566ec75",
-      "EV:uniprot:e21e5815e1a4",
-      "EV:open_targets_drug:49872cd86a77",
-      "EV:uniprot:61e515f3c5a3",
-      "EV:open_targets_tract:7dbf93860d9f",
-      "EV:open_targets_tract:2d66f8e78d0c",
-      "EV:open_targets_tract:11298113327b"
-     ]
-    },
-    {
-     "gene": "EPAS1",
-     "text": "EPAS1 (HIF-2alpha) is the established ccRCC target with belzutifan approved. DepMap shows a selective but partial dependency (selectivity 0.3, fraction of ccRCC lines dependent 0.208, padj 0.061), and it is not common essential.",
-     "evidence_ids": [
-      "EV:open_targets_drug:199c475802ce",
-      "EV:depmap_dependency:6a657326c9fd"
-     ]
-    },
-    {
-     "gene": "VHL",
-     "text": "VHL is the core driver, mutated in 247 of 511 tumours (frequency 0.483). It has no drug of its own, so the therapeutic route runs through HIF-2alpha downstream.",
-     "evidence_ids": [
-      "EV:somatic_recurrence:52e5aeb6c197",
-      "EV:open_targets_assoc:730901c424b4"
-     ]
-    }
-   ],
-   "cells": [
-    {
-     "gene": "CA9",
-     "text": "CA9 is tumour-cell intrinsic: RCC cells hold 0.976 of its tumour transcripts (54.7% of RCC cells express it), and tumour cells versus proximal tubule give log2FC 7.739 (padj 0.0189).",
+     "statement": "CA9 ranks 1 in the convergence ranking (score 4.5197). In tumor, RCC cells hold 0.976 of tissue transcripts, with 54.7% of RCC cells expressing it and a cpm_share of 0.958; tumor-cell vs proximal-tubule pseudobulk log2FC is 7.739 (padj 0.0189, 6 donors). The bulk signal is tumor-intrinsic.",
      "evidence_ids": [
       "EV:sc_summary:225a767ebcb5",
       "EV:sc_expr:35b84fee998f",
@@ -26083,39 +25737,27 @@
      ]
     },
     {
-     "text": "Several clinical candidates are microenvironmental rather than tumour-intrinsic. KDR is endothelial (0.951 of transcripts), CD74 is carried mainly by macrophages (0.436), and CXCR4 by CD8 T cells (0.563). EPAS1 transcripts in this scRNA-seq dataset are mostly endothelial (0.365) rather than RCC (0.051). By contrast MET is mainly tumour-cell (0.935). CD70 and NNMT single-cell records carried no evidence ids, so their cell-level split is not quoted; their purity-1 log2FC values support tumour-intrinsic expression, and CD70 has some T/B-cell expression, an off-tumour caveat.",
+     "gene": "CA9",
+     "role": "biomarker",
+     "statement": "The CA9 bulk signal survives extrapolation to purity 1 (rna_lfc_at_purity1 7.787, se 0.579; TCGA log2FC 9.712, padj 2.58e-30), so it is not infiltration. No prognostic signal (TCGA Cox log HR -0.009, padj 0.933).",
      "evidence_ids": [
-      "EV:sc_summary:fd47891e1c7f",
-      "EV:sc_summary:ee059aa145d0",
-      "EV:sc_summary:a804b568bd15",
-      "EV:sc_summary:6a657326c9fd",
-      "EV:sc_summary:8314520758de",
-      "EV:purity:908e84663f6a",
-      "EV:purity:7dbf93860d9f"
+      "EV:purity:225a767ebcb5",
+      "EV:tcga_de:225a767ebcb5"
      ]
-    }
-   ],
-   "spatial": [
+    },
     {
      "gene": "CA9",
-     "text": "In Visium sections, CA9 expression is assigned to RCC spots (composition-corrected share 0.999), and high-CA9 spots are enriched for RCC neighbours (log2 enrichment 0.381, padj 0.0017). CA9 therefore marks tumour-cell-rich niches.",
+     "role": "mechanism",
+     "statement": "In Visium, CA9 expression is attributed to RCC (composition-corrected share 0.999). Neighbors of high-CA9 spots are enriched in RCC (log2 enrichment 0.381, padj 0.0017) and macrophages (log2 enrichment 0.099, padj 0.0017), so the tumor-cell niche is mostly tumor-on-tumor with some macrophage contact.",
      "evidence_ids": [
       "EV:spatial_summary:225a767ebcb5",
       "EV:spatial_nb:35b84fee998f"
      ]
     },
     {
-     "text": "The microenvironment genes look the same in situ. KDR spots are explained by endothelium (composition-corrected share 0.99, RCC 0.002), and CD74 spots mostly by macrophages (0.637), so their bulk signals come from vessels and immune infiltrate, not tumour cells.",
-     "evidence_ids": [
-      "EV:spatial_summary:fd47891e1c7f",
-      "EV:spatial_summary:ee059aa145d0"
-     ]
-    }
-   ],
-   "structure": [
-    {
      "gene": "CA9",
-     "text": "Molecular-glue-degrader scores rank candidate sites; they are not evidence that a degrader exists. CA9's best site scores 0.546 (volume 126.8 A3, pocket pLDDT 90.3, one accessible lysine), with ligand-site recall 0.5. The pocket is small and probably the catalytic zinc site, a modest site for a protein already addressed by antibodies.",
+     "role": "target",
+     "statement": "The best CA9 site for a molecular glue degrader (MGD) scores 0.546 (pocket volume 126.8 A3, pocket pLDDT 90.3, 1 accessible lysine); the model mean pLDDT is 76.56. Ligand-site recall is 0.5 overall but 0.221 in the top pockets, so this is a modest, small-pocket site. This is a site score only, not evidence that a glue exists or would work.",
      "evidence_ids": [
       "EV:mgd_site:cacfae1940f6",
       "EV:alphafold:6b2a466ed88e",
@@ -26123,35 +25765,82 @@
      ]
     },
     {
-     "gene": "SLC37A2",
-     "text": "Among discovery candidates, SLC37A2 has the highest-ranked site (score 0.7403, volume 228.1 A3, 4 accessible lysines, model pLDDT 83.94), with ligand-site recall 1.0 from a single ligand, which is weak support. SLC37A2 is a macrophage protein, so a degrader there would act on immune cells, not tumour cells.",
+     "gene": "KDR",
+     "role": "microenvironment",
+     "statement": "KDR is carried by endothelium: 0.951 of tissue transcripts, 40.5% of endothelial cells expressing, cpm_share 0.979. It is a microenvironment (vascular) target, not a tumor-cell target. In Visium its expression is explained by endothelial spots (composition-corrected share 0.99).",
      "evidence_ids": [
-      "EV:mgd_site:5e10ec281010",
-      "EV:ligand_sites:bf1662e326e4",
-      "EV:alphafold:66b9247fa94d"
+      "EV:sc_summary:fd47891e1c7f",
+      "EV:sc_expr:801fa5377cb7",
+      "EV:spatial_summary:fd47891e1c7f"
      ]
     },
     {
-     "gene": "RAB42",
-     "text": "RAB42, a tumour-track candidate, has the next-best site (score 0.5348, mean pLDDT 85.31, 3 accessible lysines), but the pocket is small (37.4 A3) and lacks ligand validation.",
+     "gene": "KDR",
+     "role": "target",
+     "statement": "KDR has the second-highest MGD site score in the candidate ranking (0.841; pocket volume 361.1 A3, pocket pLDDT 83.1, 7 accessible lysines). Caveats: model mean pLDDT 71.12 and ligand-site recall only 0.4 (0.2 in top pockets). RNA log2FC at purity 1 is 1.502 (se 0.483). The site score does not imply a glue exists, and the target cell is endothelial.",
      "evidence_ids": [
-      "EV:mgd_site:99d1b16599f0",
-      "EV:alphafold:c7726f37155e"
+      "EV:mgd_site:baece750032d",
+      "EV:alphafold:81956e9ebf17",
+      "EV:ligand_sites:03a0601281b2",
+      "EV:purity:fd47891e1c7f"
+     ]
+    },
+    {
+     "gene": "CD74",
+     "role": "microenvironment",
+     "statement": "CD74 is an immune-cell gene: cDC 100% expressing (cpm_share 0.311), macrophages hold 0.436 of transcripts, and CD8 T cells 0.345. Bulk purity correlation is negative (RNA rho -0.557, padj 9.15e-9) and the RNA log2FC at purity 1 is only 0.561 (se 0.351), so the bulk signal is infiltration-driven, not tumor-cell expression.",
+     "evidence_ids": [
+      "EV:sc_summary:ee059aa145d0",
+      "EV:purity:ee059aa145d0"
+     ]
+    },
+    {
+     "gene": "CXCR4",
+     "role": "microenvironment",
+     "statement": "CXCR4 transcripts are lymphoid: CD8 T cells hold 0.563 of tissue transcripts (72.9% expressing), CD4 T cells 0.176 (87.8% expressing, highest cpm_share 0.17). It is an immune microenvironment target, not tumor-intrinsic.",
+     "evidence_ids": [
+      "EV:sc_summary:a804b568bd15"
+     ]
+    },
+    {
+     "gene": "EPAS1",
+     "role": "mechanism",
+     "statement": "Despite being the HIF-2a gene, EPAS1 transcripts in the scRNA-seq are mostly stromal: endothelium 0.365 of transcripts (81.3% expressing, cpm_share 0.626) and fibroblasts 0.081, versus RCC cells 0.051 (4.9% expressing). RNA log2FC at purity 1 is 0.46 (se 0.331), so the bulk RNA signal is not clearly tumor-intrinsic; protein log2FC at purity 1 is 2.367 (se 0.688).",
+     "evidence_ids": [
+      "EV:sc_summary:6a657326c9fd",
+      "EV:purity:6a657326c9fd"
+     ]
+    },
+    {
+     "gene": "MET",
+     "role": "target",
+     "statement": "MET is mainly tumor-cell expressed: RCC cells hold 0.935 of transcripts (35.2% expressing, cpm_share 0.682), with endothelium secondary (cpm_share 0.283). Tumor-cell vs proximal-tubule log2FC is 5.237, but padj is 0.069 (6 donors), so not significant at 0.05.",
+     "evidence_ids": [
+      "EV:sc_summary:8314520758de",
+      "EV:sc_tvp:8314520758de"
+     ]
+    },
+    {
+     "gene": "EGFR",
+     "role": "target",
+     "statement": "EGFR transcripts sit in RCC cells (0.948 of tissue transcripts, 29.7% expressing, cpm_share 0.542); proximal-tubule cells have a comparable per-cell level (cpm_share 0.312 from only 39 cells), so tumor specificity is weak.",
+     "evidence_ids": [
+      "EV:sc_summary:6bce27c2d6df"
+     ]
+    },
+    {
+     "gene": "CD70",
+     "role": "target_and_biomarker",
+     "statement": "CD70 ranks 3 in convergence (score 4.2143): TCGA log2FC 7.09 (padj 6.45e-25) and RNA log2FC at purity 1 of 4.278 (se 0.724), consistent with tumor-intrinsic expression. Clinical drugs exist (phase 1-2 antibody-based agents); prognosis not significant (Cox padj 0.175).",
+     "evidence_ids": [
+      "EV:purity:908e84663f6a",
+      "EV:tcga_de:908e84663f6a"
      ]
     },
     {
      "gene": "COL23A1",
-     "text": "The COL23A1 model is poor (mean pLDDT 58.91) with a single 8.0 A3 pocket scoring 0.2342, so it is not a credible degrader site.",
-     "evidence_ids": [
-      "EV:alphafold:4f8072787076",
-      "EV:mgd_site:3a4161457d4f"
-     ]
-    }
-   ],
-   "discovery": [
-    {
-     "gene": "COL23A1",
-     "text": "The tumour-track discovery lead is COL23A1. It is novel in having no clinical drug, and it is antibody or PROTAC tractable, surface or secreted, with low vital-organ expression (3 nTPM, heart muscle). RCC cells carry 0.881 of its transcripts. It replicates in TCGA (log2FC 5.829) and survives extrapolation to a pure tumour (log2FC at purity 1 of 4.88). It shows no dependency (DepMap mean effect 0.167).",
+     "role": "discovery",
+     "statement": "COL23A1 is the top tumor-track first-in-class candidate (novelty 0.767): RCC cells hold 0.881 of tumor transcripts, 7 ccRCC papers, no clinical drug, AB/PR tractable, surface/secreted, max vital-organ nTPM 3 (heart muscle). Replicated in TCGA (log2FC 5.829) and purity-robust (RNA log2FC at purity 1 of 4.88). Caveat: DepMap mean effect 0.167, not a selective dependency, so no functional evidence; literature counted by gene symbol.",
      "evidence_ids": [
       "EV:discovery:e1532aa1b09c",
       "EV:tcga_de:e1532aa1b09c",
@@ -26159,8 +25848,18 @@
      ]
     },
     {
+     "gene": "COL23A1",
+     "role": "discovery",
+     "statement": "Structure does not support a glue campaign for COL23A1: model mean pLDDT 58.91 with only 0.13 confident residues, and the top pocket is 8.0 A3 with MGD score 0.2342 and no ligand-site validation.",
+     "evidence_ids": [
+      "EV:alphafold:4f8072787076",
+      "EV:mgd_site:3a4161457d4f"
+     ]
+    },
+    {
      "gene": "RAB42",
-     "text": "RAB42 is a second tumour-track hypothesis: RCC cells hold 0.627 of its transcripts, there is no clinical drug, vital-organ expression peaks at 2.6 nTPM (lung), and it replicates in TCGA (log2FC 4.371) with a purity-1 log2FC of 3.189. There is no functional or dependency evidence.",
+     "role": "discovery",
+     "statement": "RAB42 is the second tumor-track first-in-class candidate (novelty 0.705): RCC cells carry 0.627 of tumor transcripts, only 2 ccRCC papers, no clinical drug, AB/PR tractable, max vital-organ nTPM 2.6 (lung). TCGA log2FC 4.371 and RNA log2FC at purity 1 of 3.189 (purity-robust). Caveat: DepMap mean effect -0.075 and not a selective dependency; no functional evidence.",
      "evidence_ids": [
       "EV:discovery:f53feb0aa597",
       "EV:tcga_de:f53feb0aa597",
@@ -26168,139 +25867,696 @@
      ]
     },
     {
-     "text": "The stroma track gives OLFML2A (fibroblast-borne, 0.647 of transcripts; TCGA log2FC 2.372, purity-1 log2FC 1.527; vital-organ expression 27.9 nTPM in colon) and JAG2 (mostly endothelial, 0.487; TCGA log2FC 1.549, purity-1 log2FC 1.061; DepMap mean effect 0.204). Both target the microenvironment, have modest effect sizes and lack functional evidence.",
+     "gene": "OLFML2A",
+     "role": "discovery",
+     "statement": "OLFML2A is a stroma-track candidate (novelty 0.481): fibroblasts hold 0.647 of tumor transcripts, 2 ccRCC papers, no clinical drug, antibody-tractable, but max vital-organ nTPM is 27.9 (colon), an off-tumor consideration. TCGA log2FC 2.372, RNA log2FC at purity 1 of 1.527. Caveat: stromal target, no dependency evidence.",
      "evidence_ids": [
       "EV:discovery:eb3ffaa04212",
       "EV:tcga_de:eb3ffaa04212",
-      "EV:purity:eb3ffaa04212",
-      "EV:discovery:85b9825a2b63",
-      "EV:tcga_de:85b9825a2b63",
-      "EV:purity:85b9825a2b63"
+      "EV:purity:eb3ffaa04212"
      ]
     },
     {
-     "text": "The immune track is mostly infiltration. SLC37A2 is macrophage-borne (0.886) with TCGA log2FC 3.093 that shrinks to 0.619 at purity 1, and LILRB4 (macrophage, 0.933) has TCGA log2FC 3.7 that falls to 0.508 at purity 1. Both bulk signals largely reflect macrophage abundance, so these are immune-cell targets at best. All discovery candidates are data-ranked hypotheses; none is a selective dependency.",
+     "gene": "GAL3ST4",
+     "role": "discovery",
+     "statement": "GAL3ST4 is the top immune-track candidate (novelty 0.64): macrophages hold 0.972 of tumor transcripts, 1 ccRCC paper, no clinical drug, antibody-tractable, max vital-organ nTPM 7.4 (cerebral cortex). TCGA log2FC 2.993, but RNA log2FC at purity 1 is only 0.401, and it is adverse in TCGA (Cox log HR 0.177). A macrophage target, not tumor-cell.",
      "evidence_ids": [
-      "EV:discovery:cdf9c58accd5",
-      "EV:tcga_de:cdf9c58accd5",
-      "EV:purity:cdf9c58accd5",
+      "EV:discovery:b3f34d2662ac",
+      "EV:tcga_de:b3f34d2662ac",
+      "EV:purity:b3f34d2662ac",
+      "EV:tcga_survival:b3f34d2662ac"
+     ]
+    },
+    {
+     "gene": "GAL3ST4",
+     "role": "discovery",
+     "statement": "GAL3ST4 has a deep, well-modelled top site: MGD score 0.7874, pocket volume 819.7 A3, pocket pLDDT 92.8, 5 accessible lysines (model mean pLDDT 79.31). Caveat: ligand-site validation was not run, so the site is unvalidated; no glue is implied.",
+     "evidence_ids": [
+      "EV:mgd_site:6c0798036b9c",
+      "EV:alphafold:59e9334e77b2"
+     ]
+    },
+    {
+     "gene": "LILRB4",
+     "role": "discovery",
+     "statement": "LILRB4 is a macrophage-carried immune candidate (0.933 of tumor transcripts, 7 ccRCC papers, no clinical drug) but is flagged infiltration-driven: RNA log2FC at purity 1 is 0.508 versus TCGA log2FC 3.7, so the bulk gain mostly reflects infiltrating cells.",
+     "evidence_ids": [
       "EV:discovery:3c9bb849285e",
-      "EV:tcga_de:3c9bb849285e",
-      "EV:purity:3c9bb849285e"
+      "EV:purity:3c9bb849285e",
+      "EV:tcga_de:3c9bb849285e"
+     ]
+    }
+   ],
+   "caveats": [
+    "Discovery candidates are data-ranked hypotheses; none has dependency or functional evidence, and literature counts are by gene symbol.",
+    "MGD site scores rank pockets only; they do not show that a glue exists, and ligand-site recall is modest or unchecked for several proteins.",
+    "Single-cell group sizes vary widely (e.g. PT 39 cells, Epi_other 18 cells), so per-cell comparisons for those groups are weak.",
+    "CD70 single-cell values had no evidence ids, so only bulk/convergence values are quoted for it.",
+    "Tumor-vs-proximal-tubule comparison uses 6 donors; MET is not significant at padj 0.05."
+   ]
+  },
+  "applied": {
+   "agent": "agente-aplicado",
+   "findings": [
+    {
+     "gene": "CD70",
+     "role": "target",
+     "layer": "adc",
+     "statement": "CD70 has an ADC suitability of 0.746 (rank 2 of 2017), surface score 1.0 and a protein log2 fold change of 2.421. Tumour cells expressing it in the weakest quarter of donors are 17.7 percent (median donor 41.2 percent). Staining data are not available (staining_data_available false), so vital-organ safety cannot be judged here.",
+     "evidence_ids": [
+      "EV:adc_profile:908e84663f6a"
+     ]
+    },
+    {
+     "gene": "CA9",
+     "role": "target_and_biomarker",
+     "layer": "adc",
+     "statement": "CA9 (known target control) has suitability 0.647 (rank 13 of 2017), surface score 1.0, kidney staining level 0.0 but vital-organ staining level 3.0 in stomach. Tumour cells expressing it in the weakest quarter of donors are 24.3 percent (median donor 53.3 percent), so a sizeable share of donors is poorly covered.",
+     "evidence_ids": [
+      "EV:adc_profile:225a767ebcb5"
+     ]
+    },
+    {
+     "gene": "ENPP3",
+     "role": "target",
+     "layer": "adc",
+     "statement": "ENPP3 (known target control) scores 0.578 (rank 39 of 2017) with a protein log2 fold change of 1.544. HPA staining is level 3.0 in duodenum and 3.0 in kidney, which argues against it; 21.3 percent of tumour cells express it in the weakest quarter of donors.",
+     "evidence_ids": [
+      "EV:adc_profile:d5aee88146ed"
+     ]
+    },
+    {
+     "gene": "SCARB1",
+     "role": "target",
+     "layer": "adc",
+     "statement": "SCARB1 is the top-ranked gene in the target profile but has ADC suitability 0.558 (rank 51 of 2017). Staining is 3.0 in adrenal gland and 2.0 in kidney, and only 7.1 percent of tumour cells express it in the weakest quarter of donors (median donor 12.4 percent). A high rank in the convergence table does not show a conjugate would work.",
+     "evidence_ids": [
+      "EV:adc_profile:2d66f8e78d0c"
+     ]
+    },
+    {
+     "gene": "SLC16A3",
+     "role": "target",
+     "layer": "adc",
+     "statement": "SLC16A3 has suitability 0.725 (rank 3 of 2017) and the highest coverage, 43.7 percent of tumour cells in the weakest quarter of donors. However it has 12 transmembrane segments with only 66 extracellular residues, and adrenal staining is 3.0 with kidney 2.0, so antibody access and safety are open questions.",
+     "evidence_ids": [
+      "EV:adc_profile:11298113327b"
+     ]
+    },
+    {
+     "gene": "CD70",
+     "role": "target",
+     "layer": "treatment",
+     "statement": "CD70 expression is associated with longer benefit on atezolizumab + bevacizumab (log HR per SD -0.383, padj 0.166, n 88) and on sunitinib (-0.262, padj 0.434, n 89). The difference between arms is -0.121 (padj 0.927), so it is not arm-specific and nothing is significant after correction.",
+     "evidence_ids": [
+      "EV:treatment_response:908e84663f6a"
+     ]
+    },
+    {
+     "gene": "CA9",
+     "role": "target_and_biomarker",
+     "layer": "treatment",
+     "statement": "CA9 is associated with longer benefit in all three IMmotion150 arms but none is significant: atezolizumab + bevacizumab -0.112 (padj 0.665), sunitinib -0.336 (padj 0.332). The between-arm difference is 0.224 (padj 0.779). It is not a response biomarker on this evidence.",
+     "evidence_ids": [
+      "EV:treatment_response:225a767ebcb5"
+     ]
+    },
+    {
+     "gene": "PCK1",
+     "role": "biomarker",
+     "layer": "treatment",
+     "statement": "PCK1 is associated with earlier progression on atezolizumab + bevacizumab (log HR per SD 0.22, padj 0.572, n 88) and slightly longer benefit on sunitinib (-0.069, padj 0.889). The arm difference is 0.289 (padj 0.754); no significant treatment association.",
+     "evidence_ids": [
+      "EV:treatment_response:fd99b19fe8a6"
+     ]
+    },
+    {
+     "gene": "PSAT1",
+     "role": "biomarker",
+     "layer": "treatment",
+     "statement": "PSAT1 is associated with earlier progression on atezolizumab (log HR per SD 0.164, padj 0.829, n 86) and in the 16-patient nivolumab trial (0.754, padj 0.707). The direction is consistent but no association is significant and the nivolumab set is direction only.",
+     "evidence_ids": [
+      "EV:treatment_response:58119698ea36"
+     ]
+    },
+    {
+     "gene": "NNMT",
+     "role": "target_and_biomarker",
+     "layer": "treatment",
+     "statement": "For NNMT the tool returned only the 16-patient nivolumab trial (log HR per SD 0.34, padj 0.782, direction earlier progression with higher expression). No IMmotion150 arm result was returned, so there is no usable trial evidence for NNMT.",
+     "evidence_ids": [
+      "EV:treatment_response:7dbf93860d9f"
+     ]
+    },
+    {
+     "gene": "EPAS1",
+     "role": "mechanism",
+     "layer": "treatment",
+     "statement": "EPAS1 returned only the nivolumab trial result (log HR per SD -0.236, padj 0.88, n 16, longer benefit with higher expression), which is not significant and too small to interpret. No IMmotion150 arm result was returned.",
+     "evidence_ids": [
+      "EV:treatment_response:6a657326c9fd"
+     ]
+    },
+    {
+     "gene": "CA9",
+     "role": "target_and_biomarker",
+     "layer": "subtype",
+     "statement": "CA9 is flagged as a PBRM1 subgroup target candidate: mutant minus wild-type is 0.971 in CPTAC RNA (padj 0.014), 0.335 in CPTAC protein (padj 0.067) and 1.148 in TCGA RNA (padj 7.18e-7). The CPTAC protein difference is not significant, and CA9 is lower in ccB than ccA (TCGA RNA -1.551, padj 1.06e-9).",
+     "evidence_ids": [
+      "EV:subtype_profile:225a767ebcb5"
+     ]
+    },
+    {
+     "gene": "PSAT1",
+     "role": "biomarker",
+     "layer": "subtype",
+     "statement": "PSAT1 is not a subgroup target candidate, but it is higher in ccB than ccA (TCGA RNA 2.364, padj 9.07e-39; CPTAC protein 0.541, padj 0.0000157) and higher in BAP1 mutants at RNA level (TCGA 1.711, padj 0.0000578) though not at protein level (0.224, padj 0.396). It tracks the aggressive ccB state rather than a clean mutation.",
+     "evidence_ids": [
+      "EV:subtype_profile:58119698ea36"
+     ]
+    },
+    {
+     "gene": "NNMT",
+     "role": "target_and_biomarker",
+     "layer": "subtype",
+     "statement": "NNMT shows no mutation-subgroup or ccB-ccA difference: it is not a subgroup target candidate for VHL, PBRM1, BAP1 or SETD2 (e.g. PBRM1 TCGA RNA 0.347, padj 0.064) and ccB minus ccA in TCGA RNA is -0.044 (padj 0.82). Its tumour increase therefore looks pan-subgroup.",
+     "evidence_ids": [
+      "EV:subtype_profile:7dbf93860d9f"
+     ]
+    },
+    {
+     "gene": "SCARB1",
+     "role": "target",
+     "layer": "subtype",
+     "statement": "SCARB1 is not flagged as a subgroup target candidate. PBRM1 mutants are higher in RNA (CPTAC 0.614, padj 0.021; TCGA 0.583, padj 2.98e-6) but the protein difference is 0.306 (padj 0.113), and BAP1 mutants are lower in TCGA RNA (-0.907, padj 0.0000663).",
+     "evidence_ids": [
+      "EV:subtype_profile:2d66f8e78d0c"
+     ]
+    },
+    {
+     "gene": "CD70",
+     "role": "microenvironment",
+     "layer": "immune",
+     "statement": "CD70 has an immune target score of 3.384 (rank 20 of 19161). Immune cells make 0.654 of its tumour transcripts, with rho 0.278 with CD8 T cells and 0.228 with regulatory T cells. This conflicts with the tumour-cell reading, and log HR on atezolizumab + bevacizumab is -0.383.",
+     "evidence_ids": [
+      "EV:immune_profile:908e84663f6a"
+     ]
+    },
+    {
+     "gene": "NNMT",
+     "role": "target_and_biomarker",
+     "layer": "immune",
+     "statement": "NNMT is not an immune gene: immune cells contribute 0.015 of its tumour transcripts and rho with CD8 T cells is -0.127 (immune score rho 0.08). Its tumour increase is therefore not driven by infiltration.",
+     "evidence_ids": [
+      "EV:immune_profile:7dbf93860d9f"
+     ]
+    },
+    {
+     "gene": "FCER1G",
+     "role": "microenvironment",
+     "layer": "immune",
+     "statement": "FCER1G is almost entirely immune-derived (immune share 0.999) with rho 0.898 against the immune score and 0.529 with M2 macrophages. Its tumour-up rank in the biomarker list reflects infiltration, not tumour-cell biology.",
+     "evidence_ids": [
+      "EV:immune_profile:e5780c87a2a7"
+     ]
+    },
+    {
+     "gene": "FCGR3A",
+     "role": "microenvironment",
+     "layer": "immune",
+     "statement": "FCGR3A has immune share 0.999, rho 0.795 with the immune score and 0.457 with CD8 T cells (immune target score 3.499, rank 13). It is a myeloid and NK signal and should be treated as a microenvironment marker.",
+     "evidence_ids": [
+      "EV:immune_profile:af56881a4234"
+     ]
+    },
+    {
+     "gene": "CA9",
+     "role": "target_and_biomarker",
+     "layer": "replication",
+     "statement": "CA9 single-cell attribution holds: dominant group RCC in both Li 2022 and Zhang 2021, tumour-cell share 0.976 and 0.981, tumour vs tubule log2 fold change 7.739 and 8.522 (paired donors 4).",
+     "evidence_ids": [
+      "EV:sc_replication:225a767ebcb5"
+     ]
+    },
+    {
+     "gene": "NNMT",
+     "role": "target_and_biomarker",
+     "layer": "replication",
+     "statement": "NNMT is RCC-dominant in both datasets (tumour share 0.97 and 0.948), tumour vs tubule log2 fold change 9.132 versus 5.573, share-profile Spearman 0.786. The cell call is robust though the effect size differs.",
+     "evidence_ids": [
+      "EV:sc_replication:7dbf93860d9f"
+     ]
+    },
+    {
+     "gene": "CD70",
+     "role": "target",
+     "layer": "replication",
+     "statement": "CD70 attribution does not replicate: Li 2022 dominant group is T_NK (tumour share 0.345) while Zhang 2021 gives RCC (0.964). Tumour vs tubule log2 fold change is 6.899 and 5.281. The tumour-cell origin is uncertain.",
+     "evidence_ids": [
+      "EV:sc_replication:908e84663f6a"
+     ]
+    },
+    {
+     "gene": "SCARB1",
+     "role": "target",
+     "layer": "replication",
+     "statement": "SCARB1 attribution differs between datasets: Myeloid in Li 2022 (tumour share 0.336) versus RCC in Zhang 2021 (0.582), share-profile Spearman 0.5. The top target-profile gene may be partly non-tumour.",
+     "evidence_ids": [
+      "EV:sc_replication:2d66f8e78d0c"
+     ]
+    },
+    {
+     "gene": "PSAT1",
+     "role": "biomarker",
+     "layer": "replication",
+     "statement": "PSAT1 attribution differs: T_NK in Li 2022 (tumour share 0.072) versus RCC in Zhang 2021 (0.78), share-profile Spearman 0.071. Both agree it is lower in tumour than tubule (log2 fold change -4.742 and -3.975).",
+     "evidence_ids": [
+      "EV:sc_replication:58119698ea36"
+     ]
+    },
+    {
+     "gene": "PCK1",
+     "role": "biomarker",
+     "layer": "replication",
+     "statement": "PCK1 is RCC-dominant in both single-cell datasets (tumour share 0.964 and 0.969) with tumour vs tubule log2 fold change -5.787 and -3.044, consistent with loss of a proximal tubule gene.",
+     "evidence_ids": [
+      "EV:sc_replication:fd99b19fe8a6"
+     ]
+    },
+    {
+     "gene": "NNMT",
+     "role": "target_and_biomarker",
+     "layer": "confirmatory",
+     "statement": "NNMT protein replicates in the confirmatory DIA cohort: log2 fold change 4.776 (padj 3.07e-46, 86 pairs) versus 2.709 in discovery. Direction and significance agree.",
+     "evidence_ids": [
+      "EV:confirmatory_replication:7dbf93860d9f"
+     ]
+    },
+    {
+     "gene": "PSAT1",
+     "role": "biomarker",
+     "layer": "confirmatory",
+     "statement": "PSAT1 protein loss replicates (confirmatory log2 fold change -3.946, padj 9.71e-23, 69 pairs; discovery -1.963). The one shared phosphosite does not replicate (phosphosites_replicating 0).",
+     "evidence_ids": [
+      "EV:confirmatory_replication:58119698ea36"
+     ]
+    },
+    {
+     "gene": "SCARB1",
+     "role": "target",
+     "layer": "confirmatory",
+     "statement": "SCARB1 protein is higher in tumours in the confirmatory cohort (log2 fold change 2.334, padj 3.28e-10, 33 pairs) versus 1.837 in discovery; it replicates.",
+     "evidence_ids": [
+      "EV:confirmatory_replication:2d66f8e78d0c"
+     ]
+    },
+    {
+     "gene": "SLC16A3",
+     "role": "target",
+     "layer": "confirmatory",
+     "statement": "SLC16A3 protein replicates (confirmatory log2 fold change 3.551, padj 1.48e-20, 41 pairs; discovery 2.279) and its one shared phosphosite replicates.",
+     "evidence_ids": [
+      "EV:confirmatory_replication:11298113327b"
+     ]
+    },
+    {
+     "gene": "PCK1",
+     "role": "biomarker",
+     "layer": "confirmatory",
+     "statement": "PCK1 protein loss replicates (confirmatory log2 fold change -4.819, padj 3.53e-27, 69 pairs; discovery -1.859) and both shared phosphosites replicate (2 of 2).",
+     "evidence_ids": [
+      "EV:confirmatory_replication:fd99b19fe8a6"
+     ]
+    }
+   ],
+   "caveats": [
+    "IMmotion150 results are single-gene associations from arms of about 90 patients; none differs between arms after correction, so they are leads, not predictions.",
+    "CA9 and CD70 were not tested in the confirmatory cohort (too few matched pairs); this is not a failure to replicate. EPAS1, NNMT and PSAT1 had only partial arm results in the treatment tool.",
+    "A high ADC score is not evidence a conjugate would work; CD70 has no HPA staining data, and SCARB1, SLC16A3 and ENPP3 show level 2-3 staining in vital organs or kidney.",
+    "Immune-derived genes (FCER1G, FCGR3A, partly CD70) can appear tumour-up through infiltration; the single-cell attribution disagrees between datasets for CD70, SCARB1 and PSAT1.",
+    "Zhang 2021 has only 4 paired donors; EPAS1 and the ENPP3, SLC16A3 single-cell and subtype layers were not all queried within the call budget."
+   ]
+  }
+ },
+ "narrative": {
+  "summary": [
+   {
+    "gene": "CA9",
+    "text": "CA9 has the broadest convergent support of any candidate. It ranks 1 in the overall convergence ranking (score 4.5197), is up at RNA (log2FC 6.312) and protein (log2FC 2.269), replicates in TCGA-KIRC (log2FC 9.712, padj 2.58e-30) and survives extrapolation to a pure tumour (RNA log2FC at purity 1 of 7.787). Single-cell data place 0.976 of its transcripts in RCC cells, and clinical agents exist (girentuximab PHASE_3). It is not prognostic (TCGA Cox log HR -0.009) and ccRCC lines do not depend on it, so it is a surface, imaging and conjugate target rather than a dependency.",
+    "evidence_ids": [
+     "EV:omics_de:b269736afdb0",
+     "EV:tcga_de:225a767ebcb5",
+     "EV:purity:225a767ebcb5",
+     "EV:sc_summary:225a767ebcb5",
+     "EV:open_targets_drug:646a0aec5b64"
+    ]
+   },
+   {
+    "text": "The target profile is led by SCARB1, CA9, SLC16A3, NNMT, CD70 and ENPP3, all up in tumour at RNA and protein and replicated in TCGA. Of these, NNMT, SCARB1 and SLC16A3 also replicate at protein level in the confirmatory DIA cohort (NNMT log2FC 4.776, SCARB1 2.334, SLC16A3 3.551). NNMT is the best-supported target-and-biomarker beyond CA9: it is tumour-cell derived in two single-cell datasets, not infiltration-driven, and higher expression is linked to worse survival (Cox log HR 0.301, padj 0.00479).",
+    "evidence_ids": [
+     "EV:confirmatory_replication:7dbf93860d9f",
+     "EV:confirmatory_replication:2d66f8e78d0c",
+     "EV:confirmatory_replication:11298113327b",
+     "EV:tcga_survival:7dbf93860d9f",
+     "EV:sc_replication:7dbf93860d9f"
+    ]
+   },
+   {
+    "text": "The biomarker profile is dominated by proximal-tubule genes lost in tumour. PSAT1 (protein log2FC -1.963, confirmatory -3.946) and PCK1 (confirmatory -4.819) replicate strongly, and ALDH6A1, SLC6A19 and ALDOB carry prognostic signal in TCGA where higher expression goes with better survival. These are lineage-loss markers, not drug targets.",
+    "evidence_ids": [
+     "EV:omics_de:fe09b800ea76",
+     "EV:confirmatory_replication:58119698ea36",
+     "EV:confirmatory_replication:fd99b19fe8a6",
+     "EV:tcga_survival:df75d3108dd0",
+     "EV:tcga_survival:a68c82cb3c87",
+     "EV:tcga_survival:a46f337f2987"
+    ]
+   },
+   {
+    "text": "The main disagreements concern cell of origin. CD70 ranks 2 of 2017 for antibody-drug-conjugate suitability, but its single-cell attribution does not replicate (T_NK in Li 2022, RCC in Zhang 2021), and SCARB1 is myeloid in one dataset and RCC in the other. The clinically validated axis, VHL loss and HIF-2alpha (belzutifan approved), is not captured by the expression-driven top ranks, and EPAS1 transcripts are mostly stromal in single-cell data.",
+    "evidence_ids": [
+     "EV:adc_profile:908e84663f6a",
+     "EV:sc_replication:908e84663f6a",
+     "EV:sc_replication:2d66f8e78d0c",
+     "EV:open_targets_drug:199c475802ce",
+     "EV:sc_summary:6a657326c9fd"
+    ]
+   }
+  ],
+  "sections": {
+   "omics": [
+    {
+     "text": "Among up-regulated candidates, CA9 (RNA log2FC 6.312, protein 2.269), CD70 (RNA 4.464, protein 2.421), NNMT (RNA 4.67, protein 2.709), SLC16A3 (RNA 3.435, protein 2.279), ENPP3 (RNA 3.895, protein 1.544) and SCARB1 (RNA 2.974, protein 1.837) agree across RNA and protein in CPTAC. FABP6 is also up (RNA 4.006) but has a CNV gain frequency of 0.573, so part of the increase is a dosage effect.",
+     "evidence_ids": [
+      "EV:omics_de:b269736afdb0",
+      "EV:omics_de:97c97f6d7d62",
+      "EV:omics_de:aefc373d6072",
+      "EV:omics_de:545c6eb28bce",
+      "EV:omics_de:d540450c23e1",
+      "EV:omics_de:36b227bd1fb6",
+      "EV:omics_de:0ea3d10905b2",
+      "EV:omics_cnv:52f5e4eeb4a8"
+     ]
+    },
+    {
+     "text": "The down-regulated side is tubule identity loss: PSAT1 (RNA log2FC -3.867, protein -1.963), ALDH6A1 (RNA -3.399, protein -1.925, CNV loss frequency 0.355 with cis rho 0.525) and SLC6A19 (RNA -4.574, protein -1.48). The founding drivers are visible at the genomic layer: VHL is mutated in 247 of 511 tumours and PBRM1 in 185 of 511, both with 3p loss in about 0.8 of CPTAC tumours.",
+     "evidence_ids": [
+      "EV:omics_de:fe09b800ea76",
+      "EV:omics_de:1c73c0e9eeb3",
+      "EV:omics_cnv:df75d3108dd0",
+      "EV:cis_dosage:df75d3108dd0",
+      "EV:omics_de:a685c4c3e10e",
+      "EV:somatic_recurrence:52e5aeb6c197",
+      "EV:somatic_recurrence:07b6205e67e5"
+     ]
+    }
+   ],
+   "literature": [
+    {
+     "text": "Literature in the corpus supports the leading up-regulated candidates but mostly through single-study or preclinical work. CA9-targeted PET gives proof-of-concept discrimination of ccRCC that still needs prospective validation; CD70 is described as overexpressed in RCC with minimal normal-tissue expression and is being developed as a radiotracer target; NNMT is reported as a prognostic biomarker with selective inhibitors available, though not ccRCC-specific.",
+     "evidence_ids": [
+      "EV:literature:534430b0156d",
+      "EV:literature:92dc16d8b33c",
+      "EV:literature:111b19cdfe29",
+      "EV:literature:5d5690eab84a"
+     ]
+    },
+    {
+     "text": "Some literature contradicts the expression direction: MT1G is low in tumour yet high expression is linked to poorer prognosis, PFKP is up in tumour but low expression goes with worse survival, and ABAT is called tumour-suppressive yet a poor-prognosis marker. COXFA4L2 (NDUFA4L2) has the densest mechanistic literature (overexpressed in over 90% of ccRCCs) but only preclinical support. SCARB1 and ENPP3 have strong omics support but almost no literature in this corpus, which is a gap rather than evidence against them.",
+     "evidence_ids": [
+      "EV:literature:01828633a99d",
+      "EV:literature:2fceed76c9b4",
+      "EV:literature:22349683c148",
+      "EV:literature:ec673e405bc1"
+     ]
+    }
+   ],
+   "external": [
+    {
+     "text": "Open Targets confirms clinical tractability for CA9 (girentuximab PHASE_3) and CD70 (cusatuzumab PHASE_2), both membrane proteins in UniProt, but ccRCC lines depend on neither, so they suit antibody, imaging or immune approaches. SCARB1 has predicted tractability only and no drugs. NNMT has no listed drugs, and its external case rests on prognosis.",
+     "evidence_ids": [
+      "EV:open_targets_drug:646a0aec5b64",
+      "EV:uniprot:93360ddb9195",
+      "EV:open_targets_drug:fcadbe214e8c",
+      "EV:uniprot:e21e5815e1a4",
+      "EV:open_targets_tract:2d66f8e78d0c",
+      "EV:open_targets_assoc:719ce7782338"
+     ]
+    },
+    {
+     "text": "The established targets sit outside the expression-driven top ranks. EPAS1 has an approved drug (belzutifan) and a selective but partial dependency (selectivity 0.3, 0.208 of 24 lines dependent, padj 0.061). MTOR is a dependency in all 24 ccRCC lines but is common essential, so toxicity is a concern. VHL and PBRM1 are the top Open Targets associations (0.6466 and 0.6348) and act as mechanism, not direct targets.",
+     "evidence_ids": [
+      "EV:open_targets_drug:199c475802ce",
+      "EV:depmap_dependency:6a657326c9fd",
+      "EV:depmap_dependency:95bc7fa85685",
+      "EV:open_targets_assoc:730901c424b4",
+      "EV:open_targets_assoc:a61ad112b8ec"
+     ]
+    }
+   ],
+   "cells": [
+    {
+     "text": "CA9 is tumour-intrinsic: RCC cells hold 0.976 of tissue transcripts, tumour-cell versus proximal-tubule log2FC is 7.739 (padj 0.0189), and the RCC attribution replicates in a second single-cell dataset (tumour share 0.981). NNMT is RCC-dominant in both datasets (tumour share 0.97 and 0.948). MET and EGFR are mainly tumour-cell expressed, but MET versus tubule is not significant (padj 0.069) and EGFR is also present in proximal tubule.",
+     "evidence_ids": [
+      "EV:sc_summary:225a767ebcb5",
+      "EV:sc_tvp:225a767ebcb5",
+      "EV:sc_replication:225a767ebcb5",
+      "EV:sc_replication:7dbf93860d9f",
+      "EV:sc_tvp:8314520758de",
+      "EV:sc_summary:6bce27c2d6df"
+     ]
+    },
+    {
+     "text": "Several bulk candidates are not tumour-intrinsic. KDR is endothelial (0.951 of transcripts), CD74 and CXCR4 are immune genes (CD74 RNA log2FC at purity 1 only 0.561), and EPAS1 transcripts sit mostly in endothelium (0.365) with RNA log2FC at purity 1 of 0.46. CD70 and SCARB1 have conflicting attribution between the two single-cell datasets (CD70 T_NK versus RCC; SCARB1 Myeloid versus RCC), so their tumour-cell origin is uncertain.",
+     "evidence_ids": [
+      "EV:sc_summary:fd47891e1c7f",
+      "EV:purity:ee059aa145d0",
+      "EV:sc_summary:a804b568bd15",
+      "EV:sc_summary:6a657326c9fd",
+      "EV:sc_replication:908e84663f6a",
+      "EV:sc_replication:2d66f8e78d0c"
+     ]
+    }
+   ],
+   "spatial": [
+    {
+     "gene": "CA9",
+     "text": "In Visium, CA9 expression is attributed to RCC spots (composition-corrected share 0.999). Neighbours of high-CA9 spots are enriched in RCC (log2 enrichment 0.381, padj 0.0017) and, less, in macrophages (0.099), so the CA9 niche is mostly tumour-on-tumour with some macrophage contact.",
+     "evidence_ids": [
+      "EV:spatial_summary:225a767ebcb5",
+      "EV:spatial_nb:35b84fee998f"
+     ]
+    },
+    {
+     "gene": "KDR",
+     "text": "KDR expression in Visium is explained by endothelial spots (composition-corrected share 0.99), confirming it as a vascular microenvironment target rather than a tumour-cell one.",
+     "evidence_ids": [
+      "EV:spatial_summary:fd47891e1c7f"
+     ]
+    }
+   ],
+   "structure": [
+    {
+     "text": "Molecular-glue-degrader scores rank pockets only and do not show that any degrader exists. Among candidates, KDR has a high site score (0.841, 7 accessible lysines) but modest ligand-site recall (0.4) and an endothelial target cell; CA9's best site is modest (0.546, pocket volume 126.8 A3); GAL3ST4 has a deep, well-modelled pocket (0.7874, 819.7 A3) without ligand-site validation; and COL23A1's model is too poor for a campaign (mean pLDDT 58.91).",
+     "evidence_ids": [
+      "EV:mgd_site:baece750032d",
+      "EV:ligand_sites:03a0601281b2",
+      "EV:mgd_site:cacfae1940f6",
+      "EV:mgd_site:6c0798036b9c",
+      "EV:alphafold:4f8072787076"
+     ]
+    }
+   ],
+   "discovery": [
+    {
+     "text": "In the tumour track, COL23A1 is the leading first-in-class candidate (novelty 0.767): RCC cells hold 0.881 of tumour transcripts, it has no clinical drug, it is surface or secreted with low vital-organ expression (max nTPM 3), and it replicates in TCGA (log2FC 5.829) and survives purity extrapolation (RNA log2FC at purity 1 of 4.88). RAB42 follows (novelty 0.705, TCGA log2FC 4.371, purity-1 log2FC 3.189).",
+     "evidence_ids": [
+      "EV:discovery:e1532aa1b09c",
+      "EV:tcga_de:e1532aa1b09c",
+      "EV:purity:e1532aa1b09c",
+      "EV:discovery:f53feb0aa597",
+      "EV:tcga_de:f53feb0aa597",
+      "EV:purity:f53feb0aa597"
+     ]
+    },
+    {
+     "text": "The stroma and immune tracks are weaker. OLFML2A is a fibroblast candidate (0.647 of tumour transcripts) but reaches nTPM 27.9 in colon. GAL3ST4 is a macrophage gene (0.972 of transcripts) whose RNA log2FC at purity 1 is only 0.401 and which is adverse in TCGA (Cox log HR 0.177); LILRB4 is infiltration-driven (purity-1 log2FC 0.508 versus TCGA 3.7).",
+     "evidence_ids": [
+      "EV:discovery:eb3ffaa04212",
+      "EV:discovery:b3f34d2662ac",
+      "EV:purity:b3f34d2662ac",
+      "EV:tcga_survival:b3f34d2662ac",
+      "EV:purity:3c9bb849285e",
+      "EV:tcga_de:3c9bb849285e"
+     ]
+    },
+    {
+     "text": "All discovery candidates are data-ranked hypotheses. None is a selective DepMap dependency (COL23A1 mean effect 0.167, RAB42 -0.075), none has functional evidence, and their literature counts are by gene symbol.",
+     "evidence_ids": [
+      "EV:discovery:e1532aa1b09c",
+      "EV:discovery:f53feb0aa597"
      ]
     }
    ],
    "validation": [
     {
-     "text": "External replication in TCGA-KIRC is strong for the leading targets: CA9 (log2FC 9.712), CD70 (7.09), ENPP3 (5.557), NNMT (4.685), SCARB1 (3.989) and SLC16A3 (3.291). All stay up when extrapolated to a pure tumour (purity-1 RNA log2FC 7.787, 4.278, 5.278, 5.256, 3.762 and 3.821), so these changes come from tumour cells rather than infiltration.",
+     "text": "External replication and purity checks strengthen CA9 (TCGA log2FC 9.712, purity-1 log2FC 7.787), CD70 (TCGA 7.09, purity-1 4.278), NNMT (TCGA 4.685, purity-1 5.256) and SCARB1 (TCGA 3.989, purity-1 3.762): their bulk increases are tumour-intrinsic, not infiltration. They weaken immune genes such as CD74 (purity-1 log2FC 0.561) and LILRB4. NNMT is the only up-regulated leader with an adverse prognosis signal (Cox padj 0.00479).",
      "evidence_ids": [
       "EV:tcga_de:225a767ebcb5",
-      "EV:tcga_de:908e84663f6a",
-      "EV:tcga_de:d5aee88146ed",
-      "EV:tcga_de:7dbf93860d9f",
-      "EV:tcga_de:2d66f8e78d0c",
-      "EV:tcga_de:11298113327b",
       "EV:purity:225a767ebcb5",
+      "EV:tcga_de:908e84663f6a",
       "EV:purity:908e84663f6a",
-      "EV:purity:d5aee88146ed",
-      "EV:purity:7dbf93860d9f",
-      "EV:purity:2d66f8e78d0c",
-      "EV:purity:11298113327b"
-     ]
-    },
-    {
-     "gene": "NNMT",
-     "text": "Prognosis strengthens NNMT: higher expression is adverse in TCGA (Cox log HR 0.301, padj 0.00479). DepMap shows no ccRCC dependency for NNMT (mean effect 0.316), which weakens its case as a functional target.",
-     "evidence_ids": [
+      "EV:tcga_de:7dbf93860d9f",
       "EV:tcga_survival:7dbf93860d9f",
-      "EV:tcga_de:7dbf93860d9f"
+      "EV:tcga_de:2d66f8e78d0c",
+      "EV:purity:2d66f8e78d0c",
+      "EV:purity:ee059aa145d0"
      ]
     },
     {
-     "text": "The independent layers weaken the essentiality case across the board. None of the top candidates is a recurrent somatic driver (VHL is, at frequency 0.483, and PBRM1 at 0.362), and EPAS1 is the only selective DepMap dependency (selectivity 0.3). On the biomarker side ALDH6A1 is weakened by the purity check, since its RNA change shrinks from -3.399 to -1.973 at purity 1, while PSAT1 keeps most of it.",
+     "text": "In the confirmatory DIA cohort, protein calls replicate for NNMT (log2FC 4.776, padj 3.07e-46), SCARB1 (2.334), SLC16A3 (3.551), PSAT1 (-3.946) and PCK1 (-4.819). CA9 and CD70 were not testable there (too few matched pairs), which is not a failure to replicate. Single-cell replication supports CA9, NNMT and PCK1, but not CD70, SCARB1 or PSAT1.",
+     "evidence_ids": [
+      "EV:confirmatory_replication:7dbf93860d9f",
+      "EV:confirmatory_replication:2d66f8e78d0c",
+      "EV:confirmatory_replication:11298113327b",
+      "EV:confirmatory_replication:58119698ea36",
+      "EV:confirmatory_replication:fd99b19fe8a6",
+      "EV:sc_replication:225a767ebcb5",
+      "EV:sc_replication:908e84663f6a"
+     ]
+    },
+    {
+     "text": "Somatic driver status and dependency point elsewhere: VHL (247 of 511 tumours) and PBRM1 (185 of 511) are the recurrent drivers, and EPAS1 is the only candidate with a selective partial dependency (selectivity 0.3). None of the expression-ranked surface targets is a ccRCC dependency.",
      "evidence_ids": [
       "EV:somatic_recurrence:52e5aeb6c197",
       "EV:somatic_recurrence:07b6205e67e5",
-      "EV:depmap_dependency:6a657326c9fd",
-      "EV:omics_de:1c73c0e9eeb3",
-      "EV:purity:df75d3108dd0",
-      "EV:purity:58119698ea36"
+      "EV:depmap_dependency:6a657326c9fd"
      ]
     }
    ],
    "robustness": [
     {
-     "text": "Under random re-weighting, the target profile is stable at the top. SCARB1 (p_top10 0.968, rank interval 1 to 8), CA9 (0.941, 1 to 13), SLC16A3 (0.881), CD70 and NNMT (0.88 each), ENPP3 (0.823) and FABP6 (0.803) form the robust target top ten. In the biomarker profile PSAT1 is the most stable call (p_top10 0.986, rank interval 1 to 4), followed by PCK1 (0.889), SLC6A19 (0.881) and PPP1R1A (0.8).",
+     "text": "Under random re-weighting, the target-profile leaders are stable: SCARB1 (p_top10 0.968, 90% rank interval 1 to 8) and CA9 (p_top10 0.941, 1 to 13), followed by SLC16A3 (0.881), CD70 (0.88), NNMT (0.88) and ENPP3 (0.823). In the biomarker profile, PSAT1 is the most robust (p_top10 0.986, interval 1 to 4), with PCK1 (0.889) and SLC6A19 (0.881).",
      "evidence_ids": [
-      "EV:tcga_de:2d66f8e78d0c",
-      "EV:tcga_de:225a767ebcb5",
-      "EV:tcga_de:11298113327b",
-      "EV:tcga_de:908e84663f6a",
-      "EV:tcga_de:7dbf93860d9f",
-      "EV:tcga_de:d5aee88146ed",
-      "EV:tcga_de:52f5e4eeb4a8",
-      "EV:tcga_de:58119698ea36",
-      "EV:tcga_de:fd99b19fe8a6",
-      "EV:tcga_de:a68c82cb3c87",
-      "EV:tcga_de:3e933275c7cd"
+      "EV:omics_de:36b227bd1fb6",
+      "EV:omics_de:b269736afdb0",
+      "EV:omics_de:545c6eb28bce",
+      "EV:omics_de:97c97f6d7d62",
+      "EV:omics_de:aefc373d6072",
+      "EV:omics_de:d540450c23e1",
+      "EV:omics_de:fe09b800ea76",
+      "EV:confirmatory_replication:fd99b19fe8a6",
+      "EV:omics_de:a685c4c3e10e"
      ]
     },
     {
-     "text": "Other positions depend on the chosen weights. In the overall convergence ranking only CA9 is robustly top ten (p_top10 0.894). In the biomarker profile, DUSP9 (p_top10 0.398, with a 90% rank interval reaching 117) and SLPI (p_top10 0.333) are fragile, as are target-profile entries from rank 11 down, such as PNCK (p_top10 0.004).",
+     "text": "In the overall ranking only CA9 is a robust top-10 gene (p_top10 0.894, p_top25 0.983). Other positions depend on the weights: VHL's interval spans 1 to 580 (p_top10 0.391) because it relies on the genetics stream alone, and immune genes such as FCER1G (p_top10 0.054) rank high only when omics weight dominates.",
      "evidence_ids": [
-      "EV:tcga_de:225a767ebcb5",
-      "EV:tcga_de:4e602db6e59d",
-      "EV:tcga_de:2ebfd435ef8e",
-      "EV:tcga_de:578ce7e8e78d"
+      "EV:omics_de:b269736afdb0",
+      "EV:somatic_recurrence:52e5aeb6c197",
+      "EV:immune_profile:e5780c87a2a7"
+     ]
+    }
+   ],
+   "treatment": [
+    {
+     "text": "In IMmotion150 no leading candidate has a significant treatment association after correction. CD70 is associated with longer benefit on atezolizumab plus bevacizumab (log HR per SD -0.383, padj 0.166) and on sunitinib (-0.262, padj 0.434); CA9 trends the same way (sunitinib -0.336, padj 0.332). No gene separates the two main arms: the arm differences are -0.121 for CD70 (padj 0.927) and 0.224 for CA9 (padj 0.779).",
+     "evidence_ids": [
+      "EV:treatment_response:908e84663f6a",
+      "EV:treatment_response:225a767ebcb5"
+     ]
+    },
+    {
+     "text": "PCK1 is associated with earlier progression on atezolizumab plus bevacizumab (0.22, padj 0.572) and PSAT1 likewise (0.164, padj 0.829). NNMT and EPAS1 returned only the 16-patient nivolumab trial, which is too small to interpret.",
+     "evidence_ids": [
+      "EV:treatment_response:fd99b19fe8a6",
+      "EV:treatment_response:58119698ea36",
+      "EV:treatment_response:7dbf93860d9f",
+      "EV:treatment_response:6a657326c9fd"
+     ]
+    }
+   ],
+   "subtypes": [
+    {
+     "text": "CA9 is a PBRM1 subgroup candidate: mutant minus wild-type is 0.971 in CPTAC RNA (padj 0.014) and 1.148 in TCGA RNA, but the protein difference (0.335, padj 0.067) is not significant, and CA9 is lower in ccB than ccA. PSAT1 tracks the aggressive ccB state (TCGA RNA 2.364, padj 9.07e-39) rather than a single mutation. NNMT shows no mutation or ccA/ccB difference, so its increase is pan-subgroup.",
+     "evidence_ids": [
+      "EV:subtype_profile:225a767ebcb5",
+      "EV:subtype_profile:58119698ea36",
+      "EV:subtype_profile:7dbf93860d9f"
+     ]
+    },
+    {
+     "text": "SCARB1 is higher in PBRM1 mutants at RNA (TCGA 0.583) but not at protein (0.306, padj 0.113), and lower in BAP1 mutants. Subtype differences in bulk RNA can partly reflect infiltration, which matters for SCARB1 given its mixed single-cell attribution.",
+     "evidence_ids": [
+      "EV:subtype_profile:2d66f8e78d0c",
+      "EV:sc_replication:2d66f8e78d0c"
+     ]
+    }
+   ],
+   "adc": [
+    {
+     "text": "CD70 is the best conjugate candidate on suitability (0.746, rank 2 of 2017) but has no staining data, so vital-organ safety cannot be judged. SLC16A3 scores 0.725 (rank 3) with the best coverage but only 66 extracellular residues across 12 transmembrane segments. SCARB1, top of the target profile, ranks only 51 (0.558) with low tumour-cell coverage.",
+     "evidence_ids": [
+      "EV:adc_profile:908e84663f6a",
+      "EV:adc_profile:11298113327b",
+      "EV:adc_profile:2d66f8e78d0c"
+     ]
+    },
+    {
+     "text": "The known controls behave as expected with caveats: CA9 scores 0.647 (rank 13) but stains at level 3.0 in stomach, and ENPP3 scores 0.578 (rank 39) with level 3.0 staining in duodenum and kidney. Heterogeneity is a shared problem, since only 24.3 percent of CA9-expressing tumour cells are seen in the weakest quarter of donors.",
+     "evidence_ids": [
+      "EV:adc_profile:225a767ebcb5",
+      "EV:adc_profile:d5aee88146ed"
+     ]
+    }
+   ],
+   "immune": [
+    {
+     "text": "FCER1G (immune share 0.999, rho 0.898 with the immune score) and FCGR3A (immune share 0.999) are immune-cell genes whose tumour-up signal reflects infiltration, linking them to hot tumours rather than tumour biology. CD70 is partly immune: immune cells make 0.654 of its tumour transcripts, conflicting with the tumour-cell reading. NNMT is the negative control here (immune share 0.015), so its increase is independent of how hot or cold the tumour is.",
+     "evidence_ids": [
+      "EV:immune_profile:e5780c87a2a7",
+      "EV:immune_profile:af56881a4234",
+      "EV:immune_profile:908e84663f6a",
+      "EV:immune_profile:7dbf93860d9f"
      ]
     }
    ],
    "integration": [
     {
-     "text": "Omics, literature and external knowledge converge most fully on CA9 and CD70: both are tumour-intrinsic, protein-confirmed, TCGA-replicated, literature-backed and clinically addressed. NNMT converges on omics, literature and prognosis but lacks a drug. SCARB1, ENPP3 and SLC16A3 are data-led, with thin or absent ccRCC literature.",
+     "text": "Omics, literature and external knowledge converge most clearly on CA9 and CD70 as surface targets and on NNMT as a target-and-biomarker; for NNMT, prognosis, confirmatory protein and single-cell replication all agree. They disagree on SCARB1 (strong omics and confirmatory protein, almost no literature, no drugs, mixed cell attribution) and on CD70's cell of origin. Tubule-loss genes (PSAT1, PCK1, ALDH6A1, ALDOB, SLC6A19) are the biomarker layer, while VHL, PBRM1 and EPAS1 are mechanism and validated-therapy context.",
      "evidence_ids": [
       "EV:tcga_de:225a767ebcb5",
-      "EV:tcga_de:908e84663f6a",
-      "EV:literature:534430b0156d",
-      "EV:literature:92dc16d8b33c",
-      "EV:literature:111b19cdfe29",
-      "EV:tcga_de:2d66f8e78d0c",
-      "EV:tcga_de:d5aee88146ed",
-      "EV:tcga_de:11298113327b"
-     ]
-    },
-    {
-     "text": "The disagreements are informative. The validated clinical axes (VHL, EPAS1) score high in Open Targets but not in the omics convergence, and EPAS1 transcripts are mostly non-tumour in single-cell data. Down-regulated tubule-identity genes (ALDOB, SLC22A8, PSAT1) top the overall and biomarker rankings but are biomarkers, not targets, and literature calling ALDOB a potential target is not supported by its data-only target profile.",
-     "evidence_ids": [
-      "EV:open_targets_assoc:730901c424b4",
-      "EV:open_targets_assoc:61983038a898",
-      "EV:sc_summary:6a657326c9fd",
-      "EV:tcga_de:a46f337f2987",
-      "EV:tcga_survival:de6aa3b720b1",
-      "EV:tcga_de:58119698ea36",
-      "EV:literature:c73e5613ede3"
+      "EV:adc_profile:908e84663f6a",
+      "EV:confirmatory_replication:7dbf93860d9f",
+      "EV:confirmatory_replication:2d66f8e78d0c",
+      "EV:sc_replication:908e84663f6a",
+      "EV:confirmatory_replication:58119698ea36",
+      "EV:open_targets_drug:199c475802ce"
      ]
     }
    ]
   },
   "limitations": [
    {
-    "text": "No leading candidate is a selective DepMap dependency; target calls rest on tumour-restricted expression, replication and tractability, not on essentiality."
+    "text": "All evidence is associative; no candidate has functional validation in this analysis, and none of the surface targets is a ccRCC dependency."
    },
    {
-    "text": "The biomarker ranking is dominated by proximal-tubule genes whose tumour-vs-normal loss partly reflects cell-of-origin differences; prognosis is univariate Cox in TCGA-KIRC only."
+    "text": "CA9 and CD70 could not be tested in the confirmatory protein cohort, and HK2 (target-profile top 10) was not queried for confirmatory replication in this run, so its protein call is unconfirmed."
    },
    {
-    "text": "Literature support for most genes comes from single bioinformatic or small IHC studies; CA9 and CD70 translational work is early-stage."
+    "text": "Single-cell attribution disagrees between datasets for CD70, SCARB1 and PSAT1, and the second dataset has few paired donors."
    },
    {
-    "text": "Single-cell records for CD70 and NNMT returned without evidence ids, so their cell-type split is not quoted; down-regulated convergence genes were not profiled at single-cell level."
+    "text": "IMmotion150 arms have about 90 patients each; treatment associations are leads, and no gene separates the arms after correction."
    },
    {
-    "text": "Molecular-glue-degrader scores rank AlphaFold pockets and do not indicate that a degrader exists."
+    "text": "Literature relations come from an LLM extractor over a limited abstract set; absence of literature is not absence of published work."
    },
    {
-    "text": "Discovery candidates are data-ranked hypotheses; literature counts are by gene symbol and immune-track genes are largely infiltration-driven."
+    "text": "Phosphosite and kinase-activity layers and STRING interactions were not queried by the agents in this run."
+   },
+   {
+    "text": "Molecular-glue-degrader scores rank candidate pockets only and are not evidence that a degrader exists."
    }
   ]
  },
@@ -26308,135 +26564,132 @@
   {
    "gene": "CA9",
    "category": "target_and_biomarker",
-   "rationale": "Strongest convergence overall and second in the target profile (p_top10 0.941): tumour-intrinsic (0.976 of transcripts in RCC cells, purity-1 log2FC 7.787), TCGA-replicated (log2FC 9.712), literature-backed and addressed by girentuximab (PHASE_3). No DepMap dependency, so it is an antibody, imaging and diagnostic target.",
+   "rationale": "Overall convergence rank 1 and target profile p_top10 0.941. Tumour-intrinsic in two single-cell datasets, replicates in TCGA (log2FC 9.712) and holds at purity 1; girentuximab reached PHASE_3. No dependency and no prognostic signal, so it is a surface, imaging and conjugate target.",
    "evidence_ids": [
-    "EV:sc_summary:225a767ebcb5",
-    "EV:purity:225a767ebcb5",
     "EV:tcga_de:225a767ebcb5",
-    "EV:open_targets_drug:e1e0c664ada3",
-    "EV:literature:534430b0156d"
-   ]
-  },
-  {
-   "gene": "CD70",
-   "category": "target",
-   "rationale": "Tumour-up at RNA (log2FC 4.464) and protein (log2FC 2.421), TCGA-replicated (log2FC 7.09), purity-robust (4.278), membrane-located with clinical antibodies (cusatuzumab PHASE_2) and supporting ccRCC literature. Ranked above SCARB1 despite a lower target-profile score because the literature and drug layers add independent support; some T/B-cell expression is an off-tumour caveat.",
-   "evidence_ids": [
-    "EV:omics_de:97c97f6d7d62",
-    "EV:omics_de:8a1dc0572ead",
-    "EV:tcga_de:908e84663f6a",
-    "EV:purity:908e84663f6a",
-    "EV:open_targets_drug:0a02c566ec75",
-    "EV:literature:92dc16d8b33c"
-   ]
-  },
-  {
-   "gene": "SCARB1",
-   "category": "target",
-   "rationale": "Top of the target profile (score 4.1314, p_top10 0.968): tumour-up (RNA log2FC 2.974, protein 1.837), TCGA-replicated (log2FC 3.989), purity-robust (3.762) and genetically associated in Open Targets (0.519). No drug, no ccRCC literature and no dependency, so it is the leading novel target hypothesis.",
-   "evidence_ids": [
-    "EV:omics_de:36b227bd1fb6",
-    "EV:omics_de:cd4a629b011f",
-    "EV:tcga_de:2d66f8e78d0c",
-    "EV:purity:2d66f8e78d0c",
-    "EV:open_targets_assoc:ee2e17841173"
+    "EV:purity:225a767ebcb5",
+    "EV:sc_replication:225a767ebcb5",
+    "EV:open_targets_drug:646a0aec5b64"
    ]
   },
   {
    "gene": "NNMT",
    "category": "target_and_biomarker",
-   "rationale": "Tumour-intrinsic and protein-confirmed (RNA log2FC 4.67, protein 2.709, purity-1 5.256), TCGA-replicated (4.685), adverse prognosis (Cox log HR 0.301) and literature support as prognostic marker. No clinical drug and no dependency (mean effect 0.316), so the biomarker call is firmer than the target call.",
+   "rationale": "Up at RNA and protein, confirmatory protein log2FC 4.776, RCC-dominant in both single-cell datasets, not immune-derived, and adverse prognosis (Cox log HR 0.301). Placed above the numeric target order because every independent layer agrees; selective inhibitors exist but no ccRCC drug.",
    "evidence_ids": [
-    "EV:omics_de:aefc373d6072",
-    "EV:omics_de:de39cc0c5ed8",
-    "EV:purity:7dbf93860d9f",
-    "EV:tcga_de:7dbf93860d9f",
-    "EV:tcga_survival:7dbf93860d9f",
-    "EV:literature:111b19cdfe29"
+    "EV:confirmatory_replication:7dbf93860d9f",
+    "EV:sc_replication:7dbf93860d9f",
+    "EV:immune_profile:7dbf93860d9f",
+    "EV:tcga_survival:7dbf93860d9f"
    ]
   },
   {
-   "gene": "ENPP3",
+   "gene": "CD70",
    "category": "target",
-   "rationale": "Tumour-up (RNA log2FC 3.895, protein 1.544), TCGA-replicated (5.557), purity-robust (5.278), apical membrane protein with an ADC (AGS-16C3F, PHASE_2). Robust in the target profile (p_top10 0.823) but has thin ccRCC literature in the corpus.",
+   "rationale": "Strong omics (protein log2FC 2.421, TCGA 7.09), clinical antibodies (cusatuzumab PHASE_2) and ADC suitability rank 2 of 2017. Held below NNMT because its single-cell attribution does not replicate and immune cells make 0.654 of its transcripts.",
    "evidence_ids": [
-    "EV:omics_de:d540450c23e1",
-    "EV:omics_de:fad29d44ef95",
-    "EV:tcga_de:d5aee88146ed",
-    "EV:purity:d5aee88146ed",
-    "EV:open_targets_drug:49872cd86a77",
-    "EV:uniprot:61e515f3c5a3"
+    "EV:tcga_de:908e84663f6a",
+    "EV:open_targets_drug:fcadbe214e8c",
+    "EV:adc_profile:908e84663f6a",
+    "EV:sc_replication:908e84663f6a",
+    "EV:immune_profile:908e84663f6a"
+   ]
+  },
+  {
+   "gene": "SCARB1",
+   "category": "target",
+   "rationale": "Top of the target profile (score 4.1314, p_top10 0.968) and protein replicates in the confirmatory cohort (2.334). Placed fourth here because it has no drugs, little literature, mixed single-cell attribution (Myeloid versus RCC) and an ADC suitability rank of only 51.",
+   "evidence_ids": [
+    "EV:omics_de:36b227bd1fb6",
+    "EV:confirmatory_replication:2d66f8e78d0c",
+    "EV:sc_replication:2d66f8e78d0c",
+    "EV:adc_profile:2d66f8e78d0c"
    ]
   },
   {
    "gene": "SLC16A3",
    "category": "target",
-   "rationale": "MCT4 lactate transporter, tumour-up (RNA log2FC 3.435, protein 2.279), TCGA-replicated (3.291), purity-robust (3.821) and stable in the target profile (p_top10 0.881). Predicted tractable but undrugged and not a dependency.",
+   "rationale": "MCT4 lactate exporter, up at RNA (3.435) and protein (2.279), replicates in the confirmatory cohort (3.551), and target-profile p_top10 0.881. ADC suitability rank 3 but antibody access is limited by its small extracellular surface.",
    "evidence_ids": [
     "EV:omics_de:545c6eb28bce",
-    "EV:omics_de:d93a2cc11342",
-    "EV:tcga_de:11298113327b",
-    "EV:purity:11298113327b",
-    "EV:open_targets_tract:11298113327b"
+    "EV:confirmatory_replication:11298113327b",
+    "EV:adc_profile:11298113327b"
    ]
   },
   {
-   "gene": "PSAT1",
-   "category": "biomarker",
-   "rationale": "The most robust biomarker call (biomarker score 5.3696, p_top10 0.986): down at RNA (log2FC -3.867) and protein (-1.963), TCGA-replicated (-2.974) and prognostic (Cox log HR 0.43, padj 5.66e-7).",
+   "gene": "ENPP3",
+   "category": "target",
+   "rationale": "Membrane enzyme up at RNA (3.895) and protein (1.544) with TCGA log2FC 5.557, and an ADC (AGS-16C3F) reached PHASE_2. Its level 3.0 staining in duodenum and kidney is a safety concern.",
    "evidence_ids": [
-    "EV:omics_de:fe09b800ea76",
-    "EV:omics_de:8fa49cbb1760",
-    "EV:tcga_de:58119698ea36",
-    "EV:tcga_survival:58119698ea36"
-   ]
-  },
-  {
-   "gene": "PCK1",
-   "category": "biomarker",
-   "rationale": "Loss of proximal-tubule gluconeogenic identity: down at RNA (log2FC -4.424) and protein (-1.859), TCGA-replicated (-3.079) and prognostic (Cox log HR -0.415, padj 1.91e-7); stable in the biomarker profile (p_top10 0.889).",
-   "evidence_ids": [
-    "EV:omics_de:85b979e6e19a",
-    "EV:tcga_de:fd99b19fe8a6",
-    "EV:tcga_survival:fd99b19fe8a6"
-   ]
-  },
-  {
-   "gene": "ALDOB",
-   "category": "biomarker",
-   "rationale": "Second in overall convergence: down in TCGA (log2FC -4.741), down at protein (-2.273), favourable when high (Cox log HR -0.358) and supported by ccRCC prognostic literature. A lost-expression gene, so not a target.",
-   "evidence_ids": [
-    "EV:tcga_de:a46f337f2987",
-    "EV:tcga_survival:a46f337f2987",
-    "EV:literature:c73e5613ede3",
-    "EV:literature:f834882a57a7"
-   ]
-  },
-  {
-   "gene": "ALDH6A1",
-   "category": "biomarker",
-   "rationale": "Strongest prognostic association among the biomarkers (Cox log HR -0.554, padj 9.45e-12) with a copy-loss dosage effect (cis rho 0.525). Placed below PSAT1 and PCK1 because its rank interval is wider (rank_p95 33) and its RNA change shrinks to -1.973 at purity 1.",
-   "evidence_ids": [
-    "EV:tcga_survival:df75d3108dd0",
-    "EV:cis_dosage:df75d3108dd0",
-    "EV:purity:df75d3108dd0"
+    "EV:omics_de:d540450c23e1",
+    "EV:tcga_de:d5aee88146ed",
+    "EV:adc_profile:d5aee88146ed"
    ]
   },
   {
    "gene": "EPAS1",
    "category": "target",
-   "rationale": "Not a convergence-led candidate, but the only selective ccRCC DepMap dependency (selectivity 0.3) and the approved belzutifan target. Kept as the clinical benchmark; its transcripts are mostly non-tumour in scRNA-seq (RCC 0.051).",
+   "rationale": "The validated ccRCC target (belzutifan approved) with a selective partial dependency (selectivity 0.3). It sits outside the expression-driven ranks because its RNA signal is mostly stromal (RNA log2FC at purity 1 of 0.46); included as the clinical benchmark.",
    "evidence_ids": [
-    "EV:depmap_dependency:6a657326c9fd",
     "EV:open_targets_drug:199c475802ce",
-    "EV:sc_summary:6a657326c9fd"
+    "EV:depmap_dependency:6a657326c9fd",
+    "EV:purity:6a657326c9fd"
+   ]
+  },
+  {
+   "gene": "PSAT1",
+   "category": "biomarker",
+   "rationale": "Most robust biomarker-profile gene (p_top10 0.986), protein loss replicates in the confirmatory cohort (-3.946), and it is prognostic in TCGA (Cox log HR 0.43). Associated with the ccB state; single-cell attribution is inconsistent.",
+   "evidence_ids": [
+    "EV:omics_de:fe09b800ea76",
+    "EV:confirmatory_replication:58119698ea36",
+    "EV:tcga_survival:58119698ea36",
+    "EV:subtype_profile:58119698ea36"
+   ]
+  },
+  {
+   "gene": "PCK1",
+   "category": "biomarker",
+   "rationale": "Proximal-tubule gene whose protein loss replicates strongly (confirmatory log2FC -4.819) and which is RCC-dominant in both single-cell datasets; biomarker-profile p_top10 0.889.",
+   "evidence_ids": [
+    "EV:confirmatory_replication:fd99b19fe8a6",
+    "EV:sc_replication:fd99b19fe8a6"
+   ]
+  },
+  {
+   "gene": "ALDH6A1",
+   "category": "biomarker",
+   "rationale": "Down at RNA (-3.399) and protein (-1.925) with a real dosage effect from 14q loss (cis rho 0.525), and strongly prognostic (Cox log HR -0.554, padj 9.45e-12).",
+   "evidence_ids": [
+    "EV:omics_de:1c73c0e9eeb3",
+    "EV:cis_dosage:df75d3108dd0",
+    "EV:tcga_survival:df75d3108dd0"
+   ]
+  },
+  {
+   "gene": "ALDOB",
+   "category": "biomarker",
+   "rationale": "Overall convergence rank 2 on the biomarker side: down in tumour (TCGA log2FC -4.741), literature support as a prognostic marker, and higher expression linked to better survival (Cox log HR -0.358).",
+   "evidence_ids": [
+    "EV:tcga_de:a46f337f2987",
+    "EV:tcga_survival:a46f337f2987",
+    "EV:literature:f834882a57a7"
+   ]
+  },
+  {
+   "gene": "SLC6A19",
+   "category": "biomarker",
+   "rationale": "Tubule transporter lost in tumour (RNA log2FC -4.574) with strong prognostic signal (Cox log HR -0.456, padj 1.07e-7) and biomarker-profile p_top10 0.881.",
+   "evidence_ids": [
+    "EV:omics_de:a685c4c3e10e",
+    "EV:tcga_survival:a68c82cb3c87"
    ]
   }
  ],
  "dropped_during_assembly": [],
  "basis": {
-  "started_utc": "2026-11-01T17:59:12+00:00",
+  "started_utc": "2026-11-01T19:49:38+00:00",
   "config_sha256": "92a60b6c9eb179043b45b85963f13659ff698fcb6133cd5f33cdd052e9d99329",
-  "evidence": 1121
+  "evidence": 1150
  }
 }

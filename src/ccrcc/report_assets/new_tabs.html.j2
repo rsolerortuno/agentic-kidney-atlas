@@ -1,5 +1,6 @@
 {#- Tissue viewer, treatment response and subtypes, ADC and immune. Shares the page's macros and figure dict. -#}
 <section class="panel" id="tab-viewer" data-name="viewer">
+{{ plain('viewer') }}
 <h2>Tissue viewer: what sits next to a gene's high spots? {{ q('tissue_viewer') }}</h2>
 <p class="lede">Four tumour sections from Li et al. 2022 are drawn here with their own H&amp;E picture. Pick a gene and the spots in the top tenth of its expression get a ring. Then click any spot: its six neighbours light up and the panel on the right shows what they are made of. The bars compare the neighbours of all high spots with the section average, so a long orange bar means that cell type is over-represented next to the gene.</p>
 <div class="vctl">
@@ -24,7 +25,11 @@
 </section>
 
 <section class="panel" id="tab-response" data-name="response">
+{{ plain('response') }}
 <h2>Which genes predict response to treatment?</h2>
+{% for p in f.narrative.sections.treatment or [] %}
+<p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
+{% endfor %}
 {% set T = m15.treatment %}
 {% if T and T.studies %}
 <p class="lede">IMmotion150 randomised {{ T.studies.IMmotion150.patients }} patients with metastatic kidney cancer to atezolizumab with bevacizumab ({{ T.studies.IMmotion150.arms.atezo_bev }}), atezolizumab alone ({{ T.studies.IMmotion150.arms.atezo }}) or sunitinib ({{ T.studies.IMmotion150.arms.sunitinib }}). We have the RNA of each tumour before treatment and the time to progression, so for every gene we ask whether more expression goes with longer benefit in each arm. The question that matters for choosing a drug is different: does the gene work differently in the two arms? We test that as the difference between the two arm-specific hazard ratios. The nivolumab trial of Choueiri 2016 has {{ T.studies.Choueiri2016.patients }} patients and {{ T.studies.Choueiri2016.responders }} responders, so it can only check direction.</p>
@@ -52,6 +57,9 @@
 {% else %}<p class="small">Treatment-response data were not built in this run.</p>{% endif %}
 
 <h2>Does the answer change with the tumour's genetics?</h2>
+{% for p in f.narrative.sections.subtypes or [] %}
+<p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
+{% endfor %}
 {% set S = m15.subtypes %}
 {% if S and S.drivers %}
 <p class="lede">A target that works for BAP1-mutant tumours may not matter for the rest. We split the CPTAC and TCGA-KIRC tumours by whether they carry a mutation in VHL, PBRM1, BAP1 or SETD2 and compared mutant with wild type. A subgroup target has to be higher in the mutants in CPTAC RNA, CPTAC protein and TCGA RNA, and also higher in tumour than in normal kidney. CPTAC has {{ S.drivers.VHL.cptac_mutant }} VHL, {{ S.drivers.PBRM1.cptac_mutant }} PBRM1, {{ S.drivers.BAP1.cptac_mutant }} BAP1 and {{ S.drivers.SETD2.cptac_mutant }} SETD2 mutant tumours.</p>
@@ -73,10 +81,18 @@
 </div>
 <p class="small">Values are mutant minus wild type, in log2 units. Mutant groups are small (14 to 41 in CPTAC), and the immune content of a tumour can differ between genotypes, so an immune gene in these lists may reflect infiltration instead of tumour biology.</p>
 {% else %}<p class="small">Subtype analysis was not built in this run.</p>{% endif %}
+{% if f.agent_findings.applied %}<h3>Findings from the translational agent (checked) {{ q('applied_findings') }}</h3>
+{% for x in f.agent_findings.applied.findings %}
+<p class="claim" data-evidence="{{ x.evidence_ids | evattr }}"><strong>{{ x.gene }}</strong> <span class="tag">{{ x.layer | default(x.role) | replace("_"," ") }}</span> {{ x.statement }} {{ x.evidence_ids | cite | safe }}</p>
+{% endfor %}{% endif %}
 </section>
 
 <section class="panel" id="tab-adcimmune" data-name="adcimmune">
+{{ plain('adcimmune') }}
 <h2>Antibody-drug conjugate and radioligand targets {{ q('adc_table') }}</h2>
+{% for p in f.narrative.sections.adc or [] %}
+<p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
+{% endfor %}
 {% set D = m15.adc_summary %}
 {% if D %}
 <p class="lede">An antibody-drug conjugate or a radioligand needs more than a gene that goes up. The protein has to sit on the cell surface with a part outside the membrane, it has to be missing from vital organs, and most tumour cells have to carry it, or the payload misses the rest. Each of {{ D.candidates }} tumour-up genes gets four scores: surface topology from UniProt, increase in tumour, protein staining in vital normal tissue from the Human Protein Atlas, and the share of tumour cells expressing it in the weakest quarter of donors. {{ D.surface }} have a surface location. Five known ccRCC targets are controls and rank {% for g, c in D.controls.items() %}{{ g }} {{ c.rank }}{% if not loop.last %}, {% endif %}{% endfor %} of {{ D.candidates }}.</p>
@@ -94,6 +110,9 @@
 {% else %}<p class="small">ADC analysis was not built in this run.</p>{% endif %}
 
 <h2>Immune microenvironment {{ q('immune_table') }}</h2>
+{% for p in f.narrative.sections.immune or [] %}
+<p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
+{% endfor %}
 {% set I = m15.immune_summary %}
 {% if I %}
 <p class="lede">So far immune genes were mostly treated as infiltration noise. Here they are the target. WashU's CIBERSORT and xCell estimates for {{ I.tumours }} CPTAC ccRCC tumours (110 of them are the discovery tumours with RNA, which are used for the gene-level links) sort the tumours into {{ I.classes.cold }} cold, {{ I.classes.intermediate }} intermediate and {{ I.classes.hot }} hot tumours. We then ask which genes follow CD8 T cells, regulatory T cells, M2 macrophages and the immune score across tumours, combine that with the single-cell source, the response on atezolizumab with bevacizumab and tractability, and rank every gene. Seven checkpoint genes serve as controls, and {{ I.controls_in_top100 }} of the seven reach the top 100. Their ranks are {% for g, c in I.controls.items() %}{{ g }} {{ c.rank }}{% if not loop.last %}, {% endif %}{% endfor %} of {{ "{:,}".format(I.universe) }}. So this profile finds immune biology but does not rediscover the best-known checkpoints, and it should be read as a way to list candidates, not as a validated ranking.</p>

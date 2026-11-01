@@ -168,3 +168,74 @@ def test_report_template_is_light_only():
     t = (pathlib.Path(__file__).parents[1] / "src" / "ccrcc" / "report_assets" / "report.html.j2").read_text(encoding="utf-8")
     assert "prefers-color-scheme:dark" not in t.replace(" ", "")
     assert 'data-theme="dark"' not in t
+
+
+@needs("confirmatory_protein.parquet")
+def test_confirmatory_cohort_is_independent_and_replicates():
+    from ccrcc.omics import LAYERS, read_matrix
+    s = json.loads((PROCESSED / "confirmatory_summary.json").read_text())
+    assert s["protein"]["replication_rate"] > 0.6 and s["protein"]["spearman_log2fc"] > 0.7
+    assert s["phosphosite"]["spearman_log2fc"] > 0.6
+    d = pd.read_parquet(PROCESSED / "confirmatory_protein.parquet")
+    assert d["conf_n_pairs"].min() >= 10
+    # discovery tumours are excluded: the confirmatory tumours are a different set of patients
+    import re
+    raw = pd.read_csv(PROCESSED.parents[1] / "data" / "raw" / "confirmatory" / "CPTAC_ccRCC_global_proteome_DIA.tsv", sep="\t", nrows=2)
+    disc = set(read_matrix(LAYERS["protein"][0]).columns)
+    used = {c[:-2] for c in raw.columns if re.match(r"^C3[LN]-\d+_T$", c)} - disc
+    assert len(used) >= 100 and d["n_tumour_conf"].iloc[0] == len(used)
+
+
+def test_confirmatory_phosphosite_names_are_parsed():
+    import re
+    name = "NP_001347480_PABPN1_S19"
+    parts = name.split("_")
+    assert parts[-2] == "PABPN1" and re.match(r"^[STY]\d+$", parts[-1])
+    assert ";" in "NP_001271265_EIF3J_S11;S13".split("_")[-1]       # multi-site peptides are skipped
+
+
+@needs("adc_suitability.parquet")
+def test_applied_evidence_is_attached_to_the_gene():
+    from ccrcc.graph import GraphStore, evidence_id
+    store = GraphStore()
+    for ev_type in ("treatment_response", "adc_profile", "immune_profile"):
+        eid = evidence_id(ev_type, "CD70")
+        rec = store.get_evidence([eid])
+        if not rec:
+            pytest.skip("applied evidence not loaded: run `ccrcc applied-graph`")
+        n = store.conn.execute("SELECT count(*) FROM claims WHERE evidence_id = ?", (eid,)).fetchone()[0]
+        assert n == 1 and rec[0]["gene"] == "CD70"
+
+
+def test_new_agent_is_registered_everywhere():
+    import pathlib
+
+    from ccrcc.verify import AGENT_FILES
+    root = pathlib.Path(__file__).parents[1]
+    assert "agent_applied.json" in AGENT_FILES
+    agent = (root / ".claude" / "agents" / "agente-aplicado.md").read_text(encoding="utf-8")
+    cmd = (root / ".claude" / "commands" / "informe.md").read_text(encoding="utf-8")
+    assert "agente-aplicado" in cmd and "agent_applied.json" in cmd
+    for tool in ("treatment_response", "subtype_profile", "adc_profile", "immune_profile", "sc_replication_check",
+                 "confirmatory_replication"):
+        assert tool in agent
+    from ccrcc.mcp_servers import cell, omics
+    for tool in ("treatment_response", "subtype_profile", "adc_profile", "immune_profile", "sc_replication_check"):
+        assert hasattr(cell, tool)
+    assert hasattr(omics, "confirmatory_replication")
+
+
+def test_mcp_config_passes_the_replicate_folder_to_the_servers():
+    import pathlib
+    cfg = json.loads((pathlib.Path(__file__).parents[1] / ".mcp.json").read_text())
+    for name, srv in cfg["mcpServers"].items():
+        assert "CCRCC_RUN_DIR" in srv.get("env", {}), name
+
+
+def test_overview_text_blocks_are_complete():
+    from ccrcc.report_text import GLOSSARY, PLAIN, TOUR
+    tabs = {"candidates", "omics", "cells", "structure", "discovery", "viewer", "response", "adcimmune", "validation",
+            "literature", "network", "methods"}
+    assert set(PLAIN) == tabs and {t[0] for t in TOUR} == tabs
+    assert len(GLOSSARY) >= 12
+    assert not any("—" in v for v in PLAIN.values())

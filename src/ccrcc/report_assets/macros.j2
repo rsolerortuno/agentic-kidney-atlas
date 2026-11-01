@@ -7,3 +7,7 @@
 {% macro plot(key, html) -%}
 {%- if html -%}<div class="plot" data-key="{{ key }}"><div class="plot-q">{{ q(key) }}</div>{{ html | safe }}</div>{%- endif -%}
 {%- endmacro %}
+
+{% macro plain(key) -%}
+{%- if PLAIN.get(key) -%}<div class="plainbox"><b>In plain words.</b> {{ PLAIN[key] }}</div>{%- endif -%}
+{%- endmacro %}

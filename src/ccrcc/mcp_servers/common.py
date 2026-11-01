@@ -34,3 +34,16 @@ def clean(obj):
     if isinstance(obj, float) and math.isnan(obj):
         return None
     return obj
+
+
+def applied_record(gene: str, ev_type: str, missing: str) -> dict:
+    """The evidence record of one gene for a result loaded by kg_applied.py (treatment, subtype, ADC, immune,
+    cell replication, confirmatory cohort). The record itself is returned with its evidence_id: cite that id."""
+    g = canonical_gene(gene)
+    from ..graph import evidence_id
+    eid = evidence_id(ev_type, g)
+    rec = store().get_evidence([eid])
+    if not rec:
+        return {"gene": g, "message": missing}
+    out = {k: v for k, v in rec[0].items() if k not in ("source", "retrieved", "date", "type")}
+    return clean({**out, "evidence_id": eid})

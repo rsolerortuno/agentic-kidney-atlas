@@ -117,3 +117,8 @@ HELP: dict[str, dict[str, str]] = {
 
 def get(key: str) -> dict[str, str] | None:
     return HELP.get(key)
+
+
+from .report_help_more import EXTRA_HELP  # noqa: E402
+
+HELP.update(EXTRA_HELP)

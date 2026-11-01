@@ -1,18 +1,16 @@
-﻿I have the convergence rows I need. Waiting for the four agents to finish.
+﻿The report is at `C:\Users\rafae\Documents\ccrcc-graphrag\runs\replicates\rep2\report.html`. The final check found 0 unsupported claims across 128 statements, and nothing was dropped from the narrative.
 
-The omics agent is done. Still waiting on literature, external and cells.
+The run went to `runs/replicates/rep2`, not `runs/2026-11-01`. That folder is what `integrate.py` printed, which suggests `CCRCC_RUN_DIR` is set in this environment. So `reports/ccrcc_report.html` was not updated.
 
-The omics and external agents are done. Still waiting on literature and cells.
+Five-line summary:
+1. **CA9** has the broadest support. It ranks 1 overall, is up in tumour at RNA (log2FC 6.312) and protein, replicates in TCGA (log2FC 9.712), holds up in a pure tumour, and 0.976 of its transcripts are in tumour cells. Girentuximab reached phase 3. Tumour cells do not depend on it, so it suits antibody, imaging or drug-conjugate approaches.
+2. **NNMT** is the best-supported candidate that is both a target and a biomarker. Its protein increase replicates in the confirmatory cohort (log2FC 4.776), it comes from tumour cells in both single-cell datasets, it is not driven by immune infiltration, and higher expression goes with worse survival (HR 0.301). **SCARB1** and **SLC16A3** also replicate at protein level.
+3. **CD70** looks good on omics, has clinical antibodies, and ranks 2 of 2017 for drug-conjugate suitability. But the two single-cell datasets disagree on whether it comes from tumour cells or T/NK cells.
+4. **Best biomarkers:** genes lost from normal kidney tubule. PSAT1 has the most stable rank (p_top10 0.986), and PCK1, ALDH6A1, ALDOB and SLC6A19 add replicated loss or prognostic value. In the IMmotion150 trial no candidate is significant after correction, and no gene separates the two main treatment arms.
+5. **Validated therapy context:** VHL, PBRM1 and EPAS1 (belzutifan) are mechanism rather than ranked candidates. The approved drug's target, EPAS1, sits outside the top ranks because its RNA is mostly stromal.
 
-Three of the four agents are done. Only the cells agent is still running.
-
-The report is at `C:\Users\rafae\Documents\ccrcc-graphrag\runs\replicates\rep2\report.html`.
-
-**This was replicate 2, not the dated run.** The environment has `CCRCC_RUN_DIR=replicates/rep2` set, so every step read and wrote `runs/replicates/rep2/` and `runs/2026-11-01/` was not touched. Final verification checked 97 statements and found 0 unsupported. Assembly dropped one paragraph on the first pass because it put RAB42's numbers under SLC37A2; I split it and re-ran, and nothing was dropped the second time.
-
-1. **CA9 has the strongest and most robust evidence.** It is #1 in the overall ranking and the only gene that stays in the top 10 when the weights are randomly varied (p_top10 0.894). The signal comes from tumour cells (0.976 of its tumour transcripts are in RCC cells, purity-1 log2FC 7.787), it replicates in TCGA-KIRC (log2FC 9.712), and girentuximab reached phase 3.
-2. **Second-tier targets:** CD70, SCARB1 (top of the target profile, p_top10 0.968), NNMT, ENPP3 and SLC16A3. All are higher in tumour at RNA and protein level, replicate in TCGA, and the change holds up when extrapolated to a pure tumour. CD70 and ENPP3 already have antibody or antibody-drug conjugate programmes; SCARB1 has no drug and no ccRCC literature, so it is the most novel.
-3. **Biomarkers** are mostly genes lost along with normal kidney-tubule identity: PSAT1 (the most stable call, p_top10 0.986), PCK1, ALDH6A1, SLC6A19 and ALDOB. They are prognostic, not drug targets. ALDH6A1 is weakened because its change shrinks a lot at purity 1.
-4. **No leading candidate is something the cancer cells depend on to survive** (DepMap). Only EPAS1, the target of the approved drug belzutifan, shows a selective dependency (selectivity 0.3). KDR, CD74 and CXCR4 come from blood-vessel and immune cells, not tumour cells.
-5. **Discovery hypotheses** (no dependency evidence): COL23A1 and RAB42 in tumour cells, and OLFML2A and JAG2 in the surrounding stroma. In the immune group, the bulk signals for SLC37A2 and LILRB4 largely reflect macrophage infiltration.
+Gaps in this run:
+- HK2 was not checked in the confirmatory cohort.
+- No agent queried the phosphosite, kinase or STRING layers.
+- One finding from the external-knowledge agent was dropped at verification.
 rep2 exit 0

@@ -4,54 +4,19 @@
   {
    "gene": "CA9",
    "role": "target_and_biomarker",
-   "statement": "CA9 is up in tumor at RNA (log2FC 6.312) and protein (log2FC 2.269), replicates in TCGA-KIRC (log2FC 9.712) and stays high extrapolated to purity 1 (RNA log2FC 7.787), so it is tumor-cell intrinsic. Cis copy-number rho is 0.224 and the antibody girentuximab has reached PHASE_3.",
+   "statement": "CA9 is up in tumour at RNA (log2FC 6.312, padj 1.72e-49) and protein (log2FC 2.269, padj 9.9e-43), with RNA-protein Spearman rho 0.797; TCGA-KIRC replicates (log2FC 9.712) and the purity-extrapolated RNA log2FC is 7.787, so the signal is tumour-intrinsic.",
    "evidence_ids": [
     "EV:omics_de:b269736afdb0",
     "EV:omics_de:5afe18b4024b",
-    "EV:omics_de:29dfc93ac765",
+    "EV:omics_rna_protein:225a767ebcb5",
     "EV:tcga_de:225a767ebcb5",
-    "EV:purity:225a767ebcb5",
-    "EV:cis_dosage:225a767ebcb5"
-   ]
-  },
-  {
-   "gene": "SCARB1",
-   "role": "target",
-   "statement": "SCARB1 is the top-ranked target: RNA log2FC 2.974 and protein log2FC 1.837, TCGA-KIRC log2FC 3.989, and a purity-1 RNA log2FC of 3.762 (SE 0.408), so the signal comes from tumor cells. TCGA Cox log HR is -0.038, so it is not prognostic.",
-   "evidence_ids": [
-    "EV:omics_de:36b227bd1fb6",
-    "EV:omics_de:cd4a629b011f",
-    "EV:omics_de:e9e9896d9499",
-    "EV:tcga_de:2d66f8e78d0c",
-    "EV:purity:2d66f8e78d0c"
-   ]
-  },
-  {
-   "gene": "CD70",
-   "role": "target",
-   "statement": "CD70 is up in tumor at RNA (log2FC 4.464) and protein (log2FC 2.421) and replicates in TCGA-KIRC (log2FC 7.09). It is an immunotherapy-tractable surface antigen, and clinical-stage anti-CD70 agents include cusatuzumab (PHASE_2) and vorsetuzumab mafodotin (PHASE_1).",
-   "evidence_ids": [
-    "EV:omics_de:97c97f6d7d62",
-    "EV:omics_de:8a1dc0572ead",
-    "EV:tcga_de:908e84663f6a",
-    "EV:open_targets_drug:fcadbe214e8c"
-   ]
-  },
-  {
-   "gene": "ENPP3",
-   "role": "target",
-   "statement": "ENPP3 is a membrane enzyme up in tumor at RNA (log2FC 3.895) and protein (log2FC 1.544), with TCGA-KIRC log2FC 5.557. Its cnv_loss_freq is 0.182, and the ADC AGS-16C3F has reached PHASE_2.",
-   "evidence_ids": [
-    "EV:omics_de:d540450c23e1",
-    "EV:omics_de:fad29d44ef95",
-    "EV:tcga_de:d5aee88146ed",
-    "EV:open_targets_drug:49872cd86a77"
+    "EV:purity:225a767ebcb5"
    ]
   },
   {
    "gene": "NNMT",
    "role": "target_and_biomarker",
-   "statement": "NNMT is up at RNA (log2FC 4.67) and protein (log2FC 2.709) and replicates in TCGA-KIRC (log2FC 4.685). Higher expression is associated with worse survival (Cox log HR 0.301, padj 0.00479). It ranks 4th for target and 6th for biomarker.",
+   "statement": "NNMT is strongly up at RNA (log2FC 4.67, padj 2.04e-40) and protein (log2FC 2.709, padj 1.23e-43); it replicates in TCGA (log2FC 4.685) and higher expression is prognostic for worse survival (log HR 0.301, padj 0.00479).",
    "evidence_ids": [
     "EV:omics_de:aefc373d6072",
     "EV:omics_de:de39cc0c5ed8",
@@ -60,9 +25,40 @@
    ]
   },
   {
+   "gene": "CD70",
+   "role": "target",
+   "statement": "CD70 is up at RNA (log2FC 4.464) and protein (log2FC 2.421); TCGA replicates (log2FC 7.09), purity-extrapolated RNA log2FC is 4.278, and it is a membrane target with clinical-stage anti-CD70 agents (cusatuzumab Phase 2).",
+   "evidence_ids": [
+    "EV:omics_de:97c97f6d7d62",
+    "EV:omics_de:8a1dc0572ead",
+    "EV:tcga_de:908e84663f6a",
+    "EV:purity:908e84663f6a"
+   ]
+  },
+  {
+   "gene": "ENPP3",
+   "role": "target",
+   "statement": "ENPP3 is up at RNA (log2FC 3.895) and protein (log2FC 1.544), replicates in TCGA (log2FC 5.557), and has 0.182 frequency of copy loss; the ADC AGS-16C3F reached Phase 2.",
+   "evidence_ids": [
+    "EV:omics_de:d540450c23e1",
+    "EV:omics_de:fad29d44ef95",
+    "EV:tcga_de:d5aee88146ed"
+   ]
+  },
+  {
+   "gene": "SCARB1",
+   "role": "target",
+   "statement": "SCARB1 ranks first in the target profile: RNA log2FC 2.974 and protein log2FC 1.837, TCGA log2FC 3.989; the purity-extrapolated RNA log2FC is 3.762, indicating tumour-cell expression.",
+   "evidence_ids": [
+    "EV:omics_de:36b227bd1fb6",
+    "EV:omics_de:cd4a629b011f",
+    "EV:tcga_de:2d66f8e78d0c"
+   ]
+  },
+  {
    "gene": "SLC16A3",
    "role": "target",
-   "statement": "SLC16A3 (MCT4, a lactate transporter) is up at RNA (log2FC 3.435) and protein (log2FC 2.279), with TCGA-KIRC log2FC 3.291 and a purity-1 RNA log2FC of 3.821. Ranked 3rd for target, with a Warburg-type metabolic rationale.",
+   "statement": "SLC16A3 (MCT4, a membrane lactate transporter) is up at RNA (log2FC 3.435) and protein (log2FC 2.279) and replicates in TCGA (log2FC 3.291).",
    "evidence_ids": [
     "EV:omics_de:545c6eb28bce",
     "EV:omics_de:d93a2cc11342",
@@ -70,100 +66,68 @@
    ]
   },
   {
-   "gene": "FABP6",
-   "role": "biomarker",
-   "statement": "FABP6 is up at RNA (log2FC 4.006) and protein (log2FC 1.921), with TCGA-KIRC log2FC 6.431. Its cnv_gain_freq is 0.573 and cis rho is 0.309, so there is a genuine copy-number gain dosage effect.",
-   "evidence_ids": [
-    "EV:omics_de:0ea3d10905b2",
-    "EV:omics_de:12f11b6896c3",
-    "EV:omics_cnv:52f5e4eeb4a8",
-    "EV:tcga_de:52f5e4eeb4a8",
-    "EV:cis_dosage:52f5e4eeb4a8"
-   ]
-  },
-  {
-   "gene": "CYP2J2",
-   "role": "biomarker",
-   "statement": "CYP2J2 is up at RNA (log2FC 3.849) and protein (log2FC 1.863), with TCGA-KIRC log2FC 5.025. Higher expression is favorable (Cox log HR -0.195, padj 0.0065). It is an up-regulated biomarker with a purity-1 RNA log2FC of 4.151.",
-   "evidence_ids": [
-    "EV:omics_de:8504d0e4bd6d",
-    "EV:omics_de:e18b0cab7459",
-    "EV:tcga_survival:800c9f294545",
-    "EV:purity:800c9f294545"
-   ]
-  },
-  {
    "gene": "PSAT1",
    "role": "biomarker",
-   "statement": "PSAT1 is the top biomarker. It is down in tumor at RNA (log2FC -3.867) and protein (log2FC -1.963), replicates in TCGA-KIRC (log2FC -2.974), and low expression predicts worse survival (Cox log HR 0.43, padj 5.66e-7).",
+   "statement": "PSAT1 is down in tumour at RNA (log2FC -3.867) and protein (log2FC -1.963) and tops the biomarker profile; TCGA Cox log HR 0.43 (padj 5.66e-7). The direction reflects loss of tubule identity rather than a target.",
    "evidence_ids": [
     "EV:omics_de:fe09b800ea76",
     "EV:omics_de:8fa49cbb1760",
-    "EV:tcga_de:58119698ea36",
     "EV:tcga_survival:58119698ea36"
    ]
   },
   {
    "gene": "PCK1",
    "role": "biomarker",
-   "statement": "PCK1 (gluconeogenesis) is down in tumor at RNA (log2FC -4.424) and protein (log2FC -1.859) and replicates in TCGA-KIRC (log2FC -3.079). Higher expression is protective (Cox log HR -0.415), consistent with loss of proximal tubule identity.",
+   "statement": "PCK1 is down in tumour at RNA (log2FC -4.424) and protein (log2FC -1.859), replicates in TCGA (log2FC -3.079), and low expression predicts worse survival (log HR -0.415, padj 1.91e-7).",
    "evidence_ids": [
     "EV:omics_de:85b979e6e19a",
     "EV:omics_de:6a1a53a41386",
-    "EV:tcga_de:fd99b19fe8a6",
     "EV:tcga_survival:fd99b19fe8a6"
    ]
   },
   {
    "gene": "ALDH6A1",
    "role": "biomarker",
-   "statement": "ALDH6A1 is down at RNA (log2FC -3.399) and protein (log2FC -1.925), with TCGA-KIRC log2FC -2.805. It has cnv_loss_freq 0.355 and cis rho 0.525, so 3p-type copy loss is a real dosage effect, and loss predicts worse survival (Cox log HR -0.554 for higher expression).",
+   "statement": "ALDH6A1 is down (RNA log2FC -3.399, protein log2FC -1.925) with 0.355 copy-loss frequency and positive cis effect (rho 0.525); low expression is prognostic (log HR -0.554), a 3p-linked loss of tubule metabolism.",
    "evidence_ids": [
     "EV:omics_de:1c73c0e9eeb3",
-    "EV:omics_de:7ad12e0f6863",
     "EV:omics_cnv:df75d3108dd0",
     "EV:cis_dosage:df75d3108dd0",
-    "EV:tcga_survival:df75d3108dd0",
-    "EV:tcga_de:df75d3108dd0"
-   ]
-  },
-  {
-   "gene": "SLC6A19",
-   "role": "biomarker",
-   "statement": "SLC6A19, a proximal-tubule amino acid transporter, is down at RNA (log2FC -4.574) and protein (log2FC -1.48). TCGA-KIRC log2FC is -3.221, and higher expression is favorable (Cox log HR -0.456). This is a tubule-identity loss marker, not a target.",
-   "evidence_ids": [
-    "EV:omics_de:a685c4c3e10e",
-    "EV:omics_de:1e23b7dfbd84",
-    "EV:tcga_de:a68c82cb3c87",
-    "EV:tcga_survival:a68c82cb3c87"
+    "EV:tcga_survival:df75d3108dd0"
    ]
   },
   {
    "gene": "PPP1R1A",
    "role": "biomarker",
-   "statement": "PPP1R1A is down at RNA (log2FC -2.974) and protein (log2FC -1.139), with TCGA-KIRC log2FC -5.179. Low expression predicts worse survival (Cox log HR 0.403, padj 0.00000155).",
+   "statement": "PPP1R1A is down at RNA (log2FC -2.974) and protein (log2FC -1.139), TCGA log2FC -5.179, and higher expression is worse in Cox terms (log HR 0.403, padj 0.00000155).",
    "evidence_ids": [
     "EV:omics_de:7a907fa55dbb",
-    "EV:omics_de:1a4650dddc73",
-    "EV:tcga_de:3e933275c7cd",
     "EV:tcga_survival:3e933275c7cd"
    ]
   },
   {
-   "gene": "HK2",
-   "role": "target",
-   "statement": "HK2 (glycolysis) is up at RNA (log2FC 3.351) and protein (log2FC 2.106), with TCGA-KIRC log2FC 3.974. It is a metabolic target candidate, but the DepMap mean effect in ccRCC is -0.123, so dependency is weak.",
+   "gene": "VHL",
+   "role": "mechanism",
+   "statement": "VHL on 3p shows copy loss in 0.791 of CPTAC tumours and is mutated in 247 of 511 patients (freq 0.483), consistent with the disease driver behind HIF targets such as CA9.",
    "evidence_ids": [
-    "EV:omics_de:feaa13f13e99",
-    "EV:omics_de:839dae331bb6",
-    "EV:tcga_de:c5d66c7fafe1"
+    "EV:omics_cnv:52e5aeb6c197",
+    "EV:somatic_recurrence:52e5aeb6c197"
+   ]
+  },
+  {
+   "gene": "PBRM1",
+   "role": "mechanism",
+   "statement": "PBRM1 has 3p copy loss in 0.8 of tumours and recurrent mutation in 185 of 511 patients (freq 0.362, padj 4.59e-239).",
+   "evidence_ids": [
+    "EV:omics_cnv:07b6205e67e5",
+    "EV:somatic_recurrence:07b6205e67e5"
    ]
   }
  ],
  "caveats": [
-  "Values come from the convergence_ranking rows (all profiles) and their evidence records. I ran no additional per-gene queries for RNA-protein correlation, phosphosites or kinase activity.",
-  "DepMap shows no strong selective dependency for the top up-regulated genes. Target prioritization rests on expression, tumor-intrinsic signal and tractability, not on functional essentiality.",
-  "Down-regulated biomarkers mostly reflect loss of proximal tubule identity and are not therapeutic targets. Bulk tumor-versus-normal contrasts can be influenced by cell composition.",
-  "Mutation recurrence for the top candidates is low, so none is a driver. VHL/PBRM1/SETD2/BAP1 mechanism genes were not queried here."
+  "Purity extrapolation and TCGA replication are RNA-based; protein only in CPTAC.",
+  "DepMap ccRCC dependency is near zero for most top targets, so up-regulation does not imply essentiality.",
+  "Down-regulated genes mainly reflect lost tubule identity; they are biomarkers, not targets.",
+  "Cohort is small (110 tumours; 75-84 matched normals)."
  ]
 }

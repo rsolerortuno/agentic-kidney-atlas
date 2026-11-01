@@ -9,7 +9,7 @@ from mcp.server.fastmcp import FastMCP
 
 from ..graph import evidence_id
 from ..paths import PROCESSED
-from .common import canonical_gene, clean, existing
+from .common import applied_record, canonical_gene, clean, existing
 
 mcp = FastMCP("cell-mcp")
 
@@ -249,6 +249,48 @@ def discovery_profile(gene: str) -> dict:
     if sub.empty:
         return {"gene": g, "message": "not in the discovery pool (needs concordant tumor-up RNA and protein and a dominant cell type)"}
     return _disc_row(next(sub.itertuples()))
+
+
+@mcp.tool()
+def treatment_response(gene: str) -> dict:
+    """Does the gene predict response to treatment in kidney cancer trials? IMmotion150 (263 patients: atezolizumab +
+    bevacizumab, atezolizumab, sunitinib) per arm: log hazard ratio of progression per SD of expression (negative =
+    longer benefit with higher expression), adjusted p-value and sample size, plus the difference between the
+    combination and sunitinib and the 16-patient Choueiri 2016 nivolumab trial (direction only). No gene differs
+    between the two main arms after correction, so say 'associated with' and never 'predicts'. Cite evidence_id."""
+    return applied_record(gene, "treatment_response", "gene not tested in the treatment-response trials (too little expression variation)")
+
+
+@mcp.tool()
+def subtype_profile(gene: str) -> dict:
+    """Does the gene differ between tumour subgroups? Mutant minus wild-type log2 difference and adjusted p-value for
+    VHL, PBRM1, BAP1 and SETD2 mutation (CPTAC RNA, CPTAC protein, TCGA-KIRC RNA) and the ccB minus ccA difference
+    (ClearCode34 split) with a flag for subgroup target candidates. Immune genes can differ because of infiltration."""
+    return applied_record(gene, "subtype_profile", "gene has no subtype comparison (not measured or too few tumours)")
+
+
+@mcp.tool()
+def adc_profile(gene: str) -> dict:
+    """Suitability as an antibody-drug conjugate or radioligand target: surface topology (UniProt), tumour increase,
+    staining in vital normal tissues (Human Protein Atlas immunohistochemistry, levels 0 none to 3 high), kidney staining,
+    share of tumour cells expressing it in the weakest quarter of donors, the 0-1 suitability score and its rank."""
+    return applied_record(gene, "adc_profile", "gene is not among the tumour-up candidates screened for ADC suitability")
+
+
+@mcp.tool()
+def immune_profile(gene: str) -> dict:
+    """Immune-target profile: share of the gene's tumour transcripts made by immune cells, Spearman correlation across
+    CPTAC tumours with CD8 T cells, regulatory T cells, M2 macrophages and the xCell immune score, log hazard ratio on
+    atezolizumab + bevacizumab, and the immune-target score and rank. Checkpoint genes are controls."""
+    return applied_record(gene, "immune_profile", "gene is not in the immune-profile focus set")
+
+
+@mcp.tool()
+def sc_replication_check(gene: str) -> dict:
+    """Is the cell-type attribution the same in a second single-cell dataset (Zhang 2021, 7 ccRCC donors)? Dominant cell
+    group and tumour-cell share in Li 2022 and in Zhang 2021 (seven shared groups), and the tumour vs proximal tubule
+    log2 fold change in both."""
+    return applied_record(gene, "sc_replication", "gene not measured in the second single-cell dataset")
 
 
 if __name__ == "__main__":

@@ -1,4 +1,4 @@
-{% from "macros.j2" import q, plot %}<!doctype html>
+{% from "macros.j2" import q, plot, plain %}<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -82,6 +82,12 @@ footer{color:var(--muted);font-size:.8rem;padding:10px 0 50px;border-top:1px sol
 .kpi .q{position:absolute;top:8px;right:8px;margin:0}
 .helpbox{background:var(--chip);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:8px 0;font-size:.85rem;color:var(--ink2);line-height:1.55;text-align:left;font-weight:400;letter-spacing:0}
 .helpbox p{margin:.3em 0}.helpbox b{color:var(--ink)}
+.plainbox{background:var(--chip);border-left:4px solid var(--s3);border-radius:0 10px 10px 0;padding:11px 16px;margin:0 0 20px;font-size:.92rem;color:var(--ink2);max-width:100ch}
+.plainbox b{color:var(--ink)}
+.intro{margin-bottom:26px}.intro ol.steps{max-width:100ch;padding-left:1.3em}.intro ol.steps li{margin:.5em 0}
+.tour{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
+.tourcard{display:block;width:100%;text-align:left;font:inherit;cursor:pointer;color:inherit}.tourcard:hover{border-color:var(--s1)}
+.tourcard h3{margin:0 0 .3em;color:var(--s1);font-size:1rem}.tourcard p{margin:0;font-size:.86rem;color:var(--ink2)}
 .whatsnew{border:1px solid var(--line);border-left:4px solid var(--s1);background:var(--surface);border-radius:10px;padding:14px 18px;margin:0 0 22px}
 .whatsnew h3{margin:.1em 0 .5em}.whatsnew ul{margin:.3em 0 0 1.1em;padding:0}.whatsnew li{margin:.35em 0;max-width:95ch}
 .vwrap{display:grid;gap:14px;grid-template-columns:minmax(0,1.6fr) minmax(280px,1fr)}
@@ -126,8 +132,7 @@ footer{color:var(--muted);font-size:.8rem;padding:10px 0 50px;border-top:1px sol
 <main class="wrap">
 
 <section class="panel" id="tab-overview" data-name="overview">
-<p class="lede">{{ f.question }}</p>
-{% include "whatsnew.html.j2" %}
+{% include "overview_intro.html.j2" %}
 <div class="kpis">
   <div class="kpi">{{ q("kpi_universe") }}<b>{{ "{:,}".format(kpis.universe) }}</b><span>genes scored</span></div>
   <div class="kpi">{{ q("kpi_claims") }}<b>{{ "{:,}".format(kpis.claims) }}</b><span>evidence-backed claims in the graph</span></div>
@@ -136,12 +141,13 @@ footer{color:var(--muted);font-size:.8rem;padding:10px 0 50px;border-top:1px sol
   <div class="kpi">{{ q("kpi_proteins") }}<b>{{ kpis.proteins }}</b><span>AlphaFold models analysed</span></div>
   <div class="kpi">{{ q("kpi_fic") }}<b>{{ kpis.fic }}</b><span>first-in-class opportunities (of {{ kpis.pool }} screened)</span></div>
 </div>
-<h2>Summary</h2>
+<h2>Summary of the findings</h2>
+<p class="small">Written by the orchestrating agent from the five agent reports. Every sentence cites evidence records and passed the automatic checks.</p>
 {% for p in f.narrative.summary %}
 <p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
 {% endfor %}
-<h2>Prioritized candidates</h2>
-<p class="small">Chosen by the orchestrator from the deterministic ranking and the verified agent reports; every rationale links to graph evidence.</p>
+<h2>Prioritised candidates</h2>
+<p class="small">The orchestrator picked these from the numeric ranking and the verified agent reports. It may depart from the ranking and then says why. The tags show the role (target, biomarker or both), the rank, the cell type that makes the gene, the best pocket score and any drug that already reached the clinic.</p>
 <div class="grid">
 {% for t in f.targets %}{% set b = badges.get(t.gene, {}) %}
 <div class="card cand claim" data-evidence="{{ t.evidence_ids | evattr }}">
@@ -157,10 +163,12 @@ footer{color:var(--muted);font-size:.8rem;padding:10px 0 50px;border-top:1px sol
 </div>
 {% endfor %}
 </div>
+{% include "overview_tour.html.j2" %}
 </section>
 
 <section class="panel" id="tab-candidates" data-name="candidates">
-<h2>Deterministic convergence ranking</h2>
+{{ plain('candidates') }}
+<h2>The convergence ranking</h2>
 <p class="lede">Each gene gets one score built from seven kinds of evidence: how much it changes in tumour (RNA, protein and phospho), whether a copy-number change really moves its product, what the literature says, genetics, how druggable the protein looks, whether cancer cell lines need it, and whether a second cohort (TCGA-KIRC) sees the same change. Every kind is scaled from 0 to 1 and multiplied by a weight ({% for k, v in f.convergence.config.stream_weights.items() %}{{ k }} {{ v }}{% if not loop.last %}, {% endif %}{% endfor %}). The weights live in <code>config.yaml</code> and were set before the results were known. {{ "{:,}".format(f.convergence.universe_size) }} genes are scored.</p>
 <div class="grid two">
   {{ plot('stream_stack', figs.stream_stack) }}
@@ -191,7 +199,8 @@ footer{color:var(--muted);font-size:.8rem;padding:10px 0 50px;border-top:1px sol
 </section>
 
 <section class="panel" id="tab-omics" data-name="omics">
-<h2>Omics evidence (CPTAC discovery cohort)</h2>
+{{ plain('omics') }}
+<h2>Tumour versus healthy kidney (CPTAC discovery cohort)</h2>
 {% for p in f.narrative.sections.omics or [] %}
 <p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
 {% endfor %}
@@ -209,7 +218,8 @@ footer{color:var(--muted);font-size:.8rem;padding:10px 0 50px;border-top:1px sol
 </section>
 
 <section class="panel" id="tab-cells" data-name="cells">
-<h2>Which cells express each candidate?</h2>
+{{ plain('cells') }}
+<h2>Which cells make each candidate?</h2>
 <p class="lede">The cell-type calls come from single-cell data of Li et al. 2022: {{ "{:,}".format(cell.sc.cells_used) }} cells from {{ cell.sc.donors }} donors, {{ "{:,}".format(cell.sc.cells_by_tissue.tumor) }} of them from tumour tissue. "Share of tumour transcripts" is the part of a gene's tumour RNA that each cell type makes. It separates a gene the tumour cells make themselves from one whose signal comes from infiltrating cells. "Tumour cell vs proximal tubule" compares the cancer cells with the normal cell they most likely came from, donor by donor ({{ cell.sc.tumor_vs_pt_donors }} donors had both). The last block on this tab repeats the attribution in a second, independent dataset.</p>
 {% for p in f.narrative.sections.cells or [] %}
 <p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
@@ -217,6 +227,7 @@ footer{color:var(--muted);font-size:.8rem;padding:10px 0 50px;border-top:1px sol
 <div class="grid two">
   {{ plot('dotplot', figs.dotplot) }}{{ plot('share_stack', figs.share_stack) }}
 </div>
+<h3>Cell type of each candidate {{ q('cell_table') }}</h3>
 <div class="tw" style="margin-top:14px"><table>
 <thead><tr><th>Gene</th><th>Highest-expressing cell type (mean)</th><th>% cells</th><th>Share of tumour transcripts</th><th>Tumour-cell share</th><th>τ</th>
 <th>Tumour cell vs proximal tubule</th><th>Evidence</th></tr></thead><tbody>
@@ -237,7 +248,7 @@ footer{color:var(--muted);font-size:.8rem;padding:10px 0 50px;border-top:1px sol
   </tbody></table></div>
 </div>{% endif %}
 
-<h2>Where are they in the tissue?</h2>
+<h2>Where in the tissue, and what is next to it?</h2>
 <p class="lede">The tissue data are {{ "{:,}".format(cell.spatial.spots) }} Visium spots from {{ cell.spatial.sections }} sections and {{ cell.spatial.donors }} donors. Each spot mixes a few cells, so its cell makeup is estimated by fitting it to the study's own single-cell profiles. The candidate genes were left out of that fit, which makes them a fair test of it: CA9 follows the tumour-cell share (rho {{ cell.spatial.validation.spearman_CA9_vs_RCC }}), KDR follows endothelium ({{ cell.spatial.validation.spearman_KDR_vs_Endothelial }}), CD74 follows macrophages ({{ cell.spatial.validation.spearman_CD74_vs_Macrophage }}) and PTPRC follows T cells ({{ cell.spatial.validation.spearman_PTPRC_vs_T_cell }}). The correlations are positive but modest. The Tissue viewer tab shows the same data on the real H&E sections.</p>
 {% for p in f.narrative.sections.spatial or [] %}
 <p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
@@ -250,6 +261,7 @@ footer{color:var(--muted);font-size:.8rem;padding:10px 0 50px;border-top:1px sol
 </div>{% endif %}
 {{ plot('neighbors', figs.neighbors) }}
 <p class="small">For each gene, we take the top tenth of spots and look at the ring of six spots around each one (about 100 micrometres). We compare the cell makeup of those rings with rings around random spots from the same sections, as a ratio, so common cell types get no head start. A permutation test with 1,000 shuffles gives each p-value, adjusted over all genes and cell types.</p>
+<h3>Tissue context of each candidate {{ q('spatial_table') }}</h3>
 <div class="tw"><table>
 <thead><tr><th>Gene</th><th>In situ expresser (NNLS)</th><th>Composition-corrected source</th><th>High spots</th><th>Enriched neighbours (log₂ obs/exp, padj &lt; 0.05)</th><th>Evidence</th></tr></thead><tbody>
 {% for t in cell.spatial_rows %}
@@ -265,7 +277,8 @@ footer{color:var(--muted);font-size:.8rem;padding:10px 0 50px;border-top:1px sol
 </section>
 
 <section class="panel" id="tab-structure" data-name="structure">
-<h2>Structure and molecular glue degrader (MGD) sites</h2>
+{{ plain('structure') }}
+<h2>Structure and pockets</h2>
 <p class="lede">AlphaFold DB models (residues below pLDDT {{ cell.structure.config.min_plddt_keep }} removed), cavities by {{ cell.structure.tool }}. The MGD site score in [0, 1]
 weights model confidence {{ cell.structure.config.mgd_weights.confidence }}, pocket geometry {{ cell.structure.config.mgd_weights.geometry }}, solvent-accessible lysines within
 {{ cell.structure.config.lysine_radius }} Å {{ cell.structure.config.mgd_weights.lysines }} (an E2~ubiquitin needs an acceptor lysine) and an exposed non-helical loop or hairpin nearby
@@ -277,7 +290,7 @@ validation chart). No E3 ligase compatibility, ternary-complex or degron-sequenc
 <p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
 {% endfor %}
 {% if controls %}
-<h3>Positive controls: known glue-degrader substrates scored the same way</h3>
+<h3>Positive controls: known glue-degrader substrates scored the same way {{ q('controls_table') }}</h3>
 <div class="tw"><table><thead><tr><th>Protein</th><th>MGD score</th><th>Mean pLDDT</th><th>Rank among {{ controls[0].of }} proteins</th></tr></thead><tbody>
 {% for c in controls %}<tr><td><strong>{{ c.gene }}</strong></td><td class="num">{{ c.score }}</td><td class="num">{{ c.plddt }}</td><td class="num">{{ c.rank }}</td></tr>{% endfor %}
 </tbody></table></div>
@@ -289,7 +302,7 @@ real glue targets from other proteins, and its use here is limited to ordering s
   {{ plot('ligand_validation', figs.ligand_validation) }}
   {{ plot('control_ranking', figs.control_ranking) }}
 </div>
-<h3>Best pocket per protein</h3>
+<h3>Best pocket per protein {{ q('pocket_table') }}</h3>
 <div class="tw"><table>
 <thead><tr><th>Gene</th><th>UniProt</th><th>Mean pLDDT</th><th>Pocket</th><th>Volume (Å³)</th><th>Depth (Å)</th><th>Lys ≤ {{ cell.structure.config.lysine_radius }} Å</th><th>Loop run</th>
 <th>MGD score</th><th>Ligand-site recall (all / top 3)</th><th>Evidence</th></tr></thead><tbody>
@@ -303,7 +316,8 @@ real glue targets from other proteins, and its use here is limited to ordering s
 </section>
 
 <section class="panel" id="tab-discovery" data-name="discovery">
-<h2>Target discovery: promising, under-studied, undrugged</h2>
+{{ plain('discovery') }}
+<h2>Target discovery: promising, little studied, no drug yet</h2>
 <p class="lede">The screen starts from <strong>{{ cell.discovery.pool }}</strong> genes that are up in tumour in both CPTAC RNA (log2 fold change at least {{ cell.discovery.thresholds.min_rna_log2fc }}) and protein (at least {{ cell.discovery.thresholds.min_protein_log2fc }}) and that single-cell data tie mostly to one cell type (at least {{ (cell.discovery.thresholds.min_source_share * 100) | int }} % of the gene's tumour transcripts). Each gene is then checked for how much ccRCC literature it has (Europe PMC, counting only aliases that belong to that gene), whether a clinical drug or potent compounds already exist (Open Targets, ChEMBL), where the protein sits (UniProt), how much it is expressed in vital organs (Human Protein Atlas), and whether it follows grade, replicates in TCGA-KIRC, survives correction for tumour purity, tracks survival or is a selective cell-line dependency. A gene is <strong>novel</strong> when it has no clinical-stage drug and at most {{ cell.discovery.thresholds.novel_max_ccrcc_papers }} ccRCC papers ({{ cell.discovery.novel }} genes). It is a <strong>first-in-class opportunity</strong> when it is also tractable by a small molecule or an antibody, stays at or below 50 nTPM in every vital organ, replicates in TCGA-KIRC and, for tumour and stroma genes, keeps its up-regulation at purity one ({{ kpis.fic }} genes: {% for t, n in (cell.discovery.first_in_class_by_track or {}).items() %}{{ n }} {{ t }}{% if not loop.last %}, {% endif %}{% endfor %}). These are hypotheses ranked by data, not validated targets.</p>
 {% for p in f.narrative.sections.discovery or [] %}
 <p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
@@ -374,6 +388,7 @@ DepMap tests dependency in cell lines grown in normoxia; no candidate here is a 
 {% include "new_tabs.html.j2" %}
 
 <section class="panel" id="tab-validation" data-name="validation">
+{{ plain('validation') }}
 <h2>Independent validation and robustness</h2>
 <p class="lede">Expression differences between tumour and normal kidney are only one kind of evidence, so this tab collects the others: somatic mutation recurrence in {{ layers.mutations.genes | default("—") }} genes across CPTAC and TCGA-KIRC (corrected for gene length), DepMap 26Q1 dependency in {{ (layers.dependency.ccrcc_lines | default([])) | length }} clear cell lines against {{ layers.dependency.other_lines | default("—") }} others, TCGA-KIRC replication ({{ layers.tcga.pairs | default("—") }} tumour-normal pairs) and overall survival ({{ layers.tcga.survival_patients | default("—") }} patients), {{ "{:,}".format(layers.phosphosites.sites) if layers.phosphosites else "—" }} phosphosites turned into kinase activity, and ESTIMATE tumour purity.</p>
 {% for p in f.narrative.sections.validation or [] %}
@@ -387,10 +402,28 @@ DepMap tests dependency in cell lines grown in normoxia; no candidate here is a 
   {{ plot('kinases', figs.kinases) }}
 </div>
 
+<h2>Does the protein signal replicate in a second cohort?</h2>
+{% set Cf = m15.confirmatory %}
+{% if Cf %}
+<p class="lede">Everything so far on protein and phosphorylation comes from one cohort of 110 tumours. The CPTAC confirmatory cohort is a separate set of patients, measured by a different method (label-free DIA mass spectrometry, from the Proteomic Data Commons). Using only patients who are not in the discovery cohort ({{ Cf.cohort.proteome_tumours }} tumours, about {{ Cf.cohort.median_pairs_protein }} with a matched normal), we repeated the tumour-versus-normal test. Of the {{ Cf.protein.discovery_significant }} proteins that changed in discovery and were measured in both cohorts, {{ Cf.protein.replicated }} ({{ (Cf.protein.replication_rate * 100) | round(0) | int }} %) changed again in the same direction at q below 0.05, rising to {{ (Cf.protein.replication_rate_large_effect * 100) | round(0) | int }} % when the discovery change was at least 0.5 log2 units. The fold changes of the two cohorts correlate at rho {{ Cf.protein.spearman_log2fc }}. For phosphosites the figures are {{ Cf.phosphosite.replicated }} of {{ Cf.phosphosite.discovery_significant }} ({{ (Cf.phosphosite.replication_rate * 100) | round(0) | int }} %), rho {{ Cf.phosphosite.spearman_log2fc }}.</p>
+{% for p in f.narrative.sections.confirmatory or [] %}
+<p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
+{% endfor %}
+<div class="grid two">
+  {{ plot('confirmatory_protein', figs.confirmatory_protein) }}
+  {{ plot('confirmatory_phospho', figs.confirmatory_phospho) }}
+</div>
+<h3>Candidates in the confirmatory cohort {{ q('confirmatory_table') }}</h3>
+<div class="tw"><table><thead><tr><th>Gene</th><th>Discovery log2FC</th><th>Confirmatory log2FC</th><th>q (confirmatory)</th><th>Replicates</th></tr></thead><tbody>
+{% for g, r in Cf.candidates.items() %}<tr><td><strong>{{ g }}</strong></td><td class="num">{{ r.disc_log2fc }}</td><td class="num">{{ r.conf_log2fc }}</td><td class="num">{{ r.conf_padj }}</td><td>{{ "yes" if r.replicates else "no" }}</td></tr>{% endfor %}
+</tbody></table></div>
+<p class="small">The two methods compress fold changes differently, which is why the confirmatory values are often larger. Some candidates, such as CA9, are missing: in the label-free data they are too sparse in normal kidney to give 10 matched pairs, so they could not be tested. A missing gene is a gap in the data, not a failed replication. HK2 is measured and does not replicate.</p>
+{% endif %}
+
 <h2>Two questions, two scores</h2>
 <p class="small">The overall score mixes target and biomarker evidence, so there are two separate profiles. The <strong>target</strong> profile weighs ({% for k, v in profile_weights.target.items() %}{{ k | replace("_", " ") }} {{ v }}{% if not loop.last %}, {% endif %}{% endfor %}). The <strong>biomarker</strong> profile weighs ({% for k, v in profile_weights.biomarker.items() %}{{ k | replace("_", " ") }} {{ v }}{% if not loop.last %}, {% endif %}{% endfor %}). Neither uses literature or drug history, which lets us test them against clinical outcomes below without the answer leaking into the score.</p>
 {% for name in ["target", "biomarker"] %}{% if profiles[name] %}
-<h3>{{ name | capitalize }} profile — top 25</h3>
+<h3>{{ name | capitalize }} profile, top 25 {{ q('profile_table') }}</h3>
 <div class="tw"><table>
 <thead><tr><th>#</th><th>Gene</th><th>Score</th>{% for k in profile_weights[name] %}<th>{{ k | replace("_", " ") }}</th>{% endfor %}<th>Rank 90 % interval</th><th>P(top 10)</th><th>Evidence</th></tr></thead>
 <tbody>{% for r in profiles[name] %}{% set allids = [] %}{% for v in r.evidence_ids.values() %}{% for i in v %}{% set _ = allids.append(i) %}{% endfor %}{% endfor %}
@@ -431,7 +464,7 @@ so the biomarker profile's prognosis component makes that comparison partly opti
 (v2: 22 %); median rank {{ evals.recall.median_rank | int }} of {{ "{:,}".format(evals.recall.universe) }}.</p>{% endif %}
 
 {% if evals.baselines %}{% set cb = evals.baselines.closed_book %}{% set pl = evals.baselines.pipeline %}
-<h2>What does the agentic layer add?</h2>
+<h2>What does the agentic layer add? {{ q('baseline_table') }}</h2>
 <div class="tw"><table><thead><tr><th></th><th>Closed-book LLM (no tools)</th><th>GraphRAG pipeline</th></tr></thead><tbody>
 <tr><td>Runs</td><td class="num">{{ cb.runs }}</td><td class="num">{{ pl.runs | length }}</td></tr>
 <tr><td>Mean pairwise Jaccard of candidate lists</td><td class="num">{{ cb.mean_pairwise_jaccard }}</td><td class="num">{{ pl.mean_pairwise_jaccard | fmt }}</td></tr>
@@ -444,7 +477,7 @@ so the biomarker profile's prognosis component makes that comparison partly opti
 <p class="small">Closed-book candidates: {% for c in cb.candidates %}{{ c | join(", ") }}{% if not loop.last %}; {% endif %}{% endfor %}.
 Pipeline targets: {% for c in pl.targets %}{{ c | join(", ") }}{% if not loop.last %}; {% endif %}{% endfor %}.</p>
 {% if evals.baselines.agents_vs_ranking %}
-<h3>Orchestrator decisions vs the numeric convergence rank (promoted = in the final list but outside the convergence top 10)</h3>
+<h3>Orchestrator decisions vs the numeric convergence rank {{ q('agents_table') }}</h3>
 <div class="tw"><table><thead><tr><th>Gene</th><th>Decision</th><th>Agent position</th><th>Convergence rank</th><th>RNA log2FC</th><th>At purity 1</th><th>Dependency</th><th>Replication</th><th>Target score</th><th>Biomarker score</th></tr></thead><tbody>
 {% for r in evals.baselines.agents_vs_ranking %}<tr><td><strong>{{ r.gene }}</strong></td><td>{{ r.decision }}</td><td class="num">{{ r.agent_position | fmt }}</td><td class="num">{{ r.convergence_rank | fmt }}</td>
 <td class="num">{{ r.rna_log2fc | fmt }}</td><td class="num">{{ r.rna_lfc_at_purity1 | fmt }}</td><td class="num">{{ r.c_dependency | fmt }}</td><td class="num">{{ r.c_replication | fmt }}</td>
@@ -454,6 +487,7 @@ Pipeline targets: {% for c in pl.targets %}{{ c | join(", ") }}{% if not loop.la
 </section>
 
 <section class="panel" id="tab-literature" data-name="literature">
+{{ plain('literature') }}
 <h2>Literature evidence (PubTator3 + verbatim-validated relations)</h2>
 {% for p in f.narrative.sections.literature or [] %}
 <p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
@@ -475,6 +509,7 @@ Pipeline targets: {% for c in pl.targets %}{{ c | join(", ") }}{% if not loop.la
 </section>
 
 <section class="panel" id="tab-network" data-name="network">
+{{ plain('network') }}
 <h2>Network of top candidates {{ q('network') }}</h2>
 <p class="small">● gene (top 25) · ◆ drug (Open Targets, max 3 per gene) · ■ ccRCC. Edges: drug→target, STRING interactions (score ≥ 0.7), up/down-regulation in ccRCC (CPTAC). Click an edge to see its evidence id.</p>
 <div id="cy"></div>
@@ -482,6 +517,7 @@ Pipeline targets: {% for c in pl.targets %}{{ c | join(", ") }}{% if not loop.la
 </section>
 
 <section class="panel" id="tab-methods" data-name="methods">
+{{ plain('methods') }}
 <h2>Provenance</h2>
 <div class="tw"><table><thead><tr><th>File</th><th>Dimensions</th><th>Downloaded (UTC)</th><th>sha256</th></tr></thead>
 <tbody>{% for d in f.datasets %}<tr><td><a href="{{ d.url }}">{{ d.file }}</a></td><td>{{ d.rows }} × {{ d.columns }}</td><td>{{ d.downloaded_utc }}</td><td><code>{{ d.sha256[:16] }}…</code></td></tr>{% endfor %}</tbody></table></div>
@@ -551,6 +587,7 @@ All statistics are computed by deterministic Python code; the LLMs only chose wh
     resizePlots(p); applyTheme(); if(name==='viewer'&&window.viewerShow) window.viewerShow();
     if(push!==false){try{history.replaceState(null,'','#tab='+name);}catch(e){}}
   }
+  [].slice.call(document.querySelectorAll('[data-go]')).forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();show(a.getAttribute('data-go'));window.scrollTo(0,0);});});
   tabs.forEach(function(t){t.addEventListener('click',function(){show(t.getAttribute('data-tab'));window.scrollTo(0,0);});});
   document.addEventListener('click',function(e){
     var a=e.target.closest('a[href^="#"]'); if(!a) return;

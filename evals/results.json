@@ -1601,83 +1601,49 @@
    "targets": [
     [
      "CA9",
-     "CD70",
      "NNMT",
-     "ENPP3",
+     "CD70",
      "SCARB1",
-     "SLC16A3",
-     "HK2",
-     "EPAS1",
      "PSAT1",
+     "ENPP3",
      "PCK1",
-     "SLC6A19",
-     "ALDH6A1"
+     "SLC16A3",
+     "ALDH6A1",
+     "ALDOB",
+     "EPAS1"
     ],
     [
      "CA9",
-     "CD70",
      "NNMT",
+     "CD70",
      "SCARB1",
-     "ENPP3",
      "SLC16A3",
+     "ENPP3",
      "EPAS1",
      "PSAT1",
-     "ALDH6A1",
      "PCK1",
+     "ALDH6A1",
+     "SLC6A19",
+     "ALDOB"
+    ],
+    [
+     "CA9",
+     "NNMT",
+     "CD70",
+     "SCARB1",
+     "SLC16A3",
+     "ENPP3",
+     "EPAS1",
+     "PSAT1",
+     "PCK1",
+     "ALDH6A1",
      "ALDOB",
      "SLC6A19"
-    ],
-    [
-     "CA9",
-     "CD70",
-     "SCARB1",
-     "NNMT",
-     "ENPP3",
-     "SLC16A3",
-     "PSAT1",
-     "PCK1",
-     "ALDOB",
-     "ALDH6A1",
-     "EPAS1"
     ]
    ],
-   "mean_pairwise_jaccard": 0.844,
-   "top3_identical_across_runs": false,
+   "mean_pairwise_jaccard": 0.944,
+   "top3_identical_across_runs": true,
    "support": [
-    {
-     "n": 12,
-     "in_rcc_clinical_targets": 0.167,
-     "in_target_or_biomarker_profile_top500": 1.0,
-     "not_clinical_but_data_supported": [
-      "ALDH6A1",
-      "CD70",
-      "ENPP3",
-      "HK2",
-      "NNMT",
-      "PCK1",
-      "PSAT1",
-      "SCARB1",
-      "SLC16A3",
-      "SLC6A19"
-     ]
-    },
-    {
-     "n": 12,
-     "in_rcc_clinical_targets": 0.167,
-     "in_target_or_biomarker_profile_top500": 1.0,
-     "not_clinical_but_data_supported": [
-      "ALDH6A1",
-      "ALDOB",
-      "CD70",
-      "ENPP3",
-      "NNMT",
-      "PCK1",
-      "PSAT1",
-      "SCARB1",
-      "SLC16A3",
-      "SLC6A19"
-     ]
-    },
     {
      "n": 11,
      "in_rcc_clinical_targets": 0.182,
@@ -1693,12 +1659,46 @@
       "SCARB1",
       "SLC16A3"
      ]
+    },
+    {
+     "n": 12,
+     "in_rcc_clinical_targets": 0.167,
+     "in_target_or_biomarker_profile_top500": 1.0,
+     "not_clinical_but_data_supported": [
+      "ALDH6A1",
+      "ALDOB",
+      "CD70",
+      "ENPP3",
+      "NNMT",
+      "PCK1",
+      "PSAT1",
+      "SCARB1",
+      "SLC16A3",
+      "SLC6A19"
+     ]
+    },
+    {
+     "n": 12,
+     "in_rcc_clinical_targets": 0.167,
+     "in_target_or_biomarker_profile_top500": 1.0,
+     "not_clinical_but_data_supported": [
+      "ALDH6A1",
+      "ALDOB",
+      "CD70",
+      "ENPP3",
+      "NNMT",
+      "PCK1",
+      "PSAT1",
+      "SCARB1",
+      "SLC16A3",
+      "SLC6A19"
+     ]
     }
    ],
-   "statements_checked": 97,
+   "statements_checked": 118,
    "unsupported": 0
   },
-  "closed_vs_pipeline_jaccard": 0.091,
+  "closed_vs_pipeline_jaccard": 0.095,
   "agents_vs_ranking": [
    {
     "gene": "CA9",
@@ -1715,22 +1715,8 @@
     "biomarker_profile_score": 4.407
    },
    {
-    "gene": "CD70",
-    "agent_position": 2,
-    "convergence_rank": 3,
-    "decision": "kept",
-    "rna_log2fc": 4.464,
-    "rna_lfc_at_purity1": 4.278,
-    "c_tumor_intrinsic": 1.0,
-    "c_dependency": 0.0,
-    "c_replication": 1.0,
-    "c_mutation": 0.0,
-    "target_profile_score": 3.714,
-    "biomarker_profile_score": 3.714
-   },
-   {
     "gene": "NNMT",
-    "agent_position": 3,
+    "agent_position": 2,
     "convergence_rank": 7,
     "decision": "kept",
     "rna_log2fc": 4.67,
@@ -1743,22 +1729,22 @@
     "biomarker_profile_score": 4.774
    },
    {
-    "gene": "ENPP3",
-    "agent_position": 4,
-    "convergence_rank": 29,
-    "decision": "promoted",
-    "rna_log2fc": 3.895,
-    "rna_lfc_at_purity1": 5.278,
+    "gene": "CD70",
+    "agent_position": 3,
+    "convergence_rank": 3,
+    "decision": "kept",
+    "rna_log2fc": 4.464,
+    "rna_lfc_at_purity1": 4.278,
     "c_tumor_intrinsic": 1.0,
     "c_dependency": 0.0,
     "c_replication": 1.0,
     "c_mutation": 0.0,
-    "target_profile_score": 3.693,
-    "biomarker_profile_score": 4.193
+    "target_profile_score": 3.714,
+    "biomarker_profile_score": 3.714
    },
    {
     "gene": "SCARB1",
-    "agent_position": 5,
+    "agent_position": 4,
     "convergence_rank": 5,
     "decision": "kept",
     "rna_log2fc": 2.974,
@@ -1771,50 +1757,8 @@
     "biomarker_profile_score": 3.668
    },
    {
-    "gene": "SLC16A3",
-    "agent_position": 6,
-    "convergence_rank": 15,
-    "decision": "promoted",
-    "rna_log2fc": 3.435,
-    "rna_lfc_at_purity1": 3.821,
-    "c_tumor_intrinsic": 0.955,
-    "c_dependency": 0.0,
-    "c_replication": 0.823,
-    "c_mutation": 0.0,
-    "target_profile_score": 3.76,
-    "biomarker_profile_score": 3.876
-   },
-   {
-    "gene": "HK2",
-    "agent_position": 7,
-    "convergence_rank": 54,
-    "decision": "promoted",
-    "rna_log2fc": 3.351,
-    "rna_lfc_at_purity1": 3.989,
-    "c_tumor_intrinsic": 0.997,
-    "c_dependency": 0.0,
-    "c_replication": 0.994,
-    "c_mutation": 0.0,
-    "target_profile_score": 3.573,
-    "biomarker_profile_score": 3.992
-   },
-   {
-    "gene": "EPAS1",
-    "agent_position": 8,
-    "convergence_rank": 38,
-    "decision": "promoted",
-    "rna_log2fc": 0.306,
-    "rna_lfc_at_purity1": 0.46,
-    "c_tumor_intrinsic": 0.0,
-    "c_dependency": 0.25,
-    "c_replication": 0.115,
-    "c_mutation": 0.0,
-    "target_profile_score": 2.697,
-    "biomarker_profile_score": 2.19
-   },
-   {
     "gene": "PSAT1",
-    "agent_position": 9,
+    "agent_position": 5,
     "convergence_rank": 61,
     "decision": "promoted",
     "rna_log2fc": -3.867,
@@ -1827,8 +1771,22 @@
     "biomarker_profile_score": 5.37
    },
    {
+    "gene": "ENPP3",
+    "agent_position": 6,
+    "convergence_rank": 29,
+    "decision": "promoted",
+    "rna_log2fc": 3.895,
+    "rna_lfc_at_purity1": 5.278,
+    "c_tumor_intrinsic": 1.0,
+    "c_dependency": 0.0,
+    "c_replication": 1.0,
+    "c_mutation": 0.0,
+    "target_profile_score": 3.693,
+    "biomarker_profile_score": 4.193
+   },
+   {
     "gene": "PCK1",
-    "agent_position": 10,
+    "agent_position": 7,
     "convergence_rank": 68,
     "decision": "promoted",
     "rna_log2fc": -4.424,
@@ -1841,22 +1799,22 @@
     "biomarker_profile_score": 5.041
    },
    {
-    "gene": "SLC6A19",
-    "agent_position": 11,
-    "convergence_rank": 23,
+    "gene": "SLC16A3",
+    "agent_position": 8,
+    "convergence_rank": 15,
     "decision": "promoted",
-    "rna_log2fc": -4.574,
-    "rna_lfc_at_purity1": -4.879,
-    "c_tumor_intrinsic": 0.0,
+    "rna_log2fc": 3.435,
+    "rna_lfc_at_purity1": 3.821,
+    "c_tumor_intrinsic": 0.955,
     "c_dependency": 0.0,
-    "c_replication": 0.805,
+    "c_replication": 0.823,
     "c_mutation": 0.0,
-    "target_profile_score": 1.0,
-    "biomarker_profile_score": 5.008
+    "target_profile_score": 3.76,
+    "biomarker_profile_score": 3.876
    },
    {
     "gene": "ALDH6A1",
-    "agent_position": 12,
+    "agent_position": 9,
     "convergence_rank": 92,
     "decision": "promoted",
     "rna_log2fc": -3.399,
@@ -1870,9 +1828,9 @@
    },
    {
     "gene": "ALDOB",
-    "agent_position": null,
+    "agent_position": 10,
     "convergence_rank": 2,
-    "decision": "left out",
+    "decision": "kept",
     "rna_log2fc": -7.028,
     "rna_lfc_at_purity1": -6.302,
     "c_tumor_intrinsic": 0.0,
@@ -1881,6 +1839,20 @@
     "c_mutation": 0.0,
     "target_profile_score": 1.0,
     "biomarker_profile_score": 4.376
+   },
+   {
+    "gene": "EPAS1",
+    "agent_position": 11,
+    "convergence_rank": 38,
+    "decision": "promoted",
+    "rna_log2fc": 0.306,
+    "rna_lfc_at_purity1": 0.46,
+    "c_tumor_intrinsic": 0.0,
+    "c_dependency": 0.25,
+    "c_replication": 0.115,
+    "c_mutation": 0.0,
+    "target_profile_score": 2.697,
+    "biomarker_profile_score": 2.19
    },
    {
     "gene": "SLC22A8",

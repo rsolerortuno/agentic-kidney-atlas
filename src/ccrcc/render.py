@@ -18,6 +18,7 @@ from . import report_figures as F
 from . import report_figures_m15 as F15
 from .m15_tables import build as build_m15
 from .report_help import HELP
+from .report_text import GLOSSARY, PLAIN, TOUR
 from .graph import GraphStore
 from .paths import PROCESSED, REPORTS
 
@@ -171,6 +172,38 @@ def evidence_view(e: dict) -> dict:
         detail = (f"{e['gene']}: tumour RNA vs ESTIMATE purity ρ {e.get('rna_purity_rho')}; RNA log2FC at purity 1 "
                   f"{e.get('rna_lfc_at_purity1')} ± {e.get('rna_lfc_at_purity1_se')} (protein "
                   f"{e.get('protein_lfc_at_purity1')}), {e['n_tumors']} tumours")
+    elif t == "treatment_response":
+        arms = "; ".join(f"{a.replace('_', ' ')}: log HR {v['log_hr_per_sd']} (q {v['padj']}, n {v['n']})" for a, v in e["arms"].items())
+        detail = f"{e['gene']} in the treatment trials (log hazard ratio of progression per SD; negative = longer benefit): {arms}"
+    elif t == "subtype_profile":
+        bits = []
+        for k, v in e.items():
+            if k in ("VHL", "PBRM1", "BAP1", "SETD2"):
+                lay = "; ".join(f"{ly} {x['mutant_minus_wildtype_log2']} (q {x['padj']})" for ly, x in v.items() if isinstance(x, dict))
+                bits.append(f"{k}-mutant minus wild type: {lay}")
+        if "ccA_ccB" in e:
+            bits.append("ccB minus ccA: " + "; ".join(f"{ly} {x['ccB_minus_ccA_log2']} (q {x['padj']})"
+                                                       for ly, x in e["ccA_ccB"].items() if isinstance(x, dict)))
+        detail = f"{e['gene']} across tumour subgroups (log2): " + " | ".join(bits)
+    elif t == "adc_profile":
+        detail = (f"{e['gene']}: ADC / radioligand suitability {e['suitability']} (rank {e['rank']} of {e['of']}); surface score "
+                  f"{e['surface_score']}; protein log2FC {e.get('protein_log2fc')}; vital-organ staining level "
+                  f"{e.get('vital_organ_staining_level')} ({e.get('vital_organ_tissue')}); kidney {e.get('kidney_staining_level')}; "
+                  f"tumour cells expressing {e.get('tumour_cells_expressing_pct_weakest_quarter_of_donors')} % (weakest quarter of donors)")
+    elif t == "immune_profile":
+        detail = (f"{e['gene']}: immune-target score {e['immune_target_score']} (rank {e['rank']} of {e['of']}); immune-cell share of "
+                  f"tumour transcripts {e.get('immune_cell_share_of_tumour_transcripts')}; rho with CD8 T cells "
+                  f"{e.get('rho_with_cd8_t_cells')}, Tregs {e.get('rho_with_regulatory_t_cells')}, M2 macrophages "
+                  f"{e.get('rho_with_m2_macrophages')}, immune score {e.get('rho_with_immune_score')}")
+    elif t == "sc_replication":
+        detail = (f"{e['gene']}: dominant cell group {e['li2022_dominant_group']} in Li 2022 and {e['zhang2021_dominant_group']} in "
+                  f"Zhang 2021; tumour-cell share {e['li2022_tumour_cell_share']} vs {e['zhang2021_tumour_cell_share']}; tumour vs tubule "
+                  f"log2FC {e.get('li2022_tumour_vs_tubule_log2fc')} vs {e.get('zhang2021_tumour_vs_tubule_log2fc')}")
+    elif t == "confirmatory_replication":
+        detail = (f"{e['gene']} in the confirmatory CPTAC cohort: protein log2FC {e['protein_conf_log2fc']} (q {e['protein_conf_padj']}, "
+                  f"{e['protein_conf_pairs']} pairs) vs {e['protein_discovery_log2fc']} in discovery; replicates: {e['protein_replicates']}"
+                  + (f"; phosphosites replicating {e['phosphosites_replicating']} of {e['phosphosites_significant_in_discovery']}"
+                     if "phosphosites_measured_in_both" in e else ""))
     return {"id": e["evidence_id"], "anchor": anchor(e["evidence_id"]), "type": t, "label": label,
             "link": link, "detail": detail}
 
@@ -278,6 +311,7 @@ def render(findings_path: Path, out: Path | None = None) -> Path:
         "subtype_counts": F15.subtype_counts(m15.get("subtypes") or {}), "ccab": F15.ccab_figure(),
         "adc": F15.adc_figure(), "immune_classes": F15.immune_classes_figure(),
         "sc_replication": F15.sc_replication_figure(),
+        "confirmatory_protein": F15.confirmatory_scatter("protein"), "confirmatory_phospho": F15.confirmatory_scatter("phospho"),
     })
     viewer_p = PROCESSED / "spatial_viewer.json"
     viewer_json = viewer_p.read_text(encoding="utf-8") if viewer_p.exists() else "null"
@@ -304,6 +338,7 @@ def render(findings_path: Path, out: Path | None = None) -> Path:
         return "<sup>[" + ",".join(parts) + "]</sup>" if parts else ""
 
     env.globals["H"] = HELP
+    env.globals["PLAIN"] = PLAIN
     env.filters["cite"] = cite
     env.filters["evattr"] = lambda ev_ids: " ".join(ev_ids)
     env.filters["fmt"] = lambda x: "—" if x is None or (isinstance(x, float) and math.isnan(x)) else x
@@ -316,7 +351,7 @@ def render(findings_path: Path, out: Path | None = None) -> Path:
         verification=json.loads(vpath.read_text(encoding="utf-8")) if vpath.exists() else None,
         graph_stats=json.loads((PROCESSED / "graph_stats.json").read_text()),
         profiles=profiles, profile_weights=f["convergence"].get("profile_weights") or {}, evals=evals, layers=layers,
-        m15=m15, viewer_json=viewer_json, release=RELEASE,
+        m15=m15, viewer_json=viewer_json, release=RELEASE, tour=TOUR, glossary=GLOSSARY,
     )
     out = out or REPORTS / "ccrcc_report.html"
     out.write_text(html_out, encoding="utf-8")

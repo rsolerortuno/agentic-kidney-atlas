@@ -9,7 +9,7 @@ from mcp.server.fastmcp import FastMCP
 from ..config import load
 from ..graph import evidence_id
 from ..paths import PROCESSED
-from .common import canonical_gene, clean, existing
+from .common import applied_record, canonical_gene, clean, existing
 
 mcp = FastMCP("omics-mcp")
 LAYERS = ("rna", "protein", "phospho")
@@ -219,6 +219,16 @@ def kinase_activity(gene: str | None = None, n: int = 15) -> list[dict]:
                    "n_substrate_sites": int(r["n_substrate_sites"]),
                    "evidence_id": existing(evidence_id("kinase_activity", r["gene"]))})
             for _, r in df.head(min(n, 50)).iterrows()]
+
+
+@mcp.tool()
+def confirmatory_replication(gene: str) -> dict:
+    """Does the protein (and phosphosite) change replicate in the confirmatory CPTAC cohort? That cohort has different
+    patients and a different technology (label-free DIA mass spectrometry, Proteomic Data Commons PDC000411), so
+    absolute fold changes differ from the discovery TMT data: judge direction and significance. Returns the
+    confirmatory and discovery protein log2 fold change, adjusted p-value, pairs and whether it replicates, plus the
+    number of phosphosites of the gene that were measured in both cohorts and replicate."""
+    return applied_record(gene, "confirmatory_replication", "gene not tested in the confirmatory cohort: absent or too sparse there (fewer than 10 matched tumour-normal pairs)")
 
 
 if __name__ == "__main__":

@@ -3,22 +3,58 @@
     "omics-mcp": {
       "type": "stdio",
       "command": "uv",
-      "args": ["run", "--quiet", "python", "-m", "ccrcc.mcp_servers.omics"]
+      "args": [
+        "run",
+        "--quiet",
+        "python",
+        "-m",
+        "ccrcc.mcp_servers.omics"
+      ],
+      "env": {
+        "CCRCC_RUN_DIR": "${CCRCC_RUN_DIR:-}"
+      }
     },
     "kg-mcp": {
       "type": "stdio",
       "command": "uv",
-      "args": ["run", "--quiet", "python", "-m", "ccrcc.mcp_servers.kg"]
+      "args": [
+        "run",
+        "--quiet",
+        "python",
+        "-m",
+        "ccrcc.mcp_servers.kg"
+      ],
+      "env": {
+        "CCRCC_RUN_DIR": "${CCRCC_RUN_DIR:-}"
+      }
     },
     "external-mcp": {
       "type": "stdio",
       "command": "uv",
-      "args": ["run", "--quiet", "python", "-m", "ccrcc.mcp_servers.external"]
+      "args": [
+        "run",
+        "--quiet",
+        "python",
+        "-m",
+        "ccrcc.mcp_servers.external"
+      ],
+      "env": {
+        "CCRCC_RUN_DIR": "${CCRCC_RUN_DIR:-}"
+      }
     },
     "cell-mcp": {
       "type": "stdio",
       "command": "uv",
-      "args": ["run", "--quiet", "python", "-m", "ccrcc.mcp_servers.cell"]
+      "args": [
+        "run",
+        "--quiet",
+        "python",
+        "-m",
+        "ccrcc.mcp_servers.cell"
+      ],
+      "env": {
+        "CCRCC_RUN_DIR": "${CCRCC_RUN_DIR:-}"
+      }
     }
   }
 }

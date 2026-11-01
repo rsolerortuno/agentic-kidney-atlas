@@ -14,7 +14,7 @@ from . import provenance, semantic
 from .graph import GraphStore
 from .literature_entities import resolve_gene
 
-AGENT_FILES = ("agent_omics.json", "agent_literature.json", "agent_external.json", "agent_cells.json")
+AGENT_FILES = ("agent_omics.json", "agent_literature.json", "agent_external.json", "agent_cells.json", "agent_applied.json")
 
 
 def _ranking_values(conv_path: Path | None) -> dict[str, set[float]]:

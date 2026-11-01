@@ -1,0 +1,14 @@
+<div class="intro">
+<h2 style="margin-top:0">What is this report?</h2>
+<p class="lede" style="font-size:1.02rem"><strong>{{ f.question }}</strong></p>
+<p class="lede">Clear cell renal cell carcinoma (ccRCC) is the most common kidney cancer. Most of these tumours have lost a gene called <em>VHL</em>, which makes the cell behave as if it were short of oxygen. Several drugs already exist, but most patients eventually stop responding, so researchers keep looking for new things to aim at (<em>targets</em>) and for measurements that tell patients apart (<em>biomarkers</em>).</p>
+<p class="lede">This report is a map of that search. We took public data from hundreds of kidney tumours and combined it with the published literature and with drug databases. For each of about {{ "{:,}".format(kpis.universe) }} human genes we ask the same question in many different ways: is it different in tumours, which cell makes it, would a drug reach it, do patients with more of it do better or worse, and do other cohorts agree? A gene that looks good in one test and bad in the rest is not interesting. A gene that looks good in several unrelated tests is.</p>
+<h3>How it was built, in four steps</h3>
+<ol class="steps">
+  <li><strong>Measure.</strong> Computer code runs every statistical test. It compares tumours with healthy kidney from the same patients, looks at single cells and tissue slices, checks other patient cohorts, trial results and cell-line screens. No language model touches the numbers.</li>
+  <li><strong>Store with receipts.</strong> Each result goes into a knowledge graph as a small note that records the number, the dataset and the date. Nothing enters the graph without that note.</li>
+  <li><strong>Ask the agents.</strong> Five AI agents, each with its own tools, read the graph and write short findings: one on the omics, one on the literature, one on drugs and databases, one on cells and tissue, and one on how a candidate would hold up in the clinic. An orchestrator then writes the summary.</li>
+  <li><strong>Check every sentence.</strong> Another piece of code checks each sentence the agents wrote. The note it cites must exist, it must be about the same gene, the numbers must match the note, and the note must not have changed since the agent read it. Sentences that fail are dropped. In this version {{ verification.statements if verification else "—" }} sentences were checked and {{ verification.unsupported if verification else "—" }} were unsupported.</li>
+</ol>
+<div class="note"><strong>How much to trust it.</strong> This is a prioritised list of hypotheses built from public data. It has not been tested in a laboratory or in patients, and it is not medical advice. Where the evidence is thin, the text says so. Where a result did not replicate, it is shown anyway.</div>
+</div>
