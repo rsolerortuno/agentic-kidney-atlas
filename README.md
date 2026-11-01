@@ -17,7 +17,7 @@ Outputs: [`reports/ccrcc_report.html`](reports/ccrcc_report.html) (self-containe
 Current architecture through **M14**. Code computes the statistics, rankings and report assets; Claude Code
 extracts literature relations and writes interpretations grounded in the processed results and their evidence.
 
-![ccRCC agentic multi-omics GraphRAG architecture: omics, single-cell and Visium spatial analysis, literature, external evidence, knowledge graph, MCP servers, Claude Code agents and HTML report](assets/ccrcc-architecture.svg)
+![ccRCC agentic multi-omics GraphRAG architecture: omics, single-cell and Visium spatial analysis, literature, external evidence, knowledge graph, MCP servers, Claude Code agents and HTML report](assets/ccrcc-architecture.png)
 
 **How to read the diagram**
 
