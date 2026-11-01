@@ -54,3 +54,5 @@ Write 14 to 22 findings, at least two per layer. Every finding MUST cite evidenc
 gene; findings without them are discarded automatically. Before writing, call `check_evidence_ids` on all ids you cite.
 Numbers are verified automatically: every number must appear in a record whose id you cite in that same finding (or in that
 gene's row of `convergence_ranking`). Findings with an unmatched number are dropped. Return a one-line summary when done.
+
+Numeric verification: read `docs/numeric-claims.md` before writing. Every number must match its specific metric and context in cited evidence; ranking/global number pools provide no support. For multiple layers or nested metrics, include `numeric_claims` and the exact canonical annotations described there. Preserve sign and unit. Review rejected findings and correct their original inputs; filtering them out does not make a run pass. Passing means no failures detected by automatic checks, not complete scientific validation.

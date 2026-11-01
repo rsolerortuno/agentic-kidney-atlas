@@ -39,7 +39,7 @@ def _claude() -> str | None:
     return shutil.which("claude")
 
 
-def closed_book(runs: int = 3, model: str = "claude-sonnet-5-5", timeout: int = 600) -> list[dict]:
+def closed_book(runs: int = 3, model: str = "claude-sonnet-5-5", timeout: int = 600, cached_only: bool = False) -> list[dict]:
     OUT.mkdir(parents=True, exist_ok=True)
     q = load()["question"]
     claude = _claude()
@@ -49,6 +49,8 @@ def closed_book(runs: int = 3, model: str = "claude-sonnet-5-5", timeout: int = 
         if path.exists():
             results.append(json.loads(path.read_text(encoding="utf-8")))
             continue
+        if cached_only:
+            raise FileNotFoundError(f"Frozen model response missing: {path}")
         if not claude:
             raise RuntimeError("claude CLI not found")
         with tempfile.TemporaryDirectory() as tmp:   # no .mcp.json, no CLAUDE.md, no project files
@@ -99,10 +101,10 @@ def _numbers(text: str) -> int:
     return len(re.findall(r"(?<![\w.])\d+(?:\.\d+)?(?:%|-fold)?", text or ""))
 
 
-def run_dirs() -> list[Path]:
+def run_dirs(official: Path | None = None) -> list[Path]:
     dated = sorted(p.parent for p in RUNS.glob("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/findings.json"))
     reps = sorted(p.parent for p in (RUNS / "replicates").glob("*/findings.json"))
-    return dated[-1:] + reps
+    return ([official] if official is not None else dated[-1:]) + reps
 
 
 def _final_targets(run: Path) -> list[str]:
@@ -133,15 +135,15 @@ def agents_vs_ranking(run: Path, scores: pd.DataFrame) -> list[dict]:
     return out
 
 
-def run(closed_runs: int = 3) -> dict:
+def run(closed_runs: int = 3, cached_only: bool = False, official: Path | None = None) -> dict:
     from .integrate import compute
     from .outcomes import clinical_targets
     OUT.mkdir(parents=True, exist_ok=True)
     scores = compute()
     clinical = set(clinical_targets()["gene"])
-    closed = closed_book(closed_runs)
+    closed = closed_book(closed_runs, cached_only=cached_only)
     closed_lists = [_genes(r.get("candidates", [])) for r in closed]
-    runs = run_dirs()
+    runs = run_dirs(official)
     pipe_lists = [_final_targets(r) for r in runs]
     official = runs[0] if runs else None
     res = {

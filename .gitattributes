@@ -1,0 +1,29 @@
+# Preserve existing source formatting; CRLF is intentional in legacy source.
+* whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# Frozen legacy CRLF blobs use -text to preserve their bytes without a rewrite.
+# Generated HTML contains intentional template/vendor trailing whitespace.
+reports/*.html whitespace=-blank-at-eol
+config.yaml -text
+uv.lock text eol=crlf
+reproducibility/*.json text eol=lf
+data/literature/extracted/*.jsonl text eol=lf
+runs/2026-11-01/agent_applied.json text eol=lf
+runs/2026-11-01/agent_cells.json text eol=lf
+runs/2026-11-01/agent_external.json text eol=lf
+runs/2026-11-01/agent_literature.json text eol=lf
+runs/2026-11-01/agent_omics.json text eol=lf
+runs/2026-11-01/basis.json -text
+runs/2026-11-01/narrative.json text eol=lf
+src/ccrcc/reference_data/degradation.json text eol=lf
+src/ccrcc/reference_data/literature_review.json text eol=lf
+src/ccrcc/report_assets/3Dmol-min.js text eol=lf
+src/ccrcc/report_assets/3Dmol-source.json text eol=lf
+evals/qa.yaml text eol=lf
+evals/qa_answers.json text eol=lf
+evals/baselines/closed_book_1.json text eol=lf
+evals/baselines/closed_book_2.json text eol=lf
+evals/baselines/closed_book_3.json text eol=lf
+runs/replicates/rep1/findings.json -text
+runs/replicates/rep2/findings.json -text
+# Preserve the upstream license verbatim, including its whitespace.
+src/ccrcc/report_assets/3Dmol-LICENSE.txt whitespace=-blank-at-eol,-blank-at-eof

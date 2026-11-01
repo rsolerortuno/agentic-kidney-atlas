@@ -120,14 +120,13 @@ def spatial_context(gene: str) -> dict:
 
 @mcp.tool()
 def structure_pockets(gene: str) -> dict:
-    """AlphaFold model quality and the top candidate binding sites of a gene's protein, each with a molecular
-    glue degrader (MGD) site score in [0, 1].
+    """AlphaFold model quality and detected cavities with a descriptive structural-context heuristic in [0, 1].
 
     The score weights model confidence (pLDDT of the lining residues), pocket geometry (volume and depth),
-    solvent-accessible lysines within 20 A (an E2~ubiquitin needs an acceptor lysine) and an exposed
-    non-helical loop / hairpin nearby (the shape of known glue degrons). 'ligand_site_validation' reports how
-    many experimentally ligand-bound residues (PDBe-KB) fall inside the detected cavities. A high score marks a
-    site worth a chemistry campaign; it is not a prediction that a degrader exists."""
+    nearby solvent-accessible lysines and exposed non-helical loops. These describe a predicted monomer;
+    they do not identify degrons, establish ligase compatibility or predict degradation.
+    'ligand_site_validation' reports coverage of experimental ligand-contact residues by detected cavities;
+    it validates cavity detection only. A low score does not exclude molecular-glue feasibility."""
     g = canonical_gene(gene)
     res = _structure().get(g)
     if not res:
@@ -143,9 +142,9 @@ def structure_pockets(gene: str) -> dict:
                      "max_depth_a": c["max_depth_a"], "avg_hydropathy": c["avg_hydropathy"],
                      "mean_plddt": c["mean_plddt"], "n_residues": c["n_residues"],
                      "key_residues": c["residues"][:12], "accessible_lysines": c["accessible_lysines"],
-                     "exposed_loop_run": c["exposed_loop_run"], "components": c["components"],
-                     "mgd_score": c["mgd_score"],
-                     "evidence_id": existing(evidence_id("mgd_site", res["uniprot"], c["cavity"]))}
+                     "exposed_loop_run": c["exposed_loop_run"], "components": {**{k:v for k,v in c["components"].items() if k != "degron"}, "exposed_loop":c["components"]["degron"]},
+                     "structural_context_score": c["mgd_score"],
+                     "evidence_id": existing(evidence_id("structural_context", res["uniprot"], c["cavity"]))}
                     for c in res["pockets"]],
         "ligand_site_validation": {**res["ligand_site_validation"],
                                    "evidence_id": existing(evidence_id("ligand_sites", res["uniprot"]))},
@@ -153,10 +152,10 @@ def structure_pockets(gene: str) -> dict:
 
 
 @mcp.tool()
-def mgd_ranking(n: int = 10) -> list[dict]:
-    """Candidate genes ranked by their best MGD site score, with the cell type that expresses them in the tumor.
-    Use it to see which candidates are worth a molecular-glue-degrader campaign and whether the target cell is
-    the tumor cell or a stromal / immune cell. n <= 30."""
+def structural_context_ranking(n: int = 10) -> list[dict]:
+    """Candidate genes ranked by their best structural-context score, with the cell type that expresses them in the tumor.
+    Describes monomer cavities and sampled cell attribution. It does not prioritize validated molecular glues,
+    identify degrons or predict degradation. n <= 30."""
     rows = []
     ct = _ct()
     tum = ct[ct["tissue"] == "tumor"]
@@ -167,14 +166,14 @@ def mgd_ranking(n: int = 10) -> list[dict]:
         top = s.sort_values("share_of_tissue_transcripts", ascending=False).head(1)
         best = res["pockets"][0]
         rows.append(clean({
-            "gene": g, "uniprot": res["uniprot"], "best_mgd_score": best["mgd_score"],
+            "gene": g, "uniprot": res["uniprot"], "best_structural_context_score": best["mgd_score"],
             "best_pocket_volume_a3": best["volume_a3"], "accessible_lysines": len(best["accessible_lysines"]),
             "mean_plddt": res["mean_plddt"],
             "main_expressing_cell_group": None if top.empty else top.iloc[0]["cell_group"],
             "share_of_tumor_transcripts": None if top.empty else round(float(top.iloc[0]["share_of_tissue_transcripts"]), 3),
-            "evidence_id": existing(evidence_id("mgd_site", res["uniprot"], best["cavity"])),
+            "evidence_id": existing(evidence_id("structural_context", res["uniprot"], best["cavity"])),
         }))
-    rows.sort(key=lambda r: -(r["best_mgd_score"] or 0))
+    rows.sort(key=lambda r: -(r["best_structural_context_score"] or 0))
     return rows[:min(n, 30)]
 
 

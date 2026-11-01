@@ -1,12 +1,14 @@
 {
- "file": "C:\\Users\\rafae\\Documents\\ccrcc-graphrag\\runs\\2026-11-01\\findings.json",
- "statements": 118,
+ "file": "C:\\Users\\rafae\\Documents\\Codex\\2026-11-01\\https-github-com-rsolerortuno-ccrcc-multiomics\\work\\repo\\runs\\2026-11-01\\findings.json",
+ "statements": 130,
  "unsupported": 0,
+ "interpretation": "No failures detected by the automatic checks",
+ "scope": "Evidence linkage, metric bindings, numeric precision and limited direction checks; not complete scientific validation",
  "semantic_failures": 0,
  "stale": 0,
  "basis": {
   "started_utc": "2026-11-01T19:40:05+00:00",
-  "evidence": 1151
+  "evidence": 1244
  },
  "detail": []
 }

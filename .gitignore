@@ -2,12 +2,12 @@
 __pycache__/
 *.pyc
 .pytest_cache/
-# raw / regenerable data (CPTAC matrices are re-downloaded; caches are rebuilt)
+# Local source snapshot and derived outputs (retain frozen source bytes for exact replay)
 data/raw/
 data/processed/
 data/cache/
 data/graph/
-# PubMed titles/abstracts are not redistributed; `uv run ccrcc literature` re-fetches them from PubTator3
+# PubMed titles/abstracts are local inputs; exact replay requires the frozen snapshot
 data/literature/pubtator/
 data/literature/publications.parquet
 data/literature/chunks.parquet
@@ -17,3 +17,7 @@ data/literature/extraction_batches/
 runs/dev_v1_agents/
 runs/*/qa_questions.json
 runs/replicates/*/report.html
+
+# Temporary report previews and local implementation notes
+reports/preview_*.html
+IMPLEMENTATION_STATUS.md

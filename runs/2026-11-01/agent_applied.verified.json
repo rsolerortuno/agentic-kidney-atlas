@@ -5,207 +5,2541 @@
    "gene": "CA9",
    "role": "target_and_biomarker",
    "layer": "adc",
-   "statement": "CA9 has one transmembrane segment and 377 extracellular residues, suitability 0.647 (rank 13 of 2017), but the Human Protein Atlas shows staining level 3.0 in stomach (a vital organ) and 0.0 in kidney; in the weakest quarter of donors only 24.3 percent of tumour cells express it (median donor 53.3). It is a known target (control), and the score does not show a conjugate would work.",
+   "statement": "CA9: Computed ADC/radioligand suitability: [gene=CA9; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; suitability=0.647] [gene=CA9; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; rank=13] [gene=CA9; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; of=2017]. Topology annotations: [gene=CA9; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; transmembrane_segments=1] [gene=CA9; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; extracellular_residues=377]. Maximum staining in the assayed vital-organ panel (Stomach), and kidney staining: [gene=CA9; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; vital_organ_staining_level=3.0] [gene=CA9; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; kidney_staining_level=0.0]. These ordinal staining observations flag potential off-tumour exposure; they do not establish clinical toxicity or safety. Tumour-cell expression coverage, donor lower quartile and donor median: [gene=CA9; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; tumour_cells_expressing_pct_weakest_quarter_of_donors=24.3%] [gene=CA9; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; tumour_cells_expressing_pct_median_donor=53.3%]. This gene is a known target used as a reference in the scoring evaluation. A high score does not demonstrate antibody accessibility, internalisation or conjugate efficacy.",
    "evidence_ids": [
     "EV:adc_profile:225a767ebcb5"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:adc_profile:225a767ebcb5",
+     "field": [
+      "suitability"
+     ],
+     "display": "0.647",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:225a767ebcb5",
+     "field": [
+      "rank"
+     ],
+     "display": "13",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:225a767ebcb5",
+     "field": [
+      "of"
+     ],
+     "display": "2017",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:225a767ebcb5",
+     "field": [
+      "transmembrane_segments"
+     ],
+     "display": "1",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:225a767ebcb5",
+     "field": [
+      "extracellular_residues"
+     ],
+     "display": "377",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:225a767ebcb5",
+     "field": [
+      "vital_organ_staining_level"
+     ],
+     "display": "3.0",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:225a767ebcb5",
+     "field": [
+      "kidney_staining_level"
+     ],
+     "display": "0.0",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:225a767ebcb5",
+     "field": [
+      "tumour_cells_expressing_pct_weakest_quarter_of_donors"
+     ],
+     "display": "24.3",
+     "unit": "native_percent"
+    },
+    {
+     "evidence_id": "EV:adc_profile:225a767ebcb5",
+     "field": [
+      "tumour_cells_expressing_pct_median_donor"
+     ],
+     "display": "53.3",
+     "unit": "native_percent"
+    }
    ]
   },
   {
    "gene": "CD70",
    "role": "target",
    "layer": "adc",
-   "statement": "CD70 has the best ADC suitability among the controls, 0.746 (rank 2 of 2017), with 155 extracellular residues; 17.7 percent of tumour cells express it in the weakest quarter of donors (median donor 41.2). Vital-organ staining data were not available (staining_data_available false), so normal-tissue safety is untested here.",
+   "statement": "CD70: Computed ADC/radioligand suitability: [gene=CD70; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; suitability=0.746] [gene=CD70; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; rank=2] [gene=CD70; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; of=2017]. Topology annotations: [gene=CD70; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; transmembrane_segments=1] [gene=CD70; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; extracellular_residues=155]. Vital-organ staining is unavailable in this analysis. Missing staining is not evidence of safety. Tumour-cell expression coverage, donor lower quartile and donor median: [gene=CD70; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; tumour_cells_expressing_pct_weakest_quarter_of_donors=17.7%] [gene=CD70; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; tumour_cells_expressing_pct_median_donor=41.2%]. This gene is a known target used as a reference in the scoring evaluation. A high score does not demonstrate antibody accessibility, internalisation or conjugate efficacy.",
    "evidence_ids": [
     "EV:adc_profile:908e84663f6a"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:adc_profile:908e84663f6a",
+     "field": [
+      "suitability"
+     ],
+     "display": "0.746",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:908e84663f6a",
+     "field": [
+      "rank"
+     ],
+     "display": "2",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:908e84663f6a",
+     "field": [
+      "of"
+     ],
+     "display": "2017",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:908e84663f6a",
+     "field": [
+      "transmembrane_segments"
+     ],
+     "display": "1",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:908e84663f6a",
+     "field": [
+      "extracellular_residues"
+     ],
+     "display": "155",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:908e84663f6a",
+     "field": [
+      "tumour_cells_expressing_pct_weakest_quarter_of_donors"
+     ],
+     "display": "17.7",
+     "unit": "native_percent"
+    },
+    {
+     "evidence_id": "EV:adc_profile:908e84663f6a",
+     "field": [
+      "tumour_cells_expressing_pct_median_donor"
+     ],
+     "display": "41.2",
+     "unit": "native_percent"
+    }
    ]
   },
   {
    "gene": "ENPP3",
    "role": "target",
    "layer": "adc",
-   "statement": "ENPP3 has suitability 0.578 (rank 39 of 2017); staining is 3.0 in duodenum and 3.0 in kidney, which is a liability for an on-target toxicity; 21.3 percent of tumour cells express it in the weakest quarter of donors (median donor 31.0). Known target used as a control.",
+   "statement": "ENPP3: Computed ADC/radioligand suitability: [gene=ENPP3; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; suitability=0.578] [gene=ENPP3; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; rank=39] [gene=ENPP3; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; of=2017]. Topology annotations: [gene=ENPP3; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; transmembrane_segments=1] [gene=ENPP3; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; extracellular_residues=845]. Maximum staining in the assayed vital-organ panel (Duodenum), and kidney staining: [gene=ENPP3; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; vital_organ_staining_level=3.0] [gene=ENPP3; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; kidney_staining_level=3.0]. These ordinal staining observations flag potential off-tumour exposure; they do not establish clinical toxicity or safety. Tumour-cell expression coverage, donor lower quartile and donor median: [gene=ENPP3; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; tumour_cells_expressing_pct_weakest_quarter_of_donors=21.3%] [gene=ENPP3; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; tumour_cells_expressing_pct_median_donor=31.0%]. This gene is a known target used as a reference in the scoring evaluation. A high score does not demonstrate antibody accessibility, internalisation or conjugate efficacy.",
    "evidence_ids": [
     "EV:adc_profile:d5aee88146ed"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:adc_profile:d5aee88146ed",
+     "field": [
+      "suitability"
+     ],
+     "display": "0.578",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:d5aee88146ed",
+     "field": [
+      "rank"
+     ],
+     "display": "39",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:d5aee88146ed",
+     "field": [
+      "of"
+     ],
+     "display": "2017",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:d5aee88146ed",
+     "field": [
+      "transmembrane_segments"
+     ],
+     "display": "1",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:d5aee88146ed",
+     "field": [
+      "extracellular_residues"
+     ],
+     "display": "845",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:d5aee88146ed",
+     "field": [
+      "vital_organ_staining_level"
+     ],
+     "display": "3.0",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:d5aee88146ed",
+     "field": [
+      "kidney_staining_level"
+     ],
+     "display": "3.0",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:d5aee88146ed",
+     "field": [
+      "tumour_cells_expressing_pct_weakest_quarter_of_donors"
+     ],
+     "display": "21.3",
+     "unit": "native_percent"
+    },
+    {
+     "evidence_id": "EV:adc_profile:d5aee88146ed",
+     "field": [
+      "tumour_cells_expressing_pct_median_donor"
+     ],
+     "display": "31.0",
+     "unit": "native_percent"
+    }
    ]
   },
   {
    "gene": "SCARB1",
    "role": "target",
    "layer": "adc",
-   "statement": "SCARB1, top of the target ranking, has suitability 0.558 (rank 51 of 2017), two transmembrane segments, staining 3.0 in adrenal gland and 2.0 in kidney, and only 7.1 percent of tumour cells expressing it in the weakest quarter of donors (median donor 12.4). It is not a known ADC target; broad normal expression and sparse tumour-cell coverage argue against a conjugate.",
+   "statement": "SCARB1: Computed ADC/radioligand suitability: [gene=SCARB1; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; suitability=0.558] [gene=SCARB1; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; rank=51] [gene=SCARB1; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; of=2017]. Topology annotations: [gene=SCARB1; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; transmembrane_segments=2] [gene=SCARB1; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; extracellular_residues=411]. Maximum staining in the assayed vital-organ panel (Adrenal gland), and kidney staining: [gene=SCARB1; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; vital_organ_staining_level=3.0] [gene=SCARB1; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; kidney_staining_level=2.0]. These ordinal staining observations flag potential off-tumour exposure; they do not establish clinical toxicity or safety. Tumour-cell expression coverage, donor lower quartile and donor median: [gene=SCARB1; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; tumour_cells_expressing_pct_weakest_quarter_of_donors=7.1%] [gene=SCARB1; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; tumour_cells_expressing_pct_median_donor=12.4%]. This gene is not labelled as a known target in the scoring reference set. A high score does not demonstrate antibody accessibility, internalisation or conjugate efficacy. Sparse tumour-cell coverage and normal-tissue staining are non-favorable observations for the conjugate hypothesis.",
    "evidence_ids": [
     "EV:adc_profile:2d66f8e78d0c"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:adc_profile:2d66f8e78d0c",
+     "field": [
+      "suitability"
+     ],
+     "display": "0.558",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:2d66f8e78d0c",
+     "field": [
+      "rank"
+     ],
+     "display": "51",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:2d66f8e78d0c",
+     "field": [
+      "of"
+     ],
+     "display": "2017",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:2d66f8e78d0c",
+     "field": [
+      "transmembrane_segments"
+     ],
+     "display": "2",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:2d66f8e78d0c",
+     "field": [
+      "extracellular_residues"
+     ],
+     "display": "411",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:2d66f8e78d0c",
+     "field": [
+      "vital_organ_staining_level"
+     ],
+     "display": "3.0",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:2d66f8e78d0c",
+     "field": [
+      "kidney_staining_level"
+     ],
+     "display": "2.0",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:2d66f8e78d0c",
+     "field": [
+      "tumour_cells_expressing_pct_weakest_quarter_of_donors"
+     ],
+     "display": "7.1",
+     "unit": "native_percent"
+    },
+    {
+     "evidence_id": "EV:adc_profile:2d66f8e78d0c",
+     "field": [
+      "tumour_cells_expressing_pct_median_donor"
+     ],
+     "display": "12.4",
+     "unit": "native_percent"
+    }
    ]
   },
   {
    "gene": "SLC16A3",
    "role": "target",
    "layer": "adc",
-   "statement": "SLC16A3 has suitability 0.725 (rank 3 of 2017) and the highest weakest-quarter tumour coverage, 43.7 percent (median donor 49.4), but it spans the membrane 12 times with only 66 extracellular residues and stains 3.0 in adrenal gland and 2.0 in kidney. A small-molecule inhibitor may be more realistic than a conjugate; this is a score, not proof.",
+   "statement": "SLC16A3: Computed ADC/radioligand suitability: [gene=SLC16A3; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; suitability=0.725] [gene=SLC16A3; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; rank=3] [gene=SLC16A3; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; of=2017]. Topology annotations: [gene=SLC16A3; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; transmembrane_segments=12] [gene=SLC16A3; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; extracellular_residues=66]. Maximum staining in the assayed vital-organ panel (Adrenal gland), and kidney staining: [gene=SLC16A3; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; vital_organ_staining_level=3.0] [gene=SLC16A3; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; kidney_staining_level=2.0]. These ordinal staining observations flag potential off-tumour exposure; they do not establish clinical toxicity or safety. Tumour-cell expression coverage, donor lower quartile and donor median: [gene=SLC16A3; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; tumour_cells_expressing_pct_weakest_quarter_of_donors=43.7%] [gene=SLC16A3; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; tumour_cells_expressing_pct_median_donor=49.4%]. This gene is not labelled as a known target in the scoring reference set. A high score does not demonstrate antibody accessibility, internalisation or conjugate efficacy. The multipass topology and limited extracellular sequence require particular scrutiny for an antibody strategy; they do not establish efficacy of a small-molecule inhibitor.",
    "evidence_ids": [
     "EV:adc_profile:11298113327b"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:adc_profile:11298113327b",
+     "field": [
+      "suitability"
+     ],
+     "display": "0.725",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:11298113327b",
+     "field": [
+      "rank"
+     ],
+     "display": "3",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:11298113327b",
+     "field": [
+      "of"
+     ],
+     "display": "2017",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:11298113327b",
+     "field": [
+      "transmembrane_segments"
+     ],
+     "display": "12",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:11298113327b",
+     "field": [
+      "extracellular_residues"
+     ],
+     "display": "66",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:11298113327b",
+     "field": [
+      "vital_organ_staining_level"
+     ],
+     "display": "3.0",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:11298113327b",
+     "field": [
+      "kidney_staining_level"
+     ],
+     "display": "2.0",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:11298113327b",
+     "field": [
+      "tumour_cells_expressing_pct_weakest_quarter_of_donors"
+     ],
+     "display": "43.7",
+     "unit": "native_percent"
+    },
+    {
+     "evidence_id": "EV:adc_profile:11298113327b",
+     "field": [
+      "tumour_cells_expressing_pct_median_donor"
+     ],
+     "display": "49.4",
+     "unit": "native_percent"
+    }
    ]
   },
   {
    "gene": "CA9",
    "role": "target_and_biomarker",
    "layer": "treatment",
-   "statement": "CA9 expression is associated with longer benefit but not significantly in any arm: atezolizumab plus bevacizumab log HR -0.112 per SD (padj 0.665, n 88), sunitinib -0.336 (padj 0.332, n 89), atezolizumab -0.212 (padj 0.68, n 86); the arm difference is 0.224 (padj 0.779). It is a lead at most, not a predictor.",
+   "statement": "CA9: atezolizumab_bevacizumab: [gene=CA9; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.atezolizumab_bevacizumab.log_hr_per_sd=-0.112] [gene=CA9; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.atezolizumab_bevacizumab.padj=0.665] [gene=CA9; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.atezolizumab_bevacizumab.n=88]. sunitinib: [gene=CA9; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.sunitinib.log_hr_per_sd=-0.336] [gene=CA9; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.sunitinib.padj=0.332] [gene=CA9; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.sunitinib.n=89]. atezolizumab: [gene=CA9; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.atezolizumab.log_hr_per_sd=-0.212] [gene=CA9; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.atezolizumab.padj=0.68] [gene=CA9; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.atezolizumab.n=86]. difference_between_arms: [gene=CA9; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.difference_between_arms.log_hr_per_sd=0.224] [gene=CA9; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.difference_between_arms.padj=0.779] [gene=CA9; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.difference_between_arms.n=177]. nivolumab_choueiri2016: [gene=CA9; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.nivolumab_choueiri2016.log_hr_per_sd=-0.195] [gene=CA9; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.nivolumab_choueiri2016.padj=0.874] [gene=CA9; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.nivolumab_choueiri2016.n=16]. The signs describe point estimates only. None of these adjusted tests establishes an expression-associated treatment benefit or a predictive difference between arms. A nonsignificant result is not evidence of equivalence.",
    "evidence_ids": [
     "EV:treatment_response:225a767ebcb5"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:treatment_response:225a767ebcb5",
+     "field": [
+      "arms",
+      "atezolizumab_bevacizumab",
+      "log_hr_per_sd"
+     ],
+     "display": "-0.112",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:225a767ebcb5",
+     "field": [
+      "arms",
+      "atezolizumab_bevacizumab",
+      "padj"
+     ],
+     "display": "0.665",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:225a767ebcb5",
+     "field": [
+      "arms",
+      "atezolizumab_bevacizumab",
+      "n"
+     ],
+     "display": "88",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:225a767ebcb5",
+     "field": [
+      "arms",
+      "sunitinib",
+      "log_hr_per_sd"
+     ],
+     "display": "-0.336",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:225a767ebcb5",
+     "field": [
+      "arms",
+      "sunitinib",
+      "padj"
+     ],
+     "display": "0.332",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:225a767ebcb5",
+     "field": [
+      "arms",
+      "sunitinib",
+      "n"
+     ],
+     "display": "89",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:225a767ebcb5",
+     "field": [
+      "arms",
+      "atezolizumab",
+      "log_hr_per_sd"
+     ],
+     "display": "-0.212",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:225a767ebcb5",
+     "field": [
+      "arms",
+      "atezolizumab",
+      "padj"
+     ],
+     "display": "0.68",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:225a767ebcb5",
+     "field": [
+      "arms",
+      "atezolizumab",
+      "n"
+     ],
+     "display": "86",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:225a767ebcb5",
+     "field": [
+      "arms",
+      "difference_between_arms",
+      "log_hr_per_sd"
+     ],
+     "display": "0.224",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:225a767ebcb5",
+     "field": [
+      "arms",
+      "difference_between_arms",
+      "padj"
+     ],
+     "display": "0.779",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:225a767ebcb5",
+     "field": [
+      "arms",
+      "difference_between_arms",
+      "n"
+     ],
+     "display": "177",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:225a767ebcb5",
+     "field": [
+      "arms",
+      "nivolumab_choueiri2016",
+      "log_hr_per_sd"
+     ],
+     "display": "-0.195",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:225a767ebcb5",
+     "field": [
+      "arms",
+      "nivolumab_choueiri2016",
+      "padj"
+     ],
+     "display": "0.874",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:225a767ebcb5",
+     "field": [
+      "arms",
+      "nivolumab_choueiri2016",
+      "n"
+     ],
+     "display": "16",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "CD70",
    "role": "target_and_biomarker",
    "layer": "treatment",
-   "statement": "Higher CD70 is associated with longer benefit on atezolizumab plus bevacizumab (log HR -0.383 per SD, padj 0.166, n 88) and on sunitinib (-0.262, padj 0.434, n 89); the difference between arms is -0.121 (padj 0.927). Nothing passes correction, so this stays a lead from a single 88-patient arm.",
+   "statement": "CD70: atezolizumab_bevacizumab: [gene=CD70; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.atezolizumab_bevacizumab.log_hr_per_sd=-0.383] [gene=CD70; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.atezolizumab_bevacizumab.padj=0.166] [gene=CD70; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.atezolizumab_bevacizumab.n=88]. sunitinib: [gene=CD70; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.sunitinib.log_hr_per_sd=-0.262] [gene=CD70; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.sunitinib.padj=0.434] [gene=CD70; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.sunitinib.n=89]. atezolizumab: [gene=CD70; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.atezolizumab.log_hr_per_sd=-0.166] [gene=CD70; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.atezolizumab.padj=0.765] [gene=CD70; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.atezolizumab.n=86]. difference_between_arms: [gene=CD70; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.difference_between_arms.log_hr_per_sd=-0.121] [gene=CD70; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.difference_between_arms.padj=0.927] [gene=CD70; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.difference_between_arms.n=177]. nivolumab_choueiri2016: [gene=CD70; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.nivolumab_choueiri2016.log_hr_per_sd=-0.134] [gene=CD70; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.nivolumab_choueiri2016.padj=0.943] [gene=CD70; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.nivolumab_choueiri2016.n=16]. The signs describe point estimates only. None of these adjusted tests establishes an expression-associated treatment benefit or a predictive difference between arms. A nonsignificant result is not evidence of equivalence.",
    "evidence_ids": [
     "EV:treatment_response:908e84663f6a"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:treatment_response:908e84663f6a",
+     "field": [
+      "arms",
+      "atezolizumab_bevacizumab",
+      "log_hr_per_sd"
+     ],
+     "display": "-0.383",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:908e84663f6a",
+     "field": [
+      "arms",
+      "atezolizumab_bevacizumab",
+      "padj"
+     ],
+     "display": "0.166",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:908e84663f6a",
+     "field": [
+      "arms",
+      "atezolizumab_bevacizumab",
+      "n"
+     ],
+     "display": "88",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:908e84663f6a",
+     "field": [
+      "arms",
+      "sunitinib",
+      "log_hr_per_sd"
+     ],
+     "display": "-0.262",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:908e84663f6a",
+     "field": [
+      "arms",
+      "sunitinib",
+      "padj"
+     ],
+     "display": "0.434",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:908e84663f6a",
+     "field": [
+      "arms",
+      "sunitinib",
+      "n"
+     ],
+     "display": "89",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:908e84663f6a",
+     "field": [
+      "arms",
+      "atezolizumab",
+      "log_hr_per_sd"
+     ],
+     "display": "-0.166",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:908e84663f6a",
+     "field": [
+      "arms",
+      "atezolizumab",
+      "padj"
+     ],
+     "display": "0.765",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:908e84663f6a",
+     "field": [
+      "arms",
+      "atezolizumab",
+      "n"
+     ],
+     "display": "86",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:908e84663f6a",
+     "field": [
+      "arms",
+      "difference_between_arms",
+      "log_hr_per_sd"
+     ],
+     "display": "-0.121",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:908e84663f6a",
+     "field": [
+      "arms",
+      "difference_between_arms",
+      "padj"
+     ],
+     "display": "0.927",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:908e84663f6a",
+     "field": [
+      "arms",
+      "difference_between_arms",
+      "n"
+     ],
+     "display": "177",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:908e84663f6a",
+     "field": [
+      "arms",
+      "nivolumab_choueiri2016",
+      "log_hr_per_sd"
+     ],
+     "display": "-0.134",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:908e84663f6a",
+     "field": [
+      "arms",
+      "nivolumab_choueiri2016",
+      "padj"
+     ],
+     "display": "0.943",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:908e84663f6a",
+     "field": [
+      "arms",
+      "nivolumab_choueiri2016",
+      "n"
+     ],
+     "display": "16",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "PCK1",
    "role": "biomarker",
    "layer": "treatment",
-   "statement": "PCK1 (down in tumours) is associated with earlier progression on atezolizumab plus bevacizumab (log HR 0.22 per SD, padj 0.572, n 88) and slightly longer benefit on sunitinib (-0.069, padj 0.889, n 89); the arm difference is 0.289 (padj 0.754). Not significant.",
+   "statement": "PCK1: atezolizumab_bevacizumab: [gene=PCK1; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.atezolizumab_bevacizumab.log_hr_per_sd=0.22] [gene=PCK1; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.atezolizumab_bevacizumab.padj=0.572] [gene=PCK1; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.atezolizumab_bevacizumab.n=88]. sunitinib: [gene=PCK1; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.sunitinib.log_hr_per_sd=-0.069] [gene=PCK1; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.sunitinib.padj=0.889] [gene=PCK1; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.sunitinib.n=89]. atezolizumab: [gene=PCK1; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.atezolizumab.log_hr_per_sd=-0.129] [gene=PCK1; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.atezolizumab.padj=0.845] [gene=PCK1; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.atezolizumab.n=86]. difference_between_arms: [gene=PCK1; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.difference_between_arms.log_hr_per_sd=0.289] [gene=PCK1; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.difference_between_arms.padj=0.754] [gene=PCK1; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.difference_between_arms.n=177]. nivolumab_choueiri2016: [gene=PCK1; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.nivolumab_choueiri2016.log_hr_per_sd=-0.314] [gene=PCK1; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.nivolumab_choueiri2016.padj=0.828] [gene=PCK1; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.nivolumab_choueiri2016.n=16]. The signs describe point estimates only. None of these adjusted tests establishes an expression-associated treatment benefit or a predictive difference between arms. A nonsignificant result is not evidence of equivalence.",
    "evidence_ids": [
     "EV:treatment_response:fd99b19fe8a6"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:treatment_response:fd99b19fe8a6",
+     "field": [
+      "arms",
+      "atezolizumab_bevacizumab",
+      "log_hr_per_sd"
+     ],
+     "display": "0.22",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:fd99b19fe8a6",
+     "field": [
+      "arms",
+      "atezolizumab_bevacizumab",
+      "padj"
+     ],
+     "display": "0.572",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:fd99b19fe8a6",
+     "field": [
+      "arms",
+      "atezolizumab_bevacizumab",
+      "n"
+     ],
+     "display": "88",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:fd99b19fe8a6",
+     "field": [
+      "arms",
+      "sunitinib",
+      "log_hr_per_sd"
+     ],
+     "display": "-0.069",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:fd99b19fe8a6",
+     "field": [
+      "arms",
+      "sunitinib",
+      "padj"
+     ],
+     "display": "0.889",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:fd99b19fe8a6",
+     "field": [
+      "arms",
+      "sunitinib",
+      "n"
+     ],
+     "display": "89",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:fd99b19fe8a6",
+     "field": [
+      "arms",
+      "atezolizumab",
+      "log_hr_per_sd"
+     ],
+     "display": "-0.129",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:fd99b19fe8a6",
+     "field": [
+      "arms",
+      "atezolizumab",
+      "padj"
+     ],
+     "display": "0.845",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:fd99b19fe8a6",
+     "field": [
+      "arms",
+      "atezolizumab",
+      "n"
+     ],
+     "display": "86",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:fd99b19fe8a6",
+     "field": [
+      "arms",
+      "difference_between_arms",
+      "log_hr_per_sd"
+     ],
+     "display": "0.289",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:fd99b19fe8a6",
+     "field": [
+      "arms",
+      "difference_between_arms",
+      "padj"
+     ],
+     "display": "0.754",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:fd99b19fe8a6",
+     "field": [
+      "arms",
+      "difference_between_arms",
+      "n"
+     ],
+     "display": "177",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:fd99b19fe8a6",
+     "field": [
+      "arms",
+      "nivolumab_choueiri2016",
+      "log_hr_per_sd"
+     ],
+     "display": "-0.314",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:fd99b19fe8a6",
+     "field": [
+      "arms",
+      "nivolumab_choueiri2016",
+      "padj"
+     ],
+     "display": "0.828",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:fd99b19fe8a6",
+     "field": [
+      "arms",
+      "nivolumab_choueiri2016",
+      "n"
+     ],
+     "display": "16",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "NNMT",
    "role": "target_and_biomarker",
    "layer": "treatment",
-   "statement": "For NNMT the tool returned only the 16-patient nivolumab trial: log HR 0.34 per SD (padj 0.782), direction earlier progression with higher expression. This is direction only with n 16 and cannot support any claim; no IMmotion150 arm values were returned.",
+   "statement": "NNMT: nivolumab_choueiri2016: [gene=NNMT; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.nivolumab_choueiri2016.log_hr_per_sd=0.34] [gene=NNMT; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.nivolumab_choueiri2016.padj=0.782] [gene=NNMT; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.nivolumab_choueiri2016.n=16]. The signs describe point estimates only. None of these adjusted tests establishes an expression-associated treatment benefit or a predictive difference between arms. A nonsignificant result is not evidence of equivalence. The available record contains only the small nivolumab cohort; absence of IMmotion150 values is missing evidence, not a negative result in those arms.",
    "evidence_ids": [
     "EV:treatment_response:7dbf93860d9f"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:treatment_response:7dbf93860d9f",
+     "field": [
+      "arms",
+      "nivolumab_choueiri2016",
+      "log_hr_per_sd"
+     ],
+     "display": "0.34",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:7dbf93860d9f",
+     "field": [
+      "arms",
+      "nivolumab_choueiri2016",
+      "padj"
+     ],
+     "display": "0.782",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:7dbf93860d9f",
+     "field": [
+      "arms",
+      "nivolumab_choueiri2016",
+      "n"
+     ],
+     "display": "16",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "CA9",
    "role": "target_and_biomarker",
    "layer": "subtype",
-   "statement": "CA9 is flagged as a subgroup target candidate for PBRM1 mutation (CPTAC RNA +0.971, padj 0.014; CPTAC protein +0.335, padj 0.067; TCGA RNA +1.148, padj 7.18e-7), and it is lower in ccB than ccA (TCGA RNA -1.551, padj 1.06e-9). The protein difference is not significant at 0.05, so the subgroup call rests mainly on RNA.",
+   "statement": "CA9: VHL / cptac_rna: [gene=CA9; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; VHL.cptac_rna.mutant_minus_wildtype_log2=1.312] [gene=CA9; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; VHL.cptac_rna.padj=0.382]. VHL / cptac_protein: [gene=CA9; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; VHL.cptac_protein.mutant_minus_wildtype_log2=0.213] [gene=CA9; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; VHL.cptac_protein.padj=0.572]. VHL / tcga_rna: [gene=CA9; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; VHL.tcga_rna.mutant_minus_wildtype_log2=1.057] [gene=CA9; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; VHL.tcga_rna.padj=0.000669]. PBRM1 / cptac_rna: [gene=CA9; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; PBRM1.cptac_rna.mutant_minus_wildtype_log2=0.971] [gene=CA9; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; PBRM1.cptac_rna.padj=0.014]. PBRM1 / cptac_protein: [gene=CA9; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; PBRM1.cptac_protein.mutant_minus_wildtype_log2=0.335] [gene=CA9; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; PBRM1.cptac_protein.padj=0.067]. PBRM1 / tcga_rna: [gene=CA9; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; PBRM1.tcga_rna.mutant_minus_wildtype_log2=1.148] [gene=CA9; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; PBRM1.tcga_rna.padj=7.18e-07]. BAP1 / cptac_rna: [gene=CA9; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; BAP1.cptac_rna.mutant_minus_wildtype_log2=0.12] [gene=CA9; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; BAP1.cptac_rna.padj=0.779]. BAP1 / cptac_protein: [gene=CA9; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; BAP1.cptac_protein.mutant_minus_wildtype_log2=-0.417] [gene=CA9; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; BAP1.cptac_protein.padj=0.031]. BAP1 / tcga_rna: [gene=CA9; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; BAP1.tcga_rna.mutant_minus_wildtype_log2=0.836] [gene=CA9; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; BAP1.tcga_rna.padj=0.000552]. SETD2 / cptac_rna: [gene=CA9; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; SETD2.cptac_rna.mutant_minus_wildtype_log2=0.495] [gene=CA9; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; SETD2.cptac_rna.padj=0.548]. SETD2 / cptac_protein: [gene=CA9; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; SETD2.cptac_protein.mutant_minus_wildtype_log2=0.063] [gene=CA9; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; SETD2.cptac_protein.padj=0.903]. SETD2 / tcga_rna: [gene=CA9; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; SETD2.tcga_rna.mutant_minus_wildtype_log2=0.33] [gene=CA9; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; SETD2.tcga_rna.padj=0.48]. ccB versus ccA / cptac_rna: [gene=CA9; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; ccA_ccB.cptac_rna.ccB_minus_ccA_log2=-1.773] [gene=CA9; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; ccA_ccB.cptac_rna.padj=0.000801]. ccB versus ccA / cptac_protein: [gene=CA9; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; ccA_ccB.cptac_protein.ccB_minus_ccA_log2=-0.52] [gene=CA9; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; ccA_ccB.cptac_protein.padj=0.000409]. ccB versus ccA / tcga_rna: [gene=CA9; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; ccA_ccB.tcga_rna.ccB_minus_ccA_log2=-1.551] [gene=CA9; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; ccA_ccB.tcga_rna.padj=1.06e-09]. The PBRM1 subgroup flag is supported primarily by RNA; its CPTAC protein comparison does not meet the adjusted significance criterion. These are observational comparisons, potentially affected by cell composition, rather than treatment-selection evidence.",
    "evidence_ids": [
     "EV:subtype_profile:225a767ebcb5"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:subtype_profile:225a767ebcb5",
+     "field": [
+      "VHL",
+      "cptac_rna",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "1.312",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:225a767ebcb5",
+     "field": [
+      "VHL",
+      "cptac_rna",
+      "padj"
+     ],
+     "display": "0.382",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:225a767ebcb5",
+     "field": [
+      "VHL",
+      "cptac_protein",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "0.213",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:225a767ebcb5",
+     "field": [
+      "VHL",
+      "cptac_protein",
+      "padj"
+     ],
+     "display": "0.572",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:225a767ebcb5",
+     "field": [
+      "VHL",
+      "tcga_rna",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "1.057",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:225a767ebcb5",
+     "field": [
+      "VHL",
+      "tcga_rna",
+      "padj"
+     ],
+     "display": "0.000669",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:225a767ebcb5",
+     "field": [
+      "PBRM1",
+      "cptac_rna",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "0.971",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:225a767ebcb5",
+     "field": [
+      "PBRM1",
+      "cptac_rna",
+      "padj"
+     ],
+     "display": "0.014",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:225a767ebcb5",
+     "field": [
+      "PBRM1",
+      "cptac_protein",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "0.335",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:225a767ebcb5",
+     "field": [
+      "PBRM1",
+      "cptac_protein",
+      "padj"
+     ],
+     "display": "0.067",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:225a767ebcb5",
+     "field": [
+      "PBRM1",
+      "tcga_rna",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "1.148",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:225a767ebcb5",
+     "field": [
+      "PBRM1",
+      "tcga_rna",
+      "padj"
+     ],
+     "display": "7.18e-07",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:225a767ebcb5",
+     "field": [
+      "BAP1",
+      "cptac_rna",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "0.12",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:225a767ebcb5",
+     "field": [
+      "BAP1",
+      "cptac_rna",
+      "padj"
+     ],
+     "display": "0.779",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:225a767ebcb5",
+     "field": [
+      "BAP1",
+      "cptac_protein",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "-0.417",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:225a767ebcb5",
+     "field": [
+      "BAP1",
+      "cptac_protein",
+      "padj"
+     ],
+     "display": "0.031",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:225a767ebcb5",
+     "field": [
+      "BAP1",
+      "tcga_rna",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "0.836",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:225a767ebcb5",
+     "field": [
+      "BAP1",
+      "tcga_rna",
+      "padj"
+     ],
+     "display": "0.000552",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:225a767ebcb5",
+     "field": [
+      "SETD2",
+      "cptac_rna",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "0.495",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:225a767ebcb5",
+     "field": [
+      "SETD2",
+      "cptac_rna",
+      "padj"
+     ],
+     "display": "0.548",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:225a767ebcb5",
+     "field": [
+      "SETD2",
+      "cptac_protein",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "0.063",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:225a767ebcb5",
+     "field": [
+      "SETD2",
+      "cptac_protein",
+      "padj"
+     ],
+     "display": "0.903",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:225a767ebcb5",
+     "field": [
+      "SETD2",
+      "tcga_rna",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "0.33",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:225a767ebcb5",
+     "field": [
+      "SETD2",
+      "tcga_rna",
+      "padj"
+     ],
+     "display": "0.48",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:225a767ebcb5",
+     "field": [
+      "ccA_ccB",
+      "cptac_rna",
+      "ccB_minus_ccA_log2"
+     ],
+     "display": "-1.773",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:225a767ebcb5",
+     "field": [
+      "ccA_ccB",
+      "cptac_rna",
+      "padj"
+     ],
+     "display": "0.000801",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:225a767ebcb5",
+     "field": [
+      "ccA_ccB",
+      "cptac_protein",
+      "ccB_minus_ccA_log2"
+     ],
+     "display": "-0.52",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:225a767ebcb5",
+     "field": [
+      "ccA_ccB",
+      "cptac_protein",
+      "padj"
+     ],
+     "display": "0.000409",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:225a767ebcb5",
+     "field": [
+      "ccA_ccB",
+      "tcga_rna",
+      "ccB_minus_ccA_log2"
+     ],
+     "display": "-1.551",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:225a767ebcb5",
+     "field": [
+      "ccA_ccB",
+      "tcga_rna",
+      "padj"
+     ],
+     "display": "1.06e-09",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "PSAT1",
    "role": "biomarker",
    "layer": "subtype",
-   "statement": "PSAT1 is not a subgroup target candidate for any of VHL, PBRM1, BAP1, SETD2, but is higher in ccB than ccA (TCGA RNA +2.364, padj 9.07e-39; CPTAC protein +0.541, padj 0.0000157). BAP1 mutants have higher RNA (TCGA +1.711, padj 0.0000578) but not protein (CPTAC +0.224, padj 0.396).",
+   "statement": "PSAT1: VHL / cptac_rna: [gene=PSAT1; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; VHL.cptac_rna.mutant_minus_wildtype_log2=-0.183] [gene=PSAT1; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; VHL.cptac_rna.padj=0.808]. VHL / cptac_protein: [gene=PSAT1; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; VHL.cptac_protein.mutant_minus_wildtype_log2=-0.142] [gene=PSAT1; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; VHL.cptac_protein.padj=0.601]. VHL / tcga_rna: [gene=PSAT1; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; VHL.tcga_rna.mutant_minus_wildtype_log2=-0.635] [gene=PSAT1; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; VHL.tcga_rna.padj=0.046]. PBRM1 / cptac_rna: [gene=PSAT1; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; PBRM1.cptac_rna.mutant_minus_wildtype_log2=-0.718] [gene=PSAT1; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; PBRM1.cptac_rna.padj=0.051]. PBRM1 / cptac_protein: [gene=PSAT1; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; PBRM1.cptac_protein.mutant_minus_wildtype_log2=-0.274] [gene=PSAT1; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; PBRM1.cptac_protein.padj=0.114]. PBRM1 / tcga_rna: [gene=PSAT1; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; PBRM1.tcga_rna.mutant_minus_wildtype_log2=-0.824] [gene=PSAT1; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; PBRM1.tcga_rna.padj=0.002]. BAP1 / cptac_rna: [gene=PSAT1; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; BAP1.cptac_rna.mutant_minus_wildtype_log2=1.222] [gene=PSAT1; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; BAP1.cptac_rna.padj=0.011]. BAP1 / cptac_protein: [gene=PSAT1; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; BAP1.cptac_protein.mutant_minus_wildtype_log2=0.224] [gene=PSAT1; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; BAP1.cptac_protein.padj=0.396]. BAP1 / tcga_rna: [gene=PSAT1; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; BAP1.tcga_rna.mutant_minus_wildtype_log2=1.711] [gene=PSAT1; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; BAP1.tcga_rna.padj=5.78e-05]. SETD2 / cptac_rna: [gene=PSAT1; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; SETD2.cptac_rna.mutant_minus_wildtype_log2=0.38] [gene=PSAT1; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; SETD2.cptac_rna.padj=0.798]. SETD2 / cptac_protein: [gene=PSAT1; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; SETD2.cptac_protein.mutant_minus_wildtype_log2=0.179] [gene=PSAT1; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; SETD2.cptac_protein.padj=0.694]. SETD2 / tcga_rna: [gene=PSAT1; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; SETD2.tcga_rna.mutant_minus_wildtype_log2=0.354] [gene=PSAT1; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; SETD2.tcga_rna.padj=0.463]. ccB versus ccA / cptac_rna: [gene=PSAT1; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; ccA_ccB.cptac_rna.ccB_minus_ccA_log2=1.671] [gene=PSAT1; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; ccA_ccB.cptac_rna.padj=3.93e-06]. ccB versus ccA / cptac_protein: [gene=PSAT1; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; ccA_ccB.cptac_protein.ccB_minus_ccA_log2=0.541] [gene=PSAT1; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; ccA_ccB.cptac_protein.padj=1.57e-05]. ccB versus ccA / tcga_rna: [gene=PSAT1; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; ccA_ccB.tcga_rna.ccB_minus_ccA_log2=2.364] [gene=PSAT1; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; ccA_ccB.tcga_rna.padj=9.07e-39]. The profile does not flag a driver-defined subgroup target, while ccB-versus-ccA expression differences remain measurable. BAP1-associated RNA differences do not establish a corresponding protein difference. These are observational comparisons, potentially affected by cell composition, rather than treatment-selection evidence.",
    "evidence_ids": [
     "EV:subtype_profile:58119698ea36"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:subtype_profile:58119698ea36",
+     "field": [
+      "VHL",
+      "cptac_rna",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "-0.183",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:58119698ea36",
+     "field": [
+      "VHL",
+      "cptac_rna",
+      "padj"
+     ],
+     "display": "0.808",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:58119698ea36",
+     "field": [
+      "VHL",
+      "cptac_protein",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "-0.142",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:58119698ea36",
+     "field": [
+      "VHL",
+      "cptac_protein",
+      "padj"
+     ],
+     "display": "0.601",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:58119698ea36",
+     "field": [
+      "VHL",
+      "tcga_rna",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "-0.635",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:58119698ea36",
+     "field": [
+      "VHL",
+      "tcga_rna",
+      "padj"
+     ],
+     "display": "0.046",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:58119698ea36",
+     "field": [
+      "PBRM1",
+      "cptac_rna",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "-0.718",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:58119698ea36",
+     "field": [
+      "PBRM1",
+      "cptac_rna",
+      "padj"
+     ],
+     "display": "0.051",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:58119698ea36",
+     "field": [
+      "PBRM1",
+      "cptac_protein",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "-0.274",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:58119698ea36",
+     "field": [
+      "PBRM1",
+      "cptac_protein",
+      "padj"
+     ],
+     "display": "0.114",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:58119698ea36",
+     "field": [
+      "PBRM1",
+      "tcga_rna",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "-0.824",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:58119698ea36",
+     "field": [
+      "PBRM1",
+      "tcga_rna",
+      "padj"
+     ],
+     "display": "0.002",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:58119698ea36",
+     "field": [
+      "BAP1",
+      "cptac_rna",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "1.222",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:58119698ea36",
+     "field": [
+      "BAP1",
+      "cptac_rna",
+      "padj"
+     ],
+     "display": "0.011",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:58119698ea36",
+     "field": [
+      "BAP1",
+      "cptac_protein",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "0.224",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:58119698ea36",
+     "field": [
+      "BAP1",
+      "cptac_protein",
+      "padj"
+     ],
+     "display": "0.396",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:58119698ea36",
+     "field": [
+      "BAP1",
+      "tcga_rna",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "1.711",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:58119698ea36",
+     "field": [
+      "BAP1",
+      "tcga_rna",
+      "padj"
+     ],
+     "display": "5.78e-05",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:58119698ea36",
+     "field": [
+      "SETD2",
+      "cptac_rna",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "0.38",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:58119698ea36",
+     "field": [
+      "SETD2",
+      "cptac_rna",
+      "padj"
+     ],
+     "display": "0.798",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:58119698ea36",
+     "field": [
+      "SETD2",
+      "cptac_protein",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "0.179",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:58119698ea36",
+     "field": [
+      "SETD2",
+      "cptac_protein",
+      "padj"
+     ],
+     "display": "0.694",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:58119698ea36",
+     "field": [
+      "SETD2",
+      "tcga_rna",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "0.354",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:58119698ea36",
+     "field": [
+      "SETD2",
+      "tcga_rna",
+      "padj"
+     ],
+     "display": "0.463",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:58119698ea36",
+     "field": [
+      "ccA_ccB",
+      "cptac_rna",
+      "ccB_minus_ccA_log2"
+     ],
+     "display": "1.671",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:58119698ea36",
+     "field": [
+      "ccA_ccB",
+      "cptac_rna",
+      "padj"
+     ],
+     "display": "3.93e-06",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:58119698ea36",
+     "field": [
+      "ccA_ccB",
+      "cptac_protein",
+      "ccB_minus_ccA_log2"
+     ],
+     "display": "0.541",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:58119698ea36",
+     "field": [
+      "ccA_ccB",
+      "cptac_protein",
+      "padj"
+     ],
+     "display": "1.57e-05",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:58119698ea36",
+     "field": [
+      "ccA_ccB",
+      "tcga_rna",
+      "ccB_minus_ccA_log2"
+     ],
+     "display": "2.364",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:58119698ea36",
+     "field": [
+      "ccA_ccB",
+      "tcga_rna",
+      "padj"
+     ],
+     "display": "9.07e-39",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "NNMT",
    "role": "target_and_biomarker",
    "layer": "subtype",
-   "statement": "NNMT does not differ meaningfully by VHL, PBRM1, BAP1 or SETD2 status (for example PBRM1 TCGA RNA +0.347, padj 0.064) nor between ccB and ccA (TCGA RNA -0.044, padj 0.82). It is a pan-subtype tumour marker, not a subgroup-specific target.",
+   "statement": "NNMT: VHL / cptac_rna: [gene=NNMT; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; VHL.cptac_rna.mutant_minus_wildtype_log2=0.924] [gene=NNMT; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; VHL.cptac_rna.padj=0.406]. VHL / cptac_protein: [gene=NNMT; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; VHL.cptac_protein.mutant_minus_wildtype_log2=0.164] [gene=NNMT; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; VHL.cptac_protein.padj=0.727]. VHL / tcga_rna: [gene=NNMT; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; VHL.tcga_rna.mutant_minus_wildtype_log2=0.346] [gene=NNMT; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; VHL.tcga_rna.padj=0.141]. PBRM1 / cptac_rna: [gene=NNMT; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; PBRM1.cptac_rna.mutant_minus_wildtype_log2=0.529] [gene=NNMT; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; PBRM1.cptac_rna.padj=0.194]. PBRM1 / cptac_protein: [gene=NNMT; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; PBRM1.cptac_protein.mutant_minus_wildtype_log2=0.193] [gene=NNMT; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; PBRM1.cptac_protein.padj=0.435]. PBRM1 / tcga_rna: [gene=NNMT; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; PBRM1.tcga_rna.mutant_minus_wildtype_log2=0.347] [gene=NNMT; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; PBRM1.tcga_rna.padj=0.064]. BAP1 / cptac_rna: [gene=NNMT; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; BAP1.cptac_rna.mutant_minus_wildtype_log2=0.114] [gene=NNMT; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; BAP1.cptac_rna.padj=0.787]. BAP1 / cptac_protein: [gene=NNMT; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; BAP1.cptac_protein.mutant_minus_wildtype_log2=0.176] [gene=NNMT; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; BAP1.cptac_protein.padj=0.46]. BAP1 / tcga_rna: [gene=NNMT; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; BAP1.tcga_rna.mutant_minus_wildtype_log2=0.176] [gene=NNMT; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; BAP1.tcga_rna.padj=0.479]. SETD2 / cptac_rna: [gene=NNMT; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; SETD2.cptac_rna.mutant_minus_wildtype_log2=0.541] [gene=NNMT; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; SETD2.cptac_rna.padj=0.501]. SETD2 / cptac_protein: [gene=NNMT; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; SETD2.cptac_protein.mutant_minus_wildtype_log2=0.407] [gene=NNMT; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; SETD2.cptac_protein.padj=0.209]. SETD2 / tcga_rna: [gene=NNMT; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; SETD2.tcga_rna.mutant_minus_wildtype_log2=0.194] [gene=NNMT; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; SETD2.tcga_rna.padj=0.575]. ccB versus ccA / cptac_rna: [gene=NNMT; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; ccA_ccB.cptac_rna.ccB_minus_ccA_log2=-0.473] [gene=NNMT; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; ccA_ccB.cptac_rna.padj=0.299]. ccB versus ccA / cptac_protein: [gene=NNMT; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; ccA_ccB.cptac_protein.ccB_minus_ccA_log2=0.146] [gene=NNMT; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; ccA_ccB.cptac_protein.padj=0.471]. ccB versus ccA / tcga_rna: [gene=NNMT; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; ccA_ccB.tcga_rna.ccB_minus_ccA_log2=-0.044] [gene=NNMT; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; ccA_ccB.tcga_rna.padj=0.82]. Failure to detect the selected subgroup differences does not establish uniform expression or a pan-subtype biomarker. These are observational comparisons, potentially affected by cell composition, rather than treatment-selection evidence.",
    "evidence_ids": [
     "EV:subtype_profile:7dbf93860d9f"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:subtype_profile:7dbf93860d9f",
+     "field": [
+      "VHL",
+      "cptac_rna",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "0.924",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:7dbf93860d9f",
+     "field": [
+      "VHL",
+      "cptac_rna",
+      "padj"
+     ],
+     "display": "0.406",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:7dbf93860d9f",
+     "field": [
+      "VHL",
+      "cptac_protein",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "0.164",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:7dbf93860d9f",
+     "field": [
+      "VHL",
+      "cptac_protein",
+      "padj"
+     ],
+     "display": "0.727",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:7dbf93860d9f",
+     "field": [
+      "VHL",
+      "tcga_rna",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "0.346",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:7dbf93860d9f",
+     "field": [
+      "VHL",
+      "tcga_rna",
+      "padj"
+     ],
+     "display": "0.141",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:7dbf93860d9f",
+     "field": [
+      "PBRM1",
+      "cptac_rna",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "0.529",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:7dbf93860d9f",
+     "field": [
+      "PBRM1",
+      "cptac_rna",
+      "padj"
+     ],
+     "display": "0.194",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:7dbf93860d9f",
+     "field": [
+      "PBRM1",
+      "cptac_protein",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "0.193",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:7dbf93860d9f",
+     "field": [
+      "PBRM1",
+      "cptac_protein",
+      "padj"
+     ],
+     "display": "0.435",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:7dbf93860d9f",
+     "field": [
+      "PBRM1",
+      "tcga_rna",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "0.347",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:7dbf93860d9f",
+     "field": [
+      "PBRM1",
+      "tcga_rna",
+      "padj"
+     ],
+     "display": "0.064",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:7dbf93860d9f",
+     "field": [
+      "BAP1",
+      "cptac_rna",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "0.114",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:7dbf93860d9f",
+     "field": [
+      "BAP1",
+      "cptac_rna",
+      "padj"
+     ],
+     "display": "0.787",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:7dbf93860d9f",
+     "field": [
+      "BAP1",
+      "cptac_protein",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "0.176",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:7dbf93860d9f",
+     "field": [
+      "BAP1",
+      "cptac_protein",
+      "padj"
+     ],
+     "display": "0.46",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:7dbf93860d9f",
+     "field": [
+      "BAP1",
+      "tcga_rna",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "0.176",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:7dbf93860d9f",
+     "field": [
+      "BAP1",
+      "tcga_rna",
+      "padj"
+     ],
+     "display": "0.479",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:7dbf93860d9f",
+     "field": [
+      "SETD2",
+      "cptac_rna",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "0.541",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:7dbf93860d9f",
+     "field": [
+      "SETD2",
+      "cptac_rna",
+      "padj"
+     ],
+     "display": "0.501",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:7dbf93860d9f",
+     "field": [
+      "SETD2",
+      "cptac_protein",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "0.407",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:7dbf93860d9f",
+     "field": [
+      "SETD2",
+      "cptac_protein",
+      "padj"
+     ],
+     "display": "0.209",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:7dbf93860d9f",
+     "field": [
+      "SETD2",
+      "tcga_rna",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "0.194",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:7dbf93860d9f",
+     "field": [
+      "SETD2",
+      "tcga_rna",
+      "padj"
+     ],
+     "display": "0.575",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:7dbf93860d9f",
+     "field": [
+      "ccA_ccB",
+      "cptac_rna",
+      "ccB_minus_ccA_log2"
+     ],
+     "display": "-0.473",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:7dbf93860d9f",
+     "field": [
+      "ccA_ccB",
+      "cptac_rna",
+      "padj"
+     ],
+     "display": "0.299",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:7dbf93860d9f",
+     "field": [
+      "ccA_ccB",
+      "cptac_protein",
+      "ccB_minus_ccA_log2"
+     ],
+     "display": "0.146",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:7dbf93860d9f",
+     "field": [
+      "ccA_ccB",
+      "cptac_protein",
+      "padj"
+     ],
+     "display": "0.471",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:7dbf93860d9f",
+     "field": [
+      "ccA_ccB",
+      "tcga_rna",
+      "ccB_minus_ccA_log2"
+     ],
+     "display": "-0.044",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:7dbf93860d9f",
+     "field": [
+      "ccA_ccB",
+      "tcga_rna",
+      "padj"
+     ],
+     "display": "0.82",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "CD70",
    "role": "target",
    "layer": "immune",
-   "statement": "Immune cells account for 0.654 of CD70 tumour transcripts, with Spearman correlation to CD8 T cells 0.278, regulatory T cells 0.228, M2 macrophages -0.004 and immune score 0.196 (immune-target score 3.384, rank 20 of 19161). A large part of the signal is immune, so tumour-cell-restricted targeting is not guaranteed; log HR on atezolizumab plus bevacizumab is -0.383.",
+   "statement": "CD70: Transcript attribution and immune-profile ranking: [gene=CD70; type=immune_profile; source=CPTAC CIBERSORT and xCell immune deconvolution; immune_cell_share_of_tumour_transcripts=0.654] [gene=CD70; type=immune_profile; source=CPTAC CIBERSORT and xCell immune deconvolution; immune_target_score=3.384] [gene=CD70; type=immune_profile; source=CPTAC CIBERSORT and xCell immune deconvolution; rank=20] [gene=CD70; type=immune_profile; source=CPTAC CIBERSORT and xCell immune deconvolution; of=19161]. Deconvolution correlations: [gene=CD70; type=immune_profile; source=CPTAC CIBERSORT and xCell immune deconvolution; rho_with_cd8_t_cells=0.278] [gene=CD70; type=immune_profile; source=CPTAC CIBERSORT and xCell immune deconvolution; rho_with_regulatory_t_cells=0.228] [gene=CD70; type=immune_profile; source=CPTAC CIBERSORT and xCell immune deconvolution; rho_with_m2_macrophages=-0.004] [gene=CD70; type=immune_profile; source=CPTAC CIBERSORT and xCell immune deconvolution; rho_with_immune_score=0.196] [gene=CD70; type=immune_profile; source=CPTAC CIBERSORT and xCell immune deconvolution; rna_log2fc=4.464]. A substantial immune-cell contribution argues against assuming tumour-cell restriction; correlation does not establish a causal infiltration mechanism. The treatment point estimate must be read with its adjusted p-value: [gene=CD70; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.atezolizumab_bevacizumab.log_hr_per_sd=-0.383] [gene=CD70; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.atezolizumab_bevacizumab.padj=0.166]. It does not establish treatment benefit.",
    "evidence_ids": [
-    "EV:immune_profile:908e84663f6a"
+    "EV:immune_profile:908e84663f6a",
+    "EV:treatment_response:908e84663f6a"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:immune_profile:908e84663f6a",
+     "field": [
+      "immune_cell_share_of_tumour_transcripts"
+     ],
+     "display": "0.654",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:immune_profile:908e84663f6a",
+     "field": [
+      "immune_target_score"
+     ],
+     "display": "3.384",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:immune_profile:908e84663f6a",
+     "field": [
+      "rank"
+     ],
+     "display": "20",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:immune_profile:908e84663f6a",
+     "field": [
+      "of"
+     ],
+     "display": "19161",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:immune_profile:908e84663f6a",
+     "field": [
+      "rho_with_cd8_t_cells"
+     ],
+     "display": "0.278",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:immune_profile:908e84663f6a",
+     "field": [
+      "rho_with_regulatory_t_cells"
+     ],
+     "display": "0.228",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:immune_profile:908e84663f6a",
+     "field": [
+      "rho_with_m2_macrophages"
+     ],
+     "display": "-0.004",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:immune_profile:908e84663f6a",
+     "field": [
+      "rho_with_immune_score"
+     ],
+     "display": "0.196",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:immune_profile:908e84663f6a",
+     "field": [
+      "rna_log2fc"
+     ],
+     "display": "4.464",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:908e84663f6a",
+     "field": [
+      "arms",
+      "atezolizumab_bevacizumab",
+      "log_hr_per_sd"
+     ],
+     "display": "-0.383",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:908e84663f6a",
+     "field": [
+      "arms",
+      "atezolizumab_bevacizumab",
+      "padj"
+     ],
+     "display": "0.166",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "FCGR3A",
    "role": "microenvironment",
    "layer": "immune",
-   "statement": "FCGR3A is almost entirely immune: 0.999 of its tumour transcripts come from immune cells, with correlation to CD8 T cells 0.457, M2 macrophages 0.361 and immune score 0.795 (score 3.499, rank 13 of 19161). Its tumour increase (RNA log2FC 3.51) reflects infiltration, not tumour-cell expression.",
+   "statement": "FCGR3A: Transcript attribution and immune-profile ranking: [gene=FCGR3A; type=immune_profile; source=CPTAC CIBERSORT and xCell immune deconvolution; immune_cell_share_of_tumour_transcripts=0.999] [gene=FCGR3A; type=immune_profile; source=CPTAC CIBERSORT and xCell immune deconvolution; immune_target_score=3.499] [gene=FCGR3A; type=immune_profile; source=CPTAC CIBERSORT and xCell immune deconvolution; rank=13] [gene=FCGR3A; type=immune_profile; source=CPTAC CIBERSORT and xCell immune deconvolution; of=19161]. Deconvolution correlations: [gene=FCGR3A; type=immune_profile; source=CPTAC CIBERSORT and xCell immune deconvolution; rho_with_cd8_t_cells=0.457] [gene=FCGR3A; type=immune_profile; source=CPTAC CIBERSORT and xCell immune deconvolution; rho_with_regulatory_t_cells=0.29] [gene=FCGR3A; type=immune_profile; source=CPTAC CIBERSORT and xCell immune deconvolution; rho_with_m2_macrophages=0.361] [gene=FCGR3A; type=immune_profile; source=CPTAC CIBERSORT and xCell immune deconvolution; rho_with_immune_score=0.795] [gene=FCGR3A; type=immune_profile; source=CPTAC CIBERSORT and xCell immune deconvolution; rna_log2fc=3.51]. A substantial immune-cell contribution argues against assuming tumour-cell restriction; correlation does not establish a causal infiltration mechanism.",
    "evidence_ids": [
     "EV:immune_profile:af56881a4234"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:immune_profile:af56881a4234",
+     "field": [
+      "immune_cell_share_of_tumour_transcripts"
+     ],
+     "display": "0.999",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:immune_profile:af56881a4234",
+     "field": [
+      "immune_target_score"
+     ],
+     "display": "3.499",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:immune_profile:af56881a4234",
+     "field": [
+      "rank"
+     ],
+     "display": "13",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:immune_profile:af56881a4234",
+     "field": [
+      "of"
+     ],
+     "display": "19161",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:immune_profile:af56881a4234",
+     "field": [
+      "rho_with_cd8_t_cells"
+     ],
+     "display": "0.457",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:immune_profile:af56881a4234",
+     "field": [
+      "rho_with_regulatory_t_cells"
+     ],
+     "display": "0.29",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:immune_profile:af56881a4234",
+     "field": [
+      "rho_with_m2_macrophages"
+     ],
+     "display": "0.361",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:immune_profile:af56881a4234",
+     "field": [
+      "rho_with_immune_score"
+     ],
+     "display": "0.795",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:immune_profile:af56881a4234",
+     "field": [
+      "rna_log2fc"
+     ],
+     "display": "3.51",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "NNMT",
    "role": "target_and_biomarker",
    "layer": "replication",
-   "statement": "NNMT attribution holds in the second single-cell dataset: dominant group RCC in both Li 2022 and Zhang 2021, tumour-cell share 0.97 and 0.948, tumour vs proximal tubule log2FC 9.132 and 5.573 (share-profile Spearman 0.786; 4 paired donors).",
+   "statement": "NNMT: Dominant cell groups: RCC in Li 2022 and RCC in Zhang 2021. [gene=NNMT; type=sc_replication; source=Zhang et al. 2021 ccRCC single-cell RNA-seq (CZ CELLxGENE); li2022_tumour_cell_share=0.97] [gene=NNMT; type=sc_replication; source=Zhang et al. 2021 ccRCC single-cell RNA-seq (CZ CELLxGENE); zhang2021_tumour_cell_share=0.948] [gene=NNMT; type=sc_replication; source=Zhang et al. 2021 ccRCC single-cell RNA-seq (CZ CELLxGENE); li2022_tumour_vs_tubule_log2fc=9.132] [gene=NNMT; type=sc_replication; source=Zhang et al. 2021 ccRCC single-cell RNA-seq (CZ CELLxGENE); zhang2021_tumour_vs_tubule_log2fc=5.573] [gene=NNMT; type=sc_replication; source=Zhang et al. 2021 ccRCC single-cell RNA-seq (CZ CELLxGENE); share_profile_spearman=0.786] [gene=NNMT; type=sc_replication; source=Zhang et al. 2021 ccRCC single-cell RNA-seq (CZ CELLxGENE); zhang2021_paired_donors=4]. Dominant-group attribution agrees across these cohorts. These sampled data do not establish exclusivity across tissues or therapeutic accessibility.",
    "evidence_ids": [
     "EV:sc_replication:7dbf93860d9f"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:sc_replication:7dbf93860d9f",
+     "field": [
+      "li2022_tumour_cell_share"
+     ],
+     "display": "0.97",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_replication:7dbf93860d9f",
+     "field": [
+      "zhang2021_tumour_cell_share"
+     ],
+     "display": "0.948",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_replication:7dbf93860d9f",
+     "field": [
+      "li2022_tumour_vs_tubule_log2fc"
+     ],
+     "display": "9.132",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_replication:7dbf93860d9f",
+     "field": [
+      "zhang2021_tumour_vs_tubule_log2fc"
+     ],
+     "display": "5.573",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_replication:7dbf93860d9f",
+     "field": [
+      "share_profile_spearman"
+     ],
+     "display": "0.786",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_replication:7dbf93860d9f",
+     "field": [
+      "zhang2021_paired_donors"
+     ],
+     "display": "4",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "SLC16A3",
    "role": "target",
    "layer": "replication",
-   "statement": "SLC16A3 cell attribution does not hold: dominant group T_NK in Li 2022 (tumour-cell share 0.327) but RCC in Zhang 2021 (0.809); tumour vs tubule log2FC is 6.809 and 6.45. Its tumour increase is reproducible, but whether tumour cells or T/NK cells carry it is unresolved.",
+   "statement": "SLC16A3: Dominant cell groups: T_NK in Li 2022 and RCC in Zhang 2021. [gene=SLC16A3; type=sc_replication; source=Zhang et al. 2021 ccRCC single-cell RNA-seq (CZ CELLxGENE); li2022_tumour_cell_share=0.327] [gene=SLC16A3; type=sc_replication; source=Zhang et al. 2021 ccRCC single-cell RNA-seq (CZ CELLxGENE); zhang2021_tumour_cell_share=0.809] [gene=SLC16A3; type=sc_replication; source=Zhang et al. 2021 ccRCC single-cell RNA-seq (CZ CELLxGENE); li2022_tumour_vs_tubule_log2fc=6.809] [gene=SLC16A3; type=sc_replication; source=Zhang et al. 2021 ccRCC single-cell RNA-seq (CZ CELLxGENE); zhang2021_tumour_vs_tubule_log2fc=6.45] [gene=SLC16A3; type=sc_replication; source=Zhang et al. 2021 ccRCC single-cell RNA-seq (CZ CELLxGENE); share_profile_spearman=0.429] [gene=SLC16A3; type=sc_replication; source=Zhang et al. 2021 ccRCC single-cell RNA-seq (CZ CELLxGENE); zhang2021_paired_donors=4]. Dominant-group attribution conflicts across these cohorts; tumour-cell restriction is unresolved. These sampled data do not establish exclusivity across tissues or therapeutic accessibility.",
    "evidence_ids": [
     "EV:sc_replication:11298113327b"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:sc_replication:11298113327b",
+     "field": [
+      "li2022_tumour_cell_share"
+     ],
+     "display": "0.327",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_replication:11298113327b",
+     "field": [
+      "zhang2021_tumour_cell_share"
+     ],
+     "display": "0.809",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_replication:11298113327b",
+     "field": [
+      "li2022_tumour_vs_tubule_log2fc"
+     ],
+     "display": "6.809",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_replication:11298113327b",
+     "field": [
+      "zhang2021_tumour_vs_tubule_log2fc"
+     ],
+     "display": "6.45",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_replication:11298113327b",
+     "field": [
+      "share_profile_spearman"
+     ],
+     "display": "0.429",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_replication:11298113327b",
+     "field": [
+      "zhang2021_paired_donors"
+     ],
+     "display": "4",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "CD70",
    "role": "target",
    "layer": "replication",
-   "statement": "CD70 cell call is discordant: T_NK dominant in Li 2022 (tumour-cell share 0.345) versus RCC in Zhang 2021 (0.964); tumour vs tubule log2FC 6.899 and 5.281. This agrees with its high immune transcript share and calls for caution as a tumour-cell target.",
+   "statement": "CD70: Dominant cell groups: T_NK in Li 2022 and RCC in Zhang 2021. [gene=CD70; type=sc_replication; source=Zhang et al. 2021 ccRCC single-cell RNA-seq (CZ CELLxGENE); li2022_tumour_cell_share=0.345] [gene=CD70; type=sc_replication; source=Zhang et al. 2021 ccRCC single-cell RNA-seq (CZ CELLxGENE); zhang2021_tumour_cell_share=0.964] [gene=CD70; type=sc_replication; source=Zhang et al. 2021 ccRCC single-cell RNA-seq (CZ CELLxGENE); li2022_tumour_vs_tubule_log2fc=6.899] [gene=CD70; type=sc_replication; source=Zhang et al. 2021 ccRCC single-cell RNA-seq (CZ CELLxGENE); zhang2021_tumour_vs_tubule_log2fc=5.281] [gene=CD70; type=sc_replication; source=Zhang et al. 2021 ccRCC single-cell RNA-seq (CZ CELLxGENE); share_profile_spearman=0.464] [gene=CD70; type=sc_replication; source=Zhang et al. 2021 ccRCC single-cell RNA-seq (CZ CELLxGENE); zhang2021_paired_donors=4]. Dominant-group attribution conflicts across these cohorts; tumour-cell restriction is unresolved. These sampled data do not establish exclusivity across tissues or therapeutic accessibility.",
    "evidence_ids": [
     "EV:sc_replication:908e84663f6a"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:sc_replication:908e84663f6a",
+     "field": [
+      "li2022_tumour_cell_share"
+     ],
+     "display": "0.345",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_replication:908e84663f6a",
+     "field": [
+      "zhang2021_tumour_cell_share"
+     ],
+     "display": "0.964",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_replication:908e84663f6a",
+     "field": [
+      "li2022_tumour_vs_tubule_log2fc"
+     ],
+     "display": "6.899",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_replication:908e84663f6a",
+     "field": [
+      "zhang2021_tumour_vs_tubule_log2fc"
+     ],
+     "display": "5.281",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_replication:908e84663f6a",
+     "field": [
+      "share_profile_spearman"
+     ],
+     "display": "0.464",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_replication:908e84663f6a",
+     "field": [
+      "zhang2021_paired_donors"
+     ],
+     "display": "4",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "CA9",
    "role": "target_and_biomarker",
    "layer": "replication",
-   "statement": "CA9 is tumour-cell dominant in both datasets (RCC; tumour-cell share 0.976 in Li 2022 and 0.981 in Zhang 2021), tumour vs tubule log2FC 7.739 and 8.522 (share-profile Spearman 0.607; 4 paired donors).",
+   "statement": "CA9: Dominant cell groups: RCC in Li 2022 and RCC in Zhang 2021. [gene=CA9; type=sc_replication; source=Zhang et al. 2021 ccRCC single-cell RNA-seq (CZ CELLxGENE); li2022_tumour_cell_share=0.976] [gene=CA9; type=sc_replication; source=Zhang et al. 2021 ccRCC single-cell RNA-seq (CZ CELLxGENE); zhang2021_tumour_cell_share=0.981] [gene=CA9; type=sc_replication; source=Zhang et al. 2021 ccRCC single-cell RNA-seq (CZ CELLxGENE); li2022_tumour_vs_tubule_log2fc=7.739] [gene=CA9; type=sc_replication; source=Zhang et al. 2021 ccRCC single-cell RNA-seq (CZ CELLxGENE); zhang2021_tumour_vs_tubule_log2fc=8.522] [gene=CA9; type=sc_replication; source=Zhang et al. 2021 ccRCC single-cell RNA-seq (CZ CELLxGENE); share_profile_spearman=0.607] [gene=CA9; type=sc_replication; source=Zhang et al. 2021 ccRCC single-cell RNA-seq (CZ CELLxGENE); zhang2021_paired_donors=4]. Dominant-group attribution agrees across these cohorts. These sampled data do not establish exclusivity across tissues or therapeutic accessibility.",
    "evidence_ids": [
     "EV:sc_replication:225a767ebcb5"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:sc_replication:225a767ebcb5",
+     "field": [
+      "li2022_tumour_cell_share"
+     ],
+     "display": "0.976",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_replication:225a767ebcb5",
+     "field": [
+      "zhang2021_tumour_cell_share"
+     ],
+     "display": "0.981",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_replication:225a767ebcb5",
+     "field": [
+      "li2022_tumour_vs_tubule_log2fc"
+     ],
+     "display": "7.739",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_replication:225a767ebcb5",
+     "field": [
+      "zhang2021_tumour_vs_tubule_log2fc"
+     ],
+     "display": "8.522",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_replication:225a767ebcb5",
+     "field": [
+      "share_profile_spearman"
+     ],
+     "display": "0.607",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_replication:225a767ebcb5",
+     "field": [
+      "zhang2021_paired_donors"
+     ],
+     "display": "4",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "PSAT1",
    "role": "biomarker",
    "layer": "confirmatory",
-   "statement": "PSAT1 protein replicates in the confirmatory DIA cohort: log2FC -3.946 (padj 9.71e-23, 69 pairs) versus -1.963 in discovery. Its one measured phosphosite was significant in discovery but did not replicate (0 replicating).",
+   "statement": "PSAT1: Independent protein measurements: [gene=PSAT1; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); protein_conf_log2fc=-3.946] [gene=PSAT1; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); protein_conf_padj=9.71e-23] [gene=PSAT1; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); protein_conf_pairs=69] [gene=PSAT1; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); protein_discovery_log2fc=-1.963] [gene=PSAT1; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); protein_discovery_padj=1.77e-33]. Protein direction and the specified replication criterion agree. Effect magnitudes are not directly interchangeable across technologies. Phosphosite overlap and replication: [gene=PSAT1; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); phosphosites_measured_in_both=1] [gene=PSAT1; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); phosphosites_significant_in_discovery=1] [gene=PSAT1; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); phosphosites_replicating=0].",
    "evidence_ids": [
     "EV:confirmatory_replication:58119698ea36"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:confirmatory_replication:58119698ea36",
+     "field": [
+      "protein_conf_log2fc"
+     ],
+     "display": "-3.946",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:confirmatory_replication:58119698ea36",
+     "field": [
+      "protein_conf_padj"
+     ],
+     "display": "9.71e-23",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:confirmatory_replication:58119698ea36",
+     "field": [
+      "protein_conf_pairs"
+     ],
+     "display": "69",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:confirmatory_replication:58119698ea36",
+     "field": [
+      "protein_discovery_log2fc"
+     ],
+     "display": "-1.963",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:confirmatory_replication:58119698ea36",
+     "field": [
+      "protein_discovery_padj"
+     ],
+     "display": "1.77e-33",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:confirmatory_replication:58119698ea36",
+     "field": [
+      "phosphosites_measured_in_both"
+     ],
+     "display": "1",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:confirmatory_replication:58119698ea36",
+     "field": [
+      "phosphosites_significant_in_discovery"
+     ],
+     "display": "1",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:confirmatory_replication:58119698ea36",
+     "field": [
+      "phosphosites_replicating"
+     ],
+     "display": "0",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "NNMT",
    "role": "target_and_biomarker",
    "layer": "confirmatory",
-   "statement": "NNMT protein replicates: confirmatory log2FC 4.776 (padj 3.07e-46, 86 pairs) versus 2.709 in discovery. Absolute sizes differ by technology; direction and significance agree.",
+   "statement": "NNMT: Independent protein measurements: [gene=NNMT; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); protein_conf_log2fc=4.776] [gene=NNMT; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); protein_conf_padj=3.07e-46] [gene=NNMT; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); protein_conf_pairs=86] [gene=NNMT; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); protein_discovery_log2fc=2.709] [gene=NNMT; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); protein_discovery_padj=1.23e-43]. Protein direction and the specified replication criterion agree. Effect magnitudes are not directly interchangeable across technologies.",
    "evidence_ids": [
     "EV:confirmatory_replication:7dbf93860d9f"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:confirmatory_replication:7dbf93860d9f",
+     "field": [
+      "protein_conf_log2fc"
+     ],
+     "display": "4.776",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:confirmatory_replication:7dbf93860d9f",
+     "field": [
+      "protein_conf_padj"
+     ],
+     "display": "3.07e-46",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:confirmatory_replication:7dbf93860d9f",
+     "field": [
+      "protein_conf_pairs"
+     ],
+     "display": "86",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:confirmatory_replication:7dbf93860d9f",
+     "field": [
+      "protein_discovery_log2fc"
+     ],
+     "display": "2.709",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:confirmatory_replication:7dbf93860d9f",
+     "field": [
+      "protein_discovery_padj"
+     ],
+     "display": "1.23e-43",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "SCARB1",
    "role": "target",
    "layer": "confirmatory",
-   "statement": "SCARB1 protein replicates: confirmatory log2FC 2.334 (padj 3.28e-10, 33 pairs) versus 1.837 in discovery.",
+   "statement": "SCARB1: Independent protein measurements: [gene=SCARB1; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); protein_conf_log2fc=2.334] [gene=SCARB1; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); protein_conf_padj=3.28e-10] [gene=SCARB1; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); protein_conf_pairs=33] [gene=SCARB1; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); protein_discovery_log2fc=1.837] [gene=SCARB1; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); protein_discovery_padj=5.08e-37]. Protein direction and the specified replication criterion agree. Effect magnitudes are not directly interchangeable across technologies.",
    "evidence_ids": [
     "EV:confirmatory_replication:2d66f8e78d0c"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:confirmatory_replication:2d66f8e78d0c",
+     "field": [
+      "protein_conf_log2fc"
+     ],
+     "display": "2.334",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:confirmatory_replication:2d66f8e78d0c",
+     "field": [
+      "protein_conf_padj"
+     ],
+     "display": "3.28e-10",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:confirmatory_replication:2d66f8e78d0c",
+     "field": [
+      "protein_conf_pairs"
+     ],
+     "display": "33",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:confirmatory_replication:2d66f8e78d0c",
+     "field": [
+      "protein_discovery_log2fc"
+     ],
+     "display": "1.837",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:confirmatory_replication:2d66f8e78d0c",
+     "field": [
+      "protein_discovery_padj"
+     ],
+     "display": "5.08e-37",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "PCK1",
    "role": "biomarker",
    "layer": "confirmatory",
-   "statement": "PCK1 protein loss replicates: confirmatory log2FC -4.819 (padj 3.53e-27, 69 pairs) versus -1.859 in discovery, and 2 of 2 measured phosphosites replicate.",
+   "statement": "PCK1: Independent protein measurements: [gene=PCK1; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); protein_conf_log2fc=-4.819] [gene=PCK1; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); protein_conf_padj=3.53e-27] [gene=PCK1; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); protein_conf_pairs=69] [gene=PCK1; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); protein_discovery_log2fc=-1.859] [gene=PCK1; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); protein_discovery_padj=1.08e-32]. Protein direction and the specified replication criterion agree. Effect magnitudes are not directly interchangeable across technologies. Phosphosite overlap and replication: [gene=PCK1; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); phosphosites_measured_in_both=2] [gene=PCK1; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); phosphosites_significant_in_discovery=2] [gene=PCK1; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); phosphosites_replicating=2].",
    "evidence_ids": [
     "EV:confirmatory_replication:fd99b19fe8a6"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:confirmatory_replication:fd99b19fe8a6",
+     "field": [
+      "protein_conf_log2fc"
+     ],
+     "display": "-4.819",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:confirmatory_replication:fd99b19fe8a6",
+     "field": [
+      "protein_conf_padj"
+     ],
+     "display": "3.53e-27",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:confirmatory_replication:fd99b19fe8a6",
+     "field": [
+      "protein_conf_pairs"
+     ],
+     "display": "69",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:confirmatory_replication:fd99b19fe8a6",
+     "field": [
+      "protein_discovery_log2fc"
+     ],
+     "display": "-1.859",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:confirmatory_replication:fd99b19fe8a6",
+     "field": [
+      "protein_discovery_padj"
+     ],
+     "display": "1.08e-32",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:confirmatory_replication:fd99b19fe8a6",
+     "field": [
+      "phosphosites_measured_in_both"
+     ],
+     "display": "2",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:confirmatory_replication:fd99b19fe8a6",
+     "field": [
+      "phosphosites_significant_in_discovery"
+     ],
+     "display": "2",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:confirmatory_replication:fd99b19fe8a6",
+     "field": [
+      "phosphosites_replicating"
+     ],
+     "display": "2",
+     "unit": "native"
+    }
    ]
   }
  ],
  "caveats": [
-  "IMmotion150 results are single-gene leads from arms of about 88 patients; none differs between arms after correction, so all are only 'associated with'.",
-  "For NNMT, SCARB1 and EPAS1 the treatment tool returned only the 16-patient nivolumab trial (direction only, e.g. EPAS1 log HR -0.236, padj 0.88).",
-  "A high ADC suitability score does not show a conjugate would work; CD70 has no vital-organ staining data, and CA9, ENPP3, SCARB1 and SLC16A3 show strong staining in vital organs or kidney.",
-  "CA9 and CD70 were not tested in the confirmatory proteomics cohort (fewer than 10 matched pairs); this is missing data, not a failed replication.",
-  "Only some of the requested genes (for example EPAS1, PSAT1 ADC and immune layers) were profiled in every layer within the call budget.",
-  "PSAT1, PCK1 and other tumour-down genes rank high on the biomarker profile; they are loss markers and not drug targets."
- ]
+  "Treatment directions are point estimates; the displayed nonsignificant tests establish neither treatment benefit nor equivalence.",
+  "Missing assay results remain missing evidence, not failed replication or normal-tissue safety.",
+  "ADC suitability, subgroup expression and immune-profile rankings are hypotheses requiring independent functional and clinical validation.",
+  "CA9 and CD70 lack adequate matched-pair confirmatory protein tests here; this is not evidence against their discovery expression differences."
+ ],
+ "revision": {
+  "method": "Reviewed applied-agent output using exact source fields, all measured driver comparisons and explicit limitations"
+ }
 }

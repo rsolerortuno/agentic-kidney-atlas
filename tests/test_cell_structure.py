@@ -80,7 +80,7 @@ def test_graph_layers_have_resolvable_evidence():
     st = GraphStore().stats()
     assert st["claims_without_resolvable_evidence"] == 0
     for k in ("sc_celltype_expression", "sc_tumor_vs_pt", "spatial_expresser", "spatial_neighborhood",
-              "alphafold_model", "mgd_site"):
+              "alphafold_model", "structural_context"):
         assert st["evidence_by_type"][k] > 0
     assert st["nodes_by_type"]["CellType"] >= 17 and st["nodes_by_type"]["Pocket"] > 0
 
@@ -93,7 +93,7 @@ def test_cell_mcp_tools_return_citable_evidence():
     assert cell.spatial_context("CA9")["enriched_neighbors"][0]["cell_group"] == "RCC"
     sp = cell.structure_pockets("KDR")
     assert sp["pockets"][0]["evidence_id"] and sp["model_evidence_id"]
-    assert cell.mgd_ranking(5)[0]["best_mgd_score"] >= cell.mgd_ranking(5)[-1]["best_mgd_score"]
+    assert cell.structural_context_ranking(5)[0]["best_structural_context_score"] >= cell.structural_context_ranking(5)[-1]["best_structural_context_score"]
 
 
 def test_cell_mcp_discovery_tools():

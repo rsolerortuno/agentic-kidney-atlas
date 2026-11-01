@@ -95,11 +95,11 @@ Numbers below come from the current run. The full detail, with caveats, is in th
 ## How we know it is not nonsense
 
 - **Controls.** Wherever a score is new, known cases are scored the same way. Known ADC targets rank near the top. Known checkpoints rank unevenly, and the report says so.
-- **Held-out clinical targets.** The target profile uses no literature or drug history, and still ranks real RCC drug targets at AUROC 0.90, and 0.91 for targets that first entered trials in 2016 or later.
+- **Held-out clinical targets.** The target profile uses no literature or drug history, and still ranks real RCC drug targets at AUROC 0.90, and 0.887 in the retrospective post-2016 group (6 genes; 1 in the top 100). Trial dates include all phases; genes with incomplete dates are excluded from that group. Features include post-2016 information, so this is not a prospective prediction test.
 - **Replication.** Protein and phosphosite results are repeated in a separate patient cohort with a different method. Single-cell attributions are repeated in a second dataset.
 - **Stability.** Every rank has an interval from 1,000 random re-weightings.
-- **Repeated agent runs.** The whole agent step was run three times, each from a clean folder with the tools reading that same folder. The final target lists overlap with a mean Jaccard of 0.94 and the top four candidates (CA9, NNMT, CD70, SCARB1) are identical in all three. The main run had 118 checked statements and the repeats 127 and 128, none unsupported.
-- **Checks on the text.** Every numeric claim must match its evidence record. In the main run 118 statements passed, 0 were unsupported and 0 were stale, and a few agent findings were dropped for quoting values their evidence did not contain.
+- **Repeated agent runs (historical).** The original agent step was run three times, each from a clean folder with the tools reading that same folder. The final target lists overlapped with a mean Jaccard of 0.94 and the top four candidates (CA9, NNMT, CD70, SCARB1) were identical in all three. Those runs used the earlier verifier; their zero-failure counts do not establish compliance with the current metric-specific checks.
+- **Checks on the text.** Numbers must match a specific cited metric, with sign, unit and source context preserved. Ambiguous multi-layer claims require explicit bindings; unrelated ranking/global values cannot rescue them. Rejected inputs remain visible as failures. A passing result means **no failures detected by the automatic checks**, not complete scientific validation. See [the numeric-claim contract](docs/numeric-claims.md). The current saved agent findings and integrated narrative have been reviewed against this contract; earlier archived runs retain their historical status.
 
 ## How the project is organised
 
@@ -121,7 +121,7 @@ tests/                 automated tests
 | `omics.py`, `layers.py`, `confirmatory.py` | Tumour-vs-normal statistics; mutations, copy-number effects, dependency, TCGA, phosphosites, purity; the confirmatory cohort |
 | `treatment.py`, `subtypes.py`, `adc.py`, `immune.py` | Treatment response, subtypes, antibody-drug-conjugate suitability, immune environment |
 | `singlecell.py`, `sc_replication.py`, `spatial.py`, `spatial_viewer.py` | Cell types, the second single-cell dataset, tissue neighbourhoods, data for the Tissue viewer |
-| `structure.py` | Predicted structures and pockets (heuristic) |
+| `structure.py`, `degradation.py`, `protein_viewer.py` | Descriptive pocket features, curated experimental degrons/ternary references and the coordinate-based 3D viewer |
 | `discovery.py`, `safety_clinical.py`, `external.py` | The first-in-class screen, vital-organ expression, Open Targets, ChEMBL, Europe PMC |
 | `literature.py`, `literature_entities.py` | PubMed ingestion and checked relation extraction |
 | `graph.py`, `kg_build.py`, `kg_layers.py`, `kg_cell_structure.py`, `kg_applied.py` | The knowledge graph and the loaders that fill it |
@@ -137,11 +137,14 @@ tests/                 automated tests
 You need [uv](https://docs.astral.sh/uv/) and, for the agent step only, Claude Code logged in with a subscription (no API key).
 
 ```bash
-uv sync
-uv run ccrcc run-all        # rebuild everything deterministic, from downloads to the HTML (roughly 40 minutes the first time)
+uv sync --frozen
+uv run python -m ccrcc.reproducibility  # verify the retained input snapshot
+uv run ccrcc run-all        # rebuild from frozen local inputs; network access is blocked
 uv run pytest               # automated tests
 uv run ccrcc eval           # evaluation against clinical targets, robustness, baselines
 ```
+
+The frozen input inventory is in [reproducibility/inputs.json](reproducibility/inputs.json). Restore the listed data files from the retained local snapshot before running; upstream downloads can change and are not guaranteed to reproduce those bytes. [Reproduction notes](docs/reproduction.md) record coverage, source-version limitations and the successful clean execution. See also the [findings audit](docs/revision-audit.md) and [cleanup record](docs/cleanup.md). The original acquisition commands remain available separately. `run-all --allow-network` opts out of offline reconstruction.
 
 The agent step regenerates the findings and the summary, and takes about half an hour:
 
@@ -172,7 +175,7 @@ These were not planned in advance. They are listed so you can judge them, and lo
 - The confirmatory proteome misses some genes (CA9 among them), because label-free data are sparse in normal kidney. A missing gene is a gap, not a failed replication.
 - Cell-line dependency uses only 24 ccRCC lines grown in normal oxygen.
 - Treatment-response tests are weak: one adequately sized trial, and no gene separates the two main arms.
-- The pocket score is a rough heuristic with modest validation, and it is not extended here.
+- The structural-context score describes monomer pocket features; it is not a degradation predictor. Ligand-contact recovery tests cavity detection only. The 3D viewer displays grey protein surfaces, red selected residues, confidence, transparency and clipping. Experimental degrons and ternary references are separate annotations, not predictions transferred to new candidates.
 - Gold sets of clinical targets are small, and clinical targets are mostly druggable by construction.
 - Language-model steps cannot be repeated bit for bit. Their outputs are saved and checked.
 - Not medical advice.

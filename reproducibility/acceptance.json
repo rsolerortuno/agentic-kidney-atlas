@@ -1,0 +1,32 @@
+{
+  "command": "uv run ccrcc run-all",
+  "dependency_setup": "uv sync --frozen",
+  "exit_code": 0,
+  "python": "3.12.11",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "data_files_checked": 6827,
+  "project_inputs_checked": 18,
+  "parquet_tables_compared": 43,
+  "comparison": "Exact original columns; two new structural alias columns checked against their originals",
+  "evaluation_json_exact_match": true,
+  "agent_findings_retained": 77,
+  "statements_checked": 130,
+  "unsupported": 0,
+  "semantic_failures": 0,
+  "stale": 0,
+  "report_validation": {
+    "claims": 462,
+    "distinct_evidence_ids": 1730,
+    "citation_links": 1823,
+    "external_resources": 0
+  },
+  "report_sha256": "bb0c491af554ab432d5fd38e42d29966779904b79482170ce26891d29c6ee7ec",
+  "manifest_sha256": "295ea844368fe7454e64f130dce6af11c7ea9ea2f729af2c569bf9c4fdd61111",
+  "runtime_hashes": "runtime-hashes.json",
+  "scope": "No failures detected by the automatic checks; not complete scientific validation",
+  "offline_tests": {
+    "passed": 138,
+    "network_deselected": 4,
+    "log": "tests.log"
+  }
+}

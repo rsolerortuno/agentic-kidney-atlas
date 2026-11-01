@@ -231,10 +231,10 @@ def mgd_bubble(report_genes: list[str], discovery_genes: list[str]) -> str:
 
     def kind(r):
         if r.control:
-            return "known glue substrate (control)"
+            return "known glue substrate (reference)"
         return "discovery shortlist" if r.gene in discovery_genes else "report candidate"
     d["kind"] = [kind(r) for r in d.itertuples()]
-    colors = {"report candidate": CAT[0], "discovery shortlist": CAT[1], "known glue substrate (control)": CAT[2]}
+    colors = {"report candidate": CAT[0], "discovery shortlist": CAT[1], "known glue substrate (reference)": CAT[2]}
     fig = go.Figure()
     for k, c in colors.items():
         s = d[d["kind"] == k]
@@ -244,10 +244,10 @@ def mgd_bubble(report_genes: list[str], discovery_genes: list[str]) -> str:
                                              line=dict(width=1.5, color="#fff")),
                                  customdata=np.c_[s["max_depth_a"], s["mean_plddt"], s["n_accessible_lysines"], s["exposed_loop_run"]],
                                  hovertemplate="%{text}<br>%{x:.0f} Å³ · depth %{customdata[0]:.1f} Å · pLDDT %{customdata[1]:.0f}<br>"
-                                               "lysines %{customdata[2]} · loop run %{customdata[3]} · MGD %{y:.2f}<extra></extra>"))
+                                               "lysines %{customdata[2]} · loop run %{customdata[3]} · structural context %{y:.2f}<extra></extra>"))
     fig.update_xaxes(title="pocket volume (Å³, log)", type="log")
-    fig.update_yaxes(title="MGD site score", range=[0.2, 1])
-    return _html(fig, 470, "Best pocket per protein: size, MGD score (bubble = accessible lysines)")
+    fig.update_yaxes(title="structural-context score", range=[0.2, 1])
+    return _html(fig, 470, "Best pocket per protein: size, structural-context score (bubble = accessible lysines)")
 
 
 def mgd_components(weights: dict, n: int = 22) -> str:
@@ -257,12 +257,13 @@ def mgd_components(weights: dict, n: int = 22) -> str:
     d = d.sort_values("mgd_score", ascending=False).head(n)[::-1]
     fig = go.Figure()
     for i, k in enumerate(weights):
-        fig.add_trace(go.Bar(y=d["gene"], x=d[f"w_{k}"], name=k, orientation="h", marker_color=CAT[i],
+        label = "exposed loop" if k == "degron" else k
+        fig.add_trace(go.Bar(y=d["gene"], x=d[f"w_{k}"], name=label, orientation="h", marker_color=CAT[i],
                              marker_line=dict(width=1.5, color="rgba(255,255,255,.9)"),
-                             hovertemplate="%{y} · " + k + ": %{x:.3f}<extra></extra>"))
+                             hovertemplate="%{y} · " + label + ": %{x:.3f}<extra></extra>"))
     fig.update_layout(barmode="stack")
-    fig.update_xaxes(title="weighted component (sums to the MGD score)")
-    return _html(fig, max(420, 22 * len(d) + 110), "Why a site scores high: confidence, geometry, lysines, degron")
+    fig.update_xaxes(title="weighted component (sums to the structural-context score)")
+    return _html(fig, max(420, 22 * len(d) + 110), "Why a site scores high: confidence, geometry, lysines, exposed loop")
 
 
 def ligand_validation(st: dict) -> str:
@@ -279,7 +280,7 @@ def ligand_validation(st: dict) -> str:
     fig.add_trace(go.Scatter(x=det, y=genes, mode="markers", name="all detected cavities (detector)",
                              marker=dict(size=9, color=CAT[0], line=dict(width=1.5, color="#fff")),
                              hovertemplate="%{y}: detector covers %{x:.0%} of ligand residues<extra></extra>"))
-    fig.add_trace(go.Scatter(x=top, y=genes, mode="markers", name="top 3 pockets by MGD score",
+    fig.add_trace(go.Scatter(x=top, y=genes, mode="markers", name="top 3 pockets by structural-context score",
                              marker=dict(size=9, color=CAT[1], line=dict(width=1.5, color="#fff")),
                              hovertemplate="%{y}: top-3 covers %{x:.0%}<extra></extra>"))
     fig.update_xaxes(title="fraction of experimentally ligand-bound residues covered", tickformat=".0%", range=[-0.02, 1.02])
@@ -296,8 +297,8 @@ def control_ranking(controls: list[str]) -> str | None:
     fig.add_trace(go.Bar(x=d["gene"], y=d["mgd_score"], marker_color=[CAT[2] if c else "rgba(137,135,129,.45)" for c in d["control"]],
                          marker_cornerradius=3, hovertemplate="%{x}: %{y:.2f}<extra></extra>"))
     fig.update_xaxes(tickangle=-60, tickfont=dict(size=9))
-    fig.update_yaxes(title="MGD site score", range=[0, 1])
-    return _html(fig, 360, "Where do known glue substrates rank? (green = control)", showlegend=False)
+    fig.update_yaxes(title="structural-context score", range=[0, 1])
+    return _html(fig, 360, "Monomer structural context (green = known substrate reference)", showlegend=False)
 
 
 # ------------------------------------------------------------------------------------------ discovery

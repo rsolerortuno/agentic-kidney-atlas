@@ -6,7 +6,7 @@ Three gold sets, each matched to the question a score answers:
    (papillary / chromophobe / HLRCC excluded) in phase 2 or later, with >= 2 trials or an approval. Drugs whose
    mechanism maps to more than 5 targets (e.g. metformin -> 50 complex I subunits) are removed so that one drug
    does not contribute a block of genes.
-2. Temporal holdout: the subset of (1) whose first RCC trial started on or after 2016-01-01. The data-only
+2. Retrospective post-2016 evaluation: the subset of (1) whose first RCC trial started on or after 2016-01-01. The data-only
    profiles use measurements, not trial history or literature, so this asks whether they rank genes that entered
    RCC clinical development later.
 3. Prognostic biomarkers: the ClearCode34 ccA/ccB subtype classifier (Brooks et al., Eur Urol 2014, Table 1; 34 genes,
@@ -48,17 +48,30 @@ def clinical_targets() -> pd.DataFrame:
     cp = pd.read_parquet(EXTRA / "ot_clinical_precedence_0.parquet",
                          columns=["targetId", "drugId", "clinicalReportId", "clinicalStage", "studyStartDate",
                                   "diseaseFromSource"])
+    return clinical_targets_from_records(cp, _symbols())
+
+
+def clinical_targets_from_records(cp: pd.DataFrame, symbols: dict) -> pd.DataFrame:
+    """Retrospective grouping, not a prospective test: features are not frozen at the cutoff.
+
+    Eligibility uses advanced trials; first observed RCC trial uses every phase and
+    every drug, including drugs excluded from the eligibility set for promiscuity.
+    Missing dates prevent assignment to the post-cutoff group.
+    """
     n_targets = cp.groupby("drugId")["targetId"].nunique()
     src = cp["diseaseFromSource"].fillna("")
-    r = cp[src.str.contains(RCC) & ~src.str.contains(NOT_CC) & cp["clinicalStage"].isin(ADVANCED)].copy()
-    r = r[r["drugId"].map(n_targets) <= MAX_TARGETS_PER_DRUG]
-    r["gene"] = r["targetId"].map(_symbols())
+    r = cp[src.str.contains(RCC) & ~src.str.contains(NOT_CC)].copy()
+    r["gene"] = r["targetId"].map(symbols)
     r["start"] = pd.to_datetime(r["studyStartDate"], errors="coerce")
-    g = r.dropna(subset=["gene"]).groupby("gene").agg(
-        first_trial=("start", "min"), trials=("clinicalReportId", "nunique"), drugs=("drugId", "nunique"),
+    dates = r.dropna(subset=["gene"]).groupby("gene").agg(
+        first_trial=("start", "min"), date_incomplete=("start", lambda s: s.isna().any()))
+    eligible = r[r["clinicalStage"].isin(ADVANCED) & (r["drugId"].map(n_targets) <= MAX_TARGETS_PER_DRUG)]
+    g = eligible.dropna(subset=["gene"]).groupby("gene").agg(
+        trials=("clinicalReportId", "nunique"), drugs=("drugId", "nunique"),
         approved=("clinicalStage", lambda s: "APPROVAL" in set(s)))
     g = g[(g["trials"] >= 2) | g["approved"]]
-    g["holdout"] = g["first_trial"] >= pd.Timestamp(CUTOFF)
+    g = g.join(dates)
+    g["holdout"] = (g["first_trial"] >= pd.Timestamp(CUTOFF)) & ~g["date_incomplete"]
     return g.reset_index()
 
 

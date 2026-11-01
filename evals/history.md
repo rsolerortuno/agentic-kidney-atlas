@@ -247,3 +247,8 @@ Everything added since the first release is described here by purpose, not by th
   profile, immune profile, second single-cell dataset, confirmatory replication), so the new tabs are narrated and checked like
   the rest. `kg_applied.py` loads the evidence for a focus set of about 1,400 genes.
 - **Not done:** extension of the pocket score.
+
+
+## Reliability and structural explorer revision (in progress)
+
+First trial dates now use all RCC trial phases before advanced-trial eligibility filtering. Missing dates prevent post-2016 assignment. On the local input snapshot, the retrospective group changes from 13 to 6 genes; target-profile AUROC is 0.887 and recall@100 is 1/6. Features are not historically frozen, so this is not prospective validation. Other requirements remain in progress; no new report release has been validated yet.

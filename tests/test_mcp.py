@@ -98,7 +98,7 @@ def test_disease_top_targets():
     ("ccrcc.mcp_servers.omics", {"get_de_results", "top_genes", "rna_protein_correlation", "cnv_frequency"}),
     ("ccrcc.mcp_servers.kg", {"neighbors", "evidence_for", "search_literature", "check_evidence_ids"}),
     ("ccrcc.mcp_servers.external", {"open_targets_target", "string_interactions", "uniprot_entry"}),
-    ("ccrcc.mcp_servers.cell", {"celltype_expression", "spatial_context", "structure_pockets", "mgd_ranking", "novel_targets", "discovery_profile"}),
+    ("ccrcc.mcp_servers.cell", {"celltype_expression", "spatial_context", "structure_pockets", "structural_context_ranking", "novel_targets", "discovery_profile"}),
 ])
 def test_stdio_server_lists_tools(module, expected):
     async def run():

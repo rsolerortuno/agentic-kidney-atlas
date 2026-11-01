@@ -25,11 +25,24 @@ def _step(name, fn, *a, **kw):
     return out
 
 
-def run_all(fresh: bool = True) -> int:
+def run_all(fresh: bool = True, frozen: bool = True) -> int:
+    from .reproducibility import offline_inputs
+    if frozen:
+        with offline_inputs():
+            return _run_all(fresh=fresh, frozen=True)
+    return _run_all(fresh=fresh, frozen=False)
+
+
+def _run_all(fresh: bool = True, frozen: bool = True) -> int:
     from . import download, enrich, integrate, kg_build, literature, omics
     from .assemble import assemble
     from .render import render
     from .verify import verify_agents, verify_final
+    from .reproducibility import require_verified
+
+    # Verify the published expectations before deleting any derived artifacts or
+    # invoking downloaders that maintain their own mutable cache manifests.
+    snapshot = _step("Verify frozen inputs, configuration and dependency lock", require_verified)
 
     if fresh:
         shutil.rmtree(PROCESSED, ignore_errors=True)
@@ -38,10 +51,12 @@ def run_all(fresh: bool = True) -> int:
         for f in ("publications.parquet", "annotations.parquet", "chunks.parquet", "relations.parquet"):
             (LITERATURE / f).unlink(missing_ok=True)
     from . import extra_download, kg_layers, layers, safety_clinical
-    _step("M1 download (verifies sha256 manifest)", download.download_all)
-    _step("M11 download single-cell / spatial h5ad (cached)", download.download_singlecell)
-    _step("M13 download extra layers (mutations, DepMap, TCGA, phosphosites, purity, OT bulk; cached)",
-          extra_download.download_extra)
+    if not frozen:
+        _step("M1 download (verifies sha256 manifest)", download.download_all)
+        _step("M11 download single-cell / spatial h5ad (cached)", download.download_singlecell)
+        _step("M13 download extra layers (cached)", extra_download.download_extra)
+    else:
+        print("    Frozen reconstruction: downloaders skipped; network access prohibited.", flush=True)
     _step("M2 omics analysis", omics.run)
     # HPA normal tissue + CPTAC grade/stage association: needed by M12 discovery and the v3 biomarker profile.
     # (Before M13 run-all never ran this step, so a clean run failed at M12 unless the files were already there.)
@@ -51,13 +66,14 @@ def run_all(fresh: bool = True) -> int:
     from . import subtypes, treatment
     print("    treatment:", _step("M15 treatment-response biomarkers (IMmotion150, Choueiri 2016)",
                                   treatment.run)["controls_reproduced"])
-    _step("M15 genetic subtypes and ccA / ccB", subtypes.run)
     from . import confirmatory
     print("    confirmatory:", _step("Replication in the confirmatory CPTAC cohort", confirmatory.run)["protein"]["replication_rate"])
     _step("M3 literature ingestion (PubTator3, frozen PMID lists)", literature.ingest)
     _step("M3 rebuild extraction batches (deterministic)", literature.write_extraction_batches)
     print("    relations:", _step("M3 validate extracted relations", literature.validate_extractions))
     _step("M5 external enrichment (cached)", enrich.run)
+    # Subtype target summaries require the gene universe produced by enrichment.
+    _step("M15 genetic subtypes and ccA / ccB", subtypes.run)
     _step("M4 knowledge graph", kg_build.build)
     print("    M13 claims:", _step("M13 load extra layers into the graph", kg_layers.load_layers)["claims_added"])
     from . import discovery, kg_cell_structure, singlecell, spatial, structure
@@ -73,14 +89,20 @@ def run_all(fresh: bool = True) -> int:
     _step("M15 second single-cell dataset (Zhang 2021) replication", sc_replication.run)
     _step("M15 ADC / radioligand suitability", adc.run)
     _step("M15 immune microenvironment profile", immune.run)
-    _step("M11 AlphaFold models, pockets and MGD scoring", structure.run)
+    _step("M11 AlphaFold models, pockets and structural-context heuristic", structure.run)
     print("    claims:", _step("M11 load cell / structure layers into the graph", kg_cell_structure.load)["claims_added"])
     print("    discovery claims:", _step("M12 load discovery profiles into the graph", discovery.load_graph))
     runs = sorted(p.parent for p in RUNS.glob("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/narrative.json"))
     if not runs:
         print("No saved agent run (runs/<date>/narrative.json). Run scripts/run_informe.ps1 first.")
         return 1
-    run = runs[-1]
+    if frozen:
+        from .paths import ROOT
+        if not snapshot.get("analysis_run"):
+            raise RuntimeError("Frozen manifest must select an analysis_run")
+        run = ROOT / snapshot["analysis_run"]
+    else:
+        run = runs[-1]
     _step("convergence v3 + target / biomarker profiles + weight sensitivity", integrate.write, day=run.name)
     from . import kg_applied
     print("    applied claims:", _step("Load treatment, subtype, ADC, immune and replication evidence into the graph",
@@ -90,6 +112,11 @@ def run_all(fresh: bool = True) -> int:
     _step("assemble findings.json", assemble, run)
     rep = _step("verify final", verify_final, run / "findings.json")
     print(f"    statements checked: {rep['statements']} | unsupported claims: {rep['unsupported']}")
+    if rep["unsupported"]:
+        print("Automatic checks detected failures. Correct the source findings before publishing a report.")
+        return 1
+    from .evaluate import rebuild_saved_evaluation
+    _step("Recompute evaluation from frozen model answers and rebuilt data", rebuild_saved_evaluation, run)
     path = _step("M7 render HTML", render, run / "findings.json")
     from importlib import import_module
     sys.path.insert(0, str(PROCESSED.parents[1] / "scripts"))
@@ -102,6 +129,8 @@ def main(argv=None) -> int:
     sub = p.add_subparsers(dest="cmd", required=True)
     ra = sub.add_parser("run-all", help="rebuild everything deterministic from scratch and render the report")
     ra.add_argument("--keep", action="store_true", help="do not delete processed data / graph first")
+    ra.add_argument("--allow-network", action="store_true",
+                    help="allow source refreshes; this is not frozen reproduction")
     for name in ("download", "omics", "literature", "validate-relations", "enrich", "graph", "integrate", "eval",
                  "singlecell", "spatial", "structure", "cell-graph", "discovery", "layers", "layers-graph",
                  "download-extra", "safety-clinical", "baselines", "treatment", "subtypes", "adc", "immune",
@@ -114,7 +143,7 @@ def main(argv=None) -> int:
     args = p.parse_args(argv)
 
     if args.cmd == "run-all":
-        return run_all(fresh=not args.keep)
+        return run_all(fresh=not args.keep, frozen=not args.allow_network)
     if args.cmd == "download":
         from .download import download_all
         print(json.dumps(download_all(), indent=1))

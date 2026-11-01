@@ -28,7 +28,7 @@
 {{ plain('response') }}
 <h2>Which genes predict response to treatment?</h2>
 {% for p in f.narrative.sections.treatment or [] %}
-<p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
+<p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p | statement_html | safe }} {{ p.evidence_ids | cite | safe }}</p>
 {% endfor %}
 {% set T = m15.treatment %}
 {% if T and T.studies %}
@@ -58,7 +58,7 @@
 
 <h2>Does the answer change with the tumour's genetics?</h2>
 {% for p in f.narrative.sections.subtypes or [] %}
-<p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
+<p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p | statement_html | safe }} {{ p.evidence_ids | cite | safe }}</p>
 {% endfor %}
 {% set S = m15.subtypes %}
 {% if S and S.drivers %}
@@ -83,7 +83,7 @@
 {% else %}<p class="small">Subtype analysis was not built in this run.</p>{% endif %}
 {% if f.agent_findings.applied %}<h3>Findings from the translational agent (checked) {{ q('applied_findings') }}</h3>
 {% for x in f.agent_findings.applied.findings %}
-<p class="claim" data-evidence="{{ x.evidence_ids | evattr }}"><strong>{{ x.gene }}</strong> <span class="tag">{{ x.layer | default(x.role) | replace("_"," ") }}</span> {{ x.statement }} {{ x.evidence_ids | cite | safe }}</p>
+<p class="claim" data-evidence="{{ x.evidence_ids | evattr }}"><strong>{{ x.gene }}</strong> <span class="tag">{{ x.layer | default(x.role) | replace("_"," ") }}</span> {{ x | statement_html | safe }} {{ x.evidence_ids | cite | safe }}</p>
 {% endfor %}{% endif %}
 </section>
 
@@ -91,7 +91,7 @@
 {{ plain('adcimmune') }}
 <h2>Antibody-drug conjugate and radioligand targets {{ q('adc_table') }}</h2>
 {% for p in f.narrative.sections.adc or [] %}
-<p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
+<p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p | statement_html | safe }} {{ p.evidence_ids | cite | safe }}</p>
 {% endfor %}
 {% set D = m15.adc_summary %}
 {% if D %}
@@ -111,7 +111,7 @@
 
 <h2>Immune microenvironment {{ q('immune_table') }}</h2>
 {% for p in f.narrative.sections.immune or [] %}
-<p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p.text }} {{ p.evidence_ids | cite | safe }}</p>
+<p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p | statement_html | safe }} {{ p.evidence_ids | cite | safe }}</p>
 {% endfor %}
 {% set I = m15.immune_summary %}
 {% if I %}

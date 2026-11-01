@@ -1,46 +1,1324 @@
-{"agent": "agente-externo",
-"findings": [
-{"gene": "CA9", "role": "target_and_biomarker",
- "statement": "Rank 1 in convergence ranking (score 4.5197, 5 streams). Open Targets overall association 0.3088. Tumour-up in TCGA (log2FC 9.712). Cell-membrane protein (UniProt Q16790; also microvillus membrane), so antibody/imaging accessible. Drugs: GIRENTUXIMAB PHASE_3, IODINE I 124 GIRENTUXIMAB PHASE_2, SULTHIAME PHASE_4, ETHOXZOLAMIDE WITHDRAWAL. DepMap: no ccRCC dependency (mean effect 0.051, selectivity 0.031, none of the lines dependent), and no recurrent mutation (1 of 511 patients). It is therefore a surface biomarker and antibody or imaging target, not a functional dependency.",
- "evidence_ids": ["EV:open_targets_assoc:dcacc6a531bf", "EV:open_targets_tract:225a767ebcb5", "EV:open_targets_drug:e1e0c664ada3", "EV:uniprot:93360ddb9195", "EV:tcga_de:225a767ebcb5"]},
-{"gene": "CD70", "role": "target_and_biomarker",
- "statement": "Rank 3 in convergence ranking (score 4.2143). Tumour-up in TCGA (log2FC 7.09). Cell-membrane ligand of CD27 (UniProt P32970). Drugs: CUSATUZUMAB PHASE_2, VORSETUZUMAB PHASE_1, VORSETUZUMAB MAFODOTIN PHASE_1, MDX-1411 PHASE_1. Untested in approved ccRCC therapy and tractable by antibody/ADC. DepMap shows no dependency (mean effect 0.251, selectivity 0.006), so the case rests on surface expression, not on essentiality.",
- "evidence_ids": ["EV:open_targets_tract:908e84663f6a", "EV:open_targets_drug:fcadbe214e8c", "EV:uniprot:e21e5815e1a4", "EV:tcga_de:908e84663f6a"]},
-{"gene": "ENPP3", "role": "target_and_biomarker",
- "statement": "Rank 29 in convergence ranking (score 3.2997). Tumour-up in TCGA (log2FC 5.557), apical cell membrane and secreted (UniProt O14638). Drug: AGS-16C3F PHASE_2, an antibody-drug conjugate. DepMap selectivity 0.026 means no selective dependency. It is a tractable antibody target with clinical precedent in RCC.",
- "evidence_ids": ["EV:open_targets_tract:d5aee88146ed", "EV:open_targets_drug:49872cd86a77", "EV:uniprot:61e515f3c5a3", "EV:tcga_de:d5aee88146ed"]},
-{"gene": "EPAS1", "role": "target",
- "statement": "Established ccRCC drug target (HIF-2 alpha). Open Targets association 0.4871. Drug: BELZUTIFAN APPROVAL. Tractability: small-molecule approved drug and PROTAC-relevant ubiquitination labels. Reactome includes cellular response to hypoxia and regulation of PD-L1 transcription. It is one of the few genes with a selective DepMap dependency: ccRCC mean effect -0.143 vs 0.157 in other lines, selectivity 0.3, padj 0.061, 0.208 of ccRCC lines dependent, not common essential. Low mutation frequency (0.004).",
- "evidence_ids": ["EV:open_targets_assoc:61983038a898", "EV:open_targets_drug:199c475802ce", "EV:depmap_dependency:6a657326c9fd"]},
-{"gene": "VHL", "role": "mechanism",
- "statement": "Top Open Targets ccRCC association (score 0.6466). Recurrent somatic driver: 247 of 511 tumours mutated (freq 0.483), padj 0.0. Loss of VHL drives HIF stabilisation, upstream of EPAS1. DepMap selectivity is -0.835, so ccRCC lines are not selectively dependent on it (it is a tumour suppressor). Not directly druggable, with no drugs listed.",
- "evidence_ids": ["EV:open_targets_assoc:730901c424b4", "EV:somatic_recurrence:52e5aeb6c197"]},
-{"gene": "NNMT", "role": "biomarker",
- "statement": "Rank 7 in convergence ranking (score 3.9643). Tumour-up (TCGA log2FC 4.685) with protein up (log2FC 2.709). Prognostic: TCGA Cox log HR 0.301, padj 0.00479 (higher expression, worse survival). Open Targets association 0.0598. No drugs. DepMap shows no dependency (mean effect 0.316, selectivity -0.075), so it is a biomarker and mechanistic candidate, not a validated target.",
- "evidence_ids": ["EV:open_targets_assoc:719ce7782338", "EV:tcga_de:7dbf93860d9f", "EV:tcga_survival:7dbf93860d9f"]},
-{"gene": "SCARB1", "role": "target_and_biomarker",
- "statement": "Rank 5 in convergence ranking (score 4.1052). Tumour-up (TCGA log2FC 3.989). Open Targets association 0.4049, with genetic association component 0.519. No drugs in the record; tractability is predicted only (components value 0.5). DepMap shows no dependency (mean effect 0.002), so it is tractable but untested.",
- "evidence_ids": ["EV:open_targets_assoc:ee2e17841173", "EV:tcga_de:2d66f8e78d0c"]},
-{"gene": "ALDOB", "role": "biomarker",
- "statement": "Rank 2 in convergence ranking (score 4.2206). Strongly down in tumour (TCGA log2FC -4.741, protein log2FC -2.273). Prognostic: Cox log HR -0.358, padj 0.000023 (higher expression, better survival). Open Targets association 0.0701. No drugs. DepMap selectivity -0.01, so it is a loss-type diagnostic and prognostic marker, not a target.",
- "evidence_ids": ["EV:open_targets_assoc:7d82917bd537", "EV:tcga_de:a46f337f2987", "EV:tcga_survival:a46f337f2987"]},
-{"gene": "SLC22A8", "role": "biomarker",
- "statement": "Rank 4 in convergence ranking (score 4.1667). Down in tumour (TCGA log2FC -6.154, protein log2FC -2.264). Prognostic: Cox log HR -0.402, padj 0.0000433. Drugs: PROBENECID PHASE_4, PRATOSARTAN PHASE_3 (transporter substrates or inhibitors, not ccRCC therapy). Open Targets association 0.0662. Proximal-tubule identity marker lost in ccRCC.",
- "evidence_ids": ["EV:tcga_de:de6aa3b720b1", "EV:tcga_survival:de6aa3b720b1", "EV:open_targets_drug:31dfa11d1505"]},
-{"gene": "SLC16A3", "role": "target_and_biomarker",
- "statement": "Rank 15 in convergence ranking (score 3.5532). Tumour-up (TCGA log2FC 3.291, protein log2FC 2.279). Open Targets association 0.0491. No drugs listed; tractability predicted only. DepMap mean effect -0.015, selectivity -0.008, so there is no dependency evidence. Untested tractable candidate (lactate transporter, glycolytic phenotype).",
- "evidence_ids": ["EV:tcga_de:11298113327b", "EV:open_targets_assoc:ff9e96b08fbf"]},
-{"gene": "PIGR", "role": "biomarker",
- "statement": "Rank 6 in convergence ranking (score 4.0695). Open Targets association 0.4532 with genetic association 0.7338, among the top 25 ccRCC associations. Down in tumour (TCGA log2FC -3.721, protein log2FC -1.235). No drugs. Association-driven biomarker with no dependency (selectivity 0.078).",
- "evidence_ids": ["EV:open_targets_assoc:1170ea2f4d6c", "EV:tcga_de:6d388106d837"]},
-{"gene": "KDM5C", "role": "mechanism",
- "statement": "Open Targets ccRCC association 0.6174 (third, after VHL and PBRM1), with MTOR at 0.525 as the established drug-target comparator. KDM5C is a chromatin-regulator driver gene supported by association only. No dependency or tractability was assessed here.",
- "evidence_ids": ["EV:open_targets_assoc:3d361f2aec83", "EV:open_targets_assoc:900f88933f86"]}
-],
-"caveats": [
-"Most top convergence genes (CA9, CD70, NNMT, SCARB1, SLC16A3) show no ccRCC-selective DepMap dependency; their case is surface expression or biomarker value, not essentiality. Only EPAS1 shows selectivity (0.3, padj 0.061).",
-"DepMap and mutation records for CA9, CD70 and NNMT returned evidence_id null and cannot be cited; their values are quoted from the convergence_ranking row where available.",
-"Tractability for many ranked genes is predicted, not clinical. Drug names and stages are taken as returned by Open Targets, and some (probenecid, pratosartan, sulthiame) are not ccRCC therapies.",
-"Tools were not called for STRING interactors, and the OT association, DepMap and mutation checks were not run for every ranked gene. The tool-call budget went to the highest-ranked and established targets.",
-"The ranking is dominated by down-regulated proximal-tubule genes (ALDOB, SLC22A8, UMOD, etc.), which reflect tissue-of-origin loss and are biomarker candidates only."
-]}
+{
+ "agent": "agente-externo",
+ "findings": [
+  {
+   "gene": "CA9",
+   "role": "target_and_biomarker",
+   "statement": "CA9: Computed convergence ranking: [gene=CA9; type=analysis_ranking; source=ANALYSIS:ranking:convergence:8d5ff79b77e8d233; profile=convergence; rank=1] [gene=CA9; type=analysis_ranking; source=ANALYSIS:ranking:convergence:8d5ff79b77e8d233; profile=convergence; score=4.5197]. Open Targets ccRCC association: [gene=CA9; type=open_targets_association; source=Open Targets Platform; score=0.3088]. Association scores are evidence aggregation, not probabilities of therapeutic success. TCGA tumour-versus-normal RNA: [gene=CA9; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=9.7117] [gene=CA9; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; padj=2.58e-30]. Measured cell-line dependency: [gene=CA9; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=0.051] [gene=CA9; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; selectivity=0.031] [gene=CA9; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; padj=0.4417] [gene=CA9; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; n_ccrcc_dependent=0] [gene=CA9; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; n_ccrcc_lines=24]. The measured data do not establish ccRCC-selective dependency under the configured rule. This is measured non-favorable evidence, not missing data. Somatic mutation observations: [gene=CA9; type=somatic_recurrence; source=DATASET:SOMATIC-CPTAC-TCGA; mutated_patients=1] [gene=CA9; type=somatic_recurrence; source=DATASET:SOMATIC-CPTAC-TCGA; patients=511] [gene=CA9; type=somatic_recurrence; source=DATASET:SOMATIC-CPTAC-TCGA; freq=0.002] [gene=CA9; type=somatic_recurrence; source=DATASET:SOMATIC-CPTAC-TCGA; padj=0.9578]. A stored zero p-value reflects numerical representation and is not a literal probability of zero. Drug records in the frozen Open Targets snapshot: ETHOXZOLAMIDE (WITHDRAWAL); GIRENTUXIMAB (PHASE_3); IODINE I 124 GIRENTUXIMAB (PHASE_2); SULTHIAME (PHASE_4). A target-level drug record does not by itself establish a ccRCC indication or efficacy; stage labels are historical snapshot annotations. Tractability annotations: AB: Advanced Clinical; AB: GO CC high conf; AB: Human Protein Atlas loc; AB: UniProt SigP or TMHMM; AB: UniProt loc high conf; PR: Small Molecule Binder; SM: Approved Drug; SM: Druggable Family; SM: High-Quality Ligand; SM: Med-Quality Pocket; SM: Structure with Ligand. These annotations do not establish cell-surface accessibility, a usable degron or productive degradation. Antibody or imaging hypotheses require cell-attribution, surface-accessibility and off-tumour evidence in addition to these drug annotations.",
+   "evidence_ids": [
+    "EV:analysis_ranking:38a090afbce8",
+    "EV:open_targets_assoc:dcacc6a531bf",
+    "EV:tcga_de:225a767ebcb5",
+    "EV:depmap_dependency:225a767ebcb5",
+    "EV:somatic_recurrence:225a767ebcb5",
+    "EV:open_targets_drug:e1e0c664ada3",
+    "EV:open_targets_drug:646a0aec5b64",
+    "EV:open_targets_drug:7ed1f57af7b2",
+    "EV:open_targets_drug:f9761355ae59",
+    "EV:open_targets_tract:225a767ebcb5"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:analysis_ranking:38a090afbce8",
+     "field": [
+      "rank"
+     ],
+     "display": "1",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:38a090afbce8",
+     "field": [
+      "score"
+     ],
+     "display": "4.5197",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:open_targets_assoc:dcacc6a531bf",
+     "field": [
+      "score"
+     ],
+     "display": "0.3088",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:225a767ebcb5",
+     "field": [
+      "log2fc"
+     ],
+     "display": "9.7117",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:225a767ebcb5",
+     "field": [
+      "padj"
+     ],
+     "display": "2.58e-30",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:225a767ebcb5",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "0.051",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:225a767ebcb5",
+     "field": [
+      "selectivity"
+     ],
+     "display": "0.031",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:225a767ebcb5",
+     "field": [
+      "padj"
+     ],
+     "display": "0.4417",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:225a767ebcb5",
+     "field": [
+      "n_ccrcc_dependent"
+     ],
+     "display": "0",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:225a767ebcb5",
+     "field": [
+      "n_ccrcc_lines"
+     ],
+     "display": "24",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:somatic_recurrence:225a767ebcb5",
+     "field": [
+      "mutated_patients"
+     ],
+     "display": "1",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:somatic_recurrence:225a767ebcb5",
+     "field": [
+      "patients"
+     ],
+     "display": "511",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:somatic_recurrence:225a767ebcb5",
+     "field": [
+      "freq"
+     ],
+     "display": "0.002",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:somatic_recurrence:225a767ebcb5",
+     "field": [
+      "padj"
+     ],
+     "display": "0.9578",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "CD70",
+   "role": "target_and_biomarker",
+   "statement": "CD70: Computed convergence ranking: [gene=CD70; type=analysis_ranking; source=ANALYSIS:ranking:convergence:8d5ff79b77e8d233; profile=convergence; rank=3] [gene=CD70; type=analysis_ranking; source=ANALYSIS:ranking:convergence:8d5ff79b77e8d233; profile=convergence; score=4.2143]. Open Targets ccRCC association: [gene=CD70; type=open_targets_association; source=Open Targets Platform; score=0.0572]. Association scores are evidence aggregation, not probabilities of therapeutic success. TCGA tumour-versus-normal RNA: [gene=CD70; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=7.0902] [gene=CD70; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; padj=6.45e-25]. Measured cell-line dependency: [gene=CD70; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=0.251] [gene=CD70; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; selectivity=0.006] [gene=CD70; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; padj=0.9287] [gene=CD70; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; n_ccrcc_dependent=0] [gene=CD70; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; n_ccrcc_lines=24]. The measured data do not establish ccRCC-selective dependency under the configured rule. This is measured non-favorable evidence, not missing data. Drug records in the frozen Open Targets snapshot: CUSATUZUMAB (PHASE_2); MDX-1411 (PHASE_1); VORSETUZUMAB (PHASE_1); VORSETUZUMAB MAFODOTIN (PHASE_1). A target-level drug record does not by itself establish a ccRCC indication or efficacy; stage labels are historical snapshot annotations. Tractability annotations: AB: Advanced Clinical; AB: GO CC high conf; AB: UniProt SigP or TMHMM; AB: UniProt loc high conf; OC: Advanced Clinical; PR: Database Ubiquitination; PR: Half-life Data. These annotations do not establish cell-surface accessibility, a usable degron or productive degradation. Antibody or imaging hypotheses require cell-attribution, surface-accessibility and off-tumour evidence in addition to these drug annotations.",
+   "evidence_ids": [
+    "EV:analysis_ranking:b1c4545b063b",
+    "EV:open_targets_assoc:255532a611b4",
+    "EV:tcga_de:908e84663f6a",
+    "EV:depmap_dependency:908e84663f6a",
+    "EV:open_targets_drug:0a02c566ec75",
+    "EV:open_targets_drug:48624a88569c",
+    "EV:open_targets_drug:fcadbe214e8c",
+    "EV:open_targets_drug:289429f80a55",
+    "EV:open_targets_tract:908e84663f6a"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:analysis_ranking:b1c4545b063b",
+     "field": [
+      "rank"
+     ],
+     "display": "3",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:b1c4545b063b",
+     "field": [
+      "score"
+     ],
+     "display": "4.2143",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:open_targets_assoc:255532a611b4",
+     "field": [
+      "score"
+     ],
+     "display": "0.0572",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:908e84663f6a",
+     "field": [
+      "log2fc"
+     ],
+     "display": "7.0902",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:908e84663f6a",
+     "field": [
+      "padj"
+     ],
+     "display": "6.45e-25",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:908e84663f6a",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "0.251",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:908e84663f6a",
+     "field": [
+      "selectivity"
+     ],
+     "display": "0.006",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:908e84663f6a",
+     "field": [
+      "padj"
+     ],
+     "display": "0.9287",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:908e84663f6a",
+     "field": [
+      "n_ccrcc_dependent"
+     ],
+     "display": "0",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:908e84663f6a",
+     "field": [
+      "n_ccrcc_lines"
+     ],
+     "display": "24",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "ENPP3",
+   "role": "target_and_biomarker",
+   "statement": "ENPP3: Computed convergence ranking: [gene=ENPP3; type=analysis_ranking; source=ANALYSIS:ranking:convergence:8d5ff79b77e8d233; profile=convergence; rank=29] [gene=ENPP3; type=analysis_ranking; source=ANALYSIS:ranking:convergence:8d5ff79b77e8d233; profile=convergence; score=3.2997]. Open Targets ccRCC association: [gene=ENPP3; type=open_targets_association; source=Open Targets Platform; score=0.0356]. Association scores are evidence aggregation, not probabilities of therapeutic success. TCGA tumour-versus-normal RNA: [gene=ENPP3; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=5.5569] [gene=ENPP3; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; padj=1.66e-22]. Measured cell-line dependency: [gene=ENPP3; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=0.091] [gene=ENPP3; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; selectivity=0.026] [gene=ENPP3; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; padj=0.6265] [gene=ENPP3; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; n_ccrcc_dependent=0] [gene=ENPP3; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; n_ccrcc_lines=24]. The measured data do not establish ccRCC-selective dependency under the configured rule. This is measured non-favorable evidence, not missing data. Drug records in the frozen Open Targets snapshot: AGS-16C3F (PHASE_2). A target-level drug record does not by itself establish a ccRCC indication or efficacy; stage labels are historical snapshot annotations. Tractability annotations: AB: GO CC high conf; AB: UniProt SigP or TMHMM; AB: UniProt loc high conf; OC: Advanced Clinical; PR: Small Molecule Binder; SM: High-Quality Ligand; SM: Structure with Ligand. These annotations do not establish cell-surface accessibility, a usable degron or productive degradation. Antibody or imaging hypotheses require cell-attribution, surface-accessibility and off-tumour evidence in addition to these drug annotations.",
+   "evidence_ids": [
+    "EV:analysis_ranking:fbb459d5bcb3",
+    "EV:open_targets_assoc:9b858f1ca9f1",
+    "EV:tcga_de:d5aee88146ed",
+    "EV:depmap_dependency:d5aee88146ed",
+    "EV:open_targets_drug:49872cd86a77",
+    "EV:open_targets_tract:d5aee88146ed"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:analysis_ranking:fbb459d5bcb3",
+     "field": [
+      "rank"
+     ],
+     "display": "29",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:fbb459d5bcb3",
+     "field": [
+      "score"
+     ],
+     "display": "3.2997",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:open_targets_assoc:9b858f1ca9f1",
+     "field": [
+      "score"
+     ],
+     "display": "0.0356",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:d5aee88146ed",
+     "field": [
+      "log2fc"
+     ],
+     "display": "5.5569",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:d5aee88146ed",
+     "field": [
+      "padj"
+     ],
+     "display": "1.66e-22",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:d5aee88146ed",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "0.091",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:d5aee88146ed",
+     "field": [
+      "selectivity"
+     ],
+     "display": "0.026",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:d5aee88146ed",
+     "field": [
+      "padj"
+     ],
+     "display": "0.6265",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:d5aee88146ed",
+     "field": [
+      "n_ccrcc_dependent"
+     ],
+     "display": "0",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:d5aee88146ed",
+     "field": [
+      "n_ccrcc_lines"
+     ],
+     "display": "24",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "EPAS1",
+   "role": "target",
+   "statement": "EPAS1: Open Targets ccRCC association: [gene=EPAS1; type=open_targets_association; source=Open Targets Platform; score=0.4871]. Association scores are evidence aggregation, not probabilities of therapeutic success. Measured cell-line dependency: [gene=EPAS1; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=-0.143] [gene=EPAS1; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; selectivity=0.3] [gene=EPAS1; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; padj=0.0609] [gene=EPAS1; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; n_ccrcc_dependent=5] [gene=EPAS1; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; n_ccrcc_lines=24]. Other-line mean effect and dependent fraction within ccRCC: [gene=EPAS1; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_other=0.157] [gene=EPAS1; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; frac_ccrcc_dependent=0.208]. EPAS1 meets this project's configured selective-dependency rule; its adjusted p-value is above the conventional significance threshold, so this is threshold-dependent evidence, not a universally significant dependency. Somatic mutation observations: [gene=EPAS1; type=somatic_recurrence; source=DATASET:SOMATIC-CPTAC-TCGA; mutated_patients=2] [gene=EPAS1; type=somatic_recurrence; source=DATASET:SOMATIC-CPTAC-TCGA; patients=511] [gene=EPAS1; type=somatic_recurrence; source=DATASET:SOMATIC-CPTAC-TCGA; freq=0.0039] [gene=EPAS1; type=somatic_recurrence; source=DATASET:SOMATIC-CPTAC-TCGA; padj=0.9578]. A stored zero p-value reflects numerical representation and is not a literal probability of zero. Drug records in the frozen Open Targets snapshot: BELZUTIFAN (APPROVAL). A target-level drug record does not by itself establish a ccRCC indication or efficacy; stage labels are historical snapshot annotations. Tractability annotations: PR: Database Ubiquitination; PR: Small Molecule Binder; PR: UniProt Ubiquitination; SM: Approved Drug; SM: Druggable Family; SM: High-Quality Ligand; SM: Med-Quality Pocket; SM: Structure with Ligand. These annotations do not establish cell-surface accessibility, a usable degron or productive degradation.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:61983038a898",
+    "EV:depmap_dependency:6a657326c9fd",
+    "EV:somatic_recurrence:6a657326c9fd",
+    "EV:open_targets_drug:199c475802ce",
+    "EV:open_targets_tract:6a657326c9fd"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:open_targets_assoc:61983038a898",
+     "field": [
+      "score"
+     ],
+     "display": "0.4871",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:6a657326c9fd",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "-0.143",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:6a657326c9fd",
+     "field": [
+      "selectivity"
+     ],
+     "display": "0.3",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:6a657326c9fd",
+     "field": [
+      "padj"
+     ],
+     "display": "0.0609",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:6a657326c9fd",
+     "field": [
+      "n_ccrcc_dependent"
+     ],
+     "display": "5",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:6a657326c9fd",
+     "field": [
+      "n_ccrcc_lines"
+     ],
+     "display": "24",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:6a657326c9fd",
+     "field": [
+      "mean_effect_other"
+     ],
+     "display": "0.157",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:6a657326c9fd",
+     "field": [
+      "frac_ccrcc_dependent"
+     ],
+     "display": "0.208",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:somatic_recurrence:6a657326c9fd",
+     "field": [
+      "mutated_patients"
+     ],
+     "display": "2",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:somatic_recurrence:6a657326c9fd",
+     "field": [
+      "patients"
+     ],
+     "display": "511",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:somatic_recurrence:6a657326c9fd",
+     "field": [
+      "freq"
+     ],
+     "display": "0.0039",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:somatic_recurrence:6a657326c9fd",
+     "field": [
+      "padj"
+     ],
+     "display": "0.9578",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "VHL",
+   "role": "mechanism",
+   "statement": "VHL: Open Targets ccRCC association: [gene=VHL; type=open_targets_association; source=Open Targets Platform; score=0.6466]. Association scores are evidence aggregation, not probabilities of therapeutic success. Measured cell-line dependency: [gene=VHL; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=0.114] [gene=VHL; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; selectivity=-0.835] [gene=VHL; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; padj=6.38e-07] [gene=VHL; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; n_ccrcc_dependent=2] [gene=VHL; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; n_ccrcc_lines=24]. The measured data do not establish ccRCC-selective dependency under the configured rule. This is measured non-favorable evidence, not missing data. Somatic mutation observations: [gene=VHL; type=somatic_recurrence; source=DATASET:SOMATIC-CPTAC-TCGA; mutated_patients=247] [gene=VHL; type=somatic_recurrence; source=DATASET:SOMATIC-CPTAC-TCGA; patients=511] [gene=VHL; type=somatic_recurrence; source=DATASET:SOMATIC-CPTAC-TCGA; freq=0.4834] [gene=VHL; type=somatic_recurrence; source=DATASET:SOMATIC-CPTAC-TCGA; padj=0.0]. A stored zero p-value reflects numerical representation and is not a literal probability of zero. No drug record for this gene is present in the analysed graph snapshot; this does not prove that no drug or programme exists. Tractability annotations: AB: GO CC med conf; AB: UniProt loc high conf; PR: Database Ubiquitination; PR: Half-life Data; PR: Literature; PR: Small Molecule Binder; SM: High-Quality Ligand; SM: Structure with Ligand. These annotations do not establish cell-surface accessibility, a usable degron or productive degradation. VHL is interpreted as a disease-mechanism gene; the data do not establish benefit from inhibiting this tumour suppressor.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:730901c424b4",
+    "EV:depmap_dependency:52e5aeb6c197",
+    "EV:somatic_recurrence:52e5aeb6c197",
+    "EV:open_targets_tract:52e5aeb6c197"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:open_targets_assoc:730901c424b4",
+     "field": [
+      "score"
+     ],
+     "display": "0.6466",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:52e5aeb6c197",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "0.114",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:52e5aeb6c197",
+     "field": [
+      "selectivity"
+     ],
+     "display": "-0.835",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:52e5aeb6c197",
+     "field": [
+      "padj"
+     ],
+     "display": "6.38e-07",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:52e5aeb6c197",
+     "field": [
+      "n_ccrcc_dependent"
+     ],
+     "display": "2",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:52e5aeb6c197",
+     "field": [
+      "n_ccrcc_lines"
+     ],
+     "display": "24",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:somatic_recurrence:52e5aeb6c197",
+     "field": [
+      "mutated_patients"
+     ],
+     "display": "247",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:somatic_recurrence:52e5aeb6c197",
+     "field": [
+      "patients"
+     ],
+     "display": "511",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:somatic_recurrence:52e5aeb6c197",
+     "field": [
+      "freq"
+     ],
+     "display": "0.4834",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:somatic_recurrence:52e5aeb6c197",
+     "field": [
+      "padj"
+     ],
+     "display": "0.0",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "NNMT",
+   "role": "biomarker",
+   "statement": "NNMT: Computed convergence ranking: [gene=NNMT; type=analysis_ranking; source=ANALYSIS:ranking:convergence:8d5ff79b77e8d233; profile=convergence; rank=7] [gene=NNMT; type=analysis_ranking; source=ANALYSIS:ranking:convergence:8d5ff79b77e8d233; profile=convergence; score=3.9643]. Open Targets ccRCC association: [gene=NNMT; type=open_targets_association; source=Open Targets Platform; score=0.0598]. Association scores are evidence aggregation, not probabilities of therapeutic success. TCGA tumour-versus-normal RNA: [gene=NNMT; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=4.6846] [gene=NNMT; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; padj=5.62e-27]. Discovery protein: [gene=NNMT; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=2.709] [gene=NNMT; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; padj=1.23e-43]. Overall-survival association: [gene=NNMT; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=0.301] [gene=NNMT; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; padj=0.0048]. Higher expression is associated with worse survival. This univariate analysis does not establish independently validated prognostic utility. Measured cell-line dependency: [gene=NNMT; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=0.316] [gene=NNMT; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; selectivity=-0.075] [gene=NNMT; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; padj=0.0725] [gene=NNMT; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; n_ccrcc_dependent=0] [gene=NNMT; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; n_ccrcc_lines=24]. The measured data do not establish ccRCC-selective dependency under the configured rule. This is measured non-favorable evidence, not missing data. No drug record for this gene is present in the analysed graph snapshot; this does not prove that no drug or programme exists. Tractability annotations: PR: Database Ubiquitination; PR: Half-life Data; PR: Small Molecule Binder; SM: Druggable Family; SM: High-Quality Ligand; SM: Med-Quality Pocket; SM: Structure with Ligand. These annotations do not establish cell-surface accessibility, a usable degron or productive degradation. Biomarker status remains a research hypothesis; diagnostic, prognostic and predictive utility require distinct validation.",
+   "evidence_ids": [
+    "EV:analysis_ranking:184a1e09f8bd",
+    "EV:open_targets_assoc:719ce7782338",
+    "EV:tcga_de:7dbf93860d9f",
+    "EV:omics_de:de39cc0c5ed8",
+    "EV:tcga_survival:7dbf93860d9f",
+    "EV:depmap_dependency:7dbf93860d9f",
+    "EV:open_targets_tract:7dbf93860d9f"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:analysis_ranking:184a1e09f8bd",
+     "field": [
+      "rank"
+     ],
+     "display": "7",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:184a1e09f8bd",
+     "field": [
+      "score"
+     ],
+     "display": "3.9643",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:open_targets_assoc:719ce7782338",
+     "field": [
+      "score"
+     ],
+     "display": "0.0598",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:7dbf93860d9f",
+     "field": [
+      "log2fc"
+     ],
+     "display": "4.6846",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:7dbf93860d9f",
+     "field": [
+      "padj"
+     ],
+     "display": "5.62e-27",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:de39cc0c5ed8",
+     "field": [
+      "log2fc"
+     ],
+     "display": "2.709",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:de39cc0c5ed8",
+     "field": [
+      "padj"
+     ],
+     "display": "1.23e-43",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:7dbf93860d9f",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "0.301",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:7dbf93860d9f",
+     "field": [
+      "padj"
+     ],
+     "display": "0.0048",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:7dbf93860d9f",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "0.316",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:7dbf93860d9f",
+     "field": [
+      "selectivity"
+     ],
+     "display": "-0.075",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:7dbf93860d9f",
+     "field": [
+      "padj"
+     ],
+     "display": "0.0725",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:7dbf93860d9f",
+     "field": [
+      "n_ccrcc_dependent"
+     ],
+     "display": "0",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:7dbf93860d9f",
+     "field": [
+      "n_ccrcc_lines"
+     ],
+     "display": "24",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "SCARB1",
+   "role": "target_and_biomarker",
+   "statement": "SCARB1: Computed convergence ranking: [gene=SCARB1; type=analysis_ranking; source=ANALYSIS:ranking:convergence:8d5ff79b77e8d233; profile=convergence; rank=5] [gene=SCARB1; type=analysis_ranking; source=ANALYSIS:ranking:convergence:8d5ff79b77e8d233; profile=convergence; score=4.1052]. Open Targets ccRCC association: [gene=SCARB1; type=open_targets_association; source=Open Targets Platform; score=0.4049]. Association scores are evidence aggregation, not probabilities of therapeutic success. Genetic-association component: [gene=SCARB1; type=open_targets_association; source=Open Targets Platform; genetic_association=0.519]. TCGA tumour-versus-normal RNA: [gene=SCARB1; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=3.9894] [gene=SCARB1; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; padj=1.43e-31]. Measured cell-line dependency: [gene=SCARB1; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=0.002] [gene=SCARB1; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; selectivity=-0.021] [gene=SCARB1; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; padj=0.798] [gene=SCARB1; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; n_ccrcc_dependent=0] [gene=SCARB1; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; n_ccrcc_lines=24]. The measured data do not establish ccRCC-selective dependency under the configured rule. This is measured non-favorable evidence, not missing data. No drug record for this gene is present in the analysed graph snapshot; this does not prove that no drug or programme exists. Tractability annotations: AB: GO CC high conf; AB: UniProt SigP or TMHMM; AB: UniProt loc high conf; PR: Database Ubiquitination; PR: Half-life Data; PR: Small Molecule Binder; SM: Druggable Family; SM: High-Quality Ligand. These annotations do not establish cell-surface accessibility, a usable degron or productive degradation. Expression and tractability motivate functional follow-up but do not establish a validated therapeutic target.",
+   "evidence_ids": [
+    "EV:analysis_ranking:c8692741216b",
+    "EV:open_targets_assoc:ee2e17841173",
+    "EV:tcga_de:2d66f8e78d0c",
+    "EV:depmap_dependency:2d66f8e78d0c",
+    "EV:open_targets_tract:2d66f8e78d0c"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:analysis_ranking:c8692741216b",
+     "field": [
+      "rank"
+     ],
+     "display": "5",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:c8692741216b",
+     "field": [
+      "score"
+     ],
+     "display": "4.1052",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:open_targets_assoc:ee2e17841173",
+     "field": [
+      "score"
+     ],
+     "display": "0.4049",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:open_targets_assoc:ee2e17841173",
+     "field": [
+      "genetic_association"
+     ],
+     "display": "0.519",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:2d66f8e78d0c",
+     "field": [
+      "log2fc"
+     ],
+     "display": "3.9894",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:2d66f8e78d0c",
+     "field": [
+      "padj"
+     ],
+     "display": "1.43e-31",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:2d66f8e78d0c",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "0.002",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:2d66f8e78d0c",
+     "field": [
+      "selectivity"
+     ],
+     "display": "-0.021",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:2d66f8e78d0c",
+     "field": [
+      "padj"
+     ],
+     "display": "0.798",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:2d66f8e78d0c",
+     "field": [
+      "n_ccrcc_dependent"
+     ],
+     "display": "0",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:2d66f8e78d0c",
+     "field": [
+      "n_ccrcc_lines"
+     ],
+     "display": "24",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "ALDOB",
+   "role": "biomarker",
+   "statement": "ALDOB: Computed convergence ranking: [gene=ALDOB; type=analysis_ranking; source=ANALYSIS:ranking:convergence:8d5ff79b77e8d233; profile=convergence; rank=2] [gene=ALDOB; type=analysis_ranking; source=ANALYSIS:ranking:convergence:8d5ff79b77e8d233; profile=convergence; score=4.2206]. Open Targets ccRCC association: [gene=ALDOB; type=open_targets_association; source=Open Targets Platform; score=0.0701]. Association scores are evidence aggregation, not probabilities of therapeutic success. TCGA tumour-versus-normal RNA: [gene=ALDOB; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=-4.7409] [gene=ALDOB; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; padj=6.57e-11]. Discovery protein: [gene=ALDOB; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=-2.2733] [gene=ALDOB; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; padj=2.07e-40]. Overall-survival association: [gene=ALDOB; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=-0.358] [gene=ALDOB; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; padj=2.3e-05]. Higher expression is associated with better survival. This univariate analysis does not establish independently validated prognostic utility. Measured cell-line dependency: [gene=ALDOB; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=0.156] [gene=ALDOB; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; selectivity=-0.01] [gene=ALDOB; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; padj=0.896] [gene=ALDOB; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; n_ccrcc_dependent=0] [gene=ALDOB; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; n_ccrcc_lines=24]. The measured data do not establish ccRCC-selective dependency under the configured rule. This is measured non-favorable evidence, not missing data. No drug record for this gene is present in the analysed graph snapshot; this does not prove that no drug or programme exists. Tractability annotations: PR: Database Ubiquitination; PR: Half-life Data; SM: High-Quality Pocket. These annotations do not establish cell-surface accessibility, a usable degron or productive degradation. Biomarker status remains a research hypothesis; diagnostic, prognostic and predictive utility require distinct validation.",
+   "evidence_ids": [
+    "EV:analysis_ranking:726145e20b0a",
+    "EV:open_targets_assoc:7d82917bd537",
+    "EV:tcga_de:a46f337f2987",
+    "EV:omics_de:af15cb07921d",
+    "EV:tcga_survival:a46f337f2987",
+    "EV:depmap_dependency:a46f337f2987",
+    "EV:open_targets_tract:a46f337f2987"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:analysis_ranking:726145e20b0a",
+     "field": [
+      "rank"
+     ],
+     "display": "2",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:726145e20b0a",
+     "field": [
+      "score"
+     ],
+     "display": "4.2206",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:open_targets_assoc:7d82917bd537",
+     "field": [
+      "score"
+     ],
+     "display": "0.0701",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:a46f337f2987",
+     "field": [
+      "log2fc"
+     ],
+     "display": "-4.7409",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:a46f337f2987",
+     "field": [
+      "padj"
+     ],
+     "display": "6.57e-11",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:af15cb07921d",
+     "field": [
+      "log2fc"
+     ],
+     "display": "-2.2733",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:af15cb07921d",
+     "field": [
+      "padj"
+     ],
+     "display": "2.07e-40",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:a46f337f2987",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "-0.358",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:a46f337f2987",
+     "field": [
+      "padj"
+     ],
+     "display": "2.3e-05",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:a46f337f2987",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "0.156",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:a46f337f2987",
+     "field": [
+      "selectivity"
+     ],
+     "display": "-0.01",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:a46f337f2987",
+     "field": [
+      "padj"
+     ],
+     "display": "0.896",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:a46f337f2987",
+     "field": [
+      "n_ccrcc_dependent"
+     ],
+     "display": "0",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:a46f337f2987",
+     "field": [
+      "n_ccrcc_lines"
+     ],
+     "display": "24",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "SLC22A8",
+   "role": "biomarker",
+   "statement": "SLC22A8: Computed convergence ranking: [gene=SLC22A8; type=analysis_ranking; source=ANALYSIS:ranking:convergence:8d5ff79b77e8d233; profile=convergence; rank=4] [gene=SLC22A8; type=analysis_ranking; source=ANALYSIS:ranking:convergence:8d5ff79b77e8d233; profile=convergence; score=4.1667]. Open Targets ccRCC association: [gene=SLC22A8; type=open_targets_association; source=Open Targets Platform; score=0.0662]. Association scores are evidence aggregation, not probabilities of therapeutic success. TCGA tumour-versus-normal RNA: [gene=SLC22A8; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=-6.1542] [gene=SLC22A8; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; padj=5.42e-13]. Discovery protein: [gene=SLC22A8; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=-2.2642] [gene=SLC22A8; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; padj=2.11e-35]. Overall-survival association: [gene=SLC22A8; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=-0.402] [gene=SLC22A8; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; padj=4.33e-05]. Higher expression is associated with better survival. This univariate analysis does not establish independently validated prognostic utility. Measured cell-line dependency: [gene=SLC22A8; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=-0.019] [gene=SLC22A8; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; selectivity=0.072] [gene=SLC22A8; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; padj=0.32] [gene=SLC22A8; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; n_ccrcc_dependent=1] [gene=SLC22A8; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; n_ccrcc_lines=24]. The measured data do not establish ccRCC-selective dependency under the configured rule. This is measured non-favorable evidence, not missing data. Drug records in the frozen Open Targets snapshot: PRATOSARTAN (PHASE_3); PROBENECID (PHASE_4). A target-level drug record does not by itself establish a ccRCC indication or efficacy; stage labels are historical snapshot annotations. Tractability annotations: AB: GO CC high conf; AB: UniProt SigP or TMHMM; AB: UniProt loc high conf; PR: Small Molecule Binder; SM: Approved Drug; SM: Druggable Family; SM: High-Quality Ligand. These annotations do not establish cell-surface accessibility, a usable degron or productive degradation. Biomarker status remains a research hypothesis; diagnostic, prognostic and predictive utility require distinct validation.",
+   "evidence_ids": [
+    "EV:analysis_ranking:5b3aa698436e",
+    "EV:open_targets_assoc:b2aea712fd45",
+    "EV:tcga_de:de6aa3b720b1",
+    "EV:omics_de:e21e0047e1af",
+    "EV:tcga_survival:de6aa3b720b1",
+    "EV:depmap_dependency:de6aa3b720b1",
+    "EV:open_targets_drug:c5aeb8a46f99",
+    "EV:open_targets_drug:31dfa11d1505",
+    "EV:open_targets_tract:de6aa3b720b1"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:analysis_ranking:5b3aa698436e",
+     "field": [
+      "rank"
+     ],
+     "display": "4",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:5b3aa698436e",
+     "field": [
+      "score"
+     ],
+     "display": "4.1667",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:open_targets_assoc:b2aea712fd45",
+     "field": [
+      "score"
+     ],
+     "display": "0.0662",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:de6aa3b720b1",
+     "field": [
+      "log2fc"
+     ],
+     "display": "-6.1542",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:de6aa3b720b1",
+     "field": [
+      "padj"
+     ],
+     "display": "5.42e-13",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:e21e0047e1af",
+     "field": [
+      "log2fc"
+     ],
+     "display": "-2.2642",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:e21e0047e1af",
+     "field": [
+      "padj"
+     ],
+     "display": "2.11e-35",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:de6aa3b720b1",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "-0.402",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:de6aa3b720b1",
+     "field": [
+      "padj"
+     ],
+     "display": "4.33e-05",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:de6aa3b720b1",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "-0.019",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:de6aa3b720b1",
+     "field": [
+      "selectivity"
+     ],
+     "display": "0.072",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:de6aa3b720b1",
+     "field": [
+      "padj"
+     ],
+     "display": "0.32",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:de6aa3b720b1",
+     "field": [
+      "n_ccrcc_dependent"
+     ],
+     "display": "1",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:de6aa3b720b1",
+     "field": [
+      "n_ccrcc_lines"
+     ],
+     "display": "24",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "SLC16A3",
+   "role": "target_and_biomarker",
+   "statement": "SLC16A3: Computed convergence ranking: [gene=SLC16A3; type=analysis_ranking; source=ANALYSIS:ranking:convergence:8d5ff79b77e8d233; profile=convergence; rank=15] [gene=SLC16A3; type=analysis_ranking; source=ANALYSIS:ranking:convergence:8d5ff79b77e8d233; profile=convergence; score=3.5532]. Open Targets ccRCC association: [gene=SLC16A3; type=open_targets_association; source=Open Targets Platform; score=0.0491]. Association scores are evidence aggregation, not probabilities of therapeutic success. TCGA tumour-versus-normal RNA: [gene=SLC16A3; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=3.2905] [gene=SLC16A3; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; padj=7.66e-28]. Discovery protein: [gene=SLC16A3; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=2.2792] [gene=SLC16A3; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; padj=5.43e-47]. Measured cell-line dependency: [gene=SLC16A3; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=-0.015] [gene=SLC16A3; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; selectivity=-0.008] [gene=SLC16A3; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; padj=0.9288] [gene=SLC16A3; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; n_ccrcc_dependent=0] [gene=SLC16A3; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; n_ccrcc_lines=24]. The measured data do not establish ccRCC-selective dependency under the configured rule. This is measured non-favorable evidence, not missing data. No drug record for this gene is present in the analysed graph snapshot; this does not prove that no drug or programme exists. Tractability annotations: AB: GO CC high conf; AB: Human Protein Atlas loc; AB: UniProt SigP or TMHMM; AB: UniProt loc high conf; PR: Database Ubiquitination; PR: Half-life Data; PR: Small Molecule Binder; SM: High-Quality Ligand. These annotations do not establish cell-surface accessibility, a usable degron or productive degradation. Expression and tractability motivate functional follow-up but do not establish a validated therapeutic target.",
+   "evidence_ids": [
+    "EV:analysis_ranking:0cd6a99915cf",
+    "EV:open_targets_assoc:ff9e96b08fbf",
+    "EV:tcga_de:11298113327b",
+    "EV:omics_de:d93a2cc11342",
+    "EV:depmap_dependency:11298113327b",
+    "EV:open_targets_tract:11298113327b"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:analysis_ranking:0cd6a99915cf",
+     "field": [
+      "rank"
+     ],
+     "display": "15",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:0cd6a99915cf",
+     "field": [
+      "score"
+     ],
+     "display": "3.5532",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:open_targets_assoc:ff9e96b08fbf",
+     "field": [
+      "score"
+     ],
+     "display": "0.0491",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:11298113327b",
+     "field": [
+      "log2fc"
+     ],
+     "display": "3.2905",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:11298113327b",
+     "field": [
+      "padj"
+     ],
+     "display": "7.66e-28",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:d93a2cc11342",
+     "field": [
+      "log2fc"
+     ],
+     "display": "2.2792",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:d93a2cc11342",
+     "field": [
+      "padj"
+     ],
+     "display": "5.43e-47",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:11298113327b",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "-0.015",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:11298113327b",
+     "field": [
+      "selectivity"
+     ],
+     "display": "-0.008",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:11298113327b",
+     "field": [
+      "padj"
+     ],
+     "display": "0.9288",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:11298113327b",
+     "field": [
+      "n_ccrcc_dependent"
+     ],
+     "display": "0",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:11298113327b",
+     "field": [
+      "n_ccrcc_lines"
+     ],
+     "display": "24",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "PIGR",
+   "role": "biomarker",
+   "statement": "PIGR: Computed convergence ranking: [gene=PIGR; type=analysis_ranking; source=ANALYSIS:ranking:convergence:8d5ff79b77e8d233; profile=convergence; rank=6] [gene=PIGR; type=analysis_ranking; source=ANALYSIS:ranking:convergence:8d5ff79b77e8d233; profile=convergence; score=4.0695]. Open Targets ccRCC association: [gene=PIGR; type=open_targets_association; source=Open Targets Platform; score=0.4532]. Association scores are evidence aggregation, not probabilities of therapeutic success. Genetic-association component: [gene=PIGR; type=open_targets_association; source=Open Targets Platform; genetic_association=0.7338]. TCGA tumour-versus-normal RNA: [gene=PIGR; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=-3.721] [gene=PIGR; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; padj=2.15e-11]. Discovery protein: [gene=PIGR; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=-1.2345] [gene=PIGR; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; padj=7.59e-14]. Measured cell-line dependency: [gene=PIGR; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=0.143] [gene=PIGR; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; selectivity=0.078] [gene=PIGR; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; padj=0.1651] [gene=PIGR; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; n_ccrcc_dependent=0] [gene=PIGR; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; n_ccrcc_lines=24]. The measured data do not establish ccRCC-selective dependency under the configured rule. This is measured non-favorable evidence, not missing data. No drug record for this gene is present in the analysed graph snapshot; this does not prove that no drug or programme exists. Tractability annotations: AB: GO CC high conf; AB: UniProt SigP or TMHMM; AB: UniProt loc high conf; SM: High-Quality Pocket. These annotations do not establish cell-surface accessibility, a usable degron or productive degradation. Biomarker status remains a research hypothesis; diagnostic, prognostic and predictive utility require distinct validation.",
+   "evidence_ids": [
+    "EV:analysis_ranking:7c90dcbac6d0",
+    "EV:open_targets_assoc:1170ea2f4d6c",
+    "EV:tcga_de:6d388106d837",
+    "EV:omics_de:a614318ce428",
+    "EV:depmap_dependency:6d388106d837",
+    "EV:open_targets_tract:6d388106d837"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:analysis_ranking:7c90dcbac6d0",
+     "field": [
+      "rank"
+     ],
+     "display": "6",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:analysis_ranking:7c90dcbac6d0",
+     "field": [
+      "score"
+     ],
+     "display": "4.0695",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:open_targets_assoc:1170ea2f4d6c",
+     "field": [
+      "score"
+     ],
+     "display": "0.4532",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:open_targets_assoc:1170ea2f4d6c",
+     "field": [
+      "genetic_association"
+     ],
+     "display": "0.7338",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:6d388106d837",
+     "field": [
+      "log2fc"
+     ],
+     "display": "-3.721",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:6d388106d837",
+     "field": [
+      "padj"
+     ],
+     "display": "2.15e-11",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:a614318ce428",
+     "field": [
+      "log2fc"
+     ],
+     "display": "-1.2345",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:a614318ce428",
+     "field": [
+      "padj"
+     ],
+     "display": "7.59e-14",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:6d388106d837",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "0.143",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:6d388106d837",
+     "field": [
+      "selectivity"
+     ],
+     "display": "0.078",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:6d388106d837",
+     "field": [
+      "padj"
+     ],
+     "display": "0.1651",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:6d388106d837",
+     "field": [
+      "n_ccrcc_dependent"
+     ],
+     "display": "0",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:6d388106d837",
+     "field": [
+      "n_ccrcc_lines"
+     ],
+     "display": "24",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "KDM5C",
+   "role": "mechanism",
+   "statement": "KDM5C: Open Targets ccRCC association: [gene=KDM5C; type=open_targets_association; source=Open Targets Platform; score=0.6174]. Association scores are evidence aggregation, not probabilities of therapeutic success. No drug record for this gene is present in the analysed graph snapshot; this does not prove that no drug or programme exists. Tractability annotations: PR: Database Ubiquitination; PR: Half-life Data; PR: Small Molecule Binder; PR: UniProt Ubiquitination; SM: Druggable Family; SM: High-Quality Ligand; SM: Structure with Ligand. These annotations do not establish cell-surface accessibility, a usable degron or productive degradation. This association comparison alone does not establish a treatment mechanism. Dependency was not assessed in this paragraph.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:3d361f2aec83",
+    "EV:open_targets_tract:1b4093a761ca"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:open_targets_assoc:3d361f2aec83",
+     "field": [
+      "score"
+     ],
+     "display": "0.6174",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "MTOR",
+   "role": "mechanism",
+   "statement": "MTOR: Open Targets ccRCC association: [gene=MTOR; type=open_targets_association; source=Open Targets Platform; score=0.525]. Association scores are evidence aggregation, not probabilities of therapeutic success. Drug records in the frozen Open Targets snapshot: APITOLISIB (PHASE_2); AZD-8055 (PHASE_1_2); BGT-226 (PHASE_1_2); CC-115 (PHASE_2); DACTOLISIB (PHASE_3); DS-3078A (PHASE_1); DS-7423 (PHASE_1); GEDATOLISIB (PHASE_3); INDOXIMOD (PHASE_2_3); OMIPALISIB (PHASE_1); ONATASERTIB (PHASE_2); OSI-027 (PHASE_2); PALOMID-529 (PHASE_1); PANULISIB (PHASE_1); PERHEXILINE (APPROVAL); PERHEXILINE MALEATE (WITHDRAWAL); PF-04691502 (PHASE_2); PKI-179 (PHASE_1); RG-7603 (PHASE_1); RIDAFOROLIMUS (APPROVAL); SAMOTOLISIB (PHASE_2); SAPANISERTIB (PHASE_2); SF-1126 (PHASE_2); VISTUSERTIB (PHASE_2); VOXTALISIB (PHASE_2); VS-5584 (PHASE_1). A target-level drug record does not by itself establish a ccRCC indication or efficacy; stage labels are historical snapshot annotations. Tractability annotations: AB: GO CC high conf; AB: UniProt loc high conf; PR: Database Ubiquitination; PR: Half-life Data; PR: Small Molecule Binder; PR: UniProt Ubiquitination; SM: Approved Drug; SM: Druggable Family; SM: High-Quality Ligand; SM: Structure with Ligand. These annotations do not establish cell-surface accessibility, a usable degron or productive degradation. This association comparison alone does not establish a treatment mechanism. Dependency was not assessed in this paragraph.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:900f88933f86",
+    "EV:open_targets_drug:e6f8aed7747d",
+    "EV:open_targets_drug:43853f87be17",
+    "EV:open_targets_drug:819a43d84db0",
+    "EV:open_targets_drug:9cbdf273be1d",
+    "EV:open_targets_drug:28015e30d11c",
+    "EV:open_targets_drug:679a4b4cd1a2",
+    "EV:open_targets_drug:a5a2941ed746",
+    "EV:open_targets_drug:5e12506a2e98",
+    "EV:open_targets_drug:f34159c94edc",
+    "EV:open_targets_drug:3c8bec6ec934",
+    "EV:open_targets_drug:88d87703825d",
+    "EV:open_targets_drug:80743a3a60c7",
+    "EV:open_targets_drug:2a8df10f238e",
+    "EV:open_targets_drug:d4889a8dd0b1",
+    "EV:open_targets_drug:0679987d43f1",
+    "EV:open_targets_drug:60f7153b73d5",
+    "EV:open_targets_drug:468d734bc617",
+    "EV:open_targets_drug:2ef12991e48b",
+    "EV:open_targets_drug:066da9e4dad6",
+    "EV:open_targets_drug:47a49b68dd99",
+    "EV:open_targets_drug:f8ad81bb836d",
+    "EV:open_targets_drug:1a72829449c0",
+    "EV:open_targets_drug:f6ae05208a10",
+    "EV:open_targets_drug:ab179cd5e3a0",
+    "EV:open_targets_drug:1b6e2f9a672a",
+    "EV:open_targets_drug:c2b6ec0585e0",
+    "EV:open_targets_tract:95bc7fa85685"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:open_targets_assoc:900f88933f86",
+     "field": [
+      "score"
+     ],
+     "display": "0.525",
+     "unit": "native"
+    }
+   ]
+  }
+ ],
+ "caveats": [
+  "Drug stages are frozen target-level annotations and may concern diseases other than ccRCC.",
+  "Gene linkage is insufficient to verify a named drug: the compound identity must match the cited record.",
+  "Absence of a drug record in this snapshot does not establish absence of drug development.",
+  "Association, expression and tractability do not establish efficacy. The EPAS1 dependency call depends on the configured statistical rule.",
+  "Previous unbound ranking-stream counts and non-specific tractability component scores were not used as biological evidence; the explicit association/profile and source labels are reported instead."
+ ],
+ "revision": {
+  "method": "Reviewed saved external-agent output with exact numeric and named-compound source checks; MTOR comparator separated from KDM5C"
+ }
+}

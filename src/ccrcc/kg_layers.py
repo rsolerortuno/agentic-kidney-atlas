@@ -77,8 +77,6 @@ def load_layers(store: GraphStore | None = None) -> dict:
         if p.exists():
             meta = json.loads((PROCESSED / "layer_mutations_meta.json").read_text())
             for r in pd.read_parquet(p).itertuples():
-                if r.mutated < 2:
-                    continue
                 sig = r.padj < 0.05
                 claim(r.gene, "somatically_mutated_in" if sig else "mutation_assessed_in",
                       DISEASE if sig else DATASETS["mutations"][0], "somatic_recurrence", (r.gene,),
@@ -113,8 +111,8 @@ def load_layers(store: GraphStore | None = None) -> dict:
                 if r.n_ccrcc_lines < dc["min_lines"] or not np.isfinite(r.pvalue):
                     continue
                 sel = bool(r.selective)
-                if not sel and r.frac_ccrcc_dependent < 0.25 and not r.common_essential:
-                    continue   # keep the graph small: non-dependencies are not stored
+                # Measured non-dependencies are evidence too. Omitting them makes
+                # "no selective signal" impossible to distinguish from no data.
                 claim(r.gene, "selective_dependency_in" if sel else "dependency_assessed_in",
                       DISEASE if sel else DATASETS["depmap"][0], "depmap_dependency", (r.gene,), DATASETS["depmap"][0],
                       gene=r.gene, mean_effect_ccrcc=_f(r.mean_effect_ccrcc, 3), mean_effect_other=_f(r.mean_effect_other, 3),
@@ -132,12 +130,15 @@ def load_layers(store: GraphStore | None = None) -> dict:
                     claim(r.gene, pred, DATASETS["tcga"][0], "tcga_de", (r.gene,), DATASETS["tcga"][0], gene=r.gene,
                           log2fc=_f(r.log2fc), padj=_f(r.padj), n_pairs=int(r.n_pairs), significant=bool(sig),
                           unit="log2(RSEM+1)", method="paired t-test, BH")
-                if pd.notna(r.cox_padj) and r.cox_padj < 0.05:
-                    claim(r.gene, "prognostic_in", DISEASE, "tcga_survival", (r.gene,), DATASETS["tcga"][0], gene=r.gene,
+                if pd.notna(r.cox_padj) and pd.notna(r.cox_log_hr_per_sd):
+                    significant_survival = r.cox_padj < 0.05
+                    claim(r.gene, "prognostic_in" if significant_survival else "survival_assessed_in",
+                          DISEASE if significant_survival else DATASETS["tcga"][0],
+                          "tcga_survival", (r.gene,), DATASETS["tcga"][0], gene=r.gene,
                           log_hr_per_sd=_f(r.cox_log_hr_per_sd, 3), hr_per_sd=_f(float(np.exp(r.cox_log_hr_per_sd)), 3),
                           padj=_f(r.cox_padj), n=int(r.n_survival), endpoint="overall survival",
-                          direction="worse with higher expression" if r.cox_log_hr_per_sd > 0 else
-                          "better with higher expression")
+                          direction=("worse with higher expression" if r.cox_log_hr_per_sd > 0 else
+                          "better with higher expression") if significant_survival else "association not established")
 
         p = PROCESSED / "layer_kinase_activity.parquet"
         if p.exists():

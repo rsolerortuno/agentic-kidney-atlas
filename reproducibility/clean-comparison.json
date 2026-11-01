@@ -1,0 +1,224 @@
+{
+  "tables": [
+    {
+      "file": "adc_suitability.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "clinical_associations.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "cnv_arm_summary.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "cnv_frequencies.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "confirmatory_phospho.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "confirmatory_protein.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "de_results.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "discovery_candidates.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "external_ot_associations.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "gene_universe.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "immune_classes.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "immune_coupling.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "immune_deconvolution.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "immune_profile.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "layer_cis_dosage.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "layer_dependency.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "layer_kinase_activity.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "layer_mutations.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "layer_phosphosite.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "layer_purity.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "layer_tcga.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "layer_treatment.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "normal_tissue.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "rna_protein_correlation.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "sc_celltype_expression.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "sc_pseudobulk_keys.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "sc_reference.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "sc_replication.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "sc_tumor_vs_pt.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "scores_v3.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "sensitivity_biomarker.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "sensitivity_convergence.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "sensitivity_target.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "spatial_deconvolution.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "spatial_expressers.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "spatial_neighbors.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "spatial_section_maps.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "structure_pockets.parquet",
+      "status": "exact",
+      "added_alias_columns": [
+        "structural_context_score",
+        "comp_exposed_loop"
+      ]
+    },
+    {
+      "file": "subtype_ccab_calls.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "subtype_ccab_de.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "subtype_genetic_de.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "subtype_targets.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    },
+    {
+      "file": "symbol_map.parquet",
+      "status": "exact",
+      "added_alias_columns": []
+    }
+  ],
+  "compared": 43,
+  "all_exact": true
+}

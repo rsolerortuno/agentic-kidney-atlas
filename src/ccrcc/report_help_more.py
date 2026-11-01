@@ -27,12 +27,12 @@ EXTRA_HELP: dict[str, dict[str, str]] = {
         "watch": "Spots mix cells and neighbouring spots overlap."},
     "pocket_table": {
         "what": "The best predicted pocket of each protein with its size, depth, confidence and score.",
-        "read": "Higher scores mean a more promising pocket by the heuristic. Check the confidence (pLDDT) before trusting a pocket.",
-        "watch": "Predicted structures, a heuristic score and a modest validation. Not evidence that a drug exists."},
+        "read": "The score combines coordinate confidence, cavity geometry, accessible lysines and exposed loops. Inspect each component and the local pLDDT.",
+        "watch": "Ligand-contact recovery assesses cavity detection only. The score does not predict binding or degradation."},
     "controls_table": {
-        "what": "Known cases scored the same way as the candidates.",
-        "read": "If known cases rank near the top, the score is capturing something real.",
-        "watch": "Some known cases do not rank well, which limits how far the score can be trusted."},
+        "what": "Monomer structural summaries for known molecular-glue substrates.",
+        "read": "Compare the descriptive structural features; rank does not measure degradation susceptibility.",
+        "watch": "No matched experimental negative set is included. This is not predictive validation."},
     "profile_table": {
         "what": "The top 25 genes of the target or biomarker profile with each component.",
         "read": "Components run from 0 to 1. The rank interval and the probability of staying in the top ten show how stable the call is.",

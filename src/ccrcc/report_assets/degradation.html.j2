@@ -1,0 +1,12 @@
+{% macro number(value) %}{{ '%.3g' | format(value) if value is number else '—' }}{% endmacro %}
+<h3>MGD: experimental degrons and ternary references</h3>
+<p>{{ degradation.prediction_status }} Recruitment, ubiquitination and degradation are separate observations. The structural-context heuristic below does not establish any of them.</p>
+<div class="tw"><table><thead><tr><th>Reference system</th><th>Degron evidence</th><th>Experimental control / scope</th><th>Source</th></tr></thead><tbody>
+{% for r in degradation.references %}<tr><td><strong>{{ r.gene }} · {{ r.ligase }} · {{ r.compound }}</strong><br>{{ r.pdb_id }}</td><td>{{ r.region }}<br>{{ r.numbering }}<br>{% for pos,aa in r.key_residues.items() %}{{ aa }}{{ pos }} {% endfor %}</td><td>{{ r.negative_control or 'No matched negative curated for this reference; predictive validation is incomplete.' }}<br>{{ r.scope }}</td><td><a href="{{ r.source }}">Primary reference</a><br><a href="https://www.rcsb.org/structure/{{ r.pdb_id }}">PDB coordinates</a>{% if r.control_source %}<br><a href="{{ r.control_source }}">Control experiment</a>{% endif %}</td></tr>{% endfor %}
+</tbody></table></div>
+<h3>Ligase context in the ccRCC data</h3>
+<p>These are bulk and cell-type expression/alteration observations, not proof of an active ligase or intracellular colocalization. VHL recruitment requires functional VHL in the selected model; its availability is not assumed. No candidate-specific ternary model is generated without a specified target, ligase and compound.</p>
+<div class="tw"><table><thead><tr><th>Component</th><th>Protein log2FC / q</th><th>Mutation frequency</th><th>Copy-loss frequency</th><th>Cell expression</th></tr></thead><tbody>
+{% for l in degradation.ligases %}<tr><td>{{ l.gene }}</td><td>{{ number(l.protein_log2fc) }} / {{ number(l.protein_padj) }}</td><td>{{ number(l.mutation_frequency) }}</td><td>{{ number(l.copy_loss_frequency) }}</td><td><details><summary>Measured cell groups</summary>{% for c in l.cell_expression %}{{ c.cell_group }}: {{ c.pct_expressing | round(1) }}% expressing ({{ c.n_donors }} donors)<br>{% else %}Not measured{% endfor %}</details></td></tr>{% endfor %}
+</tbody></table></div>
+<p class="small">Sources: gene_universe.parquet, layer_mutations.parquet and sc_celltype_expression.parquet. Frequencies refer to their respective cohorts, not the same individuals. Reference controls above come from the published experimental systems, not from a new experiment in this project.</p>

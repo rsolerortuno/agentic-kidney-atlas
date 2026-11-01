@@ -4,7 +4,7 @@ Every claim goes through an Evidence record, exactly like M2-M5:
 
 - CellType nodes (Cell Ontology ids) with `expressed_in` / `enriched_near` / `neighbor_of` claims,
   evidence types sc_celltype_expression, sc_tumor_vs_pt, spatial_expresser, spatial_neighborhood.
-- Pocket nodes (one per detected cavity) with `has_pocket` claims and mgd_site evidence, plus
+- Pocket nodes (one per detected cavity) with `has_pocket` claims and structural_context evidence, plus
   alphafold_model evidence for the model itself and a ligand-site validation record where PDBe-KB has one.
 """
 from __future__ import annotations
@@ -41,7 +41,7 @@ def _celltype_node(store: GraphStore, group: str) -> str:
 def load(store: GraphStore | None = None) -> dict:
     store = store or GraphStore()
     counts = {"celltype_expression": 0, "tumor_vs_pt": 0, "spatial_expresser": 0, "spatial_neighborhood": 0,
-              "alphafold_model": 0, "mgd_site": 0, "ligand_site_validation": 0}
+              "alphafold_model": 0, "structural_context": 0, "ligand_site_validation": 0}
     gene_ids = {r["name"]: r["id"] for r in store.conn.execute("SELECT id, name FROM nodes WHERE type = 'Gene'")}
 
     sc = json.loads((PROCESSED / "sc_summary.json").read_text())
@@ -183,7 +183,7 @@ def load(store: GraphStore | None = None) -> dict:
             store.add_claim(gid, "spatial_context_in", DATASETS["visium"][0], ev)
             counts["spatial_summary"] = counts.get("spatial_summary", 0) + 1
 
-        # ------------------------------------------------- structure: AlphaFold model and MGD pockets
+        # ------------------------------------------------- structure: AlphaFold monomer and computational cavities
         for res in struct["results"]:
             gid = gene_ids.get(res["gene"])
             if gid is None or not res["modeled"]:
@@ -214,20 +214,21 @@ def load(store: GraphStore | None = None) -> dict:
                 store.add_node(pid, "Pocket", f"{res['gene']} pocket {c['rank']} ({c['cavity']})",
                                uniprot=res["uniprot"], cavity=c["cavity"], rank=c["rank"],
                                volume_a3=c["volume_a3"], residues=c["residues"])
-                ev = store.add_evidence(evidence_id("mgd_site", res["uniprot"], c["cavity"]), "mgd_site",
+                ev = store.add_evidence(evidence_id("structural_context", res["uniprot"], c["cavity"]), "structural_context",
                                         DATASETS["alphafold"][0], TODAY, gene=res["gene"], accession=res["uniprot"],
                                         cavity=c["cavity"], rank=c["rank"], volume_a3=c["volume_a3"],
                                         area_a2=c["area_a2"], max_depth_a=c["max_depth_a"],
                                         avg_hydropathy=c["avg_hydropathy"], mean_plddt=c["mean_plddt"],
                                         n_residues=c["n_residues"], residues=c["residues"][:40],
                                         accessible_lysines=c["accessible_lysines"],
-                                        exposed_loop_run=c["exposed_loop_run"], components=c["components"],
-                                        mgd_score=c["mgd_score"],
+                                        n_accessible_lysines=len(c["accessible_lysines"]),
+                                        exposed_loop_run=c["exposed_loop_run"], components={**{k:v for k,v in c["components"].items() if k != "degron"}, "exposed_loop":c["components"]["degron"]},
+                                        structural_context_score=c["mgd_score"],
                                         method="pyKVFinder cavity detection on the pLDDT-trimmed AlphaFold model; "
-                                               "MGD site score = weighted confidence, geometry, reachable "
-                                               "lysines and exposed-loop degron (config.yaml)")
+                                               "Descriptive monomer heuristic = weighted confidence, geometry, nearby "
+                                               "lysines and exposed loops (config.yaml); no degron or degradation prediction")
                 store.add_claim(gid, "has_pocket", pid, ev)
-                counts["mgd_site"] += 1
+                counts["structural_context"] += 1
 
     out = {"claims_added": counts, "cell_types": len(CELL_GROUPS),
            "sc_cells": sc["cells_used"], "spatial_spots": sp_sum["spots"], "modeled_proteins": struct["modeled"]}

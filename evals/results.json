@@ -180,7 +180,7 @@
   ]
  },
  "qa": {
-  "model": "claude-sonnet-5-5",
+  "model": "saved claude-sonnet-5-5 answers (regex regraded)",
   "correct": 10,
   "total": 10,
   "results": [
@@ -347,13 +347,6 @@
    ],
    "temporal_holdout_targets": [
     "CCND1",
-    "CDK4",
-    "CDK6",
-    "EPAS1",
-    "FOLH1",
-    "GLS",
-    "IDO1",
-    "LAG3",
     "PARP1",
     "PARP2",
     "PARP3",
@@ -522,98 +515,90 @@
   },
   "temporal_holdout": {
    "target profile": {
-    "n_gold": 13,
-    "universe": 19099,
-    "auroc": 0.908,
+    "n_gold": 6,
+    "universe": 19092,
+    "auroc": 0.887,
     "auroc_ci95": [
-     0.867,
-     0.945
+     0.842,
+     0.94
     ],
-    "recall_at_100": 0.308,
-    "recall_at_500": 0.308,
-    "median_rank": 1905,
-    "fold_enrichment_at_100": 58.8,
+    "recall_at_100": 0.167,
+    "recall_at_500": 0.167,
+    "median_rank": 2182,
+    "fold_enrichment_at_100": 31.8,
     "top_hits": [
-     "IDO1",
-     "CCND1",
-     "EPAS1",
-     "CDK6"
+     "CCND1"
     ]
    },
    "biomarker profile": {
-    "n_gold": 13,
-    "universe": 19099,
-    "auroc": 0.652,
+    "n_gold": 6,
+    "universe": 19092,
+    "auroc": 0.691,
     "auroc_ci95": [
-     0.512,
-     0.769
+     0.579,
+     0.832
     ],
     "recall_at_100": 0.0,
-    "recall_at_500": 0.154,
-    "median_rank": 6821,
+    "recall_at_500": 0.167,
+    "median_rank": 6484,
     "fold_enrichment_at_100": 0.0,
     "top_hits": []
    },
    "convergence v3 (incl. literature + drugs)": {
-    "n_gold": 13,
-    "universe": 19099,
-    "auroc": 0.895,
+    "n_gold": 6,
+    "universe": 19092,
+    "auroc": 0.866,
     "auroc_ci95": [
-     0.861,
-     0.94
-    ],
-    "recall_at_100": 0.154,
-    "recall_at_500": 0.308,
-    "median_rank": 2477,
-    "fold_enrichment_at_100": 29.4,
-    "top_hits": [
-     "EPAS1",
-     "IDO1"
-    ]
-   },
-   "convergence v3 without literature/tractability": {
-    "n_gold": 13,
-    "universe": 19099,
-    "auroc": 0.662,
-    "auroc_ci95": [
-     0.506,
-     0.821
+     0.826,
+     0.92
     ],
     "recall_at_100": 0.0,
-    "recall_at_500": 0.308,
-    "median_rank": 6577,
+    "recall_at_500": 0.167,
+    "median_rank": 2913,
+    "fold_enrichment_at_100": 0.0,
+    "top_hits": []
+   },
+   "convergence v3 without literature/tractability": {
+    "n_gold": 6,
+    "universe": 19092,
+    "auroc": 0.632,
+    "auroc_ci95": [
+     0.455,
+     0.807
+    ],
+    "recall_at_100": 0.0,
+    "recall_at_500": 0.167,
+    "median_rank": 7576,
     "fold_enrichment_at_100": 0.0,
     "top_hits": []
    },
    "target profile without tractability": {
-    "n_gold": 13,
-    "universe": 19099,
-    "auroc": 0.714,
+    "n_gold": 6,
+    "universe": 19092,
+    "auroc": 0.645,
     "auroc_ci95": [
-     0.571,
-     0.834
+     0.484,
+     0.819
     ],
-    "recall_at_100": 0.231,
-    "recall_at_500": 0.308,
-    "median_rank": 5565,
-    "fold_enrichment_at_100": 44.1,
+    "recall_at_100": 0.167,
+    "recall_at_500": 0.167,
+    "median_rank": 6545,
+    "fold_enrichment_at_100": 31.8,
     "top_hits": [
-     "IDO1",
-     "CCND1",
-     "EPAS1"
+     "CCND1"
     ]
    },
    "predicted tractability alone": {
-    "n_gold": 13,
-    "universe": 19099,
-    "auroc": 0.836,
+    "n_gold": 6,
+    "universe": 19092,
+    "auroc": 0.841,
     "auroc_ci95": [
      0.802,
-     0.874
+     0.893
     ],
     "recall_at_100": 0.0,
     "recall_at_500": 0.0,
-    "median_rank": 3651,
+    "median_rank": 3671,
     "fold_enrichment_at_100": 0.0,
     "top_hits": []
    }
@@ -699,602 +684,677 @@
   "clinical_table": [
    {
     "gene": "ABL1",
-    "first_trial": "2006-01-31",
     "trials": 3,
     "drugs": 3,
     "approved": false,
+    "first_trial": "2004-06-30",
+    "date_incomplete": false,
     "holdout": false
    },
    {
     "gene": "ANGPT1",
-    "first_trial": "2007-05-31",
     "trials": 4,
     "drugs": 1,
     "approved": false,
+    "first_trial": "2005-12-31",
+    "date_incomplete": true,
     "holdout": false
    },
    {
     "gene": "ANGPT2",
-    "first_trial": "2007-05-31",
     "trials": 6,
     "drugs": 2,
     "approved": false,
+    "first_trial": "2005-12-31",
+    "date_incomplete": true,
     "holdout": false
    },
    {
     "gene": "BCR",
-    "first_trial": "2006-01-31",
     "trials": 3,
     "drugs": 3,
     "approved": false,
+    "first_trial": "2004-06-30",
+    "date_incomplete": false,
     "holdout": false
    },
    {
     "gene": "CA9",
-    "first_trial": "2004-07-31",
     "trials": 4,
     "drugs": 2,
     "approved": false,
+    "first_trial": "2004-07-31",
+    "date_incomplete": true,
     "holdout": false
    },
    {
     "gene": "CCND1",
-    "first_trial": "2023-07-28",
     "trials": 3,
     "drugs": 1,
     "approved": false,
+    "first_trial": "2022-08-10",
+    "date_incomplete": false,
     "holdout": true
    },
    {
     "gene": "CD274",
-    "first_trial": "2014-01-08",
     "trials": 34,
     "drugs": 4,
     "approved": false,
+    "first_trial": "2013-12-19",
+    "date_incomplete": true,
     "holdout": false
    },
    {
     "gene": "CD52",
-    "first_trial": "2003-02-28",
     "trials": 2,
     "drugs": 1,
     "approved": false,
+    "first_trial": "2000-06-30",
+    "date_incomplete": false,
     "holdout": false
    },
    {
     "gene": "CDK4",
-    "first_trial": "2023-07-28",
     "trials": 3,
     "drugs": 1,
     "approved": false,
-    "holdout": true
+    "first_trial": "2001-05-31",
+    "date_incomplete": false,
+    "holdout": false
    },
    {
     "gene": "CDK6",
-    "first_trial": "2023-07-28",
     "trials": 3,
     "drugs": 1,
     "approved": false,
-    "holdout": true
+    "first_trial": "2001-05-31",
+    "date_incomplete": false,
+    "holdout": false
    },
    {
     "gene": "CRBN",
-    "first_trial": "2000-10-31",
     "trials": 7,
     "drugs": 2,
     "approved": false,
+    "first_trial": "2000-09-30",
+    "date_incomplete": false,
     "holdout": false
    },
    {
     "gene": "CSF2RA",
-    "first_trial": "1997-05-31",
     "trials": 6,
     "drugs": 1,
     "approved": false,
+    "first_trial": "1997-05-31",
+    "date_incomplete": false,
     "holdout": false
    },
    {
     "gene": "CSF2RB",
-    "first_trial": "1997-05-31",
     "trials": 6,
     "drugs": 1,
     "approved": false,
+    "first_trial": "1997-05-31",
+    "date_incomplete": false,
     "holdout": false
    },
    {
     "gene": "CSF3R",
-    "first_trial": "1999-02-28",
     "trials": 5,
     "drugs": 2,
     "approved": false,
+    "first_trial": "1999-02-28",
+    "date_incomplete": false,
     "holdout": false
    },
    {
     "gene": "CTLA4",
-    "first_trial": "2003-02-28",
     "trials": 45,
     "drugs": 4,
     "approved": true,
+    "first_trial": "2003-02-28",
+    "date_incomplete": true,
     "holdout": false
    },
    {
     "gene": "CUL4A",
-    "first_trial": "2000-10-31",
     "trials": 7,
     "drugs": 2,
     "approved": false,
+    "first_trial": "2000-09-30",
+    "date_incomplete": false,
     "holdout": false
    },
    {
     "gene": "DDB1",
-    "first_trial": "2000-10-31",
     "trials": 7,
     "drugs": 2,
     "approved": false,
+    "first_trial": "2000-09-30",
+    "date_incomplete": false,
     "holdout": false
    },
    {
     "gene": "DHFR",
-    "first_trial": "1999-03-12",
     "trials": 4,
     "drugs": 2,
     "approved": false,
+    "first_trial": "1999-03-12",
+    "date_incomplete": false,
     "holdout": false
    },
    {
     "gene": "DNMT1",
-    "first_trial": "2007-10-31",
     "trials": 2,
     "drugs": 1,
     "approved": false,
+    "first_trial": "2005-07-31",
+    "date_incomplete": false,
     "holdout": false
    },
    {
     "gene": "DNMT3A",
-    "first_trial": "2007-10-31",
     "trials": 2,
     "drugs": 1,
     "approved": false,
+    "first_trial": "2005-07-31",
+    "date_incomplete": false,
     "holdout": false
    },
    {
     "gene": "EGFR",
-    "first_trial": "2001-01-31",
     "trials": 12,
     "drugs": 4,
     "approved": false,
+    "first_trial": "2000-04-30",
+    "date_incomplete": false,
     "holdout": false
    },
    {
     "gene": "ENG",
-    "first_trial": "2012-11-01",
     "trials": 2,
     "drugs": 1,
     "approved": false,
+    "first_trial": "2012-11-01",
+    "date_incomplete": true,
     "holdout": false
    },
    {
     "gene": "EPAS1",
-    "first_trial": "2018-05-02",
     "trials": 16,
     "drugs": 1,
     "approved": true,
-    "holdout": true
+    "first_trial": "2014-11-25",
+    "date_incomplete": true,
+    "holdout": false
    },
    {
     "gene": "FDPS",
-    "first_trial": "2003-08-31",
     "trials": 2,
     "drugs": 2,
     "approved": false,
+    "first_trial": "2003-08-31",
+    "date_incomplete": false,
     "holdout": false
    },
    {
     "gene": "FKBP1A",
-    "first_trial": "2001-06-30",
     "trials": 73,
     "drugs": 4,
     "approved": true,
+    "first_trial": "2001-06-30",
+    "date_incomplete": true,
     "holdout": false
    },
    {
     "gene": "FLT1",
-    "first_trial": "2000-11-30",
     "trials": 107,
     "drugs": 7,
     "approved": true,
+    "first_trial": "2000-11-30",
+    "date_incomplete": true,
     "holdout": false
    },
    {
     "gene": "FLT4",
-    "first_trial": "2000-11-30",
     "trials": 112,
     "drugs": 8,
     "approved": true,
+    "first_trial": "2000-11-30",
+    "date_incomplete": true,
     "holdout": false
    },
    {
     "gene": "FOLH1",
-    "first_trial": "2025-07-31",
     "trials": 2,
     "drugs": 1,
     "approved": false,
-    "holdout": true
+    "first_trial": "2005-02-28",
+    "date_incomplete": false,
+    "holdout": false
    },
    {
     "gene": "GLS",
-    "first_trial": "2017-09-06",
     "trials": 3,
     "drugs": 1,
     "approved": false,
-    "holdout": true
+    "first_trial": "2014-02-28",
+    "date_incomplete": true,
+    "holdout": false
    },
    {
     "gene": "HMGCR",
-    "first_trial": "2006-10-31",
     "trials": 2,
     "drugs": 1,
     "approved": false,
+    "first_trial": "2006-10-31",
+    "date_incomplete": false,
     "holdout": false
    },
    {
     "gene": "IDO1",
-    "first_trial": "2017-12-07",
     "trials": 2,
     "drugs": 2,
     "approved": false,
-    "holdout": true
+    "first_trial": "2017-12-07",
+    "date_incomplete": true,
+    "holdout": false
    },
    {
     "gene": "IFNAR1",
-    "first_trial": "1994-07-31",
     "trials": 30,
     "drugs": 4,
     "approved": false,
+    "first_trial": "1994-07-31",
+    "date_incomplete": true,
     "holdout": false
    },
    {
     "gene": "IFNAR2",
-    "first_trial": "1994-07-31",
     "trials": 30,
     "drugs": 4,
     "approved": false,
+    "first_trial": "1994-07-31",
+    "date_incomplete": true,
     "holdout": false
    },
    {
     "gene": "IL2RA",
-    "first_trial": "1991-04-30",
     "trials": 56,
     "drugs": 2,
     "approved": true,
+    "first_trial": "1991-04-30",
+    "date_incomplete": true,
     "holdout": false
    },
    {
     "gene": "IL2RB",
-    "first_trial": "1991-04-30",
     "trials": 57,
     "drugs": 3,
     "approved": true,
+    "first_trial": "1991-04-30",
+    "date_incomplete": true,
     "holdout": false
    },
    {
     "gene": "IL2RG",
-    "first_trial": "1991-04-30",
     "trials": 57,
     "drugs": 3,
     "approved": true,
+    "first_trial": "1991-04-30",
+    "date_incomplete": true,
     "holdout": false
    },
    {
     "gene": "IMPDH1",
-    "first_trial": "2001-06-30",
     "trials": 4,
     "drugs": 1,
     "approved": false,
+    "first_trial": "1999-11-30",
+    "date_incomplete": false,
     "holdout": false
    },
    {
     "gene": "IMPDH2",
-    "first_trial": "2001-06-30",
     "trials": 4,
     "drugs": 1,
     "approved": false,
+    "first_trial": "1999-11-30",
+    "date_incomplete": false,
     "holdout": false
    },
    {
     "gene": "ITGA5",
-    "first_trial": "2005-01-31",
     "trials": 3,
     "drugs": 2,
     "approved": false,
+    "first_trial": "2005-01-31",
+    "date_incomplete": true,
     "holdout": false
    },
    {
     "gene": "ITGAV",
-    "first_trial": "2005-08-31",
     "trials": 2,
     "drugs": 1,
     "approved": false,
+    "first_trial": "2005-08-31",
+    "date_incomplete": true,
     "holdout": false
    },
    {
     "gene": "ITGB1",
-    "first_trial": "2005-01-31",
     "trials": 3,
     "drugs": 2,
     "approved": false,
+    "first_trial": "2005-01-31",
+    "date_incomplete": true,
     "holdout": false
    },
    {
     "gene": "ITGB3",
-    "first_trial": "2005-08-31",
     "trials": 2,
     "drugs": 1,
     "approved": false,
+    "first_trial": "2005-08-31",
+    "date_incomplete": true,
     "holdout": false
    },
    {
     "gene": "KDR",
-    "first_trial": "2000-11-30",
     "trials": 150,
     "drugs": 12,
     "approved": true,
+    "first_trial": "2000-11-30",
+    "date_incomplete": true,
     "holdout": false
    },
    {
     "gene": "KIF11",
-    "first_trial": "2006-05-31",
     "trials": 2,
     "drugs": 1,
     "approved": false,
+    "first_trial": "2006-05-31",
+    "date_incomplete": true,
     "holdout": false
    },
    {
     "gene": "KIT",
-    "first_trial": "2000-11-30",
     "trials": 25,
     "drugs": 7,
     "approved": true,
+    "first_trial": "2000-11-30",
+    "date_incomplete": true,
     "holdout": false
    },
    {
     "gene": "LAG3",
-    "first_trial": "2022-04-28",
     "trials": 5,
     "drugs": 2,
     "approved": false,
-    "holdout": true
+    "first_trial": "2005-09-30",
+    "date_incomplete": true,
+    "holdout": false
    },
    {
     "gene": "MET",
-    "first_trial": "2013-06-30",
     "trials": 42,
     "drugs": 3,
     "approved": true,
+    "first_trial": "2009-09-30",
+    "date_incomplete": true,
     "holdout": false
    },
    {
     "gene": "MTOR",
-    "first_trial": "2013-02-28",
     "trials": 4,
     "drugs": 3,
     "approved": false,
+    "first_trial": "2010-01-04",
+    "date_incomplete": true,
     "holdout": false
    },
    {
     "gene": "NR3C1",
-    "first_trial": "1998-07-31",
     "trials": 5,
     "drugs": 5,
     "approved": false,
+    "first_trial": "1998-07-31",
+    "date_incomplete": false,
     "holdout": false
    },
    {
     "gene": "PARP1",
-    "first_trial": "2018-08-13",
     "trials": 5,
     "drugs": 3,
     "approved": false,
+    "first_trial": "2018-08-13",
+    "date_incomplete": false,
     "holdout": true
    },
    {
     "gene": "PARP2",
-    "first_trial": "2018-08-13",
     "trials": 5,
     "drugs": 3,
     "approved": false,
+    "first_trial": "2018-08-13",
+    "date_incomplete": false,
     "holdout": true
    },
    {
     "gene": "PARP3",
-    "first_trial": "2019-01-17",
     "trials": 3,
     "drugs": 1,
     "approved": false,
+    "first_trial": "2019-01-17",
+    "date_incomplete": false,
     "holdout": true
    },
    {
     "gene": "PDCD1",
-    "first_trial": "2011-05-31",
     "trials": 151,
     "drugs": 13,
     "approved": true,
+    "first_trial": "2006-08-31",
+    "date_incomplete": true,
     "holdout": false
    },
    {
     "gene": "PDGFRB",
-    "first_trial": "2006-01-31",
     "trials": 23,
     "drugs": 6,
     "approved": true,
+    "first_trial": "2003-01-31",
+    "date_incomplete": true,
     "holdout": false
    },
    {
     "gene": "PGR",
-    "first_trial": "1999-12-31",
     "trials": 3,
     "drugs": 1,
     "approved": true,
+    "first_trial": "1999-12-31",
+    "date_incomplete": true,
     "holdout": false
    },
    {
     "gene": "PPIA",
-    "first_trial": "1999-03-12",
     "trials": 4,
     "drugs": 1,
     "approved": false,
+    "first_trial": "1999-03-12",
+    "date_incomplete": false,
     "holdout": false
    },
    {
     "gene": "RARA",
-    "first_trial": "1996-03-31",
     "trials": 3,
     "drugs": 2,
     "approved": false,
+    "first_trial": "1996-03-31",
+    "date_incomplete": false,
     "holdout": false
    },
    {
     "gene": "RARB",
-    "first_trial": "1996-03-31",
     "trials": 3,
     "drugs": 2,
     "approved": false,
+    "first_trial": "1996-03-31",
+    "date_incomplete": false,
     "holdout": false
    },
    {
     "gene": "RARG",
-    "first_trial": "1996-03-31",
     "trials": 3,
     "drugs": 2,
     "approved": false,
+    "first_trial": "1996-03-31",
+    "date_incomplete": false,
     "holdout": false
    },
    {
     "gene": "RBX1",
-    "first_trial": "2000-10-31",
     "trials": 7,
     "drugs": 2,
     "approved": false,
+    "first_trial": "2000-09-30",
+    "date_incomplete": false,
     "holdout": false
    },
    {
     "gene": "RRM1",
-    "first_trial": "2004-05-11",
     "trials": 2,
     "drugs": 2,
     "approved": false,
+    "first_trial": "1998-10-31",
+    "date_incomplete": true,
     "holdout": false
    },
    {
     "gene": "RRM2B",
-    "first_trial": "2004-05-11",
     "trials": 2,
     "drugs": 2,
     "approved": false,
+    "first_trial": "1998-10-31",
+    "date_incomplete": true,
     "holdout": false
    },
    {
     "gene": "SSTR1",
-    "first_trial": "2010-10-27",
     "trials": 3,
     "drugs": 1,
     "approved": false,
+    "first_trial": "2005-02-28",
+    "date_incomplete": false,
     "holdout": false
    },
    {
     "gene": "SSTR2",
-    "first_trial": "2010-10-27",
     "trials": 3,
     "drugs": 1,
     "approved": false,
+    "first_trial": "2005-02-28",
+    "date_incomplete": false,
     "holdout": false
    },
    {
     "gene": "SSTR3",
-    "first_trial": "2010-10-27",
     "trials": 3,
     "drugs": 1,
     "approved": false,
+    "first_trial": "2005-02-28",
+    "date_incomplete": false,
     "holdout": false
    },
    {
     "gene": "SSTR4",
-    "first_trial": "2010-10-27",
     "trials": 3,
     "drugs": 1,
     "approved": false,
+    "first_trial": "2005-02-28",
+    "date_incomplete": false,
     "holdout": false
    },
    {
     "gene": "SSTR5",
-    "first_trial": "2010-10-27",
     "trials": 3,
     "drugs": 1,
     "approved": false,
+    "first_trial": "2005-02-28",
+    "date_incomplete": false,
     "holdout": false
    },
    {
     "gene": "TIGIT",
-    "first_trial": "2019-08-30",
     "trials": 2,
     "drugs": 1,
     "approved": false,
+    "first_trial": "2019-08-30",
+    "date_incomplete": false,
     "holdout": true
    },
    {
     "gene": "TLR9",
-    "first_trial": "2004-06-30",
     "trials": 2,
     "drugs": 1,
     "approved": false,
+    "first_trial": "2002-03-31",
+    "date_incomplete": true,
     "holdout": false
    },
    {
     "gene": "TNFSF11",
-    "first_trial": "2017-12-12",
     "trials": 2,
     "drugs": 1,
     "approved": false,
+    "first_trial": "2017-12-12",
+    "date_incomplete": false,
     "holdout": true
    },
    {
     "gene": "TOP1",
-    "first_trial": "1998-08-31",
     "trials": 6,
     "drugs": 3,
     "approved": false,
+    "first_trial": "1998-08-31",
+    "date_incomplete": false,
     "holdout": false
    },
    {
     "gene": "TOP2A",
-    "first_trial": "1994-05-31",
     "trials": 6,
     "drugs": 3,
     "approved": false,
+    "first_trial": "1994-05-31",
+    "date_incomplete": false,
     "holdout": false
    },
    {
     "gene": "TXNRD1",
-    "first_trial": "2000-01-31",
     "trials": 2,
     "drugs": 2,
     "approved": false,
+    "first_trial": "2000-01-31",
+    "date_incomplete": true,
     "holdout": false
    },
    {
     "gene": "TYMS",
-    "first_trial": "1998-02-28",
     "trials": 15,
     "drugs": 3,
     "approved": false,
+    "first_trial": "1996-08-31",
+    "date_incomplete": false,
     "holdout": false
    },
    {
     "gene": "VEGFA",
-    "first_trial": "1998-11-30",
     "trials": 55,
     "drugs": 2,
     "approved": true,
+    "first_trial": "1998-11-30",
+    "date_incomplete": true,
     "holdout": false
    }
   ]
@@ -1695,7 +1755,7 @@
      ]
     }
    ],
-   "statements_checked": 118,
+   "statements_checked": 130,
    "unsupported": 0
   },
   "closed_vs_pipeline_jaccard": 0.095,

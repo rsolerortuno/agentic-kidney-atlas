@@ -14,52 +14,22 @@
    "dropped": 0,
    "dropped_detail": [],
    "semantic_failures": 0,
-   "ids_removed": 2
+   "ids_removed": 0
   },
   "agent_external.json": {
-   "submitted": 12,
-   "kept": 11,
-   "dropped": 1,
-   "dropped_detail": [
-    {
-     "text": "Open Targets ccRCC association 0.6174 (third, after VHL and PBRM1), with MTOR at 0.525 as the established drug-target comparator. KDM5C is a chromatin-regulator",
-     "gene": "KDM5C",
-     "cited": 2,
-     "nonexistent": [],
-     "not_linked_to_gene": [
-      "EV:open_targets_assoc:900f88933f86"
-     ],
-     "kept": false,
-     "unmatched_numbers": [
-      "0.525"
-     ],
-     "direction_contradiction": null,
-     "semantic_failure": true
-    }
-   ],
-   "semantic_failures": 1,
-   "ids_removed": 1
+   "submitted": 13,
+   "kept": 13,
+   "dropped": 0,
+   "dropped_detail": [],
+   "semantic_failures": 0,
+   "ids_removed": 0
   },
   "agent_cells.json": {
    "submitted": 19,
-   "kept": 18,
-   "dropped": 1,
-   "dropped_detail": [
-    {
-     "text": "KDR is an endothelial target, not a tumor-cell target: endothelium holds 0.951 of transcripts (40.5% expressing, cpm_share 0.979). In Visium endothelium explain",
-     "gene": "KDR",
-     "cited": 4,
-     "nonexistent": [],
-     "not_linked_to_gene": [],
-     "kept": false,
-     "unmatched_numbers": [
-      "71.12"
-     ],
-     "direction_contradiction": null,
-     "semantic_failure": true
-    }
-   ],
-   "semantic_failures": 1,
+   "kept": 19,
+   "dropped": 0,
+   "dropped_detail": [],
+   "semantic_failures": 0,
    "ids_removed": 0
   },
   "agent_applied.json": {

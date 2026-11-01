@@ -357,7 +357,9 @@
      "EV:omics_de:5afe18b4024b",
      "EV:omics_de:29dfc93ac765"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:225a767ebcb5"
+    ],
     "literature": [
      "EV:literature:534430b0156d",
      "EV:literature:687723b4e539",
@@ -451,7 +453,9 @@
      "EV:omics_de:af15cb07921d",
      "EV:omics_de:8b73e00cdc38"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:a46f337f2987"
+    ],
     "literature": [
      "EV:literature:58d7b6f6e786",
      "EV:literature:c73e5613ede3",
@@ -560,7 +564,9 @@
      "EV:omics_de:97c97f6d7d62",
      "EV:omics_de:8a1dc0572ead"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:908e84663f6a"
+    ],
     "literature": [
      "EV:literature:012242579349",
      "EV:literature:3db6a5b218c7",
@@ -661,7 +667,9 @@
      "EV:omics_de:e21e0047e1af",
      "EV:omics_de:451e80bb9cb6"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:de6aa3b720b1"
+    ],
     "literature": [
      "EV:literature:9266416c15be",
      "EV:literature:a9921428c938",
@@ -750,7 +758,9 @@
      "EV:omics_de:cd4a629b011f",
      "EV:omics_de:e9e9896d9499"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:2d66f8e78d0c"
+    ],
     "literature": [
      "EV:open_targets_assoc:ee2e17841173"
     ],
@@ -835,7 +845,9 @@
      "EV:omics_de:a614318ce428",
      "EV:omics_de:0d022c07f56f"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:6d388106d837"
+    ],
     "literature": [
      "EV:open_targets_assoc:1170ea2f4d6c"
     ],
@@ -919,7 +931,9 @@
      "EV:omics_de:aefc373d6072",
      "EV:omics_de:de39cc0c5ed8"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:7dbf93860d9f"
+    ],
     "literature": [
      "EV:literature:111b19cdfe29",
      "EV:literature:5d5690eab84a",
@@ -1007,7 +1021,9 @@
      "EV:omics_de:27277024a169",
      "EV:omics_de:e6e9e4ef8e40"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:02b14e357cef"
+    ],
     "literature": [
      "EV:literature:48591fee7d17",
      "EV:literature:690c9ee462f0",
@@ -1093,7 +1109,9 @@
      "EV:omics_de:72c439b16760",
      "EV:omics_de:146de922627e"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:e0e1d1ee59ea"
+    ],
     "literature": [
      "EV:literature:1fd9be308744",
      "EV:literature:39f80ba0f2a4",
@@ -1180,7 +1198,9 @@
      "EV:omics_de:3556d2273d84",
      "EV:omics_de:5b07a7723274"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:beb1a1f1fff6"
+    ],
     "literature": [
      "EV:literature:bcbe233db0ed",
      "EV:literature:c79545e287b8",
@@ -1265,7 +1285,9 @@
      "EV:omics_de:93e7e2226b38",
      "EV:omics_de:2893ad0fb724"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:b7c6013f9825"
+    ],
     "literature": [
      "EV:literature:01828633a99d",
      "EV:literature:0a8bb8c4711b",
@@ -1360,7 +1382,9 @@
      "EV:omics_de:6bc846f39601",
      "EV:omics_de:c176e10e7ab2"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:12adef1e3300"
+    ],
     "literature": [
      "EV:literature:22349683c148",
      "EV:literature:24b33107cb4e",
@@ -1453,7 +1477,9 @@
      "EV:omics_de:fd71617cdad3",
      "EV:omics_de:4b95996578cf"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:6df1d3d7f245"
+    ],
     "literature": [
      "EV:literature:078ba2a5ff38",
      "EV:literature:262711d3dcf3",
@@ -1545,7 +1571,9 @@
      "EV:omics_de:4e42a5460a74",
      "EV:omics_de:82ddbdbfd61d"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:e5780c87a2a7"
+    ],
     "literature": [
      "EV:literature:4acd42679460",
      "EV:literature:bf184fc9a3bd",
@@ -1634,7 +1662,9 @@
      "EV:omics_de:d93a2cc11342",
      "EV:omics_de:9600512e806d"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:11298113327b"
+    ],
     "literature": [
      "EV:literature:40d5741774e9",
      "EV:literature:9fd0ce3fec73",
@@ -1821,7 +1851,9 @@
      "EV:omics_de:82b179f21539",
      "EV:omics_de:4b096717bfc0"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:f0a8d64901b6"
+    ],
     "literature": [
      "EV:literature:1741cd200f2a",
      "EV:literature:1f4e8bd4d272",
@@ -1934,7 +1966,9 @@
      "EV:omics_de:e6dd26473af1",
      "EV:omics_de:9cddc452566c"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:d866fb18aeb5"
+    ],
     "literature": [],
     "genetics": [],
     "tractability": [
@@ -2029,7 +2063,9 @@
      "EV:omics_de:fad7c70d24bf",
      "EV:omics_de:595164dd4276"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:2ccc99b38eef"
+    ],
     "literature": [
      "EV:literature:4d601bd85670",
      "EV:open_targets_assoc:b2f8b4663b89"
@@ -2138,7 +2174,9 @@
      "EV:omics_de:733d8a792c33",
      "EV:omics_de:cde0e5f25970"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:6fc0a3e03d88"
+    ],
     "literature": [
      "EV:open_targets_assoc:448b419f64f9"
     ],
@@ -2230,7 +2268,9 @@
      "EV:omics_de:c5ce9c3c6f51",
      "EV:omics_de:a5f216bad01c"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:d1a8a0cd4e0e"
+    ],
     "literature": [
      "EV:literature:821636f02856",
      "EV:literature:dbfbe45c8391",
@@ -2317,7 +2357,9 @@
      "EV:omics_de:fa238b3ffca1",
      "EV:omics_de:d2635cd3018b"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:d24878278264"
+    ],
     "literature": [
      "EV:literature:5273cead4b56",
      "EV:literature:5d909123526c",
@@ -2407,7 +2449,9 @@
      "EV:omics_de:1e23b7dfbd84",
      "EV:omics_de:f785b3f5632d"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:a68c82cb3c87"
+    ],
     "literature": [
      "EV:literature:29e37c391729",
      "EV:literature:8a5730511173",
@@ -2494,7 +2538,9 @@
      "EV:omics_de:962f729c11fe",
      "EV:omics_de:76ca4d1a120f"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:f7831701e343"
+    ],
     "literature": [
      "EV:open_targets_assoc:65076c1a9b3e"
     ],
@@ -2588,7 +2634,9 @@
      "EV:omics_de:f859f694a9eb",
      "EV:omics_de:33271172fe5e"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:25e6bb1c184b"
+    ],
     "literature": [
      "EV:open_targets_assoc:664305281174"
     ],
@@ -2771,7 +2819,9 @@
      "EV:omics_de:6978d3534cca",
      "EV:omics_de:c57849ccf8ea"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:db585946dce3"
+    ],
     "literature": [
      "EV:open_targets_assoc:083a214daf06"
     ],
@@ -2953,7 +3003,9 @@
      "EV:omics_de:fad29d44ef95",
      "EV:omics_de:6848a05e619b"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:d5aee88146ed"
+    ],
     "literature": [
      "EV:open_targets_assoc:9b858f1ca9f1"
     ],
@@ -3037,7 +3089,9 @@
      "EV:omics_de:1807beb40475",
      "EV:omics_de:221bb4d18ade"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:0a3fe5593655"
+    ],
     "literature": [
      "EV:open_targets_assoc:5c77fb42e402"
     ],
@@ -3120,7 +3174,9 @@
      "EV:omics_de:a3054c62a87e",
      "EV:omics_de:643d9508c0ae"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:418428b06797"
+    ],
     "literature": [
      "EV:literature:292de8367805",
      "EV:literature:2fceed76c9b4",
@@ -3432,7 +3488,9 @@
      "EV:omics_de:5c3048d74a22",
      "EV:omics_de:45c72be58009"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:daddc47468ac"
+    ],
     "literature": [
      "EV:open_targets_assoc:f389f3cf8d15"
     ],
@@ -3519,7 +3577,9 @@
      "EV:omics_de:ea1c12dfdcee",
      "EV:omics_de:3435e56bf79e"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:45dc6bff903d"
+    ],
     "literature": [
      "EV:literature:12aa37a7bfcb",
      "EV:literature:915f25d7ca71",
@@ -3606,7 +3666,9 @@
      "EV:omics_de:b38df09e0888",
      "EV:omics_de:e5df5d82ddcf"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:aad1db2c91b6"
+    ],
     "literature": [],
     "genetics": [],
     "tractability": [
@@ -3775,7 +3837,9 @@
      "EV:omics_de:f37b60917d06",
      "EV:omics_de:0d649b887052"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:6a657326c9fd"
+    ],
     "literature": [
      "EV:open_targets_assoc:61983038a898"
     ],
@@ -3865,7 +3929,9 @@
      "EV:omics_de:9dffa99bdf62",
      "EV:omics_de:2c7520ab9309"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:89efb3c2084a"
+    ],
     "literature": [],
     "genetics": [],
     "tractability": [
@@ -3967,7 +4033,9 @@
      "EV:omics_de:607f987e51dd",
      "EV:omics_de:2db9d82228d9"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:455933aa1439"
+    ],
     "literature": [
      "EV:open_targets_assoc:d28d2b6aacda"
     ],
@@ -4147,7 +4215,9 @@
      "EV:omics_de:d342ad5dcffd",
      "EV:omics_de:e0f5182fc2a0"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:a933989e1b67"
+    ],
     "literature": [
      "EV:open_targets_assoc:0b54aa910017"
     ],
@@ -4236,7 +4306,9 @@
      "EV:omics_de:3c485401582c",
      "EV:omics_de:695672cb9e8d"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:82a4f6572710"
+    ],
     "literature": [
      "EV:open_targets_assoc:25d3b27284b0"
     ],
@@ -4322,7 +4394,9 @@
      "EV:omics_de:36d2b7004c6f",
      "EV:omics_de:94919d4ddd12"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:ce13ef1f53fc"
+    ],
     "literature": [
      "EV:open_targets_assoc:90728f9351f7"
     ],
@@ -4430,7 +4504,9 @@
      "EV:omics_de:4fd07b8bbc03",
      "EV:omics_de:0d7adf62c51e"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:5306541dc3c9"
+    ],
     "literature": [
      "EV:open_targets_assoc:6d216b82e7f3"
     ],
@@ -4518,7 +4594,9 @@
      "EV:omics_de:b3fde90e0871",
      "EV:omics_de:4b000c2b088f"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:252a99ea6c32"
+    ],
     "literature": [],
     "genetics": [],
     "tractability": [
@@ -4598,7 +4676,9 @@
      "EV:omics_de:d0fb9f8ba3d4",
      "EV:omics_de:a9258f7ebebc"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:ae19fb6c998e"
+    ],
     "literature": [
      "EV:literature:dc0cf917e813",
      "EV:open_targets_assoc:8fab89e5e4bc"
@@ -4888,7 +4968,9 @@
      "EV:omics_de:07ba35b33acc",
      "EV:omics_de:60b5960cbd85"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:7e5d15ec606b"
+    ],
     "literature": [],
     "genetics": [],
     "tractability": [
@@ -4970,7 +5052,9 @@
      "EV:omics_de:1f6a73bb244e",
      "EV:omics_de:35f047583b6f"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:30d34426d222"
+    ],
     "literature": [
      "EV:open_targets_assoc:2e470ceb6a77"
     ],
@@ -5077,7 +5161,9 @@
      "EV:omics_de:3662ff81b143",
      "EV:omics_de:84ea81260e17"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:9f246319935f"
+    ],
     "literature": [
      "EV:open_targets_assoc:64dbdae9e94f"
     ],
@@ -5182,7 +5268,9 @@
      "EV:omics_de:da938f57412a",
      "EV:omics_de:ab284c5a7237"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:088a711f3a56"
+    ],
     "literature": [],
     "genetics": [],
     "tractability": [
@@ -5266,7 +5354,9 @@
      "EV:omics_de:feaa13f13e99",
      "EV:omics_de:839dae331bb6"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:c5d66c7fafe1"
+    ],
     "literature": [
      "EV:open_targets_assoc:9de8eda23313"
     ],
@@ -5353,7 +5443,9 @@
      "EV:omics_de:31dd39858239",
      "EV:omics_de:7e7b53906952"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:c54ccbb67c25"
+    ],
     "literature": [
      "EV:open_targets_assoc:3f3c47ef528e"
     ],
@@ -5458,7 +5550,9 @@
      "EV:omics_de:b1b946aab71c",
      "EV:omics_de:b179a7c521ec"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:95bc7fa85685"
+    ],
     "literature": [
      "EV:open_targets_assoc:900f88933f86"
     ],
@@ -5634,7 +5728,9 @@
      "EV:omics_de:2d41a92313e5",
      "EV:omics_de:7599346643b8"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:b16655918244"
+    ],
     "literature": [
      "EV:open_targets_assoc:b51c8578dbe2"
     ],
@@ -5717,7 +5813,9 @@
      "EV:omics_de:e9b1d8898721",
      "EV:omics_de:b871de61f9f2"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:4858f96f0430"
+    ],
     "literature": [
      "EV:open_targets_assoc:257ae2e433cf"
     ],
@@ -5800,7 +5898,9 @@
      "EV:omics_de:0a3a5c6227a3",
      "EV:omics_de:b885c3a2b9e9"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:5b8f461f8516"
+    ],
     "literature": [
      "EV:literature:8d66721bd093",
      "EV:literature:a030f0e6283c",
@@ -5889,7 +5989,9 @@
      "EV:omics_de:8fa49cbb1760",
      "EV:omics_de:db1b50d34635"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:58119698ea36"
+    ],
     "literature": [
      "EV:open_targets_assoc:c5894c15e0f7"
     ],
@@ -5974,7 +6076,9 @@
      "EV:omics_de:446972c153b3",
      "EV:omics_de:9e772185ddb6"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:d98b5cd7c09e"
+    ],
     "literature": [
      "EV:open_targets_assoc:ba8aeb6d6558"
     ],
@@ -6060,7 +6164,9 @@
      "EV:omics_de:59e4561c5775",
      "EV:omics_de:92c90279d5b8"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:578ce7e8e78d"
+    ],
     "literature": [
      "EV:open_targets_assoc:cf17fa872670"
     ],
@@ -6152,7 +6258,9 @@
      "EV:omics_de:8421c263805a",
      "EV:omics_de:ba2f836a2bf1"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:fc212642254e"
+    ],
     "literature": [
      "EV:open_targets_assoc:c06ddc699632"
     ],
@@ -6247,7 +6355,9 @@
      "EV:omics_de:ee34c89df1f7",
      "EV:omics_de:1dda3b1e510a"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:af56881a4234"
+    ],
     "literature": [],
     "genetics": [],
     "tractability": [
@@ -6505,7 +6615,9 @@
      "EV:omics_de:6a1a53a41386",
      "EV:omics_de:57ca58988568"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:fd99b19fe8a6"
+    ],
     "literature": [
      "EV:open_targets_assoc:6374d99db4a2"
     ],
@@ -6589,7 +6701,9 @@
      "EV:omics_de:b6a0fbcac17f",
      "EV:omics_de:fd2b5ba0c2cc"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:54533d65c68e"
+    ],
     "literature": [
      "EV:open_targets_assoc:822644b700ae"
     ],
@@ -6672,7 +6786,9 @@
      "EV:omics_de:48af97306d05",
      "EV:omics_de:78e800020b72"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:450c19dcbcfd"
+    ],
     "literature": [
      "EV:literature:8b82bf1e09b1"
     ],
@@ -6754,7 +6870,9 @@
      "EV:omics_de:9d093bcfb1a4",
      "EV:omics_de:2b8d2988d86e"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:ebe6a0265162"
+    ],
     "literature": [],
     "genetics": [],
     "tractability": [
@@ -6854,7 +6972,9 @@
      "EV:omics_de:6630393be488",
      "EV:omics_de:b2fdd816b6e8"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:8907c6b6a163"
+    ],
     "literature": [
      "EV:open_targets_assoc:cb7a3fb567ec"
     ],
@@ -6963,7 +7083,9 @@
      "EV:omics_de:c48539bf16a1",
      "EV:omics_de:9e249827a842"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:179fa91f485f"
+    ],
     "literature": [
      "EV:literature:391cd7189a97",
      "EV:open_targets_assoc:c64ed093380d"
@@ -7053,7 +7175,9 @@
      "EV:omics_de:9310ec6edb5c",
      "EV:omics_de:761687ecc8bb"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:a13c6a864369"
+    ],
     "literature": [
      "EV:open_targets_assoc:8aaf7f2ea8bc"
     ],
@@ -7144,7 +7268,9 @@
      "EV:omics_de:b8cf8ea29c41",
      "EV:omics_de:f11fd1f5ddfb"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:2b76723dce27"
+    ],
     "literature": [
      "EV:open_targets_assoc:1ad2fe844ae2"
     ],
@@ -7229,7 +7355,9 @@
      "EV:omics_de:a09b360260c7",
      "EV:omics_de:a612dea1227b"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:0cb401d893be"
+    ],
     "literature": [
      "EV:open_targets_assoc:e367bf7558e0"
     ],
@@ -7313,7 +7441,9 @@
      "EV:omics_de:000288289ccd",
      "EV:omics_de:9538e28323e8"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:123a499b526b"
+    ],
     "literature": [
      "EV:literature:25b19ac1c291",
      "EV:open_targets_assoc:d4065b6460c0"
@@ -7419,7 +7549,9 @@
      "EV:omics_de:1caef0716568",
      "EV:omics_de:ab282b98a97e"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:ecc177dd4aa9"
+    ],
     "literature": [
      "EV:literature:6874f33e0dd1",
      "EV:open_targets_assoc:1d363ac7133c"
@@ -7531,7 +7663,9 @@
      "EV:omics_de:c5aa5217f231",
      "EV:omics_de:857c4f168e2d"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:a804b568bd15"
+    ],
     "literature": [
      "EV:literature:6fb1ac12a544",
      "EV:open_targets_assoc:38756b21a30a"
@@ -7621,7 +7755,9 @@
      "EV:omics_de:f84503143495",
      "EV:omics_de:4444e1ae5573"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:a9f44d069e9a"
+    ],
     "literature": [],
     "genetics": [],
     "tractability": [
@@ -7702,7 +7838,9 @@
      "EV:omics_de:82ebfd226103",
      "EV:omics_de:1f62d07717a4"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:bdfd4ee05826"
+    ],
     "literature": [
      "EV:open_targets_assoc:0bcd0e57898c"
     ],
@@ -7784,7 +7922,9 @@
      "EV:omics_de:d0cc9be5f7c2",
      "EV:omics_de:ca270bdcf788"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:4585df8d2d82"
+    ],
     "literature": [
      "EV:open_targets_assoc:ac505a52b5f4"
     ],
@@ -7867,7 +8007,9 @@
      "EV:omics_de:8641d2f840b5",
      "EV:omics_de:241b53c08c10"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:9b88ea7f31b9"
+    ],
     "literature": [
      "EV:literature:b7cef02b17a6",
      "EV:open_targets_assoc:1749af70d39d"
@@ -7961,7 +8103,9 @@
      "EV:omics_de:444497433391",
      "EV:omics_de:54b7ffaeac40"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:2758a26e38c9"
+    ],
     "literature": [],
     "genetics": [],
     "tractability": [
@@ -8043,7 +8187,9 @@
      "EV:omics_de:2142f961dc63",
      "EV:omics_de:e5379ba50979"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:ed40b4c2e8e8"
+    ],
     "literature": [
      "EV:open_targets_assoc:d30824e16253"
     ],
@@ -8130,7 +8276,9 @@
      "EV:omics_de:3d095b30ecb3",
      "EV:omics_de:846ab695afdc"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:2b3ca95a4b69"
+    ],
     "literature": [
      "EV:literature:4720b127faf8"
     ],
@@ -8223,7 +8371,9 @@
      "EV:omics_de:0b749892cbd3",
      "EV:omics_de:68832fc2f384"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:1be8c9052f48"
+    ],
     "literature": [],
     "genetics": [],
     "tractability": [
@@ -8305,7 +8455,9 @@
      "EV:omics_de:8504d0e4bd6d",
      "EV:omics_de:e18b0cab7459"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:800c9f294545"
+    ],
     "literature": [],
     "genetics": [],
     "tractability": [
@@ -8388,7 +8540,9 @@
      "EV:omics_de:cf803ecaed81",
      "EV:omics_de:f0037889c6ef"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:040a2fcbdd94"
+    ],
     "literature": [
      "EV:open_targets_assoc:2c27cf11611e"
     ],
@@ -8484,7 +8638,9 @@
      "EV:omics_de:6d88bee01ee3",
      "EV:omics_de:340a9c737843"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:0371438f82b0"
+    ],
     "literature": [
      "EV:literature:9c1f85908ee2",
      "EV:literature:d51c8c1b2104",
@@ -8594,7 +8750,9 @@
      "EV:omics_de:41e978916656",
      "EV:omics_de:6cab48a61b04"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:2145dbb7594a"
+    ],
     "literature": [
      "EV:open_targets_assoc:b068a7e57ee2"
     ],
@@ -8785,7 +8943,9 @@
      "EV:omics_de:191164cf5b91",
      "EV:omics_de:fb9c636bd8d9"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:3eef39005ae0"
+    ],
     "literature": [
      "EV:open_targets_assoc:32bf09c5ac35"
     ],
@@ -8870,7 +9030,9 @@
      "EV:omics_de:94097a225581",
      "EV:omics_de:0d9c06b139dd"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:2a29cdc6c1a9"
+    ],
     "literature": [
      "EV:open_targets_assoc:579f370cd986"
     ],
@@ -8955,7 +9117,9 @@
      "EV:omics_de:2e67ecf59c26",
      "EV:omics_de:25cbef8ed9a9"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:8449ad3fe392"
+    ],
     "literature": [
      "EV:open_targets_assoc:53b41bc9b264"
     ],
@@ -9041,7 +9205,9 @@
      "EV:omics_de:c7634d378e2f",
      "EV:omics_de:692fe0bee879"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:1f1bb0c8a3dd"
+    ],
     "literature": [
      "EV:literature:70a193fc9239",
      "EV:literature:9b19b1358d92",
@@ -9127,7 +9293,9 @@
      "EV:omics_de:380f63358cfc",
      "EV:omics_de:2250f8b55ae7"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:4e602db6e59d"
+    ],
     "literature": [
      "EV:open_targets_assoc:6a6716e8ebc6"
     ],
@@ -9296,7 +9464,9 @@
      "EV:omics_de:ff4a729ba10c",
      "EV:omics_de:a50f66c6848e"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:701af9311213"
+    ],
     "literature": [
      "EV:open_targets_assoc:34fbc17c3f19"
     ],
@@ -9378,7 +9548,9 @@
      "EV:omics_de:cfadc549369e",
      "EV:omics_de:b9854341b5dc"
     ],
-    "cnv": [],
+    "cnv": [
+     "EV:omics_cnv:f01d53913af2"
+    ],
     "literature": [],
     "genetics": [],
     "tractability": [
@@ -9464,7 +9636,9 @@
       "EV:omics_de:cd4a629b011f",
       "EV:omics_de:e9e9896d9499"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:2d66f8e78d0c"
+     ],
      "literature": [
       "EV:open_targets_assoc:ee2e17841173"
      ],
@@ -9566,7 +9740,9 @@
       "EV:omics_de:5afe18b4024b",
       "EV:omics_de:29dfc93ac765"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:225a767ebcb5"
+     ],
      "literature": [
       "EV:literature:534430b0156d",
       "EV:literature:687723b4e539",
@@ -9660,7 +9836,9 @@
       "EV:omics_de:d93a2cc11342",
       "EV:omics_de:9600512e806d"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:11298113327b"
+     ],
      "literature": [
       "EV:literature:40d5741774e9",
       "EV:literature:9fd0ce3fec73",
@@ -9746,7 +9924,9 @@
       "EV:omics_de:aefc373d6072",
       "EV:omics_de:de39cc0c5ed8"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:7dbf93860d9f"
+     ],
      "literature": [
       "EV:literature:111b19cdfe29",
       "EV:literature:5d5690eab84a",
@@ -9851,7 +10031,9 @@
       "EV:omics_de:97c97f6d7d62",
       "EV:omics_de:8a1dc0572ead"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:908e84663f6a"
+     ],
      "literature": [
       "EV:literature:012242579349",
       "EV:literature:3db6a5b218c7",
@@ -9948,7 +10130,9 @@
       "EV:omics_de:fad29d44ef95",
       "EV:omics_de:6848a05e619b"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:d5aee88146ed"
+     ],
      "literature": [
       "EV:open_targets_assoc:9b858f1ca9f1"
      ],
@@ -10117,7 +10301,9 @@
       "EV:omics_de:8504d0e4bd6d",
       "EV:omics_de:e18b0cab7459"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:800c9f294545"
+     ],
      "literature": [],
      "genetics": [],
      "tractability": [
@@ -10199,7 +10385,9 @@
       "EV:omics_de:feaa13f13e99",
       "EV:omics_de:839dae331bb6"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:c5d66c7fafe1"
+     ],
      "literature": [
       "EV:open_targets_assoc:9de8eda23313"
      ],
@@ -10281,7 +10469,9 @@
       "EV:omics_de:b6a0fbcac17f",
       "EV:omics_de:fd2b5ba0c2cc"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:54533d65c68e"
+     ],
      "literature": [
       "EV:open_targets_assoc:822644b700ae"
      ],
@@ -10363,7 +10553,9 @@
       "EV:omics_de:59e4561c5775",
       "EV:omics_de:92c90279d5b8"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:578ce7e8e78d"
+     ],
      "literature": [
       "EV:open_targets_assoc:cf17fa872670"
      ],
@@ -10445,7 +10637,9 @@
       "EV:omics_de:ff4a729ba10c",
       "EV:omics_de:a50f66c6848e"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:701af9311213"
+     ],
      "literature": [
       "EV:open_targets_assoc:34fbc17c3f19"
      ],
@@ -10528,7 +10722,9 @@
       "EV:omics_de:e77140c05bf3",
       "EV:omics_de:16b226d3aad2"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:9359273b50a4"
+     ],
      "literature": [
       "EV:open_targets_assoc:786de9ec9816"
      ],
@@ -10611,7 +10807,9 @@
       "EV:omics_de:fa927e57822d",
       "EV:omics_de:ecb57bbc6664"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:ba3fb9165f81"
+     ],
      "literature": [
       "EV:literature:2fc20563c788",
       "EV:open_targets_assoc:d28d30b62e54"
@@ -10699,7 +10897,9 @@
       "EV:omics_de:8641d2f840b5",
       "EV:omics_de:241b53c08c10"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:9b88ea7f31b9"
+     ],
      "literature": [
       "EV:literature:b7cef02b17a6",
       "EV:open_targets_assoc:1749af70d39d"
@@ -10785,7 +10985,9 @@
       "EV:omics_de:3c01c89b92f0",
       "EV:omics_de:a464c71ee448"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:eee0a17423b2"
+     ],
      "literature": [],
      "genetics": [],
      "tractability": [
@@ -11058,7 +11260,9 @@
       "EV:omics_de:af4ee005eda7",
       "EV:omics_de:b2ad6c302a0f"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:542bd3ecd7ad"
+     ],
      "literature": [
       "EV:open_targets_assoc:7eeb2dee2177"
      ],
@@ -11146,7 +11350,9 @@
       "EV:omics_de:aad764db6423",
       "EV:omics_de:4647a8832dbd"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:2f71695bc4ed"
+     ],
      "literature": [
       "EV:open_targets_assoc:2932bdb6669e"
      ],
@@ -11235,7 +11441,9 @@
       "EV:omics_de:ee34c89df1f7",
       "EV:omics_de:1dda3b1e510a"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:af56881a4234"
+     ],
      "literature": [],
      "genetics": [],
      "tractability": [
@@ -11328,7 +11536,9 @@
       "EV:omics_de:b8cf8ea29c41",
       "EV:omics_de:f11fd1f5ddfb"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:2b76723dce27"
+     ],
      "literature": [
       "EV:open_targets_assoc:1ad2fe844ae2"
      ],
@@ -11418,7 +11628,9 @@
       "EV:omics_de:21a854725908",
       "EV:omics_de:05e47fc2ebce"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:20a173ea3bdb"
+     ],
      "literature": [
       "EV:open_targets_assoc:cd14ab9d13a5"
      ],
@@ -11512,7 +11724,9 @@
       "EV:omics_de:766acfee5091",
       "EV:omics_de:cbf84ef3196f"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:69fdca4a102c"
+     ],
      "literature": [
       "EV:literature:525b36bb3087",
       "EV:open_targets_assoc:f80d7219a375"
@@ -11611,7 +11825,9 @@
       "EV:omics_de:8421c263805a",
       "EV:omics_de:ba2f836a2bf1"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:fc212642254e"
+     ],
      "literature": [
       "EV:open_targets_assoc:c06ddc699632"
      ],
@@ -11700,7 +11916,9 @@
       "EV:omics_de:8fa49cbb1760",
       "EV:omics_de:db1b50d34635"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:58119698ea36"
+     ],
      "literature": [
       "EV:open_targets_assoc:c5894c15e0f7"
      ],
@@ -11785,7 +12003,9 @@
       "EV:omics_de:6a1a53a41386",
       "EV:omics_de:57ca58988568"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:fd99b19fe8a6"
+     ],
      "literature": [
       "EV:open_targets_assoc:6374d99db4a2"
      ],
@@ -11959,7 +12179,9 @@
       "EV:omics_de:1e23b7dfbd84",
       "EV:omics_de:f785b3f5632d"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:a68c82cb3c87"
+     ],
      "literature": [
       "EV:literature:29e37c391729",
       "EV:literature:8a5730511173",
@@ -12046,7 +12268,9 @@
       "EV:omics_de:1a4650dddc73",
       "EV:omics_de:fc1568a30fbd"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:3e933275c7cd"
+     ],
      "literature": [],
      "genetics": [],
      "tractability": [
@@ -12128,7 +12352,9 @@
       "EV:omics_de:aefc373d6072",
       "EV:omics_de:de39cc0c5ed8"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:7dbf93860d9f"
+     ],
      "literature": [
       "EV:literature:111b19cdfe29",
       "EV:literature:5d5690eab84a",
@@ -12216,7 +12442,9 @@
       "EV:omics_de:9ce7518ee47f",
       "EV:omics_de:e1c4c44d3459"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:2ebfd435ef8e"
+     ],
      "literature": [],
      "genetics": [],
      "tractability": [
@@ -12301,7 +12529,9 @@
       "EV:omics_de:380f63358cfc",
       "EV:omics_de:2250f8b55ae7"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:4e602db6e59d"
+     ],
      "literature": [
       "EV:open_targets_assoc:6a6716e8ebc6"
      ],
@@ -12402,7 +12632,9 @@
       "EV:omics_de:af4ee005eda7",
       "EV:omics_de:b2ad6c302a0f"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:542bd3ecd7ad"
+     ],
      "literature": [
       "EV:open_targets_assoc:7eeb2dee2177"
      ],
@@ -12491,7 +12723,9 @@
       "EV:omics_de:a09b360260c7",
       "EV:omics_de:a612dea1227b"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:0cb401d893be"
+     ],
      "literature": [
       "EV:open_targets_assoc:e367bf7558e0"
      ],
@@ -12596,7 +12830,9 @@
       "EV:omics_de:373c8d5ee500",
       "EV:omics_de:558966af56e8"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:46d1240b817d"
+     ],
      "literature": [],
      "genetics": [],
      "tractability": [
@@ -12689,7 +12925,9 @@
       "EV:omics_de:3c485401582c",
       "EV:omics_de:695672cb9e8d"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:82a4f6572710"
+     ],
      "literature": [
       "EV:open_targets_assoc:25d3b27284b0"
      ],
@@ -12774,7 +13012,9 @@
       "EV:omics_de:8504d0e4bd6d",
       "EV:omics_de:e18b0cab7459"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:800c9f294545"
+     ],
      "literature": [],
      "genetics": [],
      "tractability": [
@@ -12857,7 +13097,9 @@
       "EV:omics_de:5c3d05c6aaa9",
       "EV:omics_de:77a1af2b05cf"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:ebad56728426"
+     ],
      "literature": [],
      "genetics": [],
      "tractability": [
@@ -12939,7 +13181,9 @@
       "EV:omics_de:ca98326c1312",
       "EV:omics_de:4a27b58cf6b9"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:8e1d4894b0bc"
+     ],
      "literature": [
       "EV:open_targets_assoc:41c8b65b2a1a"
      ],
@@ -13032,7 +13276,9 @@
       "EV:omics_de:ee34c89df1f7",
       "EV:omics_de:1dda3b1e510a"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:af56881a4234"
+     ],
      "literature": [],
      "genetics": [],
      "tractability": [
@@ -13134,7 +13380,9 @@
       "EV:omics_de:5afe18b4024b",
       "EV:omics_de:29dfc93ac765"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:225a767ebcb5"
+     ],
      "literature": [
       "EV:literature:534430b0156d",
       "EV:literature:687723b4e539",
@@ -13228,7 +13476,9 @@
       "EV:omics_de:4e42a5460a74",
       "EV:omics_de:82ddbdbfd61d"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:e5780c87a2a7"
+     ],
      "literature": [
       "EV:literature:4acd42679460",
       "EV:literature:bf184fc9a3bd",
@@ -13317,7 +13567,9 @@
       "EV:omics_de:3d095b30ecb3",
       "EV:omics_de:846ab695afdc"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:2b3ca95a4b69"
+     ],
      "literature": [
       "EV:literature:4720b127faf8"
      ],
@@ -13402,7 +13654,9 @@
       "EV:omics_de:af15cb07921d",
       "EV:omics_de:8b73e00cdc38"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:a46f337f2987"
+     ],
      "literature": [
       "EV:literature:58d7b6f6e786",
       "EV:literature:c73e5613ede3",
@@ -13608,7 +13862,9 @@
       "EV:omics_de:d827ae00ffaf",
       "EV:omics_de:13adc5c7dd8e"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:5ea4b667cea7"
+     ],
      "literature": [
       "EV:open_targets_assoc:0e2b8b180adf"
      ],
@@ -13693,7 +13949,9 @@
       "EV:omics_de:fbc1e1a11a0d",
       "EV:omics_de:346894e4550c"
      ],
-     "cnv": [],
+     "cnv": [
+      "EV:omics_cnv:8ec4a7be81a4"
+     ],
      "literature": [],
      "genetics": [],
      "tractability": [

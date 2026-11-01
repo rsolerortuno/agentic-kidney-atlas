@@ -1,0 +1,10 @@
+<h3>Evidence coverage and proposed use</h3>
+<p>Coverage counts measured layers, not independent votes. Missing data, measured results that do not meet a criterion, and contradictory observations are kept separate. These descriptive rules do not alter ranking weights. “Favorable” applies only to the named test; it is not proof of therapeutic benefit.</p>
+{% for card in candidate_evidence %}
+<details class="note"><summary><strong>{{ card.gene }}</strong> · {{ card.measured }}/{{ card.total }} layers measured</summary>
+<div class="tw"><table><thead><tr><th>Evidence layer</th><th>Status</th><th>Interpretation and values</th><th>Source table</th></tr></thead><tbody>
+{% for o in card.observations %}<tr><td>{{ o.name }}</td><td>{{ o.status | replace('_',' ') }}</td><td>{{ o.detail }}{% if o.fields %}<br><small>{% for key,value in o.fields.items() %}{{ key }}: {{ value | fmt }}{% if not loop.last %}; {% endif %}{% endfor %}</small>{% endif %}</td><td><code>{{ o.source }}</code></td></tr>{% endfor %}
+</tbody></table></div>
+{% for m in card.modalities %}<p><strong>{{ m.name }} · {{ m.status | replace('_',' ') }}</strong> — {{ m.rationale }}</p>{% endfor %}
+</details>
+{% endfor %}

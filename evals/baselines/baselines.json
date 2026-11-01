@@ -182,7 +182,7 @@
     ]
    }
   ],
-  "statements_checked": 118,
+  "statements_checked": 130,
   "unsupported": 0
  },
  "closed_vs_pipeline_jaccard": 0.095,
