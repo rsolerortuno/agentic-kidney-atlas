@@ -459,7 +459,8 @@ def dependency_scatter(highlight: set[str]) -> str | None:
         return None
     d = pd.read_parquet(p).dropna(subset=["mean_effect_ccrcc", "mean_effect_other"])
     d = d[d["n_ccrcc_lines"] >= 10]
-    sel = (d["padj"] < 0.1) & (d["selectivity"] > 0.3) & (d["frac_ccrcc_dependent"] >= 0.25) & ~d["common_essential"]
+    from .layers import selective_dependency
+    sel = selective_dependency(d)
     lab = d[sel].nlargest(8, "selectivity")
     fig = go.Figure()
     fig.add_trace(go.Scattergl(x=d["mean_effect_other"], y=d["mean_effect_ccrcc"], mode="markers", name="genes",

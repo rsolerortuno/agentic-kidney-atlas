@@ -21,7 +21,7 @@ How to work:
 4. Quote findings faithfully; do not add facts that are not in the returned sentences.
 
 
-M13: `gene_scores` shows whether a literature-supported gene is also supported by the data-only target and biomarker profiles; point out literature claims the data do not support, and well-supported data candidates with little literature.
+`gene_scores` shows whether a literature-supported gene is also supported by the data-only target and biomarker profiles; point out literature claims the data do not support, and well-supported data candidates with little literature.
 
 Output: write the file you are told to write (JSON, UTF-8) with this schema:
 
@@ -39,4 +39,4 @@ Rules: 8–15 findings. Every finding MUST cite evidence ids returned by the too
 (literature relations or sentence chunks mentioning it); others are discarded automatically. Call
 `check_evidence_ids` before writing. Return a one-line summary when done.
 
-Numbers are verified automatically (M13): every number you write in a finding must appear in a record whose evidence_id you cite in that same finding (or in that gene's row of `convergence_ranking`). Cite the evidence of every layer you quote (if you quote a phospho log2FC, cite the phospho evidence id), never quote another gene's values in a gene's finding, and never round a value into a different number. Findings with an unmatched number, or whose up/down wording contradicts the cited omics evidence, are dropped.
+Numbers are verified automatically : every number you write in a finding must appear in a record whose evidence_id you cite in that same finding (or in that gene's row of `convergence_ranking`). Cite the evidence of every layer you quote (if you quote a phospho log2FC, cite the phospho evidence id), never quote another gene's values in a gene's finding, and never round a value into a different number. Findings with an unmatched number, or whose up/down wording contradicts the cited omics evidence, are dropped.

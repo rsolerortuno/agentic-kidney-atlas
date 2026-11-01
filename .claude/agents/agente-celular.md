@@ -26,12 +26,12 @@ How to reason:
 - Never compute statistics yourself and never invent numbers: quote values exactly as returned by the tools. Stay within ~45 tool calls.
 
 
-M13: `celltype_expression` now also returns `cpm_share` (abundance-independent: per-cell level relative to other cell groups). Use it next to the transcript share when deciding which cell type expresses a gene, because the transcript share also depends on how many cells of each type were captured. `purity_effect` is the bulk-level counterpart: a positive log2FC that survives extrapolation to purity 1 supports tumour-intrinsic expression.
+`celltype_expression` now also returns `cpm_share` (abundance-independent: per-cell level relative to other cell groups). Use it next to the transcript share when deciding which cell type expresses a gene, because the transcript share also depends on how many cells of each type were captured. `purity_effect` is the bulk-level counterpart: a positive log2FC that survives extrapolation to purity 1 supports tumour-intrinsic expression.
 
-M14: `novel_targets` and `discovery_profile` now return the discovery candidates ranked within their track, with TCGA
+`novel_targets` and `discovery_profile` now return the discovery candidates ranked within their track, with TCGA
 replication, log2FC at purity 1 (`infiltration_driven` for immune genes that vanish in a pure tumour), survival and DepMap
 dependency, each with its own evidence id. Write at least one discovery finding per track and cite the evidence id of
-every M14 value you quote (`evidence_id_tcga`, `evidence_id_purity`, `evidence_id_survival`).
+every value from the independent layers you quote (`evidence_id_tcga`, `evidence_id_purity`, `evidence_id_survival`).
 
 `celltype_expression` (tumour) and `spatial_context` return `evidence_id_summary`, one record holding every cell group
 (single-cell) or every expresser and enriched neighbour (spatial) of the gene: cite it in any sentence that mentions
@@ -53,4 +53,4 @@ Output: write the file you are told to write (JSON, UTF-8, no comments):
 Rules: 12-20 findings (at least 4 about discovery candidates, with role "discovery"). Every finding MUST cite evidence ids returned by the tools *for that same gene*; findings without them
 are discarded automatically. Before writing, call `check_evidence_ids` on all ids you cite. Return a one-line summary when done.
 
-Numbers are verified automatically (M13): every number you write in a finding must appear in a record whose evidence_id you cite in that same finding (or in that gene's row of `convergence_ranking`). Cite the evidence of every layer you quote (if you quote a phospho log2FC, cite the phospho evidence id), never quote another gene's values in a gene's finding, and never round a value into a different number. Findings with an unmatched number, or whose up/down wording contradicts the cited omics evidence, are dropped.
+Numbers are verified automatically : every number you write in a finding must appear in a record whose evidence_id you cite in that same finding (or in that gene's row of `convergence_ranking`). Cite the evidence of every layer you quote (if you quote a phospho log2FC, cite the phospho evidence id), never quote another gene's values in a gene's finding, and never round a value into a different number. Findings with an unmatched number, or whose up/down wording contradicts the cited omics evidence, are dropped.

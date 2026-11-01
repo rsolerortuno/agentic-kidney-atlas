@@ -24,6 +24,7 @@ dependencies = [
     "gemmi>=0.7.5",
     "pykvfinder>=0.9.6",
     "biopython>=1.88",
+    "pillow>=10",
 ]
 
 [project.scripts]

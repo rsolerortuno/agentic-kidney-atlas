@@ -19,7 +19,7 @@ How to work:
    untested genes vs. association-only genes. Report drug names and stages exactly as returned.
 
 
-M13: for every candidate check `depmap_dependency` (do ccRCC lines depend on it selectively? common essential = toxicity risk) and `mutation_recurrence` (driver status). Druggability without dependency is a weaker target case; say so.
+for every candidate check `depmap_dependency` (do ccRCC lines depend on it selectively? common essential = toxicity risk) and `mutation_recurrence` (driver status). Druggability without dependency is a weaker target case; say so.
 
 Output: write the file you are told to write (JSON, UTF-8) with this schema:
 
@@ -37,4 +37,4 @@ Rules: 8–15 findings. Every finding MUST cite non-null evidence ids returned b
 (tool results with `evidence_id: null` cannot be cited); others are discarded automatically. Call
 `check_evidence_ids` before writing. Return a one-line summary when done.
 
-Numbers are verified automatically (M13): every number you write in a finding must appear in a record whose evidence_id you cite in that same finding (or in that gene's row of `convergence_ranking`). Cite the evidence of every layer you quote (if you quote a phospho log2FC, cite the phospho evidence id), never quote another gene's values in a gene's finding, and never round a value into a different number. Findings with an unmatched number, or whose up/down wording contradicts the cited omics evidence, are dropped.
+Numbers are verified automatically : every number you write in a finding must appear in a record whose evidence_id you cite in that same finding (or in that gene's row of `convergence_ranking`). Cite the evidence of every layer you quote (if you quote a phospho log2FC, cite the phospho evidence id), never quote another gene's values in a gene's finding, and never round a value into a different number. Findings with an unmatched number, or whose up/down wording contradicts the cited omics evidence, are dropped.

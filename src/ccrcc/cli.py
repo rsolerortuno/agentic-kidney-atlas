@@ -48,6 +48,10 @@ def run_all(fresh: bool = True) -> int:
     _step("M12 HPA vital-organ expression + clinical association", safety_clinical.run)
     print("    layers:", {k: v for k, v in _step("M13 extra layers (mutations, cis dosage, DepMap, TCGA, kinases, purity)",
                                                layers.run).items() if k in ("mutations", "tcga", "purity")})
+    from . import subtypes, treatment
+    print("    treatment:", _step("M15 treatment-response biomarkers (IMmotion150, Choueiri 2016)",
+                                  treatment.run)["controls_reproduced"])
+    _step("M15 genetic subtypes and ccA / ccB", subtypes.run)
     _step("M3 literature ingestion (PubTator3, frozen PMID lists)", literature.ingest)
     _step("M3 rebuild extraction batches (deterministic)", literature.write_extraction_batches)
     print("    relations:", _step("M3 validate extracted relations", literature.validate_extractions))
@@ -61,6 +65,12 @@ def run_all(fresh: bool = True) -> int:
     _step("M12 single-cell summary for report + discovery shortlist", singlecell.write_summary)
     _step("M11 spatial deconvolution and neighbourhoods", spatial.run)
     _step("M12 spatial section maps for the report", spatial.section_maps)
+    from . import spatial_viewer
+    print("    viewer:", _step("M15 tissue viewer data (H&E + spots + neighbours)", spatial_viewer.run))
+    from . import adc, immune, sc_replication
+    _step("M15 second single-cell dataset (Zhang 2021) replication", sc_replication.run)
+    _step("M15 ADC / radioligand suitability", adc.run)
+    _step("M15 immune microenvironment profile", immune.run)
     _step("M11 AlphaFold models, pockets and MGD scoring", structure.run)
     print("    claims:", _step("M11 load cell / structure layers into the graph", kg_cell_structure.load)["claims_added"])
     print("    discovery claims:", _step("M12 load discovery profiles into the graph", discovery.load_graph))
@@ -89,7 +99,8 @@ def main(argv=None) -> int:
     ra.add_argument("--keep", action="store_true", help="do not delete processed data / graph first")
     for name in ("download", "omics", "literature", "validate-relations", "enrich", "graph", "integrate", "eval",
                  "singlecell", "spatial", "structure", "cell-graph", "discovery", "layers", "layers-graph",
-                 "download-extra", "safety-clinical", "baselines"):
+                 "download-extra", "safety-clinical", "baselines", "treatment", "subtypes", "adc", "immune",
+                 "sc-replication", "spatial-viewer"):
         sub.add_parser(name)
     ev = sub.choices["eval"]
     ev.add_argument("--qa", action="store_true", help="also run the known-answer questions with claude -p")
@@ -145,6 +156,11 @@ def main(argv=None) -> int:
     elif args.cmd == "layers-graph":
         from .kg_layers import load_layers
         print(json.dumps(load_layers(), indent=1))
+    elif args.cmd in ("treatment", "subtypes", "adc", "immune", "sc-replication", "spatial-viewer"):
+        from importlib import import_module
+        mod = import_module({"sc-replication": ".sc_replication", "spatial-viewer": ".spatial_viewer"}.get(
+            args.cmd, "." + args.cmd), __package__)
+        print(json.dumps(mod.run(), indent=1, default=str))
     elif args.cmd == "baselines":
         from .baselines import run
         print(json.dumps(run(), indent=1, default=str))

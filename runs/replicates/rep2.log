@@ -1,0 +1,18 @@
+﻿I have the convergence rows I need. Waiting for the four agents to finish.
+
+The omics agent is done. Still waiting on literature, external and cells.
+
+The omics and external agents are done. Still waiting on literature and cells.
+
+Three of the four agents are done. Only the cells agent is still running.
+
+The report is at `C:\Users\rafae\Documents\ccrcc-graphrag\runs\replicates\rep2\report.html`.
+
+**This was replicate 2, not the dated run.** The environment has `CCRCC_RUN_DIR=replicates/rep2` set, so every step read and wrote `runs/replicates/rep2/` and `runs/2026-11-01/` was not touched. Final verification checked 97 statements and found 0 unsupported. Assembly dropped one paragraph on the first pass because it put RAB42's numbers under SLC37A2; I split it and re-ran, and nothing was dropped the second time.
+
+1. **CA9 has the strongest and most robust evidence.** It is #1 in the overall ranking and the only gene that stays in the top 10 when the weights are randomly varied (p_top10 0.894). The signal comes from tumour cells (0.976 of its tumour transcripts are in RCC cells, purity-1 log2FC 7.787), it replicates in TCGA-KIRC (log2FC 9.712), and girentuximab reached phase 3.
+2. **Second-tier targets:** CD70, SCARB1 (top of the target profile, p_top10 0.968), NNMT, ENPP3 and SLC16A3. All are higher in tumour at RNA and protein level, replicate in TCGA, and the change holds up when extrapolated to a pure tumour. CD70 and ENPP3 already have antibody or antibody-drug conjugate programmes; SCARB1 has no drug and no ccRCC literature, so it is the most novel.
+3. **Biomarkers** are mostly genes lost along with normal kidney-tubule identity: PSAT1 (the most stable call, p_top10 0.986), PCK1, ALDH6A1, SLC6A19 and ALDOB. They are prognostic, not drug targets. ALDH6A1 is weakened because its change shrinks a lot at purity 1.
+4. **No leading candidate is something the cancer cells depend on to survive** (DepMap). Only EPAS1, the target of the approved drug belzutifan, shows a selective dependency (selectivity 0.3). KDR, CD74 and CXCR4 come from blood-vessel and immune cells, not tumour cells.
+5. **Discovery hypotheses** (no dependency evidence): COL23A1 and RAB42 in tumour cells, and OLFML2A and JAG2 in the surrounding stroma. In the immune group, the bulk signals for SLC37A2 and LILRB4 largely reflect macrophage infiltration.
+rep2 exit 0

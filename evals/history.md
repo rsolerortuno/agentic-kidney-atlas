@@ -191,3 +191,41 @@ third run (`runs/2026-11-01/`): 98 statements, 0 unsupported, 0 stale, every nar
 cells 3, discovery 3); the numeric check still dropped 2 of 21 cell-agent findings, both genuine (a normal-tissue value
 absent from the tumour summary; a whole-model pLDDT cited with a pocket record). A full `run-all` on top of that run
 re-verified it with 0 stale statements across 1,124 fingerprinted evidence records.
+
+## Unified update (version 15)
+
+Everything added since the first release is described here by purpose, not by the order it was built.
+
+**Criteria changed after seeing data (post-hoc, listed so nobody mistakes them for pre-registered choices)**
+- A "selective DepMap dependency" now needs at least 3 ccRCC cell lines with Chronos below -0.5 (before: any positive
+  fraction). With the 24 ccRCC lines, one or two lines could carry the call. Effect: the two genes that passed the old
+  gate in the discovery pool (ARL4C, CD53) no longer do, and the report states that no candidate is a selective dependency.
+  The rule lives in one function (`layers.selective_dependency`) used by the scores, the graph, discovery and the figure.
+- Discovery literature counts use only aliases that belong to one gene (short word-like symbols also need a molecular
+  context word). 23 of 410 genes change "novel" status. The 15-paper threshold was not changed.
+- "Undrugged" is graded: ChEMBL potent compounds (at least 3 molecules at pChEMBL 6 or more) or patent records give 0.5
+  instead of 1. 45 of the 410 genes have preclinical chemical matter.
+
+**Added before measuring (weights fixed in `config.yaml`)**
+- ccA/ccB component in the biomarker profile (0.5): replicated ccB-minus-ccA difference in CPTAC and TCGA RNA, with the
+  ClearCode34 genes set to 0 because they define the split. It reorders the robust biomarker calls (PSAT1, PCK1, SLC6A19,
+  PPP1R1A); its effect on the ClearCode34 evaluation is reported by `ccrcc eval`.
+- ADC suitability: 0.30 surface, 0.25 tumour increase, 0.25 vital-organ staining, 0.20 homogeneity.
+- Immune-target profile: immune source, infiltration coupling, response on atezolizumab + bevacizumab, tumour increase (1.0
+  each) and tractability (0.5).
+
+**What the new layers showed**
+- IMmotion150 (263 patients): the angiogenesis signature predicts longer PFS on sunitinib (HR 0.58 per SD) and the
+  T-effector signature favours atezolizumab + bevacizumab over sunitinib (ratio of HRs 0.54), so the data behave as
+  published. 90, 103 and 13 genes associate with PFS in the combination, sunitinib and atezolizumab arms (q < 0.1); none
+  differs between the combination and sunitinib after correction.
+- ccB tumours have HR 2.30 for death in TCGA (p 6.5e-8, n 533) and the ccA/ccB score falls with grade in CPTAC (rho -0.38).
+- Second single-cell dataset (Zhang 2021): tumour-cell share correlates with Li 2022 at rho 0.62; the dominant source of
+  discovery genes matches in 59 of 63 tumour, 33 of 34 stroma and 183 of 313 immune genes.
+- ADC controls CD70, HAVCR1, CA9, ENPP3, FOLH1 rank 2, 4, 13, 39, 488 of 2,017. Immune-profile checkpoint controls: PDCD1
+  rank 10, IDO1 165, TIGIT 230, CTLA4 233, LAG3 349, CD274 708, HAVCR2 1,098 of 19,161, so only 1 of 7 is in the top 100.
+
+**Not done**
+- Replication of protein and phosphosites in the confirmatory CPTAC cohort: the Proteomic Data Commons returned HTTP 503.
+- Pocket-based scoring was not extended in this version.
+- The agents do not yet narrate the treatment, subtype, ADC and immune tabs; those tables are deterministic code only.

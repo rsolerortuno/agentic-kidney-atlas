@@ -4,98 +4,115 @@
   {
    "gene": "CA9",
    "role": "target_and_biomarker",
-   "statement": "CA9 ranks 1 in the convergence ranking. In tumor scRNA-seq the RCC cell group holds 0.976 of tissue transcripts (54.7% of cells expressing, cpm_share 0.958), so the bulk signal is tumor-intrinsic.",
+   "statement": "CA9 is tumor-cell intrinsic: RCC cells hold 0.976 of tumor transcripts (54.7% of RCC cells express it) and the pure-tumour RNA log2FC extrapolated to purity 1 is 7.787, so the bulk signal (log2FC 6.312) is not stromal.",
    "evidence_ids": [
-    "EV:sc_expr:35b84fee998f"
+    "EV:sc_summary:225a767ebcb5",
+    "EV:sc_expr:35b84fee998f",
+    "EV:purity:225a767ebcb5",
+    "EV:omics_de:b269736afdb0"
    ]
   },
   {
    "gene": "CA9",
    "role": "biomarker",
-   "statement": "Paired by donor, CA9 in tumor cells vs proximal tubule has log2fc 7.739 (padj 0.0189, 6 donors); the purity-extrapolated RNA log2FC at purity 1 is 7.787, so the signal survives purity adjustment.",
+   "statement": "In paired tumor cell vs proximal tubule pseudobulk CA9 has log2FC 7.739 (padj 0.0189, 6 donors), and TCGA-KIRC replicates it (log2FC 9.712), supporting a tumor-vs-cell-of-origin biomarker.",
    "evidence_ids": [
     "EV:sc_tvp:225a767ebcb5",
-    "EV:purity:225a767ebcb5"
+    "EV:tcga_de:225a767ebcb5"
+   ]
+  },
+  {
+   "gene": "CA9",
+   "role": "mechanism",
+   "statement": "In Visium, CA9 expression is assigned to RCC spots (composition-corrected share 0.999) and high spots are enriched for RCC neighbours (log2 enrichment 0.381, padj 0.0017), i.e. a tumor-cell niche.",
+   "evidence_ids": [
+    "EV:spatial_summary:225a767ebcb5",
+    "EV:spatial_nb:35b84fee998f"
    ]
   },
   {
    "gene": "CA9",
    "role": "target",
-   "statement": "The best MGD site on CA9 scores 0.546 but is a small pocket (126.8 A3, depth 2.55, mean pLDDT 90.3) with one accessible lysine. Ligand-site recall is 0.5 (recall_in_top_pockets 0.221), so the site is only moderately supported. This is a site ranking, not evidence that a glue exists.",
+   "statement": "CA9 best MGD site score is 0.546 (pocket 126.8 A3, pLDDT 90.3, 1 accessible lysine, model mean pLDDT 76.56); ligand-site recall is 0.5 but only 0.221 within top pockets. This ranks a site, not a glue; the pocket is small and likely the catalytic zinc site.",
    "evidence_ids": [
     "EV:mgd_site:cacfae1940f6",
-    "EV:ligand_sites:93360ddb9195"
-   ]
-  },
-  {
-   "gene": "KDR",
-   "role": "microenvironment",
-   "statement": "KDR transcripts are endothelial (share 0.951, cpm_share 0.979, 40.5% of endothelial cells expressing). KDR is a microenvironment (anti-angiogenic) target, not a tumor-cell target.",
-   "evidence_ids": [
-    "EV:sc_expr:801fa5377cb7"
-   ]
-  },
-  {
-   "gene": "CD74",
-   "role": "microenvironment",
-   "statement": "CD74 is expressed by myeloid and lymphoid cells, not tumor cells: cDC (100% expressing, cpm_share 0.311) and macrophage (99.5% expressing, transcript share 0.436). Any bulk CD74 increase reflects infiltrating immune cells.",
-   "evidence_ids": [
-    "EV:sc_expr:095e86414820",
-    "EV:sc_expr:a2ae18752f02"
-   ]
-  },
-  {
-   "gene": "CXCR4",
-   "role": "microenvironment",
-   "statement": "CXCR4 is carried by lymphocytes: CD4 T (87.8% expressing) and CD8 T (72.9% expressing, transcript share 0.563). It is an immune-compartment marker, not tumor-intrinsic.",
-   "evidence_ids": [
-    "EV:sc_expr:4e0010bd69bf",
-    "EV:sc_expr:52ac4d964066"
-   ]
-  },
-  {
-   "gene": "MET",
-   "role": "target",
-   "statement": "MET is mostly tumor-cell: the RCC group holds 0.935 of transcripts (35.2% expressing, cpm_share 0.682), with a smaller endothelial component (12% expressing, cpm_share 0.283).",
-   "evidence_ids": [
-    "EV:sc_expr:114c287fd103",
-    "EV:sc_expr:c5d3f61ecb68"
+    "EV:ligand_sites:93360ddb9195",
+    "EV:alphafold:6b2a466ed88e"
    ]
   },
   {
    "gene": "CD70",
-   "role": "target_and_biomarker",
-   "statement": "CD70 ranks 3 in convergence (TCGA log2fc 7.09, RNA log2FC at purity 1 of 4.278), supporting tumor-intrinsic expression. It has clinical-stage antibodies (cusatuzumab Phase 2, vorsetuzumab mafodotin Phase 1). The scRNA record carries no evidence id and CD70 is not covered by Visium, so cell-type share is not quoted here.",
+   "role": "target",
+   "statement": "CD70 is up in ccRCC (TCGA log2FC 7.09) and survives purity extrapolation (RNA log2FC at purity 1 of 4.278), consistent with tumor-intrinsic expression; clinical-stage antibodies exist (vorsetuzumab, cusatuzumab, up to phase 2). Single-cell shows some T/B-cell expression, so an off-tumor immune caveat applies.",
    "evidence_ids": [
+    "EV:tcga_de:908e84663f6a",
     "EV:purity:908e84663f6a",
-    "EV:tcga_de:908e84663f6a"
+    "EV:omics_de:97c97f6d7d62"
    ]
   },
   {
    "gene": "NNMT",
    "role": "target_and_biomarker",
-   "statement": "NNMT ranks 7 in convergence: tumor-intrinsic (RNA log2FC at purity 1 of 5.256, TCGA log2fc 4.685) with a TCGA cox log HR of 0.301 (padj 0.00479). No AlphaFold pocket analysis is available, so MGD tractability is untested.",
+   "statement": "NNMT is tumor-cell intrinsic: the RNA log2FC at purity 1 is 5.256 (bulk RNA log2FC 4.67, protein 2.709) and TCGA log2FC is 4.685, with adverse prognosis (Cox log HR 0.301); no clinical drug is listed.",
    "evidence_ids": [
+    "EV:omics_de:aefc373d6072",
     "EV:purity:7dbf93860d9f",
-    "EV:tcga_de:7dbf93860d9f"
+    "EV:tcga_de:7dbf93860d9f",
+    "EV:tcga_survival:7dbf93860d9f"
    ]
   },
   {
-   "gene": "SCARB1",
-   "role": "target",
-   "statement": "SCARB1 ranks 5 in convergence with RNA log2FC at purity 1 of 3.762. By scRNA, per-cell expression is highest in endothelium (24.5% expressing, cpm_share 0.406) rather than RCC (15.5% expressing, cpm_share 0.194), so part of the signal is stromal.",
+   "gene": "KDR",
+   "role": "microenvironment",
+   "statement": "KDR is an endothelial gene, not a tumor-cell target: endothelium holds 0.951 of tumor transcripts (40.5% of endothelial cells express it) and Visium shows endothelial composition-corrected share 0.99 versus 0.002 for RCC.",
    "evidence_ids": [
-    "EV:purity:2d66f8e78d0c",
-    "EV:sc_expr:7469f2ef52df",
-    "EV:sc_expr:e78b045bd1fa"
+    "EV:sc_summary:fd47891e1c7f",
+    "EV:spatial_summary:fd47891e1c7f"
+   ]
+  },
+  {
+   "gene": "CD74",
+   "role": "microenvironment",
+   "statement": "CD74 transcripts are immune: macrophages hold 0.436 and CD8 T cells 0.345 of tumor transcripts (cDC 0.114), and Visium assigns a composition-corrected share of 0.637 to macrophages, so the bulk signal is infiltrating immune cells, not tumor cells.",
+   "evidence_ids": [
+    "EV:sc_summary:ee059aa145d0",
+    "EV:spatial_summary:ee059aa145d0"
+   ]
+  },
+  {
+   "gene": "CXCR4",
+   "role": "microenvironment",
+   "statement": "CXCR4 is expressed by lymphocytes: CD8 T cells hold 0.563 of tumor transcripts and CD4 T cells have the highest expressing fraction (87.8%), so it is an immune microenvironment target.",
+   "evidence_ids": [
+    "EV:sc_summary:a804b568bd15"
+   ]
+  },
+  {
+   "gene": "MET",
+   "role": "target",
+   "statement": "MET is mostly tumor-cell expressed: RCC cells hold 0.935 of tumor transcripts but only 35.2% of RCC cells express it (cpm_share 0.682); endothelium has 12% expressing cells.",
+   "evidence_ids": [
+    "EV:sc_summary:8314520758de",
+    "EV:sc_expr:114c287fd103"
+   ]
+  },
+  {
+   "gene": "EPAS1",
+   "role": "mechanism",
+   "statement": "EPAS1 transcripts in tumor are mostly non-tumor: endothelium holds 0.365 and fibroblasts 0.081 of transcripts, RCC cells only 0.051 (4.9% expressing), so EPAS1 is not a clean tumor-cell expression marker in this dataset.",
+   "evidence_ids": [
+    "EV:sc_summary:6a657326c9fd",
+    "EV:sc_expr:ffb74b11de1d"
    ]
   },
   {
    "gene": "COL23A1",
    "role": "discovery",
-   "statement": "COL23A1 is a first-in-class opportunity in the tumor track (novelty 0.839): RCC holds 0.881 of tumor transcripts, RNA log2fc 4.07, protein log2fc 2.51, 7 ccRCC papers, no clinical drug, AB/PR tractable, surface or secreted, max vital-organ nTPM 3 (heart muscle). Its AlphaFold model is weak (mean pLDDT 58.91) and its only pocket is tiny (8.0 A3, MGD score 0.2342), so it is not a glue candidate. Caveat: no dependency evidence and literature counted by gene symbol.",
+   "statement": "COL23A1 is the top tumor-track first-in-class candidate: RCC cells hold 0.881 of tumor transcripts, 7 ccRCC papers, no clinical drug, AB/PR tractable, surface/secreted, max vital-organ nTPM 3 (heart muscle), TCGA log2FC 5.829, log2FC at purity 1 of 4.88. Hypothesis only: no dependency evidence (DepMap mean effect 0.167, not selective); literature counted by gene symbol. AlphaFold model is poor (mean pLDDT 58.91; best MGD site 0.2342, 8.0 A3), so not a glue candidate.",
    "evidence_ids": [
     "EV:discovery:e1532aa1b09c",
+    "EV:tcga_de:e1532aa1b09c",
+    "EV:purity:e1532aa1b09c",
     "EV:mgd_site:3a4161457d4f",
     "EV:alphafold:4f8072787076"
    ]
@@ -103,43 +120,64 @@
   {
    "gene": "RAB42",
    "role": "discovery",
-   "statement": "RAB42 is an under-studied tumor-cell candidate (novelty 0.775): RCC holds 0.627 of tumor transcripts, RNA log2fc 3.11, protein log2fc 1.9, 2 ccRCC papers, no clinical drug, max vital-organ nTPM 2.6 (lung). The model is confident (mean pLDDT 85.31); top MGD site 0.5348, but the pocket is small (37.4 A3) with 3 accessible lysines and ligand validation was not checked. Caveat: no functional dependency evidence.",
+   "statement": "RAB42 is a second tumor-track candidate: RCC cells hold 0.627 of tumor transcripts, 2 ccRCC papers (20 total), no clinical drug, TCGA log2FC 4.371 and log2FC at purity 1 of 3.189; vital-organ max 2.6 nTPM (lung). Best MGD site is 0.5348 (37.4 A3, 3 accessible lysines, model pLDDT 85.31) with no ligand-site validation. Hypothesis; no functional or dependency evidence.",
    "evidence_ids": [
     "EV:discovery:f53feb0aa597",
+    "EV:tcga_de:f53feb0aa597",
+    "EV:purity:f53feb0aa597",
     "EV:mgd_site:99d1b16599f0",
     "EV:alphafold:c7726f37155e"
    ]
   },
   {
-   "gene": "LRRC25",
+   "gene": "OLFML2A",
    "role": "discovery",
-   "statement": "LRRC25 is an immune-track candidate (novelty 0.704) carried by macrophages (share 0.787), with 0 ccRCC papers, no clinical drug, AB/PR tractable, and protein log2fc 1.48. It would be a microenvironment target, and bone marrow expression (31 nTPM) is an off-tumor risk. Caveat: literature counted by gene symbol, no functional evidence.",
+   "statement": "OLFML2A is a stroma-track candidate carried by fibroblasts (0.647 of tumor transcripts), 2 ccRCC papers, no clinical drug, antibody-tractable; TCGA log2FC 2.372, log2FC at purity 1 of 1.527. Vital-organ max 27.9 nTPM (colon) is an off-tumor caveat, and it targets the microenvironment rather than tumor cells. Hypothesis only.",
    "evidence_ids": [
-    "EV:discovery:bbbe73889f70"
+    "EV:discovery:eb3ffaa04212",
+    "EV:tcga_de:eb3ffaa04212",
+    "EV:purity:eb3ffaa04212"
    ]
   },
   {
-   "gene": "GAL3ST4",
+   "gene": "JAG2",
    "role": "discovery",
-   "statement": "GAL3ST4 is a macrophage-attributed candidate (share 0.972, novelty 0.711) with 1 ccRCC paper, no clinical drug, antibody tractable, max vital-organ nTPM 7.4 (cerebral cortex). It is a microenvironment hypothesis, not a validated target.",
+   "statement": "JAG2 is an endothelial stroma-track candidate (0.487 of tumor transcripts), 9 ccRCC papers, no clinical drug, antibody-tractable; TCGA log2FC 1.549, log2FC at purity 1 of 1.061, TCGA survival layer present; vital-organ max 12.7 nTPM (heart muscle). Hypothesis; DepMap mean effect 0.204, not a selective dependency.",
    "evidence_ids": [
-    "EV:discovery:b3f34d2662ac"
+    "EV:discovery:85b9825a2b63",
+    "EV:tcga_de:85b9825a2b63",
+    "EV:purity:85b9825a2b63",
+    "EV:tcga_survival:85b9825a2b63"
    ]
   },
   {
-   "gene": "HMCN1",
+   "gene": "SLC37A2",
    "role": "discovery",
-   "statement": "HMCN1 is a stroma-track candidate (novelty 0.559) with endothelial transcript share 0.719, 8 ccRCC papers, no clinical drug, AB/PR tractable, and max vital-organ nTPM 19.4 (lung). Its tumor RNA log2fc is only 1.13, so the effect is modest; it is a stromal hypothesis.",
+   "statement": "SLC37A2 is a macrophage immune-track candidate (0.886 of tumor transcripts), 2 ccRCC papers, no clinical drug, AB/PR tractable; TCGA log2FC 3.093 and log2FC at purity 1 of 0.619 (purity robust). Best MGD site 0.7403 (228.1 A3, depth 11.79, 4 accessible lysines, model pLDDT 83.94), ligand-site recall 1.0 from a single ligand. Immune-cell target; hypothesis only.",
    "evidence_ids": [
-    "EV:discovery:d851b36fb6af"
+    "EV:discovery:cdf9c58accd5",
+    "EV:tcga_de:cdf9c58accd5",
+    "EV:purity:cdf9c58accd5",
+    "EV:mgd_site:5e10ec281010",
+    "EV:ligand_sites:bf1662e326e4",
+    "EV:alphafold:66b9247fa94d"
+   ]
+  },
+  {
+   "gene": "LILRB4",
+   "role": "discovery",
+   "statement": "LILRB4 is flagged infiltration-driven: macrophages hold 0.933 of tumor transcripts, TCGA log2FC 3.7 but log2FC at purity 1 only 0.508 (not purity-robust), so its bulk up-regulation reflects immune infiltration rather than tumor-cell expression.",
+   "evidence_ids": [
+    "EV:discovery:3c9bb849285e",
+    "EV:tcga_de:3c9bb849285e",
+    "EV:purity:3c9bb849285e"
    ]
   }
  ],
  "caveats": [
-  "Discovery candidates are data-ranked hypotheses with no dependency or functional evidence; literature is counted by gene symbol.",
-  "MGD scores rank sites only; pockets are small, ligand-site recall is limited or not checked, and no glue is claimed.",
-  "scRNA has few donors for some cell groups (e.g. endothelial 5, pDC 2), so cell-type shares are approximate.",
-  "CD70 and NNMT scRNA records have no evidence ids, so their cell-type numbers are not quoted.",
-  "Visium does not cover CD70."
+  "Discovery candidates are data-ranked hypotheses: concordant tumor-up expression does not show functional requirement; literature counts are by gene symbol; DepMap shows no selective dependency for the quoted genes.",
+  "MGD scores rank pockets only and do not imply a glue exists; several pockets are small (<130 A3) or have low-confidence models, and ligand-site recall from few ligands is weak evidence.",
+  "CD70 and NNMT single-cell and tumor-vs-PT values returned without evidence ids, so they are not quoted; their tumor-intrinsic claim rests on purity-extrapolated bulk data. Convergence top ranks ALDOB, SLC22A8, PIGR, UMOD, FABP1 are down in tumor (normal-tubule markers) and were not profiled at single-cell level.",
+  "EGFR was not profiled within the tool budget; tumour-cell scRNA has only one PT donor (39 cells) in some comparisons."
  ]
 }

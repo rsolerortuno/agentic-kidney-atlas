@@ -27,6 +27,8 @@ import numpy as np
 import pandas as pd
 
 from .config import load
+from .layers import selective_dependency
+from .outcomes import clearcode34
 from .paths import PROCESSED, RAW
 
 EXTRA = RAW / "extra"
@@ -56,21 +58,21 @@ def tractability_table() -> pd.DataFrame:
     if not parts:
         return pd.DataFrame(columns=["clinical", "predicted_sm_ab"])
     t = pd.concat([pd.read_parquet(p) for p in parts], ignore_index=True)
-    t = t[t["value"]]
-    clinical = t["category"].isin(["Approved Drug", "Advanced Clinical", "Phase 1 Clinical"])
+    t = t[t["value"]].copy()
+    t["is_clinical"] = t["category"].isin(["Approved Drug", "Advanced Clinical", "Phase 1 Clinical"])
     # strong predicted buckets only: SM with a high-quality ligand or pocket, AB with high-confidence surface /
     # secreted location (broad buckets such as "UniProt SigP or TMHMM" cover a third of the genome)
-    predicted = (((t["modality"] == "SM") & t["category"].isin(["High-Quality Ligand", "High-Quality Pocket"]))
-                 | ((t["modality"] == "AB") & (t["category"] == "UniProt loc high conf")))
-    hg = pd.read_csv(RAW / "hgnc_complete_set.txt", sep="\t", usecols=["symbol", "ensembl_gene_id"], dtype=str).dropna()
+    t["is_predicted"] = (((t["modality"] == "SM") & t["category"].isin(["High-Quality Ligand", "High-Quality Pocket"]))
+                         | ((t["modality"] == "AB") & (t["category"] == "UniProt loc high conf")))
+    hg = pd.read_csv(RAW / "hgnc_complete_set.txt", sep="	", usecols=["symbol", "ensembl_gene_id"], dtype=str).dropna()
     sym = dict(zip(hg["ensembl_gene_id"], hg["symbol"]))
     t["gene"] = t["targetId"].map(sym)
     t = t.dropna(subset=["gene"])
     genes = sorted(set(t["gene"]))
     out = pd.DataFrame(index=pd.Index(genes, name="gene"))
-    out["clinical"] = out.index.isin(t.loc[clinical, "gene"])
-    out["predicted_sm_ab"] = out.index.isin(t.loc[predicted, "gene"])
-    mods = t[predicted].groupby("gene")["modality"].agg(lambda s: ",".join(sorted(set(s))))
+    out["clinical"] = out.index.isin(t.loc[t["is_clinical"], "gene"])
+    out["predicted_sm_ab"] = out.index.isin(t.loc[t["is_predicted"], "gene"])
+    mods = t[t["is_predicted"]].groupby("gene")["modality"].agg(lambda s: ",".join(sorted(set(s))))
     out["predicted_modalities"] = mods.reindex(out.index)
     return out
 
@@ -129,7 +131,7 @@ def components(t: pd.DataFrame) -> pd.DataFrame:
     dep = _by_symbol(PROCESSED / "layer_dependency.parquet")
     dc = cfg["dependency"]
     if len(dep):
-        ok = (dep["n_ccrcc_lines"] >= dc["min_lines"]) & (dep["padj"] < dc["padj"]) & ~dep["common_essential"]
+        ok = selective_dependency(dep, dc)
         c = pd.Series(_clip(dep["selectivity"] / dc["selectivity_saturation"]) * _clip(
             dep["frac_ccrcc_dependent"] / dc["fraction_saturation"]) * ok.to_numpy(float), index=dep.index)
         t["c_dependency"] = np.nan_to_num(_map(t.index, c))
@@ -185,6 +187,21 @@ def components(t: pd.DataFrame) -> pd.DataFrame:
         t["c_grade"] = np.nan_to_num(_map(t.index, pd.Series(_clip(best / cfg["grade_rho_saturation"]), index=best.index)))
     else:
         t["c_grade"] = 0.0
+    # ---- ccA / ccB expression subtype (M15): second within-tumour axis. Replicated difference ccB - ccA in CPTAC and TCGA
+    # RNA, same direction, q < 0.05 in both. ClearCode34 genes define the split, so they get 0 (no circularity).
+    cc = PROCESSED / "subtype_ccab_de.parquet"
+    t["c_ccab"] = 0.0
+    if cc.exists():
+        d = pd.read_parquet(cc)
+        w = d.pivot_table(index="gene", columns="layer", values=["diff", "padj"])
+        w.columns = [f"{b}_{a}" for a, b in w.columns]
+        if {"cptac_rna_diff", "tcga_rna_diff", "cptac_rna_padj", "tcga_rna_padj"} <= set(w.columns):
+            ok = ((w["cptac_rna_padj"] < 0.05) & (w["tcga_rna_padj"] < 0.05)
+                  & (np.sign(w["cptac_rna_diff"]) == np.sign(w["tcga_rna_diff"])))
+            comp = _clip(w["tcga_rna_diff"].abs() / cfg["ccab_diff_saturation"]) * ok.to_numpy(float)
+            cs = pd.Series(comp, index=w.index)
+            cs = cs[~cs.index.isin(clearcode34())]
+            t["c_ccab"] = np.nan_to_num(_map(t.index, cs))
     corr = _by_symbol(PROCESSED / "rna_protein_correlation.parquet", col="hgnc_symbol")
     if len(corr):
         rho = corr["spearman_rho"].where(corr["padj"] < 0.05)

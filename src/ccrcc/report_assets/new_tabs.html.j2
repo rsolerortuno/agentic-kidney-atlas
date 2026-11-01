@@ -1,0 +1,173 @@
+{#- Tissue viewer, treatment response and subtypes, ADC and immune. Shares the page's macros and figure dict. -#}
+<section class="panel" id="tab-viewer" data-name="viewer">
+<h2>Tissue viewer: what sits next to a gene's high spots? {{ q('tissue_viewer') }}</h2>
+<p class="lede">Four tumour sections from Li et al. 2022 are drawn here with their own H&amp;E picture. Pick a gene and the spots in the top tenth of its expression get a ring. Then click any spot: its six neighbours light up and the panel on the right shows what they are made of. The bars compare the neighbours of all high spots with the section average, so a long orange bar means that cell type is over-represented next to the gene.</p>
+<div class="vctl">
+  <label>Section <select id="v-section"></select></label>
+  <label>Gene <select id="v-gene"></select></label>
+  <label>Colour by <select id="v-color"></select></label>
+  <label><input type="checkbox" id="v-rings" checked> ring high spots</label>
+  <label>Spot opacity <input type="range" id="v-alpha" min="10" max="100" value="70"></label>
+  <label>Spot size <input type="range" id="v-size" min="40" max="160" value="100"></label>
+</div>
+<div class="vwrap">
+  <div><canvas id="vcanvas" width="900" height="900"></canvas><p class="small" id="v-note"></p></div>
+  <div>
+    <div class="card"><h3 style="margin-top:0">Neighbours of the high spots <span class="small" id="v-nhigh"></span></h3><div id="v-bars"></div>
+      <p class="small">Orange: mean share in the six neighbours of the high spots. Blue: the same average over every spot in the section.</p></div>
+    <div class="card" style="margin-top:14px"><h3 style="margin-top:0">Selected spot</h3><div id="v-sel"><p class="small">Click a spot on the tissue.</p></div></div>
+    <div class="card" style="margin-top:14px"><h3 style="margin-top:0">Tested over all 23 sections</h3><div id="v-stats"></div>
+      <p class="small">Permutation test, adjusted over genes and cell types. This is the evidence; the live bars above are only a description of the picked section.</p></div>
+  </div>
+</div>
+<div id="vtip"></div>
+</section>
+
+<section class="panel" id="tab-response" data-name="response">
+<h2>Which genes predict response to treatment?</h2>
+{% set T = m15.treatment %}
+{% if T and T.studies %}
+<p class="lede">IMmotion150 randomised {{ T.studies.IMmotion150.patients }} patients with metastatic kidney cancer to atezolizumab with bevacizumab ({{ T.studies.IMmotion150.arms.atezo_bev }}), atezolizumab alone ({{ T.studies.IMmotion150.arms.atezo }}) or sunitinib ({{ T.studies.IMmotion150.arms.sunitinib }}). We have the RNA of each tumour before treatment and the time to progression, so for every gene we ask whether more expression goes with longer benefit in each arm. The question that matters for choosing a drug is different: does the gene work differently in the two arms? We test that as the difference between the two arm-specific hazard ratios. The nivolumab trial of Choueiri 2016 has {{ T.studies.Choueiri2016.patients }} patients and {{ T.studies.Choueiri2016.responders }} responders, so it can only check direction.</p>
+{% set C = T.signature_controls %}
+<div class="note">Before trusting any gene, we checked two published results in this download. The angiogenesis signature predicts longer progression-free survival on sunitinib (hazard ratio {{ C.sunitinib.angiogenesis.hr_per_sd }} per SD, p {{ C.sunitinib.angiogenesis.pvalue }}). The T-effector signature favours atezolizumab with bevacizumab over sunitinib (ratio of hazard ratios {{ C.atezo_bev_vs_sunitinib.T_effector.ratio_of_hr }}, p {{ C.atezo_bev_vs_sunitinib.T_effector.pvalue }}). Both reproduce, so the gene-level results rest on working data.</div>
+<div class="kpis">
+  <div class="kpi"><b>{{ T.significant.atezo_bev }}</b><span>genes tied to progression on atezolizumab + bevacizumab (q &lt; 0.1)</span></div>
+  <div class="kpi"><b>{{ T.significant.sunitinib }}</b><span>genes tied to progression on sunitinib</span></div>
+  <div class="kpi"><b>{{ T.significant.atezo_bev_vs_sunitinib }}</b><span>genes whose effect differs between the two arms</span></div>
+  <div class="kpi"><b>{{ T.studies.IMmotion150.genes_tested | int }}</b><span>genes tested</span></div>
+</div>
+<div class="grid two">
+  {{ plot('treatment_controls', figs.treatment_controls) }}
+  {{ plot('treatment_arms', figs.treatment_arms) }}
+</div>
+<h3>Top genes by arm {{ q('treatment_table') }}</h3>
+<div class="grid">
+{% for arm, label in [("atezo_bev", "Atezolizumab + bevacizumab"), ("sunitinib", "Sunitinib"), ("atezo_bev_vs_sunitinib", "Different between the arms")] %}
+<div class="tw"><table><thead><tr><th colspan="4">{{ label }}</th></tr><tr><th>Gene</th><th>log HR / SD</th><th>q</th><th>Meaning</th></tr></thead><tbody>
+{% for r in m15.treatment_top[arm] %}<tr><td><strong>{{ r.gene }}</strong></td><td class="num">{{ r.cox_log_hr }}</td><td class="num">{{ r.cox_padj }}</td><td>{{ r.direction }}</td></tr>{% endfor %}
+</tbody></table></div>
+{% endfor %}
+</div>
+<p class="small">Genes with almost no variation in an arm, or whose Cox fit did not converge, were dropped before testing. The top rows of the third table are leads, not findings: none has q below 0.1.</p>
+{% else %}<p class="small">Treatment-response data were not built in this run.</p>{% endif %}
+
+<h2>Does the answer change with the tumour's genetics?</h2>
+{% set S = m15.subtypes %}
+{% if S and S.drivers %}
+<p class="lede">A target that works for BAP1-mutant tumours may not matter for the rest. We split the CPTAC and TCGA-KIRC tumours by whether they carry a mutation in VHL, PBRM1, BAP1 or SETD2 and compared mutant with wild type. A subgroup target has to be higher in the mutants in CPTAC RNA, CPTAC protein and TCGA RNA, and also higher in tumour than in normal kidney. CPTAC has {{ S.drivers.VHL.cptac_mutant }} VHL, {{ S.drivers.PBRM1.cptac_mutant }} PBRM1, {{ S.drivers.BAP1.cptac_mutant }} BAP1 and {{ S.drivers.SETD2.cptac_mutant }} SETD2 mutant tumours.</p>
+<div class="grid two">
+  {{ plot('subtype_counts', figs.subtype_counts) }}
+  {{ plot('ccab', figs.ccab) }}
+</div>
+{% set A = S.ccab %}
+<p class="small">ccA/ccB: the ClearCode34 genes split the tumours into {{ A.cptac.ccA }} ccA and {{ A.cptac.ccB }} ccB in CPTAC, and {{ A.tcga.ccA }} and {{ A.tcga.ccB }} in TCGA-KIRC. As a check, ccB tumours have a hazard ratio of {{ A.control_tcga_os_ccB_vs_ccA.hr }} for death in TCGA (p {{ A.control_tcga_os_ccB_vs_ccA.pvalue }}, n = {{ A.control_tcga_os_ccB_vs_ccA.n }}), and the score falls with grade in CPTAC (rho {{ A.control_cptac_grade_vs_score.spearman_rho }}). {{ A.replicated_genes | int }} genes differ between ccB and ccA in both cohorts. A gene that matters here is a second biomarker axis inside the tumour, next to grade and prognosis; its component now enters the biomarker profile, with the ClearCode34 genes themselves excluded.</p>
+<h3>Subgroup target candidates {{ q('subgroup_table') }}</h3>
+<div class="grid">
+{% for drv in ["PBRM1", "BAP1", "VHL", "SETD2"] %}
+<div class="tw"><table><thead><tr><th colspan="6">{{ drv }}-mutant tumours</th></tr>
+<tr><th>Gene</th><th>CPTAC RNA</th><th>CPTAC protein</th><th>TCGA RNA</th><th>Tractable</th><th>Clinical drug</th></tr></thead><tbody>
+{% for r in (m15.subgroup_targets or {}).get(drv, []) %}<tr><td><strong>{{ r.gene }}</strong></td><td class="num">{{ r.cptac_rna_diff }}</td><td class="num">{{ r.cptac_protein_diff }}</td><td class="num">{{ r.tcga_rna_diff }}</td><td>{{ "yes" if r.predicted_tractable else "no" }}</td><td>{{ "yes" if r.clinical_drug else "no" }}</td></tr>
+{% else %}<tr><td colspan="6" class="small">No gene passes all three tests.</td></tr>{% endfor %}
+</tbody></table></div>
+{% endfor %}
+</div>
+<p class="small">Values are mutant minus wild type, in log2 units. Mutant groups are small (14 to 41 in CPTAC), and the immune content of a tumour can differ between genotypes, so an immune gene in these lists may reflect infiltration instead of tumour biology.</p>
+{% else %}<p class="small">Subtype analysis was not built in this run.</p>{% endif %}
+</section>
+
+<section class="panel" id="tab-adcimmune" data-name="adcimmune">
+<h2>Antibody-drug conjugate and radioligand targets {{ q('adc_table') }}</h2>
+{% set D = m15.adc_summary %}
+{% if D %}
+<p class="lede">An antibody-drug conjugate or a radioligand needs more than a gene that goes up. The protein has to sit on the cell surface with a part outside the membrane, it has to be missing from vital organs, and most tumour cells have to carry it, or the payload misses the rest. Each of {{ D.candidates }} tumour-up genes gets four scores: surface topology from UniProt, increase in tumour, protein staining in vital normal tissue from the Human Protein Atlas, and the share of tumour cells expressing it in the weakest quarter of donors. {{ D.surface }} have a surface location. Five known ccRCC targets are controls and rank {% for g, c in D.controls.items() %}{{ g }} {{ c.rank }}{% if not loop.last %}, {% endif %}{% endfor %} of {{ D.candidates }}.</p>
+<div class="grid two">
+  {{ plot('adc', figs.adc) }}
+  <div>
+  <div class="tw"><table><thead><tr><th>#</th><th>Gene</th><th>Score</th><th>Tumour log2FC</th><th>Vital-organ staining</th><th>Kidney</th><th>Tumour cells expressing (weak donors)</th></tr></thead><tbody>
+  {% for r in m15.adc_top %}<tr><td>{{ r.rank }}</td><td><strong>{{ r.gene }}</strong>{% if r.control %} <span class="tag">control</span>{% endif %}</td><td class="num">{{ r.suitability }}</td><td class="num">{{ r.protein_log2fc | fmt }}</td>
+  <td>{% if r.ihc_measured %}{{ ["none", "low", "medium", "high"][(r.ihc_vital_max_level | round(0) | int)] }}{% if r.ihc_vital_max_tissue %} ({{ r.ihc_vital_max_tissue }}){% endif %}{% else %}no antibody data{% endif %}</td>
+  <td>{{ ["none", "low", "medium", "high"][(r.ihc_kidney_max_level | int)] if r.ihc_kidney_max_level is not none else "—" }}</td><td class="num">{{ r.rcc_pct_donor_p25 | fmt }} %</td></tr>{% endfor %}
+  </tbody></table></div>
+  </div>
+</div>
+<p class="small">Staining is the highest level in any of 15 vital tissues. Antibodies the Atlas rates as uncertain count half. Kidney staining is shown but not scored, because radioligands are cleared by the kidney and that matters for dose, not for eligibility. Weights are {% for k, v in D.weights.items() %}{{ k | replace("_", " ") }} {{ v }}{% if not loop.last %}, {% endif %}{% endfor %}, fixed before ranking.</p>
+{% else %}<p class="small">ADC analysis was not built in this run.</p>{% endif %}
+
+<h2>Immune microenvironment {{ q('immune_table') }}</h2>
+{% set I = m15.immune_summary %}
+{% if I %}
+<p class="lede">So far immune genes were mostly treated as infiltration noise. Here they are the target. WashU's CIBERSORT and xCell estimates for {{ I.tumours }} CPTAC ccRCC tumours (110 of them are the discovery tumours with RNA, which are used for the gene-level links) sort the tumours into {{ I.classes.cold }} cold, {{ I.classes.intermediate }} intermediate and {{ I.classes.hot }} hot tumours. We then ask which genes follow CD8 T cells, regulatory T cells, M2 macrophages and the immune score across tumours, combine that with the single-cell source, the response on atezolizumab with bevacizumab and tractability, and rank every gene. Seven checkpoint genes serve as controls, and {{ I.controls_in_top100 }} of the seven reach the top 100. Their ranks are {% for g, c in I.controls.items() %}{{ g }} {{ c.rank }}{% if not loop.last %}, {% endif %}{% endfor %} of {{ "{:,}".format(I.universe) }}. So this profile finds immune biology but does not rediscover the best-known checkpoints, and it should be read as a way to list candidates, not as a validated ranking.</p>
+<div class="grid two">
+  {{ plot('immune_classes', figs.immune_classes) }}
+  <div class="tw"><table><thead><tr><th>#</th><th>Gene</th><th>Score</th><th>Immune share of transcripts</th><th>Coupling</th><th>Response on combo</th><th>RNA log2FC</th></tr></thead><tbody>
+  {% for r in m15.immune_top %}<tr><td>{{ r.rank }}</td><td><strong>{{ r.gene }}</strong></td><td class="num">{{ r.immune_target_score }}</td><td class="num">{{ r.immune_share | fmt }}</td><td class="num">{{ r.c_coupling }}</td><td class="num">{{ r.c_io_response }}</td><td class="num">{{ r.rna_log2fc | fmt }}</td></tr>{% endfor %}
+  </tbody></table></div>
+</div>
+{% else %}<p class="small">Immune analysis was not built in this run.</p>{% endif %}
+</section>
+
+<script>
+(function(){
+  var V={{ viewer_json | safe }};
+  if(!V||!V.sections||!V.sections.length) return;
+  var $=function(id){return document.getElementById(id);};
+  var cv=$('vcanvas'), ctx=cv.getContext('2d'), tip=$('vtip');
+  var cur=null, img=null, sel=-1, hi=[], highIdx=[], hover=-1;
+  var NAMES={RCC:'Tumour cell',PT:'Proximal tubule',Epi_other:'Other epithelium',Endothelial:'Endothelium',Fibroblast:'Fibroblast',Macrophage:'Macrophage',Monocyte:'Monocyte',DC:'Dendritic',Mast:'Mast',T_cell:'T cell',NK:'NK',B:'B cell',Plasma:'Plasma'};
+  var secSel=$('v-section'), geneSel=$('v-gene'), colSel=$('v-color');
+  V.sections.forEach(function(s,i){var o=document.createElement('option');o.value=i;o.textContent=(s.region==='core'?'Tumour core':'Tumour-normal border')+' · '+s.donor+' · '+s.n_spots+' spots';secSel.appendChild(o);});
+  V.genes.forEach(function(g){var o=document.createElement('option');o.value=g;o.textContent=g;geneSel.appendChild(o);});
+  geneSel.value=V.genes.indexOf('CA9')>=0?'CA9':V.genes[0];
+  var co=document.createElement('option');co.value='gene';co.textContent='Gene expression';colSel.appendChild(co);
+  V.groups.forEach(function(g){var o=document.createElement('option');o.value=g;o.textContent=(NAMES[g]||g)+' share';colSel.appendChild(o);});
+  function ramp(t){t=Math.max(0,Math.min(1,t));var a=[255,237,160],b=[177,0,38];return [a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,a[2]+(b[2]-a[2])*t];}
+  function values(){var s=cur;if(colSel.value==='gene'){var e=s.expr[geneSel.value]||[];return {v:e,max:Math.max.apply(null,e.concat([1]))};}
+    var sh=s.shares[colSel.value];return {v:sh,max:Math.max.apply(null,sh.concat([1]))};}
+  function computeHigh(){var s=cur,e=s.expr[geneSel.value]||[];var pos=[];e.forEach(function(x,i){if(x>0)pos.push(x);});
+    highIdx=[];if(pos.length<20)return; pos.sort(function(a,b){return a-b;});var thr=pos[Math.floor(pos.length*0.9)];
+    e.forEach(function(x,i){if(x>0&&x>=thr)highIdx.push(i);});}
+  function nbMean(i){var nb=cur.neighbors[i];if(!nb.length)return null;var out={};V.groups.forEach(function(g){var t=0;nb.forEach(function(j){t+=cur.shares[g][j];});out[g]=t/nb.length;});return out;}
+  function bars(){var box=$('v-bars');box.innerHTML='';computeHigh();$('v-nhigh').textContent=highIdx.length?'('+highIdx.length+' high spots)':'';
+    if(!highIdx.length){box.innerHTML='<p class="small">Too few spots with this gene in this section (fewer than 20). Pick another section or gene.</p>';return;}
+    var obs={},exp={},nh=0,ne=0;V.groups.forEach(function(g){obs[g]=0;exp[g]=0;});
+    highIdx.forEach(function(i){var m=nbMean(i);if(m){nh++;V.groups.forEach(function(g){obs[g]+=m[g];});}});
+    for(var i=0;i<cur.n_spots;i++){var m2=nbMean(i);if(m2){ne++;V.groups.forEach(function(g){exp[g]+=m2[g];});}}
+    var rows=V.groups.map(function(g){return {g:g,o:obs[g]/Math.max(nh,1),e:exp[g]/Math.max(ne,1)};});
+    rows.sort(function(a,b){return (b.o/Math.max(b.e,0.01))-(a.o/Math.max(a.e,0.01));});
+    var mx=Math.max.apply(null,rows.map(function(r){return Math.max(r.o,r.e);}).concat([1]));
+    rows.forEach(function(r){var d=document.createElement('div');d.innerHTML='<div class="bar"><span class="lab">'+(NAMES[r.g]||r.g)+'</span><span class="track"><span class="fill b" style="display:block;width:'+(100*r.o/mx)+'%"></span></span><span class="val">'+r.o.toFixed(1)+' %</span></div><div class="bar"><span class="lab"></span><span class="track"><span class="fill" style="display:block;width:'+(100*r.e/mx)+'%"></span></span><span class="val">'+r.e.toFixed(1)+' %</span></div>';box.appendChild(d);});}
+  function stats(){var box=$('v-stats'),g=geneSel.value,st=V.stats[g],n=V.stats_n[g];
+    if(!st){box.innerHTML='<p class="small">No permutation result for this gene.</p>';return;}
+    var rows=st.slice().sort(function(a,b){return b.log2-a.log2;}).filter(function(r){return r.padj<0.05;});
+    var h='<p class="small">'+n.n_high_spots+' high spots in '+n.n_sections+' sections.</p>';
+    if(!rows.length)h+='<p class="small">No cell type is significantly enriched or depleted next to this gene.</p>';
+    else{h+='<table><thead><tr><th>Cell type</th><th>log2 obs/exp</th><th>q</th></tr></thead><tbody>';rows.forEach(function(r){h+='<tr><td>'+(NAMES[r.cell_group]||r.cell_group)+'</td><td class="num">'+(r.log2>0?'+':'')+r.log2.toFixed(2)+'</td><td class="num">'+r.padj+'</td></tr>';});h+='</tbody></table>';}
+    box.innerHTML=h;}
+  function draw(){if(!img||!cur)return;var W=cv.parentNode.clientWidth||900;cv.width=W;cv.height=Math.round(W*cur.height/cur.width);var k=W/cur.width;
+    ctx.clearRect(0,0,cv.width,cv.height);ctx.drawImage(img,0,0,cv.width,cv.height);
+    var vals=values(),alpha=$('v-alpha').value/100,rad=cur.spot_px*k/2*($('v-size').value/100);
+    for(var i=0;i<cur.n_spots;i++){var c=ramp(vals.v[i]/vals.max);var a=vals.v[i]>0?alpha*(0.25+0.75*vals.v[i]/vals.max):alpha*0.08;
+      ctx.fillStyle='rgba('+c[0]+','+c[1]+','+c[2]+','+a+')';ctx.beginPath();ctx.arc(cur.x[i]*k,cur.y[i]*k,rad,0,6.2832);ctx.fill();}
+    if($('v-rings').checked){ctx.strokeStyle='#eb6834';ctx.lineWidth=1.6;highIdx.forEach(function(i){ctx.beginPath();ctx.arc(cur.x[i]*k,cur.y[i]*k,rad+1.5,0,6.2832);ctx.stroke();});}
+    if(sel>=0){ctx.strokeStyle='#1c1c1b';ctx.lineWidth=1.4;cur.neighbors[sel].forEach(function(j){ctx.beginPath();ctx.arc(cur.x[j]*k,cur.y[j]*k,rad+2.5,0,6.2832);ctx.stroke();});
+      ctx.lineWidth=2.6;ctx.strokeStyle='#e34948';ctx.beginPath();ctx.arc(cur.x[sel]*k,cur.y[sel]*k,rad+3,0,6.2832);ctx.stroke();}}
+  function nearest(ev){var r=cv.getBoundingClientRect(),k=cv.width/cur.width,mx=(ev.clientX-r.left)*(cv.width/r.width)/k,my=(ev.clientY-r.top)*(cv.height/r.height)/k,best=-1,bd=1e9,lim=cur.spot_px*1.2;
+    for(var i=0;i<cur.n_spots;i++){var dx=cur.x[i]-mx,dy=cur.y[i]-my,d=dx*dx+dy*dy;if(d<bd){bd=d;best=i;}}return bd<lim*lim?best:-1;}
+  function showSel(){var box=$('v-sel');if(sel<0){box.innerHTML='<p class="small">Click a spot on the tissue.</p>';return;}
+    var m=nbMean(sel),g=geneSel.value,e=(cur.expr[g]||[])[sel]||0;var h='<p class="small">'+g+' in this spot: log1p CPM '+(e/V.expr_scale).toFixed(2)+(highIdx.indexOf(sel)>=0?' (a high spot)':'')+'. Six neighbours are outlined.</p>';
+    var rows=V.groups.map(function(x){return {g:x,s:cur.shares[x][sel],n:m?m[x]:0};}).sort(function(a,b){return b.s-a.s;}).slice(0,6);
+    rows.forEach(function(r){h+='<div class="bar"><span class="lab">'+(NAMES[r.g]||r.g)+'</span><span class="track"><span class="fill" style="display:block;width:'+r.s+'%"></span></span><span class="val">'+r.s+' % · nb '+r.n.toFixed(0)+' %</span></div>';});
+    box.innerHTML=h;}
+  function load(){cur=V.sections[+secSel.value];sel=-1;img=new Image();img.onload=function(){refresh();};img.src=cur.image;}
+  function refresh(){computeHigh();bars();stats();showSel();draw();$('v-note').textContent=cur.region==='core'?'Tumour core section. Left to right and top to bottom are image directions, not anatomy.':'Section across the tumour-normal border.';}
+  secSel.addEventListener('change',load);geneSel.addEventListener('change',function(){sel=-1;refresh();});colSel.addEventListener('change',draw);
+  ['v-rings','v-alpha','v-size'].forEach(function(id){$(id).addEventListener('input',draw);});
+  cv.addEventListener('click',function(ev){sel=nearest(ev);showSel();draw();});
+  cv.addEventListener('mousemove',function(ev){var i=nearest(ev);if(i<0){tip.style.display='none';return;}var g=geneSel.value,e=((cur.expr[g]||[])[i]||0)/V.expr_scale;
+    var top=V.groups.slice().sort(function(a,b){return cur.shares[b][i]-cur.shares[a][i];})[0];tip.style.display='block';tip.style.left=(ev.clientX+12)+'px';tip.style.top=(ev.clientY+12)+'px';
+    tip.textContent=g+' '+e.toFixed(2)+' · mostly '+(NAMES[top]||top)+' ('+cur.shares[top][i]+' %)';});
+  cv.addEventListener('mouseleave',function(){tip.style.display='none';});
+  window.addEventListener('resize',draw);
+  window.viewerShow=function(){if(!cur)load();else draw();};
+})();
+</script>
