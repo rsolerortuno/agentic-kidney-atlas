@@ -233,9 +233,8 @@ def test_mcp_config_passes_the_replicate_folder_to_the_servers():
 
 
 def test_overview_text_blocks_are_complete():
-    from ccrcc.report_text import GLOSSARY, PLAIN, TOUR
+    from ccrcc.report_text import PLAIN, TOUR
     tabs = {"candidates", "omics", "cells", "structure", "discovery", "viewer", "response", "adcimmune", "validation",
             "literature", "network", "methods"}
     assert set(PLAIN) == tabs and {t[0] for t in TOUR} == tabs
-    assert len(GLOSSARY) >= 12
     assert not any("—" in v for v in PLAIN.values())

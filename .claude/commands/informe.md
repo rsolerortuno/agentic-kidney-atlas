@@ -56,7 +56,24 @@ Follow these steps exactly. All numbers come from tools/scripts; you never compu
    - `robustness` (1–2 paragraphs): read `profiles.target` and `profiles.biomarker` and every row's
      `rank_interval_90` in `convergence.json`. Separate the candidates whose position survives random re-weighting
      (high `p_top10` / `p_top25`, narrow interval) from those that depend on the chosen weights.
-   - 2–4 summary paragraphs; 1–3 paragraphs per section; 8–12 entries in `targets` ordered by your judgment of
+   - **Unexplored candidates are part of the summary, not only of the `discovery` section.** The convergence ranking rewards
+     literature and existing drugs, so it can never put a little-studied gene on top. The discovery screen is where those
+     genes live. The summary must therefore contain one dedicated paragraph on the best unexplored candidates: two or three
+     genes from `role: "discovery"` findings (prefer the tumour-cell track; say when the best ones belong to the stroma or
+     immune track), and for each one say in plain sentences what supports it (cell source, replication in TCGA, protein or
+     phospho evidence, tractability), what is still missing (accessible surface protein, staining in normal tissues,
+     selective dependency, confirmatory-cohort data, heterogeneity across tumour cells) and which kind of study would test
+     it. Frame them as "identified and prioritised for experimental validation", never as "discovered" or "proven":
+     "novel" here means at most 15 ccRCC papers and no clinical drug, not that nothing was published, and the analysis does
+     not show that treating the gene would help a patient. If one of them has earlier preclinical literature, say that the
+     analysis reinforces an existing hypothesis; check it with the literature agent's findings and do not cite papers you
+     did not see in the evidence.
+   - Put at least two genes from the discovery screen in `targets`, ordered by your judgment, with `category` "target" and a
+     `rationale` that begins with "Exploratory:" and names the main limitation.
+   - Write the `discovery` section in prose, one paragraph per leading gene (not a list of scores): what the gene is, which
+     cell makes it, what the independent layers show, what is missing. Put the numeric annotations at the end of each
+     sentence, not in the middle of it.
+   - 3–5 summary paragraphs; 1–3 paragraphs per section; 10–14 entries in `targets` ordered by your judgment of
      strength (you may depart from the numeric ranking, but say why in `rationale`). Use the target profile for
      target calls and the biomarker profile for biomarker calls; the overall convergence score mixes both.
    - Read `docs/numeric-claims.md`. Bind numbers to their specific metric, evidence ID and context.

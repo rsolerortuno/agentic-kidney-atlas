@@ -18,7 +18,7 @@ from . import report_figures as F
 from . import report_figures_m15 as F15
 from .m15_tables import build as build_m15
 from .report_help import HELP
-from .report_text import GLOSSARY, PLAIN, TOUR
+from .report_text import PLAIN, TOUR
 from .graph import GraphStore
 from .paths import PROCESSED, REPORTS
 
@@ -304,6 +304,8 @@ def render(findings_path: Path, out: Path | None = None) -> Path:
         "purity": F.purity_shift(list(dict.fromkeys(cand + [r["gene"] for r in profiles.get("target", [])[:8]]))),
         "kinases": F.kinase_bars(), "outcomes": F.outcome_auroc(evals.get("outcomes")),
     })
+    grade_genes = top_genes[:12] + [r["gene"] for r in cell["discovery_cards"] if r["track"] == "tumor"]
+    grade_caption = F.grade_summary(grade_genes)
     m15 = build_m15(cand + top_genes)
     figs.update({
         "treatment_arms": F15.treatment_arms(set(cand + top_genes[:10])),
@@ -362,7 +364,7 @@ def render(findings_path: Path, out: Path | None = None) -> Path:
         verification=json.loads(vpath.read_text(encoding="utf-8")) if vpath.exists() else None,
         graph_stats=json.loads((PROCESSED / "graph_stats.json").read_text()),
         profiles=profiles, profile_weights=f["convergence"].get("profile_weights") or {}, evals=evals, layers=layers,
-        m15=m15, viewer_json=viewer_json, release=RELEASE, tour=TOUR, glossary=GLOSSARY,
+        m15=m15, grade_caption=grade_caption, viewer_json=viewer_json, release=RELEASE, tour=TOUR,
     )
     out = out or REPORTS / "ccrcc_report.html"
     out.write_text(html_out, encoding="utf-8")

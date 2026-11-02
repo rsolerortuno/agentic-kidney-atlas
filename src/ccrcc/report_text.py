@@ -1,4 +1,4 @@
-"""Plain-language text blocks of the report: tab intros, glossary and the guided tour on the Overview page.
+"""Plain-language text blocks of the report: tab intros and the guided tour on the Overview page.
 
 Written for someone who knows a little biology but not this pipeline. Nothing here is computed.
 """
@@ -17,24 +17,6 @@ PLAIN: dict[str, str] = {
     "network": "The network draws the top genes, the drugs that act on them and the genes known to interact. It helps you see clusters and neighbours. It is not proof of mechanism.",
     "methods": "This tab holds the receipts: every dataset with its checksum, the models used, the limits of the analysis, and a searchable list of the evidence records the report cites.",
 }
-
-GLOSSARY: list[tuple[str, str]] = [
-    ("log2 fold change (log2FC)", "How much a gene changes between two groups, on a doubling scale. +1 means twice as high, +2 four times, -1 half."),
-    ("Adjusted p-value (q)", "How surprising a result would be if nothing were going on, corrected for testing thousands of genes. Smaller is more reliable. Below 0.05 is the usual cut."),
-    ("Matched normal", "Healthy kidney tissue taken from the same patient as the tumour, so differences are not just differences between people."),
-    ("RNA, protein, phospho", "RNA is the message copied from a gene. Protein is what the cell builds from it and is closer to what a drug hits. Phospho means a phosphate tag on a protein, which switches many proteins on or off."),
-    ("Convergence", "Agreement between independent kinds of evidence. A gene supported by several separate lines is more believable than one supported by a single large test."),
-    ("Tumour purity", "The share of a tumour sample that is cancer cells. Low purity means many normal and immune cells are mixed in, which can fake a signal."),
-    ("Track", "Which cell type makes most of a gene's transcripts in the tumour: tumour cells, stroma (blood vessels and connective tissue) or immune cells."),
-    ("Hazard ratio (HR)", "How much faster something bad (progression, death) happens in one group. 1 is no difference, 2 is twice the rate, 0.5 is half. Log HR is the same on a log scale, and below 0 means longer benefit."),
-    ("DepMap dependency", "Whether cancer cell lines die when a gene is switched off in a laboratory screen. A gene the cells depend on is a stronger drug target than one that is merely high."),
-    ("Tractable", "Looks like it could be hit by a drug: a small molecule that fits a pocket, or an antibody that can reach it on the cell surface."),
-    ("ADC and radioligand", "Antibody-drug conjugate and radioligand therapy. A targeting molecule carries a toxin or radiation to cells that show a given surface protein."),
-    ("ccA and ccB", "Two expression subtypes of kidney cancer. ccA has a better outlook and ccB a worse one."),
-    ("Visium spot", "A 55 micrometre circle of tissue whose RNA is read together, so it holds a few cells and not one."),
-    ("AUROC", "How well a score separates true cases from the rest. 0.5 is a coin flip and 1.0 is perfect."),
-    ("Evidence record", "A stored note with the number, the dataset and the date behind a claim. The small bracketed numbers in the text open these records."),
-]
 
 TOUR: list[tuple[str, str, str]] = [
     ("candidates", "Candidates", "Which genes have the most agreeing evidence? The ranking, how each score is built and how stable the order is."),

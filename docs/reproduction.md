@@ -69,3 +69,23 @@ Targeted `.gitattributes` rules preserve frozen text bytes. All 20 hashed projec
 configuration and lock files matched after checkout from the staged Git tree
 with both `core.autocrlf=false` and `core.autocrlf=true`. Existing CRLF blobs are
 preserved byte-for-byte to avoid rewriting historical inputs.
+
+## Re-freeze of the saved agent analysis (2026-11-02)
+
+The agent step was run again after the orchestrator instructions changed (the summary now has to discuss the best
+unexplored candidates from the discovery screen, and at least two of them go into the final target list). This is a
+reviewed change to saved model analyses, not a refresh of upstream data:
+
+- The selected analysis is now `runs/2026-11-02`. `runs/2026-11-01` stays in the repository as the earlier analysis.
+- `reproducibility/inputs.json` was updated only for the entries that describe the saved analysis: the selected run's agent
+  files, basis and narrative, and the two replicate findings. Raw data, caches, configuration and the dependency lock keep
+  their frozen hashes.
+- Final verification of the new run checked 113 statements with no failures detected by the automatic checks (0 unsupported,
+  0 semantic, 0 stale). The two repeat runs checked 115 and 118. The final target lists of the three runs have a mean
+  Jaccard overlap of 0.905, and COL23A1 and RAB42 appear in all three.
+- The files in `reproducibility/clean-run.log`, `clean-comparison.json`, `acceptance.json` and `runtime-hashes.json` describe
+  the earlier clean execution. They were not regenerated, because processed data, configuration and code that produce the
+  tables did not change. The report templates, help texts and figures did change after that execution.
+- A rebuild of the derived data on the developer machine (`run-all` without the frozen check, because three upstream PDB
+  reference files changed) produced the same counts as before: 462 claims and 1,730 evidence records in the validator for the
+  earlier analysis.
