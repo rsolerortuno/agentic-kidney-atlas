@@ -1,54 +1,40 @@
 {
  "agents": {
   "agent_omics.json": {
-   "submitted": 13,
-   "kept": 13,
+   "submitted": 10,
+   "kept": 10,
    "dropped": 0,
    "dropped_detail": [],
    "semantic_failures": 0,
    "ids_removed": 0
   },
   "agent_literature.json": {
-   "submitted": 13,
-   "kept": 13,
+   "submitted": 11,
+   "kept": 11,
    "dropped": 0,
    "dropped_detail": [],
    "semantic_failures": 0,
-   "ids_removed": 1
+   "ids_removed": 0
   },
   "agent_external.json": {
-   "submitted": 11,
-   "kept": 10,
-   "dropped": 1,
-   "dropped_detail": [
-    {
-     "text": "Established ccRCC target (VEGFR2). Open Targets association score 0.4566. Approved drugs include PAZOPANIB HYDROCHLORIDE (APPROVAL), AXITINIB (APPROVAL), TIVOZA",
-     "gene": "KDR",
-     "cited": 4,
-     "nonexistent": [],
-     "not_linked_to_gene": [],
-     "kept": false,
-     "unmatched_numbers": [
-      "0.079"
-     ],
-     "direction_contradiction": null,
-     "semantic_failure": true
-    }
-   ],
-   "semantic_failures": 1,
+   "submitted": 12,
+   "kept": 12,
+   "dropped": 0,
+   "dropped_detail": [],
+   "semantic_failures": 0,
    "ids_removed": 0
   },
   "agent_cells.json": {
-   "submitted": 19,
-   "kept": 19,
+   "submitted": 18,
+   "kept": 18,
    "dropped": 0,
    "dropped_detail": [],
    "semantic_failures": 0,
    "ids_removed": 0
   },
   "agent_applied.json": {
-   "submitted": 30,
-   "kept": 30,
+   "submitted": 28,
+   "kept": 28,
    "dropped": 0,
    "dropped_detail": [],
    "semantic_failures": 0,

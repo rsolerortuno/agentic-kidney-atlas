@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "status": "frozen local input inventory; clean reconstruction verified",
+  "status": "frozen local input inventory; analysis outputs re-frozen on 2026-11-02 after review (see docs/reproduction.md)",
   "source_checkout_commit": "79289e602ab2935db327fd85f378c5f10d1bba65",
   "config_sha256": "92a60b6c9eb179043b45b85963f13659ff698fcb6133cd5f33cdd052e9d99329",
   "uv_lock_sha256": "22f178bdc21ea28222e6524d72b967b5e4ef2da678ab1515e63996a6f449f665",
@@ -73473,32 +73473,32 @@
   ],
   "project_files": [
     {
-      "path": "runs/2026-11-01/agent_applied.json",
-      "sha256": "f2ac55c4548007ddd6dff427610c6be230767e7c9e11be2527c13dc6334e8988"
+      "path": "runs/2026-11-02/agent_applied.json",
+      "sha256": "4faa3d871ee38118ba0b5ec66b30f3e4556845893799a353f57d2fad2a3ca860"
     },
     {
-      "path": "runs/2026-11-01/agent_cells.json",
-      "sha256": "010cf18edd366b37270c00866d93b62717fe3d87d3f0cb496ca1dd05a757ed21"
+      "path": "runs/2026-11-02/agent_cells.json",
+      "sha256": "b4c687a288e9e241da23f90c838c737ee06b982c58fbe458e50201e33d654d18"
     },
     {
-      "path": "runs/2026-11-01/agent_external.json",
-      "sha256": "8085974a51e3db69f35b922c32f00fb85476b57d7a6a359107ef8f64c3c2f16a"
+      "path": "runs/2026-11-02/agent_external.json",
+      "sha256": "1095a6198b67a386e45b43fefee18964fd34b88bdaaa4be749f6acfc64719b21"
     },
     {
-      "path": "runs/2026-11-01/agent_literature.json",
-      "sha256": "7cb8156a56ce550891cc4b6192422dbdd4893bf1fc3b9d4b853c59ed5cb5e324"
+      "path": "runs/2026-11-02/agent_literature.json",
+      "sha256": "59b51d92d57cf68b7709083ae3b8dcdfbb588c9f9ad6d33b39771f9b4c16cae6"
     },
     {
-      "path": "runs/2026-11-01/agent_omics.json",
-      "sha256": "3f3b1404cd145f3522e722f5b55c086765c24ff7da4473a7691e2bd5c3730f88"
+      "path": "runs/2026-11-02/agent_omics.json",
+      "sha256": "57f1415a98c99aee2c80d496f8b8eaf4e072519c5f534186aaa0a01e4ae331d3"
     },
     {
-      "path": "runs/2026-11-01/basis.json",
-      "sha256": "16e4089f3af4fa89d35cb4de0c570739e139d950e1ad05584279136b2b0056f2"
+      "path": "runs/2026-11-02/basis.json",
+      "sha256": "3ffe4da5f9a4f3a0a0287582c990746b7c6e527c6e9e82cdcce13b01683669c9"
     },
     {
-      "path": "runs/2026-11-01/narrative.json",
-      "sha256": "145e10fdb9d5ed2d7aef14f3f882bfda638074cd4e291ed462de44c43bec9d3a"
+      "path": "runs/2026-11-02/narrative.json",
+      "sha256": "07ecd344d4b019550f985c3961f24c31c04d4d21eccb30540ce26683197e70a9"
     },
     {
       "path": "src/ccrcc/reference_data/degradation.json",
@@ -73538,15 +73538,15 @@
     },
     {
       "path": "runs/replicates/rep1/findings.json",
-      "sha256": "b1a5161b022632a6dd02eabf680c76e42ce3fac1884a77ac4f8c3a8952746467"
+      "sha256": "d1d96a30740a8885577fd0c1a978cb0e20e08c545815c5e09220b29a1639bb3f"
     },
     {
       "path": "runs/replicates/rep2/findings.json",
-      "sha256": "65567b3075622ea98de3b8da6379dea0b56950689b0c6247fca3386823730c3d"
+      "sha256": "5a3b30b1ead62abf8e052319afb373f906015f598ab0b978b8f8f11d23c68181"
     }
   ],
   "snapshot_policy": "Hashes freeze retained inputs. Missing historical provider revisions are explicitly marked, never inferred from current upstream. This manifest does not redistribute source datasets.",
-  "analysis_run": "runs/2026-11-01",
+  "analysis_run": "runs/2026-11-02",
   "project_input_globs": [
     "runs/replicates/*/findings.json",
     "evals/baselines/closed_book_*.json"

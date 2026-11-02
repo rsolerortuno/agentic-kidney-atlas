@@ -115,7 +115,7 @@ All data are public. Files are listed with checksums in [reproducibility/inputs.
 
 ## 5. Main results
 
-Numbers come from the saved, reviewed analysis (`runs/2026-11-01`). The report gives the detail and the caveats.
+Numbers come from the saved, reviewed analysis (`runs/2026-11-02`). The report gives the detail and the caveats.
 
 **Known biology is recovered.**
 HIF target genes (CA9, NDUFA4L2, ANGPTL4, VEGFA) are strongly up and replicate in the second cohort. Loss of
@@ -127,6 +127,14 @@ CA9 is the only gene that stays in the top ten whatever the weights. The main ta
 SCARB1 and SLC16A3. The main biomarker calls are PSAT1, PCK1, ALDH6A1 and SLC6A19, mostly kidney genes that the tumour
 loses. No expression-based target is a gene the cancer cells depend on, so these are handles for antibodies, conjugates
 or radioligands, not weak spots of the cell.
+
+**Unexplored candidates.**
+The ranking above favours genes that are already well studied. A separate discovery screen looks for the opposite: genes
+that rise in tumours, are made mainly by one cell type, have few ccRCC papers and no clinical drug. The best tumour-cell
+candidates are COL23A1 and RAB42. For each one the report says what supports it (higher in tumour in two cohorts, made by
+tumour cells, still present at full tumour purity) and what is missing (staining in normal tissue, a selective dependency,
+confirmatory proteomics). They are hypotheses prioritised for experimental validation, not discoveries: earlier preclinical
+work may exist, because "novel" here only means at most 15 ccRCC papers and no clinical drug.
 
 **Replication.**
 In the confirmatory cohort, 79 % of the protein changes and 73 % of the phosphosite changes found in the discovery
@@ -157,10 +165,10 @@ lists candidates and is not a validated ranking.
 | Retrospective test on 6 targets first trialled in 2016 or later | AUROC 0.89; 1 of the 6 in the top 100. Features are not frozen before 2016, so this is retrospective, not prospective |
 | Biomarker profile against ClearCode34 genes | AUROC 0.74 |
 | Known-answer questions answered with the project's tools | 10 of 10 |
-| Agent text against its evidence | 130 statements checked, no failures detected by the automatic checks |
-| Report validator | 462 claims, 1,730 evidence records, all resolvable, no external resources |
+| Agent text against its evidence | 113 statements checked, no failures detected by the automatic checks |
+| Report validator | 445 claims, 1,663 evidence records, all resolvable, no external resources |
 | Agents against a model answering from memory | The memory-only model gives the textbook list (60 % clinical targets, nothing citable); the pipeline gives data-backed candidates |
-| Repeat agent runs | Mean overlap (Jaccard) 0.94 between the final target lists of three runs |
+| Repeat agent runs | Mean overlap (Jaccard) 0.91 between the final target lists of three runs; the first twelve candidates are the same in all three |
 
 A control is a known case scored the same way as the candidates. Known antibody targets rank near the top. Known
 immune checkpoints rank unevenly, and the report says so.

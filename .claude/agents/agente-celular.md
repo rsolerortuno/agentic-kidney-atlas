@@ -49,7 +49,7 @@ Output: write the file you are told to write (JSON, UTF-8, no comments):
  "caveats": ["Free-text limitations (no evidence ids needed)."]}
 ```
 
-Rules: 12-20 findings (at least 4 about discovery candidates, with role "discovery"). Every finding MUST cite evidence ids returned by the tools *for that same gene*; findings without them
+Rules: 12-20 findings (at least 6 about discovery candidates, with role "discovery": two or three per track, tumour track first). A discovery finding is a plain sentence about one gene: which cell type makes it, what the replication, purity and survival layers show, and what is missing before it could be validated (surface protein, normal-tissue staining, dependency, heterogeneity across tumour cells). Do not write a bare list of scores. Every finding MUST cite evidence ids returned by the tools *for that same gene*; findings without them
 are discarded automatically. Before writing, call `check_evidence_ids` on all ids you cite. Return a one-line summary when done.
 
 Numeric verification: read `docs/numeric-claims.md` before writing. Every number must match its specific metric and context in cited evidence; ranking/global number pools provide no support. For multiple layers or nested metrics, include `numeric_claims` and the exact canonical annotations described there. Preserve sign and unit. Review rejected findings and correct their original inputs; filtering them out does not make a run pass. Passing means no failures detected by automatic checks, not complete scientific validation.

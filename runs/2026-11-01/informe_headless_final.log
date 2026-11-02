@@ -1,20 +1,16 @@
-﻿I have a template from the previous run. Now I'll wait for the five agents to finish.
+﻿The report is ready at `C:\Users\rafae\Documents\ccrcc-graphrag\reports\ccrcc_report.html`. Final verification checked 113 statements and found 0 unsupported claims. The checks cover evidence links and numbers only, so they don't validate the scientific interpretation.
 
-The omics agent is done. Four agents are still running.
+**Summary**
+1. **CA9 has the strongest convergent evidence.** It is first in the overall ranking and stays near the top when the weights are varied. Its protein is higher in tumours, almost all of it is made by the cancer cells (in two single-cell datasets), and it has clinical-stage antibodies. No ccRCC cell line depends on it, so it suits antibodies, imaging or drug conjugates rather than inhibition.
+2. **Next come CD70, NNMT, ENPP3, SCARB1 and SLC16A3.** Each has a caveat: CD70 is partly made by immune cells, NNMT has no drug (though its protein increase replicates and it goes with shorter survival), ENPP3 stains normal kidney and gut, and the second single-cell dataset doesn't confirm SCARB1 comes from tumour cells. EPAS1 (belzutifan) remains the only validated drug target and the only selective dependency.
+3. **The strongest biomarkers are PSAT1 and PCK1.** Both are normal-kidney enzymes lost in tumours, and the loss replicates in the confirmatory cohort. HK2 drops out because its protein increase doesn't replicate there.
+4. **Unexplored candidates, prioritised for experimental validation:** COL23A1 and RAB42, both made by the tumour cells, higher in TCGA tumours and still present at full tumour purity. None has a selective dependency or normal-tissue staining data. GAL3ST4, a macrophage gene, is a microenvironment hypothesis only.
+5. **No candidate predicts treatment response in IMmotion150**, and no gene separates the two main arms. Structure scores are descriptive only. The top of the overall ranking is mostly lost normal-kidney genes, which are biomarkers, not targets.
 
-The literature agent is done too. Three agents are still running.
+**Changes made during the run**
+- **Agent rewrites:** the first agent verification dropped 55 of 74 findings. Every external, cells and applied finding failed because their numbers lacked the structured annotations the verifier requires; a few omics and literature findings had unsupported ranks or counts. I sent each agent its failures to fix rather than discard the results, and all 75 findings now pass.
+- **Applied agent file:** I rebuilt its annotations myself from the stored evidence records, because the agent couldn't see each record's type and source.
+- **HK2 finding:** I added it to `agent_applied.json` from a confirmatory-cohort lookup I ran myself. The instructions name HK2 as the example that doesn't replicate, but no agent had checked it.
 
-Three agents are done (omics, literature, external). Waiting on the cell and applied agents.
-
-The applied agent is done. Only the cell agent is still running.
-
-The report is ready: `C:\Users\rafae\Documents\ccrcc-graphrag\reports\ccrcc_report.html`. The final check found 0 unsupported claims out of 118. One cells paragraph was first dropped because a value lacked its evidence id; I added the citation and re-ran.
-
-1. **CA9 has the strongest and most robust convergent evidence.** It is up in tumour (RNA log2FC 6.312, protein 2.269), replicates in TCGA-KIRC, is still up after correcting for tumour purity, and is carried by tumour cells in both single-cell datasets. Girentuximab has reached phase 3. It is not prognostic and not a dependency, so it suits an antibody, radioligand or imaging approach.
-2. **NNMT is the best combined target and biomarker.** It is tumour-intrinsic and prognostic (Cox log HR 0.301), and it holds in every validation layer: confirmatory proteomics, the second single-cell dataset and the literature. It has no drug, so as a target it is a small-molecule hypothesis.
-3. **CD70 and SCARB1 come next, each with a caveat.** CD70 has clinical antibodies and the best antibody-drug-conjugate (ADC) suitability score among the known targets (0.746), but 0.654 of its tumour transcripts come from immune cells and the two single-cell datasets disagree on which cells carry it. SCARB1 is the target whose rank changes least under re-weighting (top 10 in 0.968 of draws), but it has no literature or drug.
-4. **The leading biomarkers mark loss of normal kidney tubule identity.** PSAT1, PCK1, ALDH6A1, ALDOB and SLC22A8 are lost in tumour and prognostic; PSAT1 and PCK1 also replicate in confirmatory proteomics. EPAS1 (belzutifan) is the only candidate with a selective DepMap dependency, and it is borderline.
-5. **The clinical layers add caveats rather than confirmation.** No gene separates the IMmotion150 treatment arms, and no convergent target is a cell-line dependency. Some coverage is missing: CA9 and CD70 could not be tested in the confirmatory cohort, and HK2 was not checked there, so the report does not repeat the earlier note that HK2 fails to replicate. STRING interactions were not queried.
-
-The evidence check removed two findings from the agent files, one from the external agent and one from the cells agent.
+The PubMed connector isn't authorised, so the literature agent used only the project's local corpus. To enable it, authorise PubMed in your claude.ai connector settings.
 official exit 0

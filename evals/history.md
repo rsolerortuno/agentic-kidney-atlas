@@ -252,3 +252,16 @@ Everything added since the first release is described here by purpose, not by th
 ## Reliability and structural explorer revision (in progress)
 
 First trial dates now use all RCC trial phases before advanced-trial eligibility filtering. Missing dates prevent post-2016 assignment. On the local input snapshot, the retrospective group changes from 13 to 6 genes; target-profile AUROC is 0.887 and recall@100 is 1/6. Features are not historically frozen, so this is not prospective validation. Other requirements remain in progress; no new report release has been validated yet.
+
+
+## Unexplored candidates in the summary (2026-11-02)
+
+The first summary of the saved analysis (130 statements, run 2026-11-01) did not mention the discovery screen. The
+convergence ranking rewards literature and existing drugs, so it can never place a little-studied gene near the top, and
+the orchestrator only read the ranking. The instructions now require a summary paragraph on the best unexplored
+candidates, at least two discovery genes in the final target list labelled "Exploratory", and a prose discovery section.
+New run (`runs/2026-11-02`): final targets include COL23A1, RAB42 and GAL3ST4 (OLFML2A in one repeat); 113 statements, no
+failures detected by the automatic checks; repeats 115 and 118; mean Jaccard of the three target lists 0.905 (0.944 before).
+The lower overlap comes from the third exploratory slot, which differs between runs. The framing is "identified and
+prioritised for validation", not "discovered": earlier preclinical literature may exist for these genes, and the screen
+counts papers rather than reading them.

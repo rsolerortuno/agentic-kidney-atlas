@@ -1,14 +1,155 @@
-{"agent":"agente-omico","findings":[
-{"gene":"CA9","role":"target_and_biomarker","statement":"CA9 is up in tumour at RNA (log2FC 6.312, padj 1.72e-49) and protein (log2FC 2.269, padj 9.9e-43), with RNA-protein Spearman rho 0.797; TCGA-KIRC replicates (log2FC 9.712) and the purity-extrapolated RNA log2FC is 7.787, so the signal is tumour-intrinsic.","evidence_ids":["EV:omics_de:b269736afdb0","EV:omics_de:5afe18b4024b","EV:omics_rna_protein:225a767ebcb5","EV:tcga_de:225a767ebcb5","EV:purity:225a767ebcb5"]},
-{"gene":"NNMT","role":"target_and_biomarker","statement":"NNMT is strongly up at RNA (log2FC 4.67, padj 2.04e-40) and protein (log2FC 2.709, padj 1.23e-43); it replicates in TCGA (log2FC 4.685) and higher expression is prognostic for worse survival (log HR 0.301, padj 0.00479).","evidence_ids":["EV:omics_de:aefc373d6072","EV:omics_de:de39cc0c5ed8","EV:tcga_de:7dbf93860d9f","EV:tcga_survival:7dbf93860d9f"]},
-{"gene":"CD70","role":"target","statement":"CD70 is up at RNA (log2FC 4.464) and protein (log2FC 2.421); TCGA replicates (log2FC 7.09), purity-extrapolated RNA log2FC is 4.278, and it is a membrane target with clinical-stage anti-CD70 agents (cusatuzumab Phase 2).","evidence_ids":["EV:omics_de:97c97f6d7d62","EV:omics_de:8a1dc0572ead","EV:tcga_de:908e84663f6a","EV:purity:908e84663f6a"]},
-{"gene":"ENPP3","role":"target","statement":"ENPP3 is up at RNA (log2FC 3.895) and protein (log2FC 1.544), replicates in TCGA (log2FC 5.557), and has 0.182 frequency of copy loss; the ADC AGS-16C3F reached Phase 2.","evidence_ids":["EV:omics_de:d540450c23e1","EV:omics_de:fad29d44ef95","EV:tcga_de:d5aee88146ed"]},
-{"gene":"SCARB1","role":"target","statement":"SCARB1 ranks first in the target profile: RNA log2FC 2.974 and protein log2FC 1.837, TCGA log2FC 3.989; the purity-extrapolated RNA log2FC is 3.762, indicating tumour-cell expression.","evidence_ids":["EV:omics_de:36b227bd1fb6","EV:omics_de:cd4a629b011f","EV:tcga_de:2d66f8e78d0c"]},
-{"gene":"SLC16A3","role":"target","statement":"SLC16A3 (MCT4, a membrane lactate transporter) is up at RNA (log2FC 3.435) and protein (log2FC 2.279) and replicates in TCGA (log2FC 3.291).","evidence_ids":["EV:omics_de:545c6eb28bce","EV:omics_de:d93a2cc11342","EV:tcga_de:11298113327b"]},
-{"gene":"PSAT1","role":"biomarker","statement":"PSAT1 is down in tumour at RNA (log2FC -3.867) and protein (log2FC -1.963) and tops the biomarker profile; TCGA Cox log HR 0.43 (padj 5.66e-7). The direction reflects loss of tubule identity rather than a target.","evidence_ids":["EV:omics_de:fe09b800ea76","EV:omics_de:8fa49cbb1760","EV:tcga_survival:58119698ea36"]},
-{"gene":"PCK1","role":"biomarker","statement":"PCK1 is down in tumour at RNA (log2FC -4.424) and protein (log2FC -1.859), replicates in TCGA (log2FC -3.079), and low expression predicts worse survival (log HR -0.415, padj 1.91e-7).","evidence_ids":["EV:omics_de:85b979e6e19a","EV:omics_de:6a1a53a41386","EV:tcga_survival:fd99b19fe8a6"]},
-{"gene":"ALDH6A1","role":"biomarker","statement":"ALDH6A1 is down (RNA log2FC -3.399, protein log2FC -1.925) with 0.355 copy-loss frequency and positive cis effect (rho 0.525); low expression is prognostic (log HR -0.554), a 3p-linked loss of tubule metabolism.","evidence_ids":["EV:omics_de:1c73c0e9eeb3","EV:omics_cnv:df75d3108dd0","EV:cis_dosage:df75d3108dd0","EV:tcga_survival:df75d3108dd0"]},
-{"gene":"PPP1R1A","role":"biomarker","statement":"PPP1R1A is down at RNA (log2FC -2.974) and protein (log2FC -1.139), TCGA log2FC -5.179, and higher expression is worse in Cox terms (log HR 0.403, padj 0.00000155).","evidence_ids":["EV:omics_de:7a907fa55dbb","EV:tcga_survival:3e933275c7cd"]},
-{"gene":"VHL","role":"mechanism","statement":"VHL on 3p shows copy loss in 0.791 of CPTAC tumours and is mutated in 247 of 511 patients (freq 0.483), consistent with the disease driver behind HIF targets such as CA9.","evidence_ids":["EV:omics_cnv:52e5aeb6c197","EV:somatic_recurrence:52e5aeb6c197"]},
-{"gene":"PBRM1","role":"mechanism","statement":"PBRM1 has 3p copy loss in 0.8 of tumours and recurrent mutation in 185 of 511 patients (freq 0.362, padj 4.59e-239).","evidence_ids":["EV:omics_cnv:07b6205e67e5","EV:somatic_recurrence:07b6205e67e5"]}
-],"caveats":["Purity extrapolation and TCGA replication are RNA-based; protein only in CPTAC.","DepMap ccRCC dependency is near zero for most top targets, so up-regulation does not imply essentiality.","Down-regulated genes mainly reflect lost tubule identity; they are biomarkers, not targets.","Cohort is small (110 tumours; 75-84 matched normals)."]}
+{
+ "agent": "agente-omico",
+ "findings": [
+  {
+   "gene": "CA9",
+   "role": "target_and_biomarker",
+   "statement": "CA9 protein is strongly up in tumour versus normal (log2FC 2.269), ranks second in the convergence ranking, and has a clinical-stage antibody (girentuximab) in Open Targets; the classic ccRCC tissue biomarker.",
+   "evidence_ids": [
+    "EV:omics_de:5afe18b4024b",
+    "EV:open_targets_drug:e1e0c664ada3"
+   ]
+  },
+  {
+   "gene": "CA9",
+   "role": "biomarker",
+   "statement": "CA9 up-regulation replicates in TCGA-KIRC paired RNA (log2FC 9.712) but is not prognostic.",
+   "evidence_ids": [
+    "EV:tcga_de:225a767ebcb5"
+   ]
+  },
+  {
+   "gene": "NNMT",
+   "role": "target_and_biomarker",
+   "statement": "NNMT protein is up in tumour (log2FC 2.709) and is among the top target and biomarker ranks, with RNA-level support.",
+   "evidence_ids": [
+    "EV:omics_de:de39cc0c5ed8"
+   ]
+  },
+  {
+   "gene": "NNMT",
+   "role": "biomarker",
+   "statement": "NNMT replicates in TCGA-KIRC and higher expression associates with worse survival (positive Cox logHR 0.301 per SD).",
+   "evidence_ids": [
+    "EV:tcga_survival:7dbf93860d9f"
+   ]
+  },
+  {
+   "gene": "CD70",
+   "role": "target",
+   "statement": "CD70 protein is up in tumour (log2FC 2.421), a membrane antigen with clinical-stage antibody-based agents listed in Open Targets (e.g. cusatuzumab, vorsetuzumab mafodotin).",
+   "evidence_ids": [
+    "EV:omics_de:8a1dc0572ead",
+    "EV:open_targets_drug:fcadbe214e8c"
+   ]
+  },
+  {
+   "gene": "ENPP3",
+   "role": "target",
+   "statement": "ENPP3 protein is up in tumour (log2FC 1.544), a surface enzyme targeted by the antibody-drug conjugate AGS-16C3F (phase 2).",
+   "evidence_ids": [
+    "EV:omics_de:fad29d44ef95",
+    "EV:open_targets_drug:49872cd86a77"
+   ]
+  },
+  {
+   "gene": "SLC16A3",
+   "role": "target",
+   "statement": "SLC16A3 (MCT4, lactate transporter) protein is up in tumour (log2FC 2.279), consistent with a glycolytic, hypoxia-driven programme; no drugs yet.",
+   "evidence_ids": [
+    "EV:omics_de:d93a2cc11342"
+   ]
+  },
+  {
+   "gene": "SCARB1",
+   "role": "target",
+   "statement": "SCARB1 protein is up in tumour (log2FC 1.837), top of the target-profile ranking, linked to lipid and cholesterol uptake in lipid-laden ccRCC.",
+   "evidence_ids": [
+    "EV:omics_de:cd4a629b011f"
+   ]
+  },
+  {
+   "gene": "PSAT1",
+   "role": "biomarker",
+   "statement": "PSAT1 protein is down in tumour (log2FC -1.963), top of the biomarker ranking; reflects loss of normal tubule metabolism rather than a target.",
+   "evidence_ids": [
+    "EV:omics_de:8fa49cbb1760"
+   ]
+  },
+  {
+   "gene": "PCK1",
+   "role": "biomarker",
+   "statement": "PCK1 protein is down in tumour (log2FC -1.859), a gluconeogenic proximal-tubule marker lost in ccRCC.",
+   "evidence_ids": [
+    "EV:omics_de:6a1a53a41386"
+   ]
+  },
+  {
+   "gene": "ALDH6A1",
+   "role": "biomarker",
+   "statement": "ALDH6A1 protein is down in tumour (log2FC -1.925) and the gene sits on 14q, which is frequently lost in tumours; loss of tubule identity biomarker.",
+   "evidence_ids": [
+    "EV:omics_de:7ad12e0f6863",
+    "EV:omics_cnv:df75d3108dd0"
+   ]
+  },
+  {
+   "gene": "VHL",
+   "role": "mechanism",
+   "statement": "VHL is recurrently mutated in the combined CPTAC plus TCGA cohort [gene=VHL; type=somatic_recurrence; source=DATASET:SOMATIC-CPTAC-TCGA; mutated_patients=247] [gene=VHL; type=somatic_recurrence; source=DATASET:SOMATIC-CPTAC-TCGA; patients=511], consistent with the HIF-driven up-regulation of CA9, SLC16A3 and NNMT.",
+   "evidence_ids": [
+    "EV:somatic_recurrence:52e5aeb6c197"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:somatic_recurrence:52e5aeb6c197",
+     "field": [
+      "mutated_patients"
+     ],
+     "display": "247",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:somatic_recurrence:52e5aeb6c197",
+     "field": [
+      "patients"
+     ],
+     "display": "511",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "PBRM1",
+   "role": "mechanism",
+   "statement": "PBRM1 is recurrently mutated [gene=PBRM1; type=somatic_recurrence; source=DATASET:SOMATIC-CPTAC-TCGA; mutated_patients=185] [gene=PBRM1; type=somatic_recurrence; source=DATASET:SOMATIC-CPTAC-TCGA; patients=511], the second main chromatin driver after VHL.",
+   "evidence_ids": [
+    "EV:somatic_recurrence:07b6205e67e5"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:somatic_recurrence:07b6205e67e5",
+     "field": [
+      "mutated_patients"
+     ],
+     "display": "185",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:somatic_recurrence:07b6205e67e5",
+     "field": [
+      "patients"
+     ],
+     "display": "511",
+     "unit": "native"
+    }
+   ]
+  }
+ ],
+ "caveats": [
+  "Bulk tumour-normal comparison; RNA and protein cohorts differ in matched-normal numbers (75 versus 84).",
+  "DepMap dependency of the top up-regulated genes is near zero, so up-regulation does not imply essentiality.",
+  "Down-regulated genes mostly reflect loss of normal tubule identity and are biomarker rather than target candidates.",
+  "Statements deliberately quote one value per cited record; further layers (purity, CNV, cis effects) are in the ranking output."
+ ]
+}

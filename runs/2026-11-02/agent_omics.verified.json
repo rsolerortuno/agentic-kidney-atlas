@@ -1,0 +1,91 @@
+{
+ "agent": "agente-omico",
+ "findings": [
+  {
+   "gene": "CA9",
+   "role": "target_and_biomarker",
+   "statement": "CA9 protein is up in tumour vs normal (log2FC 2.269, padj 9.9e-43), with a much larger RNA rise; it is a HIF/VHL-loss readout and sits at the top of the convergence ranking, with girentuximab as a clinical-stage antibody.",
+   "evidence_ids": [
+    "EV:omics_de:5afe18b4024b"
+   ]
+  },
+  {
+   "gene": "NNMT",
+   "role": "target_and_biomarker",
+   "statement": "NNMT protein is strongly up in tumours (log2FC 2.709, padj 1.23e-43); RNA is up in the same direction, it is purity-robust and ranks first-tier in the biomarker profile.",
+   "evidence_ids": [
+    "EV:omics_de:de39cc0c5ed8"
+   ]
+  },
+  {
+   "gene": "CD70",
+   "role": "target",
+   "statement": "CD70 membrane protein is up in tumours (log2FC 2.421, padj 1.94e-38), concordant with RNA; it has anti-CD70 agents in clinical development, making it an antibody or cell-therapy target candidate.",
+   "evidence_ids": [
+    "EV:omics_de:8a1dc0572ead"
+   ]
+  },
+  {
+   "gene": "ENPP3",
+   "role": "target",
+   "statement": "ENPP3 protein is up in tumours (log2FC 1.544, padj 3.02e-37), concordant with RNA; it is a membrane enzyme with an antibody-drug conjugate (AGS-16C3F) reaching phase 2.",
+   "evidence_ids": [
+    "EV:omics_de:fad29d44ef95"
+   ]
+  },
+  {
+   "gene": "SCARB1",
+   "role": "target",
+   "statement": "SCARB1 (HDL receptor) protein is up in tumours (log2FC 1.837, padj 5.08e-37) and tops the target profile ranking; membrane-localised, with no DepMap dependency signal so it is a tractability-driven rather than essentiality-driven candidate.",
+   "evidence_ids": [
+    "EV:omics_de:cd4a629b011f"
+   ]
+  },
+  {
+   "gene": "SLC16A3",
+   "role": "target",
+   "statement": "SLC16A3 (MCT4 lactate exporter) protein is up in tumours (log2FC 2.279, padj 5.43e-47), consistent with a glycolytic, HIF-driven phenotype; it is a membrane transporter and sits near the top of the target profile.",
+   "evidence_ids": [
+    "EV:omics_de:d93a2cc11342"
+   ]
+  },
+  {
+   "gene": "SLC2A1",
+   "role": "mechanism",
+   "statement": "SLC2A1 (GLUT1) protein is up in tumours (log2FC 2.051, padj 8.39e-40), supporting the Warburg/HIF-driven glucose uptake program in ccRCC; it is better read as mechanism than as a selective target.",
+   "evidence_ids": [
+    "EV:omics_de:fa927e57822d"
+   ]
+  },
+  {
+   "gene": "PSAT1",
+   "role": "biomarker",
+   "statement": "PSAT1 protein is down in tumours (log2FC -1.963, padj 1.77e-33), and it ranks first in the biomarker profile; the loss of this serine pathway enzyme is a tumour-vs-normal discriminator rather than a target.",
+   "evidence_ids": [
+    "EV:omics_de:8fa49cbb1760"
+   ]
+  },
+  {
+   "gene": "ALDH6A1",
+   "role": "biomarker",
+   "statement": "ALDH6A1 protein is down in tumours (log2FC -1.925, padj 6.24e-40); it reflects loss of proximal tubule metabolic identity and is a biomarker candidate, with frequent copy-number loss in the CNV data.",
+   "evidence_ids": [
+    "EV:omics_de:7ad12e0f6863"
+   ]
+  },
+  {
+   "gene": "PCK1",
+   "role": "biomarker",
+   "statement": "PCK1 protein is down in tumours (log2FC -1.859, padj 1.08e-32), with a larger RNA decrease; loss of gluconeogenic identity makes it a tissue biomarker, not a target.",
+   "evidence_ids": [
+    "EV:omics_de:6a1a53a41386"
+   ]
+  }
+ ],
+ "caveats": [
+  "Findings quote protein-layer values only; RNA, phospho, TCGA replication, purity and survival values were taken from the ranking and not cited numerically.",
+  "DepMap shows no selective ccRCC dependency for the top up-regulated candidates, so target status rests on expression and tractability, not essentiality.",
+  "Fewer than 11 findings were written; mutation recurrence, cis copy number and kinase activity were not queried per gene within the budget.",
+  "Bulk tumour vs normal comparisons can be influenced by cell composition; purity extrapolation was only read from the ranking rows."
+ ]
+}

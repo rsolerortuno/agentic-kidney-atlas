@@ -90,14 +90,14 @@ ClearCode34 was validated in TCGA, which the biomarker profile's prognosis compo
 | | Closed-book LLM (Sonnet 5.5, no tools) | GraphRAG pipeline |
 |---|---|---|
 | Runs | 3 | 3 |
-| Mean pairwise Jaccard of candidate lists | 0.667 | 0.944 |
-| Candidates that are RCC clinical targets | 60%, 60%, 60% | 18%, 17%, 17% |
+| Mean pairwise Jaccard of candidate lists | 0.667 | 0.905 |
+| Candidates that are RCC clinical targets | 60%, 60%, 60% | 15%, 15%, 15% |
 | Candidates in the data-only target or biomarker top 500 | 80%, 70%, 80% | 100%, 100%, 100% |
-| Statements citing checkable evidence | 0 | 130 checked, 0 unsupported |
+| Statements citing checkable evidence | 0 | 113 checked, 0 unsupported |
 
 Closed-book candidates: VHL, EPAS1, VEGFA, KDR, CD274, PBRM1, BAP1, SETD2, CA9, MET; VHL, EPAS1, VEGFA, PDCD1, CD274, PBRM1, BAP1, SETD2, MET, MTOR; EPAS1, VHL, VEGFA, KDR, PDCD1, MTOR, PBRM1, BAP1, SETD2, CA9.
 
-Pipeline final targets: CA9, NNMT, CD70, SCARB1, PSAT1, ENPP3, PCK1, SLC16A3, ALDH6A1, ALDOB, EPAS1; CA9, NNMT, CD70, SCARB1, SLC16A3, ENPP3, EPAS1, PSAT1, PCK1, ALDH6A1, SLC6A19, ALDOB; CA9, NNMT, CD70, SCARB1, SLC16A3, ENPP3, EPAS1, PSAT1, PCK1, ALDH6A1, ALDOB, SLC6A19.
+Pipeline final targets: CA9, CD70, NNMT, EPAS1, ENPP3, SCARB1, SLC16A3, PSAT1, PCK1, ALDH6A1, COL23A1, RAB42, GAL3ST4; CA9, CD70, NNMT, EPAS1, ENPP3, SCARB1, SLC16A3, PSAT1, PCK1, ALDH6A1, COL23A1, RAB42, OLFML2A; CA9, CD70, NNMT, EPAS1, ENPP3, SCARB1, SLC16A3, PSAT1, PCK1, ALDH6A1, COL23A1, RAB42, GAL3ST4.
 
 ## (e) Known-answer questions (`claude -p` + project MCP servers)
 

@@ -35,9 +35,9 @@ FONT = dict(family="system-ui, -apple-system, Segoe UI, sans-serif", size=12)
 CFG = {"displaylogo": False, "responsive": True, "modeBarButtonsToRemove": ["lasso2d", "select2d"]}
 
 
-def _html(fig: go.Figure, height: int, title: str | None = None, **layout) -> str:
+def _html(fig: go.Figure, height: int, title: str | None = None, top: int | None = None, **layout) -> str:
     fig.update_layout(height=height, template="plotly_white", font=FONT, paper_bgcolor="rgba(0,0,0,0)",
-                      plot_bgcolor="rgba(0,0,0,0)", margin=dict(l=60, r=20, t=44 if title else 16, b=48),
+                      plot_bgcolor="rgba(0,0,0,0)", margin=dict(l=60, r=20, t=top or (44 if title else 16), b=48),
                       title=dict(text=title, x=0, font=dict(size=14)) if title else None,
                       legend=dict(orientation="h", y=-0.18, font=dict(size=11)), hoverlabel=dict(font=dict(size=12)),
                       **layout)
@@ -210,12 +210,12 @@ def spatial_map(region: str) -> str | None:
                                    hovertemplate=label + ": %{marker.color:.2f}<extra></extra>"))
         buttons.append(dict(label=label.replace(" share", "").replace(" expression (CPM)", " (gene)"), method="update",
                             args=[{"visible": [j == i for j in range(len(variables))]}]))
-    fig.update_layout(updatemenus=[dict(buttons=buttons, direction="down", x=0, xanchor="left", y=1.14, yanchor="top",
-                                        bgcolor="rgba(0,0,0,0)")])
+    fig.update_layout(updatemenus=[dict(buttons=buttons, direction="down", x=0, xanchor="left", y=1.0, yanchor="bottom",
+                                        bgcolor="rgba(255,255,255,.9)", bordercolor="#c9c8c0", pad=dict(t=0, b=6))])
     fig.update_yaxes(autorange="reversed", scaleanchor="x", showgrid=False, showticklabels=False, zeroline=False)
     fig.update_xaxes(showgrid=False, showticklabels=False, zeroline=False)
     title = "Tumour core section" if region == "core" else "Tumour–normal interface section"
-    return _html(fig, 470, title, showlegend=False)
+    return _html(fig, 520, title, top=104, showlegend=False)
 
 
 # ------------------------------------------------------------------------------------------ structure & MGD
@@ -372,9 +372,26 @@ def grade_correlation(genes: list[str]) -> str:
             fig.add_trace(go.Bar(y=w.index, x=w[layer], name=layer, orientation="h", marker_color=color,
                                  hovertemplate="%{y} · " + layer + " ρ %{x:.2f}<extra></extra>"))
     fig.update_layout(barmode="group")
-    fig.update_xaxes(title="Spearman ρ with histologic grade (tumors)", range=[-0.7, 0.7])
-    fig.update_yaxes(autorange="reversed")
-    return _html(fig, max(380, 26 * len(w) + 110), "Does expression rise with grade? (CPTAC, ~110 tumors)")
+    fig.add_vline(x=0, line_color="#898781", line_width=1)
+    fig.add_annotation(x=0.69, y=1.0, xref="x", yref="paper", text="higher in aggressive tumours →", showarrow=False,
+                       xanchor="right", yanchor="bottom", font=dict(size=11, color="#4d4c49"))
+    fig.add_annotation(x=-0.69, y=1.0, xref="x", yref="paper", text="← lower in aggressive tumours", showarrow=False,
+                       xanchor="left", yanchor="bottom", font=dict(size=11, color="#4d4c49"))
+    fig.update_xaxes(title="Spearman correlation (ρ) between the gene and tumour grade G1 to G4", range=[-0.7, 0.7])
+    fig.update_yaxes(autorange="reversed", title="gene")
+    return _html(fig, max(380, 26 * len(w) + 130), "Does the gene follow tumour grade? (CPTAC, about 110 tumours)", top=70)
+
+
+def grade_summary(genes: list[str], n: int = 3) -> dict:
+    """Strongest positive and negative grade correlations among the plotted genes, for the caption."""
+    c = pd.read_parquet(PROCESSED / "clinical_associations.parquet")
+    c = c[(c["variable"] == "grade") & c["hgnc_symbol"].isin(genes)]
+    out = {}
+    for layer in ("rna", "protein"):
+        d = c[c["layer"] == layer].dropna(subset=["rho"]).sort_values("rho")
+        out[layer] = {"up": [(r.hgnc_symbol, round(float(r.rho), 2)) for r in d.tail(n).iloc[::-1].itertuples() if r.rho > 0],
+                      "down": [(r.hgnc_symbol, round(float(r.rho), 2)) for r in d.head(n).itertuples() if r.rho < 0]}
+    return out
 
 
 # ------------------------------------------------------------------------------------------ literature

@@ -1,15 +1,189 @@
-{"agent":"agente-externo","findings":[
-{"gene":"CA9","role":"target_and_biomarker","statement":"Convergence rank 1 (score 4.5197, 5 streams). Open Targets association score 0.3088, rank 79 of 1998. Cell membrane (microvillus membrane) protein, so antibody-accessible. Drugs: GIRENTUXIMAB PHASE_3, IODINE I 124 GIRENTUXIMAB PHASE_2, SULTHIAME PHASE_4, ETHOXZOLAMIDE WITHDRAWAL. Tumour-up in TCGA (log2FC 9.712). DepMap: mean effect in ccRCC lines 0.051, no dependency, so strong biomarker/antibody-targeting case (imaging or ADC), not a functional dependency.","evidence_ids":["EV:open_targets_assoc:dcacc6a531bf","EV:open_targets_tract:225a767ebcb5","EV:open_targets_drug:e1e0c664ada3","EV:uniprot:93360ddb9195","EV:tcga_de:225a767ebcb5"]},
-{"gene":"CD70","role":"target_and_biomarker","statement":"Convergence rank 3 (score 4.2143, 4 streams). Open Targets association score 0.0572. Plasma membrane ligand of CD27 (antibody-tractable). Drugs: CUSATUZUMAB PHASE_2, VORSETUZUMAB MAFODOTIN PHASE_1, VORSETUZUMAB PHASE_1, MDX-1411 PHASE_1. Tumour-up in TCGA (log2FC 7.09). Untested-in-ccRCC-approval but tractable; DepMap mean effect 0.251 (no dependency), so the case rests on a tumour-selective surface antigen (ADC/CAR-T), not on dependency.","evidence_ids":["EV:open_targets_assoc:255532a611b4","EV:open_targets_tract:908e84663f6a","EV:open_targets_drug:fcadbe214e8c","EV:uniprot:e21e5815e1a4","EV:tcga_de:908e84663f6a"]},
-{"gene":"NNMT","role":"biomarker","statement":"Convergence rank 7 (score 3.9643). Open Targets association score 0.0598 (literature-driven). Tumour-up in TCGA (log2FC 4.685), purity-robust; higher expression associates with worse survival (Cox log HR 0.301). No drugs recorded; DepMap mean effect 0.316 (no dependency). Candidate prognostic/diagnostic biomarker, weak target case.","evidence_ids":["EV:open_targets_assoc:719ce7782338","EV:tcga_de:7dbf93860d9f","EV:tcga_survival:7dbf93860d9f"]},
-{"gene":"SCARB1","role":"target_and_biomarker","statement":"Convergence rank 5 (score 4.1052). Open Targets association score 0.4049 (genetic association 0.519). Cell membrane/caveola receptor. Tumour-up in TCGA (log2FC 3.989). No drugs in Open Targets; DepMap mean effect 0.002 (no dependency). Tractable-but-untested surface candidate; druggability without dependency is a weaker target case.","evidence_ids":["EV:open_targets_assoc:ee2e17841173","EV:uniprot:e11b444a7dbb","EV:tcga_de:2d66f8e78d0c"]},
-{"gene":"ALDOB","role":"biomarker","statement":"Convergence rank 2 (score 4.2206). Open Targets association score 0.0701. Down in tumour (TCGA log2FC -4.741), higher expression associated with better survival (Cox log HR -0.358). No drugs; DepMap mean effect 0.156 (no dependency). Loss-of-expression (proximal tubule identity) biomarker, not a target.","evidence_ids":["EV:open_targets_assoc:7d82917bd537","EV:tcga_de:a46f337f2987","EV:tcga_survival:a46f337f2987"]},
-{"gene":"SLC22A8","role":"biomarker","statement":"Convergence rank 4 (score 4.1667). Open Targets association score 0.0662. Down in tumour (TCGA log2FC -6.154), better survival with higher expression (Cox log HR -0.402). Drugs: PROBENECID PHASE_4, PRATOSARTAN PHASE_3 (transporter substrates/inhibitors, not ccRCC-directed). DepMap mean effect -0.019 (no dependency). Down-regulation biomarker only.","evidence_ids":["EV:open_targets_assoc:b2aea712fd45","EV:tcga_de:de6aa3b720b1","EV:tcga_survival:de6aa3b720b1"]},
-{"gene":"PIGR","role":"biomarker","statement":"Convergence rank 6 (score 4.0695). Open Targets association score 0.4532 (genetic association 0.7338). Down in tumour (TCGA log2FC -3.721). No drugs; DepMap mean effect 0.143 (no dependency). Association-driven down-regulated biomarker candidate.","evidence_ids":["EV:open_targets_assoc:1170ea2f4d6c","EV:tcga_de:6d388106d837"]},
-{"gene":"EPAS1","role":"target","statement":"Established ccRCC target (HIF-2 alpha). Open Targets association score 0.4871. Drug: BELZUTIFAN APPROVAL. Tractability: small molecule (approved drug, high-quality ligand). DepMap: ccRCC mean effect -0.143 vs other 0.157, selectivity 0.3, 0.208 of ccRCC lines dependent, not common essential (padj 0.061), i.e. modest selective dependency.","evidence_ids":["EV:open_targets_assoc:61983038a898","EV:open_targets_drug:199c475802ce","EV:depmap_dependency:6a657326c9fd"]},
-{"gene":"MTOR","role":"target","statement":"Established ccRCC target. Open Targets association score 0.525. Many inhibitors, e.g. RIDAFOROLIMUS APPROVAL, GEDATOLISIB PHASE_3, DACTOLISIB PHASE_3. DepMap: ccRCC mean effect -1.52, all ccRCC lines dependent (1.0) but common essential (toxicity risk), selectivity 0.354. Recurrently mutated in ccRCC: 37 of 511 patients (freq 0.072, padj 5.7e-14).","evidence_ids":["EV:open_targets_assoc:900f88933f86","EV:depmap_dependency:95bc7fa85685","EV:somatic_recurrence:95bc7fa85685"]},
-{"gene":"KDR","role":"target","statement":"Established ccRCC target (VEGFR2). Open Targets association score 0.4566. Approved drugs include PAZOPANIB HYDROCHLORIDE APPROVAL, AXITINIB APPROVAL, TIVOZANIB APPROVAL, CABOZANTINIB S-MALATE APPROVAL, RAMUCIRUMAB APPROVAL. Tractability: antibody and small molecule. Acts on tumour vasculature; DepMap shows no ccRCC tumour-cell dependency (mean effect 0.079, selectivity -0.027), consistent with a microenvironment/angiogenesis mechanism.","evidence_ids":["EV:open_targets_assoc:07cfe399d2b3","EV:open_targets_tract:fd47891e1c7f","EV:open_targets_drug:68eab9876e4e"]},
-{"gene":"VHL","role":"mechanism","statement":"Top Open Targets associated gene (score 0.6466). Somatic mutation in 247 of 511 tumours (freq 0.483, padj 0.0, recurrent), the defining driver upstream of HIF-2 alpha/CA9 induction.","evidence_ids":["EV:open_targets_assoc:730901c424b4","EV:somatic_recurrence:52e5aeb6c197"]},
-{"gene":"PBRM1","role":"mechanism","statement":"Open Targets association score 0.6348 (second). Recurrent driver: 185 of 511 tumours (freq 0.362, padj 4.59e-239). Tumour suppressor, association/driver only with no direct drug.","evidence_ids":["EV:open_targets_assoc:a61ad112b8ec","EV:somatic_recurrence:07b6205e67e5"]}
-],
-"caveats":["Convergence-ranking top genes (CA9, CD70, NNMT, SCARB1) show no DepMap dependency in ccRCC lines; their case is surface-antigen/biomarker, not functional dependency.","Several metabolic/transporter genes (ALDOB, SLC22A8, PIGR) are down-regulated tissue-identity markers; tumour-purity effects may contribute.","Only convergence_ranking top 12 were returned inline, so lower-ranked genes were not reviewed; STRING not queried.","Drug stages reported as returned by Open Targets; drugs are not necessarily ccRCC-indicated.","KDR, CA9 and SCARB1 DepMap records have null evidence ids so their DepMap values are stated without citation weight."]}
+{
+ "agent": "agente-externo",
+ "findings": [
+  {
+   "gene": "CA9",
+   "role": "target_and_biomarker",
+   "statement": "CA9 is the top convergence-ranked gene. It has an Open Targets ccRCC association driven by literature, with no genetic or somatic-mutation component. Tractable modalities are antibody (AB: Advanced Clinical), small molecule (SM: Approved Drug) and PROTAC-style binder. Drugs as returned: GIRENTUXIMAB PHASE_3, IODINE I 124 GIRENTUXIMAB PHASE_2, SULTHIAME PHASE_4, ETHOXZOLAMIDE WITHDRAWAL. UniProt places it at the cell membrane (microvillus membrane), which suits antibody and imaging use. Reactome: HIF-regulated gene expression. DepMap shows no ccRCC dependency [gene=CA9; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; n_ccrcc_dependent=0] and no selectivity, so CA9 is a surface antigen and imaging or biomarker target rather than a functional dependency.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:dcacc6a531bf",
+    "EV:open_targets_tract:225a767ebcb5",
+    "EV:open_targets_drug:646a0aec5b64",
+    "EV:open_targets_drug:7ed1f57af7b2",
+    "EV:open_targets_drug:f9761355ae59",
+    "EV:open_targets_drug:e1e0c664ada3",
+    "EV:uniprot:93360ddb9195",
+    "EV:depmap_dependency:225a767ebcb5"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:depmap_dependency:225a767ebcb5",
+     "field": [
+      "n_ccrcc_dependent"
+     ],
+     "display": "0",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "CD70",
+   "role": "target",
+   "statement": "CD70 is a membrane ligand of CD27 (UniProt: cell membrane) with antibody and cell-therapy tractability (AB: Advanced Clinical, OC: Advanced Clinical). Drugs as returned: CUSATUZUMAB PHASE_2, VORSETUZUMAB PHASE_1, VORSETUZUMAB MAFODOTIN PHASE_1, MDX-1411 PHASE_1. It is tumour-up and untested as a standard ccRCC drug target in this graph. It is a tractable but not yet established target, and DepMap gives no dependency evidence in its convergence row.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:255532a611b4",
+    "EV:open_targets_tract:908e84663f6a",
+    "EV:open_targets_drug:0a02c566ec75",
+    "EV:open_targets_drug:fcadbe214e8c",
+    "EV:open_targets_drug:289429f80a55",
+    "EV:open_targets_drug:48624a88569c",
+    "EV:uniprot:e21e5815e1a4"
+   ]
+  },
+  {
+   "gene": "EPAS1",
+   "role": "target",
+   "statement": "EPAS1 (HIF-2 alpha) is an established ccRCC drug target. BELZUTIFAN is returned at max stage APPROVAL. Its Open Targets ccRCC association is among the top genes and it has genetic, somatic and literature components. UniProt: nuclear transcription factor that heterodimerises with ARNT and regulates VEGF. Reactome includes HIF regulation, oxygen-dependent proline hydroxylation and regulation of PD-L1 transcription. DepMap shows ccRCC lines are more dependent than other lines [gene=EPAS1; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; selectivity=0.3], with a minority of ccRCC lines dependent [gene=EPAS1; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; frac_ccrcc_dependent=0.208]; it is not common essential and the adjusted p-value is borderline [gene=EPAS1; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; padj=0.0609], so this is a selective but nominal dependency.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:61983038a898",
+    "EV:open_targets_drug:199c475802ce",
+    "EV:open_targets_tract:6a657326c9fd",
+    "EV:uniprot:d332bcfb6c96",
+    "EV:depmap_dependency:6a657326c9fd"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:depmap_dependency:6a657326c9fd",
+     "field": [
+      "selectivity"
+     ],
+     "display": "0.3",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:6a657326c9fd",
+     "field": [
+      "frac_ccrcc_dependent"
+     ],
+     "display": "0.208",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:6a657326c9fd",
+     "field": [
+      "padj"
+     ],
+     "display": "0.0609",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "ENPP3",
+   "role": "target_and_biomarker",
+   "statement": "ENPP3 is a tumour-up cell-surface ectoenzyme (UniProt: apical cell membrane, also secreted). Tractability includes antibody-sequence and oncology-clinical labels. The returned drug is AGS-16C3F at PHASE_2 (an antibody-drug conjugate). It is tractable and clinically tested but not an established ccRCC standard of care, and DepMap gives no dependency signal in the convergence row.",
+   "evidence_ids": [
+    "EV:open_targets_tract:d5aee88146ed",
+    "EV:open_targets_drug:49872cd86a77",
+    "EV:uniprot:61e515f3c5a3"
+   ]
+  },
+  {
+   "gene": "VHL",
+   "role": "mechanism",
+   "statement": "VHL has the highest Open Targets ccRCC association score among the top targets. It is the founder somatic driver, mutated in close to half of patients [gene=VHL; type=somatic_recurrence; source=DATASET:SOMATIC-CPTAC-TCGA; freq=0.4834] with a significant recurrence q-value. It has no drugs of its own, but VHL loss stabilises HIF-2 alpha, which links it mechanistically to EPAS1/belzutifan. DepMap in the convergence row shows ccRCC lines not selectively dependent on VHL, consistent with a tumour suppressor.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:730901c424b4",
+    "EV:somatic_recurrence:52e5aeb6c197"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:somatic_recurrence:52e5aeb6c197",
+     "field": [
+      "freq"
+     ],
+     "display": "0.4834",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "PBRM1",
+   "role": "mechanism",
+   "statement": "PBRM1 is a recurrent ccRCC chromatin-remodelling driver, mutated in about a third of patients [gene=PBRM1; type=somatic_recurrence; source=DATASET:SOMATIC-CPTAC-TCGA; freq=0.362] with a significant recurrence q-value. It is second among the top Open Targets ccRCC associations. It is an association and driver gene, with no direct tractable drug evidence collected here.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:a61ad112b8ec",
+    "EV:somatic_recurrence:07b6205e67e5"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:somatic_recurrence:07b6205e67e5",
+     "field": [
+      "freq"
+     ],
+     "display": "0.362",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "MTOR",
+   "role": "target",
+   "statement": "MTOR is in the top Open Targets ccRCC associations and is a known ccRCC drug target class (mTOR inhibitors). Its drug stages were not queried in this run. It is cited as an established target on the basis of its association record only.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:900f88933f86"
+   ]
+  },
+  {
+   "gene": "SCARB1",
+   "role": "target_and_biomarker",
+   "statement": "SCARB1 is ranked fifth in the convergence ranking. It is tumour-up and has a genetic-association component in Open Targets. No drugs are returned and tractability is limited to predicted labels. DepMap shows no ccRCC selectivity, so this is an association and biomarker candidate with weak target support.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:ee2e17841173",
+    "EV:open_targets_tract:2d66f8e78d0c"
+   ]
+  },
+  {
+   "gene": "ALDOB",
+   "role": "biomarker",
+   "statement": "ALDOB is a tumour-down proximal-tubule marker with replicated loss in TCGA and a prognosis association (higher expression is favourable). No drugs are returned. The Open Targets association is literature-driven and DepMap shows no ccRCC dependency, so this is a biomarker, not a target.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:7d82917bd537",
+    "EV:tcga_survival:a46f337f2987"
+   ]
+  },
+  {
+   "gene": "NNMT",
+   "role": "biomarker",
+   "statement": "NNMT is tumour-up with replication and a prognosis association (higher expression is unfavourable). No drugs are returned. The Open Targets association is literature-driven and DepMap shows no ccRCC dependency, so this is a biomarker candidate with a weak target case.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:719ce7782338",
+    "EV:tcga_survival:7dbf93860d9f"
+   ]
+  },
+  {
+   "gene": "PIGR",
+   "role": "biomarker",
+   "statement": "PIGR is a tumour-down gene with an Open Targets genetic-association component. No drugs are returned. This is an association and biomarker gene only.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:1170ea2f4d6c"
+   ]
+  },
+  {
+   "gene": "SLC16A3",
+   "role": "target_and_biomarker",
+   "statement": "SLC16A3 is tumour-up with replication and a tumour-intrinsic purity signal. Predicted small-molecule tractability exists but no drug is returned. There is no DepMap selectivity in ccRCC, so the target case is weak without dependency.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:ff9e96b08fbf",
+    "EV:open_targets_tract:11298113327b"
+   ]
+  }
+ ],
+ "caveats": [
+  "Ranking-row values (TCGA, DepMap, purity) were used only qualitatively, since the ranking records are not cited directly for numbers.",
+  "Open Targets association scores are mostly literature-driven for the top convergence genes; genetic evidence is only strong for VHL, PBRM1, EPAS1.",
+  "DepMap CRISPR shows no strong selective ccRCC dependency for CA9, CD70 or ENPP3; their case rests on surface expression and antibody or ADC modality. EPAS1 selectivity has BH q above 0.05.",
+  "MTOR drug stages and STRING interactors were not queried; the tool budget was focused on top-ranked tractable genes.",
+  "Drug stages are as returned by Open Targets and do not imply ccRCC-specific trials."
+ ]
+}

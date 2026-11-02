@@ -19,8 +19,8 @@ a{color:var(--s1)}
 .wrap{max-width:1180px;margin:0 auto;padding:0 16px}
 .top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .brand{display:flex;align-items:center;gap:12px;padding:12px 0 6px}
-.brand h1{font-size:1.05rem;margin:0;font-weight:650;letter-spacing:-.01em}
-.brand .sub{color:var(--muted);font-size:.8rem;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand h1{font-size:2rem;line-height:1.15;margin:0;font-weight:700;letter-spacing:-.02em}
+.brand .sub{color:var(--muted);font-size:.85rem;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;align-self:flex-end;padding-bottom:5px}
 .themebtn{border:1px solid var(--line);background:var(--surface);color:var(--ink2);border-radius:8px;padding:5px 10px;font:inherit;font-size:.8rem;cursor:pointer}
 .tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
@@ -82,6 +82,9 @@ footer{color:var(--muted);font-size:.8rem;padding:10px 0 50px;border-top:1px sol
 .kpi .q{position:absolute;top:8px;right:8px;margin:0}
 .helpbox{background:var(--chip);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:8px 0;font-size:.85rem;color:var(--ink2);line-height:1.55;text-align:left;font-weight:400;letter-spacing:0}
 .helpbox p{margin:.3em 0}.helpbox b{color:var(--ink)}
+.howbox{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--s1);border-radius:0 10px 10px 0;padding:12px 18px;margin:14px 0 18px;font-size:.9rem;color:var(--ink2);max-width:110ch}
+.howbox h4{margin:0 0 .4em;font-size:.95rem;color:var(--ink)}.howbox ul,.howbox ol{margin:.3em 0 0;padding-left:1.25em}.howbox li{margin:.35em 0}
+.calc table{font-size:.8rem}.calc td:first-child{white-space:nowrap;font-weight:600}
 .plainbox{background:var(--chip);border-left:4px solid var(--s3);border-radius:0 10px 10px 0;padding:11px 16px;margin:0 0 20px;font-size:.92rem;color:var(--ink2);max-width:100ch}
 .plainbox b{color:var(--ink)}
 .intro{margin-bottom:26px}.intro ol.steps{max-width:100ch;padding-left:1.3em}.intro ol.steps li{margin:.5em 0}
@@ -193,6 +196,24 @@ footer{color:var(--muted);font-size:.8rem;padding:10px 0 50px;border-top:1px sol
 <td>{{ ids[:6] | cite | safe }}</td></tr>
 {% endfor %}
 </tbody></table></div>
+<div class="howbox calc"><h4>How each column is calculated</h4>
+<p class="small" style="margin-top:0">Every evidence stream is turned into a number from 0 (no evidence) to 1 (strongest evidence). The score is the sum of these
+numbers, each multiplied by its weight ({% for k, v in f.convergence.config.stream_weights.items() %}{{ k }} {{ v }}{% if not loop.last %}, {% endif %}{% endfor %}), so the largest possible score is {{ f.convergence.config.stream_weights.values() | sum }}.
+Weights are in <code>config.yaml</code> and were set before the results were examined.</p>
+<div class="tw"><table><thead><tr><th>Column</th><th>What it measures</th><th>How it is calculated</th></tr></thead><tbody>
+<tr><td>Score</td><td>Overall strength of agreement</td><td>Sum over the seven streams of weight × component. Higher is better.</td></tr>
+<tr><td>Omics</td><td>Change in tumour compared with matched healthy kidney</td><td>Weighted average of four parts: RNA (weight 1), protein (1.5), phospho (0.5) and agreement between RNA and protein (0.5). Each part is min(1, |log2 fold change| ÷ cap) when the adjusted p-value is below 0.05, with caps of 4 for RNA and 2 for protein and phospho. The agreement part is the smaller of RNA and protein when both are significant in the same direction.</td></tr>
+<tr><td>CNV</td><td>Copy-number change that really moves the gene's product</td><td>Share of tumours with the gene gained or lost (the larger of the two) × min(1, ρ ÷ 0.5), where ρ is the correlation of copy number with the gene's own protein (RNA if protein is missing). Only counted when that correlation is significant.</td></tr>
+<tr><td>Lit.</td><td>What the literature says</td><td>The larger of (a) checked relations in our PubMed set ÷ 3, up to 1, and (b) the Open Targets literature score.</td></tr>
+<tr><td>Genetics</td><td>Genetic evidence in ccRCC</td><td>The larger of (a) the Open Targets germline association and (b) somatic mutation recurrence: −log10(q) ÷ 10, up to 1, when q is below 0.05, corrected for gene length.</td></tr>
+<tr><td>Tract.</td><td>How druggable the protein looks</td><td>1 if any drug for the gene reached the clinic (any disease). 0.5 if it looks tractable by a small molecule or antibody. 0 otherwise.</td></tr>
+<tr><td>Dep.</td><td>Whether ccRCC cell lines need the gene</td><td>min(1, selectivity ÷ 0.5) × min(1, share of dependent ccRCC lines ÷ 0.5), only for a selective dependency: at least 3 dependent ccRCC lines, q below 0.1 and not essential in all cell lines.</td></tr>
+<tr><td>Repl.</td><td>Same change in TCGA-KIRC</td><td>min(1, |TCGA log2 fold change| ÷ 4) when q is below 0.05 and the direction matches CPTAC.</td></tr>
+<tr><td>Rank 90 % interval</td><td>How stable the rank is</td><td>The 5th to 95th percentile of the gene's rank over 1,000 random changes to the weights.</td></tr>
+<tr><td>RNA, Protein log2FC</td><td>Raw change in tumour</td><td>Mean of tumour minus matched normal on a log2 scale. +1 is twice as high, -1 half.</td></tr>
+<tr><td>Drugs (max stage)</td><td>Existing drugs</td><td>Up to three drugs aimed at the gene, with their most advanced clinical stage (Open Targets).</td></tr>
+<tr><td>Evidence</td><td>Receipts</td><td>Numbered links to the evidence records behind the row.</td></tr>
+</tbody></table></div></div>
 {% if f.narrative.sections.integration %}<h3 style="margin-top:1.6em">Integration</h3>{% endif %}
 {% for p in f.narrative.sections.integration or [] %}
 <p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p | statement_html | safe }} {{ p.evidence_ids | cite | safe }}</p>
@@ -212,6 +233,15 @@ footer{color:var(--muted);font-size:.8rem;padding:10px 0 50px;border-top:1px sol
 <h3>Association with tumour grade {{ q('grade') }}</h3>
 <p class="small">This shows how closely each gene follows tumour grade (G1 to G4) across the discovery tumours, for RNA and for protein. The CPTAC clinical file has grade, stage and tumour size but no survival, so grade is the only outcome-like measure available here. The survival analysis uses TCGA-KIRC instead.</p>
 {{ plot('grade', figs.grade) }}
+<div class="howbox"><h4>How to read this chart</h4><ul>
+<li>Each gene has two bars: blue for RNA and orange for protein. The genes shown are the top convergence genes and the tumour-track discovery candidates.</li>
+<li>The horizontal axis is the Spearman correlation between the gene and tumour grade (G1 mildest to G4 most aggressive). It runs from -1 to +1, and here from -0.7 to +0.7.</li>
+<li>A bar to the right means the gene is higher in more aggressive tumours. A bar to the left means it is lower. A bar near zero means grade tells us nothing about the gene.</li>
+<li>When RNA and protein point the same way, the link is more believable than when only one does.</li></ul>
+<p class="small" style="margin:.5em 0 0">In this data the strongest links are small to moderate.
+Higher with grade, RNA: {% for g, r in grade_caption.rna.up %}{{ g }} ({{ r }}){% if not loop.last %}, {% endif %}{% endfor %}; protein: {% for g, r in grade_caption.protein.up %}{{ g }} ({{ r }}){% if not loop.last %}, {% endif %}{% endfor %}.
+Lower with grade, RNA: {% for g, r in grade_caption.rna.down %}{{ g }} ({{ r }}){% if not loop.last %}, {% endif %}{% endfor %}; protein: {% for g, r in grade_caption.protein.down %}{{ g }} ({{ r }}){% if not loop.last %}, {% endif %}{% endfor %}.
+A correlation of 0.4 is a clear trend but far from a rule, and the cohort has no survival data.</p></div>
 {% if f.agent_findings.omics %}<h3>Omics agent findings (verified)</h3>
 {% for x in f.agent_findings.omics.findings %}
 <p class="claim" data-evidence="{{ x.evidence_ids | evattr }}"><strong>{{ x.gene }}</strong> <span class="tag">{{ x.role | replace("_"," ") }}</span> {{ x | statement_html | safe }} {{ x.evidence_ids | cite | safe }}</p>
@@ -391,6 +421,12 @@ DepMap tests dependency in cell lines grown in normoxia; no candidate here is a 
 {% for p in f.narrative.sections.validation or [] %}
 <p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p | statement_html | safe }} {{ p.evidence_ids | cite | safe }}</p>
 {% endfor %}
+<div class="howbox"><h4>The five charts below, in plain words</h4><ol>
+<li><strong>External replication.</strong> Each dot is a gene. Horizontal: its change in the CPTAC discovery cohort. Vertical: its change in TCGA-KIRC, a different set of patients. Dots on the diagonal agree. The correlation in the title says how well the whole genome agrees.</li>
+<li><strong>Infiltration or tumour cells.</strong> For each gene, one marker shows the change measured in the whole sample and another the change estimated for a pure tumour. If the second stays far from zero, cancer cells make the change. If it collapses to zero, infiltrating cells were carrying it.</li>
+<li><strong>Somatic recurrence.</strong> Each dot is a gene. Horizontal: how many more tumours carry a mutation than chance predicts, given the gene's length. Vertical: how certain that is. Genes in the top right are recurrently mutated drivers.</li>
+<li><strong>Cell-line dependency.</strong> Each dot is a gene. Horizontal: how much other cancer cell lines need it. Vertical: how much ccRCC lines need it, where lower means more needed. A dot below the diagonal marks a gene ccRCC lines need more than other lines do.</li>
+<li><strong>Kinase activity.</strong> Each bar is an enzyme. Longer bars mean its known targets are more phosphorylated in tumours, so the enzyme is probably more active.</li></ol></div>
 <div class="grid two">
   {{ plot('tcga', figs.tcga) }}
   {{ plot('purity', figs.purity) }}
@@ -419,6 +455,22 @@ DepMap tests dependency in cell lines grown in normoxia; no candidate here is a 
 
 <h2>Two questions, two scores</h2>
 <p class="small">The overall score mixes target and biomarker evidence, so there are two separate profiles. The <strong>target</strong> profile weighs ({% for k, v in profile_weights.target.items() %}{{ k | replace("_", " ") }} {{ v }}{% if not loop.last %}, {% endif %}{% endfor %}). The <strong>biomarker</strong> profile weighs ({% for k, v in profile_weights.biomarker.items() %}{{ k | replace("_", " ") }} {{ v }}{% if not loop.last %}, {% endif %}{% endfor %}). Neither uses literature or drug history, which lets us test them against clinical outcomes below without the answer leaking into the score.</p>
+<div class="howbox calc"><h4>What the components of each profile mean</h4>
+<div class="tw"><table><thead><tr><th>Profile</th><th>Component</th><th>How it is calculated (each runs from 0 to 1)</th></tr></thead><tbody>
+<tr><td>Target</td><td>omics up</td><td>Like the Omics column above, but only increases in tumour count.</td></tr>
+<tr><td>Target</td><td>tumor intrinsic</td><td>min(1, RNA log2 fold change extrapolated to a pure tumour ÷ 4), only if the lower end of its 95 % interval is above zero and the gene is up in tumour. It rewards changes that cancer cells themselves make.</td></tr>
+<tr><td>Target</td><td>dependency</td><td>As the Dep. column above.</td></tr>
+<tr><td>Target</td><td>genetics</td><td>As the Genetics column above.</td></tr>
+<tr><td>Target</td><td>kinase</td><td>min(1, kinase activity z ÷ 4) for kinases with significantly higher activity in tumours.</td></tr>
+<tr><td>Target</td><td>tractability predicted</td><td>1 if the protein looks tractable by a small molecule or antibody. Existing clinical drugs are not used, so the score does not know the answer.</td></tr>
+<tr><td>Biomarker</td><td>omics</td><td>Like the Omics column, counting increases and decreases.</td></tr>
+<tr><td>Biomarker</td><td>replication</td><td>As the Repl. column above.</td></tr>
+<tr><td>Biomarker</td><td>prognosis</td><td>min(1, |log hazard ratio per SD| ÷ 0.5) when the TCGA survival test has q below 0.05.</td></tr>
+<tr><td>Biomarker</td><td>grade</td><td>min(1, |ρ| ÷ 0.4) for the strongest significant correlation with grade or stage.</td></tr>
+<tr><td>Biomarker</td><td>ccab</td><td>min(1, |ccB minus ccA difference| ÷ 2) when it is significant and in the same direction in CPTAC and TCGA. The ClearCode34 genes that define ccA and ccB are set to 0.</td></tr>
+<tr><td>Biomarker</td><td>measurable</td><td>min(1, correlation between RNA and protein ÷ 0.6), because a marker has to be measurable.</td></tr>
+<tr><td>Biomarker</td><td>cnv</td><td>As the CNV column above.</td></tr>
+</tbody></table></div></div>
 {% for name in ["target", "biomarker"] %}{% if profiles[name] %}
 <h3>{{ name | capitalize }} profile, top 25 {{ q('profile_table') }}</h3>
 <div class="tw"><table>
@@ -437,6 +489,10 @@ DepMap tests dependency in cell lines grown in normoxia; no candidate here is a 
 <p class="claim" data-evidence="{{ p.evidence_ids | evattr }}">{{ p | statement_html | safe }} {{ p.evidence_ids | cite | safe }}</p>
 {% endfor %}
 <p class="small">Each ranking is recomputed 1,000 times with weights drawn at random around the chosen ones. Dots are median ranks and bars cover the 5th to 95th percentile. A short bar near the top means the gene stays there whatever the weights.</p>
+<div class="howbox"><h4>How to read the stability charts</h4><ul>
+<li>Each row is a gene. The weights are changed at random 1,000 times, and each time the genes are ranked again.</li>
+<li>The dot is the gene's median rank and the bar is the range from the 5th to the 95th percentile. The horizontal axis is rank on a log scale, so left is better.</li>
+<li>A short bar near the left is a robust call. A long bar means the gene's position depends on how the weights were chosen, so do not trust its exact rank.</li></ul></div>
 <div class="grid two">
   {{ plot('rank_target', figs.rank_target) }}
   {{ plot('rank_biomarker', figs.rank_biomarker) }}
@@ -449,6 +505,12 @@ DepMap tests dependency in cell lines grown in normoxia; no candidate here is a 
 the {{ evals.outcomes.gold_sets.temporal_holdout_targets | length }} of them whose first RCC trial started on or after {{ evals.outcomes.gold_sets.cutoff }}
 ({{ evals.outcomes.gold_sets.temporal_holdout_targets | join(", ") }}), and the {{ evals.outcomes.gold_sets.clearcode34 | length }} mapped genes of the ClearCode34 prognostic classifier (Brooks et al. 2014; validated in TCGA,
 so the biomarker profile's prognosis component makes that comparison partly optimistic: see the row without it). The convergence score includes literature and drug history, so its clinical-target AUROC is partly circular.</p>
+<div class="howbox"><h4>How to read this evaluation</h4><ul>
+<li>We take genes that the clinic did use as targets in kidney cancer and ask whether each score ranks them above the other genes. AUROC is the chance that a true target outranks a random gene: 0.5 is a coin flip and 1.0 is perfect.</li>
+<li>Recall at 100 or 500 is the share of true targets found among the top 100 or 500 genes. The 95 % interval comes from resampling the true targets.</li>
+<li>The target and biomarker profiles use no literature or drug history, so they could not simply look up the answer. The overall convergence score does use them, so its result is partly circular.</li>
+<li>Clinical targets are mostly druggable proteins, so a score that only flags druggability also does well. The tractability-only row shows how much of the result that explains.</li>
+<li>The post-2016 set holds only a handful of genes and is retrospective, because the data used today were not frozen in 2016. Read it as a hint and not as a proof.</li></ul></div>
 {{ plot('outcomes', figs.outcomes) }}
 <div class="tw"><table><thead><tr><th>Gold set</th><th>Score</th><th>n</th><th>AUROC (95 % CI)</th><th>Recall@100</th><th>Recall@500</th><th>Median rank</th></tr></thead><tbody>
 {% for key, label in [("clinical_targets", "RCC clinical targets"), ("temporal_holdout", "Retrospective post-2016 evaluation"), ("clearcode34", "ClearCode34 (prognostic)")] %}

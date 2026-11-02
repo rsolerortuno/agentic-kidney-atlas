@@ -1,23 +1,7 @@
 <h2>A guided tour of the tabs</h2>
-<p class="lede">Each tab answers one question. Click a card to open it. Every figure, table and counter has a round <button class="q" type="button" style="pointer-events:none">?</button> button that explains what it shows, how to read it and what to keep in mind.</p>
+<p class="lede">Each tab answers one question. Click a card to open it. Every figure, table and counter has a round <button class="q" type="button" style="pointer-events:none">?</button> button that explains the axes, how to read it and what we see.</p>
 <div class="grid tour">
 {% for key, title, text in tour %}
 <button type="button" class="card tourcard" data-go="{{ key }}"><h3>{{ title }}</h3><p>{{ text }}</p></button>
 {% endfor %}
 </div>
-
-<h2>How to read the report</h2>
-<ul class="roadmap">
-<li><strong>Bracketed numbers.</strong> The small blue numbers after a sentence, like [12], open the evidence record behind it, with the dataset, the number and a link to the source when there is one.</li>
-<li><strong>Tracks and tags.</strong> Blue means tumour cells, orange stroma (blood vessels and connective tissue), green immune cells. A green tag on a candidate card names a drug that already reached the clinic.</li>
-<li><strong>Interval bars.</strong> A rank with a wide bar moves a lot when the weights change, so do not trust its exact position.</li>
-<li><strong>Controls.</strong> Wherever a score is new, known cases are scored the same way. If the known cases rank well, that is a reason to trust the score a little. If they rank badly, the text says so.</li>
-<li><strong>Negative results.</strong> A gene that fails to replicate, or a test with no hits, is shown on purpose. HK2 is an example: it rises in the discovery cohort and does not in the confirmatory one.</li>
-</ul>
-
-<h2>Glossary</h2>
-<div class="grid">
-{% for term, text in glossary %}<div class="card"><h3 style="margin:0 0 .2em;font-size:.95rem">{{ term }}</h3><p class="small" style="margin:0">{{ text }}</p></div>{% endfor %}
-</div>
-
-{% include "whatsnew.html.j2" %}

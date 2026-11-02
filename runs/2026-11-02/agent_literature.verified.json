@@ -1,0 +1,162 @@
+{
+ "agent": "agente-literatura",
+ "findings": [
+  {
+   "gene": "CA9",
+   "role": "target_and_biomarker",
+   "statement": "CA9 is the top convergence gene. PMID:42473996 reports that CA9 is preferentially enriched in ccRCC tumour cells with low background expression in normal kidney, and that CA9-targeted PET gives proof-of-concept non-invasive discrimination of ccRCC, 'warranting prospective validation'. High CA9 PET uptake was associated with PBRM1 loss-of-function alterations and enhanced angiogenic activity. This is imaging/diagnostic evidence from a single study. The data-only profiles also rank CA9 highly (target and biomarker), but TCGA Cox shows no prognostic signal, so the literature supports it as a diagnostic or targeting marker, not a prognostic one.",
+   "evidence_ids": [
+    "EV:literature:534430b0156d",
+    "EV:literature:7f2628a50d15",
+    "EV:literature:687723b4e539"
+   ]
+  },
+  {
+   "gene": "CD70",
+   "role": "target_and_biomarker",
+   "statement": "CD70 is described as commonly overexpressed in renal cell carcinoma and minimally expressed in normal human tissue, 'making it a potential therapeutic target' (PMID:38195301). PMID:39510586 states that high and specific CD70 expression in ccRCC makes it a potential diagnostic and therapeutic target, reports CD70-specific single-domain antibodies (RCCB3, RCCB6) labelled with 68Ga as radiotracers, and links CD70 expression to overall survival. CD70 correlates with hypoxia pathway proteins and is described as a downstream HIF target. Several independent papers plus clinical-stage anti-CD70 agents in the drug layer make this one of the best-supported targets. In the TCGA Cox data its prognostic effect is not significant.",
+   "evidence_ids": [
+    "EV:literature:92dc16d8b33c",
+    "EV:literature:3db6a5b218c7",
+    "EV:literature:453d456e73e3",
+    "EV:literature:e23d2f8cb981",
+    "EV:literature:012242579349"
+   ]
+  },
+  {
+   "gene": "NNMT",
+   "role": "target_and_biomarker",
+   "statement": "PMID:41399267 reports NNMT significantly upregulated in ccRCC tumour tissue, with high NNMT expression correlating with worse overall and disease-specific survival, and concludes NNMT is 'a promising prognostic biomarker and potential therapeutic target in ccRCC, supported by transcriptomic, clinical, and functional validation'. PMID:37523719 describes highly selective NNMT inhibitors (II559, II802) with very high selectivity over related methyltransferases. The prognostic claim is concordant with TCGA (tumour-up, adverse Cox). Evidence for ccRCC specifically comes mainly from one study; the inhibitor chemistry paper is not ccRCC-specific.",
+   "evidence_ids": [
+    "EV:literature:111b19cdfe29",
+    "EV:literature:8945a590eaca",
+    "EV:literature:c57be95f20a6",
+    "EV:literature:5d5690eab84a"
+   ]
+  },
+  {
+   "gene": "COXFA4L2",
+   "role": "target_and_biomarker",
+   "statement": "NDUFA4L2 (COXFA4L2) has the densest mechanistic literature. PMID:36722045 states that most ccRCCs overexpress NDUFA4L2, that hypoxic signalling induces it, and that it raises extracellular acidification (glycolysis). PMID:34970493 reports it predicts poor survival and supports proliferation and colony formation in kidney cancer lines, and enhances lipid deposition and Ca9 expression in the TRACK model. PMID:42331208 shows HIF-1alpha induces NDUFA4L2 and that it suppresses mitochondria-associated ferroptosis together with LDHB; targeting the NDUFA4L2/LDHB axis is proposed, particularly with radiotherapy. These are preclinical studies; no clinical targeting is reported in the corpus. The gene is absent from the TCGA replication layer in the ranking, so the survival claim rests on literature.",
+   "evidence_ids": [
+    "EV:literature:ec673e405bc1",
+    "EV:literature:533012368b9c",
+    "EV:literature:1741cd200f2a",
+    "EV:literature:b324d5280bd3",
+    "EV:literature:1f4e8bd4d272"
+   ]
+  },
+  {
+   "gene": "ALDOB",
+   "role": "biomarker",
+   "statement": "ALDOB is lower in ccRCC: IHC showed its level notably diminished versus adjacent normal tissue (PMID:40852386), which calls it 'a prognostic biomarker and a potential immunotherapy target'. It associates with infiltrating Treg, Th17 cells and neutrophils. PMID:38655323 (KIRC bioinformatics) calls it an independent predictor of prognosis. The 'immunotherapy target' wording is a bioinformatic inference. The downregulation direction makes it a diagnostic/prognostic marker, not a direct inhibitor target, which agrees with the data target profile ranking it low.",
+   "evidence_ids": [
+    "EV:literature:c73e5613ede3",
+    "EV:literature:f834882a57a7",
+    "EV:literature:58d7b6f6e786",
+    "EV:literature:dd489b3df02e"
+   ]
+  },
+  {
+   "gene": "ENO2",
+   "role": "target_and_biomarker",
+   "statement": "PMID:37760940 reports ENO2 as a potential diagnostic biomarker that independently predicts clinical prognosis in ccRCC, and that it promotes progression through glycolysis (Warburg effect). PMID:39091581 reports ENO2 high in ccRCC cell lines, and that knocking down ENO2 inhibits glycolysis, promotes ferroptosis and affects mitochondrial function. PMID:36313709 links ENO2 to overall survival in ccRCC. PMID:34467977 relates serum NSE to intraocular metastasis in RCC (not ccRCC-specific). Mostly bioinformatic plus in-vitro evidence; concordant with the tumour-up, adverse-prognosis signal in TCGA.",
+   "evidence_ids": [
+    "EV:literature:cfa400884c1b",
+    "EV:literature:26df25eedf25",
+    "EV:literature:3b3e46e581b5",
+    "EV:literature:078ba2a5ff38"
+   ]
+  },
+  {
+   "gene": "TYROBP",
+   "role": "biomarker",
+   "statement": "PMID:36595751 (pilot study) reports TYROBP higher in ccRCC than controls and proposes higher TYROBP with lower SOX6 as predictive biomarkers of poor prognosis. PMID:37117633 describes MMP9 and TYROBP as potential therapeutic and prognostic targets, with high expression predicting poor prognosis. The omics layer shows a strong purity dependence for TYROBP (and FCER1G), so the signal likely reflects immune/macrophage infiltration rather than tumour-intrinsic expression; the literature does not resolve this.",
+   "evidence_ids": [
+    "EV:literature:5273cead4b56",
+    "EV:literature:5d909123526c",
+    "EV:literature:778363dc9b97"
+   ]
+  },
+  {
+   "gene": "FCER1G",
+   "role": "biomarker",
+   "statement": "PMID:35120484 reports FCER1G abundant in tumour tissue and prognostic in ccRCC patients treated with Nivolumab but not in those treated with Everolimus, positively related to macrophage infiltration and T cell suppression, and proposes FCER1G combined with CD68 as a postoperative prognostic index. Single-study, tumour-microenvironment (immune) biomarker; a drug-specific prognostic claim with no independent replication in the corpus.",
+   "evidence_ids": [
+    "EV:literature:4acd42679460",
+    "EV:literature:d1d97e1a9042",
+    "EV:literature:bf184fc9a3bd"
+   ]
+  },
+  {
+   "gene": "MT1G",
+   "role": "mechanism",
+   "statement": "MT1G literature is internally conflicting. PMID:36204178 shows MT1G downregulated in ccRCC tissue versus normal and calls it a negative regulator of ferroptosis and a biomarker of poor prognosis. PMID:38906969 observed low MT1G in ccRCC tissues, yet high MT1G correlated with advanced stage and poorer prognosis, and elevated MT1G promoted growth and metastasis in vitro and in vivo, with MT1G inhibiting CPT1B via H3K14 trimethylation to enhance lipid droplet accumulation. So MT1G is lowered in tumours but high expression within tumours is adverse; this is consistent with TCGA down-regulation plus adverse Cox, but makes simple 'tumour-suppressor' or 'oncogene' labels unsafe. Replacement or inhibition cannot be inferred.",
+   "evidence_ids": [
+    "EV:literature:01828633a99d",
+    "EV:literature:f6c45de2c4dd",
+    "EV:literature:de9d334b7b1c",
+    "EV:literature:0a8bb8c4711b",
+    "EV:literature:347e445b0c25"
+   ]
+  },
+  {
+   "gene": "PFKP",
+   "role": "mechanism",
+   "statement": "PFKP is reported as significantly highly expressed in kidney cancer especially ccRCC (PMID:34321910) and among the most consistently upregulated genes in a ccRCC meta-analysis (PMID:36901940), and as having diagnostic and prognostic potential (PMID:40341002). However PMID:34321910 also reports that low PFKP expression was correlated with poor long-term overall survival, i.e. an apparent contradiction with a pro-tumour glycolytic role. TCGA Cox in the ranking does not reach significance, so prognostic direction is unresolved and PFKP should be treated as a tumour-up marker rather than a validated prognostic marker.",
+   "evidence_ids": [
+    "EV:literature:2fceed76c9b4",
+    "EV:literature:292de8367805",
+    "EV:literature:a55b9a38e327",
+    "EV:literature:fa5e4add4a84"
+   ]
+  },
+  {
+   "gene": "PLIN2",
+   "role": "biomarker",
+   "statement": "PLIN2 is among the most consistently upregulated genes in ccRCC in a multi-dataset analysis (PMID:36901940). PMID:34482820 validated PLIN2 (with TUBB3, LAMP1, HK1) as diagnostic markers of renal neoplasms by IHC on tissue micro-arrays, and PMID:35314744 relates PLIN2 expression to prognosis via GEPIA. Diagnostic IHC validation exists but is small and proof-of-concept; the prognostic direction is not stated in the extracted sentence.",
+   "evidence_ids": [
+    "EV:literature:dbfbe45c8391",
+    "EV:literature:e3ae1997555f",
+    "EV:literature:821636f02856"
+   ]
+  },
+  {
+   "gene": "SLC22A8",
+   "role": "biomarker",
+   "statement": "PMID:36123895 reports SLC22A8 protein, phosphorylation and DNA methylation levels lower in ccRCC than normal tissue, with low methylation predicting poor overall survival, and concludes it can be used as a prognostic biomarker (correlated with survival and immune infiltration). Single bioinformatic study; concordant with the strong TCGA down-regulation and protective Cox in the data profile. A loss-of-expression marker, not a drug target.",
+   "evidence_ids": [
+    "EV:literature:9266416c15be",
+    "EV:literature:a9921428c938"
+   ]
+  },
+  {
+   "gene": "ABAT",
+   "role": "mechanism",
+   "statement": "ABAT is reported underexpressed in KIRC among other cancers and as predicting poor prognosis in KIRC (PMID:41158242, pan-cancer; the functional experiments in that paper were done in LUAD, not ccRCC). PMID:41813748 shows ABAT overexpression suppresses tumour growth, mediates cGAS-STING signalling and interacts with PRMT5 to enhance interferon signalling. A tumour-suppressive, down-regulated gene argues against inhibiting it, even though ABAT carries an approved inhibitor (vigabatrin) in the drug layer; ccRCC-specific functional literature is thin. The two pan-cancer statements are also in tension (underexpressed but 'predicts poor prognosis'), and the corpus does not resolve it.",
+   "evidence_ids": [
+    "EV:literature:22349683c148",
+    "EV:literature:6295ed0b0e37",
+    "EV:literature:24b33107cb4e",
+    "EV:literature:5f35843a9307"
+   ]
+  },
+  {
+   "gene": "VHL",
+   "role": "mechanism",
+   "statement": "VHL and EPAS1 (HIF-2alpha) rank mainly through genetics, drug and Open Targets evidence rather than through extracted literature relations (zero literature relations for both). Sentence chunks in the corpus state that inactivation of VHL leads to accumulation of HIF-2alpha, that the HIF-2alpha inhibitor belzutifan has been FDA-approved for ccRCC (PMID:42422841), and that clear cell RCC patients carry a significant burden of pathogenic VHL variants versus controls (PMID:38496821). These are the only clinically validated target axis among the top candidates, yet they show weak tumour-versus-normal expression and, for VHL, strongly negative DepMap selectivity in the data profiles.",
+   "evidence_ids": [
+    "EV:chunk:726228166de6",
+    "EV:chunk:b29408b099f7"
+   ]
+  }
+ ],
+ "caveats": [
+  "Corpus is about 320 ccRCC abstracts; most gene claims rest on one or two papers, many of them TCGA/GEO bioinformatic analyses without independent validation.",
+  "Several top-ranked genes have no extracted ccRCC literature relations: SCARB1, PIGR, SLC12A1, CASR, PAH, DPEP1, ENPP3, AQP2, FGF1, SLC5A2, SLC13A3, SLC36A2, ENPP6, SLC47A2 (ranking literature component comes only from Open Targets scores or is absent). SCARB1 and ENPP3 are strong in tumour-up and purity-robust data profiles (target profile) and ENPP3 has a Phase 2 antibody-drug conjugate (AGS-16C3F), but the corpus is silent on them: these are data-supported candidates awaiting literature.",
+  "Many highly ranked down-regulated renal tubule genes (UMOD, SLC22A8, FABP1, NPHS2, SLC34A1, AQP2) mostly reflect loss of normal proximal/distal tubule identity; literature supports them at most as diagnostic/prognostic markers, never as inhibitable targets, and the target profile correctly scores them low.",
+  "Contradictions: PFKP (tumour-up but low expression linked to poor survival), MT1G (down in tumour but high expression adverse), ABAT (down in tumour, tumour-suppressive, yet carries an inhibitor in the drug layer; the two pan-cancer statements are in tension).",
+  "Immune-related genes (TYROBP, FCER1G) have strong purity dependence in the data; literature prognostic claims may reflect infiltrate rather than tumour-intrinsic expression.",
+  "Literature extraction is sentence-level and often from abstracts only; absence of a relation is not evidence of absence. No finding here has been validated in a prospective clinical cohort except through the cited drug-approval context for HIF-2alpha."
+ ]
+}
