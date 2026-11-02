@@ -2,7 +2,7 @@
 
 **A reproducible, evidence-based screen for drug targets and biomarkers in clear cell renal cell carcinoma (ccRCC).**
 
-[Live interactive report](https://rsolerortuno.github.io/agentic-multi-omics-target-atlas-for-kidney-cancer/) ·
+[Live interactive report](https://rsolerortuno.github.io/agentic-kidney-atlas/) ·
 [Reproduction guide](docs/reproduction.md) ·
 [Limits of the automatic checks](docs/numeric-claims.md) ·
 [Evaluation results](evals/results.md) ·
