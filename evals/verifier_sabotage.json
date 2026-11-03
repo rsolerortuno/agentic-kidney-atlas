@@ -1,0 +1,56 @@
+{
+ "run": "2026-11-03",
+ "statements_passing": 118,
+ "seed": 7,
+ "corruptions": {
+  "number": {
+   "applied": 72,
+   "caught": 72,
+   "missed_examples": [],
+   "rate": 1.0
+  },
+  "direction": {
+   "applied": 54,
+   "caught": 15,
+   "missed_examples": [
+    {
+     "location": "agent_findings.omics[4]",
+     "text": "SCARB1 (SR-B1) ranks first in the target profile: down in protein [gene=SCARB1; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=1.837] and RNA [gene=SCARB1; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna;"
+    },
+    {
+     "location": "agent_findings.omics[9]",
+     "text": "VHL is the disease driver, with recurrent somatic mutation across the combined CPTAC and TCGA cohort [gene=VHL; type=somatic_recurrence; source=DATASET:SOMATIC-CPTAC-TCGA; freq=0.483], plus frequent 3p copy-number loss with a positive cis d"
+    },
+    {
+     "location": "agent_findings.literature[0]",
+     "text": "CA9 is the top convergence gene. PMID:42473996 reports that CA9 is preferentially enriched in ccRCC tumor cells with low background expression in normal kidney, and that CA9-targeted PET gives proof-of-concept noninvasive discrimination of "
+    },
+    {
+     "location": "agent_findings.literature[1]",
+     "text": "COXFA4L2 (NDUFA4L2) has the densest mechanistic literature. HIF-1alpha induces NDUFA4L2 expression and mitochondrial localization (PMID:42331208). NDUFA4L2 is described as a critical suppressor of mitochondria-associated ferroptosis acting "
+    },
+    {
+     "location": "agent_findings.literature[2]",
+     "text": "CD70 is described as commonly underexpressed in RCC and minimally expressed in normal tissue, 'making it a potential therapeutic target' (PMID:38195301). Its expression correlates with hypoxia pathway proteins in ccRCC, consistent with it b"
+    }
+   ],
+   "applied_with_de_evidence": 19,
+   "caught_with_de_evidence": 14,
+   "rate": 0.278,
+   "rate_with_de_evidence": 0.737
+  },
+  "gene": {
+   "applied": 105,
+   "caught": 105,
+   "missed_examples": [],
+   "rate": 1.0
+  },
+  "evidence": {
+   "applied": 105,
+   "caught": 105,
+   "missed_examples": [],
+   "rate": 1.0
+  }
+ },
+ "scope": "Detection of deliberately corrupted copies of statements that pass verification; a missed corruption is a statement the automatic checks would accept although it is wrong."
+}

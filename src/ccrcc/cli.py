@@ -55,6 +55,8 @@ def _run_all(fresh: bool = True, frozen: bool = True) -> int:
         _step("M1 download (verifies sha256 manifest)", download.download_all)
         _step("M11 download single-cell / spatial h5ad (cached)", download.download_singlecell)
         _step("M13 download extra layers (cached)", extra_download.download_extra)
+        from . import m16 as m16_dl
+        _step("M16 download surfaceome, GTEx proteome, CheckMate 025, PRISM (cached)", m16_dl.download)
     else:
         print("    Frozen reconstruction: downloaders skipped; network access prohibited.", flush=True)
     _step("M2 omics analysis", omics.run)
@@ -63,6 +65,8 @@ def _run_all(fresh: bool = True, frozen: bool = True) -> int:
     _step("M12 HPA vital-organ expression + clinical association", safety_clinical.run)
     print("    layers:", {k: v for k, v in _step("M13 extra layers (mutations, cis dosage, DepMap, TCGA, kinases, purity)",
                                                layers.run).items() if k in ("mutations", "tcga", "purity")})
+    from . import m16
+    print("    M16:", _step("M16 surfaceome, normal-tissue proteome, PRISM drug response", m16.run))
     from . import subtypes, treatment
     print("    treatment:", _step("M15 treatment-response biomarkers (IMmotion150, Choueiri 2016)",
                                   treatment.run)["controls_reproduced"])
@@ -134,7 +138,7 @@ def main(argv=None) -> int:
     for name in ("download", "omics", "literature", "validate-relations", "enrich", "graph", "integrate", "eval",
                  "singlecell", "spatial", "structure", "cell-graph", "discovery", "layers", "layers-graph",
                  "download-extra", "safety-clinical", "baselines", "treatment", "subtypes", "adc", "immune",
-                 "sc-replication", "spatial-viewer", "confirmatory", "applied-graph"):
+                 "sc-replication", "spatial-viewer", "confirmatory", "applied-graph", "m16", "download-m16"):
         sub.add_parser(name)
     ev = sub.choices["eval"]
     ev.add_argument("--qa", action="store_true", help="also run the known-answer questions with claude -p")
@@ -187,6 +191,12 @@ def main(argv=None) -> int:
     elif args.cmd == "layers":
         from .layers import run
         print(json.dumps(run(), indent=1, default=float))
+    elif args.cmd == "m16":
+        from .m16 import run as run_m16
+        print(json.dumps(run_m16(), indent=1))
+    elif args.cmd == "download-m16":
+        from .m16 import download as download_m16
+        print(json.dumps(download_m16(), indent=1))
     elif args.cmd == "layers-graph":
         from .kg_layers import load_layers
         print(json.dumps(load_layers(), indent=1))

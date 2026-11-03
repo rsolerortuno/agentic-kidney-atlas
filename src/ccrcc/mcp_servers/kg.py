@@ -80,6 +80,25 @@ def get_evidence(ids: list[str]) -> list[dict]:
     return clean(store().get_evidence(ids[:50]))
 
 
+@mcp.tool()
+def numeric_annotation(evidence_id: str, field: list, display: str, unit: str = "native") -> dict:
+    """Build the exact annotation a number needs to pass verification (docs/numeric-claims.md). field = path of keys
+    into the cited record, e.g. ["log2fc"] or ["arms", "sunitinib", "log_hr_per_sd"]; display = the number as you will
+    print it, e.g. "2.27" (sign and decimals must match the record); unit = "native", "percent" (registered fractions)
+    or "native_percent" (fields already 0-100). Returns `annotation` (paste it once, unchanged, into the statement where
+    the number goes) and `numeric_claim` (put it in the finding's "numeric_claims" list), or `error` explaining why the
+    number does not match the record. Use it for every number you write."""
+    from ..semantic import numeric_claim_text
+    recs = store().get_evidence([evidence_id])
+    if not recs:
+        return {"error": f"evidence id {evidence_id} does not exist"}
+    claim = {"evidence_id": evidence_id, "field": field, "display": display, "unit": unit}
+    try:
+        return {"annotation": numeric_claim_text(claim, recs[0]), "numeric_claim": claim}
+    except (ValueError, TypeError) as exc:
+        return {"error": str(exc), "record": clean(recs[0])}
+
+
 def _latest_convergence() -> dict | None:
     from ..integrate import run_dir
     if os.environ.get("CCRCC_RUN_DIR") and (run_dir() / "convergence.json").exists():

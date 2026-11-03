@@ -116,13 +116,14 @@ the ranking ids are now in the basis from the start), the direction check also r
 name exactly one cited gene, the T-effector control needs p < 0.05, and genes without Human Protein Atlas data are no longer
 treated as safe in the discovery screen (no gene was affected in this run).
 
-The agent step was run again with `scripts/run_informe.ps1` into `runs/2026-11-03`. The headless orchestrator stopped once
+The agent step was run again with `scripts/run_informe.ps1` into `runs/2026-11-03` (now archived as
+`runs/archive/2026-11-03_hgnc_fix`, see the next section). The headless orchestrator stopped once
 at step 4 (its own safety check refused the large `narrative.json` write) and was resumed from step 4 without re-running
 the integration or the subagents. Final verification checked 116 statements with no failures detected by the automatic
 checks (0 unsupported, 0 semantic, 0 stale). The orchestrator rewrote 48 agent findings that cited numbers without the
 structured `numeric_claims` binding, and added one HK2 finding built from its confirmatory-replication record.
 
-- `reproducibility/inputs.json` now selects `runs/2026-11-03`. Its agent files, basis and narrative replace the 2026-11-02
+- `reproducibility/inputs.json` then selected that run. Its agent files, basis and narrative replaced the 2026-11-02
   entries; `runs/2026-11-02` stays in the repository. Fifteen cached Open Targets, STRING and UniProt responses for genes
   that entered the ranking (e.g. G6PC1, ACP3, ADGRF1) were added as inputs.
 - The repeat runs in `runs/replicates/` were not re-run; they belong to the 2026-11-02 analysis.
@@ -130,3 +131,51 @@ structured `numeric_claims` binding, and added one HK2 finding built from its co
   and three PDB references in `cache/ternary`), so the rebuild ran the `run-all` steps without the frozen-input check. The
   files in `clean-run.log`, `clean-comparison.json`, `acceptance.json` and `runtime-hashes.json` still describe the earlier
   clean execution.
+
+## Second re-freeze on 2026-11-03: surfaceome, new data and stricter checks (M16)
+
+A second review round changed the inputs and the checks, so the analysis was rebuilt and the agent step run again.
+
+What changed in the deterministic pipeline:
+
+- Surface location. The discovery screen counted any "membrane" location as antibody-accessible (37 of 266 such genes
+  had only Golgi, ER, lysosome or mitochondrial membranes). `m16.surface_call` now decides from UniProt, the Cell Surface
+  Protein Atlas (observed at the surface by mass spectrometry) and SURFY (in-silico surfaceome); "Membrane" alone with
+  no surfaceome support is "unknown" (half credit). GAL3ST4, SLC37A2 and COX4I2 are now "internal" and drop a place in
+  their tracks. They keep the "first-in-class" label because Open Targets calls them antibody-tractable; an antibody
+  cannot reach an internal protein, so this is a known remaining inconsistency (the new narrative calls GAL3ST4 "an
+  internal Golgi enzyme"; gating the antibody modality on surface location is a follow-up).
+- New data (`data/raw/m16/`, own manifest): SURFY and CSPA; the GTEx normal-tissue proteome (a protein enriched in a vital
+  organ, TS >= 4, is no longer "safe" in the discovery screen and caps the ADC normal-tissue component); CheckMate 025
+  (nivolumab vs everolimus, 250 patients: no gene differs between arms after correction); PRISM 20Q2 drug response of
+  cell lines (most ccRCC-selective compound per target gene). All are in the graph and reachable by the agents
+  (`normal_tissue_protein`, `drug_response`, and the existing treatment and ADC tools).
+- Treatment interaction on one expression scale for both arms (equal to an arm x gene Cox term with stratified baselines).
+- Evaluation: a no-agent baseline list, leave-one-stream-out for the top 25 of each ranking, the "High-Quality Ligand"
+  ablation (target-profile AUROC 0.895 -> 0.797; post-2016 0.886 -> 0.666) and a sabotage test of the verifier
+  (`evals/verifier_sabotage.json`).
+
+What changed in the checks and the agent step:
+
+- The direction check reads clauses rather than whole sentences, uses the data layer named in the clause, and compares
+  direction words with the sign of a printed log2FC. On deliberately corrupted copies of the statements it now catches
+  74 % of flipped directions where expression evidence is cited (46 % before), with no new failures on the five saved
+  runs.
+- A `numeric_annotation` tool gives agents the exact annotation for each number, so the orchestrator no longer has to
+  rewrite their findings; `/informe` writes the narrative in parts and remembers its run folder (`runs/.current`).
+
+Runs: the first 2026-11-03 analysis (HGNC fix only) moved to `runs/archive/2026-11-03_hgnc_fix`. The new
+`runs/2026-11-03` checked 118 statements with no failures detected by the automatic checks (0 unsupported, 0 semantic,
+0 stale); the two replicates in `runs/replicates/` were re-run on the same inputs (114 and 118 statements, no failures)
+and the three final target lists overlap at a mean Jaccard of 0.86. In all three runs the orchestrator removed plain-text
+copies of numbers that agents had also written inside their annotations; the agent instructions now say an annotation
+replaces its number. One replicate run had to be repeated after an API error; it ran in a named folder
+(`2026-11-03_r4`) and was then moved to `runs/replicates/rep1`, as the second was from `2026-11-03_r3`.
+
+Frozen reproduction: the four local files that differed from the manifest (`raw/extra/manifest.json` and three PDB
+references) were restored from the original acquisition snapshot with their frozen hashes, so the manifest now
+verifies with no errors on this machine. New inputs were added to it: the M16 files, 15 cached Open Targets / STRING /
+UniProt responses and one AlphaFold model (IGSF6) for genes that entered the rankings. `uv run ccrcc run-all` (frozen,
+offline) rebuilt every table and the graph from these inputs; it stops at final verification only when the selected
+run's narrative predates the data, as designed. `clean-run.log`, `clean-comparison.json`, `acceptance.json` and
+`runtime-hashes.json` still describe the earlier isolated clean execution and were not regenerated.

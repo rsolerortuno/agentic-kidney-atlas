@@ -51,6 +51,17 @@ def test_missing_vital_organ_data_is_not_safe():
     assert s.loc["A", "status"] == "novel, vital-organ safety unknown (no HPA data)"
 
 
+def test_vital_organ_protein_enrichment_blocks_first_in_class():
+    s = score(_frame(vital_protein_enriched=[True, False])).set_index("gene")
+    assert not bool(s.loc["A", "safe"]) and s.loc["A", "c_safety"] < s.loc["B", "c_safety"]
+
+
+def test_unknown_location_scores_between_surface_and_internal():
+    s = score(_frame(surface_call=["unknown", "surface"])).set_index("gene")
+    i = score(_frame(surface_call=["internal", "surface"])).set_index("gene")
+    assert i.loc["A", "c_druggable"] < s.loc["A", "c_druggable"] < s.loc["B", "c_druggable"]
+
+
 def test_untractable_is_harder_to_drug():
     s = score(_frame(modalities=[[], ["AB"]], surface_or_secreted=[False, True])).set_index("gene")
     assert s.loc["A", "status"] == "novel, harder to drug" and s.loc["A", "c_druggable"] == 0
@@ -132,3 +143,18 @@ def test_discovery_evidence_is_in_the_graph_and_resolvable():
     row = store.conn.execute("SELECT count(*) FROM evidence WHERE type = 'discovery_profile'").fetchone()[0]
     assert row >= 0.9 * len(d)
     assert store.stats()["claims_without_resolvable_evidence"] == 0
+
+
+def test_surface_call_rules():
+    from ccrcc.m16 import surface_call
+    tab = pd.DataFrame({"surfy_label": ["surface", "nonsurface", None], "cspa_category": [None, None, "1 - high confidence"]},
+                       index=["P_SURFY", "P_NON", "P_CSPA"])
+    assert surface_call(["Golgi apparatus, Golgi stack membrane"], None, tab)[0] == "internal"
+    assert surface_call(["Mitochondrion inner membrane"], None, tab)[0] == "internal"
+    assert surface_call(["Cell membrane"], "P_NON", tab)[0] == "surface"            # curated location beats prediction
+    assert surface_call(["Endoplasmic reticulum membrane"], "P_SURFY", tab)[0] == "internal"
+    assert surface_call(["Membrane"], "P_SURFY", tab)[0] == "surface"               # SURFY decides generic "Membrane"
+    assert surface_call(["Membrane"], "P_NON", tab)[0] == "internal"
+    assert surface_call(["Membrane"], None, tab)[0] == "unknown"
+    assert surface_call(["Cytoplasm"], "P_CSPA", tab)[0] == "surface"               # observed at the surface by MS
+    assert surface_call(["Secreted"], None, tab)[0] == "secreted"

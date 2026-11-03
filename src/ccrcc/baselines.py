@@ -9,6 +9,9 @@
    replication, target and biomarker profile scores).
 3. Run-to-run variability of the full agentic pipeline: the official run plus replicate runs of `/informe`
    (CCRCC_RUN_DIR=replicates/repN), compared by Jaccard and top-k agreement of the final target lists.
+4. No-agent baseline (added 2026-11-03): the same number of genes taken straight from the deterministic outputs,
+   alternating target profile, biomarker profile and the tumour-cell track of the discovery screen (the three places
+   the orchestrator is told to draw from). What the agents change relative to this list is what they add.
 """
 from __future__ import annotations
 
@@ -112,6 +115,25 @@ def _final_targets(run: Path) -> list[str]:
     return [t["gene"] for t in f.get("targets", [])]
 
 
+def no_agent_list(n: int, scores: pd.DataFrame) -> list[str]:
+    """n genes alternating target profile, biomarker profile and discovery tumour track, skipping repeats."""
+    sources = [scores.sort_values("score_target", ascending=False)["gene"].tolist(),
+               scores.sort_values("score_biomarker", ascending=False)["gene"].tolist()]
+    p = PROCESSED / "discovery_candidates.parquet"
+    if p.exists():
+        d = pd.read_parquet(p)
+        sources.append(d[d["track"] == "tumor"].sort_values("rank_in_track")["gene"].tolist())
+    out, idx = [], [0] * len(sources)
+    while len(out) < n and any(i < len(s) for i, s in zip(idx, sources)):
+        for k, s in enumerate(sources):
+            while idx[k] < len(s) and s[idx[k]] in out:
+                idx[k] += 1
+            if idx[k] < len(s) and len(out) < n:
+                out.append(s[idx[k]])
+                idx[k] += 1
+    return out
+
+
 def agents_vs_ranking(run: Path, scores: pd.DataFrame) -> list[dict]:
     """Promotions / demotions by the orchestrator relative to the numeric convergence rank, with the M13 values."""
     f = json.loads((run / "findings.json").read_text(encoding="utf-8"))
@@ -164,6 +186,14 @@ def run(closed_runs: int = 3, cached_only: bool = False, official: Path | None =
                                        if closed_lists and pipe_lists else None),
         "agents_vs_ranking": agents_vs_ranking(official, scores) if official else [],
     }
+    if pipe_lists:
+        base = no_agent_list(len(pipe_lists[0]), scores)
+        res["no_agent_baseline"] = {
+            "rule": "alternate target profile, biomarker profile, discovery tumour track; same length as the agent list",
+            "genes": base, "jaccard_with_agents": round(jaccard(base, pipe_lists[0]), 3),
+            "support": _support(base, scores, clinical),
+            "added_by_agents": [g for g in pipe_lists[0] if g not in base],
+            "dropped_by_agents": [g for g in base if g not in pipe_lists[0]]}
     if official:
         vf = json.loads((official / "verification_final.json").read_text(encoding="utf-8"))
         res["pipeline"]["statements_checked"] = vf["statements"]

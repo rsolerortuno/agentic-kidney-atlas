@@ -9,8 +9,8 @@
    "ids_removed": 0
   },
   "agent_literature.json": {
-   "submitted": 11,
-   "kept": 11,
+   "submitted": 14,
+   "kept": 14,
    "dropped": 0,
    "dropped_detail": [],
    "semantic_failures": 0,
@@ -25,16 +25,16 @@
    "ids_removed": 0
   },
   "agent_cells.json": {
-   "submitted": 18,
-   "kept": 18,
+   "submitted": 16,
+   "kept": 16,
    "dropped": 0,
    "dropped_detail": [],
    "semantic_failures": 0,
    "ids_removed": 0
   },
   "agent_applied.json": {
-   "submitted": 28,
-   "kept": 28,
+   "submitted": 20,
+   "kept": 20,
    "dropped": 0,
    "dropped_detail": [],
    "semantic_failures": 0,

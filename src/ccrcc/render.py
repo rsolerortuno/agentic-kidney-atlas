@@ -351,11 +351,11 @@ def render(findings_path: Path, out: Path | None = None) -> Path:
     from .degradation import build as build_degradation
     degradation_data = build_degradation()
     from .candidate_evidence import build as build_candidate_evidence
-    from .protein_viewer import build as build_protein_viewer, script_json
+    from .protein_viewer import build as build_protein_viewer, gzip_b64, script_json
     html_out = tpl.render(
         degradation=degradation_data,
         candidate_evidence=build_candidate_evidence(cand),
-        protein_json=script_json(build_protein_viewer(references=degradation_data["references"])),
+        protein_b64=gzip_b64(script_json(build_protein_viewer(references=degradation_data["references"]))),
         protein_library_js=(ASSETS / "3Dmol-min.js").read_text(encoding="utf-8"),
         protein_viewer_js=(ASSETS / "protein_viewer.js").read_text(encoding="utf-8"),
         f=f, top25=top25, evidence=ev_views, cell=cell, figs=figs, kpis=kpis, badges=badges(f), controls=controls_view,
@@ -364,7 +364,7 @@ def render(findings_path: Path, out: Path | None = None) -> Path:
         verification=json.loads(vpath.read_text(encoding="utf-8")) if vpath.exists() else None,
         graph_stats=json.loads((PROCESSED / "graph_stats.json").read_text()),
         profiles=profiles, profile_weights=f["convergence"].get("profile_weights") or {}, evals=evals, layers=layers,
-        m15=m15, grade_caption=grade_caption, viewer_json=viewer_json, release=RELEASE, tour=TOUR,
+        m15=m15, grade_caption=grade_caption, viewer_b64=gzip_b64(viewer_json), release=RELEASE, tour=TOUR,
     )
     out = out or REPORTS / "ccrcc_report.html"
     out.write_text(html_out, encoding="utf-8")

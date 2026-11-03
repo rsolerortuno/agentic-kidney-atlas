@@ -174,8 +174,19 @@ def run(t: pd.DataFrame) -> dict:
     noise = np.random.default_rng(0).random(len(t)) * 1e-9          # random order within ties (not the input order)
     t["tractability_only"] = t["c_tractability_predicted"] + noise
     out["n_predicted_tractable"] = int((t["c_tractability_predicted"] > 0).sum())
+    # ablation: the "High-Quality Ligand" bucket reflects medicinal-chemistry history; replace the component by the
+    # pocket / location buckets only
+    w_tr = wt.get("tractability_predicted", 0)
+    if "c_tractability_predicted_no_ligand" in t:
+        t["score_target_no_ligand"] = (t["score_target"] - w_tr * t["c_tractability_predicted"]
+                                       + w_tr * t["c_tractability_predicted_no_ligand"])
+        t["tractability_no_ligand_only"] = t["c_tractability_predicted_no_ligand"] + noise
+        out["n_predicted_tractable_no_ligand"] = int((t["c_tractability_predicted_no_ligand"] > 0).sum())
     for key, gold, excl in (("clinical_targets", allc, None), ("temporal_holdout", hold, pre)):
         out[key]["target profile without tractability"] = metrics(t, "score_target_no_tractability", gold, exclude=excl)
         out[key]["predicted tractability alone"] = metrics(t, "tractability_only", gold, exclude=excl)
+        if "score_target_no_ligand" in t:
+            out[key]["target profile, tractability without ligand history"] = metrics(t, "score_target_no_ligand", gold, exclude=excl)
+            out[key]["predicted tractability without ligand history, alone"] = metrics(t, "tractability_no_ligand_only", gold, exclude=excl)
     out["clinical_table"] = clin.assign(first_trial=clin["first_trial"].dt.date.astype(str)).to_dict("records")
     return out

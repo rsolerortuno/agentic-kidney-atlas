@@ -8,7 +8,8 @@ You are the orchestrator of the ccRCC GraphRAG analysis. Question:
 Follow these steps exactly. All numbers come from tools/scripts; you never compute or invent values.
 
 1. Run `uv run python scripts/integrate.py`. It prints the run directory path (`runs/<date>/convergence.json`).
-   Call that directory RUN below.
+   Call that directory RUN below. It also records RUN in `runs/.current`, so the later scripts use RUN by default even
+   if a step is repeated on another day. Never run this script again in the same analysis: it deletes the agent files.
 
 2. Launch the five subagents **in parallel** (one message, five Agent/Task calls), each with this prompt
    (replace RUN with the absolute path):
@@ -76,16 +77,21 @@ Follow these steps exactly. All numbers come from tools/scripts; you never compu
    - 3–5 summary paragraphs; 1–3 paragraphs per section; 10–14 entries in `targets` ordered by your judgment of
      strength (you may depart from the numeric ranking, but say why in `rationale`). Use the target profile for
      target calls and the biomarker profile for biomarker calls; the overall convergence score mixes both.
-   - Read `docs/numeric-claims.md`. Bind numbers to their specific metric, evidence ID and context.
-     Include `numeric_claims` with exact canonical annotations for multi-layer/nested metrics. Do not
-     use ranking/global number pools. Preserve signs and units. Passing automatic checks is not
-     complete scientific validation.
+   - Read `docs/numeric-claims.md`. Bind every number to its record with the `numeric_annotation` tool (kg-mcp): it
+     returns the exact annotation to paste once into the text and the `numeric_claims` entry to add. Copying annotations
+     from the verified agent files is fine when the paragraph cites the same evidence id. An annotation replaces its number; do not
+     also print the number in plain text. Do not use ranking/global number
+     pools. Preserve signs and units. Passing automatic checks is not complete scientific validation.
+   - Write `narrative.json` in parts, not in one large write: first create it with `summary` and an empty `sections`
+     object, `targets` list and `limitations` list; then add each section, the targets and the limitations with separate
+     edits. A single very large write can be refused, and a partial file is easier to resume.
    - Every summary/section paragraph and every target MUST cite evidence ids copied from the verified agent files
      or from `convergence.json`. A paragraph that discusses one specific gene should carry `"gene": "<symbol>"`
      and cite only that gene's evidence. Limitations need no ids.
 
-5. Run `uv run python scripts/assemble.py` then `uv run python scripts/verify.py final`.
+5. Run `uv run python scripts/assemble.py <RUN date>` then `uv run python scripts/verify.py final <RUN date>` (the date is
+   RUN's folder name; without it the scripts use `runs/.current`).
    If it reports any unsupported claim, review and correct the original agent/narrative inputs (metric, citation, context or interpretation) and repeat step 5
    and re-run agent verification when its inputs change. Inspect all dropped statements; do not discard substantive results merely to obtain `unsupported claims: 0`.
 
-6. Run `uv run python scripts/render.py` and reply with the report path and a 5-line summary.
+6. Run `uv run python scripts/render.py <RUN date>` and reply with the report path and a 5-line summary.

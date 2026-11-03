@@ -7,11 +7,13 @@ tumour cells, not on a subset, or the payload misses the rest. Each candidate ge
 - surface:      UniProt topology and location. 1.0 = transmembrane with an extracellular topological domain of
                 >= 20 residues and a cell-membrane / cell-surface location; 0.7 = transmembrane + membrane location
                 without an annotated extracellular domain; 0.4 = membrane location only (GPI-anchored or peripheral);
-                0 = intracellular or secreted.
+                0 = intracellular or secreted. A protein observed at the cell surface by mass spectrometry (Cell Surface
+                Protein Atlas, high confidence) gets at least 0.7 (M16).
 - tumour_up:    min(1, protein log2FC / 2) when the CPTAC protein change is significant, else 0.5 x the RNA version.
 - normal_ihc:   Human Protein Atlas normal-tissue immunohistochemistry. 1 - (max staining level over vital tissues) / 3,
                 levels Not detected 0, Low 1, Medium 2, High 3; antibodies rated "Uncertain" count half. Normal kidney
-                is reported separately (radioligands are cleared by the kidney) but is not part of the score.
+                is reported separately (radioligands are cleared by the kidney) but is not part of the score. A protein
+                enriched in a vital organ in the GTEx proteome (tissue-specificity score >= 4) is capped at 0.33 (M16).
 - homogeneity:  share of ccRCC tumour cells with >= 1 UMI in scRNA-seq (Li 2022), taken as the 25th percentile over
                 donors, so a gene expressed in every cell of a few tumours does not look homogeneous.
 
@@ -142,13 +144,19 @@ def candidates() -> list[str]:
 def run() -> dict:
     genes = candidates()
     u = pd.read_parquet(PROCESSED / "gene_universe.parquet").set_index("gene")
+    from .m16 import load_surfaceome, surface_call
+    surf_tab = load_surfaceome()
     rows = []
     for g in genes:
         t = uniprot_topology(g)
-        rows.append({"gene": g, "uniprot": (t or {}).get("accession"), "n_transmembrane": (t or {}).get("n_transmembrane"),
+        acc = (t or {}).get("accession")
+        call, why = surface_call((t or {}).get("locations", []), acc, surf_tab)
+        cspa = surf_tab is not None and acc in surf_tab.index and str(surf_tab.loc[acc, "cspa_category"]).startswith("1")
+        rows.append({"gene": g, "uniprot": acc, "n_transmembrane": (t or {}).get("n_transmembrane"),
                      "extracellular_residues": (t or {}).get("extracellular_residues"),
                      "gpi_anchor": (t or {}).get("gpi_anchor"), "locations": "; ".join((t or {}).get("locations", [])),
-                     "c_surface": surface_score(t)})
+                     "surface_call": call, "surface_evidence": why, "cspa_high_confidence": bool(cspa),
+                     "c_surface": max(surface_score(t), 0.7 if cspa else 0.0)})
     d = pd.DataFrame(rows).set_index("gene")
     surf = d[d["c_surface"] > 0].index.tolist()
     d = d.join(normal_ihc(), how="left")
@@ -162,6 +170,13 @@ def run() -> dict:
     d["c_normal_ihc"] = (1 - d["ihc_vital_max_level"] / 3).clip(0, 1)
     d["ihc_measured"] = d["c_normal_ihc"].notna()
     d["c_normal_ihc"] = d["c_normal_ihc"].fillna(0.5)         # no HPA antibody: neutral, flagged
+    np_path = PROCESSED / "normal_proteome.parquet"
+    if np_path.exists():
+        npr = pd.read_parquet(np_path).drop_duplicates("gene").set_index("gene")
+        for col in ("vital_protein_ts_max", "vital_protein_ts_tissue", "vital_protein_enriched"):
+            d[col] = npr[col].reindex(d.index)
+        enriched = d["vital_protein_enriched"].astype("boolean").fillna(False).astype(bool)
+        d["c_normal_ihc"] = np.where(enriched, np.minimum(d["c_normal_ihc"], 0.33), d["c_normal_ihc"])
     d["c_homogeneity"] = (d["rcc_pct_donor_p25"] / 100 / 0.5).clip(0, 1).fillna(0.0)   # 50 % of cells saturates
     d["suitability"] = sum(w * d[f"c_{k}"] for k, w in WEIGHTS.items())
     d["control"] = d.index.isin(CONTROLS)

@@ -100,7 +100,9 @@ def load_applied(store: GraphStore | None = None) -> dict:
             for g in genes:
                 rec, any_arm = {}, False
                 for arm, label in (("atezo_bev", "atezolizumab_bevacizumab"), ("sunitinib", "sunitinib"), ("atezo", "atezolizumab"),
-                                   ("atezo_bev_vs_sunitinib", "difference_between_arms"), ("nivolumab", "nivolumab_choueiri2016")):
+                                   ("atezo_bev_vs_sunitinib", "difference_between_arms"), ("nivolumab", "nivolumab_choueiri2016"),
+                                   ("nivolumab_cm025", "nivolumab_checkmate025"), ("everolimus_cm025", "everolimus_checkmate025"),
+                                   ("nivolumab_vs_everolimus", "difference_nivolumab_vs_everolimus")):
                     d = by.get(arm)
                     if d is not None and g in d.index:
                         r = d.loc[g]
@@ -114,7 +116,9 @@ def load_applied(store: GraphStore | None = None) -> dict:
                     claim(g, "response_assessed_in", "treatment", "treatment_response",
                           {"arms": rec, "tested_genes": sig["studies"]["IMmotion150"]["genes_tested"],
                            "caution": "no gene differs between arms after correction" if sig["significant"].get(
-                               "atezo_bev_vs_sunitinib", 0) == 0 else None})
+                               "atezo_bev_vs_sunitinib", 0) == 0 else None,
+                           "caution_checkmate025": "no gene differs between nivolumab and everolimus after correction" if
+                               sig["significant"].get("nivolumab_vs_everolimus", 0) == 0 else None})
 
         gen = _read("subtype_genetic_de.parquet")
         cc = _read("subtype_ccab_de.parquet")
@@ -155,7 +159,12 @@ def load_applied(store: GraphStore | None = None) -> dict:
                     "vital_organ_staining_level": _r(r.ihc_vital_max_level), "vital_organ_tissue": None if pd.isna(r.ihc_vital_max_tissue) else r.ihc_vital_max_tissue,
                     "kidney_staining_level": _r(r.ihc_kidney_max_level), "staining_data_available": bool(r.ihc_measured),
                     "tumour_cells_expressing_pct_weakest_quarter_of_donors": _r(r.rcc_pct_donor_p25, 1),
-                    "tumour_cells_expressing_pct_median_donor": _r(r.rcc_pct_donor_median, 1), "known_adc_or_radioligand_target": bool(r.control)})
+                    "tumour_cells_expressing_pct_median_donor": _r(r.rcc_pct_donor_median, 1), "known_adc_or_radioligand_target": bool(r.control),
+                    "surface_call": getattr(r, "surface_call", None), "surface_evidence": getattr(r, "surface_evidence", None),
+                    "observed_at_cell_surface_cspa": bool(getattr(r, "cspa_high_confidence", False)),
+                    "vital_organ_protein_ts_max": _r(getattr(r, "vital_protein_ts_max", np.nan)),
+                    "vital_organ_protein_ts_tissue": None if pd.isna(getattr(r, "vital_protein_ts_tissue", None)) else r.vital_protein_ts_tissue,
+                    "vital_organ_protein_enriched": None if pd.isna(getattr(r, "vital_protein_enriched", None)) else bool(r.vital_protein_enriched)})
 
         imm = _read("immune_profile.parquet")
         if imm is not None:

@@ -11,6 +11,8 @@ Predicates added (subject is always a Gene node):
   activated_in / inhibited_in -> disease   kinase activity (protein-adjusted KSEA, BH < 0.1)
   phosphosite_changed_in   -> disease   site-level tumour vs normal (BH < 0.05, |log2FC| >= 1), one record per site
   purity_assessed_in       -> dataset   correlation with ESTIMATE purity and log2FC extrapolated to purity 1
+  enriched_in_normal_tissue / normal_protein_measured_in -> dataset  GTEx proteome in vital organs (M16)
+  drug_response_assessed_in -> dataset  PRISM: most ccRCC-selective compound annotated to the gene's product (M16)
 """
 from __future__ import annotations
 
@@ -34,6 +36,8 @@ DATASETS = {
     "phosphosite": ("DATASET:CPTAC-CCRCC-PHOSPHOSITE", "CPTAC ccRCC phosphosites (BCM pipeline)"),
     "purity": ("DATASET:CPTAC-CCRCC-PURITY", "CPTAC ESTIMATE tumour purity (WashU)"),
     "cnv": ("DATASET:CPTAC-CCRCC-CNV", "CPTAC ccRCC discovery copy number (gene level)"),
+    "proteome": ("DATASET:GTEX-PROTEOME", "GTEx normal-tissue proteome, 32 tissues (Jiang et al. 2020)"),
+    "prism": ("DATASET:PRISM-20Q2", "PRISM Repurposing 20Q2 primary screen, cell-line drug response (DepMap)"),
 }
 
 
@@ -173,6 +177,28 @@ def load_layers(store: GraphStore | None = None) -> dict:
                       protein_lfc_at_purity1=_f(r.protein_lfc_at_purity1, 3),
                       protein_lfc_at_purity1_se=_f(r.protein_lfc_at_purity1_se, 3),
                       n_tumors=int(r.n_tumors_with_purity), purity_source="ESTIMATE (RNA-based)")
+        p = PROCESSED / "normal_proteome.parquet"
+        if p.exists():
+            for r in pd.read_parquet(p).itertuples():
+                if not r.vital_protein_detected:
+                    continue
+                pred = "enriched_in_normal_tissue" if r.vital_protein_enriched else "normal_protein_measured_in"
+                claim(r.gene, pred, DATASETS["proteome"][0], "normal_proteome", (r.gene,), DATASETS["proteome"][0],
+                      gene=r.gene, vital_tissues_detected=int(r.vital_protein_detected),
+                      vital_protein_max_rel=_f(r.vital_protein_max_rel, 3), vital_protein_max_tissue=r.vital_protein_max_tissue,
+                      vital_protein_ts_max=_f(r.vital_protein_ts_max, 3), vital_protein_ts_tissue=r.vital_protein_ts_tissue,
+                      vital_protein_enriched=bool(r.vital_protein_enriched), ts_enriched_threshold=4.0,
+                      note="log2 abundance relative to the run reference; TS = tissue-specificity z-score (Jiang 2020)")
+
+        p = PROCESSED / "layer_prism.parquet"
+        if p.exists():
+            for r in pd.read_parquet(p).itertuples():
+                claim(r.gene, "drug_response_assessed_in", DATASETS["prism"][0], "prism_response", (r.gene,),
+                      DATASETS["prism"][0], gene=r.gene, compound=r.compound, moa=r.moa, phase=r.phase,
+                      compound_targets=int(r.compound_targets), n_compounds=int(r.n_compounds),
+                      selectivity=_f(r.selectivity, 3), mean_lfc_ccrcc=_f(r.mean_lfc_ccrcc, 3),
+                      mean_lfc_other=_f(r.mean_lfc_other, 3), padj=_f(r.padj), n_ccrcc_lines=int(r.n_ccrcc_lines),
+                      note="cell-line viability, 2.5 uM; selectivity = mean LFC other lines - mean LFC ccRCC lines")
     stats = store.stats()
     (PROCESSED / "graph_stats.json").write_text(json.dumps(stats, indent=1))
     return {"claims_added": counts, "claims_total": stats["claims_total"],

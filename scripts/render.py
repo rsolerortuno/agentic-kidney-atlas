@@ -5,8 +5,7 @@ findings.json instead, so a replicate never overwrites the published report."""
 import os
 import sys
 
-from ccrcc.integrate import run_dir
-from ccrcc.paths import RUNS
+from ccrcc.integrate import current_run, run_dir
 from ccrcc.render import render
 
 if __name__ == "__main__":
@@ -16,4 +15,4 @@ if __name__ == "__main__":
         d = run_dir()
         print(render(d / "findings.json", out=d / "report.html"))
     else:
-        print(render(sorted(RUNS.glob("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/findings.json"))[-1]))
+        print(render(current_run() / "findings.json"))

@@ -1,5 +1,5 @@
 {
- "file": "runs\\replicates\\rep2\\findings.json",
+ "file": "runs/replicates/rep2/findings.json",
  "statements": 118,
  "unsupported": 0,
  "interpretation": "No failures detected by the automatic checks",
@@ -7,8 +7,8 @@
  "semantic_failures": 0,
  "stale": 0,
  "basis": {
-  "started_utc": "2026-11-02T01:27:57+00:00",
-  "evidence": 1253
+  "started_utc": "2026-11-03T16:06:52+00:00",
+  "evidence": 1402
  },
  "detail": []
 }

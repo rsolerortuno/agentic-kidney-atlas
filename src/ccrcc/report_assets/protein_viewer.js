@@ -1,7 +1,13 @@
 (() => {
   'use strict';
-  const payload = JSON.parse(document.getElementById('protein-data').textContent);
-  const proteins = payload.proteins;
+  // the structure payload is embedded gzip + base64 (protein_viewer.gzip_b64) to keep the single-file report small;
+  // it is inflated the first time the explorer starts, so page load and the observers below stay synchronous
+  let proteins = null, unpacking = false;
+  async function unpack() {
+    const packed = Uint8Array.from(atob(document.getElementById('protein-data').textContent.trim()), c => c.charCodeAt(0));
+    const inflated = new Blob([packed]).stream().pipeThrough(new DecompressionStream('gzip'));
+    proteins = JSON.parse(await new Response(inflated).text()).proteins;
+  }
   const el = id => document.getElementById(id);
   const status = text => {el('protein-status').textContent = text;};
   let viewer, protein, pocket, confidence = false, busy = false, surfaces = [], slab;
@@ -90,6 +96,14 @@
   }
   function start() {
     if (viewer || !el('protein-canvas').getBoundingClientRect().width) return;
+    if (proteins === null) {
+      if (!unpacking) {
+        unpacking = true;
+        status('Loading the embedded structures...');
+        unpack().then(start, error => status('Could not read the embedded structures: ' + error.message));
+      }
+      return;
+    }
     if (!proteins.length) {status('No local protein structures are available.'); return;}
     try {
       // The vendored library creates its surface worker from an in-memory Blob.

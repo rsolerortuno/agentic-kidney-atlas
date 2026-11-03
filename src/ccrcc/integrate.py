@@ -18,6 +18,22 @@ from .paths import LITERATURE, PROCESSED, RUNS
 from .scores import components, profile_scores
 
 
+CURRENT = RUNS / ".current"
+
+
+def current_run():
+    """The run the agent step is working on: CCRCC_RUN_DIR, else the folder scripts/integrate.py started (runs/.current),
+    else the latest dated run. Steps repeated on a later day must not silently switch to a new, empty folder."""
+    if os.environ.get("CCRCC_RUN_DIR"):
+        return run_dir()
+    if CURRENT.exists():
+        d = RUNS / CURRENT.read_text(encoding="utf-8").strip()
+        if d.is_dir():
+            return d
+    runs = sorted(p for p in RUNS.glob("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]") if p.is_dir())
+    return runs[-1] if runs else run_dir()
+
+
 def run_dir(day: str | None = None):
     """runs/<date>/ by default; CCRCC_RUN_DIR (relative to runs/ or absolute) redirects a whole /informe run, which
     is how the replicate runs used to measure run-to-run variability are kept apart (src/ccrcc/baselines.py)."""
@@ -153,9 +169,15 @@ def write(n: int | None = None, day: str | None = None) -> dict:
         if not p.exists():
             return {}
         s = pd.read_parquet(p)
-        return {r.gene: {"rank_p05": int(r.rank_p05), "rank_median": float(r.rank_median), "rank_p95": int(r.rank_p95),
-                         "p_top10": round(float(r.p_top10), 3), "p_top25": round(float(r.p_top25), 3),
-                         "p_top100": round(float(r.p_top100), 3)} for r in s.itertuples()}
+        out = {r.gene: {"rank_p05": int(r.rank_p05), "rank_median": float(r.rank_median), "rank_p95": int(r.rank_p95),
+                        "p_top10": round(float(r.p_top10), 3), "p_top25": round(float(r.p_top25), 3),
+                        "p_top100": round(float(r.p_top100), 3)} for r in s.itertuples()}
+        lp = PROCESSED / f"loso_{name}.parquet"
+        if lp.exists():
+            for r in pd.read_parquet(lp).itertuples():
+                if r.gene in out:
+                    out[r.gene]["leaves_top25_without"] = list(r.leaves_top_without)
+        return out
 
     ranking = [_row(i, row, cfg, details, ot, store, intervals("convergence")) for i, row in t.head(n).iterrows()]
     profiles = {}

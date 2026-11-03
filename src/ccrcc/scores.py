@@ -64,6 +64,10 @@ def tractability_table() -> pd.DataFrame:
     # secreted location (broad buckets such as "UniProt SigP or TMHMM" cover a third of the genome)
     t["is_predicted"] = (((t["modality"] == "SM") & t["category"].isin(["High-Quality Ligand", "High-Quality Pocket"]))
                          | ((t["modality"] == "AB") & (t["category"] == "UniProt loc high conf")))
+    # ablation (2026-11-03): "High-Quality Ligand" comes from ChEMBL medicinal chemistry, i.e. drug-discovery history;
+    # structure (pocket) and location alone carry no history
+    t["is_predicted_no_ligand"] = (((t["modality"] == "SM") & t["category"].eq("High-Quality Pocket"))
+                                   | ((t["modality"] == "AB") & (t["category"] == "UniProt loc high conf")))
     hg = pd.read_csv(RAW / "hgnc_complete_set.txt", sep="	", usecols=["symbol", "ensembl_gene_id"], dtype=str).dropna()
     sym = dict(zip(hg["ensembl_gene_id"], hg["symbol"]))
     t["gene"] = t["targetId"].map(sym)
@@ -72,6 +76,7 @@ def tractability_table() -> pd.DataFrame:
     out = pd.DataFrame(index=pd.Index(genes, name="gene"))
     out["clinical"] = out.index.isin(t.loc[t["is_clinical"], "gene"])
     out["predicted_sm_ab"] = out.index.isin(t.loc[t["is_predicted"], "gene"])
+    out["predicted_no_ligand"] = out.index.isin(t.loc[t["is_predicted_no_ligand"], "gene"])
     mods = t[t["is_predicted"]].groupby("gene")["modality"].agg(lambda s: ",".join(sorted(set(s))))
     out["predicted_modalities"] = mods.reindex(out.index)
     return out
@@ -126,6 +131,9 @@ def components(t: pd.DataFrame) -> pd.DataFrame:
     # target profile: predicted modality evidence only. Clinical precedence is drug history and would leak into the
     # evaluation against clinical targets (a first version used pred | clin; see evals/history.md, M13).
     t["c_tractability_predicted"] = pred.astype(float)
+    pred_nl = (np.asarray(t.index.map(tr["predicted_no_ligand"]).fillna(False), bool)
+               if len(tr) and "predicted_no_ligand" in tr else np.zeros(len(t), bool))
+    t["c_tractability_predicted_no_ligand"] = pred_nl.astype(float)
 
     # ---- DepMap selective dependency
     dep = _by_symbol(PROCESSED / "layer_dependency.parquet")
@@ -252,6 +260,27 @@ def sensitivity(t: pd.DataFrame, weights: dict, n: int | None = None, top: int =
         "p_top25": (ranks <= 25).mean(axis=0), "p_top100": (ranks <= 100).mean(axis=0)})
 
 
+def leave_one_out(t: pd.DataFrame, weights: dict, top: int = 25) -> pd.DataFrame:
+    """For the base top genes: their rank when one evidence stream is removed (its weight set to 0), and the streams
+    without which they leave the top. A candidate that rests on one stream is fragile even if random re-weighting
+    (which never removes a stream) keeps it in place."""
+    keys = [k for k, w in weights.items() if w > 0]
+    C = np.column_stack([t[f"c_{k}"].to_numpy(float) for k in keys])
+    w = np.array([weights[k] for k in keys], float)
+    base = C @ w
+    focus = np.argsort(-base, kind="stable")[:top]
+    out = pd.DataFrame({"gene": t["gene"].to_numpy()[focus], "base_rank": np.arange(1, len(focus) + 1)})
+    for i, k in enumerate(keys):
+        wk = w.copy()
+        wk[i] = 0.0
+        s = C @ wk
+        srt = np.sort(s)
+        out[f"rank_without_{k}"] = len(s) - np.searchsorted(srt, s[focus], side="right") + 1
+    out["leaves_top_without"] = [[k for k in keys if r[f"rank_without_{k}"] > top] for _, r in out.iterrows()]
+    out["single_stream_dependent"] = out["leaves_top_without"].map(len) > 0
+    return out
+
+
 def write_profiles(t: pd.DataFrame) -> dict:
     cfg = load()
     out = {}
@@ -259,8 +288,12 @@ def write_profiles(t: pd.DataFrame) -> dict:
     for name, w in tables.items():
         sens = sensitivity(t, w)
         sens.to_parquet(PROCESSED / f"sensitivity_{name}.parquet", index=False)
+        loso = leave_one_out(t, w)
+        loso.to_parquet(PROCESSED / f"loso_{name}.parquet", index=False)
         out[name] = {"robust_top10": sens[sens["p_top10"] >= 0.8]["gene"].tolist(),
-                     "top10": sens.head(10)[["gene", "rank_p05", "rank_p95", "p_top10"]].to_dict("records")}
+                     "top10": sens.head(10)[["gene", "rank_p05", "rank_p95", "p_top10"]].to_dict("records"),
+                     "top25_leaving_without_one_stream": {r.gene: r.leaves_top_without for r in loso.itertuples()
+                                                          if r.single_stream_dependent}}
     cols = ["gene"] + [c for c in t.columns if c.startswith("c_") or c.startswith("score_")]
     t[cols].to_parquet(PROCESSED / "scores_v3.parquet", index=False)
     (PROCESSED / "sensitivity_summary.json").write_text(json.dumps(out, indent=1, default=float))

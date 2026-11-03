@@ -256,8 +256,9 @@ def treatment_response(gene: str) -> dict:
     """Does the gene predict response to treatment in kidney cancer trials? IMmotion150 (263 patients: atezolizumab +
     bevacizumab, atezolizumab, sunitinib) per arm: log hazard ratio of progression per SD of expression (negative =
     longer benefit with higher expression), adjusted p-value and sample size, plus the difference between the
-    combination and sunitinib and the 16-patient Choueiri 2016 nivolumab trial (direction only). No gene differs
-    between the two main arms after correction, so say 'associated with' and never 'predicts'. Cite evidence_id."""
+    combination and sunitinib, the 16-patient Choueiri 2016 nivolumab trial (direction only) and CheckMate 025
+    (250 patients: nivolumab vs everolimus, per arm and the difference between them). No gene differs between the arms
+    of either randomised trial after correction, so say 'associated with' and never 'predicts'. Cite evidence_id."""
     return applied_record(gene, "treatment_response", "gene not tested in the treatment-response trials (too little expression variation)")
 
 

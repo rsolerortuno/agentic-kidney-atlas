@@ -89,9 +89,12 @@ All data are public. Files are listed with checksums in [reproducibility/inputs.
 | Phosphosite and kinase activity | CPTAC phosphosites, OmniPath kinase-substrate links | Site-level tumour vs normal, turned into inferred kinase activity |
 | Single cells | Li et al. 2022 and Zhang et al. 2021 (CZ CELLxGENE) | 178,817 and 20,509 tumour cells |
 | Tissue slices | Li et al. 2022, 10x Visium | 23 sections, 38,836 spots; four sections with the microscope image |
-| Treatment response | IMmotion150 (263 patients) and Choueiri 2016 (16 patients), cBioPortal datahub | RNA before treatment, progression, response |
+| Treatment response | IMmotion150 (263 patients) and Choueiri 2016 (16 patients), cBioPortal datahub; CheckMate 025 (Braun et al. 2020, 250 patients, nivolumab vs everolimus) | RNA before treatment, progression, response |
 | Literature | PubTator3, Europe PMC | 319 abstracts; 198 relations that were checked word for word |
 | Drugs and druggability | Open Targets 26.09, ChEMBL, UniProt, Human Protein Atlas | Clinical stage, tractability, surface location, normal-tissue staining |
+| Cell-surface proteins | SURFY (in-silico surfaceome) and the Cell Surface Protein Atlas (mass spectrometry) | Whether a protein is really on the cell surface |
+| Protein in normal organs | GTEx proteome (Jiang et al. 2020) | 32 tissues, 12,627 proteins; enrichment in vital organs |
+| Drug response of cell lines | PRISM Repurposing 20Q2 (DepMap) | 10-14 ccRCC lines against about 550 others, 5,274 compound treatments |
 | Protein structures | AlphaFold DB, PDBe-KB, curated experimental references | Used for descriptive context only |
 
 ## 4. Methods in brief
@@ -105,8 +108,9 @@ All data are public. Files are listed with checksums in [reproducibility/inputs.
 - **Stability.** Each rank comes with a 5th to 95th percentile interval from 1,000 random re-weightings.
 - **Cell context.** Pseudobulk comparison of tumour cells with proximal tubule, per-donor; tissue spots deconvolved
   against the study's own cell profiles; neighbour enrichment tested by permutation.
-- **Treatment response.** Cox regression of progression on expression per trial arm, and the difference between arms,
-  with two published signatures as positive controls.
+- **Treatment response.** Cox regression of progression on expression per trial arm, and the difference between arms
+  on one expression scale (equivalent to an arm x gene term with arm-stratified baselines), with two published
+  signatures as positive controls (each must be in the published direction with p < 0.05).
 - **Subtypes.** Mutant against wild type for VHL, PBRM1, BAP1 and SETD2, and ccA against ccB from the ClearCode34 genes.
 - **Antibody and radioligand suitability.** Surface topology, increase in tumour, staining in vital normal tissues and
   how evenly tumour cells express the gene.
@@ -145,7 +149,8 @@ CA9 and CD70 are too sparse in normal kidney in the label-free data. HK2 does no
 
 **Treatment response.**
 Two published signatures reproduce in IMmotion150, which shows the data are usable. Many genes associate with
-progression inside one arm, but no gene separates immunotherapy from sunitinib after correcting for 20,000 tests.
+progression inside one arm, but no gene separates immunotherapy from sunitinib after correcting for 20,000 tests, and no
+gene separates nivolumab from everolimus in CheckMate 025 either.
 
 **Subtypes.**
 PBRM1 and BAP1 mutations change far more genes than VHL. ccB tumours carry a hazard ratio of about 2.3 for death in
@@ -163,14 +168,16 @@ lists candidates and is not a validated ranking.
 | Check | Result |
 |---|---|
 | Recall of 23 known ccRCC genes in the top 100 | 39 % (median rank 176 of 19,161 genes) |
-| Target profile against 75 clinical RCC targets | AUROC 0.90; predicted tractability alone gives 0.86, so the gain is in early enrichment |
-| Retrospective test on 6 targets first trialled in 2016 or later | AUROC 0.89; 1 of the 6 in the top 100. Three of the six are PARP1/2/3 (one drug class), so this is about four independent targets and the interval is optimistic. Features are not frozen before 2016, so this is retrospective, not prospective |
+| Target profile against 75 clinical RCC targets | AUROC 0.90; predicted tractability alone gives 0.86, so the gain is in early enrichment. Without Open Targets' "High-Quality Ligand" bucket (ChEMBL chemistry, i.e. drug-discovery history) the profile gives 0.80, so much of the headline is known chemistry |
+| Retrospective test on 6 targets first trialled in 2016 or later | AUROC 0.89 (0.67 without the ligand bucket); 1 of the 6 in the top 100. Three of the six are PARP1/2/3 (one drug class), so this is about four independent targets and the interval is optimistic. Features are not frozen before 2016, so this is retrospective, not prospective |
 | Biomarker profile against ClearCode34 genes | AUROC 0.74 |
 | Known-answer questions answered with the project's tools | 10 of 10 |
-| Agent text against its evidence | 116 statements checked, no failures detected by the automatic checks |
-| Report validator | 449 claims, 1,646 evidence records, all resolvable, no external resources |
+| Agent text against its evidence | 118 statements checked, no failures detected by the automatic checks |
+| Deliberately corrupted copies of those statements | Caught: 100 % of changed numbers, other-gene attributions and swapped evidence; 74 % of flipped directions where the sentence cites expression evidence, 28 % of all flipped directions (literature and treatment sentences are not direction-checked) |
+| Report validator | 451 claims, 1,653 evidence records, all resolvable, no external resources |
 | Agents against a model answering from memory | The memory-only model gives the textbook list (60 % clinical targets, nothing citable); the pipeline gives data-backed candidates |
-| Repeat agent runs | Mean overlap (Jaccard) 0.74 between the final target lists of three runs. The two repeat runs predate the 2026-11-03 symbol fix, so this mixes analyses; before the fix the three runs overlapped at 0.91. The overlap mostly reflects the shared deterministic ranking |
+| Repeat agent runs | Mean overlap (Jaccard) 0.86 between the final target lists of three runs. The overlap mostly reflects the shared deterministic ranking |
+| Agents against a list taken straight from the rankings | Overlap 0.53 with a same-length list alternating target profile, biomarker profile and discovery screen; the agents add ENPP3, EPAS1, COXFA4L2 and ALDOB and leave out ALDH6A1, TNFAIP6, SLC6A19 and FABP6 |
 
 A control is a known case scored the same way as the candidates. Known antibody targets rank near the top. Known
 immune checkpoints rank unevenly, and the report says so.
@@ -252,12 +259,13 @@ tests/               automated tests
 | `singlecell.py`, `sc_replication.py`, `spatial.py`, `spatial_viewer.py` | Cell types, the second single-cell dataset, tissue neighbourhoods, tissue viewer data |
 | `structure.py`, `degradation.py`, `protein_viewer.py` | Descriptive pocket features, curated experimental references, 3D viewer |
 | `discovery.py`, `safety_clinical.py`, `external.py` | Discovery screen, vital-organ expression, Open Targets, ChEMBL, Europe PMC |
+| `m16.py`, `xlsx.py` | Surfaceome, normal-tissue proteome, CheckMate 025 and PRISM; a small reader for supplementary spreadsheets |
 | `literature.py`, `literature_entities.py` | PubMed ingestion and checked relation extraction |
 | `graph.py`, `kg_*.py` | The knowledge graph and its loaders |
 | `scores.py`, `integrate.py` | Convergence score, target and biomarker profiles, weight sensitivity |
 | `verify.py`, `semantic.py`, `provenance.py`, `assemble.py` | Sentence checks and the stale-text guard |
 | `mcp_servers/` | The tools the agents use |
-| `outcomes.py`, `baselines.py`, `evaluate.py` | Tests against clinical targets and a memory-only model |
+| `outcomes.py`, `baselines.py`, `evaluate.py`, `sabotage.py` | Tests against clinical targets, a memory-only model and a no-agent list; how often the verifier catches corrupted statements |
 | `render.py`, `report_*.py`, `report_assets/` | The HTML report |
 | `download.py`, `extra_download.py`, `reproducibility.py` | Downloads and the frozen-input check |
 
