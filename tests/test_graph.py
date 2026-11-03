@@ -20,6 +20,13 @@ def test_claim_requires_existing_evidence(tmp_path):
     assert s.check_evidence_ids([ev, "EV:nope"]) == {"valid": [ev], "invalid": ["EV:nope"]}
 
 
+def test_reloading_evidence_replaces_old_values(tmp_path):
+    s = GraphStore(tmp_path / "g.sqlite")
+    ev = s.add_evidence(evidence_id("t", 1), "omics_de", "DATASET:X", log2fc=1.0)
+    s.add_evidence(ev, "omics_de", "DATASET:X", log2fc=2.0)
+    assert s.get_evidence([ev])[0]["log2fc"] == 2.0
+
+
 @pytest.mark.skipif(not GRAPH_DB.exists(), reason="run `ccrcc graph` first")
 def test_built_graph_is_fully_evidenced():
     st = GraphStore().stats()

@@ -51,8 +51,9 @@ class Verifier:
                "not_linked_to_gene": sorted(existing - linked), "kept": bool(valid)}
         if valid and self.basis is not None:
             ev_now = self.store.get_evidence(valid)
-            stale = sorted(e["evidence_id"] for e in ev_now if e["evidence_id"] in self.basis
-                           and provenance.fingerprint(e) != self.basis[e["evidence_id"]])
+            # Fail closed: an id the agents never saw (absent from the basis) cannot be shown to be current.
+            stale = sorted(e["evidence_id"] for e in ev_now if e["evidence_id"] not in self.basis
+                           or provenance.fingerprint(e) != self.basis[e["evidence_id"]])
             if stale:
                 log.update({"kept": False, "stale_evidence": stale, "semantic_failure": True})
                 return None, log
@@ -119,6 +120,13 @@ def _statements(findings: dict):
         yield f"targets.{t.get('gene')}", t
 
 
+def _relative(path: Path) -> str:
+    """Repository-relative path, so committed reports do not carry the author's local folders."""
+    from .paths import ROOT
+    p = Path(path).resolve()
+    return p.relative_to(ROOT.resolve()).as_posix() if p.is_relative_to(ROOT.resolve()) else p.name
+
+
 def verify_final(path: Path) -> dict:
     """Final check on findings.json: count statements without valid, gene-linked evidence."""
     basis = provenance.load_basis(path.parent)
@@ -139,7 +147,7 @@ def verify_final(path: Path) -> dict:
     for d in earlier:
         if not d.get("kept", False):
             unsupported.append({"location": f"dropped earlier ({d.get('where')})", **d})
-    report = {"file": str(path), "statements": total, "unsupported": len(unsupported),
+    report = {"file": _relative(path), "statements": total, "unsupported": len(unsupported),
               "interpretation": "No failures detected by the automatic checks" if not unsupported else "Automatic checks detected failures",
               "scope": "Evidence linkage, metric bindings, numeric precision and limited direction checks; not complete scientific validation",
               "semantic_failures": sum(1 for u in unsupported if u.get("semantic_failure")),

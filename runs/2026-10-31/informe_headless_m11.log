@@ -4,7 +4,7 @@ One agent is done. Waiting for the other three.
 
 Two done. Waiting for the literature and cells agents.
 
-The full pipeline ran and the report is written to `C:\Users\rafae\Documents\ccrcc-graphrag\reports\ccrcc_report.html`. The final check found no unsupported claims across 95 statements.
+The full pipeline ran and the report is written to `reports\ccrcc_report.html`. The final check found no unsupported claims across 95 statements.
 
 1. **CA9 has the strongest convergent evidence and is the top target and biomarker.** It is strongly up in tumors (RNA log2FC 6.312, protein 2.269) and made by the tumor cells themselves: 0.976 of tumor transcripts are in RCC cells, and versus normal tubule log2FC is 7.739 (padj 0.0189). It also has direct literature support (CA9-PET) and an antibody, girentuximab, in Phase 3.
 2. **Established targets are confirmed: EPAS1 (belzutifan), KDR/VEGFR and MTOR.** I moved EPAS1 up from numeric rank 38 because its protein rises while its RNA barely moves (protein log2FC 1.162, RNA 0.306), so RNA-based scores understate it. KDR, and most EPAS1 RNA, sit in blood-vessel and stromal cells rather than tumor cells.

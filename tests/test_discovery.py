@@ -45,6 +45,12 @@ def test_vital_organ_expression_blocks_first_in_class():
     assert s.loc["A", "c_safety"] < s.loc["B", "c_safety"]
 
 
+def test_missing_vital_organ_data_is_not_safe():
+    s = score(_frame(vital_max_ntpm=[float("nan"), 2.0])).set_index("gene")
+    assert not bool(s.loc["A", "safe"])
+    assert s.loc["A", "status"] == "novel, vital-organ safety unknown (no HPA data)"
+
+
 def test_untractable_is_harder_to_drug():
     s = score(_frame(modalities=[[], ["AB"]], surface_or_secreted=[False, True])).set_index("gene")
     assert s.loc["A", "status"] == "novel, harder to drug" and s.loc["A", "c_druggable"] == 0

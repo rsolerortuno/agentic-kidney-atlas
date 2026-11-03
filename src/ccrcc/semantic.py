@@ -7,7 +7,8 @@ not prove that the statement says what the evidence says. This module adds two c
    scale and printed precision. Structured numeric_claims support nested metrics
    with explicit record context. Ranking/global number pools never supply support.
 2. Direction. If a gene statement uses only "up" words (or only "down" words) and every significant omics_de
-   evidence it cites for that gene points the other way, the statement contradicts its evidence.
+   evidence it cites for that gene points the other way, the statement contradicts its evidence. Statements without
+   a gene (summary, sections) are checked sentence by sentence for sentences that name exactly one cited gene.
 """
 from __future__ import annotations
 
@@ -24,8 +25,11 @@ EXEMPT_BEFORE = re.compile(r"(\b(phase|rank|ranked|top|grade|stage|tier|version|
 THRESHOLD_BEFORE = re.compile(r"(\bat|<|≤|<=|>|≥|>=|threshold|cut-?off|alpha|α|fdr|bh)\s*$", re.I)
 THRESHOLDS = {0.001, 0.01, 0.05, 0.1, 0.25}   # significance levels written as such ("not significant at 0.05")
 DRUG_AFTER = re.compile(r"^\s+[A-Z][A-Z0-9-]{3,}")   # "IODINE I 124 GIRENTUXIMAB": part of a drug name
-UP = re.compile(r"\b(up|upregulated|up-regulated|increased|elevated|higher|overexpress\w*|induced|gained)\b", re.I)
-DOWN = re.compile(r"\b(down|downregulated|down-regulated|decreased|reduced|lower|depleted|suppressed)\b", re.I)
+UP = re.compile(r"\b(up|upregulated|up-regulated|increased|elevated|higher|overexpress\w*|induced|gained|raised|rises?|rising)\b", re.I)
+DOWN = re.compile(r"\b(down|downregulated|down-regulated|decreased|reduced|lower|lowered|depleted|suppressed|underexpress\w*|diminished)\b", re.I)
+# A negated sentence ("is not higher") states the opposite of its direction word; it is skipped, not read literally.
+NEGATION = re.compile(r"\b(not|no|never|neither|nor|without|n't)\b|n't\b", re.I)
+DIRECTION_EXEMPT = re.compile(r"\b(survival|prognos\w*|hazard|dependency|rank\w*|score\w*)\b", re.I)
 
 
 def numbers_in(text: str, *, with_spans: bool = False) -> list[dict]:
@@ -137,7 +141,7 @@ def check(text: str, gene: str | None, evidence: list[dict], extra_values: set[f
             if not isinstance(claim, dict):
                 raise ValueError("claim must be an object")
             ev = indexed.get(claim.get("evidence_id"))
-            if ev is None or (gene and ev.get("gene", "").upper() != gene.upper()):
+            if ev is None or (gene and (ev.get("gene") or "").upper() != gene.upper()):
                 raise ValueError("claim must reference cited evidence for the same gene")
             annotation = numeric_claim_text(claim, ev)
             if remaining.count(annotation) != 1:
@@ -162,26 +166,47 @@ def check(text: str, gene: str | None, evidence: list[dict], extra_values: set[f
                     context_mismatch = True
         if context_mismatch or len(candidates) != 1 or (n["percent"] and field not in FRACTION_FIELDS) or not _matches(n, candidates):
             unmatched.append(n["text"])
-    contradiction = None
-    if gene:
-        de = [e for e in evidence if e.get("type") == "omics_de" and e.get("significant")
-              and (e.get("gene") or "").upper() == gene.upper()]
-        signs = {1 if e["log2fc"] > 0 else -1 for e in de if e.get("log2fc") is not None}
+    return {"unmatched_numbers": unmatched, "direction_contradiction": _direction(text, gene, evidence),
+            "numeric_binding_errors": binding_errors}
+
+
+def _de_signs(evidence: list[dict]) -> dict[str, set[int]]:
+    signs: dict[str, set[int]] = {}
+    for e in evidence:
+        if e.get("type") == "omics_de" and e.get("significant") and e.get("log2fc") is not None and e.get("gene"):
+            signs.setdefault(e["gene"].upper(), set()).add(1 if e["log2fc"] > 0 else -1)
+    return signs
+
+
+def _direction(text: str, gene: str | None, evidence: list[dict]) -> str | None:
+    """Direction words that contradict the cited significant omics_de evidence.
+
+    With a statement gene every sentence is read as being about it. Without one (summary and section paragraphs) a
+    sentence is checked only when it names exactly one gene that has cited omics_de evidence, so multi-gene
+    comparisons are never attributed to the wrong gene.
+    """
+    signs = _de_signs(evidence)
+    for sentence in re.split(r"(?<=[.!?])\s+", text):
         # A survival statement such as "higher expression predicts better survival"
         # is not a claim that expression increased in tumour versus normal tissue.
         # Keep this a narrow DE wording check, not a bag of direction words.
-        for sentence in re.split(r"(?<=[.!?])\s+", text):
-            if re.search(r"\b(survival|prognos\w*|hazard|dependency|rank\w*|score\w*)\b", sentence, re.I):
+        if DIRECTION_EXEMPT.search(sentence) or NEGATION.search(sentence):
+            continue
+        if gene:
+            target = gene.upper()
+        else:
+            named = [g for g in signs if re.search(rf"(?<![\w-]){re.escape(g)}(?![\w-])", sentence, re.I)]
+            if len(named) != 1:
                 continue
-            up, down = bool(UP.search(sentence)), bool(DOWN.search(sentence))
-            if len(signs) == 1 and up != down:
-                said = 1 if up else -1
-                if said != next(iter(signs)):
-                    contradiction = f"text says {'up' if up else 'down'}, cited omics evidence says " \
-                                    f"{'up' if next(iter(signs)) > 0 else 'down'}"
-                    break
-    return {"unmatched_numbers": unmatched, "direction_contradiction": contradiction,
-            "numeric_binding_errors": binding_errors}
+            target = named[0]
+        s = signs.get(target, set())
+        up, down = bool(UP.search(sentence)), bool(DOWN.search(sentence))
+        if len(s) == 1 and up != down:
+            said, seen = (1 if up else -1), next(iter(s))
+            if said != seen:
+                where = "" if gene else f" ({target})"
+                return f"text says {'up' if up else 'down'}{where}, cited omics evidence says {'up' if seen > 0 else 'down'}"
+    return None
 
 
 # Narrow grammar for legacy prose. Complex/nested comparisons must be emitted as

@@ -26,6 +26,7 @@ import pandas as pd
 from scipy import stats
 
 from .layers import bh, cox_univariate
+from .omics import to_hgnc
 from .paths import PROCESSED, RAW
 
 EXTRA = RAW / "extra"
@@ -62,6 +63,8 @@ def _read_expression(key: str, samples: pd.Index) -> pd.DataFrame:
     x = pd.read_csv(EXTRA / f"{key}_expression.txt", sep="\t")
     x = x.dropna(subset=["Hugo_Symbol"]).drop(columns=[c for c in ("Entrez_Gene_Id",) if c in x.columns])
     x = x.groupby("Hugo_Symbol").mean(numeric_only=True)
+    # re-key on current HGNC symbols so treatment results join the other layers (renamed genes were lost)
+    x = to_hgnc(x.reset_index(), "Hugo_Symbol").drop(columns="dataset_symbol").set_index("Hugo_Symbol")
     x = x[[c for c in x.columns if c in samples]]
     if key == "immotion150":            # TPM -> log2(TPM + 1); the Choueiri file is already log2 upper-quartile
         x = np.log2(x.clip(lower=0) + 1)
@@ -150,7 +153,8 @@ def run() -> dict:
     df.to_parquet(PROCESSED / "layer_treatment.parquet", index=False)
 
     ok_angio = controls["sunitinib"]["angiogenesis"]["hr_per_sd"] < 1 and controls["sunitinib"]["angiogenesis"]["pvalue"] < 0.05
-    ok_teff = controls["atezo_bev_vs_sunitinib"]["T_effector"]["ratio_of_hr"] < 1
+    teff = controls["atezo_bev_vs_sunitinib"]["T_effector"]
+    ok_teff = teff["ratio_of_hr"] < 1 and teff["pvalue"] < 0.05     # direction alone would pass half the time
     summary = {
         "studies": {"IMmotion150": {"patients": int(len(clin)), "arms": clin["arm"].value_counts().to_dict(),
                                     "responders": int(clin["responder"].sum()), "genes_tested": int(len(x))},

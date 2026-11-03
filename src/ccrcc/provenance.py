@@ -8,7 +8,8 @@ quote numbers the graph no longer contains. That happened once: the M12 report c
 record's values (everything except the build date). It is written when the agent step starts (`scripts/integrate.py`:
 the convergence ids) and completed after the agents finish (`verify.py agents`: the ids they cite). Ids already in the
 basis are never overwritten, so a later `run-all` cannot refresh it. `verify.py final` then fails every statement that
-cites an id whose current fingerprint differs from the basis: the narrative must be regenerated with `/informe`.
+cites an id whose current fingerprint differs from the basis, or that is missing from the basis (fail closed): the
+narrative must be regenerated with `/informe`.
 """
 from __future__ import annotations
 

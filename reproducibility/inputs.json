@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "status": "frozen local input inventory; analysis outputs re-frozen on 2026-11-02 after review (see docs/reproduction.md)",
+  "status": "frozen local input inventory; analysis outputs re-frozen on 2026-11-03 after the HGNC symbol-mapping fix (see docs/reproduction.md)",
   "source_checkout_commit": "79289e602ab2935db327fd85f378c5f10d1bba65",
   "config_sha256": "92a60b6c9eb179043b45b85963f13659ff698fcb6133cd5f33cdd052e9d99329",
   "uv_lock_sha256": "22f178bdc21ea28222e6524d72b967b5e4ef2da678ab1515e63996a6f449f665",
@@ -73460,6 +73460,186 @@
       "source": "Frozen PMID selection",
       "url": "https://www.ncbi.nlm.nih.gov/research/pubtator3-api/search/",
       "version": "saved query selection"
+    },
+    {
+      "path": "cache/open_targets/6af943b6e48fb54b.json",
+      "bytes": 2568,
+      "sha256": "e263dbf66bfea6aad185373ea83950af80c0c34e2e6c01e27a4516fe434db164",
+      "version": "provider release not recorded; exact local snapshot identified by sha256",
+      "source": "open_targets",
+      "request_key": "query($id:String!){ target(ensemblId:$id){ id approvedSymbol approvedName\n  tractability{ label modality value }\n  pathways{ pathwayId pathway topLevelTerm }\n  drugAndClinicalCandidates{ count rows{ maxClinicalStage drug{ id name } } } } }{\"id\": \"ENSG00000014257\"}",
+      "retrieved_utc": "2026-11-03T10:37:48Z",
+      "url": "https://api.platform.opentargets.org/api/v4/graphql",
+      "method": "POST",
+      "note": "added 2026-11-03: requested for a gene that entered the ranking after the HGNC symbol-mapping fix"
+    },
+    {
+      "path": "cache/open_targets/7a7ec388f586135a.json",
+      "bytes": 2403,
+      "sha256": "d2bb25061e4612183a1999f28da01136d49d6a2d3d5e63a97c6ed016b345a091",
+      "version": "provider release not recorded; exact local snapshot identified by sha256",
+      "source": "open_targets",
+      "request_key": "query($id:String!){ target(ensemblId:$id){ id approvedSymbol approvedName\n  tractability{ label modality value }\n  pathways{ pathwayId pathway topLevelTerm }\n  drugAndClinicalCandidates{ count rows{ maxClinicalStage drug{ id name } } } } }{\"id\": \"ENSG00000174514\"}",
+      "retrieved_utc": "2026-11-03T10:37:46Z",
+      "url": "https://api.platform.opentargets.org/api/v4/graphql",
+      "method": "POST",
+      "note": "added 2026-11-03: requested for a gene that entered the ranking after the HGNC symbol-mapping fix"
+    },
+    {
+      "path": "cache/open_targets/a79d9928194049c4.json",
+      "bytes": 2812,
+      "sha256": "8231c77eb4745f2d4a6059c5f2cf39a8a159cf1b8f781ff3f16f4ec6c3d590ae",
+      "version": "provider release not recorded; exact local snapshot identified by sha256",
+      "source": "open_targets",
+      "request_key": "query($id:String!){ target(ensemblId:$id){ id approvedSymbol approvedName\n  tractability{ label modality value }\n  pathways{ pathwayId pathway topLevelTerm }\n  drugAndClinicalCandidates{ count rows{ maxClinicalStage drug{ id name } } } } }{\"id\": \"ENSG00000168143\"}",
+      "retrieved_utc": "2026-11-03T10:37:49Z",
+      "url": "https://api.platform.opentargets.org/api/v4/graphql",
+      "method": "POST",
+      "note": "added 2026-11-03: requested for a gene that entered the ranking after the HGNC symbol-mapping fix"
+    },
+    {
+      "path": "cache/open_targets/c48fa76ca577acbf.json",
+      "bytes": 2927,
+      "sha256": "9ff833f80be9035634ee487b56a4bdad57294fcb43a3558ebeb89f423b722992",
+      "version": "provider release not recorded; exact local snapshot identified by sha256",
+      "source": "open_targets",
+      "request_key": "query($id:String!){ target(ensemblId:$id){ id approvedSymbol approvedName\n  tractability{ label modality value }\n  pathways{ pathwayId pathway topLevelTerm }\n  drugAndClinicalCandidates{ count rows{ maxClinicalStage drug{ id name } } } } }{\"id\": \"ENSG00000131482\"}",
+      "retrieved_utc": "2026-11-03T10:37:47Z",
+      "url": "https://api.platform.opentargets.org/api/v4/graphql",
+      "method": "POST",
+      "note": "added 2026-11-03: requested for a gene that entered the ranking after the HGNC symbol-mapping fix"
+    },
+    {
+      "path": "cache/open_targets/ddceb6a537f00f40.json",
+      "bytes": 2403,
+      "sha256": "9c086e1409d5bed299311568540be97902462ace87442398be38a61a5ca280e9",
+      "version": "provider release not recorded; exact local snapshot identified by sha256",
+      "source": "open_targets",
+      "request_key": "query($id:String!){ target(ensemblId:$id){ id approvedSymbol approvedName\n  tractability{ label modality value }\n  pathways{ pathwayId pathway topLevelTerm }\n  drugAndClinicalCandidates{ count rows{ maxClinicalStage drug{ id name } } } } }{\"id\": \"ENSG00000153292\"}",
+      "retrieved_utc": "2026-11-03T10:37:49Z",
+      "url": "https://api.platform.opentargets.org/api/v4/graphql",
+      "method": "POST",
+      "note": "added 2026-11-03: requested for a gene that entered the ranking after the HGNC symbol-mapping fix"
+    },
+    {
+      "path": "cache/string/124599a1a3422f46.json",
+      "bytes": 169,
+      "sha256": "5ebd6a2ba552cfd0649bdd485743493c914a5135ff88e5416a371212358344fb",
+      "version": "provider release not recorded; exact local snapshot identified by sha256",
+      "source": "string",
+      "request_key": "{\"caller_identity\": \"ccrcc-graphrag\", \"identifiers\": \"SLC60A1\", \"limit\": 10, \"species\": 9606}",
+      "retrieved_utc": "2026-11-03T10:37:47Z",
+      "url": "https://string-db.org/api/json/interaction_partners?caller_identity=ccrcc-graphrag&identifiers=SLC60A1&limit=10&species=9606",
+      "method": "GET",
+      "note": "added 2026-11-03: requested for a gene that entered the ranking after the HGNC symbol-mapping fix"
+    },
+    {
+      "path": "cache/string/4019861b97b92fae.json",
+      "bytes": 2847,
+      "sha256": "0bb09dc6966d14766b91c42cfc398d1fe3ec3584cfe6417740a2dee04ad038b4",
+      "version": "provider release not recorded; exact local snapshot identified by sha256",
+      "source": "string",
+      "request_key": "{\"caller_identity\": \"ccrcc-graphrag\", \"identifiers\": \"ADGRF1\", \"limit\": 10, \"species\": 9606}",
+      "retrieved_utc": "2026-11-03T10:37:50Z",
+      "url": "https://string-db.org/api/json/interaction_partners?caller_identity=ccrcc-graphrag&identifiers=ADGRF1&limit=10&species=9606",
+      "method": "GET",
+      "note": "added 2026-11-03: requested for a gene that entered the ranking after the HGNC symbol-mapping fix"
+    },
+    {
+      "path": "cache/string/64c8555a2f6900fc.json",
+      "bytes": 168,
+      "sha256": "a24207d83288a04ef4a2a5b50fa19014dd10a899996b6d489cfa050f23df4d0f",
+      "version": "provider release not recorded; exact local snapshot identified by sha256",
+      "source": "string",
+      "request_key": "{\"caller_identity\": \"ccrcc-graphrag\", \"identifiers\": \"SACK1B\", \"limit\": 10, \"species\": 9606}",
+      "retrieved_utc": "2026-11-03T10:37:49Z",
+      "url": "https://string-db.org/api/json/interaction_partners?caller_identity=ccrcc-graphrag&identifiers=SACK1B&limit=10&species=9606",
+      "method": "GET",
+      "note": "added 2026-11-03: requested for a gene that entered the ranking after the HGNC symbol-mapping fix"
+    },
+    {
+      "path": "cache/string/68fabadbf19d14a3.json",
+      "bytes": 2862,
+      "sha256": "c7964a212be55a003f650f25848c0d295f206102bbb19212ff9dc22094636433",
+      "version": "provider release not recorded; exact local snapshot identified by sha256",
+      "source": "string",
+      "request_key": "{\"caller_identity\": \"ccrcc-graphrag\", \"identifiers\": \"ACP3\", \"limit\": 10, \"species\": 9606}",
+      "retrieved_utc": "2026-11-03T10:37:48Z",
+      "url": "https://string-db.org/api/json/interaction_partners?caller_identity=ccrcc-graphrag&identifiers=ACP3&limit=10&species=9606",
+      "method": "GET",
+      "note": "added 2026-11-03: requested for a gene that entered the ranking after the HGNC symbol-mapping fix"
+    },
+    {
+      "path": "cache/string/932f349355dab539.json",
+      "bytes": 2832,
+      "sha256": "12e857f2044a3c89d386014d9315eeaa9f694f7a4d22284806fa5db655213c3a",
+      "version": "provider release not recorded; exact local snapshot identified by sha256",
+      "source": "string",
+      "request_key": "{\"caller_identity\": \"ccrcc-graphrag\", \"identifiers\": \"G6PC1\", \"limit\": 10, \"species\": 9606}",
+      "retrieved_utc": "2026-11-03T10:37:47Z",
+      "url": "https://string-db.org/api/json/interaction_partners?caller_identity=ccrcc-graphrag&identifiers=G6PC1&limit=10&species=9606",
+      "method": "GET",
+      "note": "added 2026-11-03: requested for a gene that entered the ranking after the HGNC symbol-mapping fix"
+    },
+    {
+      "path": "cache/uniprot/49ca06494ab833ae.json",
+      "bytes": 2255,
+      "sha256": "4f107c70c77b8273be183836451c9a033f4eea93eaa89890f8eacc84d1feac1d",
+      "version": "provider release not recorded; exact local snapshot identified by sha256",
+      "source": "uniprot",
+      "request_key": "{\"fields\": \"accession,protein_name,cc_function,cc_subcellular_location\", \"format\": \"json\", \"query\": \"gene_exact:G6PC1 AND organism_id:9606 AND reviewed:true\", \"size\": 1}",
+      "retrieved_utc": "2026-11-03T10:37:48Z",
+      "url": "https://rest.uniprot.org/uniprotkb/search?fields=accession%2Cprotein_name%2Ccc_function%2Ccc_subcellular_location&format=json&query=gene_exact%3AG6PC1+AND+organism_id%3A9606+AND+reviewed%3Atrue&size=1",
+      "method": "GET",
+      "note": "added 2026-11-03: requested for a gene that entered the ranking after the HGNC symbol-mapping fix"
+    },
+    {
+      "path": "cache/uniprot/4e2de6228fca4ba4.json",
+      "bytes": 1448,
+      "sha256": "43a3dd0cdd052a8bc6f081fe7ce58492485352a85b5e96c7a8299f41fe2c3e8b",
+      "version": "provider release not recorded; exact local snapshot identified by sha256",
+      "source": "uniprot",
+      "request_key": "{\"fields\": \"accession,protein_name,cc_function,cc_subcellular_location\", \"format\": \"json\", \"query\": \"gene_exact:SACK1B AND organism_id:9606 AND reviewed:true\", \"size\": 1}",
+      "retrieved_utc": "2026-11-03T10:37:49Z",
+      "url": "https://rest.uniprot.org/uniprotkb/search?fields=accession%2Cprotein_name%2Ccc_function%2Ccc_subcellular_location&format=json&query=gene_exact%3ASACK1B+AND+organism_id%3A9606+AND+reviewed%3Atrue&size=1",
+      "method": "GET",
+      "note": "added 2026-11-03: requested for a gene that entered the ranking after the HGNC symbol-mapping fix"
+    },
+    {
+      "path": "cache/uniprot/5ce8647cf1addfb1.json",
+      "bytes": 3408,
+      "sha256": "432d6ecac53c6d62f858345f46ea6a545b727cedf86b2b7f82893785ca679372",
+      "version": "provider release not recorded; exact local snapshot identified by sha256",
+      "source": "uniprot",
+      "request_key": "{\"fields\": \"accession,protein_name,cc_function,cc_subcellular_location\", \"format\": \"json\", \"query\": \"gene_exact:ADGRF1 AND organism_id:9606 AND reviewed:true\", \"size\": 1}",
+      "retrieved_utc": "2026-11-03T10:37:50Z",
+      "url": "https://rest.uniprot.org/uniprotkb/search?fields=accession%2Cprotein_name%2Ccc_function%2Ccc_subcellular_location&format=json&query=gene_exact%3AADGRF1+AND+organism_id%3A9606+AND+reviewed%3Atrue&size=1",
+      "method": "GET",
+      "note": "added 2026-11-03: requested for a gene that entered the ranking after the HGNC symbol-mapping fix"
+    },
+    {
+      "path": "cache/uniprot/d60ad7a857ad7ca4.json",
+      "bytes": 6244,
+      "sha256": "746663f4ad27aecbd79837d0ab6098c966444001f5eed5a5b2fa67a7e17cc07e",
+      "version": "provider release not recorded; exact local snapshot identified by sha256",
+      "source": "uniprot",
+      "request_key": "{\"fields\": \"accession,protein_name,cc_function,cc_subcellular_location\", \"format\": \"json\", \"query\": \"gene_exact:ACP3 AND organism_id:9606 AND reviewed:true\", \"size\": 1}",
+      "retrieved_utc": "2026-11-03T10:37:48Z",
+      "url": "https://rest.uniprot.org/uniprotkb/search?fields=accession%2Cprotein_name%2Ccc_function%2Ccc_subcellular_location&format=json&query=gene_exact%3AACP3+AND+organism_id%3A9606+AND+reviewed%3Atrue&size=1",
+      "method": "GET",
+      "note": "added 2026-11-03: requested for a gene that entered the ranking after the HGNC symbol-mapping fix"
+    },
+    {
+      "path": "cache/uniprot/ec57475cf68910b8.json",
+      "bytes": 1079,
+      "sha256": "0dec258fc1ed8eb087ed483405e44b57543c72db8ff13860052657489e8de797",
+      "version": "provider release not recorded; exact local snapshot identified by sha256",
+      "source": "uniprot",
+      "request_key": "{\"fields\": \"accession,protein_name,cc_function,cc_subcellular_location\", \"format\": \"json\", \"query\": \"gene_exact:SLC60A1 AND organism_id:9606 AND reviewed:true\", \"size\": 1}",
+      "retrieved_utc": "2026-11-03T10:37:47Z",
+      "url": "https://rest.uniprot.org/uniprotkb/search?fields=accession%2Cprotein_name%2Ccc_function%2Ccc_subcellular_location&format=json&query=gene_exact%3ASLC60A1+AND+organism_id%3A9606+AND+reviewed%3Atrue&size=1",
+      "method": "GET",
+      "note": "added 2026-11-03: requested for a gene that entered the ranking after the HGNC symbol-mapping fix"
     }
   ],
   "input_trees": [
@@ -73473,32 +73653,32 @@
   ],
   "project_files": [
     {
-      "path": "runs/2026-11-02/agent_applied.json",
-      "sha256": "4faa3d871ee38118ba0b5ec66b30f3e4556845893799a353f57d2fad2a3ca860"
+      "path": "runs/2026-11-03/agent_applied.json",
+      "sha256": "456bdd3bdc0b74fcaead2b329e6823b697d895eee22c89af97ac4e975a00b950"
     },
     {
-      "path": "runs/2026-11-02/agent_cells.json",
-      "sha256": "b4c687a288e9e241da23f90c838c737ee06b982c58fbe458e50201e33d654d18"
+      "path": "runs/2026-11-03/agent_cells.json",
+      "sha256": "0157001c7791b9448463db7e660350594a249ae31605e8c6b9aacb0a2db06161"
     },
     {
-      "path": "runs/2026-11-02/agent_external.json",
-      "sha256": "1095a6198b67a386e45b43fefee18964fd34b88bdaaa4be749f6acfc64719b21"
+      "path": "runs/2026-11-03/agent_external.json",
+      "sha256": "480b93a74bd6ceb6b357ab9299cb0f95c884d81bf72a32c5e22d68fe7feb1157"
     },
     {
-      "path": "runs/2026-11-02/agent_literature.json",
-      "sha256": "59b51d92d57cf68b7709083ae3b8dcdfbb588c9f9ad6d33b39771f9b4c16cae6"
+      "path": "runs/2026-11-03/agent_literature.json",
+      "sha256": "adb74da49e1f7d68046a7c99e0ab1102b4f692996b56547bb29837093453d5a3"
     },
     {
-      "path": "runs/2026-11-02/agent_omics.json",
-      "sha256": "57f1415a98c99aee2c80d496f8b8eaf4e072519c5f534186aaa0a01e4ae331d3"
+      "path": "runs/2026-11-03/agent_omics.json",
+      "sha256": "956d3ee83c73afa9957f8338e77c76439ac90ab8455be3d30c503b3a883f0ac3"
     },
     {
-      "path": "runs/2026-11-02/basis.json",
-      "sha256": "3ffe4da5f9a4f3a0a0287582c990746b7c6e527c6e9e82cdcce13b01683669c9"
+      "path": "runs/2026-11-03/basis.json",
+      "sha256": "88824c6080437549999ff694ec533785c3a8c97a4eb8f1f0eb2db2958e284945"
     },
     {
-      "path": "runs/2026-11-02/narrative.json",
-      "sha256": "07ecd344d4b019550f985c3961f24c31c04d4d21eccb30540ce26683197e70a9"
+      "path": "runs/2026-11-03/narrative.json",
+      "sha256": "d8e2f5ed2f0625f5f61a2e0321a9f89b60211c42a16e07790473ae66b580beab"
     },
     {
       "path": "src/ccrcc/reference_data/degradation.json",
@@ -73546,7 +73726,7 @@
     }
   ],
   "snapshot_policy": "Hashes freeze retained inputs. Missing historical provider revisions are explicitly marked, never inferred from current upstream. This manifest does not redistribute source datasets.",
-  "analysis_run": "runs/2026-11-02",
+  "analysis_run": "runs/2026-11-03",
   "project_input_globs": [
     "runs/replicates/*/findings.json",
     "evals/baselines/closed_book_*.json"

@@ -7,33 +7,33 @@ Convergence **v3** (M13). Earlier versions and why each change was made: [histor
 - Known genes: 23 (curated 10 + Open Targets top 20, deduplicated)
 - **Recall: 39%** (v2: 22 %; target 60 %)
 - Recall with the genetics stream removed: 4%
-- recall@50/100/200/500/1000 = 26% / 39% / 52% / 70% / 78%; median rank 171 of 19,161 genes; random expectation 0.52% → 75× enrichment
+- recall@50/100/200/500/1000 = 26% / 39% / 52% / 65% / 78%; median rank 176 of 19,161 genes; random expectation 0.52% → 75× enrichment
 
 | Gene | Source | Rank | In top | In top without genetics stream |
 |---|---|---|---|---|
-| VHL | curated | 16 | ✅ | ❌ |
-| PBRM1 | curated | 57 | ✅ | ❌ |
-| SETD2 | curated | 49 | ✅ | ❌ |
-| BAP1 | curated | 125 | ❌ | ❌ |
-| KDM5C | curated | 171 | ❌ | ❌ |
-| EPAS1 | curated | 38 | ✅ | ❌ |
+| VHL | curated | 18 | ✅ | ❌ |
+| PBRM1 | curated | 58 | ✅ | ❌ |
+| SETD2 | curated | 50 | ✅ | ❌ |
+| BAP1 | curated | 126 | ❌ | ❌ |
+| KDM5C | curated | 176 | ❌ | ❌ |
+| EPAS1 | curated | 39 | ✅ | ❌ |
 | CA9 | curated | 1 | ✅ | ✅ |
-| VEGFA | curated | 126 | ❌ | ❌ |
-| MTOR | curated | 56 | ✅ | ❌ |
-| HIF1A | curated | 2451 | ❌ | ❌ |
-| AKT1 | open_targets_top20 | 225 | ❌ | ❌ |
-| HNF1A | open_targets_top20 | 497 | ❌ | ❌ |
-| TP53 | open_targets_top20 | 40 | ✅ | ❌ |
-| HNF1B | open_targets_top20 | 1243 | ❌ | ❌ |
-| PTEN | open_targets_top20 | 62 | ✅ | ❌ |
-| KDR | open_targets_top20 | 690 | ❌ | ❌ |
-| SPDL1 | open_targets_top20 | 364 | ❌ | ❌ |
-| FLT4 | open_targets_top20 | 2097 | ❌ | ❌ |
-| PIGR | open_targets_top20 | 6 | ✅ | ❌ |
-| TERT | open_targets_top20 | 386 | ❌ | ❌ |
-| FLCN | open_targets_top20 | 7518 | ❌ | ❌ |
-| KMT2C | open_targets_top20 | 5636 | ❌ | ❌ |
-| ATM | open_targets_top20 | 663 | ❌ | ❌ |
+| VEGFA | curated | 127 | ❌ | ❌ |
+| MTOR | curated | 57 | ✅ | ❌ |
+| HIF1A | curated | 2560 | ❌ | ❌ |
+| AKT1 | open_targets_top20 | 231 | ❌ | ❌ |
+| HNF1A | open_targets_top20 | 509 | ❌ | ❌ |
+| TP53 | open_targets_top20 | 41 | ✅ | ❌ |
+| HNF1B | open_targets_top20 | 1287 | ❌ | ❌ |
+| PTEN | open_targets_top20 | 63 | ✅ | ❌ |
+| KDR | open_targets_top20 | 709 | ❌ | ❌ |
+| SPDL1 | open_targets_top20 | 306 | ❌ | ❌ |
+| FLT4 | open_targets_top20 | 2190 | ❌ | ❌ |
+| PIGR | open_targets_top20 | 7 | ✅ | ❌ |
+| TERT | open_targets_top20 | 395 | ❌ | ❌ |
+| FLCN | open_targets_top20 | 7606 | ❌ | ❌ |
+| KMT2C | open_targets_top20 | 5745 | ❌ | ❌ |
+| ATM | open_targets_top20 | 680 | ❌ | ❌ |
 
 ## (b) Outcomes the scores do not see (M13)
 
@@ -43,12 +43,12 @@ The target and biomarker profiles use measurements only (no literature, no drug 
 
 | Score | Gold genes | AUROC (95 % CI) | Recall@100 | Recall@500 | Median rank | Enrichment@100 | Gold genes in top 100 |
 |---|---|---|---|---|---|---|---|
-| target profile | 75 | 0.896 (0.87–0.92) | 17% | 24% | 1,672 | 33.2× | CA9, IDO1, CCND1, ANGPT2, FLT1, ITGAV, EPAS1, EGFR, ITGA5, VEGFA, TOP2A, MET, CDK6 |
-| biomarker profile | 75 | 0.702 (0.65–0.75) | 4% | 11% | 4,918 | 7.7× | CA9, TOP2A, FLT1 |
-| convergence v3 (incl. literature + drugs) | 75 | 0.890 (0.88–0.91) | 5% | 17% | 2,341 | 10.2× | CA9, EPAS1, MTOR, IDO1 |
-| convergence v3 without literature/tractability | 75 | 0.700 (0.64–0.76) | 1% | 12% | 4,286 | 2.6× | CA9 |
-| target profile without tractability | 75 | 0.718 (0.65–0.78) | 11% | 20% | 4,023 | 20.4× | CA9, IDO1, CCND1, ANGPT2, FLT1, ITGAV, EPAS1, EGFR |
-| predicted tractability alone | 75 | 0.847 (0.83–0.87) | 1% | 5% | 2,895 | 2.6× | IL2RB |
+| target profile | 75 | 0.895 (0.87–0.92) | 17% | 24% | 1,688 | 33.2× | CA9, IDO1, CCND1, ANGPT2, FLT1, ITGAV, EPAS1, EGFR, ITGA5, VEGFA, TOP2A, MET, CDK6 |
+| biomarker profile | 75 | 0.685 (0.63–0.73) | 4% | 11% | 5,296 | 7.7× | CA9, TOP2A, FLT1 |
+| convergence v3 (incl. literature + drugs) | 75 | 0.886 (0.87–0.90) | 5% | 17% | 2,442 | 10.2× | CA9, EPAS1, MTOR, IDO1 |
+| convergence v3 without literature/tractability | 75 | 0.696 (0.64–0.75) | 1% | 12% | 4,416 | 2.6× | CA9 |
+| target profile without tractability | 75 | 0.717 (0.65–0.78) | 11% | 20% | 4,089 | 20.4× | CA9, IDO1, CCND1, ANGPT2, FLT1, ITGAV, EPAS1, EGFR |
+| predicted tractability alone | 75 | 0.857 (0.83–0.88) | 0% | 13% | 2,660 | 0.0× | — |
 
 Predicted tractability (strong SM / AB buckets) flags 5,301 genes. It alone gives most of the AUROC — clinical targets are, almost by definition, druggable proteins — so the data layers should be judged by early enrichment: the share of gold genes in the top 100, which within the tractable set would be ~1.9% per tractable gold gene by chance, and by the "without tractability" row.
 
@@ -56,14 +56,16 @@ Predicted tractability (strong SM / AB buckets) flags 5,301 genes. It alone give
 
 Other eligible clinical targets, including those with incomplete dates, are removed from the background. First observed RCC trial dates use all phases. Features are not frozen before 2016: this is retrospective, not prospective validation.
 
+PARP1/PARP2/PARP3 share one gene family and drug class, so the set holds about 4 independent targets, not 6; the bootstrap interval treats every gene as independent and is too narrow.
+
 | Score | Gold genes | AUROC (95 % CI) | Recall@100 | Recall@500 | Median rank | Enrichment@100 | Gold genes in top 100 |
 |---|---|---|---|---|---|---|---|
-| target profile | 6 | 0.887 (0.84–0.94) | 17% | 17% | 2,182 | 31.8× | CCND1 |
-| biomarker profile | 6 | 0.691 (0.58–0.83) | 0% | 17% | 6,484 | 0.0× | — |
-| convergence v3 (incl. literature + drugs) | 6 | 0.866 (0.83–0.92) | 0% | 17% | 2,913 | 0.0× | — |
-| convergence v3 without literature/tractability | 6 | 0.632 (0.46–0.81) | 0% | 17% | 7,576 | 0.0× | — |
-| target profile without tractability | 6 | 0.645 (0.48–0.82) | 17% | 17% | 6,545 | 31.8× | CCND1 |
-| predicted tractability alone | 6 | 0.841 (0.80–0.89) | 0% | 0% | 3,671 | 0.0× | — |
+| target profile | 6 | 0.886 (0.84–0.94) | 17% | 17% | 2,198 | 31.8× | CCND1 |
+| biomarker profile | 6 | 0.668 (0.55–0.82) | 0% | 17% | 6,977 | 0.0× | — |
+| convergence v3 (incl. literature + drugs) | 6 | 0.861 (0.82–0.92) | 0% | 17% | 3,027 | 0.0× | — |
+| convergence v3 without literature/tractability | 6 | 0.628 (0.45–0.80) | 0% | 17% | 7,657 | 0.0× | — |
+| target profile without tractability | 6 | 0.643 (0.48–0.82) | 17% | 17% | 6,602 | 31.8× | CCND1 |
+| predicted tractability alone | 6 | 0.847 (0.79–0.90) | 0% | 0% | 2,669 | 0.0× | — |
 
 ### Prognostic biomarkers: ClearCode34 (33 of 34 genes mapped; Brooks et al. 2014)
 
@@ -71,33 +73,35 @@ ClearCode34 was validated in TCGA, which the biomarker profile's prognosis compo
 
 | Score | Gold genes | AUROC (95 % CI) | Recall@100 | Recall@500 | Median rank | Enrichment@100 | Gold genes in top 100 |
 |---|---|---|---|---|---|---|---|
-| target profile | 33 | 0.714 (0.62–0.79) | 6% | 18% | 5,315 | 11.6× | EPAS1, TLR3 |
-| biomarker profile | 33 | 0.739 (0.67–0.81) | 0% | 3% | 3,960 | 0.0× | — |
-| convergence v3 (incl. literature + drugs) | 33 | 0.703 (0.62–0.79) | 3% | 6% | 3,863 | 5.8× | EPAS1 |
-| convergence v3 without literature/tractability | 33 | 0.645 (0.55–0.75) | 0% | 6% | 5,030 | 0.0× | — |
-| biomarker profile without prognosis | 33 | 0.689 (0.61–0.77) | 0% | 6% | 5,339 | 0.0× | — |
+| target profile | 33 | 0.713 (0.62–0.79) | 6% | 18% | 4,598 | 11.6× | EPAS1, TLR3 |
+| biomarker profile | 33 | 0.739 (0.68–0.81) | 0% | 3% | 4,256 | 0.0× | — |
+| convergence v3 (incl. literature + drugs) | 33 | 0.701 (0.62–0.79) | 3% | 6% | 3,999 | 5.8× | EPAS1 |
+| convergence v3 without literature/tractability | 33 | 0.644 (0.55–0.75) | 0% | 6% | 5,140 | 0.0× | — |
+| biomarker profile without prognosis | 33 | 0.686 (0.61–0.77) | 0% | 6% | 5,507 | 0.0× | — |
 
 ## (c) Robustness to the weights
 
 1,000 random re-weightings (Dirichlet, κ = 20, around the configured weights). Genes in the top 10 in ≥ 80 % of draws:
 
-- **convergence**: CA9
+- **convergence**: CA9, COXFA4L2
 - **target**: SCARB1, CA9, SLC16A3, CD70, NNMT, ENPP3, FABP6
-- **biomarker**: PSAT1, PCK1, SLC6A19, PPP1R1A
+- **biomarker**: PSAT1, PCK1, SLC6A19
 
 ## (d) What the agentic layer adds
 
 | | Closed-book LLM (Sonnet 5.5, no tools) | GraphRAG pipeline |
 |---|---|---|
 | Runs | 3 | 3 |
-| Mean pairwise Jaccard of candidate lists | 0.667 | 0.905 |
-| Candidates that are RCC clinical targets | 60%, 60%, 60% | 15%, 15%, 15% |
-| Candidates in the data-only target or biomarker top 500 | 80%, 70%, 80% | 100%, 100%, 100% |
-| Statements citing checkable evidence | 0 | 113 checked, 0 unsupported |
+| Mean pairwise Jaccard of candidate lists | 0.667 | 0.744 |
+| Candidates that are RCC clinical targets | 60%, 60%, 60% | 21%, 15%, 15% |
+| Candidates in the data-only target or biomarker top 500 | 80%, 70%, 80% | 100%, 92%, 100% (by construction: the agents pick candidates from these profiles) |
+| Statements citing checkable evidence | 0 | 116 checked, 0 unsupported |
 
 Closed-book candidates: VHL, EPAS1, VEGFA, KDR, CD274, PBRM1, BAP1, SETD2, CA9, MET; VHL, EPAS1, VEGFA, PDCD1, CD274, PBRM1, BAP1, SETD2, MET, MTOR; EPAS1, VHL, VEGFA, KDR, PDCD1, MTOR, PBRM1, BAP1, SETD2, CA9.
 
-Pipeline final targets: CA9, CD70, NNMT, EPAS1, ENPP3, SCARB1, SLC16A3, PSAT1, PCK1, ALDH6A1, COL23A1, RAB42, GAL3ST4; CA9, CD70, NNMT, EPAS1, ENPP3, SCARB1, SLC16A3, PSAT1, PCK1, ALDH6A1, COL23A1, RAB42, OLFML2A; CA9, CD70, NNMT, EPAS1, ENPP3, SCARB1, SLC16A3, PSAT1, PCK1, ALDH6A1, COL23A1, RAB42, GAL3ST4.
+Pipeline final targets: CA9, CD70, NNMT, EPAS1, SCARB1, PSAT1, PCK1, ENPP3, ALDOB, COL23A1, KDR, SLC16A3, COXFA4L2, RAB42; CA9, CD70, NNMT, EPAS1, ENPP3, SCARB1, SLC16A3, PSAT1, PCK1, ALDH6A1, COL23A1, RAB42, OLFML2A; CA9, CD70, NNMT, EPAS1, ENPP3, SCARB1, SLC16A3, PSAT1, PCK1, ALDH6A1, COL23A1, RAB42, GAL3ST4.
+
+The pipeline's Jaccard mostly reflects the deterministic ranking the agents start from, not agreement reached independently; it shows the agent step is stable, not that its choices are right.
 
 ## (e) Known-answer questions (`claude -p` + project MCP servers)
 

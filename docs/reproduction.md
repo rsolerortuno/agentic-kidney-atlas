@@ -89,3 +89,44 @@ reviewed change to saved model analyses, not a refresh of upstream data:
 - A rebuild of the derived data on the developer machine (`run-all` without the frozen check, because three upstream PDB
   reference files changed) produced the same counts as before: 462 claims and 1,730 evidence records in the validator for the
   earlier analysis.
+
+## Re-freeze after the HGNC symbol-mapping fix (2026-11-03)
+
+A code review found that three layers were keyed by their source's own gene symbols while the gene universe uses the
+current HGNC symbol: TCGA-KIRC (Xena's 2016 symbols), CPTAC cis dosage and the purity table (approved symbols only).
+Renamed genes therefore lost those layers when joined. NDUFA4L2 (now COXFA4L2) had TCGA log2FC 6.60 (padj 7.6e-31) in
+`layer_tcga.parquet` under its old name, yet scored 0 for replication. 2,158 TCGA rows were affected, 219 of them for genes
+strongly changed in CPTAC RNA. DepMap, the treatment cohorts and the subtype tables had the same problem on a smaller
+scale. All of them now go through `omics.to_hgnc()`, with the same rules as the CPTAC symbol map (approved symbol first,
+then a unique previous or alias symbol), and `tests/test_omics.py` checks the keys.
+
+Effect on the deterministic results:
+
+- Convergence ranking: COXFA4L2 moves from 17th to 2nd and HILPDA enters at 13th. CA9 and COXFA4L2 are the two genes in
+  the top ten in at least 80 % of re-weightings (p_top10 0.889 and 0.878).
+- Target profile: the top ten are the same genes; COXFA4L2 enters the top 25 (from 221st). Biomarker profile: G6PC1 moves
+  from 1,642nd to 12th.
+- Discovery: 62 first-in-class opportunities instead of 58 (CALHM6, COLGALT1, MILR1, MTFP1); HILPDA enters the tumour-cell
+  track at 7th. COL23A1 and RAB42 still lead it.
+- Evaluation: AUROC against clinical targets 0.895 (was 0.896). Ties are now broken at random rather than in convergence
+  order, which moved "predicted tractability alone" from 0.847 to 0.857 and removed IL2RB from its top 100.
+
+The same review also changed the checks: the stale-text guard fails closed (a cited id missing from `basis.json` fails;
+the ranking ids are now in the basis from the start), the direction check also reads summary and section sentences that
+name exactly one cited gene, the T-effector control needs p < 0.05, and genes without Human Protein Atlas data are no longer
+treated as safe in the discovery screen (no gene was affected in this run).
+
+The agent step was run again with `scripts/run_informe.ps1` into `runs/2026-11-03`. The headless orchestrator stopped once
+at step 4 (its own safety check refused the large `narrative.json` write) and was resumed from step 4 without re-running
+the integration or the subagents. Final verification checked 116 statements with no failures detected by the automatic
+checks (0 unsupported, 0 semantic, 0 stale). The orchestrator rewrote 48 agent findings that cited numbers without the
+structured `numeric_claims` binding, and added one HK2 finding built from its confirmatory-replication record.
+
+- `reproducibility/inputs.json` now selects `runs/2026-11-03`. Its agent files, basis and narrative replace the 2026-11-02
+  entries; `runs/2026-11-02` stays in the repository. Fifteen cached Open Targets, STRING and UniProt responses for genes
+  that entered the ranking (e.g. G6PC1, ACP3, ADGRF1) were added as inputs.
+- The repeat runs in `runs/replicates/` were not re-run; they belong to the 2026-11-02 analysis.
+- This machine's data snapshot differs from the manifest in four files that predate this change (`raw/extra/manifest.json`
+  and three PDB references in `cache/ternary`), so the rebuild ran the `run-all` steps without the frozen-input check. The
+  files in `clean-run.log`, `clean-comparison.json`, `acceptance.json` and `runtime-hashes.json` still describe the earlier
+  clean execution.

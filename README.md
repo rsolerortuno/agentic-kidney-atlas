@@ -115,17 +115,19 @@ All data are public. Files are listed with checksums in [reproducibility/inputs.
 
 ## 5. Main results
 
-Numbers come from the saved, reviewed analysis (`runs/2026-11-02`). The report gives the detail and the caveats.
+Numbers come from the saved, reviewed analysis (`runs/2026-11-03`). The report gives the detail and the caveats.
 
 **Known biology is recovered.**
-HIF target genes (CA9, NDUFA4L2, ANGPTL4, VEGFA) are strongly up and replicate in the second cohort. Loss of
+HIF target genes (CA9, NDUFA4L2, ANGPTL4, VEGFA) are strongly up and replicate in the second cohort. (NDUFA4L2's current
+HGNC symbol is COXFA4L2; before 2026-11-03 the pipeline missed its TCGA replication because TCGA uses the old symbol, see
+`docs/reproduction.md`.) Loss of
 chromosome arm 3p is the most frequent copy-number change. The mutation test calls VHL, PBRM1, BAP1, SETD2, KDM5C,
 MTOR, PTEN and TP53.
 
 **Candidates.**
-CA9 is the only gene that stays in the top ten whatever the weights. The main target calls are CD70, NNMT, ENPP3,
-SCARB1 and SLC16A3. The main biomarker calls are PSAT1, PCK1, ALDH6A1 and SLC6A19, mostly kidney genes that the tumour
-loses. No expression-based target is a gene the cancer cells depend on, so these are handles for antibodies, conjugates
+CA9 and NDUFA4L2 (COXFA4L2) are the only genes that stay in the top ten in at least 80 % of 1,000 random re-weightings
+(89 % and 88 %); no gene stays there under every weighting. The main target calls are CD70, NNMT, ENPP3, SCARB1 and
+SLC16A3. The main biomarker calls are PSAT1 and PCK1, with ALDOB and other kidney genes that the tumour loses. No expression-based target is a gene the cancer cells depend on, so these are handles for antibodies, conjugates
 or radioligands, not weak spots of the cell.
 
 **Unexplored candidates.**
@@ -160,15 +162,15 @@ lists candidates and is not a validated ranking.
 
 | Check | Result |
 |---|---|
-| Recall of 23 known ccRCC genes in the top 100 | 39 % (median rank 171 of 19,161 genes) |
-| Target profile against 75 clinical RCC targets | AUROC 0.90; predicted tractability alone gives 0.85, so the gain is in early enrichment |
-| Retrospective test on 6 targets first trialled in 2016 or later | AUROC 0.89; 1 of the 6 in the top 100. Features are not frozen before 2016, so this is retrospective, not prospective |
+| Recall of 23 known ccRCC genes in the top 100 | 39 % (median rank 176 of 19,161 genes) |
+| Target profile against 75 clinical RCC targets | AUROC 0.90; predicted tractability alone gives 0.86, so the gain is in early enrichment |
+| Retrospective test on 6 targets first trialled in 2016 or later | AUROC 0.89; 1 of the 6 in the top 100. Three of the six are PARP1/2/3 (one drug class), so this is about four independent targets and the interval is optimistic. Features are not frozen before 2016, so this is retrospective, not prospective |
 | Biomarker profile against ClearCode34 genes | AUROC 0.74 |
 | Known-answer questions answered with the project's tools | 10 of 10 |
-| Agent text against its evidence | 113 statements checked, no failures detected by the automatic checks |
-| Report validator | 445 claims, 1,663 evidence records, all resolvable, no external resources |
+| Agent text against its evidence | 116 statements checked, no failures detected by the automatic checks |
+| Report validator | 449 claims, 1,646 evidence records, all resolvable, no external resources |
 | Agents against a model answering from memory | The memory-only model gives the textbook list (60 % clinical targets, nothing citable); the pipeline gives data-backed candidates |
-| Repeat agent runs | Mean overlap (Jaccard) 0.91 between the final target lists of three runs; the first twelve candidates are the same in all three |
+| Repeat agent runs | Mean overlap (Jaccard) 0.74 between the final target lists of three runs. The two repeat runs predate the 2026-11-03 symbol fix, so this mixes analyses; before the fix the three runs overlapped at 0.91. The overlap mostly reflects the shared deterministic ranking |
 
 A control is a known case scored the same way as the candidates. Known antibody targets rank near the top. Known
 immune checkpoints rank unevenly, and the report says so.

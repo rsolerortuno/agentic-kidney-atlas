@@ -78,7 +78,10 @@ class GraphStore:
         return node_id
 
     def add_evidence(self, ev_id: str, ev_type: str, source: str, date: str | None = None, **props) -> str:
-        self.conn.execute("INSERT OR IGNORE INTO evidence(id, type, source, date, props) VALUES (?,?,?,?,?)",
+        # Ids hash (type, key parts), not values: a reloaded layer must replace the old values, not keep them silently.
+        self.conn.execute("INSERT INTO evidence(id, type, source, date, props) VALUES (?,?,?,?,?) "
+                          "ON CONFLICT(id) DO UPDATE SET type = excluded.type, source = excluded.source, "
+                          "date = excluded.date, props = excluded.props",
                           (ev_id, ev_type, source, date, json.dumps(props, default=str)))
         return ev_id
 
@@ -120,7 +123,7 @@ class GraphStore:
         sql = ("SELECT c.subject, c.predicate, c.object, c.evidence_id, s.name AS sname, o.name AS oname, "
                "s.type AS stype, o.type AS otype FROM claims c JOIN nodes s ON s.id = c.subject "
                "JOIN nodes o ON o.id = c.object WHERE (c.subject = ? OR c.object = ?)"
-               + (" AND c.predicate = ?" if predicate else "") + " LIMIT ?")
+               + (" AND c.predicate = ?" if predicate else "") + " ORDER BY c.id LIMIT ?")
         args = [node_id, node_id] + ([predicate] if predicate else []) + [limit]
         return [dict(r) for r in self.conn.execute(sql, args)]
 

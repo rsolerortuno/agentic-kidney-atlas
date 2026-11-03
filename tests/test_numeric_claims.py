@@ -67,6 +67,23 @@ def test_survival_direction_is_not_tumour_normal_expression_direction():
     assert semantic.check('ALDOB is upregulated in tumour. Higher expression is associated with better survival.', 'ALDOB', evidence)['direction_contradiction']
 
 
+def test_direction_is_checked_in_statements_without_a_gene():
+    evidence = [{'gene': 'MT1G', 'type': 'omics_de', 'significant': True, 'log2fc': -2.1},
+                {'gene': 'PFKP', 'type': 'omics_de', 'significant': True, 'log2fc': 1.8}]
+    assert semantic.check('MT1G is higher in tumour.', None, evidence)['direction_contradiction']
+    assert not semantic.check('MT1G is lower in tumour. PFKP is elevated.', None, evidence)['direction_contradiction']
+    # a sentence naming two genes is ambiguous and is not attributed to either
+    assert not semantic.check('MT1G and PFKP are higher.', None, evidence)['direction_contradiction']
+    # a negated sentence is skipped rather than read literally
+    assert not semantic.check('MT1G is not higher in tumour.', None, evidence)['direction_contradiction']
+
+
+def test_null_evidence_gene_does_not_crash_numeric_claims():
+    out = semantic.check('x', 'CA9', [{'evidence_id': 'EV:1', 'gene': None}],
+                         numeric_claims=[{'evidence_id': 'EV:1', 'field': ['v'], 'display': '1', 'unit': 'native'}])
+    assert out['numeric_binding_errors']
+
+
 @pytest.mark.parametrize("field", [["arms","missing"], ["gene"], [], [True], ["arms",0]])
 def test_invalid_metric_paths_fail_closed(field):
     with pytest.raises(ValueError):

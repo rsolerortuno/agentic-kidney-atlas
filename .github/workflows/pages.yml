@@ -2,7 +2,7 @@ name: Publish report to GitHub Pages
 
 on:
   push:
-    branches: [main, m15-targets-biomarkers-report]
+    branches: [main]
     paths: [reports/ccrcc_report.html, .github/workflows/pages.yml]
   workflow_dispatch:
 

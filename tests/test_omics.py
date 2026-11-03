@@ -47,3 +47,32 @@ def test_3p_loss_is_most_frequent_arm_loss():
     arm = pd.read_parquet(PROCESSED / "cnv_arm_summary.parquet").set_index("arm")
     assert arm["median_loss_freq"].idxmax() == "3p"
     assert arm.loc["3p", "median_loss_freq"] > 0.5
+
+
+def test_to_hgnc_maps_previous_symbols_and_prefers_approved():
+    from ccrcc.omics import to_hgnc
+    hgnc = pd.DataFrame({"hgnc_id": ["HGNC:1", "HGNC:2"], "symbol": ["NEWA", "B"], "name": ["a", "b"],
+                         "locus_group": None, "location": None, "alias_symbol": [None, None],
+                         "prev_symbol": ["OLDA", None], "entrez_id": None, "ensembl_gene_id": None, "uniprot_ids": None})
+    df = pd.DataFrame({"gene": ["OLDA", "B", "NEWA", "ZZZ"], "n": [50, 10, 5, 1]})
+    out = to_hgnc(df, "gene", rank_by="n", hgnc=hgnc).set_index("gene")
+    # NEWA appears twice (approved row and previous symbol OLDA): the approved row wins despite fewer samples
+    assert out.loc["NEWA", "dataset_symbol"] == "NEWA" and out.loc["NEWA", "n"] == 5
+    assert "ZZZ" in out.index and len(out) == 3
+    keyed = to_hgnc(df.drop(index=2), "gene", out="hgnc_symbol", hgnc=hgnc).set_index("gene")
+    assert keyed.loc["OLDA", "hgnc_symbol"] == "NEWA" and pd.isna(keyed.loc["ZZZ", "hgnc_symbol"])
+
+
+@pytest.mark.skipif(not (PROCESSED / "layer_tcga.parquet").exists(), reason="run `ccrcc run-all` first")
+@pytest.mark.parametrize("name,col", [("layer_tcga.parquet", "gene"), ("layer_cis_dosage.parquet", "gene"),
+                                      ("layer_purity.parquet", "hgnc_symbol")])
+def test_layers_use_the_gene_universe_key(name, col):
+    """A strongly changed gene must not lose a layer because its source uses an older symbol (NDUFA4L2 -> COXFA4L2)."""
+    keys = set(pd.read_parquet(PROCESSED / name)[col].dropna())
+    u = pd.read_parquet(PROCESSED / "gene_universe.parquet")
+    strong = u[(u.rna_padj < 0.05) & (u.rna_log2fc.abs() > 1)]
+    assert {"COXFA4L2", "HILPDA"} <= keys
+    assert (~strong.gene.isin(keys)).mean() < MAX_MISSING[name], name
+
+
+MAX_MISSING = {"layer_tcga.parquet": 0.05, "layer_cis_dosage.parquet": 0.05, "layer_purity.parquet": 0.01}

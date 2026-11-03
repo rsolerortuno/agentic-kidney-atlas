@@ -118,7 +118,9 @@ def metrics(t: pd.DataFrame, col: str, gold: set[str], exclude: set[str] | None 
     d = t[~t["gene"].isin(exclude or set())]
     s = d[col].to_numpy(float)
     g = d["gene"].isin(gold).to_numpy()
-    order = np.argsort(-s, kind="stable")
+    # Ties are broken at random, not by input order: the input is sorted by convergence (literature + drugs), which
+    # would rank tied known targets first. A separate generator keeps the bootstrap draws below unchanged.
+    order = np.lexsort((np.random.default_rng(seed + 1).random(len(s)), -s))
     rank = np.empty(len(s), int)
     rank[order] = np.arange(1, len(s) + 1)
     rng = np.random.default_rng(seed)
@@ -143,12 +145,13 @@ def metrics(t: pd.DataFrame, col: str, gold: set[str], exclude: set[str] | None 
 def run(t: pd.DataFrame) -> dict:
     """t = integrate.compute() output (scores and components for every gene)."""
     t = t.copy()
-    t["score_data_only"] = t["score"] - t["c_literature"] * 1.0 - t["c_tractability"] * 0.5
+    from .config import load
+    sw = load()["convergence"]["stream_weights"]
+    t["score_data_only"] = t["score"] - t["c_literature"] * sw["literature"] - t["c_tractability"] * sw["tractability"]
     clin = clinical_targets()
     allc, hold = set(clin["gene"]), set(clin.loc[clin["holdout"], "gene"])
     pre = allc - hold
     bio = set(clearcode34())
-    from .config import load
     w = load()["profiles"]["biomarker"]
     t["score_biomarker_no_prognosis"] = t["score_biomarker"] - w.get("prognosis", 0) * t["c_prognosis"]
     scores = {"target profile": "score_target", "biomarker profile": "score_biomarker",

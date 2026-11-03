@@ -24,7 +24,7 @@ import pandas as pd
 from scipy import stats
 
 from .layers import EXTRA, NONSYN, bh, cox_univariate
-from .omics import LAYERS, read_matrix
+from .omics import LAYERS, read_matrix, to_hgnc
 from .outcomes import CLEARCODE34, clearcode34
 from .paths import PROCESSED
 from .safety_clinical import GRADE
@@ -82,7 +82,8 @@ def genetic_subtypes() -> pd.DataFrame:
             r = welch(x, a, b)
             r["driver"], r["layer"] = g, layer
             rows.append(r)
-    df = pd.concat(rows, ignore_index=True)
+    # CPTAC and TCGA use symbols from different years: one HGNC key, or the cross-cohort pivot drops renamed genes
+    df = to_hgnc(pd.concat(rows, ignore_index=True), "gene", rank_by="n_a", by=("driver", "layer"))
     df.to_parquet(PROCESSED / "subtype_genetic_de.parquet", index=False)
     return df
 
@@ -137,7 +138,7 @@ def ccab() -> tuple[pd.DataFrame, dict]:
         r = welch(x, b, a)        # ccB - ccA
         r["layer"] = layer
         rows.append(r)
-    df = pd.concat(rows, ignore_index=True)
+    df = to_hgnc(pd.concat(rows, ignore_index=True), "gene", rank_by="n_a", by=("layer",))
     cc = set(clearcode34())
     df["clearcode34_gene"] = df["gene"].isin(cc)
     df.to_parquet(PROCESSED / "subtype_ccab_de.parquet", index=False)

@@ -10,7 +10,7 @@ The omics agent has finished, writing 15 findings to `agent_omics.json`. Its str
 
 The literature agent has finished, writing 12 findings to `agent_literature.json`. Only the external agent is still running.
 
-The report is ready at `C:\Users\rafae\Documents\ccrcc-graphrag\reports\ccrcc_report.html`. Final verification checked 64 statements and found 0 unsupported claims on the first pass, so `narrative.json` needed no fixes.
+The report is ready at `reports\ccrcc_report.html`. Final verification checked 64 statements and found 0 unsupported claims on the first pass, so `narrative.json` needed no fixes.
 
 1. **Best overall candidate: CA9.** It is the only gene where all three sources agree: strongly up in tumors (RNA log2FC 6.312, protein log2FC 2.269), backed by a CA9 PET proof-of-concept study, a membrane protein, and girentuximab is in Phase 3.
 2. **Clinically validated target: EPAS1 (HIF-2α).** Belzutifan is approved, and the protein is up while RNA barely changes, as expected after VHL loss. It sits at only rank 38 in the numeric score, so I moved it up.

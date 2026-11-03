@@ -27,5 +27,5 @@ Spec: [OBJETIVO.md](OBJETIVO.md). A milestone is closed only when its check pass
 ## Blockers / notes
 - M13 was run on Linux (cloud workspace). `.python-version` relaxed from 3.12.16 to 3.12 so any 3.12 patch release works; `scripts/run_informe.sh` and a `Makefile` added next to the PowerShell runner.
 - `CCRCC_RUN_DIR` redirects a whole `/informe` run (convergence, agents, verification, assembly, report) for replicate runs.
-- The original session folder path exceeded the Windows 260-character limit inside `.venv` (networkx import failures). The project was moved to `C:\Users\rafae\Documents\ccrcc-graphrag`. Enabling long paths is a system setting and was not touched.
+- The original session folder path exceeded the Windows 260-character limit inside `.venv` (networkx import failures). The project was moved to `~\Documents\ccrcc-graphrag`. Enabling long paths is a system setting and was not touched.
 - ~~Blocker: headless Claude Code CLI not logged in~~ — resolved by the user (`/login`), 2026-10-31.

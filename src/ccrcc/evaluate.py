@@ -107,6 +107,19 @@ def grade_answers(path: Path, model: str) -> dict:
     return {"model": model, "correct": sum(r["correct"] for r in results), "total": len(results), "results": results}
 
 
+def _family_note(genes: list[str]) -> str:
+    """Gold genes from one gene family usually share one drug class; the bootstrap treats them as independent."""
+    fam: dict[str, list[str]] = {}
+    for g in genes:
+        fam.setdefault(re.sub(r"\d+[A-Z]?$", "", g), []).append(g)
+    shared = [v for v in fam.values() if len(v) > 1]
+    if not shared:
+        return "All gold genes come from different gene families."
+    return (f"{', '.join('/'.join(v) for v in shared)} share one gene family and drug class, so the set holds about "
+            f"{len(fam)} independent targets, not {len(genes)}; the bootstrap interval treats every gene as independent "
+            "and is too narrow.")
+
+
 def _fmt_metrics(block: dict) -> list[str]:
     lines = ["| Score | Gold genes | AUROC (95 % CI) | Recall@100 | Recall@500 | Median rank | Enrichment@100 | Gold genes in top 100 |",
              "|---|---|---|---|---|---|---|---|"]
@@ -153,7 +166,9 @@ def write_results(rec: dict, qa: dict | None, outcomes: dict | None = None, base
                   "\"without tractability\" row."]
         lines += ["", f"### Retrospective post-2016 evaluation: first RCC trial on or after {g['cutoff']} "
                   f"({len(g['temporal_holdout_targets'])} genes: {', '.join(g['temporal_holdout_targets'])})", "",
-                  "Other eligible clinical targets, including those with incomplete dates, are removed from the background. First observed RCC trial dates use all phases. Features are not frozen before 2016: this is retrospective, not prospective validation.", ""] + _fmt_metrics(outcomes["temporal_holdout"])
+                  "Other eligible clinical targets, including those with incomplete dates, are removed from the background. First observed RCC trial dates use all phases. Features are not frozen before 2016: this is retrospective, not prospective validation.",
+                  "",
+                  _family_note(g["temporal_holdout_targets"]), ""] + _fmt_metrics(outcomes["temporal_holdout"])
         lines += ["", f"### Prognostic biomarkers: ClearCode34 ({len(g['clearcode34'])} of 34 genes mapped; Brooks et al. 2014)", "",
                   "ClearCode34 was validated in TCGA, which the biomarker profile's prognosis component also uses; the last row "
                   "removes that component. A literature-based gold set (verbatim `biomarker_of` relations from the disease-level "
@@ -175,11 +190,14 @@ def write_results(rec: dict, qa: dict | None, outcomes: dict | None = None, base
                   f"{', '.join(f'{x['in_rcc_clinical_targets']:.0%}' for x in pl['support'])} |",
                   f"| Candidates in the data-only target or biomarker top 500 | "
                   f"{', '.join(f'{x['in_target_or_biomarker_profile_top500']:.0%}' for x in cb['support'])} | "
-                  f"{', '.join(f'{x['in_target_or_biomarker_profile_top500']:.0%}' for x in pl['support'])} |",
+                  f"{', '.join(f'{x['in_target_or_biomarker_profile_top500']:.0%}' for x in pl['support'])} "
+                  "(by construction: the agents pick candidates from these profiles) |",
                   f"| Statements citing checkable evidence | 0 | {pl.get('statements_checked', '—')} checked, "
                   f"{pl.get('unsupported', '—')} unsupported |", "",
                   f"Closed-book candidates: {'; '.join(', '.join(c) for c in cb['candidates'])}.", "",
-                  f"Pipeline final targets: {'; '.join(', '.join(c) for c in pl['targets'])}."]
+                  f"Pipeline final targets: {'; '.join(', '.join(c) for c in pl['targets'])}.", "",
+                  "The pipeline's Jaccard mostly reflects the deterministic ranking the agents start from, not agreement "
+                  "reached independently; it shows the agent step is stable, not that its choices are right."]
     lines += ["", "## (e) Known-answer questions (`claude -p` + project MCP servers)", ""]
     if qa:
         lines += [f"- Model: {qa['model']}", f"- **Correct: {qa['correct']}/{qa['total']}**", "",

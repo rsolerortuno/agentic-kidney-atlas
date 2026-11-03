@@ -106,7 +106,7 @@ def test_dependency_layer_lineage_and_hif():
 @needs_data
 def test_tcga_replicates_hif_targets():
     t = pd.read_parquet(PROCESSED / "layer_tcga.parquet").set_index("gene")
-    for g in ("CA9", "NDUFA4L2", "ANGPTL4", "EGLN3", "VEGFA"):
+    for g in ("CA9", "COXFA4L2", "ANGPTL4", "EGLN3", "VEGFA"):   # COXFA4L2 = NDUFA4L2 in Xena's 2016 symbols
         assert t.loc[g, "log2fc"] > 2 and t.loc[g, "padj"] < 1e-10, g
 
 
