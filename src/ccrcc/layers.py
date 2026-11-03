@@ -27,7 +27,7 @@ from scipy import stats
 from statsmodels.stats.multitest import multipletests
 
 from .config import load as load_cfg
-from .omics import LAYERS, load_hgnc, read_matrix
+from .omics import LAYERS, load_hgnc, read_matrix, to_hgnc
 from .paths import PROCESSED, RAW
 
 EXTRA = RAW / "extra"
@@ -187,6 +187,7 @@ def cis_dosage() -> pd.DataFrame:
         r["padj"] = bh(r["pvalue"])
         parts.append(r.set_index("gene").add_prefix(f"{layer}_"))
     df = pd.concat(parts, axis=1).reset_index().rename(columns={"index": "gene"})
+    df = to_hgnc(df, "gene", rank_by="rna_n")
     df.to_parquet(PROCESSED / "layer_cis_dosage.parquet", index=False)
     return df
 
@@ -244,6 +245,7 @@ def dependency() -> pd.DataFrame:
     df["selectivity"] = df["mean_effect_other"] - df["mean_effect_ccrcc"]
     df["padj"] = bh(df["pvalue"])
     df["common_essential"] = df["frac_all_dependent"] >= 0.9
+    df = to_hgnc(df, "gene", rank_by="n_ccrcc_lines")
     df.to_parquet(PROCESSED / "layer_dependency.parquet", index=False)
     (PROCESSED / "layer_dependency_lines.json").write_text(json.dumps(
         {"release": "DepMap Public 26Q1 (Chronos)", "ccrcc_lines": lines[lines["ach"].isin(rcc)][["name", "ach"]]
@@ -276,6 +278,8 @@ def replication() -> pd.DataFrame:
     cox["cox_padj"] = bh(cox["cox_pvalue"])
     df = de.merge(cox, on="gene", how="outer")
     df["n_survival"] = len(common)
+    # Xena's TCGA matrix uses 2016 symbols; re-key on current HGNC like the CPTAC tables.
+    df = to_hgnc(df, "gene", rank_by="n_pairs")
     df.to_parquet(PROCESSED / "layer_tcga.parquet", index=False)
     return df
 
@@ -408,9 +412,8 @@ def purity() -> pd.DataFrame:
     df = pd.concat(out, axis=1)
     df.index.name = "dataset_symbol"
     df = df.reset_index()
-    hg = load_hgnc()
-    approved = set(hg["symbol"])
-    df["hgnc_symbol"] = df["dataset_symbol"].where(df["dataset_symbol"].isin(approved))
+    # previous / alias symbols map too (approved only dropped renamed genes such as NDUFA4L2 -> COXFA4L2)
+    df = to_hgnc(df, "dataset_symbol", rank_by="rna_n_pairs_purity", out="hgnc_symbol")
     df["n_tumors_with_purity"] = int(len(pur.index.intersection(read_matrix(LAYERS["rna"][0]).columns)))
     df.to_parquet(PROCESSED / "layer_purity.parquet", index=False)
     return df

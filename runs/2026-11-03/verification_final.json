@@ -1,0 +1,14 @@
+{
+ "file": "runs/2026-11-03/findings.json",
+ "statements": 116,
+ "unsupported": 0,
+ "interpretation": "No failures detected by the automatic checks",
+ "scope": "Evidence linkage, metric bindings, numeric precision and limited direction checks; not complete scientific validation",
+ "semantic_failures": 0,
+ "stale": 0,
+ "basis": {
+  "started_utc": "2026-11-03T11:03:18+00:00",
+  "evidence": 1404
+ },
+ "detail": []
+}

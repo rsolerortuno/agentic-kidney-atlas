@@ -265,3 +265,15 @@ failures detected by the automatic checks; repeats 115 and 118; mean Jaccard of 
 The lower overlap comes from the third exploratory slot, which differs between runs. The framing is "identified and
 prioritised for validation", not "discovered": earlier preclinical literature may exist for these genes, and the screen
 counts papers rather than reading them.
+
+
+## HGNC symbol mapping and stricter checks (2026-11-03)
+
+A review found that TCGA, cis dosage, purity, DepMap, treatment and subtype tables were joined on their sources' own
+symbols, so renamed genes lost those layers (NDUFA4L2 = COXFA4L2 scored 0 for TCGA replication despite padj 7.6e-31).
+After re-keying every layer on the current HGNC symbol: COXFA4L2 is 2nd in the convergence ranking (17th before), HILPDA
+13th, G6PC1 12th in the biomarker profile (1,642nd); target-profile AUROC 0.895 (0.896). Ties in the evaluation are now broken at
+random instead of by convergence order (predicted tractability alone: 0.847 -> 0.857). The post-2016 set is noted as about
+four independent targets (PARP1/2/3 are one class), and the "100 % in the data-only top 500" row as true by construction.
+New run (`runs/2026-11-03`): 116 statements, no failures detected by the automatic checks, with the stale guard failing
+closed and the direction check also covering summary sentences. COXFA4L2 joins the final targets. Repeats not re-run.

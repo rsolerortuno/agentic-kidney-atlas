@@ -1,4 +1,4 @@
-﻿The report is at `C:\Users\rafae\Documents\ccrcc-graphrag\runs\replicates\rep1\report.html`. `CCRCC_RUN_DIR` was set, so this run went to replicate folder `rep1`, not `runs/2026-11-02/`. The final check passes: 115 statements, 0 unsupported claims, nothing dropped from the narrative.
+﻿The report is at `runs\replicates\rep1\report.html`. `CCRCC_RUN_DIR` was set, so this run went to replicate folder `rep1`, not `runs/2026-11-02/`. The final check passes: 115 statements, 0 unsupported claims, nothing dropped from the narrative.
 
 **Summary:**
 1. **CA9** has the strongest convergent evidence. It is first overall and the only robust top-10 call (in the top 10 in 89% of random re-weightings). It is made by the tumour cells in both single-cell datasets and girentuximab has reached phase 3. It suits antibodies, imaging and conjugates rather than inhibition, because no ccRCC cell line depends on it.

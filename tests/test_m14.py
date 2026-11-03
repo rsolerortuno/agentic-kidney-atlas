@@ -52,6 +52,21 @@ def test_stale_evidence_is_detected(tmp_path):
     assert ok is None and log["stale_evidence"] == ["EV:t:1"]
 
 
+def test_id_missing_from_basis_fails_closed(tmp_path):
+    store = GraphStore(tmp_path / "g.sqlite")
+    with store.batch():
+        store.add_node("HGNC:1", "Gene", "GENEA")
+        store.add_node("MONDO:0005005", "Disease", "ccRCC")
+        store.add_evidence("EV:t:1", "omics_de", "test", None, gene="GENEA", log2fc=1.5)
+        store.add_evidence("EV:t:2", "omics_de", "test", None, gene="GENEA", log2fc=1.5)
+        store.add_claim("HGNC:1", "upregulated_in", "MONDO:0005005", "EV:t:1")
+        store.add_claim("HGNC:1", "upregulated_in", "MONDO:0005005", "EV:t:2")
+    basis = {"started_utc": "x", "config_sha256": "x", "evidence": provenance.fingerprints(store, ["EV:t:1"])}
+    v = Verifier(store=store, basis=basis, semantic_check=False)
+    ok, log = v.check_statement({"text": "GENEA is up", "evidence_ids": ["EV:t:2"]})
+    assert ok is None and log["stale_evidence"] == ["EV:t:2"]
+
+
 def test_extend_basis_never_refreshes(tmp_path):
     store = GraphStore(tmp_path / "g.sqlite")
     with store.batch():

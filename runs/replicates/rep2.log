@@ -1,4 +1,4 @@
-﻿The report is at `C:\Users\rafae\Documents\ccrcc-graphrag\runs\replicates\rep2\report.html`. Final verification found no unsupported claims across 118 statements, and none were dropped. That means evidence links and numbers check out; it is not full scientific validation.
+﻿The report is at `runs\replicates\rep2\report.html`. Final verification found no unsupported claims across 118 statements, and none were dropped. That means evidence links and numbers check out; it is not full scientific validation.
 
 **Run directory:** your environment sets `CCRCC_RUN_DIR`, so `integrate.py` wrote to `runs/replicates/rep2` rather than `runs/2026-11-02`. I used that as the run directory throughout.
 

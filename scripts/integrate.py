@@ -20,6 +20,8 @@ if __name__ == "__main__":
             f.unlink()
     out = write(day=day)
     conv = json.loads(Path(out["path"]).read_text())
-    basis = start_basis(Path(out["path"]).parent, GraphStore(), convergence_ids(conv))
+    # The ranking ids are citable too (the narrative cites them), so they belong in the basis from the start.
+    ranking_ids = out.pop("ranking_evidence_ids", [])
+    basis = start_basis(Path(out["path"]).parent, GraphStore(), convergence_ids(conv) + ranking_ids)
     out["basis_evidence"] = len(basis["evidence"])
     print(json.dumps(out, indent=1))

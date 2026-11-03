@@ -1,5 +1,5 @@
 {
- "file": "C:\\Users\\rafae\\Documents\\ccrcc-graphrag\\runs\\replicates\\rep1\\findings.json",
+ "file": "runs\\replicates\\rep1\\findings.json",
  "statements": 115,
  "unsupported": 0,
  "interpretation": "No failures detected by the automatic checks",

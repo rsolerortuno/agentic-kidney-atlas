@@ -247,17 +247,21 @@ def score(d: pd.DataFrame) -> pd.DataFrame:
     d["novelty_score"] = np.where(gated, (base + w.get("tumor_intrinsic", 0) * d["c_tumor_intrinsic"]) / sum(w.values()),
                                   base / sum(wsum.values()))
     d["novel"] = (d.clinical_drugs.map(len) == 0) & (d.ccrcc_papers <= cfg["novel_max_ccrcc_papers"])
-    safe = d.vital_max_ntpm.fillna(0) <= cfg["safe_max_ntpm"]
+    # A gene without HPA vital-organ data is not known to be safe: it cannot be a first-in-class opportunity.
+    safe = d.vital_max_ntpm.notna() & (d.vital_max_ntpm <= cfg["safe_max_ntpm"])
     d["safe"] = safe
+    d["safety_known"] = d.vital_max_ntpm.notna()
     repl_ok = d.replicated.fillna(False) if cfg.get("require_replication", True) else True
     purity_ok = np.where(gated, d.purity_robust.fillna(False), True)
     d["infiltration_driven"] = (d.track == "immune") & ~d.purity_robust.fillna(False) & (d.rna_purity_rho < 0)
     fic = d.novel & d.druggable_core & safe & repl_ok & purity_ok
     d["status"] = np.select(
         [d.clinical_drugs.map(len) > 0, fic, d.novel & d.druggable_core & safe & ~repl_ok,
-         d.novel & d.druggable_core & safe & ~purity_ok, d.novel & d.druggable_core, d.novel],
+         d.novel & d.druggable_core & safe & ~purity_ok, d.novel & d.druggable_core & ~d.safety_known,
+         d.novel & d.druggable_core, d.novel],
         ["has clinical drug (repurposing)", "first-in-class opportunity", "novel, not replicated in TCGA",
-         "novel, not purity-robust (may be stromal / immune signal)", "novel, off-tumor risk (vital-organ expression)",
+         "novel, not purity-robust (may be stromal / immune signal)", "novel, vital-organ safety unknown (no HPA data)",
+         "novel, off-tumor risk (vital-organ expression)",
          "novel, harder to drug"],
         default="under-studied vs. established")
     d["rank_in_track"] = d.groupby("track")["novelty_score"].rank(ascending=False, method="first").astype(int)

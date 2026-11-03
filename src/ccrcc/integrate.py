@@ -171,9 +171,15 @@ def write(n: int | None = None, day: str | None = None) -> dict:
            "sensitivity_config": cfg.get("sensitivity", {}), "sensitivity_summary": sens_summary,
            "universe_size": int(len(t)), "ranking": ranking, "profiles": profiles}
     path = run_dir(day) / "convergence.json"
+    if path.exists():
+        # Rebuilding a frozen run must not dirty it with a new date when nothing else changed.
+        old = json.loads(path.read_text())
+        if {k: v for k, v in old.items() if k != "generated"} == json.loads(json.dumps({k: v for k, v in out.items() if k != "generated"})):
+            out["generated"] = old.get("generated", out["generated"])
     path.write_text(json.dumps(out, indent=1))
     from .ranking_evidence import load as load_ranking_evidence
-    load_ranking_evidence(out, store)
+    ranking_ids = load_ranking_evidence(out, store)
     return {"path": str(path), "top10": [r["gene"] for r in ranking[:10]], "universe": len(t),
+            "ranking_evidence_ids": ranking_ids,
             **{f"{k}_top10": [r["gene"] for r in v[:10]] for k, v in profiles.items()}}
 

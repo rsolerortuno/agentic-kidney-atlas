@@ -64,6 +64,41 @@ def build_symbol_map(symbols, hgnc: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
+def to_hgnc(df: pd.DataFrame, col: str = "gene", rank_by: str | None = None, out: str | None = None,
+            hgnc: pd.DataFrame | None = None, by: tuple[str, ...] = ()) -> pd.DataFrame:
+    """Re-key a per-gene table on the current HGNC symbol, with the rules build_symbol_map uses for CPTAC.
+
+    Every layer must use the same key as the gene universe: a table keyed by its source's own (often older) symbols
+    silently loses renamed genes when joined (NDUFA4L2 -> COXFA4L2 lost its TCGA replication that way).
+    `out=None` replaces `col` and keeps the source symbol in `dataset_symbol`; otherwise the mapped symbol goes to
+    `out` (NaN when unmapped). Unmapped symbols keep their source symbol when replacing. When several source symbols
+    map to one gene, the row whose symbol is already approved wins, then the one with the largest `rank_by`; the
+    others are dropped (replacing) or left unmapped (`out`). `by` names columns (layer, driver, arm) within which a
+    gene must be unique, for tables that stack several analyses.
+    """
+    hgnc = load_hgnc() if hgnc is None else hgnc
+    m = build_symbol_map(sorted(df[col].dropna().astype(str).unique()), hgnc).set_index("dataset_symbol")
+    d = df.copy()
+    src = d[col].astype(str)
+    mapped = src.map(m["symbol"])
+    key = out or col
+    if out is None:
+        d["dataset_symbol"] = src
+        d[col] = mapped.fillna(src)
+    else:
+        d[out] = mapped
+    pref = pd.DataFrame({"approved": (src == mapped).astype(int),
+                         "q": d[rank_by].fillna(-1) if rank_by else 0}, index=d.index)
+    order = pref.sort_values(["approved", "q"], ascending=False, kind="stable").index
+    dup = d.loc[order, key].notna() & d.loc[order, list(by) + [key]].duplicated()
+    losers = dup[dup].index
+    if out is None:
+        d = d.drop(index=losers)
+    else:
+        d.loc[losers, out] = np.nan
+    return d.reset_index(drop=True)
+
+
 def chromosome_arm(location) -> str | None:
     if not isinstance(location, str):
         return None

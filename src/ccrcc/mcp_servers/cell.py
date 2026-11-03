@@ -225,7 +225,8 @@ def novel_targets(track: str | None = None, status: str = "first-in-class opport
     omit for all. status: 'first-in-class opportunity' (no clinical drug, <= 15 ccRCC papers, small-molecule or antibody
     tractable, low vital-organ expression, replicated in TCGA-KIRC and, for tumor / stroma genes, purity-robust),
     'novel, not replicated in TCGA', 'novel, not purity-robust (may be stromal / immune signal)',
-    'novel, off-tumor risk (vital-organ expression)', 'novel, harder to drug',
+    'novel, vital-organ safety unknown (no HPA data)', 'novel, off-tumor risk (vital-organ expression)',
+    'novel, harder to drug',
     'has clinical drug (repurposing)', 'under-studied vs. established', or 'any' for no filter. n <= 30. These are
     data-ranked hypotheses: concordant tumor-up expression does not show that the gene is required for tumor growth.
     Ranked within the chosen track (the pool is mostly immune genes); each row carries the M14 layers: TCGA replication,

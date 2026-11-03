@@ -1,4 +1,4 @@
-﻿The report is ready at `C:\Users\rafae\Documents\ccrcc-graphrag\reports\ccrcc_report.html`. Final verification checked 113 statements and found 0 unsupported claims. The checks cover evidence links and numbers only, so they don't validate the scientific interpretation.
+﻿The report is ready at `reports\ccrcc_report.html`. Final verification checked 113 statements and found 0 unsupported claims. The checks cover evidence links and numbers only, so they don't validate the scientific interpretation.
 
 **Summary**
 1. **CA9 has the strongest convergent evidence.** It is first in the overall ranking and stays near the top when the weights are varied. Its protein is higher in tumours, almost all of it is made by the cancer cells (in two single-cell datasets), and it has clinical-stage antibodies. No ccRCC cell line depends on it, so it suits antibodies, imaging or drug conjugates rather than inhibition.

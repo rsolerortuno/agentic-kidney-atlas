@@ -1,4 +1,4 @@
-﻿The report is at `C:\Users\rafae\Documents\ccrcc-graphrag\reports\ccrcc_report.html`. The final check passed: 91 statements checked, 0 unsupported claims. The ID check removed 2 of the 59 findings the four agents submitted, so 57 went into the report.
+﻿The report is at `reports\ccrcc_report.html`. The final check passed: 91 statements checked, 0 unsupported claims. The ID check removed 2 of the 59 findings the four agents submitted, so 57 went into the report.
 
 1. **CA9 has the strongest convergent evidence, so I ranked it 1st although the numeric ranking puts it 10th.** It is strongly up at RNA (log2FC 6.312) and protein (log2FC 2.269). RCC cells hold 0.976 of its tumor transcripts, and spots with high CA9 sit among RCC cells. It has an antibody in phase 3 (girentuximab) and proof-of-concept PET imaging data, so it counts as both a target and a biomarker.
 2. **The VHL → HIF-2α (EPAS1) → VEGF pathway is the clinically proven axis.** Chromosome 3p is lost in about 80% of tumors, and belzutifan and the VEGFR inhibitors are approved. But KDR RNA, and most EPAS1 RNA, comes from blood-vessel cells, not tumor cells.
