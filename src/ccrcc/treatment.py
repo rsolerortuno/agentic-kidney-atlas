@@ -8,10 +8,16 @@ harmonized; see extra_download.py):
 - Choueiri et al. 2016 (Clin Cancer Res): nivolumab biomarker trial, 16 tumours, 3 responders. Too small for
   genome-wide claims; it is used only to check the direction of IMmotion150 immunotherapy hits.
 
-Per gene and arm: univariate Cox PFS hazard ratio per SD of log2(TPM + 1) and the response AUC (responders vs the rest,
+- CheckMate 025 (Braun et al. 2020, Nat Med; M16): 250 patients with RNA randomised to nivolumab (120) or everolimus
+  (130), a second immunotherapy-versus-other-drug contrast (see m16.py).
+
+Per gene and arm: univariate Cox PFS hazard ratio per SD of expression and the response AUC (responders vs the rest,
 Mann-Whitney). The predictive question is an interaction: does the gene separate immunotherapy (atezolizumab +
-bevacizumab) from the anti-angiogenic arm (sunitinib)? It is tested as the difference of the two arm-specific log
-hazard ratios, z = (b_IO - b_TKI) / sqrt(se_IO^2 + se_TKI^2). All p-values are BH-adjusted within arm or contrast.
+bevacizumab; nivolumab) from the other arm (sunitinib; everolimus)? Expression is standardized over the patients of both
+arms together, so the two log hazard ratios are on one scale, and the interaction is z = (b_IO - b_other) /
+sqrt(se_IO^2 + se_other^2). This equals the arm x gene coefficient of one Cox model with arm-stratified baselines.
+(Before 2026-11-03 each arm was standardized on its own, which compared "per SD" on two different scales.)
+All p-values are BH-adjusted within arm or contrast.
 
 Positive controls (published in IMmotion150): the angiogenesis signature predicts longer PFS on sunitinib, and the
 T-effector signature favours atezolizumab + bevacizumab over sunitinib. If the controls do not reproduce, the gene
@@ -82,13 +88,16 @@ def _auc(x: np.ndarray, y: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
     return auc, 2 * stats.norm.sf(np.abs(z))
 
 
-def _arm_stats(x: pd.DataFrame, clin: pd.DataFrame, arm: str, study: str) -> pd.DataFrame:
+def _arm_stats(x: pd.DataFrame, clin: pd.DataFrame, arm: str, study: str,
+               scale: tuple[pd.Series, pd.Series] | None = None) -> pd.DataFrame:
+    """scale = (mean, sd) per gene to standardize with (pooled over arms); default: this arm's own mean and SD."""
     c = clin[(clin["arm"] == arm) & clin["pfs_time"].notna()]
     xs = x[c.index.intersection(x.columns)]
     # genes with little spread or mostly zero in this arm make the Cox fit diverge (|log HR| in the hundreds)
     xs = xs[(xs.std(axis=1) >= 0.25) & ((xs > 0).mean(axis=1) >= 0.5)]
     c = c.loc[xs.columns]
-    Z = ((xs.T - xs.mean(axis=1)) / xs.std(axis=1).replace(0, np.nan)).fillna(0).to_numpy(float)
+    mu, sd = (xs.mean(axis=1), xs.std(axis=1)) if scale is None else (scale[0].reindex(xs.index), scale[1].reindex(xs.index))
+    Z = ((xs.T - mu) / sd.replace(0, np.nan)).fillna(0).to_numpy(float)
     beta, p, se = cox_univariate(Z, c["pfs_time"].to_numpy(float), c["pfs_event"].to_numpy(int), return_se=True)
     bad = ~np.isfinite(beta) | (np.abs(beta) > MAX_LOG_HR)     # not converged
     beta, se, p = np.where(bad, np.nan, beta), np.where(bad, np.nan, se), np.where(bad, np.nan, p)
@@ -102,6 +111,22 @@ def _arm_stats(x: pd.DataFrame, clin: pd.DataFrame, arm: str, study: str) -> pd.
     out["cox_padj"] = bh(out["cox_pvalue"])
     if "auc_pvalue" in out:
         out["auc_padj"] = bh(out["auc_pvalue"])
+    return out
+
+
+def _interaction(x: pd.DataFrame, clin: pd.DataFrame, io: str, other: str, study: str, name: str) -> pd.DataFrame:
+    """Difference of the two arms' log HR with expression standardized over both arms (one scale)."""
+    pts = clin[clin["arm"].isin([io, other]) & clin["pfs_time"].notna()].index.intersection(x.columns)
+    scale = (x[pts].mean(axis=1), x[pts].std(axis=1))
+    a = _arm_stats(x, clin, io, study, scale).set_index("gene")
+    b = _arm_stats(x, clin, other, study, scale).set_index("gene")
+    g = a.index.intersection(b.index)
+    se = np.sqrt(a.loc[g, "cox_se"] ** 2 + b.loc[g, "cox_se"] ** 2)
+    d = a.loc[g, "cox_log_hr"] - b.loc[g, "cox_log_hr"]
+    out = pd.DataFrame({"gene": g, "study": study, "arm": name, "n": int(a["n"].iloc[0] + b["n"].iloc[0]),
+                        "cox_log_hr": d.to_numpy(), "cox_se": se.to_numpy(),
+                        "cox_pvalue": 2 * stats.norm.sf(np.abs((d / se).to_numpy()))}).dropna(subset=["cox_pvalue"])
+    out["cox_padj"] = bh(out["cox_pvalue"])
     return out
 
 
@@ -127,17 +152,8 @@ def run() -> dict:
                          for k, bb, pp, ss in zip(s.columns, b, p, se)}
     arm = pd.concat(rows, ignore_index=True)
 
-    # predictive contrast: immunotherapy combination vs anti-angiogenic arm
-    io = arm[arm["arm"] == "atezo_bev"].set_index("gene")
-    tki = arm[arm["arm"] == "sunitinib"].set_index("gene")
-    g = io.index.intersection(tki.index)
-    z = (io.loc[g, "cox_log_hr"] - tki.loc[g, "cox_log_hr"]) / np.sqrt(io.loc[g, "cox_se"] ** 2 + tki.loc[g, "cox_se"] ** 2)
-    inter = pd.DataFrame({"gene": g, "study": "IMmotion150", "arm": "atezo_bev_vs_sunitinib",
-                          "n": int(io["n"].iloc[0] + tki["n"].iloc[0]),
-                          "cox_log_hr": (io.loc[g, "cox_log_hr"] - tki.loc[g, "cox_log_hr"]).to_numpy(),
-                          "cox_se": np.sqrt(io.loc[g, "cox_se"] ** 2 + tki.loc[g, "cox_se"] ** 2).to_numpy(),
-                          "cox_pvalue": 2 * stats.norm.sf(np.abs(z.to_numpy()))}).dropna(subset=["cox_pvalue"])
-    inter["cox_padj"] = bh(inter["cox_pvalue"])
+    # predictive contrast: immunotherapy combination vs anti-angiogenic arm, on one expression scale
+    inter = _interaction(x, clin, "atezo_bev", "sunitinib", "IMmotion150", "atezo_bev_vs_sunitinib")
     for k in SIGNATURES:
         a, t = controls["atezo_bev"][k], controls["sunitinib"][k]
         d = np.log(a["hr_per_sd"]) - np.log(t["hr_per_sd"])
@@ -149,7 +165,23 @@ def run() -> dict:
     c2 = _read_clinical("choueiri2016")
     x2 = _read_expression("choueiri2016", c2.index)
     niv = _arm_stats(x2, c2, "nivolumab", "Choueiri2016")
-    df = pd.concat([arm, inter, niv], ignore_index=True)
+    parts = [arm, inter, niv]
+    cm = None
+    from .m16 import M16, checkmate
+    if (M16 / "braun2020_supplementary_tables.xlsx").exists():
+        c3, x3 = checkmate()
+        x3 = to_hgnc(x3.reset_index().rename(columns={"gene_name": "gene"}), "gene").drop(columns="dataset_symbol").set_index("gene")
+        # protein-coding genes only (the matrix also holds pseudogenes and lncRNAs), least expressed quarter dropped
+        from .omics import load_hgnc
+        hg = load_hgnc()
+        x3 = x3[x3.index.isin(hg.loc[hg["locus_group"].eq("protein-coding gene"), "symbol"])]
+        x3 = x3[x3.mean(axis=1) > x3.mean(axis=1).quantile(0.25)]
+        cm_arms = [_arm_stats(x3, c3, a, "CheckMate025") for a in ("nivolumab_cm025", "everolimus_cm025")]
+        cm = _interaction(x3, c3, "nivolumab_cm025", "everolimus_cm025", "CheckMate025", "nivolumab_vs_everolimus")
+        parts += cm_arms + [cm]
+        cm_meta = {"patients": int(len(c3)), "arms": c3["arm"].value_counts().to_dict(),
+                   "responders": int(c3["responder"].sum()), "genes_tested": int(len(x3))}
+    df = pd.concat(parts, ignore_index=True)
     df.to_parquet(PROCESSED / "layer_treatment.parquet", index=False)
 
     ok_angio = controls["sunitinib"]["angiogenesis"]["hr_per_sd"] < 1 and controls["sunitinib"]["angiogenesis"]["pvalue"] < 0.05
@@ -159,12 +191,15 @@ def run() -> dict:
         "studies": {"IMmotion150": {"patients": int(len(clin)), "arms": clin["arm"].value_counts().to_dict(),
                                     "responders": int(clin["responder"].sum()), "genes_tested": int(len(x))},
                     "Choueiri2016": {"patients": int(len(c2)), "responders": int(c2["responder"].sum()),
-                                     "genes_tested": int(len(x2))}},
+                                     "genes_tested": int(len(x2))},
+                    **({"CheckMate025": cm_meta} if cm is not None else {})},
         "signature_controls": controls,
         "controls_reproduced": {"angiogenesis_longer_pfs_on_sunitinib": bool(ok_angio),
                                 "t_effector_favours_atezo_bev_over_sunitinib": bool(ok_teff)},
         "significant": {a: int((df[(df["arm"] == a)]["cox_padj"] < 0.1).sum()) for a in df["arm"].unique()},
         "top_predictive": inter.nsmallest(10, "cox_pvalue")[["gene", "cox_log_hr", "cox_padj"]].round(4).to_dict("records"),
+        "top_predictive_checkmate025": None if cm is None else
+            cm.nsmallest(10, "cox_pvalue")[["gene", "cox_log_hr", "cox_padj"]].round(4).to_dict("records"),
     }
     (PROCESSED / "treatment_summary.json").write_text(json.dumps(summary, indent=1, default=float))
     return summary

@@ -48,6 +48,16 @@ def build(summary: Path | None = None, models: Path | None = None, references: l
     return result
 
 
+def gzip_b64(text: str) -> str:
+    """gzip + base64 text for an inline <script> block; the page inflates it with the browser's DecompressionStream.
+
+    The AlphaFold coordinates and the tissue viewer made the single-file report 36 MB; compressed it stays one
+    self-contained file (opened from disk, no external requests) at a fraction of the size. base64 has no '<'."""
+    import base64
+    import gzip
+    return base64.b64encode(gzip.compress(text.encode("utf-8"), compresslevel=9, mtime=0)).decode("ascii")
+
+
 def script_json(data: dict) -> str:
     """Safe in an inline script, including untrusted structure metadata."""
     return json.dumps(data, separators=(",", ":"), ensure_ascii=True).replace("<", "\\u003c").replace(

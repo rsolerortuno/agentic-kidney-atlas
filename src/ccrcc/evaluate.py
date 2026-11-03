@@ -134,7 +134,7 @@ def _fmt_metrics(block: dict) -> list[str]:
 
 
 def write_results(rec: dict, qa: dict | None, outcomes: dict | None = None, baselines: dict | None = None,
-                  sensitivity: dict | None = None) -> Path:
+                  sensitivity: dict | None = None, sabotage: dict | None = None) -> Path:
     lines = ["# Evaluation results", "",
              "Convergence **v3** (M13). Earlier versions and why each change was made: [history.md](history.md).", "",
              f"## (a) Recall of known ccRCC genes in the top {rec['top_n']} convergence genes", "",
@@ -164,6 +164,14 @@ def write_results(rec: dict, qa: dict | None, outcomes: dict | None = None, base
                   "the tractable set would be ~"
                   f"{100 / max(outcomes.get('n_predicted_tractable', 1), 1):.1%} per tractable gold gene by chance, and by the "
                   "\"without tractability\" row."]
+        if "target profile, tractability without ligand history" in outcomes["clinical_targets"]:
+            a = outcomes["clinical_targets"]["target profile"]["auroc"]
+            b = outcomes["clinical_targets"]["target profile, tractability without ligand history"]["auroc"]
+            lines += ["", "The strong small-molecule bucket includes Open Targets' \"High-Quality Ligand\", which comes from "
+                      "ChEMBL medicinal chemistry: drug-discovery history, not a property of the tumour. Without it (pocket "
+                      f"and location buckets only, {outcomes.get('n_predicted_tractable_no_ligand', 0):,} genes) the target "
+                      f"profile's AUROC is {b} instead of {a}. Much of the gap between the data-only rows and the full "
+                      "profile is therefore known chemistry, and the headline AUROC should be read with that in mind."]
         lines += ["", f"### Retrospective post-2016 evaluation: first RCC trial on or after {g['cutoff']} "
                   f"({len(g['temporal_holdout_targets'])} genes: {', '.join(g['temporal_holdout_targets'])})", "",
                   "Other eligible clinical targets, including those with incomplete dates, are removed from the background. First observed RCC trial dates use all phases. Features are not frozen before 2016: this is retrospective, not prospective validation.",
@@ -180,6 +188,12 @@ def write_results(rec: dict, qa: dict | None, outcomes: dict | None = None, base
                   "≥ 80 % of draws:", ""]
         for name, v in sensitivity.items():
             lines.append(f"- **{name}**: {', '.join(v['robust_top10']) or 'none'}")
+        if any("top25_leaving_without_one_stream" in v for v in sensitivity.values()):
+            lines += ["", "Re-weighting never removes a stream. Leaving one stream out at a time (its weight set to 0), "
+                      "these top-25 genes drop out of the top 25 (the stream they depend on in brackets):", ""]
+            for name, v in sensitivity.items():
+                dep = v.get("top25_leaving_without_one_stream", {})
+                lines.append(f"- **{name}**: " + (", ".join(f"{g} ({'/'.join(s)})" for g, s in dep.items()) or "none"))
     if baselines:
         cb, pl = baselines["closed_book"], baselines["pipeline"]
         lines += ["", "## (d) What the agentic layer adds", "",
@@ -198,7 +212,36 @@ def write_results(rec: dict, qa: dict | None, outcomes: dict | None = None, base
                   f"Pipeline final targets: {'; '.join(', '.join(c) for c in pl['targets'])}.", "",
                   "The pipeline's Jaccard mostly reflects the deterministic ranking the agents start from, not agreement "
                   "reached independently; it shows the agent step is stable, not that its choices are right."]
-    lines += ["", "## (e) Known-answer questions (`claude -p` + project MCP servers)", ""]
+        nb = baselines.get("no_agent_baseline")
+        if nb:
+            lines += ["", "### No-agent baseline", "",
+                      f"Rule: {nb['rule']}. Overlap with the agents' final list (Jaccard): {nb['jaccard_with_agents']}. "
+                      f"RCC clinical targets: {nb['support']['in_rcc_clinical_targets']:.0%} of the baseline list versus "
+                      f"{pl['support'][0]['in_rcc_clinical_targets']:.0%} of the agents' list.", "",
+                      f"Baseline list: {', '.join(nb['genes'])}.", "",
+                      f"Added by the agents: {', '.join(nb['added_by_agents']) or 'none'}. "
+                      f"Left out by the agents: {', '.join(nb['dropped_by_agents']) or 'none'}.", "",
+                      "This is what the agent step changes. Whether the changes are improvements needs the reasons in "
+                      "the report and, ultimately, experiments; the overlap alone does not say."]
+    if sabotage:
+        c = sabotage["corruptions"]
+        pct = lambda x: "—" if x is None else f"{x:.0%}"
+        lines += ["", "## (e) How often the verifier catches a wrong statement", "",
+                  f"Each of the {sabotage['statements_passing']} statements of `runs/{sabotage['run']}` that pass "
+                  "verification was copied and corrupted one way at a time; a corruption counts as caught when the "
+                  "statement is rejected or loses evidence ids (the rule `verify.py final` applies).", "",
+                  "| Corruption | Applied | Caught | Rate |", "|---|---|---|---|",
+                  f"| Number: last digit of the first printed number changed | {c['number']['applied']} | {c['number']['caught']} | {pct(c['number']['rate'])} |",
+                  f"| Direction word flipped (higher/lower, up/down, ...) | {c['direction']['applied']} | {c['direction']['caught']} | {pct(c['direction']['rate'])} |",
+                  f"| ... of which the statement cites significant omics_de evidence | {c['direction']['applied_with_de_evidence']} | "
+                  f"{c['direction']['caught_with_de_evidence']} | {pct(c['direction']['rate_with_de_evidence'])} |",
+                  f"| Statement attributed to another gene | {c['gene']['applied']} | {c['gene']['caught']} | {pct(c['gene']['rate'])} |",
+                  f"| Evidence of another gene cited | {c['evidence']['applied']} | {c['evidence']['caught']} | {pct(c['evidence']['rate'])} |", "",
+                  "The direction check only reads tumour-versus-normal wording against cited omics_de records and printed "
+                  "log2FC signs, so a flipped direction in a literature or treatment sentence is not caught. A changed last "
+                  "digit is accepted when the new value still rounds to the stored one. Missed examples are listed in "
+                  "`evals/verifier_sabotage.json`."]
+    lines += ["", "## (f) Known-answer questions (`claude -p` + project MCP servers)", ""]
     if qa:
         lines += [f"- Model: {qa['model']}", f"- **Correct: {qa['correct']}/{qa['total']}**", "",
                   "| ID | Question | Expected | Correct | Answer / error |", "|---|---|---|---|---|"]
@@ -223,5 +266,7 @@ def rebuild_saved_evaluation(run: Path | None = None) -> Path:
 
     qa = grade_answers(EVALS / "qa_answers.json", "saved claude-sonnet-5-5 answers (regex regraded)")
     sensitivity = json.loads((PROCESSED / "sensitivity_summary.json").read_text(encoding="utf-8"))
+    from . import sabotage
+    sab = sabotage.run(run) if run is not None and (Path(run) / "findings.json").exists() else None
     return write_results(recall(), qa, evaluate_outcomes(compute()),
-                         compare_baselines(cached_only=True, official=run), sensitivity)
+                         compare_baselines(cached_only=True, official=run), sensitivity, sab)

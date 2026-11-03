@@ -4,89 +4,245 @@
   {
    "gene": "CA9",
    "role": "target_and_biomarker",
-   "statement": "CA9 protein is up in tumour vs normal (protein log2FC 2.269), with RNA and phospho layers concordant and top-2 in the convergence ranking; it replicates in TCGA-KIRC, survives purity extrapolation and has anti-CA9 antibody drugs (girentuximab).",
+   "statement": "CA9 is up in tumour at both layers in CPTAC: RNA log2FC [gene=CA9; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; log2fc=6.312] and protein log2FC [gene=CA9; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=2.269]. It ranks second in the convergence ranking and is already hit by girentuximab-type antibodies, and the signal is tumour-intrinsic by purity analysis.",
    "evidence_ids": [
-    "EV:omics_de:5afe18b4024b"
+    "EV:omics_de:b269736afdb0",
+    "EV:omics_de:5afe18b4024b",
+    "EV:tcga_de:225a767ebcb5",
+    "EV:omics_cnv:225a767ebcb5"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:omics_de:b269736afdb0",
+     "field": [
+      "log2fc"
+     ],
+     "display": "6.312",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:5afe18b4024b",
+     "field": [
+      "log2fc"
+     ],
+     "display": "2.269",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "NNMT",
    "role": "target_and_biomarker",
-   "statement": "NNMT protein is strongly up in tumours (protein log2FC 2.709), RNA concordant, replicated in TCGA-KIRC and prognostic there (higher expression, worse survival); top of the biomarker profile among up-regulated genes.",
+   "statement": "NNMT is strongly up in TCGA-KIRC tumour RNA (log2FC [gene=NNMT; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=4.685]), also up at protein in CPTAC, and higher expression predicts worse overall survival (log HR per SD [gene=NNMT; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=0.301]). It is tumour-intrinsic by purity analysis.",
    "evidence_ids": [
-    "EV:omics_de:de39cc0c5ed8"
+    "EV:tcga_de:7dbf93860d9f",
+    "EV:tcga_survival:7dbf93860d9f"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:tcga_de:7dbf93860d9f",
+     "field": [
+      "log2fc"
+     ],
+     "display": "4.685",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:7dbf93860d9f",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "0.301",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "CD70",
    "role": "target",
-   "statement": "CD70 is a membrane target with protein up in tumours (protein log2FC 2.421), concordant RNA, TCGA replication and tumour-intrinsic signal after purity extrapolation; antibody and ADC agents (cusatuzumab, vorsetuzumab) exist.",
+   "statement": "CD70 is up in TCGA-KIRC tumours (log2FC [gene=CD70; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=7.09]) and up at protein in CPTAC. In the GTEx vital-organ proteome it is not organ-enriched (max tissue-specificity score [gene=CD70; type=normal_proteome; source=DATASET:GTEX-PROTEOME; vital_protein_ts_max=0.34]), a favourable safety signal; CD70 antibodies are in clinical development.",
    "evidence_ids": [
-    "EV:omics_de:8a1dc0572ead"
+    "EV:tcga_de:908e84663f6a",
+    "EV:normal_proteome:908e84663f6a"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:tcga_de:908e84663f6a",
+     "field": [
+      "log2fc"
+     ],
+     "display": "7.09",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:normal_proteome:908e84663f6a",
+     "field": [
+      "vital_protein_ts_max"
+     ],
+     "display": "0.34",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "ENPP3",
-   "role": "target",
-   "statement": "ENPP3 is a surface enzyme up at protein level (protein log2FC 1.544) with concordant RNA and TCGA replication; the ADC AGS-16C3F reached phase 2. Frequent copy-number loss is noted, so it is not a dosage-driven gain.",
+   "role": "target_and_biomarker",
+   "statement": "ENPP3 is a membrane enzyme up in tumour RNA and protein in CPTAC and in TCGA-KIRC (log2FC [gene=ENPP3; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=5.557]). It shows no vital-organ enrichment (tissue-specificity score [gene=ENPP3; type=normal_proteome; source=DATASET:GTEX-PROTEOME; vital_protein_ts_max=0.0]), and an ADC (AGS-16C3F) has reached phase two.",
    "evidence_ids": [
-    "EV:omics_de:fad29d44ef95"
+    "EV:tcga_de:d5aee88146ed",
+    "EV:normal_proteome:d5aee88146ed"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:tcga_de:d5aee88146ed",
+     "field": [
+      "log2fc"
+     ],
+     "display": "5.557",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:normal_proteome:d5aee88146ed",
+     "field": [
+      "vital_protein_ts_max"
+     ],
+     "display": "0.0",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "SCARB1",
    "role": "target",
-   "statement": "SCARB1 (HDL receptor) ranks first in the target profile; protein is up (protein log2FC 1.837) with concordant RNA and strong TCGA replication, but it has no DepMap dependency and no prognostic signal, so it is a tumour-selective but not essential candidate.",
+   "statement": "SCARB1 ranks first in the target profile; RNA and protein are both up in CPTAC and the TCGA-KIRC replication is strong (log2FC [gene=SCARB1; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=3.989]). It is not prognostic and has no ccRCC-selective dependency, so tractability rests on cholesterol-uptake biology.",
    "evidence_ids": [
-    "EV:omics_de:cd4a629b011f"
+    "EV:tcga_de:2d66f8e78d0c"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:tcga_de:2d66f8e78d0c",
+     "field": [
+      "log2fc"
+     ],
+     "display": "3.989",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "SLC16A3",
    "role": "target",
-   "statement": "SLC16A3 (MCT4 lactate exporter) is up at protein level (protein log2FC 2.279) with concordant RNA, TCGA replication and tumour-intrinsic expression, consistent with the glycolytic phenotype of VHL-null ccRCC.",
+   "statement": "SLC16A3 (MCT4 lactate exporter) is up in CPTAC RNA and protein and replicates in TCGA-KIRC (log2FC [gene=SLC16A3; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=3.291]), consistent with a glycolytic, HIF-driven phenotype; no ccRCC-selective dependency was seen.",
    "evidence_ids": [
-    "EV:omics_de:d93a2cc11342"
+    "EV:tcga_de:11298113327b"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:tcga_de:11298113327b",
+     "field": [
+      "log2fc"
+     ],
+     "display": "3.291",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "PSAT1",
    "role": "biomarker",
-   "statement": "PSAT1 is down in tumours (protein log2FC -1.963) with RNA concordant, and it leads the biomarker profile; low expression is associated with worse survival in TCGA-KIRC. Reflects loss of normal tubule metabolism, so a biomarker rather than a target.",
+   "statement": "PSAT1 is the top-ranked biomarker and is down in tumour (TCGA-KIRC log2FC [gene=PSAT1; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=-2.974]), consistent with loss of tubule identity. Higher expression is associated with worse survival (log HR per SD [gene=PSAT1; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=0.43]), so the direction is counter-intuitive and warrants care.",
    "evidence_ids": [
-    "EV:omics_de:8fa49cbb1760"
-   ]
-  },
-  {
-   "gene": "PCK1",
-   "role": "biomarker",
-   "statement": "PCK1 (gluconeogenesis) is down in tumours (protein log2FC -1.859) with concordant RNA loss and TCGA replication; high expression is associated with better survival. A tubule-identity biomarker, not a target.",
-   "evidence_ids": [
-    "EV:omics_de:6a1a53a41386"
+    "EV:tcga_de:58119698ea36",
+    "EV:tcga_survival:58119698ea36"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:tcga_de:58119698ea36",
+     "field": [
+      "log2fc"
+     ],
+     "display": "-2.974",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:58119698ea36",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "0.43",
+     "unit": "native"
+    }
    ]
   },
   {
    "gene": "ALDH6A1",
    "role": "biomarker",
-   "statement": "ALDH6A1 is down in tumours (protein log2FC -1.925) with concordant RNA, frequent copy-number loss and a positive cis copy-number effect on expression, consistent with 3p/5q-linked dosage loss; strongly prognostic in TCGA-KIRC (higher expression, better survival).",
+   "statement": "ALDH6A1 is down in tumour (TCGA-KIRC log2FC [gene=ALDH6A1; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=-2.805]), with protein also down in CPTAC, and is a favourable-prognosis marker (log HR per SD [gene=ALDH6A1; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=-0.554]). Its copy number correlates with expression, a real dosage effect of frequent copy loss.",
    "evidence_ids": [
-    "EV:omics_de:7ad12e0f6863"
+    "EV:tcga_de:df75d3108dd0",
+    "EV:tcga_survival:df75d3108dd0"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:tcga_de:df75d3108dd0",
+     "field": [
+      "log2fc"
+     ],
+     "display": "-2.805",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:df75d3108dd0",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "-0.554",
+     "unit": "native"
+    }
    ]
   },
   {
-   "gene": "VWF",
+   "gene": "PCK1",
    "role": "biomarker",
-   "statement": "VWF is up in tumours (protein log2FC 1.284), reflecting the vascular-rich ccRCC phenotype; the signal is partly endothelial, and VWF is approved-drug tractable (caplacizumab) but is a tissue-context biomarker rather than a tumour-cell target.",
+   "statement": "PCK1, a proximal-tubule gluconeogenic enzyme, is strongly down in tumour (TCGA-KIRC log2FC [gene=PCK1; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=-3.079]) with concordant protein loss in CPTAC. It is a tubule-identity biomarker, not a target.",
    "evidence_ids": [
-    "EV:omics_de:b2ad6c302a0f"
+    "EV:tcga_de:fd99b19fe8a6"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:tcga_de:fd99b19fe8a6",
+     "field": [
+      "log2fc"
+     ],
+     "display": "-3.079",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "SLC6A19",
+   "role": "biomarker",
+   "statement": "SLC6A19, a proximal-tubule amino-acid transporter, is lost in tumour (TCGA-KIRC log2FC [gene=SLC6A19; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=-3.221]), with protein also down in CPTAC. It reflects loss of normal tubule identity.",
+   "evidence_ids": [
+    "EV:tcga_de:a68c82cb3c87"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:tcga_de:a68c82cb3c87",
+     "field": [
+      "log2fc"
+     ],
+     "display": "-3.221",
+     "unit": "native"
+    }
    ]
   }
  ],
  "caveats": [
-  "Each finding cites a single protein-layer DE record for its quantitative claim; RNA, phospho, TCGA, purity and CNV statements are qualitative summaries of the convergence ranking rows.",
-  "DepMap effects are near zero for the top up-regulated genes, so none shows a selective dependency; target status rests on tumour-selective expression and tractability.",
-  "CPTAC discovery cohort is 110 tumours with 75 RNA and 84 proteome normals; bulk tissue includes stroma and immune cells (e.g. VWF).",
-  "Phospho layer values are gene-level and not protein-adjusted; kinase activity and site-level analyses were not queried in this run.",
-  "Passing automatic checks does not constitute complete scientific validation."
+  "Several findings quote TCGA RNA values because they are the verified records; CPTAC RNA and protein agree in direction per the convergence ranking.",
+  "Cell-line (PRISM, DepMap) dependency data show no ccRCC-selective dependency for the top up-regulated genes, and 2D culture misses HIF-biology.",
+  "Down-regulated biomarkers (PSAT1, PCK1, SLC6A19, ALDH6A1) mostly reflect loss of tubule identity and tumour-normal compositional differences.",
+  "Not all candidates were checked individually for phosphosites, kinase activity or mutation recurrence; the top candidates are rarely mutated drivers.",
+  "Bulk proteomics with 110 tumours and 84 matched normals; the CPTAC protein fold-changes are smaller than RNA because of TMT ratio compression."
  ]
 }

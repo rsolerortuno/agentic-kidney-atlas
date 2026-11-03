@@ -149,9 +149,12 @@
 {% else %}<p class="small">Immune analysis was not built in this run.</p>{% endif %}
 </section>
 
+<script id="viewer-data" type="application/gzip-base64">{{ viewer_b64 }}</script>
 <script>
-(function(){
-  var V={{ viewer_json | safe }};
+(async function(){
+  // tissue-viewer data embedded gzip + base64 (protein_viewer.gzip_b64)
+  var packed=Uint8Array.from(atob(document.getElementById('viewer-data').textContent.trim()),function(c){return c.charCodeAt(0);});
+  var V=JSON.parse(await new Response(new Blob([packed]).stream().pipeThrough(new DecompressionStream('gzip'))).text());
   if(!V||!V.sections||!V.sections.length) return;
   var $=function(id){return document.getElementById(id);};
   var cv=$('vcanvas'), ctx=cv.getContext('2d'), tip=$('vtip');

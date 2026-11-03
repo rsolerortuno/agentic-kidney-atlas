@@ -17,6 +17,8 @@ data/literature/extraction_batches/
 runs/dev_v1_agents/
 runs/*/qa_questions.json
 runs/replicates/*/report.html
+# local pointer to the run the agent step is working on (scripts/integrate.py)
+runs/.current
 
 # Temporary report previews and local implementation notes
 reports/preview_*.html

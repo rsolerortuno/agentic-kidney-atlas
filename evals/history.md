@@ -277,3 +277,14 @@ random instead of by convergence order (predicted tractability alone: 0.847 -> 0
 four independent targets (PARP1/2/3 are one class), and the "100 % in the data-only top 500" row as true by construction.
 New run (`runs/2026-11-03`): 116 statements, no failures detected by the automatic checks, with the stale guard failing
 closed and the direction check also covering summary sentences. COXFA4L2 joins the final targets. Repeats not re-run.
+
+
+## Surfaceome, new layers and verifier sabotage test (2026-11-03, second round)
+
+Surface location now comes from UniProt, CSPA and SURFY instead of any "membrane" word (37 of 266 "surface" genes had
+only internal membranes). GTEx normal-tissue proteome, CheckMate 025 and PRISM drug response were added. A sabotage test
+of the verifier showed flipped direction words were caught in only 16 % of statements (46 % with expression evidence);
+the clause-level check raises this to 28 % and 74 % with no new false failures. Leaving out Open Targets' "High-Quality
+Ligand" bucket lowers the target-profile AUROC from 0.895 to 0.797 (post-2016: 0.886 to 0.666): much of the headline
+comes from medicinal-chemistry history. The weights were not changed after seeing this. No-agent baseline: overlap 0.53
+with the agents' list. New run `runs/2026-11-03` (118 statements, no failures) and two re-run replicates (Jaccard 0.86).

@@ -29,7 +29,9 @@ UP = re.compile(r"\b(up|upregulated|up-regulated|increased|elevated|higher|overe
 DOWN = re.compile(r"\b(down|downregulated|down-regulated|decreased|reduced|lower|lowered|depleted|suppressed|underexpress\w*|diminished)\b", re.I)
 # A negated sentence ("is not higher") states the opposite of its direction word; it is skipped, not read literally.
 NEGATION = re.compile(r"\b(not|no|never|neither|nor|without|n't)\b|n't\b", re.I)
-DIRECTION_EXEMPT = re.compile(r"\b(survival|prognos\w*|hazard|dependency|rank\w*|score\w*)\b", re.I)
+# ordering words: "placed lower", "listed higher" describe a position in a list, not expression
+DIRECTION_EXEMPT = re.compile(r"\b(survival|prognos\w*|hazard|dependency|rank\w*|score\w*|placed|listed|ordered|"
+                              r"positioned|priorit\w*)\b", re.I)
 
 
 def numbers_in(text: str, *, with_spans: bool = False) -> list[dict]:
@@ -170,12 +172,35 @@ def check(text: str, gene: str | None, evidence: list[dict], extra_values: set[f
             "numeric_binding_errors": binding_errors}
 
 
-def _de_signs(evidence: list[dict]) -> dict[str, set[int]]:
-    signs: dict[str, set[int]] = {}
+def _de_signs(evidence: list[dict]) -> dict[str, dict[str, set[int]]]:
+    """gene -> layer -> signs of the significant omics_de changes cited (layer "*" pools all layers)."""
+    signs: dict[str, dict[str, set[int]]] = {}
     for e in evidence:
         if e.get("type") == "omics_de" and e.get("significant") and e.get("log2fc") is not None and e.get("gene"):
-            signs.setdefault(e["gene"].upper(), set()).add(1 if e["log2fc"] > 0 else -1)
+            sign = 1 if e["log2fc"] > 0 else -1
+            g = signs.setdefault(e["gene"].upper(), {})
+            g.setdefault("*", set()).add(sign)
+            g.setdefault(str(e.get("layer") or "*").lower(), set()).add(sign)
     return signs
+
+
+# Clauses are checked one at a time, so "protein down ... but RNA up" or a survival clause next to an expression clause
+# no longer hides the whole sentence (verifier sabotage test, 2026-11-03: 16 % of flipped directions were caught).
+CLAUSE = re.compile(r"[;,]|\bbut\b|\bwhile\b|\bwhereas\b|\band\b|\bwith\b", re.I)
+LAYER_WORD = re.compile(r"\b(RNA|mRNA|transcripts?|protein|proteome|phospho\w*)\b", re.I)
+PRINTED_LFC = re.compile(r"log2\s*FC\s*[=:]?\s*([-−]?\d+(?:\.\d+)?)", re.I)
+RELATIVE_TO_NORMAL = re.compile(r"\b(higher|lower|up|down|increased|decreased|elevated|reduced)\s+in\s+(the\s+)?"
+                                r"(normal|healthy|adjacent)", re.I)
+NORMAL_ONLY = re.compile(r"\b(normal|healthy|adjacent)\b", re.I)
+TUMOUR = re.compile(r"\btumou?rs?\b", re.I)
+
+
+def _layer_of(clause: str) -> str | None:
+    m = LAYER_WORD.findall(clause)
+    if not m:
+        return None
+    w = m[-1].lower()
+    return "rna" if w in ("rna", "mrna", "transcript", "transcripts") else "protein" if w.startswith("prot") else "phospho"
 
 
 def _direction(text: str, gene: str | None, evidence: list[dict]) -> str | None:
@@ -187,11 +212,6 @@ def _direction(text: str, gene: str | None, evidence: list[dict]) -> str | None:
     """
     signs = _de_signs(evidence)
     for sentence in re.split(r"(?<=[.!?])\s+", text):
-        # A survival statement such as "higher expression predicts better survival"
-        # is not a claim that expression increased in tumour versus normal tissue.
-        # Keep this a narrow DE wording check, not a bag of direction words.
-        if DIRECTION_EXEMPT.search(sentence) or NEGATION.search(sentence):
-            continue
         if gene:
             target = gene.upper()
         else:
@@ -199,13 +219,38 @@ def _direction(text: str, gene: str | None, evidence: list[dict]) -> str | None:
             if len(named) != 1:
                 continue
             target = named[0]
-        s = signs.get(target, set())
-        up, down = bool(UP.search(sentence)), bool(DOWN.search(sentence))
-        if len(s) == 1 and up != down:
-            said, seen = (1 if up else -1), next(iter(s))
-            if said != seen:
-                where = "" if gene else f" ({target})"
-                return f"text says {'up' if up else 'down'}{where}, cited omics evidence says {'up' if seen > 0 else 'down'}"
+        where = "" if gene else f" ({target})"
+        # canonical annotations use ";" between fields: keep each annotation inside its clause
+        flat = re.sub(r"\[[^\]]*\]", lambda m: m.group(0).replace(";", " ").replace(",", " "), sentence)
+        for clause in CLAUSE.split(flat):
+            # A survival statement such as "higher expression predicts better survival"
+            # is not a claim that expression increased in tumour versus normal tissue.
+            # Keep this a narrow DE wording check, not a bag of direction words.
+            if DIRECTION_EXEMPT.search(clause) or NEGATION.search(clause):
+                continue
+            # in a survival / ranking sentence only clauses that name the tumour, a layer or a log2FC are about
+            # tumour-versus-normal expression ("higher expression is associated with worse survival" is not)
+            if DIRECTION_EXEMPT.search(sentence) and not (TUMOUR.search(clause) or LAYER_WORD.search(clause)
+                                                          or PRINTED_LFC.search(clause)):
+                continue
+            up, down = bool(UP.search(clause)), bool(DOWN.search(clause))
+            if up == down:
+                continue
+            said = 1 if up else -1
+            if RELATIVE_TO_NORMAL.search(clause):
+                said = -said                      # "lower in normal kidney" = higher in tumour
+            elif NORMAL_ONLY.search(clause) and not TUMOUR.search(clause):
+                continue
+            word = "up" if said > 0 else "down"
+            m = PRINTED_LFC.search(clause)
+            if m and float(m.group(1).replace("−", "-")) != 0 and (float(m.group(1).replace("−", "-")) > 0) != (said > 0):
+                return f"text says {word}{where} next to a printed log2FC of the opposite sign ({m.group(1)})"
+            layer = _layer_of(clause)
+            s = signs.get(target, {})
+            seen_set = s.get(layer) if layer and layer in s else s.get("*", set())
+            if len(seen_set) == 1 and said != next(iter(seen_set)):
+                seen = next(iter(seen_set))
+                return f"text says {word}{where}, cited omics evidence says {'up' if seen > 0 else 'down'}"
     return None
 
 

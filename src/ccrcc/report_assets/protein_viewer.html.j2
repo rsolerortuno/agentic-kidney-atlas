@@ -30,5 +30,5 @@
 <div id="protein-status" role="status" aria-live="polite">Open the Structure tab to load the 3D explorer. Drag to rotate; scroll to zoom.</div>
 </div>
 <script>{{ protein_library_js | safe }}</script>
-<script id="protein-data" type="application/json">{{ protein_json | safe }}</script>
+<script id="protein-data" type="application/gzip-base64">{{ protein_b64 }}</script>
 <script>{{ protein_viewer_js | safe }}</script>

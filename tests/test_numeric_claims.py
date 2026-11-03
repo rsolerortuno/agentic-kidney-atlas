@@ -115,3 +115,46 @@ def test_verifier_passes_bindings_and_final_does_not_hide_filtered_failures(tmp_
     report = verify.verify_final(path)
     assert report["unsupported"] == 1
     assert report["interpretation"] == "Automatic checks detected failures"
+
+
+def test_ordering_words_are_not_expression_direction():
+    evidence = [{'gene': 'ENPP3', 'type': 'omics_de', 'significant': True, 'log2fc': 2.0}]
+    assert not semantic.check('ENPP3 is placed lower in the list because its staining is uneven.', 'ENPP3',
+                              evidence)['direction_contradiction']
+
+
+def test_numeric_annotation_tool_matches_the_verifier():
+    from ccrcc.graph import GraphStore
+    from ccrcc.paths import GRAPH_DB
+    if not GRAPH_DB.exists():
+        pytest.skip("no graph yet")
+    from ccrcc.mcp_servers.kg import numeric_annotation
+    ev = GraphStore().conn.execute("SELECT id, props FROM evidence WHERE type = 'omics_de' LIMIT 1").fetchone()
+    import json
+    rec = json.loads(ev[1])
+    shown = f"{rec['log2fc']:.2f}"
+    out = numeric_annotation(ev[0], ["log2fc"], shown, "native")
+    assert "annotation" in out and f"log2fc={shown}" in out["annotation"]
+    assert "error" in numeric_annotation(ev[0], ["log2fc"], "123.45", "native")
+
+
+def test_direction_is_read_per_clause_and_layer():
+    ev = [{'gene': 'CD70', 'type': 'omics_de', 'significant': True, 'log2fc': 2.4, 'layer': 'protein'},
+          {'gene': 'CD70', 'type': 'omics_de', 'significant': True, 'log2fc': 1.1, 'layer': 'rna'}]
+    # a flipped clause is caught even when another clause of the sentence says the opposite or mentions prognosis
+    assert semantic.check('CD70 protein is down in tumour, and RNA is also up.', 'CD70', ev)['direction_contradiction']
+    assert semantic.check('CD70 is down in tumour; it is not prognostic in TCGA.', 'CD70', ev)['direction_contradiction']
+    assert not semantic.check('CD70 protein is up in tumour and RNA is also up.', 'CD70', ev)['direction_contradiction']
+
+
+def test_printed_log2fc_sign_must_match_the_direction_word():
+    assert semantic.check('GENEX is down in tumour (log2FC 2.42).', 'GENEX', [])['direction_contradiction']
+    assert not semantic.check('GENEX is up in tumour (log2FC 2.42).', 'GENEX', [])['direction_contradiction']
+
+
+def test_relative_to_normal_and_survival_wording():
+    ev = [{'gene': 'CA9', 'type': 'omics_de', 'significant': True, 'log2fc': 6.3, 'layer': 'rna'}]
+    assert not semantic.check('CA9 expression is low in normal kidney.', 'CA9', ev)['direction_contradiction']
+    assert not semantic.check('CA9 is lower in normal kidney than in tumour.', 'CA9', ev)['direction_contradiction']
+    assert not semantic.check('Higher expression is associated with worse survival.', 'CA9',
+                              [{**ev[0], 'log2fc': -2.0}])['direction_contradiction']

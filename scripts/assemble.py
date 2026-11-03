@@ -3,7 +3,7 @@ import json
 import sys
 
 from ccrcc.assemble import assemble
-from ccrcc.integrate import run_dir
+from ccrcc.integrate import current_run, run_dir
 
 if __name__ == "__main__":
-    print(json.dumps(assemble(run_dir(sys.argv[1] if len(sys.argv) > 1 else None)), indent=1))
+    print(json.dumps(assemble(run_dir(sys.argv[1]) if len(sys.argv) > 1 else current_run()), indent=1))

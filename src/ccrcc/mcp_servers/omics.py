@@ -190,6 +190,41 @@ def purity_effect(gene: str) -> dict:
 
 
 @mcp.tool()
+def normal_tissue_protein(gene: str) -> dict:
+    """Protein in vital normal organs (GTEx proteome, Jiang et al. 2020; 16 vital tissues, no kidney): how many vital
+    tissues detect it, the highest median log2 abundance relative to the run reference and where, and the highest
+    tissue-specificity (TS) score. TS >= 4 = enriched in that organ, an on-target, off-tumour safety concern. Absence
+    from this proteome is not proof of absence (detection limit). Cite evidence_id."""
+    g = canonical_gene(gene)
+    r = _one(_layer("normal_proteome.parquet"), g)
+    if r is None:
+        return {"gene": g, "message": "not detected in the GTEx normal-tissue proteome"}
+    return clean({"gene": g, "vital_tissues_detected": _num(r["vital_protein_detected"], 0),
+                  "vital_protein_max_rel": _num(r["vital_protein_max_rel"]), "vital_protein_max_tissue": r["vital_protein_max_tissue"],
+                  "vital_protein_ts_max": _num(r["vital_protein_ts_max"]), "vital_protein_ts_tissue": r["vital_protein_ts_tissue"],
+                  "vital_protein_enriched": bool(r["vital_protein_enriched"]),
+                  "evidence_id": existing(evidence_id("normal_proteome", g))})
+
+
+@mcp.tool()
+def drug_response(gene: str) -> dict:
+    """Do compounds against this gene's product kill ccRCC cell lines more than other lines? PRISM Repurposing 20Q2
+    primary screen (2.5 uM, viability log2 fold change; 10-14 ccRCC lines vs about 550 others). Returns the most selective
+    compound annotated to the gene (preferring compounds with <= 3 annotated targets), its mechanism, selectivity
+    (mean LFC other - mean LFC ccRCC; positive = ccRCC lines more sensitive), BH q and how many compounds target the gene.
+    Cell lines in 2D culture miss HIF-2 biology (belzutifan-type drugs are not selective here). Cite evidence_id."""
+    g = canonical_gene(gene)
+    r = _one(_layer("layer_prism.parquet"), g)
+    if r is None:
+        return {"gene": g, "message": "no PRISM compound is annotated to this gene"}
+    return clean({"gene": g, "compound": r["compound"], "moa": r["moa"], "phase": r["phase"],
+                  "compound_targets": _num(r["compound_targets"], 0), "n_compounds": _num(r["n_compounds"], 0),
+                  "selectivity": _num(r["selectivity"]), "mean_lfc_ccrcc": _num(r["mean_lfc_ccrcc"]),
+                  "mean_lfc_other": _num(r["mean_lfc_other"]), "padj": _num(r["padj"]),
+                  "n_ccrcc_lines": _num(r["n_ccrcc_lines"], 0), "evidence_id": existing(evidence_id("prism_response", g))})
+
+
+@mcp.tool()
 def phosphosites(gene: str, n: int = 10) -> list[dict]:
     """Site-level tumour vs normal phosphorylation for one gene (CPTAC BCM pipeline, paired t-test, BH), with the
     site change adjusted for the protein's own change. evidence_id exists for sites with BH < 0.05 and |log2FC| >= 1."""

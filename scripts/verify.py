@@ -6,12 +6,12 @@
 import json
 import sys
 
-from ccrcc.integrate import run_dir
+from ccrcc.integrate import current_run, run_dir
 from ccrcc.verify import verify_agents, verify_final
 
 if __name__ == "__main__":
     mode = sys.argv[1] if len(sys.argv) > 1 else "final"
-    d = run_dir(sys.argv[2] if len(sys.argv) > 2 else None)
+    d = run_dir(sys.argv[2]) if len(sys.argv) > 2 else current_run()
     if mode == "agents":
         rep = verify_agents(d)
         for name, r in rep["agents"].items():

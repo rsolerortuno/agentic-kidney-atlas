@@ -130,7 +130,94 @@
      "rank_p95": 44.0,
      "p_top10": 0.398
     }
-   ]
+   ],
+   "top25_leaving_without_one_stream": {
+    "SCARB1": [
+     "genetics"
+    ],
+    "PIGR": [
+     "genetics"
+    ],
+    "NNMT": [
+     "literature"
+    ],
+    "UMOD": [
+     "literature"
+    ],
+    "FABP1": [
+     "omics"
+    ],
+    "NPHS2": [
+     "omics"
+    ],
+    "MT1G": [
+     "omics",
+     "literature"
+    ],
+    "HILPDA": [
+     "omics",
+     "literature",
+     "replication"
+    ],
+    "ABAT": [
+     "literature"
+    ],
+    "ENO2": [
+     "omics",
+     "literature"
+    ],
+    "FCER1G": [
+     "omics",
+     "literature"
+    ],
+    "SLC16A3": [
+     "omics",
+     "literature",
+     "replication"
+    ],
+    "VHL": [
+     "cnv",
+     "literature",
+     "genetics"
+    ],
+    "SLC12A1": [
+     "omics",
+     "tractability",
+     "replication"
+    ],
+    "SLC22A6": [
+     "omics",
+     "tractability",
+     "replication"
+    ],
+    "CASR": [
+     "omics",
+     "tractability",
+     "replication"
+    ],
+    "PLIN2": [
+     "omics",
+     "literature",
+     "replication"
+    ],
+    "TYROBP": [
+     "omics",
+     "literature",
+     "replication"
+    ],
+    "SLC6A19": [
+     "omics",
+     "literature",
+     "tractability",
+     "replication"
+    ],
+    "SLC47A2": [
+     "omics",
+     "cnv",
+     "tractability",
+     "replication"
+    ]
+   }
   },
   "target": {
    "robust_top10": [
@@ -203,7 +290,68 @@
      "rank_p95": 33.0,
      "p_top10": 0.545
     }
-   ]
+   ],
+   "top25_leaving_without_one_stream": {
+    "SLC16A3": [
+     "omics_up"
+    ],
+    "HK2": [
+     "omics_up"
+    ],
+    "SLC2A1": [
+     "omics_up"
+    ],
+    "IGFBP3": [
+     "tumor_intrinsic",
+     "tractability_predicted"
+    ],
+    "ALDOC": [
+     "tumor_intrinsic",
+     "tractability_predicted"
+    ],
+    "LOX": [
+     "omics_up",
+     "tumor_intrinsic",
+     "tractability_predicted"
+    ],
+    "PYGL": [
+     "omics_up",
+     "tractability_predicted"
+    ],
+    "VWF": [
+     "omics_up",
+     "tumor_intrinsic",
+     "tractability_predicted"
+    ],
+    "ADM": [
+     "tumor_intrinsic",
+     "tractability_predicted"
+    ],
+    "FCGR3A": [
+     "omics_up",
+     "tractability_predicted"
+    ],
+    "IDO1": [
+     "omics_up",
+     "tumor_intrinsic",
+     "tractability_predicted"
+    ],
+    "LDHA": [
+     "omics_up",
+     "tumor_intrinsic",
+     "tractability_predicted"
+    ],
+    "COXFA4L2": [
+     "omics_up",
+     "tumor_intrinsic"
+    ],
+    "CCND1": [
+     "omics_up",
+     "tumor_intrinsic",
+     "genetics",
+     "tractability_predicted"
+    ]
+   }
   },
   "biomarker": {
    "robust_top10": [
@@ -272,7 +420,107 @@
      "rank_p95": 90.04999999999995,
      "p_top10": 0.258
     }
-   ]
+   ],
+   "top25_leaving_without_one_stream": {
+    "SLPI": [
+     "prognosis"
+    ],
+    "DUSP9": [
+     "omics"
+    ],
+    "VWF": [
+     "prognosis"
+    ],
+    "L1CAM": [
+     "omics",
+     "replication"
+    ],
+    "CA4": [
+     "prognosis",
+     "grade"
+    ],
+    "G6PC1": [
+     "omics",
+     "prognosis"
+    ],
+    "HSD11B2": [
+     "omics",
+     "replication",
+     "prognosis",
+     "grade"
+    ],
+    "CYP2J2": [
+     "omics",
+     "replication",
+     "ccab"
+    ],
+    "SPTBN2": [
+     "omics",
+     "replication",
+     "ccab"
+    ],
+    "UCHL1": [
+     "replication",
+     "prognosis",
+     "grade",
+     "ccab"
+    ],
+    "FCGR3A": [
+     "omics",
+     "replication",
+     "grade",
+     "measurable"
+    ],
+    "CA9": [
+     "omics",
+     "replication",
+     "ccab",
+     "measurable"
+    ],
+    "FCER1G": [
+     "omics",
+     "prognosis",
+     "grade",
+     "measurable"
+    ],
+    "PROM2": [
+     "omics",
+     "replication",
+     "prognosis",
+     "grade",
+     "ccab"
+    ],
+    "ALDOB": [
+     "omics",
+     "replication",
+     "prognosis"
+    ],
+    "PTH1R": [
+     "omics",
+     "replication",
+     "grade",
+     "ccab"
+    ],
+    "PLCL1": [
+     "omics",
+     "prognosis",
+     "grade",
+     "measurable"
+    ],
+    "STRA6": [
+     "omics",
+     "replication",
+     "prognosis",
+     "ccab"
+    ],
+    "COL23A1": [
+     "omics",
+     "replication",
+     "ccab",
+     "measurable",
+     "cnv"
+    ]
+   }
   }
  },
  "universe_size": 19161,
@@ -309,7 +557,8 @@
     "rank_p95": 16,
     "p_top10": 0.889,
     "p_top25": 0.981,
-    "p_top100": 1.0
+    "p_top100": 1.0,
+    "leaves_top25_without": []
    },
    "mutation_freq": 0.002,
    "mutation_padj": 0.958,
@@ -422,7 +671,8 @@
     "rank_p95": 17,
     "p_top10": 0.878,
     "p_top25": 0.979,
-    "p_top100": 1.0
+    "p_top100": 1.0,
+    "leaves_top25_without": []
    },
    "mutation_freq": null,
    "mutation_padj": null,
@@ -533,7 +783,8 @@
     "rank_p95": 29,
     "p_top10": 0.753,
     "p_top25": 0.942,
-    "p_top100": 0.995
+    "p_top100": 0.995,
+    "leaves_top25_without": []
    },
    "mutation_freq": 0.008,
    "mutation_padj": 0.958,
@@ -628,7 +879,8 @@
     "rank_p95": 25,
     "p_top10": 0.724,
     "p_top25": 0.95,
-    "p_top100": 1.0
+    "p_top100": 1.0,
+    "leaves_top25_without": []
    },
    "mutation_freq": null,
    "mutation_padj": null,
@@ -738,7 +990,8 @@
     "rank_p95": 25,
     "p_top10": 0.678,
     "p_top25": 0.952,
-    "p_top100": 1.0
+    "p_top100": 1.0,
+    "leaves_top25_without": []
    },
    "mutation_freq": 0.006,
    "mutation_padj": 0.958,
@@ -838,7 +1091,10 @@
     "rank_p95": 31,
     "p_top10": 0.563,
     "p_top25": 0.894,
-    "p_top100": 0.998
+    "p_top100": 0.998,
+    "leaves_top25_without": [
+     "genetics"
+    ]
    },
    "mutation_freq": null,
    "mutation_padj": null,
@@ -925,7 +1181,10 @@
     "rank_p95": 56,
     "p_top10": 0.533,
     "p_top25": 0.783,
-    "p_top100": 0.993
+    "p_top100": 0.993,
+    "leaves_top25_without": [
+     "genetics"
+    ]
    },
    "mutation_freq": 0.01,
    "mutation_padj": 0.958,
@@ -1012,7 +1271,10 @@
     "rank_p95": 46,
     "p_top10": 0.443,
     "p_top25": 0.83,
-    "p_top100": 0.99
+    "p_top100": 0.99,
+    "leaves_top25_without": [
+     "literature"
+    ]
    },
    "mutation_freq": 0.004,
    "mutation_padj": 0.958,
@@ -1102,7 +1364,10 @@
     "rank_p95": 46,
     "p_top10": 0.443,
     "p_top25": 0.83,
-    "p_top100": 0.99
+    "p_top100": 0.99,
+    "leaves_top25_without": [
+     "literature"
+    ]
    },
    "mutation_freq": 0.002,
    "mutation_padj": 0.958,
@@ -1189,7 +1454,10 @@
     "rank_p95": 44,
     "p_top10": 0.398,
     "p_top25": 0.862,
-    "p_top100": 0.991
+    "p_top100": 0.991,
+    "leaves_top25_without": [
+     "omics"
+    ]
    },
    "mutation_freq": null,
    "mutation_padj": null,
@@ -1278,7 +1546,10 @@
     "rank_p95": 44,
     "p_top10": 0.398,
     "p_top25": 0.862,
-    "p_top100": 0.991
+    "p_top100": 0.991,
+    "leaves_top25_without": [
+     "omics"
+    ]
    },
    "mutation_freq": null,
    "mutation_padj": null,
@@ -1365,7 +1636,11 @@
     "rank_p95": 93,
     "p_top10": 0.433,
     "p_top25": 0.767,
-    "p_top100": 0.955
+    "p_top100": 0.955,
+    "leaves_top25_without": [
+     "omics",
+     "literature"
+    ]
    },
    "mutation_freq": 0.002,
    "mutation_padj": 0.958,
@@ -1458,7 +1733,12 @@
     "rank_p95": 105,
     "p_top10": 0.234,
     "p_top25": 0.687,
-    "p_top100": 0.949
+    "p_top100": 0.949,
+    "leaves_top25_without": [
+     "omics",
+     "literature",
+     "replication"
+    ]
    },
    "mutation_freq": null,
    "mutation_padj": null,
@@ -1547,7 +1827,10 @@
     "rank_p95": 77,
     "p_top10": 0.199,
     "p_top25": 0.657,
-    "p_top100": 0.976
+    "p_top100": 0.976,
+    "leaves_top25_without": [
+     "literature"
+    ]
    },
    "mutation_freq": 0.004,
    "mutation_padj": 0.958,
@@ -1646,7 +1929,11 @@
     "rank_p95": 147,
     "p_top10": 0.108,
     "p_top25": 0.573,
-    "p_top100": 0.924
+    "p_top100": 0.924,
+    "leaves_top25_without": [
+     "omics",
+     "literature"
+    ]
    },
    "mutation_freq": null,
    "mutation_padj": null,
@@ -1740,7 +2027,11 @@
     "rank_p95": 102,
     "p_top10": 0.021,
     "p_top25": 0.476,
-    "p_top100": 0.948
+    "p_top100": 0.948,
+    "leaves_top25_without": [
+     "omics",
+     "literature"
+    ]
    },
    "mutation_freq": null,
    "mutation_padj": null,
@@ -1831,7 +2122,12 @@
     "rank_p95": 77,
     "p_top10": 0.0,
     "p_top25": 0.456,
-    "p_top100": 0.977
+    "p_top100": 0.977,
+    "leaves_top25_without": [
+     "omics",
+     "literature",
+     "replication"
+    ]
    },
    "mutation_freq": null,
    "mutation_padj": null,
@@ -1920,7 +2216,12 @@
     "rank_p95": 590,
     "p_top10": 0.384,
     "p_top25": 0.525,
-    "p_top100": 0.714
+    "p_top100": 0.714,
+    "leaves_top25_without": [
+     "cnv",
+     "literature",
+     "genetics"
+    ]
    },
    "mutation_freq": 0.483,
    "mutation_padj": 0.0,
@@ -2007,7 +2308,12 @@
     "rank_p95": 84,
     "p_top10": 0.167,
     "p_top25": 0.531,
-    "p_top100": 0.968
+    "p_top100": 0.968,
+    "leaves_top25_without": [
+     "omics",
+     "tractability",
+     "replication"
+    ]
    },
    "mutation_freq": null,
    "mutation_padj": null,
@@ -2116,7 +2422,12 @@
     "rank_p95": 71,
     "p_top10": 0.033,
     "p_top25": 0.399,
-    "p_top100": 0.981
+    "p_top100": 0.981,
+    "leaves_top25_without": [
+     "omics",
+     "tractability",
+     "replication"
+    ]
    },
    "mutation_freq": 0.01,
    "mutation_padj": 0.958,
@@ -2215,7 +2526,12 @@
     "rank_p95": 71,
     "p_top10": 0.047,
     "p_top25": 0.387,
-    "p_top100": 0.989
+    "p_top100": 0.989,
+    "leaves_top25_without": [
+     "omics",
+     "tractability",
+     "replication"
+    ]
    },
    "mutation_freq": 0.006,
    "mutation_padj": 0.958,
@@ -2330,7 +2646,12 @@
     "rank_p95": 212,
     "p_top10": 0.003,
     "p_top25": 0.357,
-    "p_top100": 0.844
+    "p_top100": 0.844,
+    "leaves_top25_without": [
+     "omics",
+     "literature",
+     "replication"
+    ]
    },
    "mutation_freq": 0.004,
    "mutation_padj": 0.958,
@@ -2420,7 +2741,12 @@
     "rank_p95": 140,
     "p_top10": 0.002,
     "p_top25": 0.285,
-    "p_top100": 0.876
+    "p_top100": 0.876,
+    "leaves_top25_without": [
+     "omics",
+     "literature",
+     "replication"
+    ]
    },
    "mutation_freq": null,
    "mutation_padj": null,
@@ -2511,7 +2837,13 @@
     "rank_p95": 96,
     "p_top10": 0.0,
     "p_top25": 0.199,
-    "p_top100": 0.954
+    "p_top100": 0.954,
+    "leaves_top25_without": [
+     "omics",
+     "literature",
+     "tractability",
+     "replication"
+    ]
    },
    "mutation_freq": 0.004,
    "mutation_padj": 0.958,
@@ -2600,7 +2932,13 @@
     "rank_p95": 97,
     "p_top10": 0.022,
     "p_top25": 0.361,
-    "p_top100": 0.953
+    "p_top100": 0.953,
+    "leaves_top25_without": [
+     "omics",
+     "cnv",
+     "tractability",
+     "replication"
+    ]
    },
    "mutation_freq": 0.008,
    "mutation_padj": 0.958,
@@ -9615,7 +9953,8 @@
      "rank_p95": 8,
      "p_top10": 0.968,
      "p_top25": 0.987,
-     "p_top100": 1.0
+     "p_top100": 1.0,
+     "leaves_top25_without": []
     },
     "mutation_freq": null,
     "mutation_padj": null,
@@ -9702,7 +10041,8 @@
      "rank_p95": 13,
      "p_top10": 0.94,
      "p_top25": 0.973,
-     "p_top100": 0.999
+     "p_top100": 0.999,
+     "leaves_top25_without": []
     },
     "mutation_freq": 0.002,
     "mutation_padj": 0.958,
@@ -9815,7 +10155,10 @@
      "rank_p95": 20,
      "p_top10": 0.881,
      "p_top25": 0.958,
-     "p_top100": 0.999
+     "p_top100": 0.999,
+     "leaves_top25_without": [
+      "omics_up"
+     ]
     },
     "mutation_freq": null,
     "mutation_padj": null,
@@ -9904,7 +10247,8 @@
      "rank_p95": 22,
      "p_top10": 0.88,
      "p_top25": 0.954,
-     "p_top100": 0.999
+     "p_top100": 0.999,
+     "leaves_top25_without": []
     },
     "mutation_freq": null,
     "mutation_padj": null,
@@ -10014,7 +10358,8 @@
      "rank_p95": 22,
      "p_top10": 0.88,
      "p_top25": 0.954,
-     "p_top100": 0.999
+     "p_top100": 0.999,
+     "leaves_top25_without": []
     },
     "mutation_freq": 0.004,
     "mutation_padj": 0.958,
@@ -10104,7 +10449,8 @@
      "rank_p95": 25,
      "p_top10": 0.822,
      "p_top25": 0.951,
-     "p_top100": 0.999
+     "p_top100": 0.999,
+     "leaves_top25_without": []
     },
     "mutation_freq": 0.006,
     "mutation_padj": 0.958,
@@ -10195,7 +10541,8 @@
      "rank_p95": 26,
      "p_top10": 0.801,
      "p_top25": 0.947,
-     "p_top100": 0.999
+     "p_top100": 0.999,
+     "leaves_top25_without": []
     },
     "mutation_freq": null,
     "mutation_padj": null,
@@ -10281,7 +10628,8 @@
      "rank_p95": 28,
      "p_top10": 0.751,
      "p_top25": 0.938,
-     "p_top100": 0.999
+     "p_top100": 0.999,
+     "leaves_top25_without": []
     },
     "mutation_freq": 0.002,
     "mutation_padj": 0.958,
@@ -10365,7 +10713,10 @@
      "rank_p95": 32,
      "p_top10": 0.669,
      "p_top25": 0.929,
-     "p_top100": 0.999
+     "p_top100": 0.999,
+     "leaves_top25_without": [
+      "omics_up"
+     ]
     },
     "mutation_freq": 0.002,
     "mutation_padj": 0.965,
@@ -10449,7 +10800,8 @@
      "rank_p95": 33,
      "p_top10": 0.545,
      "p_top25": 0.924,
-     "p_top100": 0.999
+     "p_top100": 0.999,
+     "leaves_top25_without": []
     },
     "mutation_freq": 0.002,
     "mutation_padj": 0.958,
@@ -10533,7 +10885,8 @@
      "rank_p95": 35,
      "p_top10": 0.004,
      "p_top25": 0.917,
-     "p_top100": 0.998
+     "p_top100": 0.998,
+     "leaves_top25_without": []
     },
     "mutation_freq": null,
     "mutation_padj": null,
@@ -10617,7 +10970,8 @@
      "rank_p95": 37,
      "p_top10": 0.0,
      "p_top25": 0.911,
-     "p_top100": 0.998
+     "p_top100": 0.998,
+     "leaves_top25_without": []
     },
     "mutation_freq": 0.002,
     "mutation_padj": 0.958,
@@ -10701,7 +11055,8 @@
      "rank_p95": 38,
      "p_top10": 0.0,
      "p_top25": 0.904,
-     "p_top100": 0.998
+     "p_top100": 0.998,
+     "leaves_top25_without": []
     },
     "mutation_freq": null,
     "mutation_padj": null,
@@ -10786,7 +11141,10 @@
      "rank_p95": 42,
      "p_top10": 0.029,
      "p_top25": 0.842,
-     "p_top100": 0.999
+     "p_top100": 0.999,
+     "leaves_top25_without": [
+      "omics_up"
+     ]
     },
     "mutation_freq": null,
     "mutation_padj": null,
@@ -10876,7 +11234,11 @@
      "rank_p95": 44,
      "p_top10": 0.0,
      "p_top25": 0.827,
-     "p_top100": 0.998
+     "p_top100": 0.998,
+     "leaves_top25_without": [
+      "tumor_intrinsic",
+      "tractability_predicted"
+     ]
     },
     "mutation_freq": null,
     "mutation_padj": null,
@@ -10964,7 +11326,11 @@
      "rank_p95": 46,
      "p_top10": 0.0,
      "p_top25": 0.79,
-     "p_top100": 0.998
+     "p_top100": 0.998,
+     "leaves_top25_without": [
+      "tumor_intrinsic",
+      "tractability_predicted"
+     ]
     },
     "mutation_freq": null,
     "mutation_padj": null,
@@ -11049,7 +11415,12 @@
      "rank_p95": 53,
      "p_top10": 0.0,
      "p_top25": 0.604,
-     "p_top100": 0.998
+     "p_top100": 0.998,
+     "leaves_top25_without": [
+      "omics_up",
+      "tumor_intrinsic",
+      "tractability_predicted"
+     ]
     },
     "mutation_freq": null,
     "mutation_padj": null,
@@ -11136,7 +11507,11 @@
      "rank_p95": 53,
      "p_top10": 0.0,
      "p_top25": 0.568,
-     "p_top100": 0.997
+     "p_top100": 0.997,
+     "leaves_top25_without": [
+      "omics_up",
+      "tractability_predicted"
+     ]
     },
     "mutation_freq": 0.004,
     "mutation_padj": 0.958,
@@ -11223,7 +11598,12 @@
      "rank_p95": 59,
      "p_top10": 0.0,
      "p_top25": 0.434,
-     "p_top100": 0.992
+     "p_top100": 0.992,
+     "leaves_top25_without": [
+      "omics_up",
+      "tumor_intrinsic",
+      "tractability_predicted"
+     ]
     },
     "mutation_freq": 0.018,
     "mutation_padj": 0.958,
@@ -11330,7 +11710,11 @@
      "rank_p95": 69,
      "p_top10": 0.0,
      "p_top25": 0.383,
-     "p_top100": 0.992
+     "p_top100": 0.992,
+     "leaves_top25_without": [
+      "tumor_intrinsic",
+      "tractability_predicted"
+     ]
     },
     "mutation_freq": 0.002,
     "mutation_padj": 0.958,
@@ -11412,7 +11796,11 @@
      "rank_p95": 69,
      "p_top10": 0.0,
      "p_top25": 0.433,
-     "p_top100": 0.991
+     "p_top100": 0.991,
+     "leaves_top25_without": [
+      "omics_up",
+      "tractability_predicted"
+     ]
     },
     "mutation_freq": null,
     "mutation_padj": null,
@@ -11507,7 +11895,12 @@
      "rank_p95": 63,
      "p_top10": 0.0,
      "p_top25": 0.341,
-     "p_top100": 0.992
+     "p_top100": 0.992,
+     "leaves_top25_without": [
+      "omics_up",
+      "tumor_intrinsic",
+      "tractability_predicted"
+     ]
     },
     "mutation_freq": 0.004,
     "mutation_padj": 0.958,
@@ -11602,7 +11995,12 @@
      "rank_p95": 63,
      "p_top10": 0.0,
      "p_top25": 0.289,
-     "p_top100": 0.992
+     "p_top100": 0.992,
+     "leaves_top25_without": [
+      "omics_up",
+      "tumor_intrinsic",
+      "tractability_predicted"
+     ]
     },
     "mutation_freq": null,
     "mutation_padj": null,
@@ -11695,7 +12093,11 @@
      "rank_p95": 1385,
      "p_top10": 0.142,
      "p_top25": 0.453,
-     "p_top100": 0.785
+     "p_top100": 0.785,
+     "leaves_top25_without": [
+      "omics_up",
+      "tumor_intrinsic"
+     ]
     },
     "mutation_freq": null,
     "mutation_padj": null,
@@ -11806,7 +12208,13 @@
      "rank_p95": 67,
      "p_top10": 0.0,
      "p_top25": 0.093,
-     "p_top100": 0.996
+     "p_top100": 0.996,
+     "leaves_top25_without": [
+      "omics_up",
+      "tumor_intrinsic",
+      "genetics",
+      "tractability_predicted"
+     ]
     },
     "mutation_freq": null,
     "mutation_padj": null,
@@ -11908,7 +12316,8 @@
      "rank_p95": 5,
      "p_top10": 0.984,
      "p_top25": 0.998,
-     "p_top100": 0.999
+     "p_top100": 0.999,
+     "leaves_top25_without": []
     },
     "mutation_freq": 0.002,
     "mutation_padj": 0.958,
@@ -11995,7 +12404,8 @@
      "rank_p95": 18,
      "p_top10": 0.881,
      "p_top25": 0.972,
-     "p_top100": 0.998
+     "p_top100": 0.998,
+     "leaves_top25_without": []
     },
     "mutation_freq": 0.012,
     "mutation_padj": 0.83,
@@ -12082,7 +12492,8 @@
      "rank_p95": 34,
      "p_top10": 0.765,
      "p_top25": 0.913,
-     "p_top100": 0.994
+     "p_top100": 0.994,
+     "leaves_top25_without": []
     },
     "mutation_freq": null,
     "mutation_padj": null,
@@ -12171,7 +12582,8 @@
      "rank_p95": 18,
      "p_top10": 0.875,
      "p_top25": 0.969,
-     "p_top100": 0.999
+     "p_top100": 0.999,
+     "leaves_top25_without": []
     },
     "mutation_freq": 0.004,
     "mutation_padj": 0.958,
@@ -12260,7 +12672,8 @@
      "rank_p95": 26,
      "p_top10": 0.78,
      "p_top25": 0.945,
-     "p_top100": 1.0
+     "p_top100": 1.0,
+     "leaves_top25_without": []
     },
     "mutation_freq": null,
     "mutation_padj": null,
@@ -12345,7 +12758,8 @@
      "rank_p95": 48,
      "p_top10": 0.598,
      "p_top25": 0.839,
-     "p_top100": 0.982
+     "p_top100": 0.982,
+     "leaves_top25_without": []
     },
     "mutation_freq": 0.004,
     "mutation_padj": 0.958,
@@ -12435,7 +12849,10 @@
      "rank_p95": 65,
      "p_top10": 0.312,
      "p_top25": 0.758,
-     "p_top100": 0.993
+     "p_top100": 0.993,
+     "leaves_top25_without": [
+      "prognosis"
+     ]
     },
     "mutation_freq": null,
     "mutation_padj": null,
@@ -12521,7 +12938,10 @@
      "rank_p95": 121,
      "p_top10": 0.384,
      "p_top25": 0.718,
-     "p_top100": 0.932
+     "p_top100": 0.932,
+     "leaves_top25_without": [
+      "omics"
+     ]
     },
     "mutation_freq": 0.004,
     "mutation_padj": 0.958,
@@ -12608,7 +13028,10 @@
      "rank_p95": 53,
      "p_top10": 0.213,
      "p_top25": 0.758,
-     "p_top100": 0.998
+     "p_top100": 0.998,
+     "leaves_top25_without": [
+      "prognosis"
+     ]
     },
     "mutation_freq": 0.018,
     "mutation_padj": 0.958,
@@ -12715,7 +13138,11 @@
      "rank_p95": 90,
      "p_top10": 0.258,
      "p_top25": 0.681,
-     "p_top100": 0.957
+     "p_top100": 0.957,
+     "leaves_top25_without": [
+      "omics",
+      "replication"
+     ]
     },
     "mutation_freq": 0.008,
     "mutation_padj": 0.958,
@@ -12802,7 +13229,11 @@
      "rank_p95": 79,
      "p_top10": 0.236,
      "p_top25": 0.628,
-     "p_top100": 0.974
+     "p_top100": 0.974,
+     "leaves_top25_without": [
+      "prognosis",
+      "grade"
+     ]
     },
     "mutation_freq": null,
     "mutation_padj": null,
@@ -12884,7 +13315,11 @@
      "rank_p95": 107,
      "p_top10": 0.282,
      "p_top25": 0.614,
-     "p_top100": 0.946
+     "p_top100": 0.946,
+     "leaves_top25_without": [
+      "omics",
+      "prognosis"
+     ]
     },
     "mutation_freq": 0.008,
     "mutation_padj": 0.958,
@@ -12970,7 +13405,13 @@
      "rank_p95": 91,
      "p_top10": 0.251,
      "p_top25": 0.613,
-     "p_top100": 0.954
+     "p_top100": 0.954,
+     "leaves_top25_without": [
+      "omics",
+      "replication",
+      "prognosis",
+      "grade"
+     ]
     },
     "mutation_freq": null,
     "mutation_padj": null,
@@ -13063,7 +13504,12 @@
      "rank_p95": 117,
      "p_top10": 0.248,
      "p_top25": 0.607,
-     "p_top100": 0.935
+     "p_top100": 0.935,
+     "leaves_top25_without": [
+      "omics",
+      "replication",
+      "ccab"
+     ]
     },
     "mutation_freq": 0.002,
     "mutation_padj": 0.958,
@@ -13147,7 +13593,12 @@
      "rank_p95": 116,
      "p_top10": 0.161,
      "p_top25": 0.592,
-     "p_top100": 0.943
+     "p_top100": 0.943,
+     "leaves_top25_without": [
+      "omics",
+      "replication",
+      "ccab"
+     ]
     },
     "mutation_freq": 0.006,
     "mutation_padj": 0.974,
@@ -13232,7 +13683,13 @@
      "rank_p95": 73,
      "p_top10": 0.105,
      "p_top25": 0.559,
-     "p_top100": 0.986
+     "p_top100": 0.986,
+     "leaves_top25_without": [
+      "replication",
+      "prognosis",
+      "grade",
+      "ccab"
+     ]
     },
     "mutation_freq": null,
     "mutation_padj": null,
@@ -13318,7 +13775,13 @@
      "rank_p95": 120,
      "p_top10": 0.153,
      "p_top25": 0.473,
-     "p_top100": 0.932
+     "p_top100": 0.932,
+     "leaves_top25_without": [
+      "omics",
+      "replication",
+      "grade",
+      "measurable"
+     ]
     },
     "mutation_freq": null,
     "mutation_padj": null,
@@ -13413,7 +13876,13 @@
      "rank_p95": 274,
      "p_top10": 0.266,
      "p_top25": 0.55,
-     "p_top100": 0.856
+     "p_top100": 0.856,
+     "leaves_top25_without": [
+      "omics",
+      "replication",
+      "ccab",
+      "measurable"
+     ]
     },
     "mutation_freq": 0.002,
     "mutation_padj": 0.958,
@@ -13526,7 +13995,13 @@
      "rank_p95": 104,
      "p_top10": 0.111,
      "p_top25": 0.442,
-     "p_top100": 0.946
+     "p_top100": 0.946,
+     "leaves_top25_without": [
+      "omics",
+      "prognosis",
+      "grade",
+      "measurable"
+     ]
     },
     "mutation_freq": null,
     "mutation_padj": null,
@@ -13617,7 +14092,14 @@
      "rank_p95": 201,
      "p_top10": 0.091,
      "p_top25": 0.48,
-     "p_top100": 0.879
+     "p_top100": 0.879,
+     "leaves_top25_without": [
+      "omics",
+      "replication",
+      "prognosis",
+      "grade",
+      "ccab"
+     ]
     },
     "mutation_freq": 0.002,
     "mutation_padj": 0.961,
@@ -13704,7 +14186,12 @@
      "rank_p95": 237,
      "p_top10": 0.214,
      "p_top25": 0.469,
-     "p_top100": 0.857
+     "p_top100": 0.857,
+     "leaves_top25_without": [
+      "omics",
+      "replication",
+      "prognosis"
+     ]
     },
     "mutation_freq": 0.008,
     "mutation_padj": 0.958,
@@ -13799,7 +14286,13 @@
      "rank_p95": 243,
      "p_top10": 0.099,
      "p_top25": 0.399,
-     "p_top100": 0.864
+     "p_top100": 0.864,
+     "leaves_top25_without": [
+      "omics",
+      "replication",
+      "grade",
+      "ccab"
+     ]
     },
     "mutation_freq": 0.006,
     "mutation_padj": 0.958,
@@ -13912,7 +14405,13 @@
      "rank_p95": 140,
      "p_top10": 0.127,
      "p_top25": 0.434,
-     "p_top100": 0.89
+     "p_top100": 0.89,
+     "leaves_top25_without": [
+      "omics",
+      "prognosis",
+      "grade",
+      "measurable"
+     ]
     },
     "mutation_freq": 0.004,
     "mutation_padj": 0.958,
@@ -13999,7 +14498,13 @@
      "rank_p95": 160,
      "p_top10": 0.032,
      "p_top25": 0.381,
-     "p_top100": 0.9
+     "p_top100": 0.9,
+     "leaves_top25_without": [
+      "omics",
+      "replication",
+      "prognosis",
+      "ccab"
+     ]
     },
     "mutation_freq": 0.004,
     "mutation_padj": 0.958,
@@ -14084,7 +14589,14 @@
      "rank_p95": 319,
      "p_top10": 0.214,
      "p_top25": 0.483,
-     "p_top100": 0.837
+     "p_top100": 0.837,
+     "leaves_top25_without": [
+      "omics",
+      "replication",
+      "ccab",
+      "measurable",
+      "cnv"
+     ]
     },
     "mutation_freq": null,
     "mutation_padj": null,

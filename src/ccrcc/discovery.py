@@ -41,7 +41,6 @@ from .paths import PROCESSED, RAW
 from .singlecell import CELL_GROUPS
 
 TODAY = date.today().isoformat()
-SURFACE = re.compile(r"membrane|secreted|extracellular|cell surface", re.I)
 IMMUNE = {"CD8_T", "CD4_T", "Treg", "T_other", "NK", "B", "Plasma", "Macrophage", "Monocyte", "cDC", "pDC", "Mast"}
 CLINICAL = {"APPROVAL", "PHASE_4", "PHASE_3", "PHASE_2", "PHASE_1", "PHASE_2_3", "PHASE_1_2"}
 
@@ -119,6 +118,8 @@ def annotate(d: pd.DataFrame) -> pd.DataFrame:
     hg = hg.drop_duplicates("symbol").set_index("symbol")
     ot_assoc = pd.read_parquet(PROCESSED / "external_ot_associations.parquet").set_index("symbol")
     aliases = alias_index(hg)
+    from .m16 import load_surfaceome, surface_call
+    surf_tab = load_surfaceome()
     rows = []
     for g in d["gene"]:
         terms = _gene_terms(g, hg)
@@ -139,8 +140,12 @@ def annotate(d: pd.DataFrame) -> pd.DataFrame:
                     "ot_genetic": float(ot_assoc["dt_genetic_association"].get(g, 0.0))})
         u = uniprot(g)
         loc = (u or {}).get("subcellular_location", [])
+        # "membrane" alone used to count as surface, so Golgi, ER and mitochondrial proteins scored as antibody
+        # targets; m16.surface_call weighs UniProt against the CSPA and SURFY surfaceomes
+        call, why = surface_call(loc, (u or {}).get("accession"), surf_tab)
         rec.update({"uniprot": (u or {}).get("accession"), "protein_name": (u or {}).get("name"),
-                    "locations": loc, "surface_or_secreted": any(SURFACE.search(x) for x in loc)})
+                    "locations": loc, "surface_call": call, "surface_evidence": why,
+                    "surface_or_secreted": call in ("surface", "secreted")})
         ch = chembl_target_summary(u["accession"]) if u else {}
         rec.update({"chembl_target": ch.get("chembl_target"), "potent_activities": ch.get("potent_activities", 0),
                     "potent_molecules": ch.get("potent_molecules", 0), "patent_activities": ch.get("patent_activities", 0)})
@@ -176,6 +181,11 @@ def annotate_m13(d: pd.DataFrame) -> pd.DataFrame:
                                  "cox_padj": "tcga_cox_padj"})
     take("layer_purity.parquet", {"rna_lfc_at_purity1": "rna_lfc_at_purity1", "rna_lfc_at_purity1_se": "rna_lfc_at_purity1_se",
                                   "rna_purity_rho": "rna_purity_rho"}, key="hgnc_symbol")
+    take("normal_proteome.parquet", {"vital_protein_ts_max": "vital_protein_ts_max", "vital_protein_ts_tissue": "vital_protein_ts_tissue",
+                                     "vital_protein_enriched": "vital_protein_enriched",
+                                     "vital_protein_max_rel": "vital_protein_max_rel"})
+    take("layer_prism.parquet", {"compound": "prism_compound", "selectivity": "prism_selectivity", "padj": "prism_padj",
+                                 "compound_targets": "prism_compound_targets"})
     take("layer_dependency.parquet", {"mean_effect_ccrcc": "depmap_mean_effect_ccrcc", "selectivity": "depmap_selectivity",
                                       "frac_ccrcc_dependent": "depmap_frac_dependent", "padj": "depmap_padj",
                                       "common_essential": "depmap_common_essential", "n_ccrcc_lines": "depmap_n_lines"})
@@ -228,9 +238,14 @@ def score(d: pd.DataFrame) -> pd.DataFrame:
     # ~90 % of genes, so it only adds a little; SM/AB tractability and surface/secreted location carry the component.
     core = d.modalities.map(lambda m: bool({"SM", "AB"} & set(m)))
     degrader = d.modalities.map(lambda m: "PR" in set(m))
-    d["c_druggable"] = 0.5 * core + 0.2 * degrader + 0.3 * d.surface_or_secreted
+    from .m16 import SURFACE_VALUE
+    if "surface_call" not in d:
+        d["surface_call"] = np.where(d.surface_or_secreted, "surface", "internal")
+    d["c_druggable"] = 0.5 * core + 0.2 * degrader + 0.3 * d.surface_call.map(SURFACE_VALUE).fillna(0.5)
     d["druggable_core"] = core
-    d["c_safety"] = (1 - (d.vital_max_ntpm / 50).clip(0, 1)).fillna(0.5)
+    # RNA in vital organs (HPA) and, where measured, protein enriched in a vital organ (GTEx proteome TS >= 4)
+    prot_enriched = d.get("vital_protein_enriched", pd.Series(False, index=d.index)).astype("boolean").fillna(False).astype(bool)
+    d["c_safety"] = (1 - (d.vital_max_ntpm / 50).clip(0, 1)).fillna(0.5) * np.where(prot_enriched, 0.25, 1.0)
     d["c_aggressiveness"] = (d.clin_rho.fillna(0) / 0.4).clip(0, 1)
     # ---- M14: independent layers
     caps = load()["convergence"]["omics_caps"]
@@ -248,7 +263,7 @@ def score(d: pd.DataFrame) -> pd.DataFrame:
                                   base / sum(wsum.values()))
     d["novel"] = (d.clinical_drugs.map(len) == 0) & (d.ccrcc_papers <= cfg["novel_max_ccrcc_papers"])
     # A gene without HPA vital-organ data is not known to be safe: it cannot be a first-in-class opportunity.
-    safe = d.vital_max_ntpm.notna() & (d.vital_max_ntpm <= cfg["safe_max_ntpm"])
+    safe = d.vital_max_ntpm.notna() & (d.vital_max_ntpm <= cfg["safe_max_ntpm"]) & ~prot_enriched
     d["safe"] = safe
     d["safety_known"] = d.vital_max_ntpm.notna()
     repl_ok = d.replicated.fillna(False) if cfg.get("require_replication", True) else True
@@ -323,7 +338,8 @@ def load_graph(store: GraphStore | None = None) -> dict:
                 potent_molecules=int(getattr(r, "potent_molecules", 0) or 0),
                 patent_activities=int(getattr(r, "patent_activities", 0) or 0),
                 clinical_drugs=r.clinical_drugs or None, max_drug_stage=r.max_drug_stage, modalities=r.modalities,
-                surface_or_secreted=bool(r.surface_or_secreted), locations=r.locations,
+                surface_or_secreted=bool(r.surface_or_secreted), surface_call=r.surface_call,
+                surface_evidence=r.surface_evidence, locations=r.locations,
                 source_group=r.source_group, source_share=round(float(r.source_share), 3),
                 source_pct=round(float(r.source_pct), 1), rna_log2fc=round(float(r.rna_log2fc), 3),
                 protein_log2fc=round(float(r.protein_log2fc), 3),
@@ -343,6 +359,12 @@ def load_graph(store: GraphStore | None = None) -> dict:
                 infiltration_driven=bool(r.infiltration_driven),
                 vital_max_ntpm=None if pd.isna(r.vital_max_ntpm) else round(float(r.vital_max_ntpm), 1),
                 vital_max_tissue=None if pd.isna(r.vital_max_tissue) else r.vital_max_tissue,
+                vital_protein_ts_max=None if pd.isna(r.vital_protein_ts_max) else round(float(r.vital_protein_ts_max), 2),
+                vital_protein_ts_tissue=None if pd.isna(r.vital_protein_ts_tissue) else r.vital_protein_ts_tissue,
+                vital_protein_enriched=None if pd.isna(r.vital_protein_enriched) else bool(r.vital_protein_enriched),
+                prism_compound=None if pd.isna(r.prism_compound) else r.prism_compound,
+                prism_selectivity=None if pd.isna(r.prism_selectivity) else round(float(r.prism_selectivity), 3),
+                prism_padj=None if pd.isna(r.prism_padj) else float(f"{r.prism_padj:.3g}"),
                 clinical_association=None if pd.isna(r.clin_rho) else f"{r.clin_variable} rho {r.clin_rho:.2f}",
                 url=f"https://europepmc.org/search?query={r.gene}%20AND%20%22renal%20cell%20carcinoma%22")
             store.add_claim(gid, "novel_candidate_for" if r.novel else "discovery_scored_for", "MONDO:0005005", ev)

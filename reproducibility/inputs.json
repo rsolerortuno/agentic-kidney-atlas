@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "status": "frozen local input inventory; analysis outputs re-frozen on 2026-11-03 after the HGNC symbol-mapping fix (see docs/reproduction.md)",
+  "status": "frozen local input inventory; analysis outputs re-frozen on 2026-11-03 after the HGNC symbol-mapping fix and the M16 review changes (see docs/reproduction.md)",
   "source_checkout_commit": "79289e602ab2935db327fd85f378c5f10d1bba65",
   "config_sha256": "92a60b6c9eb179043b45b85963f13659ff698fcb6133cd5f33cdd052e9d99329",
   "uv_lock_sha256": "22f178bdc21ea28222e6524d72b967b5e4ef2da678ab1515e63996a6f449f665",
@@ -73640,6 +73640,112 @@
       "url": "https://rest.uniprot.org/uniprotkb/search?fields=accession%2Cprotein_name%2Ccc_function%2Ccc_subcellular_location&format=json&query=gene_exact%3ASLC60A1+AND+organism_id%3A9606+AND+reviewed%3Atrue&size=1",
       "method": "GET",
       "note": "added 2026-11-03: requested for a gene that entered the ranking after the HGNC symbol-mapping fix"
+    },
+    {
+      "path": "raw/m16/surfy_table_S3.xlsx",
+      "bytes": 6864772,
+      "sha256": "2f1b8262463ce1c59a1f945d22f0e9638cb3bfbf5aabe197f43b562a62fb055a",
+      "version": "publisher supplementary file / figshare release; exact local snapshot identified by sha256",
+      "source": "m16",
+      "url": "https://wollscheidlab.org/SURFY/table_S3_surfaceome.xlsx",
+      "retrieved_utc": "2026-11-03T12:17:48+00:00",
+      "note": "added 2026-11-03 (M16: surfaceome, GTEx proteome, CheckMate 025, PRISM)"
+    },
+    {
+      "path": "raw/m16/cspa_S2_File.xlsx",
+      "bytes": 1430284,
+      "sha256": "9b02c85d4c1d49847cf37e23755f07e57ea65b79cc0ebcdaeef1752dab8b5c8a",
+      "version": "publisher supplementary file / figshare release; exact local snapshot identified by sha256",
+      "source": "m16",
+      "url": "https://wollscheidlab.org/CSPA/data/S2_File.xlsx",
+      "retrieved_utc": "2026-11-03T12:17:48+00:00",
+      "note": "added 2026-11-03 (M16: surfaceome, GTEx proteome, CheckMate 025, PRISM)"
+    },
+    {
+      "path": "raw/m16/gtex_proteome_table_S2.xlsx",
+      "bytes": 122973020,
+      "sha256": "f278d406990059a625cb0d5c4c29e56dd8634052138a38bd053bc0d61124af80",
+      "version": "publisher supplementary file / figshare release; exact local snapshot identified by sha256",
+      "source": "m16",
+      "url": "https://ars.els-cdn.com/content/image/1-s2.0-S0092867420310783-mmc3.xlsx",
+      "retrieved_utc": "2026-11-03T12:17:48+00:00",
+      "note": "added 2026-11-03 (M16: surfaceome, GTEx proteome, CheckMate 025, PRISM)"
+    },
+    {
+      "path": "raw/m16/braun2020_supplementary_tables.xlsx",
+      "bytes": 125569016,
+      "sha256": "a1f8683676d416b255291dcaa007aa0fa48c736c23e6a7a566664ba528bf205b",
+      "version": "publisher supplementary file / figshare release; exact local snapshot identified by sha256",
+      "source": "m16",
+      "url": "https://static-content.springer.com/esm/art%3A10.1038%2Fs41591-020-0839-y/MediaObjects/41591_2020_839_MOESM2_ESM.xlsx",
+      "retrieved_utc": "2026-11-03T12:17:48+00:00",
+      "note": "added 2026-11-03 (M16: surfaceome, GTEx proteome, CheckMate 025, PRISM)"
+    },
+    {
+      "path": "raw/m16/prism_20q2_primary_lfc.csv",
+      "bytes": 46663573,
+      "sha256": "76c66a52115ed1653cc0e609f5cd0c676f5c2076beca9e585ca3f44649a1784c",
+      "version": "publisher supplementary file / figshare release; exact local snapshot identified by sha256",
+      "source": "m16",
+      "url": "https://ndownloader.figshare.com/files/36794580",
+      "retrieved_utc": "2026-11-03T12:17:48+00:00",
+      "note": "added 2026-11-03 (M16: surfaceome, GTEx proteome, CheckMate 025, PRISM)"
+    },
+    {
+      "path": "raw/m16/prism_20q2_primary_treatment_info.csv",
+      "bytes": 1312286,
+      "sha256": "f92e58eb04b0db5c35412b08c50446078de153a2f6a5b862cdb89f532ed29bc5",
+      "version": "publisher supplementary file / figshare release; exact local snapshot identified by sha256",
+      "source": "m16",
+      "url": "https://ndownloader.figshare.com/files/36794583",
+      "retrieved_utc": "2026-11-03T12:17:48+00:00",
+      "note": "added 2026-11-03 (M16: surfaceome, GTEx proteome, CheckMate 025, PRISM)"
+    },
+    {
+      "path": "raw/m16/prism_20q2_primary_cell_line_info.csv",
+      "bytes": 46849,
+      "sha256": "c17174f48264fea0adb3eb4b2b1f2daf61b83999b0db6e4965338e3bd6a9fde2",
+      "version": "publisher supplementary file / figshare release; exact local snapshot identified by sha256",
+      "source": "m16",
+      "url": "https://ndownloader.figshare.com/files/36794565",
+      "retrieved_utc": "2026-11-03T12:17:48+00:00",
+      "note": "added 2026-11-03 (M16: surfaceome, GTEx proteome, CheckMate 025, PRISM)"
+    },
+    {
+      "path": "raw/m16/manifest.json",
+      "bytes": 2104,
+      "sha256": "7f192db37a8714d7e3e6535df3021fd6a8cd2cf5d175f6a273dcbd447a3c9062",
+      "version": "saved acquisition metadata",
+      "source": "M16 acquisition log",
+      "note": "added 2026-11-03"
+    },
+    {
+      "version": "provider release not recorded; exact local snapshot identified by sha256",
+      "source": "alphafold",
+      "path": "cache/alphafold/O95976.api.json",
+      "bytes": 2203,
+      "sha256": "f7a71b80ecccb82ebc4eb1d66bcbc01248a89e99fc53815654d53940d25509d3",
+      "note": "added 2026-11-03: structure for a gene that entered the discovery shortlist after the surface fix",
+      "url": "https://alphafold.ebi.ac.uk/api/prediction/O95976"
+    },
+    {
+      "version": "provider release not recorded; exact local snapshot identified by sha256",
+      "source": "alphafold",
+      "path": "cache/alphafold/O95976.ligand_sites.json",
+      "bytes": 4,
+      "sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+      "note": "added 2026-11-03: structure for a gene that entered the discovery shortlist after the surface fix",
+      "url": "https://www.ebi.ac.uk/pdbe/graph-api/uniprot/ligand_sites/O95976"
+    },
+    {
+      "version": "6",
+      "source": "alphafold",
+      "model_entity": "AF-O95976-F1",
+      "path": "cache/alphafold/O95976.pdb",
+      "bytes": 159083,
+      "sha256": "0ff293554273d56280418bec9af1317f9bbda3470248d4f38f33dab20f0b28df",
+      "note": "added 2026-11-03: structure for a gene that entered the discovery shortlist after the surface fix",
+      "url": "https://alphafold.ebi.ac.uk/files/AF-O95976-F1-model_v6.pdb"
     }
   ],
   "input_trees": [
@@ -73654,31 +73760,31 @@
   "project_files": [
     {
       "path": "runs/2026-11-03/agent_applied.json",
-      "sha256": "456bdd3bdc0b74fcaead2b329e6823b697d895eee22c89af97ac4e975a00b950"
+      "sha256": "ba66a4f682d493b6ad6dcd63caa17b9a72de44237f2b545095d3b16b54336888"
     },
     {
       "path": "runs/2026-11-03/agent_cells.json",
-      "sha256": "0157001c7791b9448463db7e660350594a249ae31605e8c6b9aacb0a2db06161"
+      "sha256": "242a2248777dd45690ea6594918440c0f2ad29f4abfd0c8a5f35da08ed8358e4"
     },
     {
       "path": "runs/2026-11-03/agent_external.json",
-      "sha256": "480b93a74bd6ceb6b357ab9299cb0f95c884d81bf72a32c5e22d68fe7feb1157"
+      "sha256": "68b33132b28e9d3a19ce40a8a772b0a215360139639889b1de9ffbc85568c184"
     },
     {
       "path": "runs/2026-11-03/agent_literature.json",
-      "sha256": "adb74da49e1f7d68046a7c99e0ab1102b4f692996b56547bb29837093453d5a3"
+      "sha256": "233569351432032cb106447e6718a47bed7bb6d61612885e372f442556c51844"
     },
     {
       "path": "runs/2026-11-03/agent_omics.json",
-      "sha256": "956d3ee83c73afa9957f8338e77c76439ac90ab8455be3d30c503b3a883f0ac3"
+      "sha256": "8962865a960588fdef6ae5f94b4eb5cda3bbfff669a2a19215c62a00c245d9c2"
     },
     {
       "path": "runs/2026-11-03/basis.json",
-      "sha256": "88824c6080437549999ff694ec533785c3a8c97a4eb8f1f0eb2db2958e284945"
+      "sha256": "476f126ad103c083a6c8bdad092947a5767dbbc2137b555a882daca55cca6eba"
     },
     {
       "path": "runs/2026-11-03/narrative.json",
-      "sha256": "d8e2f5ed2f0625f5f61a2e0321a9f89b60211c42a16e07790473ae66b580beab"
+      "sha256": "b94f6f5616cccd5433ed5ad7bc47eb9b3084d4c01c4053d46615adb87b9dc76f"
     },
     {
       "path": "src/ccrcc/reference_data/degradation.json",
@@ -73718,11 +73824,11 @@
     },
     {
       "path": "runs/replicates/rep1/findings.json",
-      "sha256": "d1d96a30740a8885577fd0c1a978cb0e20e08c545815c5e09220b29a1639bb3f"
+      "sha256": "35b452c5c4490354aecc3942d2d7c99f94c71b0f6c95eb2564e02ff457152ac8"
     },
     {
       "path": "runs/replicates/rep2/findings.json",
-      "sha256": "5a3b30b1ead62abf8e052319afb373f906015f598ab0b978b8f8f11d23c68181"
+      "sha256": "83f9df501ccc61768188d1d08dc29885f303339dfdbb7a6e8054f24f13a236e0"
     }
   ],
   "snapshot_policy": "Hashes freeze retained inputs. Missing historical provider revisions are explicitly marked, never inferred from current upstream. This manifest does not redistribute source datasets.",

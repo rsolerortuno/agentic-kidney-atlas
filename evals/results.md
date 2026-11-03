@@ -49,8 +49,12 @@ The target and biomarker profiles use measurements only (no literature, no drug 
 | convergence v3 without literature/tractability | 75 | 0.696 (0.64–0.75) | 1% | 12% | 4,416 | 2.6× | CA9 |
 | target profile without tractability | 75 | 0.717 (0.65–0.78) | 11% | 20% | 4,089 | 20.4× | CA9, IDO1, CCND1, ANGPT2, FLT1, ITGAV, EPAS1, EGFR |
 | predicted tractability alone | 75 | 0.857 (0.83–0.88) | 0% | 13% | 2,660 | 0.0× | — |
+| target profile, tractability without ligand history | 75 | 0.797 (0.74–0.85) | 15% | 28% | 1,273 | 28.1× | CA9, IDO1, ANGPT2, FLT1, ITGAV, EGFR, ITGA5, VEGFA, TOP2A, MET, CDK6 |
+| predicted tractability without ligand history, alone | 75 | 0.774 (0.72–0.82) | 0% | 12% | 2,533 | 0.0× | — |
 
 Predicted tractability (strong SM / AB buckets) flags 5,301 genes. It alone gives most of the AUROC — clinical targets are, almost by definition, druggable proteins — so the data layers should be judged by early enrichment: the share of gold genes in the top 100, which within the tractable set would be ~1.9% per tractable gold gene by chance, and by the "without tractability" row.
+
+The strong small-molecule bucket includes Open Targets' "High-Quality Ligand", which comes from ChEMBL medicinal chemistry: drug-discovery history, not a property of the tumour. Without it (pocket and location buckets only, 3,968 genes) the target profile's AUROC is 0.797 instead of 0.895. Much of the gap between the data-only rows and the full profile is therefore known chemistry, and the headline AUROC should be read with that in mind.
 
 ### Retrospective post-2016 evaluation: first RCC trial on or after 2016-01-01 (6 genes: CCND1, PARP1, PARP2, PARP3, TIGIT, TNFSF11)
 
@@ -66,6 +70,8 @@ PARP1/PARP2/PARP3 share one gene family and drug class, so the set holds about 4
 | convergence v3 without literature/tractability | 6 | 0.628 (0.45–0.80) | 0% | 17% | 7,657 | 0.0× | — |
 | target profile without tractability | 6 | 0.643 (0.48–0.82) | 17% | 17% | 6,602 | 31.8× | CCND1 |
 | predicted tractability alone | 6 | 0.847 (0.79–0.90) | 0% | 0% | 2,669 | 0.0× | — |
+| target profile, tractability without ligand history | 6 | 0.666 (0.46–0.88) | 0% | 17% | 5,657 | 0.0× | — |
+| predicted tractability without ligand history, alone | 6 | 0.555 (0.33–0.75) | 0% | 0% | 8,811 | 0.0× | — |
 
 ### Prognostic biomarkers: ClearCode34 (33 of 34 genes mapped; Brooks et al. 2014)
 
@@ -87,23 +93,53 @@ ClearCode34 was validated in TCGA, which the biomarker profile's prognosis compo
 - **target**: SCARB1, CA9, SLC16A3, CD70, NNMT, ENPP3, FABP6
 - **biomarker**: PSAT1, PCK1, SLC6A19
 
+Re-weighting never removes a stream. Leaving one stream out at a time (its weight set to 0), these top-25 genes drop out of the top 25 (the stream they depend on in brackets):
+
+- **convergence**: SCARB1 (genetics), PIGR (genetics), NNMT (literature), UMOD (literature), FABP1 (omics), NPHS2 (omics), MT1G (omics/literature), HILPDA (omics/literature/replication), ABAT (literature), ENO2 (omics/literature), FCER1G (omics/literature), SLC16A3 (omics/literature/replication), VHL (cnv/literature/genetics), SLC12A1 (omics/tractability/replication), SLC22A6 (omics/tractability/replication), CASR (omics/tractability/replication), PLIN2 (omics/literature/replication), TYROBP (omics/literature/replication), SLC6A19 (omics/literature/tractability/replication), SLC47A2 (omics/cnv/tractability/replication)
+- **target**: SLC16A3 (omics_up), HK2 (omics_up), SLC2A1 (omics_up), IGFBP3 (tumor_intrinsic/tractability_predicted), ALDOC (tumor_intrinsic/tractability_predicted), LOX (omics_up/tumor_intrinsic/tractability_predicted), PYGL (omics_up/tractability_predicted), VWF (omics_up/tumor_intrinsic/tractability_predicted), ADM (tumor_intrinsic/tractability_predicted), FCGR3A (omics_up/tractability_predicted), IDO1 (omics_up/tumor_intrinsic/tractability_predicted), LDHA (omics_up/tumor_intrinsic/tractability_predicted), COXFA4L2 (omics_up/tumor_intrinsic), CCND1 (omics_up/tumor_intrinsic/genetics/tractability_predicted)
+- **biomarker**: SLPI (prognosis), DUSP9 (omics), VWF (prognosis), L1CAM (omics/replication), CA4 (prognosis/grade), G6PC1 (omics/prognosis), HSD11B2 (omics/replication/prognosis/grade), CYP2J2 (omics/replication/ccab), SPTBN2 (omics/replication/ccab), UCHL1 (replication/prognosis/grade/ccab), FCGR3A (omics/replication/grade/measurable), CA9 (omics/replication/ccab/measurable), FCER1G (omics/prognosis/grade/measurable), PROM2 (omics/replication/prognosis/grade/ccab), ALDOB (omics/replication/prognosis), PTH1R (omics/replication/grade/ccab), PLCL1 (omics/prognosis/grade/measurable), STRA6 (omics/replication/prognosis/ccab), COL23A1 (omics/replication/ccab/measurable/cnv)
+
 ## (d) What the agentic layer adds
 
 | | Closed-book LLM (Sonnet 5.5, no tools) | GraphRAG pipeline |
 |---|---|---|
 | Runs | 3 | 3 |
-| Mean pairwise Jaccard of candidate lists | 0.667 | 0.744 |
-| Candidates that are RCC clinical targets | 60%, 60%, 60% | 21%, 15%, 15% |
-| Candidates in the data-only target or biomarker top 500 | 80%, 70%, 80% | 100%, 92%, 100% (by construction: the agents pick candidates from these profiles) |
-| Statements citing checkable evidence | 0 | 116 checked, 0 unsupported |
+| Mean pairwise Jaccard of candidate lists | 0.667 | 0.862 |
+| Candidates that are RCC clinical targets | 60%, 60%, 60% | 15%, 15%, 14% |
+| Candidates in the data-only target or biomarker top 500 | 80%, 70%, 80% | 100%, 100%, 100% (by construction: the agents pick candidates from these profiles) |
+| Statements citing checkable evidence | 0 | 118 checked, 0 unsupported |
 
 Closed-book candidates: VHL, EPAS1, VEGFA, KDR, CD274, PBRM1, BAP1, SETD2, CA9, MET; VHL, EPAS1, VEGFA, PDCD1, CD274, PBRM1, BAP1, SETD2, MET, MTOR; EPAS1, VHL, VEGFA, KDR, PDCD1, MTOR, PBRM1, BAP1, SETD2, CA9.
 
-Pipeline final targets: CA9, CD70, NNMT, EPAS1, SCARB1, PSAT1, PCK1, ENPP3, ALDOB, COL23A1, KDR, SLC16A3, COXFA4L2, RAB42; CA9, CD70, NNMT, EPAS1, ENPP3, SCARB1, SLC16A3, PSAT1, PCK1, ALDH6A1, COL23A1, RAB42, OLFML2A; CA9, CD70, NNMT, EPAS1, ENPP3, SCARB1, SLC16A3, PSAT1, PCK1, ALDH6A1, COL23A1, RAB42, GAL3ST4.
+Pipeline final targets: CA9, CD70, NNMT, SLC16A3, ENPP3, SCARB1, EPAS1, PSAT1, PCK1, COXFA4L2, ALDOB, COL23A1, RAB42; CA9, CD70, NNMT, SCARB1, EPAS1, ENPP3, SLC16A3, PSAT1, PCK1, ALDH6A1, COXFA4L2, COL23A1, RAB42; CA9, CD70, NNMT, EPAS1, ENPP3, SLC16A3, SCARB1, PSAT1, PCK1, ALDOB, COXFA4L2, SLC22A8, COL23A1, RAB42.
 
 The pipeline's Jaccard mostly reflects the deterministic ranking the agents start from, not agreement reached independently; it shows the agent step is stable, not that its choices are right.
 
-## (e) Known-answer questions (`claude -p` + project MCP servers)
+### No-agent baseline
+
+Rule: alternate target profile, biomarker profile, discovery tumour track; same length as the agent list. Overlap with the agents' final list (Jaccard): 0.529. RCC clinical targets: 8% of the baseline list versus 15% of the agents' list.
+
+Baseline list: SCARB1, PSAT1, COL23A1, CA9, PCK1, RAB42, SLC16A3, ALDH6A1, TNFAIP6, CD70, SLC6A19, FABP6, NNMT.
+
+Added by the agents: ENPP3, EPAS1, COXFA4L2, ALDOB. Left out by the agents: ALDH6A1, TNFAIP6, SLC6A19, FABP6.
+
+This is what the agent step changes. Whether the changes are improvements needs the reasons in the report and, ultimately, experiments; the overlap alone does not say.
+
+## (e) How often the verifier catches a wrong statement
+
+Each of the 118 statements of `runs/2026-11-03` that pass verification was copied and corrupted one way at a time; a corruption counts as caught when the statement is rejected or loses evidence ids (the rule `verify.py final` applies).
+
+| Corruption | Applied | Caught | Rate |
+|---|---|---|---|
+| Number: last digit of the first printed number changed | 72 | 72 | 100% |
+| Direction word flipped (higher/lower, up/down, ...) | 54 | 15 | 28% |
+| ... of which the statement cites significant omics_de evidence | 19 | 14 | 74% |
+| Statement attributed to another gene | 105 | 105 | 100% |
+| Evidence of another gene cited | 105 | 105 | 100% |
+
+The direction check only reads tumour-versus-normal wording against cited omics_de records and printed log2FC signs, so a flipped direction in a literature or treatment sentence is not caught. A changed last digit is accepted when the new value still rounds to the stored one. Missed examples are listed in `evals/verifier_sabotage.json`.
+
+## (f) Known-answer questions (`claude -p` + project MCP servers)
 
 - Model: saved claude-sonnet-5-5 answers (regex regraded)
 - **Correct: 10/10**
