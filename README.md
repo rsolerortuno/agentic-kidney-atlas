@@ -12,6 +12,8 @@
 
 ---
 
+**[Read the step-by-step project walkthrough](https://rsolerortuno.github.io/projects/agentic-kidney-atlas.html)** — how the agents work, how to read all 13 report tabs, the 3D and tissue viewers, results and limitations.
+
 [Reproduction guide](docs/reproduction.md) ·
 [Limits of the automatic checks](docs/numeric-claims.md) ·
 [Evaluation results](evals/results.md) ·
