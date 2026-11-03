@@ -2,7 +2,16 @@
 
 **A reproducible, evidence-based screen for drug targets and biomarkers in clear cell renal cell carcinoma (ccRCC).**
 
-[Live interactive report](https://rsolerortuno.github.io/agentic-kidney-atlas/) ·
+## Explore the interactive atlas
+
+### [Open the live report →](https://rsolerortuno.github.io/agentic-kidney-atlas/)
+
+**Browse the candidate targets, inspect the evidence, explore tissue maps and rotate protein structures in 3D.** The report opens directly in your browser; no installation is needed. Use the navigation tabs and the help buttons to explore each analysis.
+
+[![Open interactive report](https://img.shields.io/badge/OPEN_INTERACTIVE_ATLAS-GitHub_Pages-087f8c?style=for-the-badge)](https://rsolerortuno.github.io/agentic-kidney-atlas/)
+
+---
+
 [Reproduction guide](docs/reproduction.md) ·
 [Limits of the automatic checks](docs/numeric-claims.md) ·
 [Evaluation results](evals/results.md) ·
