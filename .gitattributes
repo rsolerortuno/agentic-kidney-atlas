@@ -1,5 +1,6 @@
 # Preserve existing source formatting; CRLF is intentional in legacy source.
 * whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+benchmarks/** text eol=lf
 # Frozen legacy CRLF blobs use -text to preserve their bytes without a rewrite.
 # Generated HTML contains intentional template/vendor trailing whitespace.
 reports/*.html whitespace=-blank-at-eol

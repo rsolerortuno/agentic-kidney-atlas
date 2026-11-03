@@ -15,7 +15,7 @@ OUT = HERE / 'frozen'
 
 def save(path, obj):
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(obj, indent=2, ensure_ascii=False, allow_nan=False)+'\n', encoding='utf-8')
+    path.write_text(json.dumps(obj, indent=2, ensure_ascii=False, allow_nan=False)+'\n', encoding='utf-8', newline='\n')
 
 def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
