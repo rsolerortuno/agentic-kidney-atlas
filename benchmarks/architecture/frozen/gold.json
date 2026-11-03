@@ -1,0 +1,536 @@
+{
+  "case01v0": {
+    "decision": "supported",
+    "required_evidence": [
+      "case01v0:e1",
+      "case01v0:e2"
+    ],
+    "relevant_evidence": [
+      "case01v0:e1",
+      "case01v0:e2"
+    ],
+    "base": "case01",
+    "family": "replication",
+    "variant": 0,
+    "is_synthetic": false
+  },
+  "case01v1": {
+    "decision": "contradicted",
+    "required_evidence": [
+      "case01v1:e1",
+      "case01v1:e2"
+    ],
+    "relevant_evidence": [
+      "case01v1:e1",
+      "case01v1:e2"
+    ],
+    "base": "case01",
+    "family": "replication",
+    "variant": 1,
+    "is_synthetic": true
+  },
+  "case01v2": {
+    "decision": "insufficient",
+    "required_evidence": [
+      "case01v2:e1",
+      "case01v2:e2"
+    ],
+    "relevant_evidence": [
+      "case01v2:e1",
+      "case01v2:e2"
+    ],
+    "base": "case01",
+    "family": "replication",
+    "variant": 2,
+    "is_synthetic": true
+  },
+  "case02v0": {
+    "decision": "supported",
+    "required_evidence": [
+      "case02v0:e1",
+      "case02v0:e2"
+    ],
+    "relevant_evidence": [
+      "case02v0:e1",
+      "case02v0:e2"
+    ],
+    "base": "case02",
+    "family": "replication",
+    "variant": 0,
+    "is_synthetic": false
+  },
+  "case02v1": {
+    "decision": "contradicted",
+    "required_evidence": [
+      "case02v1:e1",
+      "case02v1:e2"
+    ],
+    "relevant_evidence": [
+      "case02v1:e1",
+      "case02v1:e2"
+    ],
+    "base": "case02",
+    "family": "replication",
+    "variant": 1,
+    "is_synthetic": true
+  },
+  "case02v2": {
+    "decision": "insufficient",
+    "required_evidence": [
+      "case02v2:e1",
+      "case02v2:e2"
+    ],
+    "relevant_evidence": [
+      "case02v2:e1",
+      "case02v2:e2"
+    ],
+    "base": "case02",
+    "family": "replication",
+    "variant": 2,
+    "is_synthetic": true
+  },
+  "case03v0": {
+    "decision": "supported",
+    "required_evidence": [
+      "case03v0:e1",
+      "case03v0:e2"
+    ],
+    "relevant_evidence": [
+      "case03v0:e1",
+      "case03v0:e2"
+    ],
+    "base": "case03",
+    "family": "multiomics",
+    "variant": 0,
+    "is_synthetic": false
+  },
+  "case03v1": {
+    "decision": "contradicted",
+    "required_evidence": [
+      "case03v1:e1",
+      "case03v1:e2"
+    ],
+    "relevant_evidence": [
+      "case03v1:e1",
+      "case03v1:e2"
+    ],
+    "base": "case03",
+    "family": "multiomics",
+    "variant": 1,
+    "is_synthetic": true
+  },
+  "case03v2": {
+    "decision": "insufficient",
+    "required_evidence": [
+      "case03v2:e1",
+      "case03v2:e2"
+    ],
+    "relevant_evidence": [
+      "case03v2:e1",
+      "case03v2:e2"
+    ],
+    "base": "case03",
+    "family": "multiomics",
+    "variant": 2,
+    "is_synthetic": true
+  },
+  "case04v0": {
+    "decision": "supported",
+    "required_evidence": [
+      "case04v0:e1",
+      "case04v0:e2"
+    ],
+    "relevant_evidence": [
+      "case04v0:e1",
+      "case04v0:e2"
+    ],
+    "base": "case04",
+    "family": "multiomics",
+    "variant": 0,
+    "is_synthetic": false
+  },
+  "case04v1": {
+    "decision": "contradicted",
+    "required_evidence": [
+      "case04v1:e1",
+      "case04v1:e2"
+    ],
+    "relevant_evidence": [
+      "case04v1:e1",
+      "case04v1:e2"
+    ],
+    "base": "case04",
+    "family": "multiomics",
+    "variant": 1,
+    "is_synthetic": true
+  },
+  "case04v2": {
+    "decision": "insufficient",
+    "required_evidence": [
+      "case04v2:e1",
+      "case04v2:e2"
+    ],
+    "relevant_evidence": [
+      "case04v2:e1",
+      "case04v2:e2"
+    ],
+    "base": "case04",
+    "family": "multiomics",
+    "variant": 2,
+    "is_synthetic": true
+  },
+  "case05v0": {
+    "decision": "supported",
+    "required_evidence": [
+      "case05v0:e1",
+      "case05v0:e2"
+    ],
+    "relevant_evidence": [
+      "case05v0:e1",
+      "case05v0:e2"
+    ],
+    "base": "case05",
+    "family": "cell_origin",
+    "variant": 0,
+    "is_synthetic": false
+  },
+  "case05v1": {
+    "decision": "contradicted",
+    "required_evidence": [
+      "case05v1:e1",
+      "case05v1:e2"
+    ],
+    "relevant_evidence": [
+      "case05v1:e1",
+      "case05v1:e2"
+    ],
+    "base": "case05",
+    "family": "cell_origin",
+    "variant": 1,
+    "is_synthetic": true
+  },
+  "case05v2": {
+    "decision": "insufficient",
+    "required_evidence": [
+      "case05v2:e1",
+      "case05v2:e2"
+    ],
+    "relevant_evidence": [
+      "case05v2:e1",
+      "case05v2:e2"
+    ],
+    "base": "case05",
+    "family": "cell_origin",
+    "variant": 2,
+    "is_synthetic": true
+  },
+  "case06v0": {
+    "decision": "supported",
+    "required_evidence": [
+      "case06v0:e1",
+      "case06v0:e2",
+      "case06v0:e3"
+    ],
+    "relevant_evidence": [
+      "case06v0:e1",
+      "case06v0:e2",
+      "case06v0:e3"
+    ],
+    "base": "case06",
+    "family": "cell_origin",
+    "variant": 0,
+    "is_synthetic": false
+  },
+  "case06v1": {
+    "decision": "contradicted",
+    "required_evidence": [
+      "case06v1:e1",
+      "case06v1:e2",
+      "case06v1:e3"
+    ],
+    "relevant_evidence": [
+      "case06v1:e1",
+      "case06v1:e2",
+      "case06v1:e3"
+    ],
+    "base": "case06",
+    "family": "cell_origin",
+    "variant": 1,
+    "is_synthetic": true
+  },
+  "case06v2": {
+    "decision": "insufficient",
+    "required_evidence": [
+      "case06v2:e1",
+      "case06v2:e2",
+      "case06v2:e3"
+    ],
+    "relevant_evidence": [
+      "case06v2:e1",
+      "case06v2:e2",
+      "case06v2:e3"
+    ],
+    "base": "case06",
+    "family": "cell_origin",
+    "variant": 2,
+    "is_synthetic": true
+  },
+  "case07v0": {
+    "decision": "contradicted",
+    "required_evidence": [
+      "case07v0:e1",
+      "case07v0:e2"
+    ],
+    "relevant_evidence": [
+      "case07v0:e1",
+      "case07v0:e2"
+    ],
+    "base": "case07",
+    "family": "surface",
+    "variant": 0,
+    "is_synthetic": false
+  },
+  "case07v1": {
+    "decision": "contradicted",
+    "required_evidence": [
+      "case07v1:e1",
+      "case07v1:e2"
+    ],
+    "relevant_evidence": [
+      "case07v1:e1",
+      "case07v1:e2"
+    ],
+    "base": "case07",
+    "family": "surface",
+    "variant": 1,
+    "is_synthetic": true
+  },
+  "case07v2": {
+    "decision": "insufficient",
+    "required_evidence": [
+      "case07v2:e1",
+      "case07v2:e2"
+    ],
+    "relevant_evidence": [
+      "case07v2:e1",
+      "case07v2:e2"
+    ],
+    "base": "case07",
+    "family": "surface",
+    "variant": 2,
+    "is_synthetic": true
+  },
+  "case08v0": {
+    "decision": "insufficient",
+    "required_evidence": [
+      "case08v0:e1",
+      "case08v0:e2"
+    ],
+    "relevant_evidence": [
+      "case08v0:e1",
+      "case08v0:e2"
+    ],
+    "base": "case08",
+    "family": "surface",
+    "variant": 0,
+    "is_synthetic": false
+  },
+  "case08v1": {
+    "decision": "contradicted",
+    "required_evidence": [
+      "case08v1:e1",
+      "case08v1:e2"
+    ],
+    "relevant_evidence": [
+      "case08v1:e1",
+      "case08v1:e2"
+    ],
+    "base": "case08",
+    "family": "surface",
+    "variant": 1,
+    "is_synthetic": true
+  },
+  "case08v2": {
+    "decision": "insufficient",
+    "required_evidence": [
+      "case08v2:e1",
+      "case08v2:e2"
+    ],
+    "relevant_evidence": [
+      "case08v2:e1",
+      "case08v2:e2"
+    ],
+    "base": "case08",
+    "family": "surface",
+    "variant": 2,
+    "is_synthetic": true
+  },
+  "case09v0": {
+    "decision": "insufficient",
+    "required_evidence": [
+      "case09v0:e1"
+    ],
+    "relevant_evidence": [
+      "case09v0:e1",
+      "case09v0:e2"
+    ],
+    "base": "case09",
+    "family": "treatment",
+    "variant": 0,
+    "is_synthetic": false
+  },
+  "case09v1": {
+    "decision": "supported",
+    "required_evidence": [
+      "case09v1:e1"
+    ],
+    "relevant_evidence": [
+      "case09v1:e1",
+      "case09v1:e2"
+    ],
+    "base": "case09",
+    "family": "treatment",
+    "variant": 1,
+    "is_synthetic": true
+  },
+  "case09v2": {
+    "decision": "insufficient",
+    "required_evidence": [
+      "case09v2:e1"
+    ],
+    "relevant_evidence": [
+      "case09v2:e1",
+      "case09v2:e2"
+    ],
+    "base": "case09",
+    "family": "treatment",
+    "variant": 2,
+    "is_synthetic": true
+  },
+  "case10v0": {
+    "decision": "insufficient",
+    "required_evidence": [
+      "case10v0:e1"
+    ],
+    "relevant_evidence": [
+      "case10v0:e1",
+      "case10v0:e2"
+    ],
+    "base": "case10",
+    "family": "treatment",
+    "variant": 0,
+    "is_synthetic": false
+  },
+  "case10v1": {
+    "decision": "supported",
+    "required_evidence": [
+      "case10v1:e1"
+    ],
+    "relevant_evidence": [
+      "case10v1:e1",
+      "case10v1:e2"
+    ],
+    "base": "case10",
+    "family": "treatment",
+    "variant": 1,
+    "is_synthetic": true
+  },
+  "case10v2": {
+    "decision": "insufficient",
+    "required_evidence": [
+      "case10v2:e1"
+    ],
+    "relevant_evidence": [
+      "case10v2:e1",
+      "case10v2:e2"
+    ],
+    "base": "case10",
+    "family": "treatment",
+    "variant": 2,
+    "is_synthetic": true
+  },
+  "case11v0": {
+    "decision": "insufficient",
+    "required_evidence": [
+      "case11v0:e2"
+    ],
+    "relevant_evidence": [
+      "case11v0:e1",
+      "case11v0:e2"
+    ],
+    "base": "case11",
+    "family": "degradation",
+    "variant": 0,
+    "is_synthetic": false
+  },
+  "case11v1": {
+    "decision": "supported",
+    "required_evidence": [
+      "case11v1:e2"
+    ],
+    "relevant_evidence": [
+      "case11v1:e1",
+      "case11v1:e2"
+    ],
+    "base": "case11",
+    "family": "degradation",
+    "variant": 1,
+    "is_synthetic": true
+  },
+  "case11v2": {
+    "decision": "contradicted",
+    "required_evidence": [
+      "case11v2:e2"
+    ],
+    "relevant_evidence": [
+      "case11v2:e1",
+      "case11v2:e2"
+    ],
+    "base": "case11",
+    "family": "degradation",
+    "variant": 2,
+    "is_synthetic": true
+  },
+  "case12v0": {
+    "decision": "insufficient",
+    "required_evidence": [
+      "case12v0:e2"
+    ],
+    "relevant_evidence": [
+      "case12v0:e1",
+      "case12v0:e2"
+    ],
+    "base": "case12",
+    "family": "degradation",
+    "variant": 0,
+    "is_synthetic": false
+  },
+  "case12v1": {
+    "decision": "supported",
+    "required_evidence": [
+      "case12v1:e2"
+    ],
+    "relevant_evidence": [
+      "case12v1:e1",
+      "case12v1:e2"
+    ],
+    "base": "case12",
+    "family": "degradation",
+    "variant": 1,
+    "is_synthetic": true
+  },
+  "case12v2": {
+    "decision": "contradicted",
+    "required_evidence": [
+      "case12v2:e2"
+    ],
+    "relevant_evidence": [
+      "case12v2:e1",
+      "case12v2:e2"
+    ],
+    "base": "case12",
+    "family": "degradation",
+    "variant": 2,
+    "is_synthetic": true
+  }
+}

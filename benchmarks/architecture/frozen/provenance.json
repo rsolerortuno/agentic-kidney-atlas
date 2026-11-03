@@ -1,0 +1,2333 @@
+{
+  "case01v0": {
+    "gene": "NNMT",
+    "sources": [
+      {
+        "id": "EV:confirmatory_replication:7dbf93860d9f",
+        "type": "confirmatory_replication",
+        "source": "CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411)",
+        "props": {
+          "gene": "NNMT",
+          "protein_conf_log2fc": 4.776,
+          "protein_conf_padj": 3.07e-46,
+          "protein_conf_pairs": 86,
+          "protein_discovery_log2fc": 2.709,
+          "protein_discovery_padj": 1.23e-43,
+          "protein_replicates": true
+        }
+      }
+    ],
+    "mutation": "none; normalized real record projection",
+    "normalized_evidence": [
+      {
+        "kind": "discovery",
+        "fc": 2.709,
+        "q": 1.23e-43,
+        "id": "case01v0:e1"
+      },
+      {
+        "kind": "confirmation",
+        "fc": 4.776,
+        "q": 3.07e-46,
+        "id": "case01v0:e2"
+      },
+      {
+        "id": "case01v0:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  "case01v1": {
+    "gene": "NNMT",
+    "sources": [
+      {
+        "id": "EV:confirmatory_replication:7dbf93860d9f",
+        "type": "confirmatory_replication",
+        "source": "CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411)",
+        "props": {
+          "gene": "NNMT",
+          "protein_conf_log2fc": 4.776,
+          "protein_conf_padj": 3.07e-46,
+          "protein_conf_pairs": 86,
+          "protein_discovery_log2fc": 2.709,
+          "protein_discovery_padj": 1.23e-43,
+          "protein_replicates": true
+        }
+      }
+    ],
+    "mutation": "second fold-change sign reversed",
+    "normalized_evidence": [
+      {
+        "kind": "discovery",
+        "fc": 2.709,
+        "q": 1.23e-43,
+        "id": "case01v1:e1"
+      },
+      {
+        "kind": "confirmation",
+        "fc": -4.776,
+        "q": 3.07e-46,
+        "id": "case01v1:e2"
+      },
+      {
+        "id": "case01v1:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  "case01v2": {
+    "gene": "NNMT",
+    "sources": [
+      {
+        "id": "EV:confirmatory_replication:7dbf93860d9f",
+        "type": "confirmatory_replication",
+        "source": "CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411)",
+        "props": {
+          "gene": "NNMT",
+          "protein_conf_log2fc": 4.776,
+          "protein_conf_padj": 3.07e-46,
+          "protein_conf_pairs": 86,
+          "protein_discovery_log2fc": 2.709,
+          "protein_discovery_padj": 1.23e-43,
+          "protein_replicates": true
+        }
+      }
+    ],
+    "mutation": "second layer withheld",
+    "normalized_evidence": [
+      {
+        "kind": "discovery",
+        "fc": 2.709,
+        "q": 1.23e-43,
+        "id": "case01v2:e1"
+      },
+      {
+        "kind": "confirmation",
+        "fc": null,
+        "q": null,
+        "id": "case01v2:e2"
+      },
+      {
+        "id": "case01v2:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  "case02v0": {
+    "gene": "SLC16A3",
+    "sources": [
+      {
+        "id": "EV:confirmatory_replication:11298113327b",
+        "type": "confirmatory_replication",
+        "source": "CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411)",
+        "props": {
+          "gene": "SLC16A3",
+          "protein_conf_log2fc": 3.551,
+          "protein_conf_padj": 1.48e-20,
+          "protein_conf_pairs": 41,
+          "protein_discovery_log2fc": 2.279,
+          "protein_discovery_padj": 5.43e-47,
+          "protein_replicates": true,
+          "phosphosites_measured_in_both": 1,
+          "phosphosites_significant_in_discovery": 1,
+          "phosphosites_replicating": 1
+        }
+      }
+    ],
+    "mutation": "none; normalized real record projection",
+    "normalized_evidence": [
+      {
+        "kind": "discovery",
+        "fc": 2.279,
+        "q": 5.43e-47,
+        "id": "case02v0:e1"
+      },
+      {
+        "kind": "confirmation",
+        "fc": 3.551,
+        "q": 1.48e-20,
+        "id": "case02v0:e2"
+      },
+      {
+        "id": "case02v0:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  "case02v1": {
+    "gene": "SLC16A3",
+    "sources": [
+      {
+        "id": "EV:confirmatory_replication:11298113327b",
+        "type": "confirmatory_replication",
+        "source": "CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411)",
+        "props": {
+          "gene": "SLC16A3",
+          "protein_conf_log2fc": 3.551,
+          "protein_conf_padj": 1.48e-20,
+          "protein_conf_pairs": 41,
+          "protein_discovery_log2fc": 2.279,
+          "protein_discovery_padj": 5.43e-47,
+          "protein_replicates": true,
+          "phosphosites_measured_in_both": 1,
+          "phosphosites_significant_in_discovery": 1,
+          "phosphosites_replicating": 1
+        }
+      }
+    ],
+    "mutation": "second fold-change sign reversed",
+    "normalized_evidence": [
+      {
+        "kind": "discovery",
+        "fc": 2.279,
+        "q": 5.43e-47,
+        "id": "case02v1:e1"
+      },
+      {
+        "kind": "confirmation",
+        "fc": -3.551,
+        "q": 1.48e-20,
+        "id": "case02v1:e2"
+      },
+      {
+        "id": "case02v1:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  "case02v2": {
+    "gene": "SLC16A3",
+    "sources": [
+      {
+        "id": "EV:confirmatory_replication:11298113327b",
+        "type": "confirmatory_replication",
+        "source": "CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411)",
+        "props": {
+          "gene": "SLC16A3",
+          "protein_conf_log2fc": 3.551,
+          "protein_conf_padj": 1.48e-20,
+          "protein_conf_pairs": 41,
+          "protein_discovery_log2fc": 2.279,
+          "protein_discovery_padj": 5.43e-47,
+          "protein_replicates": true,
+          "phosphosites_measured_in_both": 1,
+          "phosphosites_significant_in_discovery": 1,
+          "phosphosites_replicating": 1
+        }
+      }
+    ],
+    "mutation": "second layer withheld",
+    "normalized_evidence": [
+      {
+        "kind": "discovery",
+        "fc": 2.279,
+        "q": 5.43e-47,
+        "id": "case02v2:e1"
+      },
+      {
+        "kind": "confirmation",
+        "fc": null,
+        "q": null,
+        "id": "case02v2:e2"
+      },
+      {
+        "id": "case02v2:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  "case03v0": {
+    "gene": "CA9",
+    "sources": [
+      {
+        "id": "EV:omics_de:b269736afdb0",
+        "type": "omics_de",
+        "source": "DATASET:CPTAC-CCRCC-RNA",
+        "props": {
+          "layer": "rna",
+          "gene": "CA9",
+          "log2fc": 6.3123,
+          "padj": 1.72e-49,
+          "pvalue": 2.53e-52,
+          "method": "paired_t",
+          "n_pairs": 75,
+          "n_tumor": 110,
+          "n_normal": 75,
+          "unit": "log2 FPKM",
+          "significant": true
+        }
+      },
+      {
+        "id": "EV:omics_de:5afe18b4024b",
+        "type": "omics_de",
+        "source": "DATASET:CPTAC-CCRCC-PROTEOME",
+        "props": {
+          "layer": "protein",
+          "gene": "CA9",
+          "log2fc": 2.2686,
+          "padj": 9.9e-43,
+          "pvalue": 7.13e-45,
+          "method": "paired_t",
+          "n_pairs": 84,
+          "n_tumor": 110,
+          "n_normal": 84,
+          "unit": "TMT log2 ratio",
+          "significant": true
+        }
+      }
+    ],
+    "mutation": "none; normalized real record projection",
+    "normalized_evidence": [
+      {
+        "kind": "rna",
+        "fc": 6.3123,
+        "q": 1.72e-49,
+        "id": "case03v0:e1"
+      },
+      {
+        "kind": "protein",
+        "fc": 2.2686,
+        "q": 9.9e-43,
+        "id": "case03v0:e2"
+      },
+      {
+        "id": "case03v0:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  "case03v1": {
+    "gene": "CA9",
+    "sources": [
+      {
+        "id": "EV:omics_de:b269736afdb0",
+        "type": "omics_de",
+        "source": "DATASET:CPTAC-CCRCC-RNA",
+        "props": {
+          "layer": "rna",
+          "gene": "CA9",
+          "log2fc": 6.3123,
+          "padj": 1.72e-49,
+          "pvalue": 2.53e-52,
+          "method": "paired_t",
+          "n_pairs": 75,
+          "n_tumor": 110,
+          "n_normal": 75,
+          "unit": "log2 FPKM",
+          "significant": true
+        }
+      },
+      {
+        "id": "EV:omics_de:5afe18b4024b",
+        "type": "omics_de",
+        "source": "DATASET:CPTAC-CCRCC-PROTEOME",
+        "props": {
+          "layer": "protein",
+          "gene": "CA9",
+          "log2fc": 2.2686,
+          "padj": 9.9e-43,
+          "pvalue": 7.13e-45,
+          "method": "paired_t",
+          "n_pairs": 84,
+          "n_tumor": 110,
+          "n_normal": 84,
+          "unit": "TMT log2 ratio",
+          "significant": true
+        }
+      }
+    ],
+    "mutation": "second fold-change sign reversed",
+    "normalized_evidence": [
+      {
+        "kind": "rna",
+        "fc": 6.3123,
+        "q": 1.72e-49,
+        "id": "case03v1:e1"
+      },
+      {
+        "kind": "protein",
+        "fc": -2.2686,
+        "q": 9.9e-43,
+        "id": "case03v1:e2"
+      },
+      {
+        "id": "case03v1:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  "case03v2": {
+    "gene": "CA9",
+    "sources": [
+      {
+        "id": "EV:omics_de:b269736afdb0",
+        "type": "omics_de",
+        "source": "DATASET:CPTAC-CCRCC-RNA",
+        "props": {
+          "layer": "rna",
+          "gene": "CA9",
+          "log2fc": 6.3123,
+          "padj": 1.72e-49,
+          "pvalue": 2.53e-52,
+          "method": "paired_t",
+          "n_pairs": 75,
+          "n_tumor": 110,
+          "n_normal": 75,
+          "unit": "log2 FPKM",
+          "significant": true
+        }
+      },
+      {
+        "id": "EV:omics_de:5afe18b4024b",
+        "type": "omics_de",
+        "source": "DATASET:CPTAC-CCRCC-PROTEOME",
+        "props": {
+          "layer": "protein",
+          "gene": "CA9",
+          "log2fc": 2.2686,
+          "padj": 9.9e-43,
+          "pvalue": 7.13e-45,
+          "method": "paired_t",
+          "n_pairs": 84,
+          "n_tumor": 110,
+          "n_normal": 84,
+          "unit": "TMT log2 ratio",
+          "significant": true
+        }
+      }
+    ],
+    "mutation": "second layer withheld",
+    "normalized_evidence": [
+      {
+        "kind": "rna",
+        "fc": 6.3123,
+        "q": 1.72e-49,
+        "id": "case03v2:e1"
+      },
+      {
+        "kind": "protein",
+        "fc": null,
+        "q": null,
+        "id": "case03v2:e2"
+      },
+      {
+        "id": "case03v2:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  "case04v0": {
+    "gene": "NNMT",
+    "sources": [
+      {
+        "id": "EV:omics_de:aefc373d6072",
+        "type": "omics_de",
+        "source": "DATASET:CPTAC-CCRCC-RNA",
+        "props": {
+          "layer": "rna",
+          "gene": "NNMT",
+          "log2fc": 4.6697,
+          "padj": 2.04e-40,
+          "pvalue": 2e-42,
+          "method": "paired_t",
+          "n_pairs": 75,
+          "n_tumor": 110,
+          "n_normal": 75,
+          "unit": "log2 FPKM",
+          "significant": true
+        }
+      },
+      {
+        "id": "EV:omics_de:de39cc0c5ed8",
+        "type": "omics_de",
+        "source": "DATASET:CPTAC-CCRCC-PROTEOME",
+        "props": {
+          "layer": "protein",
+          "gene": "NNMT",
+          "log2fc": 2.709,
+          "padj": 1.23e-43,
+          "pvalue": 6.26e-46,
+          "method": "paired_t",
+          "n_pairs": 84,
+          "n_tumor": 110,
+          "n_normal": 84,
+          "unit": "TMT log2 ratio",
+          "significant": true
+        }
+      }
+    ],
+    "mutation": "none; normalized real record projection",
+    "normalized_evidence": [
+      {
+        "kind": "rna",
+        "fc": 4.6697,
+        "q": 2.04e-40,
+        "id": "case04v0:e1"
+      },
+      {
+        "kind": "protein",
+        "fc": 2.709,
+        "q": 1.23e-43,
+        "id": "case04v0:e2"
+      },
+      {
+        "id": "case04v0:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  "case04v1": {
+    "gene": "NNMT",
+    "sources": [
+      {
+        "id": "EV:omics_de:aefc373d6072",
+        "type": "omics_de",
+        "source": "DATASET:CPTAC-CCRCC-RNA",
+        "props": {
+          "layer": "rna",
+          "gene": "NNMT",
+          "log2fc": 4.6697,
+          "padj": 2.04e-40,
+          "pvalue": 2e-42,
+          "method": "paired_t",
+          "n_pairs": 75,
+          "n_tumor": 110,
+          "n_normal": 75,
+          "unit": "log2 FPKM",
+          "significant": true
+        }
+      },
+      {
+        "id": "EV:omics_de:de39cc0c5ed8",
+        "type": "omics_de",
+        "source": "DATASET:CPTAC-CCRCC-PROTEOME",
+        "props": {
+          "layer": "protein",
+          "gene": "NNMT",
+          "log2fc": 2.709,
+          "padj": 1.23e-43,
+          "pvalue": 6.26e-46,
+          "method": "paired_t",
+          "n_pairs": 84,
+          "n_tumor": 110,
+          "n_normal": 84,
+          "unit": "TMT log2 ratio",
+          "significant": true
+        }
+      }
+    ],
+    "mutation": "second fold-change sign reversed",
+    "normalized_evidence": [
+      {
+        "kind": "rna",
+        "fc": 4.6697,
+        "q": 2.04e-40,
+        "id": "case04v1:e1"
+      },
+      {
+        "kind": "protein",
+        "fc": -2.709,
+        "q": 1.23e-43,
+        "id": "case04v1:e2"
+      },
+      {
+        "id": "case04v1:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  "case04v2": {
+    "gene": "NNMT",
+    "sources": [
+      {
+        "id": "EV:omics_de:aefc373d6072",
+        "type": "omics_de",
+        "source": "DATASET:CPTAC-CCRCC-RNA",
+        "props": {
+          "layer": "rna",
+          "gene": "NNMT",
+          "log2fc": 4.6697,
+          "padj": 2.04e-40,
+          "pvalue": 2e-42,
+          "method": "paired_t",
+          "n_pairs": 75,
+          "n_tumor": 110,
+          "n_normal": 75,
+          "unit": "log2 FPKM",
+          "significant": true
+        }
+      },
+      {
+        "id": "EV:omics_de:de39cc0c5ed8",
+        "type": "omics_de",
+        "source": "DATASET:CPTAC-CCRCC-PROTEOME",
+        "props": {
+          "layer": "protein",
+          "gene": "NNMT",
+          "log2fc": 2.709,
+          "padj": 1.23e-43,
+          "pvalue": 6.26e-46,
+          "method": "paired_t",
+          "n_pairs": 84,
+          "n_tumor": 110,
+          "n_normal": 84,
+          "unit": "TMT log2 ratio",
+          "significant": true
+        }
+      }
+    ],
+    "mutation": "second layer withheld",
+    "normalized_evidence": [
+      {
+        "kind": "rna",
+        "fc": 4.6697,
+        "q": 2.04e-40,
+        "id": "case04v2:e1"
+      },
+      {
+        "kind": "protein",
+        "fc": null,
+        "q": null,
+        "id": "case04v2:e2"
+      },
+      {
+        "id": "case04v2:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  "case05v0": {
+    "gene": "CA9",
+    "sources": [
+      {
+        "id": "EV:sc_summary:225a767ebcb5",
+        "type": "sc_summary",
+        "source": "DATASET:LI2022-SCRNA",
+        "props": {
+          "gene": "CA9",
+          "tissue": "tumor",
+          "groups": [
+            {
+              "cell_group": "RCC",
+              "pct_expressing": 54.7,
+              "mean_lognorm": 1.145,
+              "share_of_tumor_transcripts": 0.976,
+              "cpm_share": 0.958,
+              "n_cells": 10900
+            },
+            {
+              "cell_group": "Epi_other",
+              "pct_expressing": 33.3,
+              "mean_lognorm": 0.555,
+              "share_of_tumor_transcripts": 0.001,
+              "cpm_share": null,
+              "n_cells": 18
+            }
+          ],
+          "tumor_vs_pt": {
+            "log2fc": 7.739,
+            "padj": 0.0189,
+            "n_donors": 6
+          },
+          "method": "summary of sc_celltype_expression (tumour compartment) and sc_tumor_vs_pt for this gene"
+        }
+      }
+    ],
+    "mutation": "none; normalized real record projection",
+    "normalized_evidence": [
+      {
+        "kind": "RCC",
+        "share": 0.976,
+        "pct_expressing": 54.7,
+        "id": "case05v0:e1"
+      },
+      {
+        "kind": "Epi_other",
+        "share": 0.001,
+        "pct_expressing": 33.3,
+        "id": "case05v0:e2"
+      },
+      {
+        "id": "case05v0:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  "case05v1": {
+    "gene": "CA9",
+    "sources": [
+      {
+        "id": "EV:sc_summary:225a767ebcb5",
+        "type": "sc_summary",
+        "source": "DATASET:LI2022-SCRNA",
+        "props": {
+          "gene": "CA9",
+          "tissue": "tumor",
+          "groups": [
+            {
+              "cell_group": "RCC",
+              "pct_expressing": 54.7,
+              "mean_lognorm": 1.145,
+              "share_of_tumor_transcripts": 0.976,
+              "cpm_share": 0.958,
+              "n_cells": 10900
+            },
+            {
+              "cell_group": "Epi_other",
+              "pct_expressing": 33.3,
+              "mean_lognorm": 0.555,
+              "share_of_tumor_transcripts": 0.001,
+              "cpm_share": null,
+              "n_cells": 18
+            }
+          ],
+          "tumor_vs_pt": {
+            "log2fc": 7.739,
+            "padj": 0.0189,
+            "n_donors": 6
+          },
+          "method": "summary of sc_celltype_expression (tumour compartment) and sc_tumor_vs_pt for this gene"
+        }
+      }
+    ],
+    "mutation": "RCC and leading other group shares exchanged",
+    "normalized_evidence": [
+      {
+        "kind": "RCC",
+        "share": 0.001,
+        "pct_expressing": 54.7,
+        "id": "case05v1:e1"
+      },
+      {
+        "kind": "Epi_other",
+        "share": 0.976,
+        "pct_expressing": 33.3,
+        "id": "case05v1:e2"
+      },
+      {
+        "id": "case05v1:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  "case05v2": {
+    "gene": "CA9",
+    "sources": [
+      {
+        "id": "EV:sc_summary:225a767ebcb5",
+        "type": "sc_summary",
+        "source": "DATASET:LI2022-SCRNA",
+        "props": {
+          "gene": "CA9",
+          "tissue": "tumor",
+          "groups": [
+            {
+              "cell_group": "RCC",
+              "pct_expressing": 54.7,
+              "mean_lognorm": 1.145,
+              "share_of_tumor_transcripts": 0.976,
+              "cpm_share": 0.958,
+              "n_cells": 10900
+            },
+            {
+              "cell_group": "Epi_other",
+              "pct_expressing": 33.3,
+              "mean_lognorm": 0.555,
+              "share_of_tumor_transcripts": 0.001,
+              "cpm_share": null,
+              "n_cells": 18
+            }
+          ],
+          "tumor_vs_pt": {
+            "log2fc": 7.739,
+            "padj": 0.0189,
+            "n_donors": 6
+          },
+          "method": "summary of sc_celltype_expression (tumour compartment) and sc_tumor_vs_pt for this gene"
+        }
+      }
+    ],
+    "mutation": "transcript shares withheld; expressing-cell percentages retained",
+    "normalized_evidence": [
+      {
+        "kind": "RCC",
+        "share": null,
+        "pct_expressing": 54.7,
+        "id": "case05v2:e1"
+      },
+      {
+        "kind": "Epi_other",
+        "share": null,
+        "pct_expressing": 33.3,
+        "id": "case05v2:e2"
+      },
+      {
+        "id": "case05v2:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  "case06v0": {
+    "gene": "COL23A1",
+    "sources": [
+      {
+        "id": "EV:sc_summary:e1532aa1b09c",
+        "type": "sc_summary",
+        "source": "DATASET:LI2022-SCRNA",
+        "props": {
+          "gene": "COL23A1",
+          "tissue": "tumor",
+          "groups": [
+            {
+              "cell_group": "RCC",
+              "pct_expressing": 17.1,
+              "mean_lognorm": 0.279,
+              "share_of_tumor_transcripts": 0.881,
+              "cpm_share": 0.65,
+              "n_cells": 10900
+            },
+            {
+              "cell_group": "NK",
+              "pct_expressing": 0.7,
+              "mean_lognorm": 0.01,
+              "share_of_tumor_transcripts": 0.055,
+              "cpm_share": 0.039,
+              "n_cells": 18526
+            },
+            {
+              "cell_group": "Epi_other",
+              "pct_expressing": 27.8,
+              "mean_lognorm": 0.515,
+              "share_of_tumor_transcripts": 0.003,
+              "cpm_share": null,
+              "n_cells": 18
+            }
+          ],
+          "tumor_vs_pt": {
+            "log2fc": 5.366,
+            "padj": 0.0193,
+            "n_donors": 6
+          },
+          "method": "summary of sc_celltype_expression (tumour compartment) and sc_tumor_vs_pt for this gene"
+        }
+      }
+    ],
+    "mutation": "none; normalized real record projection",
+    "normalized_evidence": [
+      {
+        "kind": "RCC",
+        "share": 0.881,
+        "pct_expressing": 17.1,
+        "id": "case06v0:e1"
+      },
+      {
+        "kind": "NK",
+        "share": 0.055,
+        "pct_expressing": 0.7,
+        "id": "case06v0:e2"
+      },
+      {
+        "kind": "Epi_other",
+        "share": 0.003,
+        "pct_expressing": 27.8,
+        "id": "case06v0:e3"
+      },
+      {
+        "id": "case06v0:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  "case06v1": {
+    "gene": "COL23A1",
+    "sources": [
+      {
+        "id": "EV:sc_summary:e1532aa1b09c",
+        "type": "sc_summary",
+        "source": "DATASET:LI2022-SCRNA",
+        "props": {
+          "gene": "COL23A1",
+          "tissue": "tumor",
+          "groups": [
+            {
+              "cell_group": "RCC",
+              "pct_expressing": 17.1,
+              "mean_lognorm": 0.279,
+              "share_of_tumor_transcripts": 0.881,
+              "cpm_share": 0.65,
+              "n_cells": 10900
+            },
+            {
+              "cell_group": "NK",
+              "pct_expressing": 0.7,
+              "mean_lognorm": 0.01,
+              "share_of_tumor_transcripts": 0.055,
+              "cpm_share": 0.039,
+              "n_cells": 18526
+            },
+            {
+              "cell_group": "Epi_other",
+              "pct_expressing": 27.8,
+              "mean_lognorm": 0.515,
+              "share_of_tumor_transcripts": 0.003,
+              "cpm_share": null,
+              "n_cells": 18
+            }
+          ],
+          "tumor_vs_pt": {
+            "log2fc": 5.366,
+            "padj": 0.0193,
+            "n_donors": 6
+          },
+          "method": "summary of sc_celltype_expression (tumour compartment) and sc_tumor_vs_pt for this gene"
+        }
+      }
+    ],
+    "mutation": "RCC and leading other group shares exchanged",
+    "normalized_evidence": [
+      {
+        "kind": "RCC",
+        "share": 0.055,
+        "pct_expressing": 17.1,
+        "id": "case06v1:e1"
+      },
+      {
+        "kind": "NK",
+        "share": 0.881,
+        "pct_expressing": 0.7,
+        "id": "case06v1:e2"
+      },
+      {
+        "kind": "Epi_other",
+        "share": 0.003,
+        "pct_expressing": 27.8,
+        "id": "case06v1:e3"
+      },
+      {
+        "id": "case06v1:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  "case06v2": {
+    "gene": "COL23A1",
+    "sources": [
+      {
+        "id": "EV:sc_summary:e1532aa1b09c",
+        "type": "sc_summary",
+        "source": "DATASET:LI2022-SCRNA",
+        "props": {
+          "gene": "COL23A1",
+          "tissue": "tumor",
+          "groups": [
+            {
+              "cell_group": "RCC",
+              "pct_expressing": 17.1,
+              "mean_lognorm": 0.279,
+              "share_of_tumor_transcripts": 0.881,
+              "cpm_share": 0.65,
+              "n_cells": 10900
+            },
+            {
+              "cell_group": "NK",
+              "pct_expressing": 0.7,
+              "mean_lognorm": 0.01,
+              "share_of_tumor_transcripts": 0.055,
+              "cpm_share": 0.039,
+              "n_cells": 18526
+            },
+            {
+              "cell_group": "Epi_other",
+              "pct_expressing": 27.8,
+              "mean_lognorm": 0.515,
+              "share_of_tumor_transcripts": 0.003,
+              "cpm_share": null,
+              "n_cells": 18
+            }
+          ],
+          "tumor_vs_pt": {
+            "log2fc": 5.366,
+            "padj": 0.0193,
+            "n_donors": 6
+          },
+          "method": "summary of sc_celltype_expression (tumour compartment) and sc_tumor_vs_pt for this gene"
+        }
+      }
+    ],
+    "mutation": "transcript shares withheld; expressing-cell percentages retained",
+    "normalized_evidence": [
+      {
+        "kind": "RCC",
+        "share": null,
+        "pct_expressing": 17.1,
+        "id": "case06v2:e1"
+      },
+      {
+        "kind": "NK",
+        "share": null,
+        "pct_expressing": 0.7,
+        "id": "case06v2:e2"
+      },
+      {
+        "kind": "Epi_other",
+        "share": null,
+        "pct_expressing": 27.8,
+        "id": "case06v2:e3"
+      },
+      {
+        "id": "case06v2:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  "case07v0": {
+    "gene": "CA9",
+    "sources": [
+      {
+        "id": "EV:adc_profile:225a767ebcb5",
+        "type": "adc_profile",
+        "source": "UniProt topology, Human Protein Atlas staining and scRNA homogeneity",
+        "props": {
+          "gene": "CA9",
+          "suitability": 0.647,
+          "rank": 16,
+          "of": 2017,
+          "surface_score": 1.0,
+          "transmembrane_segments": 1,
+          "extracellular_residues": 377,
+          "protein_log2fc": 2.269,
+          "rna_log2fc": 6.312,
+          "vital_organ_staining_level": 3.0,
+          "vital_organ_tissue": "Stomach",
+          "kidney_staining_level": 0.0,
+          "staining_data_available": true,
+          "tumour_cells_expressing_pct_weakest_quarter_of_donors": 24.3,
+          "tumour_cells_expressing_pct_median_donor": 53.3,
+          "known_adc_or_radioligand_target": true,
+          "surface_call": "surface",
+          "surface_evidence": "UniProt: Cell membrane; Cell projection, microvillus membrane; Nucleus; Nucleus, nucleolus | SURFY: not classified | CSPA: not observed",
+          "observed_at_cell_surface_cspa": false,
+          "vital_organ_protein_ts_max": 5.19,
+          "vital_organ_protein_ts_tissue": "Stomach",
+          "vital_organ_protein_enriched": true
+        }
+      }
+    ],
+    "mutation": "none; normalized real record projection",
+    "normalized_evidence": [
+      {
+        "kind": "topology",
+        "surface_score": 1.0,
+        "id": "case07v0:e1"
+      },
+      {
+        "kind": "normal_tissue",
+        "available": true,
+        "staining": 3.0,
+        "id": "case07v0:e2"
+      },
+      {
+        "id": "case07v0:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  "case07v1": {
+    "gene": "CA9",
+    "sources": [
+      {
+        "id": "EV:adc_profile:225a767ebcb5",
+        "type": "adc_profile",
+        "source": "UniProt topology, Human Protein Atlas staining and scRNA homogeneity",
+        "props": {
+          "gene": "CA9",
+          "suitability": 0.647,
+          "rank": 16,
+          "of": 2017,
+          "surface_score": 1.0,
+          "transmembrane_segments": 1,
+          "extracellular_residues": 377,
+          "protein_log2fc": 2.269,
+          "rna_log2fc": 6.312,
+          "vital_organ_staining_level": 3.0,
+          "vital_organ_tissue": "Stomach",
+          "kidney_staining_level": 0.0,
+          "staining_data_available": true,
+          "tumour_cells_expressing_pct_weakest_quarter_of_donors": 24.3,
+          "tumour_cells_expressing_pct_median_donor": 53.3,
+          "known_adc_or_radioligand_target": true,
+          "surface_call": "surface",
+          "surface_evidence": "UniProt: Cell membrane; Cell projection, microvillus membrane; Nucleus; Nucleus, nucleolus | SURFY: not classified | CSPA: not observed",
+          "observed_at_cell_surface_cspa": false,
+          "vital_organ_protein_ts_max": 5.19,
+          "vital_organ_protein_ts_tissue": "Stomach",
+          "vital_organ_protein_enriched": true
+        }
+      }
+    ],
+    "mutation": "surface score .9 and observed vital-organ staining 3",
+    "normalized_evidence": [
+      {
+        "kind": "topology",
+        "surface_score": 0.9,
+        "id": "case07v1:e1"
+      },
+      {
+        "kind": "normal_tissue",
+        "available": true,
+        "staining": 3,
+        "id": "case07v1:e2"
+      },
+      {
+        "id": "case07v1:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  "case07v2": {
+    "gene": "CA9",
+    "sources": [
+      {
+        "id": "EV:adc_profile:225a767ebcb5",
+        "type": "adc_profile",
+        "source": "UniProt topology, Human Protein Atlas staining and scRNA homogeneity",
+        "props": {
+          "gene": "CA9",
+          "suitability": 0.647,
+          "rank": 16,
+          "of": 2017,
+          "surface_score": 1.0,
+          "transmembrane_segments": 1,
+          "extracellular_residues": 377,
+          "protein_log2fc": 2.269,
+          "rna_log2fc": 6.312,
+          "vital_organ_staining_level": 3.0,
+          "vital_organ_tissue": "Stomach",
+          "kidney_staining_level": 0.0,
+          "staining_data_available": true,
+          "tumour_cells_expressing_pct_weakest_quarter_of_donors": 24.3,
+          "tumour_cells_expressing_pct_median_donor": 53.3,
+          "known_adc_or_radioligand_target": true,
+          "surface_call": "surface",
+          "surface_evidence": "UniProt: Cell membrane; Cell projection, microvillus membrane; Nucleus; Nucleus, nucleolus | SURFY: not classified | CSPA: not observed",
+          "observed_at_cell_surface_cspa": false,
+          "vital_organ_protein_ts_max": 5.19,
+          "vital_organ_protein_ts_tissue": "Stomach",
+          "vital_organ_protein_enriched": true
+        }
+      }
+    ],
+    "mutation": "surface score .9; staining withheld",
+    "normalized_evidence": [
+      {
+        "kind": "topology",
+        "surface_score": 0.9,
+        "id": "case07v2:e1"
+      },
+      {
+        "kind": "normal_tissue",
+        "available": false,
+        "staining": null,
+        "id": "case07v2:e2"
+      },
+      {
+        "id": "case07v2:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  "case08v0": {
+    "gene": "CD70",
+    "sources": [
+      {
+        "id": "EV:adc_profile:908e84663f6a",
+        "type": "adc_profile",
+        "source": "UniProt topology, Human Protein Atlas staining and scRNA homogeneity",
+        "props": {
+          "gene": "CD70",
+          "suitability": 0.746,
+          "rank": 3,
+          "of": 2017,
+          "surface_score": 1.0,
+          "transmembrane_segments": 1,
+          "extracellular_residues": 155,
+          "protein_log2fc": 2.421,
+          "rna_log2fc": 4.464,
+          "staining_data_available": false,
+          "tumour_cells_expressing_pct_weakest_quarter_of_donors": 17.7,
+          "tumour_cells_expressing_pct_median_donor": 41.2,
+          "known_adc_or_radioligand_target": true,
+          "surface_call": "surface",
+          "surface_evidence": "UniProt: Cell membrane | SURFY: surface | CSPA: 2 - putative",
+          "observed_at_cell_surface_cspa": false,
+          "vital_organ_protein_ts_max": 0.34,
+          "vital_organ_protein_ts_tissue": "Stomach",
+          "vital_organ_protein_enriched": false
+        }
+      }
+    ],
+    "mutation": "none; normalized real record projection",
+    "normalized_evidence": [
+      {
+        "kind": "topology",
+        "surface_score": 1.0,
+        "id": "case08v0:e1"
+      },
+      {
+        "kind": "normal_tissue",
+        "available": false,
+        "staining": null,
+        "id": "case08v0:e2"
+      },
+      {
+        "id": "case08v0:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  "case08v1": {
+    "gene": "CD70",
+    "sources": [
+      {
+        "id": "EV:adc_profile:908e84663f6a",
+        "type": "adc_profile",
+        "source": "UniProt topology, Human Protein Atlas staining and scRNA homogeneity",
+        "props": {
+          "gene": "CD70",
+          "suitability": 0.746,
+          "rank": 3,
+          "of": 2017,
+          "surface_score": 1.0,
+          "transmembrane_segments": 1,
+          "extracellular_residues": 155,
+          "protein_log2fc": 2.421,
+          "rna_log2fc": 4.464,
+          "staining_data_available": false,
+          "tumour_cells_expressing_pct_weakest_quarter_of_donors": 17.7,
+          "tumour_cells_expressing_pct_median_donor": 41.2,
+          "known_adc_or_radioligand_target": true,
+          "surface_call": "surface",
+          "surface_evidence": "UniProt: Cell membrane | SURFY: surface | CSPA: 2 - putative",
+          "observed_at_cell_surface_cspa": false,
+          "vital_organ_protein_ts_max": 0.34,
+          "vital_organ_protein_ts_tissue": "Stomach",
+          "vital_organ_protein_enriched": false
+        }
+      }
+    ],
+    "mutation": "surface score .9 and observed vital-organ staining 3",
+    "normalized_evidence": [
+      {
+        "kind": "topology",
+        "surface_score": 0.9,
+        "id": "case08v1:e1"
+      },
+      {
+        "kind": "normal_tissue",
+        "available": true,
+        "staining": 3,
+        "id": "case08v1:e2"
+      },
+      {
+        "id": "case08v1:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  "case08v2": {
+    "gene": "CD70",
+    "sources": [
+      {
+        "id": "EV:adc_profile:908e84663f6a",
+        "type": "adc_profile",
+        "source": "UniProt topology, Human Protein Atlas staining and scRNA homogeneity",
+        "props": {
+          "gene": "CD70",
+          "suitability": 0.746,
+          "rank": 3,
+          "of": 2017,
+          "surface_score": 1.0,
+          "transmembrane_segments": 1,
+          "extracellular_residues": 155,
+          "protein_log2fc": 2.421,
+          "rna_log2fc": 4.464,
+          "staining_data_available": false,
+          "tumour_cells_expressing_pct_weakest_quarter_of_donors": 17.7,
+          "tumour_cells_expressing_pct_median_donor": 41.2,
+          "known_adc_or_radioligand_target": true,
+          "surface_call": "surface",
+          "surface_evidence": "UniProt: Cell membrane | SURFY: surface | CSPA: 2 - putative",
+          "observed_at_cell_surface_cspa": false,
+          "vital_organ_protein_ts_max": 0.34,
+          "vital_organ_protein_ts_tissue": "Stomach",
+          "vital_organ_protein_enriched": false
+        }
+      }
+    ],
+    "mutation": "surface score .9; staining withheld",
+    "normalized_evidence": [
+      {
+        "kind": "topology",
+        "surface_score": 0.9,
+        "id": "case08v2:e1"
+      },
+      {
+        "kind": "normal_tissue",
+        "available": false,
+        "staining": null,
+        "id": "case08v2:e2"
+      },
+      {
+        "id": "case08v2:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  "case09v0": {
+    "gene": "SULF1",
+    "sources": [
+      {
+        "id": "EV:treatment_response:93e02f0d8833",
+        "type": "treatment_response",
+        "source": "IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub)",
+        "props": {
+          "gene": "SULF1",
+          "arms": {
+            "nivolumab_choueiri2016": {
+              "log_hr_per_sd": -0.28,
+              "padj": 0.839,
+              "n": 16,
+              "direction": "longer benefit with higher expression",
+              "response_auc": 0.615
+            },
+            "nivolumab_checkmate025": {
+              "log_hr_per_sd": -0.014,
+              "padj": 0.984,
+              "n": 120,
+              "direction": "longer benefit with higher expression",
+              "response_auc": 0.626
+            },
+            "everolimus_checkmate025": {
+              "log_hr_per_sd": 0.014,
+              "padj": 0.987,
+              "n": 130,
+              "direction": "earlier progression with higher expression",
+              "response_auc": 0.702
+            },
+            "difference_nivolumab_vs_everolimus": {
+              "log_hr_per_sd": -0.028,
+              "padj": 0.999,
+              "n": 250,
+              "direction": "longer benefit with higher expression"
+            }
+          },
+          "tested_genes": 21609,
+          "caution": "no gene differs between arms after correction",
+          "caution_checkmate025": "no gene differs between nivolumab and everolimus after correction"
+        }
+      }
+    ],
+    "mutation": "none; normalized real record projection",
+    "normalized_evidence": [
+      {
+        "kind": "difference_nivolumab_vs_everolimus",
+        "q": 0.999,
+        "log_hr": -0.028,
+        "id": "case09v0:e1"
+      },
+      {
+        "kind": "within_arm",
+        "q": 0.839,
+        "id": "case09v0:e2"
+      },
+      {
+        "id": "case09v0:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  "case09v1": {
+    "gene": "SULF1",
+    "sources": [
+      {
+        "id": "EV:treatment_response:93e02f0d8833",
+        "type": "treatment_response",
+        "source": "IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub)",
+        "props": {
+          "gene": "SULF1",
+          "arms": {
+            "nivolumab_choueiri2016": {
+              "log_hr_per_sd": -0.28,
+              "padj": 0.839,
+              "n": 16,
+              "direction": "longer benefit with higher expression",
+              "response_auc": 0.615
+            },
+            "nivolumab_checkmate025": {
+              "log_hr_per_sd": -0.014,
+              "padj": 0.984,
+              "n": 120,
+              "direction": "longer benefit with higher expression",
+              "response_auc": 0.626
+            },
+            "everolimus_checkmate025": {
+              "log_hr_per_sd": 0.014,
+              "padj": 0.987,
+              "n": 130,
+              "direction": "earlier progression with higher expression",
+              "response_auc": 0.702
+            },
+            "difference_nivolumab_vs_everolimus": {
+              "log_hr_per_sd": -0.028,
+              "padj": 0.999,
+              "n": 250,
+              "direction": "longer benefit with higher expression"
+            }
+          },
+          "tested_genes": 21609,
+          "caution": "no gene differs between arms after correction",
+          "caution_checkmate025": "no gene differs between nivolumab and everolimus after correction"
+        }
+      }
+    ],
+    "mutation": "interaction q set to .001; synthetic, not a clinical finding",
+    "normalized_evidence": [
+      {
+        "kind": "difference_nivolumab_vs_everolimus",
+        "q": 0.001,
+        "log_hr": -0.028,
+        "id": "case09v1:e1"
+      },
+      {
+        "kind": "within_arm",
+        "q": 0.839,
+        "id": "case09v1:e2"
+      },
+      {
+        "id": "case09v1:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  "case09v2": {
+    "gene": "SULF1",
+    "sources": [
+      {
+        "id": "EV:treatment_response:93e02f0d8833",
+        "type": "treatment_response",
+        "source": "IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub)",
+        "props": {
+          "gene": "SULF1",
+          "arms": {
+            "nivolumab_choueiri2016": {
+              "log_hr_per_sd": -0.28,
+              "padj": 0.839,
+              "n": 16,
+              "direction": "longer benefit with higher expression",
+              "response_auc": 0.615
+            },
+            "nivolumab_checkmate025": {
+              "log_hr_per_sd": -0.014,
+              "padj": 0.984,
+              "n": 120,
+              "direction": "longer benefit with higher expression",
+              "response_auc": 0.626
+            },
+            "everolimus_checkmate025": {
+              "log_hr_per_sd": 0.014,
+              "padj": 0.987,
+              "n": 130,
+              "direction": "earlier progression with higher expression",
+              "response_auc": 0.702
+            },
+            "difference_nivolumab_vs_everolimus": {
+              "log_hr_per_sd": -0.028,
+              "padj": 0.999,
+              "n": 250,
+              "direction": "longer benefit with higher expression"
+            }
+          },
+          "tested_genes": 21609,
+          "caution": "no gene differs between arms after correction",
+          "caution_checkmate025": "no gene differs between nivolumab and everolimus after correction"
+        }
+      }
+    ],
+    "mutation": "interaction withheld; significant within-arm association added",
+    "normalized_evidence": [
+      {
+        "kind": "difference_nivolumab_vs_everolimus",
+        "q": null,
+        "log_hr": -0.028,
+        "id": "case09v2:e1"
+      },
+      {
+        "kind": "within_arm",
+        "q": 0.001,
+        "id": "case09v2:e2"
+      },
+      {
+        "id": "case09v2:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  "case10v0": {
+    "gene": "CA9",
+    "sources": [
+      {
+        "id": "EV:treatment_response:225a767ebcb5",
+        "type": "treatment_response",
+        "source": "IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub)",
+        "props": {
+          "gene": "CA9",
+          "arms": {
+            "atezolizumab_bevacizumab": {
+              "log_hr_per_sd": -0.112,
+              "padj": 0.666,
+              "n": 88,
+              "direction": "longer benefit with higher expression",
+              "response_auc": 0.615
+            },
+            "sunitinib": {
+              "log_hr_per_sd": -0.336,
+              "padj": 0.332,
+              "n": 89,
+              "direction": "longer benefit with higher expression",
+              "response_auc": 0.59
+            },
+            "atezolizumab": {
+              "log_hr_per_sd": -0.212,
+              "padj": 0.681,
+              "n": 86,
+              "direction": "longer benefit with higher expression",
+              "response_auc": 0.585
+            },
+            "difference_between_arms": {
+              "log_hr_per_sd": 0.119,
+              "padj": 0.917,
+              "n": 177,
+              "direction": "earlier progression with higher expression"
+            },
+            "nivolumab_choueiri2016": {
+              "log_hr_per_sd": -0.195,
+              "padj": 0.874,
+              "n": 16,
+              "direction": "longer benefit with higher expression",
+              "response_auc": 0.692
+            },
+            "nivolumab_checkmate025": {
+              "log_hr_per_sd": 0.057,
+              "padj": 0.922,
+              "n": 120,
+              "direction": "earlier progression with higher expression",
+              "response_auc": 0.548
+            },
+            "everolimus_checkmate025": {
+              "log_hr_per_sd": -0.063,
+              "padj": 0.961,
+              "n": 130,
+              "direction": "longer benefit with higher expression",
+              "response_auc": 0.498
+            },
+            "difference_nivolumab_vs_everolimus": {
+              "log_hr_per_sd": 0.12,
+              "padj": 0.999,
+              "n": 250,
+              "direction": "earlier progression with higher expression"
+            }
+          },
+          "tested_genes": 21609,
+          "caution": "no gene differs between arms after correction",
+          "caution_checkmate025": "no gene differs between nivolumab and everolimus after correction"
+        }
+      }
+    ],
+    "mutation": "none; normalized real record projection",
+    "normalized_evidence": [
+      {
+        "kind": "difference_between_arms",
+        "q": 0.917,
+        "log_hr": 0.119,
+        "id": "case10v0:e1"
+      },
+      {
+        "kind": "within_arm",
+        "q": 0.666,
+        "id": "case10v0:e2"
+      },
+      {
+        "id": "case10v0:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  "case10v1": {
+    "gene": "CA9",
+    "sources": [
+      {
+        "id": "EV:treatment_response:225a767ebcb5",
+        "type": "treatment_response",
+        "source": "IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub)",
+        "props": {
+          "gene": "CA9",
+          "arms": {
+            "atezolizumab_bevacizumab": {
+              "log_hr_per_sd": -0.112,
+              "padj": 0.666,
+              "n": 88,
+              "direction": "longer benefit with higher expression",
+              "response_auc": 0.615
+            },
+            "sunitinib": {
+              "log_hr_per_sd": -0.336,
+              "padj": 0.332,
+              "n": 89,
+              "direction": "longer benefit with higher expression",
+              "response_auc": 0.59
+            },
+            "atezolizumab": {
+              "log_hr_per_sd": -0.212,
+              "padj": 0.681,
+              "n": 86,
+              "direction": "longer benefit with higher expression",
+              "response_auc": 0.585
+            },
+            "difference_between_arms": {
+              "log_hr_per_sd": 0.119,
+              "padj": 0.917,
+              "n": 177,
+              "direction": "earlier progression with higher expression"
+            },
+            "nivolumab_choueiri2016": {
+              "log_hr_per_sd": -0.195,
+              "padj": 0.874,
+              "n": 16,
+              "direction": "longer benefit with higher expression",
+              "response_auc": 0.692
+            },
+            "nivolumab_checkmate025": {
+              "log_hr_per_sd": 0.057,
+              "padj": 0.922,
+              "n": 120,
+              "direction": "earlier progression with higher expression",
+              "response_auc": 0.548
+            },
+            "everolimus_checkmate025": {
+              "log_hr_per_sd": -0.063,
+              "padj": 0.961,
+              "n": 130,
+              "direction": "longer benefit with higher expression",
+              "response_auc": 0.498
+            },
+            "difference_nivolumab_vs_everolimus": {
+              "log_hr_per_sd": 0.12,
+              "padj": 0.999,
+              "n": 250,
+              "direction": "earlier progression with higher expression"
+            }
+          },
+          "tested_genes": 21609,
+          "caution": "no gene differs between arms after correction",
+          "caution_checkmate025": "no gene differs between nivolumab and everolimus after correction"
+        }
+      }
+    ],
+    "mutation": "interaction q set to .001; synthetic, not a clinical finding",
+    "normalized_evidence": [
+      {
+        "kind": "difference_between_arms",
+        "q": 0.001,
+        "log_hr": 0.119,
+        "id": "case10v1:e1"
+      },
+      {
+        "kind": "within_arm",
+        "q": 0.666,
+        "id": "case10v1:e2"
+      },
+      {
+        "id": "case10v1:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  "case10v2": {
+    "gene": "CA9",
+    "sources": [
+      {
+        "id": "EV:treatment_response:225a767ebcb5",
+        "type": "treatment_response",
+        "source": "IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub)",
+        "props": {
+          "gene": "CA9",
+          "arms": {
+            "atezolizumab_bevacizumab": {
+              "log_hr_per_sd": -0.112,
+              "padj": 0.666,
+              "n": 88,
+              "direction": "longer benefit with higher expression",
+              "response_auc": 0.615
+            },
+            "sunitinib": {
+              "log_hr_per_sd": -0.336,
+              "padj": 0.332,
+              "n": 89,
+              "direction": "longer benefit with higher expression",
+              "response_auc": 0.59
+            },
+            "atezolizumab": {
+              "log_hr_per_sd": -0.212,
+              "padj": 0.681,
+              "n": 86,
+              "direction": "longer benefit with higher expression",
+              "response_auc": 0.585
+            },
+            "difference_between_arms": {
+              "log_hr_per_sd": 0.119,
+              "padj": 0.917,
+              "n": 177,
+              "direction": "earlier progression with higher expression"
+            },
+            "nivolumab_choueiri2016": {
+              "log_hr_per_sd": -0.195,
+              "padj": 0.874,
+              "n": 16,
+              "direction": "longer benefit with higher expression",
+              "response_auc": 0.692
+            },
+            "nivolumab_checkmate025": {
+              "log_hr_per_sd": 0.057,
+              "padj": 0.922,
+              "n": 120,
+              "direction": "earlier progression with higher expression",
+              "response_auc": 0.548
+            },
+            "everolimus_checkmate025": {
+              "log_hr_per_sd": -0.063,
+              "padj": 0.961,
+              "n": 130,
+              "direction": "longer benefit with higher expression",
+              "response_auc": 0.498
+            },
+            "difference_nivolumab_vs_everolimus": {
+              "log_hr_per_sd": 0.12,
+              "padj": 0.999,
+              "n": 250,
+              "direction": "earlier progression with higher expression"
+            }
+          },
+          "tested_genes": 21609,
+          "caution": "no gene differs between arms after correction",
+          "caution_checkmate025": "no gene differs between nivolumab and everolimus after correction"
+        }
+      }
+    ],
+    "mutation": "interaction withheld; significant within-arm association added",
+    "normalized_evidence": [
+      {
+        "kind": "difference_between_arms",
+        "q": null,
+        "log_hr": 0.119,
+        "id": "case10v2:e1"
+      },
+      {
+        "kind": "within_arm",
+        "q": 0.001,
+        "id": "case10v2:e2"
+      },
+      {
+        "id": "case10v2:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  "case11v0": {
+    "gene": "CA9",
+    "sources": [
+      {
+        "id": "EV:structural_context:cacfae1940f6",
+        "type": "structural_context",
+        "source": "DATASET:ALPHAFOLD-DB",
+        "props": {
+          "gene": "CA9",
+          "accession": "Q16790",
+          "cavity": "KAA",
+          "rank": 1,
+          "volume_a3": 126.8,
+          "area_a2": 123.9,
+          "max_depth_a": 2.55,
+          "avg_hydropathy": 0.42,
+          "mean_plddt": 90.3,
+          "n_residues": 20,
+          "residues": [
+            137,
+            138,
+            140,
+            141,
+            142,
+            143,
+            146,
+            147,
+            199,
+            200,
+            364,
+            365,
+            366,
+            367,
+            369,
+            370,
+            371,
+            372,
+            373,
+            374
+          ],
+          "accessible_lysines": [
+            109
+          ],
+          "n_accessible_lysines": 1,
+          "exposed_loop_run": 5,
+          "components": {
+            "confidence": 1.0,
+            "geometry": 0.216,
+            "lysines": 0.125,
+            "exposed_loop": 1.0
+          },
+          "structural_context_score": 0.546,
+          "method": "pyKVFinder cavity detection on the pLDDT-trimmed AlphaFold model; Descriptive monomer heuristic = weighted confidence, geometry, nearby lysines and exposed loops (config.yaml); no degron or degradation prediction"
+        }
+      }
+    ],
+    "mutation": "none; normalized real record projection",
+    "normalized_evidence": [
+      {
+        "kind": "predicted_monomer",
+        "pocket_volume": 126.8,
+        "mean_plddt": 90.3,
+        "id": "case11v0:e1"
+      },
+      {
+        "kind": "degradation_assay",
+        "measured": false,
+        "positive": null,
+        "id": "case11v0:e2"
+      },
+      {
+        "id": "case11v0:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  "case11v1": {
+    "gene": "CA9",
+    "sources": [
+      {
+        "id": "EV:structural_context:cacfae1940f6",
+        "type": "structural_context",
+        "source": "DATASET:ALPHAFOLD-DB",
+        "props": {
+          "gene": "CA9",
+          "accession": "Q16790",
+          "cavity": "KAA",
+          "rank": 1,
+          "volume_a3": 126.8,
+          "area_a2": 123.9,
+          "max_depth_a": 2.55,
+          "avg_hydropathy": 0.42,
+          "mean_plddt": 90.3,
+          "n_residues": 20,
+          "residues": [
+            137,
+            138,
+            140,
+            141,
+            142,
+            143,
+            146,
+            147,
+            199,
+            200,
+            364,
+            365,
+            366,
+            367,
+            369,
+            370,
+            371,
+            372,
+            373,
+            374
+          ],
+          "accessible_lysines": [
+            109
+          ],
+          "n_accessible_lysines": 1,
+          "exposed_loop_run": 5,
+          "components": {
+            "confidence": 1.0,
+            "geometry": 0.216,
+            "lysines": 0.125,
+            "exposed_loop": 1.0
+          },
+          "structural_context_score": 0.546,
+          "method": "pyKVFinder cavity detection on the pLDDT-trimmed AlphaFold model; Descriptive monomer heuristic = weighted confidence, geometry, nearby lysines and exposed loops (config.yaml); no degron or degradation prediction"
+        }
+      }
+    ],
+    "mutation": "synthetic positive degradation assay; not a real experiment",
+    "normalized_evidence": [
+      {
+        "kind": "predicted_monomer",
+        "pocket_volume": 126.8,
+        "mean_plddt": 90.3,
+        "id": "case11v1:e1"
+      },
+      {
+        "kind": "degradation_assay",
+        "measured": true,
+        "positive": true,
+        "id": "case11v1:e2"
+      },
+      {
+        "id": "case11v1:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  "case11v2": {
+    "gene": "CA9",
+    "sources": [
+      {
+        "id": "EV:structural_context:cacfae1940f6",
+        "type": "structural_context",
+        "source": "DATASET:ALPHAFOLD-DB",
+        "props": {
+          "gene": "CA9",
+          "accession": "Q16790",
+          "cavity": "KAA",
+          "rank": 1,
+          "volume_a3": 126.8,
+          "area_a2": 123.9,
+          "max_depth_a": 2.55,
+          "avg_hydropathy": 0.42,
+          "mean_plddt": 90.3,
+          "n_residues": 20,
+          "residues": [
+            137,
+            138,
+            140,
+            141,
+            142,
+            143,
+            146,
+            147,
+            199,
+            200,
+            364,
+            365,
+            366,
+            367,
+            369,
+            370,
+            371,
+            372,
+            373,
+            374
+          ],
+          "accessible_lysines": [
+            109
+          ],
+          "n_accessible_lysines": 1,
+          "exposed_loop_run": 5,
+          "components": {
+            "confidence": 1.0,
+            "geometry": 0.216,
+            "lysines": 0.125,
+            "exposed_loop": 1.0
+          },
+          "structural_context_score": 0.546,
+          "method": "pyKVFinder cavity detection on the pLDDT-trimmed AlphaFold model; Descriptive monomer heuristic = weighted confidence, geometry, nearby lysines and exposed loops (config.yaml); no degron or degradation prediction"
+        }
+      }
+    ],
+    "mutation": "synthetic negative degradation assay; not a real experiment",
+    "normalized_evidence": [
+      {
+        "kind": "predicted_monomer",
+        "pocket_volume": 126.8,
+        "mean_plddt": 90.3,
+        "id": "case11v2:e1"
+      },
+      {
+        "kind": "degradation_assay",
+        "measured": true,
+        "positive": false,
+        "id": "case11v2:e2"
+      },
+      {
+        "id": "case11v2:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  "case12v0": {
+    "gene": "EPAS1",
+    "sources": [
+      {
+        "id": "EV:structural_context:64fb28deaeab",
+        "type": "structural_context",
+        "source": "DATASET:ALPHAFOLD-DB",
+        "props": {
+          "gene": "EPAS1",
+          "accession": "Q99814",
+          "cavity": "KAJ",
+          "rank": 1,
+          "volume_a3": 408.2,
+          "area_a2": 283.8,
+          "max_depth_a": 4.24,
+          "avg_hydropathy": 0.31,
+          "mean_plddt": 90.7,
+          "n_residues": 26,
+          "residues": [
+            96,
+            117,
+            118,
+            119,
+            174,
+            176,
+            177,
+            178,
+            179,
+            189,
+            190,
+            191,
+            192,
+            228,
+            229,
+            230,
+            231,
+            234,
+            236,
+            299,
+            300,
+            301,
+            324,
+            325,
+            326,
+            327
+          ],
+          "accessible_lysines": [
+            93,
+            117,
+            186
+          ],
+          "n_accessible_lysines": 3,
+          "exposed_loop_run": 5,
+          "components": {
+            "confidence": 1.0,
+            "geometry": 0.424,
+            "lysines": 0.375,
+            "exposed_loop": 1.0
+          },
+          "structural_context_score": 0.6709,
+          "method": "pyKVFinder cavity detection on the pLDDT-trimmed AlphaFold model; Descriptive monomer heuristic = weighted confidence, geometry, nearby lysines and exposed loops (config.yaml); no degron or degradation prediction"
+        }
+      }
+    ],
+    "mutation": "none; normalized real record projection",
+    "normalized_evidence": [
+      {
+        "kind": "predicted_monomer",
+        "pocket_volume": 408.2,
+        "mean_plddt": 90.7,
+        "id": "case12v0:e1"
+      },
+      {
+        "kind": "degradation_assay",
+        "measured": false,
+        "positive": null,
+        "id": "case12v0:e2"
+      },
+      {
+        "id": "case12v0:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  "case12v1": {
+    "gene": "EPAS1",
+    "sources": [
+      {
+        "id": "EV:structural_context:64fb28deaeab",
+        "type": "structural_context",
+        "source": "DATASET:ALPHAFOLD-DB",
+        "props": {
+          "gene": "EPAS1",
+          "accession": "Q99814",
+          "cavity": "KAJ",
+          "rank": 1,
+          "volume_a3": 408.2,
+          "area_a2": 283.8,
+          "max_depth_a": 4.24,
+          "avg_hydropathy": 0.31,
+          "mean_plddt": 90.7,
+          "n_residues": 26,
+          "residues": [
+            96,
+            117,
+            118,
+            119,
+            174,
+            176,
+            177,
+            178,
+            179,
+            189,
+            190,
+            191,
+            192,
+            228,
+            229,
+            230,
+            231,
+            234,
+            236,
+            299,
+            300,
+            301,
+            324,
+            325,
+            326,
+            327
+          ],
+          "accessible_lysines": [
+            93,
+            117,
+            186
+          ],
+          "n_accessible_lysines": 3,
+          "exposed_loop_run": 5,
+          "components": {
+            "confidence": 1.0,
+            "geometry": 0.424,
+            "lysines": 0.375,
+            "exposed_loop": 1.0
+          },
+          "structural_context_score": 0.6709,
+          "method": "pyKVFinder cavity detection on the pLDDT-trimmed AlphaFold model; Descriptive monomer heuristic = weighted confidence, geometry, nearby lysines and exposed loops (config.yaml); no degron or degradation prediction"
+        }
+      }
+    ],
+    "mutation": "synthetic positive degradation assay; not a real experiment",
+    "normalized_evidence": [
+      {
+        "kind": "predicted_monomer",
+        "pocket_volume": 408.2,
+        "mean_plddt": 90.7,
+        "id": "case12v1:e1"
+      },
+      {
+        "kind": "degradation_assay",
+        "measured": true,
+        "positive": true,
+        "id": "case12v1:e2"
+      },
+      {
+        "id": "case12v1:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  "case12v2": {
+    "gene": "EPAS1",
+    "sources": [
+      {
+        "id": "EV:structural_context:64fb28deaeab",
+        "type": "structural_context",
+        "source": "DATASET:ALPHAFOLD-DB",
+        "props": {
+          "gene": "EPAS1",
+          "accession": "Q99814",
+          "cavity": "KAJ",
+          "rank": 1,
+          "volume_a3": 408.2,
+          "area_a2": 283.8,
+          "max_depth_a": 4.24,
+          "avg_hydropathy": 0.31,
+          "mean_plddt": 90.7,
+          "n_residues": 26,
+          "residues": [
+            96,
+            117,
+            118,
+            119,
+            174,
+            176,
+            177,
+            178,
+            179,
+            189,
+            190,
+            191,
+            192,
+            228,
+            229,
+            230,
+            231,
+            234,
+            236,
+            299,
+            300,
+            301,
+            324,
+            325,
+            326,
+            327
+          ],
+          "accessible_lysines": [
+            93,
+            117,
+            186
+          ],
+          "n_accessible_lysines": 3,
+          "exposed_loop_run": 5,
+          "components": {
+            "confidence": 1.0,
+            "geometry": 0.424,
+            "lysines": 0.375,
+            "exposed_loop": 1.0
+          },
+          "structural_context_score": 0.6709,
+          "method": "pyKVFinder cavity detection on the pLDDT-trimmed AlphaFold model; Descriptive monomer heuristic = weighted confidence, geometry, nearby lysines and exposed loops (config.yaml); no degron or degradation prediction"
+        }
+      }
+    ],
+    "mutation": "synthetic negative degradation assay; not a real experiment",
+    "normalized_evidence": [
+      {
+        "kind": "predicted_monomer",
+        "pocket_volume": 408.2,
+        "mean_plddt": 90.7,
+        "id": "case12v2:e1"
+      },
+      {
+        "kind": "degradation_assay",
+        "measured": true,
+        "positive": false,
+        "id": "case12v2:e2"
+      },
+      {
+        "id": "case12v2:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  }
+}

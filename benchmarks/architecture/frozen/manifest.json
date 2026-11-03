@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "source_db_sha256": "c800c66283406f2e8514109c7fc75674d70abb9129dd6c2ec53777bb49890e33",
+  "files": {
+    "cases.json": "66b026b2992a72bb253e79527240711c9f5065b3fd854863bff83ff3da3582c2",
+    "gold.json": "fc19c528f552024daf8180783f927607ef0fda367a3e2337539f0175f5b3ac92",
+    "provenance.json": "5138020a18f9337db33e4d7fa0e10f2bda0bd06334cd04def3c6325586eee799"
+  },
+  "n_cases": 36,
+  "n_base_cases": 12,
+  "split": "evaluation; never used for prompt tuning",
+  "scope": "closed-world, masked-gene interpretation; not therapeutic validity or end-to-end MCP retrieval"
+}

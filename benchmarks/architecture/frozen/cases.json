@@ -1,0 +1,980 @@
+[
+  {
+    "id": "case01v0",
+    "family": "replication",
+    "entity": "ENTITY_01",
+    "question": "Claim: the discovery protein change replicates in direction in the independent cohort. Require q<0.05 in both cohorts and matching nonzero signs. An opposite significant sign contradicts the claim; a nonsignificant or unavailable result is insufficient.",
+    "evidence": [
+      {
+        "kind": "discovery",
+        "fc": 2.709,
+        "q": 1.23e-43,
+        "id": "case01v0:e1"
+      },
+      {
+        "kind": "confirmation",
+        "fc": 4.776,
+        "q": 3.07e-46,
+        "id": "case01v0:e2"
+      },
+      {
+        "id": "case01v0:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  {
+    "id": "case01v1",
+    "family": "replication",
+    "entity": "ENTITY_01",
+    "question": "Claim: the discovery protein change replicates in direction in the independent cohort. Require q<0.05 in both cohorts and matching nonzero signs. An opposite significant sign contradicts the claim; a nonsignificant or unavailable result is insufficient.",
+    "evidence": [
+      {
+        "kind": "discovery",
+        "fc": 2.709,
+        "q": 1.23e-43,
+        "id": "case01v1:e1"
+      },
+      {
+        "kind": "confirmation",
+        "fc": -4.776,
+        "q": 3.07e-46,
+        "id": "case01v1:e2"
+      },
+      {
+        "id": "case01v1:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  {
+    "id": "case01v2",
+    "family": "replication",
+    "entity": "ENTITY_01",
+    "question": "Claim: the discovery protein change replicates in direction in the independent cohort. Require q<0.05 in both cohorts and matching nonzero signs. An opposite significant sign contradicts the claim; a nonsignificant or unavailable result is insufficient.",
+    "evidence": [
+      {
+        "kind": "discovery",
+        "fc": 2.709,
+        "q": 1.23e-43,
+        "id": "case01v2:e1"
+      },
+      {
+        "kind": "confirmation",
+        "fc": null,
+        "q": null,
+        "id": "case01v2:e2"
+      },
+      {
+        "id": "case01v2:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  {
+    "id": "case02v0",
+    "family": "replication",
+    "entity": "ENTITY_02",
+    "question": "Claim: the discovery protein change replicates in direction in the independent cohort. Require q<0.05 in both cohorts and matching nonzero signs. An opposite significant sign contradicts the claim; a nonsignificant or unavailable result is insufficient.",
+    "evidence": [
+      {
+        "kind": "discovery",
+        "fc": 2.279,
+        "q": 5.43e-47,
+        "id": "case02v0:e1"
+      },
+      {
+        "kind": "confirmation",
+        "fc": 3.551,
+        "q": 1.48e-20,
+        "id": "case02v0:e2"
+      },
+      {
+        "id": "case02v0:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  {
+    "id": "case02v1",
+    "family": "replication",
+    "entity": "ENTITY_02",
+    "question": "Claim: the discovery protein change replicates in direction in the independent cohort. Require q<0.05 in both cohorts and matching nonzero signs. An opposite significant sign contradicts the claim; a nonsignificant or unavailable result is insufficient.",
+    "evidence": [
+      {
+        "kind": "discovery",
+        "fc": 2.279,
+        "q": 5.43e-47,
+        "id": "case02v1:e1"
+      },
+      {
+        "kind": "confirmation",
+        "fc": -3.551,
+        "q": 1.48e-20,
+        "id": "case02v1:e2"
+      },
+      {
+        "id": "case02v1:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  {
+    "id": "case02v2",
+    "family": "replication",
+    "entity": "ENTITY_02",
+    "question": "Claim: the discovery protein change replicates in direction in the independent cohort. Require q<0.05 in both cohorts and matching nonzero signs. An opposite significant sign contradicts the claim; a nonsignificant or unavailable result is insufficient.",
+    "evidence": [
+      {
+        "kind": "discovery",
+        "fc": 2.279,
+        "q": 5.43e-47,
+        "id": "case02v2:e1"
+      },
+      {
+        "kind": "confirmation",
+        "fc": null,
+        "q": null,
+        "id": "case02v2:e2"
+      },
+      {
+        "id": "case02v2:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  {
+    "id": "case03v0",
+    "family": "multiomics",
+    "entity": "ENTITY_03",
+    "question": "Claim: both RNA and protein are significantly increased. Require positive log2 fold changes and q<0.05 in both layers. A significant decrease in either layer contradicts the claim; missing or nonsignificant measurements are insufficient.",
+    "evidence": [
+      {
+        "kind": "rna",
+        "fc": 6.3123,
+        "q": 1.72e-49,
+        "id": "case03v0:e1"
+      },
+      {
+        "kind": "protein",
+        "fc": 2.2686,
+        "q": 9.9e-43,
+        "id": "case03v0:e2"
+      },
+      {
+        "id": "case03v0:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  {
+    "id": "case03v1",
+    "family": "multiomics",
+    "entity": "ENTITY_03",
+    "question": "Claim: both RNA and protein are significantly increased. Require positive log2 fold changes and q<0.05 in both layers. A significant decrease in either layer contradicts the claim; missing or nonsignificant measurements are insufficient.",
+    "evidence": [
+      {
+        "kind": "rna",
+        "fc": 6.3123,
+        "q": 1.72e-49,
+        "id": "case03v1:e1"
+      },
+      {
+        "kind": "protein",
+        "fc": -2.2686,
+        "q": 9.9e-43,
+        "id": "case03v1:e2"
+      },
+      {
+        "id": "case03v1:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  {
+    "id": "case03v2",
+    "family": "multiomics",
+    "entity": "ENTITY_03",
+    "question": "Claim: both RNA and protein are significantly increased. Require positive log2 fold changes and q<0.05 in both layers. A significant decrease in either layer contradicts the claim; missing or nonsignificant measurements are insufficient.",
+    "evidence": [
+      {
+        "kind": "rna",
+        "fc": 6.3123,
+        "q": 1.72e-49,
+        "id": "case03v2:e1"
+      },
+      {
+        "kind": "protein",
+        "fc": null,
+        "q": null,
+        "id": "case03v2:e2"
+      },
+      {
+        "id": "case03v2:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  {
+    "id": "case04v0",
+    "family": "multiomics",
+    "entity": "ENTITY_04",
+    "question": "Claim: both RNA and protein are significantly increased. Require positive log2 fold changes and q<0.05 in both layers. A significant decrease in either layer contradicts the claim; missing or nonsignificant measurements are insufficient.",
+    "evidence": [
+      {
+        "kind": "rna",
+        "fc": 4.6697,
+        "q": 2.04e-40,
+        "id": "case04v0:e1"
+      },
+      {
+        "kind": "protein",
+        "fc": 2.709,
+        "q": 1.23e-43,
+        "id": "case04v0:e2"
+      },
+      {
+        "id": "case04v0:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  {
+    "id": "case04v1",
+    "family": "multiomics",
+    "entity": "ENTITY_04",
+    "question": "Claim: both RNA and protein are significantly increased. Require positive log2 fold changes and q<0.05 in both layers. A significant decrease in either layer contradicts the claim; missing or nonsignificant measurements are insufficient.",
+    "evidence": [
+      {
+        "kind": "rna",
+        "fc": 4.6697,
+        "q": 2.04e-40,
+        "id": "case04v1:e1"
+      },
+      {
+        "kind": "protein",
+        "fc": -2.709,
+        "q": 1.23e-43,
+        "id": "case04v1:e2"
+      },
+      {
+        "id": "case04v1:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  {
+    "id": "case04v2",
+    "family": "multiomics",
+    "entity": "ENTITY_04",
+    "question": "Claim: both RNA and protein are significantly increased. Require positive log2 fold changes and q<0.05 in both layers. A significant decrease in either layer contradicts the claim; missing or nonsignificant measurements are insufficient.",
+    "evidence": [
+      {
+        "kind": "rna",
+        "fc": 4.6697,
+        "q": 2.04e-40,
+        "id": "case04v2:e1"
+      },
+      {
+        "kind": "protein",
+        "fc": null,
+        "q": null,
+        "id": "case04v2:e2"
+      },
+      {
+        "id": "case04v2:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  {
+    "id": "case05v0",
+    "family": "cell_origin",
+    "entity": "ENTITY_05",
+    "question": "Claim: the largest share of this gene's transcripts in the sampled tumour compartment comes from RCC cells. Compare transcript shares, not the percentage of cells expressing the gene. A larger non-RCC share contradicts the claim; missing shares or tied maxima are insufficient. Do not infer expression in every tumour cell.",
+    "evidence": [
+      {
+        "kind": "RCC",
+        "share": 0.976,
+        "pct_expressing": 54.7,
+        "id": "case05v0:e1"
+      },
+      {
+        "kind": "Epi_other",
+        "share": 0.001,
+        "pct_expressing": 33.3,
+        "id": "case05v0:e2"
+      },
+      {
+        "id": "case05v0:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  {
+    "id": "case05v1",
+    "family": "cell_origin",
+    "entity": "ENTITY_05",
+    "question": "Claim: the largest share of this gene's transcripts in the sampled tumour compartment comes from RCC cells. Compare transcript shares, not the percentage of cells expressing the gene. A larger non-RCC share contradicts the claim; missing shares or tied maxima are insufficient. Do not infer expression in every tumour cell.",
+    "evidence": [
+      {
+        "kind": "RCC",
+        "share": 0.001,
+        "pct_expressing": 54.7,
+        "id": "case05v1:e1"
+      },
+      {
+        "kind": "Epi_other",
+        "share": 0.976,
+        "pct_expressing": 33.3,
+        "id": "case05v1:e2"
+      },
+      {
+        "id": "case05v1:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  {
+    "id": "case05v2",
+    "family": "cell_origin",
+    "entity": "ENTITY_05",
+    "question": "Claim: the largest share of this gene's transcripts in the sampled tumour compartment comes from RCC cells. Compare transcript shares, not the percentage of cells expressing the gene. A larger non-RCC share contradicts the claim; missing shares or tied maxima are insufficient. Do not infer expression in every tumour cell.",
+    "evidence": [
+      {
+        "kind": "RCC",
+        "share": null,
+        "pct_expressing": 54.7,
+        "id": "case05v2:e1"
+      },
+      {
+        "kind": "Epi_other",
+        "share": null,
+        "pct_expressing": 33.3,
+        "id": "case05v2:e2"
+      },
+      {
+        "id": "case05v2:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  {
+    "id": "case06v0",
+    "family": "cell_origin",
+    "entity": "ENTITY_06",
+    "question": "Claim: the largest share of this gene's transcripts in the sampled tumour compartment comes from RCC cells. Compare transcript shares, not the percentage of cells expressing the gene. A larger non-RCC share contradicts the claim; missing shares or tied maxima are insufficient. Do not infer expression in every tumour cell.",
+    "evidence": [
+      {
+        "kind": "RCC",
+        "share": 0.881,
+        "pct_expressing": 17.1,
+        "id": "case06v0:e1"
+      },
+      {
+        "kind": "NK",
+        "share": 0.055,
+        "pct_expressing": 0.7,
+        "id": "case06v0:e2"
+      },
+      {
+        "kind": "Epi_other",
+        "share": 0.003,
+        "pct_expressing": 27.8,
+        "id": "case06v0:e3"
+      },
+      {
+        "id": "case06v0:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  {
+    "id": "case06v1",
+    "family": "cell_origin",
+    "entity": "ENTITY_06",
+    "question": "Claim: the largest share of this gene's transcripts in the sampled tumour compartment comes from RCC cells. Compare transcript shares, not the percentage of cells expressing the gene. A larger non-RCC share contradicts the claim; missing shares or tied maxima are insufficient. Do not infer expression in every tumour cell.",
+    "evidence": [
+      {
+        "kind": "RCC",
+        "share": 0.055,
+        "pct_expressing": 17.1,
+        "id": "case06v1:e1"
+      },
+      {
+        "kind": "NK",
+        "share": 0.881,
+        "pct_expressing": 0.7,
+        "id": "case06v1:e2"
+      },
+      {
+        "kind": "Epi_other",
+        "share": 0.003,
+        "pct_expressing": 27.8,
+        "id": "case06v1:e3"
+      },
+      {
+        "id": "case06v1:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  {
+    "id": "case06v2",
+    "family": "cell_origin",
+    "entity": "ENTITY_06",
+    "question": "Claim: the largest share of this gene's transcripts in the sampled tumour compartment comes from RCC cells. Compare transcript shares, not the percentage of cells expressing the gene. A larger non-RCC share contradicts the claim; missing shares or tied maxima are insufficient. Do not infer expression in every tumour cell.",
+    "evidence": [
+      {
+        "kind": "RCC",
+        "share": null,
+        "pct_expressing": 17.1,
+        "id": "case06v2:e1"
+      },
+      {
+        "kind": "NK",
+        "share": null,
+        "pct_expressing": 0.7,
+        "id": "case06v2:e2"
+      },
+      {
+        "kind": "Epi_other",
+        "share": null,
+        "pct_expressing": 27.8,
+        "id": "case06v2:e3"
+      },
+      {
+        "id": "case06v2:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  {
+    "id": "case07v0",
+    "family": "surface",
+    "entity": "ENTITY_07",
+    "question": "Claim: this candidate passes this exploratory surface-screen rule: surface_score>=0.7 AND available vital-organ staining with level=0. This is a screening rule, not demonstrated safety. A score below 0.7 or measured vital-organ staining above 0 contradicts eligibility; missing required data are insufficient.",
+    "evidence": [
+      {
+        "kind": "topology",
+        "surface_score": 1.0,
+        "id": "case07v0:e1"
+      },
+      {
+        "kind": "normal_tissue",
+        "available": true,
+        "staining": 3.0,
+        "id": "case07v0:e2"
+      },
+      {
+        "id": "case07v0:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  {
+    "id": "case07v1",
+    "family": "surface",
+    "entity": "ENTITY_07",
+    "question": "Claim: this candidate passes this exploratory surface-screen rule: surface_score>=0.7 AND available vital-organ staining with level=0. This is a screening rule, not demonstrated safety. A score below 0.7 or measured vital-organ staining above 0 contradicts eligibility; missing required data are insufficient.",
+    "evidence": [
+      {
+        "kind": "topology",
+        "surface_score": 0.9,
+        "id": "case07v1:e1"
+      },
+      {
+        "kind": "normal_tissue",
+        "available": true,
+        "staining": 3,
+        "id": "case07v1:e2"
+      },
+      {
+        "id": "case07v1:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  {
+    "id": "case07v2",
+    "family": "surface",
+    "entity": "ENTITY_07",
+    "question": "Claim: this candidate passes this exploratory surface-screen rule: surface_score>=0.7 AND available vital-organ staining with level=0. This is a screening rule, not demonstrated safety. A score below 0.7 or measured vital-organ staining above 0 contradicts eligibility; missing required data are insufficient.",
+    "evidence": [
+      {
+        "kind": "topology",
+        "surface_score": 0.9,
+        "id": "case07v2:e1"
+      },
+      {
+        "kind": "normal_tissue",
+        "available": false,
+        "staining": null,
+        "id": "case07v2:e2"
+      },
+      {
+        "id": "case07v2:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  {
+    "id": "case08v0",
+    "family": "surface",
+    "entity": "ENTITY_08",
+    "question": "Claim: this candidate passes this exploratory surface-screen rule: surface_score>=0.7 AND available vital-organ staining with level=0. This is a screening rule, not demonstrated safety. A score below 0.7 or measured vital-organ staining above 0 contradicts eligibility; missing required data are insufficient.",
+    "evidence": [
+      {
+        "kind": "topology",
+        "surface_score": 1.0,
+        "id": "case08v0:e1"
+      },
+      {
+        "kind": "normal_tissue",
+        "available": false,
+        "staining": null,
+        "id": "case08v0:e2"
+      },
+      {
+        "id": "case08v0:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  {
+    "id": "case08v1",
+    "family": "surface",
+    "entity": "ENTITY_08",
+    "question": "Claim: this candidate passes this exploratory surface-screen rule: surface_score>=0.7 AND available vital-organ staining with level=0. This is a screening rule, not demonstrated safety. A score below 0.7 or measured vital-organ staining above 0 contradicts eligibility; missing required data are insufficient.",
+    "evidence": [
+      {
+        "kind": "topology",
+        "surface_score": 0.9,
+        "id": "case08v1:e1"
+      },
+      {
+        "kind": "normal_tissue",
+        "available": true,
+        "staining": 3,
+        "id": "case08v1:e2"
+      },
+      {
+        "id": "case08v1:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  {
+    "id": "case08v2",
+    "family": "surface",
+    "entity": "ENTITY_08",
+    "question": "Claim: this candidate passes this exploratory surface-screen rule: surface_score>=0.7 AND available vital-organ staining with level=0. This is a screening rule, not demonstrated safety. A score below 0.7 or measured vital-organ staining above 0 contradicts eligibility; missing required data are insufficient.",
+    "evidence": [
+      {
+        "kind": "topology",
+        "surface_score": 0.9,
+        "id": "case08v2:e1"
+      },
+      {
+        "kind": "normal_tissue",
+        "available": false,
+        "staining": null,
+        "id": "case08v2:e2"
+      },
+      {
+        "id": "case08v2:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  {
+    "id": "case09v0",
+    "family": "treatment",
+    "entity": "ENTITY_09",
+    "question": "Claim: there is statistical evidence of a gene-by-treatment interaction at adjusted q<0.05. A within-arm association alone does not establish this. A reported interaction q>=0.05 or missing interaction is insufficient (not proof of no interaction).",
+    "evidence": [
+      {
+        "kind": "difference_nivolumab_vs_everolimus",
+        "q": 0.999,
+        "log_hr": -0.028,
+        "id": "case09v0:e1"
+      },
+      {
+        "kind": "within_arm",
+        "q": 0.839,
+        "id": "case09v0:e2"
+      },
+      {
+        "id": "case09v0:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  {
+    "id": "case09v1",
+    "family": "treatment",
+    "entity": "ENTITY_09",
+    "question": "Claim: there is statistical evidence of a gene-by-treatment interaction at adjusted q<0.05. A within-arm association alone does not establish this. A reported interaction q>=0.05 or missing interaction is insufficient (not proof of no interaction).",
+    "evidence": [
+      {
+        "kind": "difference_nivolumab_vs_everolimus",
+        "q": 0.001,
+        "log_hr": -0.028,
+        "id": "case09v1:e1"
+      },
+      {
+        "kind": "within_arm",
+        "q": 0.839,
+        "id": "case09v1:e2"
+      },
+      {
+        "id": "case09v1:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  {
+    "id": "case09v2",
+    "family": "treatment",
+    "entity": "ENTITY_09",
+    "question": "Claim: there is statistical evidence of a gene-by-treatment interaction at adjusted q<0.05. A within-arm association alone does not establish this. A reported interaction q>=0.05 or missing interaction is insufficient (not proof of no interaction).",
+    "evidence": [
+      {
+        "kind": "difference_nivolumab_vs_everolimus",
+        "q": null,
+        "log_hr": -0.028,
+        "id": "case09v2:e1"
+      },
+      {
+        "kind": "within_arm",
+        "q": 0.001,
+        "id": "case09v2:e2"
+      },
+      {
+        "id": "case09v2:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  {
+    "id": "case10v0",
+    "family": "treatment",
+    "entity": "ENTITY_10",
+    "question": "Claim: there is statistical evidence of a gene-by-treatment interaction at adjusted q<0.05. A within-arm association alone does not establish this. A reported interaction q>=0.05 or missing interaction is insufficient (not proof of no interaction).",
+    "evidence": [
+      {
+        "kind": "difference_between_arms",
+        "q": 0.917,
+        "log_hr": 0.119,
+        "id": "case10v0:e1"
+      },
+      {
+        "kind": "within_arm",
+        "q": 0.666,
+        "id": "case10v0:e2"
+      },
+      {
+        "id": "case10v0:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  {
+    "id": "case10v1",
+    "family": "treatment",
+    "entity": "ENTITY_10",
+    "question": "Claim: there is statistical evidence of a gene-by-treatment interaction at adjusted q<0.05. A within-arm association alone does not establish this. A reported interaction q>=0.05 or missing interaction is insufficient (not proof of no interaction).",
+    "evidence": [
+      {
+        "kind": "difference_between_arms",
+        "q": 0.001,
+        "log_hr": 0.119,
+        "id": "case10v1:e1"
+      },
+      {
+        "kind": "within_arm",
+        "q": 0.666,
+        "id": "case10v1:e2"
+      },
+      {
+        "id": "case10v1:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  {
+    "id": "case10v2",
+    "family": "treatment",
+    "entity": "ENTITY_10",
+    "question": "Claim: there is statistical evidence of a gene-by-treatment interaction at adjusted q<0.05. A within-arm association alone does not establish this. A reported interaction q>=0.05 or missing interaction is insufficient (not proof of no interaction).",
+    "evidence": [
+      {
+        "kind": "difference_between_arms",
+        "q": null,
+        "log_hr": 0.119,
+        "id": "case10v2:e1"
+      },
+      {
+        "kind": "within_arm",
+        "q": 0.001,
+        "id": "case10v2:e2"
+      },
+      {
+        "id": "case10v2:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  {
+    "id": "case11v0",
+    "family": "degradation",
+    "entity": "ENTITY_11",
+    "question": "Claim: compound-dependent degradation has been experimentally demonstrated in this specified system. Require a measured degradation assay with positive result. A measured negative assay contradicts the claim; a pocket, ligase expression or recruitment alone is insufficient. Do not infer ccRCC efficacy.",
+    "evidence": [
+      {
+        "kind": "predicted_monomer",
+        "pocket_volume": 126.8,
+        "mean_plddt": 90.3,
+        "id": "case11v0:e1"
+      },
+      {
+        "kind": "degradation_assay",
+        "measured": false,
+        "positive": null,
+        "id": "case11v0:e2"
+      },
+      {
+        "id": "case11v0:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  {
+    "id": "case11v1",
+    "family": "degradation",
+    "entity": "ENTITY_11",
+    "question": "Claim: compound-dependent degradation has been experimentally demonstrated in this specified system. Require a measured degradation assay with positive result. A measured negative assay contradicts the claim; a pocket, ligase expression or recruitment alone is insufficient. Do not infer ccRCC efficacy.",
+    "evidence": [
+      {
+        "kind": "predicted_monomer",
+        "pocket_volume": 126.8,
+        "mean_plddt": 90.3,
+        "id": "case11v1:e1"
+      },
+      {
+        "kind": "degradation_assay",
+        "measured": true,
+        "positive": true,
+        "id": "case11v1:e2"
+      },
+      {
+        "id": "case11v1:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  {
+    "id": "case11v2",
+    "family": "degradation",
+    "entity": "ENTITY_11",
+    "question": "Claim: compound-dependent degradation has been experimentally demonstrated in this specified system. Require a measured degradation assay with positive result. A measured negative assay contradicts the claim; a pocket, ligase expression or recruitment alone is insufficient. Do not infer ccRCC efficacy.",
+    "evidence": [
+      {
+        "kind": "predicted_monomer",
+        "pocket_volume": 126.8,
+        "mean_plddt": 90.3,
+        "id": "case11v2:e1"
+      },
+      {
+        "kind": "degradation_assay",
+        "measured": true,
+        "positive": false,
+        "id": "case11v2:e2"
+      },
+      {
+        "id": "case11v2:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  {
+    "id": "case12v0",
+    "family": "degradation",
+    "entity": "ENTITY_12",
+    "question": "Claim: compound-dependent degradation has been experimentally demonstrated in this specified system. Require a measured degradation assay with positive result. A measured negative assay contradicts the claim; a pocket, ligase expression or recruitment alone is insufficient. Do not infer ccRCC efficacy.",
+    "evidence": [
+      {
+        "kind": "predicted_monomer",
+        "pocket_volume": 408.2,
+        "mean_plddt": 90.7,
+        "id": "case12v0:e1"
+      },
+      {
+        "kind": "degradation_assay",
+        "measured": false,
+        "positive": null,
+        "id": "case12v0:e2"
+      },
+      {
+        "id": "case12v0:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  {
+    "id": "case12v1",
+    "family": "degradation",
+    "entity": "ENTITY_12",
+    "question": "Claim: compound-dependent degradation has been experimentally demonstrated in this specified system. Require a measured degradation assay with positive result. A measured negative assay contradicts the claim; a pocket, ligase expression or recruitment alone is insufficient. Do not infer ccRCC efficacy.",
+    "evidence": [
+      {
+        "kind": "predicted_monomer",
+        "pocket_volume": 408.2,
+        "mean_plddt": 90.7,
+        "id": "case12v1:e1"
+      },
+      {
+        "kind": "degradation_assay",
+        "measured": true,
+        "positive": true,
+        "id": "case12v1:e2"
+      },
+      {
+        "id": "case12v1:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  },
+  {
+    "id": "case12v2",
+    "family": "degradation",
+    "entity": "ENTITY_12",
+    "question": "Claim: compound-dependent degradation has been experimentally demonstrated in this specified system. Require a measured degradation assay with positive result. A measured negative assay contradicts the claim; a pocket, ligase expression or recruitment alone is insufficient. Do not infer ccRCC efficacy.",
+    "evidence": [
+      {
+        "kind": "predicted_monomer",
+        "pocket_volume": 408.2,
+        "mean_plddt": 90.7,
+        "id": "case12v2:e1"
+      },
+      {
+        "kind": "degradation_assay",
+        "measured": true,
+        "positive": false,
+        "id": "case12v2:e2"
+      },
+      {
+        "id": "case12v2:d1",
+        "kind": "unrelated_gene",
+        "entity": "OTHER",
+        "rna_fc": 8,
+        "q": 0.0001
+      }
+    ]
+  }
+]
