@@ -349,6 +349,7 @@ def render(findings_path: Path, out: Path | None = None) -> Path:
     tpl = env.get_template("report.html.j2")
     vpath = findings_path.parent / "verification_final.json"
     from .degradation import build as build_degradation
+    from .agents_benchmark import build as build_agents_benchmark
     degradation_data = build_degradation()
     from .candidate_evidence import build as build_candidate_evidence
     from .protein_viewer import build as build_protein_viewer, gzip_b64, script_json
@@ -365,6 +366,7 @@ def render(findings_path: Path, out: Path | None = None) -> Path:
         graph_stats=json.loads((PROCESSED / "graph_stats.json").read_text()),
         profiles=profiles, profile_weights=f["convergence"].get("profile_weights") or {}, evals=evals, layers=layers,
         m15=m15, grade_caption=grade_caption, viewer_b64=gzip_b64(viewer_json), release=RELEASE, tour=TOUR,
+        ab=build_agents_benchmark(),
     )
     out = out or REPORTS / "ccrcc_report.html"
     out.write_text(html_out, encoding="utf-8")

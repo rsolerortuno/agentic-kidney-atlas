@@ -15,6 +15,7 @@ PLAIN: dict[str, str] = {
     "validation": "A ranking is only worth trusting if it survives hard questions. This tab checks the candidates against other cohorts and other kinds of data, shows how much the order changes when the weights change, and tests whether the scores can recover real clinical targets they were never shown.",
     "literature": "This tab covers what is already known. The literature part shows what PubMed abstracts say about the top genes. The drug part shows which drugs already exist, how far they got in clinical trials, and how druggable each protein looks.",
     "network": "The network draws the top genes, the drugs that act on them and the genes known to interact. It helps you see clusters and neighbours. It is not proof of mechanism.",
+    "agents": "The atlas is written by a team of AI agents rather than by one. This tab tests whether that is worth it. It explains, step by step, two experiments that compared one agent with several, how the answers were marked, what each option cost and what went wrong, and how the team was then improved so that its reports are as complete as one agent's while staying cheaper and faster. It is about how the atlas is made, not about any gene.",
     "methods": "This tab holds the receipts: every dataset with its checksum, the models used, the limits of the analysis, and a searchable list of the evidence records the report cites.",
 }
 
@@ -30,5 +31,6 @@ TOUR: list[tuple[str, str, str]] = [
     ("validation", "Validation & robustness", "Do the calls hold in other cohorts and under different weights? Includes the confirmatory cohort."),
     ("literature", "Literature & drugs", "What do papers say, and which drugs already exist?"),
     ("network", "Network", "Genes, drugs and interactions drawn as a graph."),
+    ("agents", "Agent benchmark", "Is a team of AI agents better than one? Two experiments, the costs, the errors and the fixes."),
     ("methods", "Methods & evidence", "Datasets, limits and every cited evidence record."),
 ]

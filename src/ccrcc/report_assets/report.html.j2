@@ -128,6 +128,7 @@ footer{color:var(--muted);font-size:.8rem;padding:10px 0 50px;border-top:1px sol
     <button class="tab" role="tab" data-tab="validation">Validation &amp; robustness</button>
     <button class="tab" role="tab" data-tab="literature">Literature &amp; drugs</button>
     <button class="tab" role="tab" data-tab="network">Network</button>
+    {% if ab %}<button class="tab" role="tab" data-tab="agents">Agent benchmark</button>{% endif %}
     <button class="tab" role="tab" data-tab="methods">Methods &amp; evidence</button>
   </div>
 </div></div>
@@ -574,6 +575,8 @@ Pipeline targets: {% for c in pl.targets %}{{ c | join(", ") }}{% if not loop.la
 <div id="cy"></div>
 <p class="small" id="cy-info">&nbsp;</p>
 </section>
+
+{% if ab %}{% include "agents_benchmark.html.j2" %}{% endif %}
 
 <section class="panel" id="tab-methods" data-name="methods">
 {{ plain('methods') }}
