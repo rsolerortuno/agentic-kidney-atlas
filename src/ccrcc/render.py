@@ -18,7 +18,7 @@ from . import report_figures as F
 from . import report_figures_m15 as F15
 from .m15_tables import build as build_m15
 from .report_help import HELP
-from .report_text import PLAIN, TOUR
+from .report_text import PLAIN, TOUR, NAV, NAV_TEXT
 from .graph import GraphStore
 from .paths import PROCESSED, REPORTS
 
@@ -367,6 +367,7 @@ def render(findings_path: Path, out: Path | None = None) -> Path:
         profiles=profiles, profile_weights=f["convergence"].get("profile_weights") or {}, evals=evals, layers=layers,
         m15=m15, grade_caption=grade_caption, viewer_b64=gzip_b64(viewer_json), release=RELEASE, tour=TOUR,
         ab=build_agents_benchmark(),
+        nav=NAV, nav_text=NAV_TEXT,
     )
     out = out or REPORTS / "ccrcc_report.html"
     out.write_text(html_out, encoding="utf-8")

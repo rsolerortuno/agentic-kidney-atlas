@@ -22,12 +22,25 @@ a{color:var(--s1)}
 .brand h1{font-size:2rem;line-height:1.15;margin:0;font-weight:700;letter-spacing:-.02em}
 .brand .sub{color:var(--muted);font-size:.85rem;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;align-self:flex-end;padding-bottom:5px}
 .themebtn{border:1px solid var(--line);background:var(--surface);color:var(--ink2);border-radius:8px;padding:5px 10px;font:inherit;font-size:.8rem;cursor:pointer}
-.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
-.tabs::-webkit-scrollbar{display:none}
-.tab{appearance:none;background:none;border:0;border-bottom:2px solid transparent;color:var(--ink2);font:inherit;font-size:.88rem;font-weight:550;padding:9px 13px;cursor:pointer;white-space:nowrap}
-.tab:hover{color:var(--ink)}
-.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--s1)}
-.tab .n{font-size:.7rem;background:var(--chip);color:var(--muted);border-radius:99px;padding:1px 7px;margin-left:5px}
+.nav{position:relative;display:flex;align-items:center;gap:8px;padding:2px 0 10px;flex-wrap:nowrap}
+.navbtn{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;padding:7px 12px;font:inherit;font-size:.9rem;cursor:pointer;max-width:100%;box-shadow:var(--shadow)}
+.navbtn:hover,.navbtn[aria-expanded="true"]{border-color:var(--s1)}
+.navbtn .lbl{font-weight:600;color:var(--s1);white-space:nowrap}
+.navbtn .crumb{color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.navbtn .crumb b{color:var(--ink)}
+.navbtn .caret{color:var(--muted);transition:transform .15s}.navbtn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.navstep{border:1px solid var(--line);background:var(--surface);color:var(--ink2);border-radius:10px;padding:7px 10px;font:inherit;font-size:.85rem;cursor:pointer}
+.navstep:hover{color:var(--ink);border-color:var(--s1)}
+.navmenu{position:absolute;left:0;right:0;top:calc(100% - 4px);z-index:30;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 32px rgba(28,28,27,.16);padding:16px;display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));max-height:min(78vh,720px);overflow-y:auto}
+.navmenu[hidden]{display:none}
+.navcat h4{margin:0 0 6px;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.navsub{margin:0 0 10px}.navsub>span{display:block;font-size:.76rem;font-weight:600;color:var(--ink2);margin:6px 0 2px}
+.tab{appearance:none;display:block;width:100%;text-align:left;background:none;border:0;border-left:3px solid transparent;border-radius:0 8px 8px 0;color:var(--ink);font:inherit;font-size:.9rem;font-weight:600;padding:6px 10px;cursor:pointer}
+.tab small{display:block;font-weight:400;font-size:.76rem;color:var(--muted);line-height:1.35;margin-top:1px}
+.tab:hover{background:var(--chip)}
+.tab[aria-selected="true"]{border-left-color:var(--s1);background:var(--chip);color:var(--s1)}
+.tab .n{font-size:.7rem;background:var(--chip);color:var(--muted);border-radius:99px;padding:1px 7px;margin-left:5px;font-weight:600}
+@media (max-width:640px){.navbtn .crumb .cat{display:none}.navbtn{flex:1;min-width:0}.navstep{padding:7px 9px}.navmenu{grid-template-columns:1fr;max-height:72vh}}
 .panel{display:none;padding:26px 0 60px}
 .panel.on{display:block}
 h2{font-size:1.25rem;margin:1.6em 0 .4em;letter-spacing:-.01em}
@@ -115,22 +128,19 @@ footer{color:var(--muted);font-size:.8rem;padding:10px 0 50px;border-top:1px sol
 <div class="top"><div class="wrap">
   <div class="brand"><h1>ccRCC Target Atlas</h1>
     <span class="sub">{{ f.disease.name }} · multi-omics GraphRAG · generated {{ f.generated_utc[:10] }} · config <code>{{ f.config_sha256[:8] }}</code></span></div>
-  <div class="tabs" role="tablist">
-    <button class="tab" role="tab" data-tab="overview">Overview</button>
-    <button class="tab" role="tab" data-tab="candidates">Candidates</button>
-    <button class="tab" role="tab" data-tab="omics">Omics</button>
-    <button class="tab" role="tab" data-tab="cells">Cells &amp; space</button>
-    <button class="tab" role="tab" data-tab="structure">Structure &amp; MGD</button>
-    <button class="tab" role="tab" data-tab="discovery">Discovery<span class="n">{{ kpis.fic }}</span></button>
-    <button class="tab" role="tab" data-tab="viewer">Tissue viewer</button>
-    <button class="tab" role="tab" data-tab="response">Treatment &amp; subtypes</button>
-    <button class="tab" role="tab" data-tab="adcimmune">ADC &amp; immune</button>
-    <button class="tab" role="tab" data-tab="validation">Validation &amp; robustness</button>
-    <button class="tab" role="tab" data-tab="literature">Literature &amp; drugs</button>
-    <button class="tab" role="tab" data-tab="network">Network</button>
-    {% if ab %}<button class="tab" role="tab" data-tab="agents">Agent benchmark</button>{% endif %}
-    <button class="tab" role="tab" data-tab="methods">Methods &amp; evidence</button>
-  </div>
+  <nav class="nav" aria-label="Sections">
+    <button class="navbtn" type="button" id="navbtn" aria-expanded="false" aria-controls="navmenu">
+      <span class="lbl">&#9776; Sections</span><span class="crumb" id="navcrumb"></span><span class="caret">&#9662;</span></button>
+    <button class="navstep" type="button" id="navprev" aria-label="Previous section">&#8592;</button>
+    <button class="navstep" type="button" id="navnext" aria-label="Next section">&#8594;</button>
+    <div class="navmenu" id="navmenu" hidden>
+    {% for cat, subs in nav %}<div class="navcat"><h4>{{ cat }}</h4>
+      {% for sub, keys in subs %}<div class="navsub"><span>{{ sub }}</span>
+        {% for k in keys %}{% if k != 'agents' or ab %}<button class="tab" type="button" data-tab="{{ k }}" data-cat="{{ cat }}">{{ nav_text[k][0] }}{% if k == 'discovery' %}<span class="n">{{ kpis.fic }}</span>{% endif %}<small>{{ nav_text[k][1] }}</small></button>{% endif %}{% endfor %}
+      </div>{% endfor %}
+    </div>{% endfor %}
+    </div>
+  </nav>
 </div></div>
 
 <main class="wrap">
@@ -647,12 +657,27 @@ These checks do not constitute complete scientific validation.{% endif %}
     var p=document.getElementById('tab-'+name)||document.getElementById('tab-overview'); name=p.getAttribute('data-name');
     panels.forEach(function(x){x.classList.toggle('on',x===p);});
     tabs.forEach(function(t){t.setAttribute('aria-selected',t.getAttribute('data-tab')===name?'true':'false');});
+    var cur=tabs.filter(function(t){return t.getAttribute('data-tab')===name;})[0], cr=document.getElementById('navcrumb');
+    if(cur&&cr){cr.innerHTML=''; var c=document.createElement('span'), b=document.createElement('b'); c.className='cat'; c.textContent=cur.getAttribute('data-cat')+' \u203a ';
+      b.textContent=cur.firstChild.textContent; cr.appendChild(c); cr.appendChild(b);}
+    closeMenu();
     if(name==='network'){initCy(); if(cy){cy.resize();cy.fit(undefined,30);}}
     resizePlots(p); applyTheme(); if(name==='viewer'&&window.viewerShow) window.viewerShow();
     if(push!==false){try{history.replaceState(null,'','#tab='+name);}catch(e){}}
   }
   [].slice.call(document.querySelectorAll('[data-go]')).forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();show(a.getAttribute('data-go'));window.scrollTo(0,0);});});
   tabs.forEach(function(t){t.addEventListener('click',function(){show(t.getAttribute('data-tab'));window.scrollTo(0,0);});});
+  var nb=document.getElementById('navbtn'), nm=document.getElementById('navmenu');
+  function closeMenu(){if(nm&&!nm.hidden){nm.hidden=true; nb.setAttribute('aria-expanded','false');}}
+  window._closeMenu=closeMenu;
+  if(nb){nb.addEventListener('click',function(e){e.stopPropagation(); var open=nm.hidden; nm.hidden=!open; nb.setAttribute('aria-expanded',open?'true':'false');
+    if(open){var sel=nm.querySelector('.tab[aria-selected="true"]')||nm.querySelector('.tab'); if(sel) sel.focus();}});}
+  document.addEventListener('click',function(e){if(nm&&!nm.hidden&&!e.target.closest('#navmenu,#navbtn')) closeMenu();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nm&&!nm.hidden){closeMenu(); nb.focus();}});
+  function step(d){var i=tabs.map(function(t){return t.getAttribute('aria-selected');}).indexOf('true');
+    var t=tabs[(i+d+tabs.length)%tabs.length]; show(t.getAttribute('data-tab')); window.scrollTo(0,0);}
+  var np=document.getElementById('navprev'), nn=document.getElementById('navnext');
+  if(np) np.addEventListener('click',function(){step(-1);}); if(nn) nn.addEventListener('click',function(){step(1);});
   document.addEventListener('click',function(e){
     var a=e.target.closest('a[href^="#"]'); if(!a) return;
     var id=a.getAttribute('href').slice(1); if(!id||id.indexOf('tab=')===0) return;

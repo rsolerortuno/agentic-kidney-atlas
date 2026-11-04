@@ -238,3 +238,15 @@ def test_overview_text_blocks_are_complete():
             "literature", "network", "agents", "methods"}
     assert set(PLAIN) == tabs and {t[0] for t in TOUR} == tabs
     assert not any("—" in v for v in PLAIN.values())
+
+def test_section_menu_lists_every_tab_once():
+    import re
+    from pathlib import Path
+    from ccrcc.report_text import NAV, NAV_TEXT, TOUR
+    keys = [k for _, subs in NAV for _, ks in subs for k in ks]
+    assert len(keys) == len(set(keys))
+    assert set(keys) == {t[0] for t in TOUR} | {"overview"} == set(NAV_TEXT)
+    tpl = Path(__file__).resolve().parents[1] / "src/ccrcc/report_assets/report.html.j2"
+    panels = set(re.findall(r'id="tab-([a-z]+)"', tpl.read_text(encoding="utf-8")))
+    panels |= {"agents", "viewer", "adcimmune", "response"}  # panels defined in included templates
+    assert set(keys) <= panels
