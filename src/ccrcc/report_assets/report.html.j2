@@ -101,9 +101,6 @@ footer{color:var(--muted);font-size:.8rem;padding:10px 0 50px;border-top:1px sol
 .plainbox{background:var(--chip);border-left:4px solid var(--s3);border-radius:0 10px 10px 0;padding:11px 16px;margin:0 0 20px;font-size:.92rem;color:var(--ink2);max-width:100ch}
 .plainbox b{color:var(--ink)}
 .intro{margin-bottom:26px}.intro ol.steps{max-width:100ch;padding-left:1.3em}.intro ol.steps li{margin:.5em 0}
-.tour{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
-.tourcard{display:block;width:100%;text-align:left;font:inherit;cursor:pointer;color:inherit}.tourcard:hover{border-color:var(--s1)}
-.tourcard h3{margin:0 0 .3em;color:var(--s1);font-size:1rem}.tourcard p{margin:0;font-size:.86rem;color:var(--ink2)}
 .whatsnew{border:1px solid var(--line);border-left:4px solid var(--s1);background:var(--surface);border-radius:10px;padding:14px 18px;margin:0 0 22px}
 .whatsnew h3{margin:.1em 0 .5em}.whatsnew ul{margin:.3em 0 0 1.1em;padding:0}.whatsnew li{margin:.35em 0;max-width:95ch}
 .vwrap{display:grid;gap:14px;grid-template-columns:minmax(0,1.6fr) minmax(280px,1fr)}
@@ -177,7 +174,6 @@ footer{color:var(--muted);font-size:.8rem;padding:10px 0 50px;border-top:1px sol
 </div>
 {% endfor %}
 </div>
-{% include "overview_tour.html.j2" %}
 </section>
 
 <section class="panel" id="tab-candidates" data-name="candidates">

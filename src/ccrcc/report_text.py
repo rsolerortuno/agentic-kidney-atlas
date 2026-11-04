@@ -1,4 +1,4 @@
-"""Plain-language text blocks of the report: tab intros and the guided tour on the Overview page.
+"""Plain-language text blocks of the report: tab intros and the one-line tab descriptions of the Sections menu.
 
 Written for someone who knows a little biology but not this pipeline. Nothing here is computed.
 """
