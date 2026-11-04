@@ -1,0 +1,78 @@
+{
+ "study_hash": "72280c4a4b27a328",
+ "prompt_sha256": "4fb96585076c87f3beaf36babe1e0e4b9a1b4d41dc76e9fc0d0b05678cd0350e",
+ "status": "failed",
+ "case_ids": [
+  "g03v0",
+  "g02v0",
+  "g01v0",
+  "g10v0",
+  "g07v0",
+  "g05v0",
+  "g11v0",
+  "g12v0",
+  "g04v0",
+  "g06v0",
+  "g09v0",
+  "g08v0"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.201436,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 39048,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 4524,
+  "output_tokens_details": {
+   "thinking_tokens": 1367
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 39048,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 4524,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 39048,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 39048
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 4524,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 39048,
+   "webSearchRequests": 0,
+   "costUSD": 0.201436,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 1367,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 39048,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g03v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"no\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"needs_more_data\",\"evidence_ids\":[\"g03v0.r25\",\"g03v0.r15\",\"g03v0.r09\",\"g03v0.r12\",\"g03v0.r24\",\"g03v0.r21\",\"g03v0.r16\",\"g03v0.r05\",\"g03v0.r11\"],\"rationale\":\"Protein and RNA up in all cohorts; RCC dominant with a positive purity bound. Surface call is internal, liver IHC level 3, and no dependent lines. No verdict rule is met.\"}]}\n\nCorrection: the line above is only the first of the twelve answers. The complete JSON follows.\n\n{\"answers\":[{\"id\":\"g03v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"no\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"needs_more_data\",\"evidence_ids\":[\"g03v0.r25\",\"g03v0.r15\",\"g03v0.r09\",\"g03v0.r12\",\"g03v0.r24\",\"g03v0.r21\",\"g03v0.r16\",\"g03v0.r05\",\"g03v0.r11\"],\"rationale\":\"Protein and RNA up in all cohorts; RCC dominant with a positive purity bound. Surface call is internal, liver IHC level 3, and no dependent lines. No verdict rule is met.\"},{\"id\":\"g02v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"no\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"insufficient\",\"selective_dependency\":\"no\",\"verdict\":\"infiltration_signal\",\"evidence_ids\":[\"g02v0.r12\",\"g02v0.r06\",\"g02v0.r26\",\"g02v0.r24\",\"g02v0.r27\",\"g02v0.r17\",\"g02v0.r14\",\"g02v0.r13\"],\"rationale\":\"Protein up and replicated by TCGA RNA. CD8_T share 0.533 exceeds RCC 0.345, so not tumour-intrinsic. Surface is accessible; IHC not measured, no enrichment. DepMap has no dependent lines.\"},{\"id\":\"g01v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"needs_more_data\",\"evidence_ids\":[\"g01v0.r09\",\"g01v0.r10\",\"g01v0.r26\",\"g01v0.r23\",\"g01v0.r01\",\"g01v0.r19\",\"g01v0.r21\",\"g01v0.r28\",\"g01v0.r16\"],\"rationale\":\"Up and replicated, RCC-dominant with positive purity bound, and surface. Stomach IHC level 3 and vital protein enrichment give a safety concern, so not a candidate. DepMap has no dependent lines.\"},{\"id\":\"g10v0\",\"protein_up\":\"no\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"insufficient\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"loss_biomarker\",\"evidence_ids\":[\"g10v0.r12\",\"g10v0.r13\",\"g10v0.r21\",\"g10v0.r19\",\"g10v0.r10\",\"g10v0.r17\",\"g10v0.r26\",\"g10v0.r03\"],\"rationale\":\"Protein down and RNA down in CPTAC, TCGA and confirmatory cohorts. Purity LFC is negative, so intrinsic is insufficient. No target surface record. Vital protein enriched. No selective dependency.\"},{\"id\":\"g07v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"insufficient\",\"selective_dependency\":\"no\",\"verdict\":\"needs_more_data\",\"evidence_ids\":[\"g07v0.r16\",\"g07v0.r17\",\"g07v0.r04\",\"g07v0.r23\",\"g07v0.r20\",\"g07v0.r05\",\"g07v0.r19\",\"g07v0.r26\",\"g07v0.r07\"],\"rationale\":\"Up, replicated, RCC-dominant with positive purity bound, and surface. IHC not measured and no enrichment, so safety is insufficient and the candidate rule fails. No dependency.\"},{\"id\":\"g05v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"needs_more_data\",\"evidence_ids\":[\"g05v0.r28\",\"g05v0.r05\",\"g05v0.r15\",\"g05v0.r09\",\"g05v0.r25\",\"g05v0.r22\",\"g05v0.r07\",\"g05v0.r13\",\"g05v0.r26\"],\"rationale\":\"Up, replicated, tumour-intrinsic and surface, but duodenum IHC level 3 is a vital safety concern. No dependency. No verdict rule is met.\"},{\"id\":\"g11v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"no\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"infiltration_signal\",\"evidence_ids\":[\"g11v0.r01\",\"g11v0.r19\",\"g11v0.r15\",\"g11v0.r25\",\"g11v0.r18\",\"g11v0.r13\",\"g11v0.r08\",\"g11v0.r03\"],\"rationale\":\"Up and replicated. Macrophage share 0.436 far exceeds RCC 0.023, so not intrinsic. Surface, with cerebellum IHC level 3. No dependency.\"},{\"id\":\"g12v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"no\",\"surface_accessible\":\"no\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"infiltration_signal\",\"evidence_ids\":[\"g12v0.r18\",\"g12v0.r07\",\"g12v0.r02\",\"g12v0.r01\",\"g12v0.r05\",\"g12v0.r19\",\"g12v0.r03\",\"g12v0.r14\"],\"rationale\":\"Protein up; TCGA RNA replicates and confirmatory protein is not significant. Macrophage share exceeds RCC. Surface call internal; heart IHC level 2. Only 1 dependent line.\"},{\"id\":\"g04v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"needs_more_data\",\"evidence_ids\":[\"g04v0.r06\",\"g04v0.r15\",\"g04v0.r16\",\"g04v0.r10\",\"g04v0.r13\",\"g04v0.r17\",\"g04v0.r21\",\"g04v0.r09\",\"g04v0.r14\"],\"rationale\":\"RCC share 0.327 is the largest and the purity bound is 3.17 above 0, so intrinsic is yes. Up, replicated and surface, but adrenal IHC level 3 is a safety concern. No dependency.\"},{\"id\":\"g06v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"no\",\"selective_dependency\":\"no\",\"verdict\":\"surface_target_candidate\",\"evidence_ids\":[\"g06v0.r12\",\"g06v0.r23\",\"g06v0.r01\",\"g06v0.r06\",\"g06v0.r19\",\"g06v0.r24\",\"g06v0.r13\",\"g06v0.r17\"],\"rationale\":\"Protein up, RNA replicated in TCGA, RCC dominant with purity bound 0.385 above 0, surface. Vital IHC level 1 with no enrichment reported. Meets candidate criteria; no dependency.\"},{\"id\":\"g09v0\",\"protein_up\":\"no\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"no\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"loss_biomarker\",\"evidence_ids\":[\"g09v0.r06\",\"g09v0.r12\",\"g09v0.r10\",\"g09v0.r08\",\"g09v0.r03\",\"g09v0.r16\",\"g09v0.r01\"],\"rationale\":\"Protein and RNA down across CPTAC, TCGA and confirmatory cohorts. CD8_T share exceeds RCC. No target surface record. Vital protein enriched. DepMap padj 0.404 fails.\"},{\"id\":\"g08v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"insufficient\",\"selective_dependency\":\"no\",\"verdict\":\"needs_more_data\",\"evidence_ids\":[\"g08v0.r09\",\"g08v0.r11\",\"g08v0.r04\",\"g08v0.r06\",\"g08v0.r26\",\"g08v0.r16\",\"g08v0.r01\",\"g08v0.r19\"],\"rationale\":\"Up and replicated; RCC largest with purity bound 1.94 above 0. Surface call unknown, IHC not measured and no proteome record. DepMap padj 0.82 fails.\"}]}",
+ "stderr": "",
+ "error": "ValueError: missing case ids: ['g01v0', 'g02v0', 'g04v0', 'g05v0', 'g06v0', 'g07v0', 'g08v0', 'g09v0', 'g10v0', 'g11v0', 'g12v0']",
+ "elapsed_s": 30.9
+}

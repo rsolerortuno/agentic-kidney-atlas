@@ -1,0 +1,176 @@
+{
+ "tag": "first_attempt",
+ "replicates": [
+  "rep1",
+  "rep2",
+  "rep3"
+ ],
+ "cases": 24,
+ "arms": {
+  "B": {
+   "case_answers": 72,
+   "answered": 1.0,
+   "verdict_accuracy": 1.0,
+   "subquestion_accuracy": 1.0,
+   "all_seven_correct": 1.0,
+   "per_question": {
+    "protein_up": 1.0,
+    "replicated": 1.0,
+    "tumour_intrinsic": 1.0,
+    "surface_accessible": 1.0,
+    "vital_safety_concern": 1.0,
+    "selective_dependency": 1.0
+   },
+   "native_verdict_accuracy": 1.0,
+   "counterfactual_verdict_accuracy": 1.0,
+   "confident_errors_per_case": 0.0,
+   "over_abstentions_per_case": 0.0,
+   "false_target_candidates": 0,
+   "other_entity_citation_rate": 0.0,
+   "cost_usd_total": 1.276,
+   "cost_usd_per_case": 0.0177,
+   "cost_usd_per_correct_verdict": 0.0177,
+   "output_tokens_per_case": 508.4,
+   "wall_s_per_case": 5.14,
+   "calls": 18,
+   "failed_calls": 0
+  },
+  "C": {
+   "case_answers": 72,
+   "answered": 1.0,
+   "verdict_accuracy": 0.5417,
+   "subquestion_accuracy": 0.8657,
+   "all_seven_correct": 0.5417,
+   "per_question": {
+    "protein_up": 0.8889,
+    "replicated": 0.875,
+    "tumour_intrinsic": 0.875,
+    "surface_accessible": 0.7778,
+    "vital_safety_concern": 0.7778,
+    "selective_dependency": 1.0
+   },
+   "native_verdict_accuracy": 0.4444,
+   "counterfactual_verdict_accuracy": 0.6389,
+   "confident_errors_per_case": 0.0278,
+   "over_abstentions_per_case": 0.0,
+   "false_target_candidates": 0,
+   "other_entity_citation_rate": 0.0,
+   "cost_usd_total": 1.792,
+   "cost_usd_per_case": 0.0249,
+   "cost_usd_per_correct_verdict": 0.0459,
+   "output_tokens_per_case": 578.2,
+   "wall_s_per_case": 3.48,
+   "calls": 72,
+   "failed_calls": 8
+  },
+  "D": {
+   "case_answers": 72,
+   "answered": 0.8889,
+   "verdict_accuracy": 0.8889,
+   "subquestion_accuracy": 0.8889,
+   "all_seven_correct": 0.8889,
+   "per_question": {
+    "protein_up": 0.8889,
+    "replicated": 0.8889,
+    "tumour_intrinsic": 0.8889,
+    "surface_accessible": 0.8889,
+    "vital_safety_concern": 0.8889,
+    "selective_dependency": 0.8889
+   },
+   "native_verdict_accuracy": 1.0,
+   "counterfactual_verdict_accuracy": 0.7778,
+   "confident_errors_per_case": 0.0,
+   "over_abstentions_per_case": 0.0,
+   "false_target_candidates": 0,
+   "other_entity_citation_rate": 0.0,
+   "cost_usd_total": 3.165,
+   "cost_usd_per_case": 0.044,
+   "cost_usd_per_correct_verdict": 0.0495,
+   "output_tokens_per_case": 1031.7,
+   "wall_s_per_case": 7.92,
+   "calls": 90,
+   "failed_calls": 10
+  }
+ },
+ "majority_class_verdict_accuracy": 0.2917,
+ "paired_differences": {
+  "C-B": {
+   "verdict_ok": {
+    "diff": -0.4583,
+    "ci95": [
+     -0.5833,
+     -0.3611
+    ],
+    "genes": 12
+   },
+   "subq_acc": {
+    "diff": -0.1343,
+    "ci95": [
+     -0.169,
+     -0.1042
+    ],
+    "genes": 12
+   },
+   "all_ok": {
+    "diff": -0.4583,
+    "ci95": [
+     -0.5833,
+     -0.3611
+    ],
+    "genes": 12
+   }
+  },
+  "D-B": {
+   "verdict_ok": {
+    "diff": -0.1111,
+    "ci95": [
+     -0.1806,
+     -0.0417
+    ],
+    "genes": 12
+   },
+   "subq_acc": {
+    "diff": -0.1111,
+    "ci95": [
+     -0.1806,
+     -0.0417
+    ],
+    "genes": 12
+   },
+   "all_ok": {
+    "diff": -0.1111,
+    "ci95": [
+     -0.1806,
+     -0.0417
+    ],
+    "genes": 12
+   }
+  },
+  "D-C": {
+   "verdict_ok": {
+    "diff": 0.3472,
+    "ci95": [
+     0.2083,
+     0.5
+    ],
+    "genes": 12
+   },
+   "subq_acc": {
+    "diff": 0.0231,
+    "ci95": [
+     -0.0625,
+     0.1065
+    ],
+    "genes": 12
+   },
+   "all_ok": {
+    "diff": 0.3472,
+    "ci95": [
+     0.2083,
+     0.5
+    ],
+    "genes": 12
+   }
+  }
+ }
+}

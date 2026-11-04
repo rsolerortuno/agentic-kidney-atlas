@@ -1,0 +1,76 @@
+{
+ "study_hash": "593b0de44496ae2a",
+ "prompt_sha256": "b26f02d18a2ec4748c9bd3f97d90b4921e15baea2b39747fdb2f64deb140bc5a",
+ "status": "failed",
+ "case_ids": [
+  "g07v0",
+  "g05v0",
+  "g11v0",
+  "g12v0"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.030958799999999998,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 640,
+  "cache_read_input_tokens": 3308,
+  "output_tokens": 613,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 640,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 613,
+    "cache_read_input_tokens": 3308,
+    "cache_creation_input_tokens": 640,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 640
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 613,
+   "cacheReadInputTokens": 3308,
+   "cacheCreationInputTokens": 640,
+   "webSearchRequests": 0,
+   "costUSD": 0.0090248,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 640,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g07v0\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"insufficient\",\"evidence_ids\":[\"g07v0.r05\",\"g07v0.r19\",\"g07v0.r26\"],\"rationale\":\"Surface call is 'surface' for ENTITY_74. IHC was not measured, and the proteome record reports no vital-protein enrichment, so vital safety is insufficient. The ENTITY_38 proteome record belongs to another entity and was ignored.\"}},{\"id\":\"g05v0\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g05v0.r07\",\"g05v0.r13\",\"g05v0.r14\"],\"rationale\":\"Surface call is 'surface'. Vital-organ IHC staining level is 3 (duodenum), which is >=2, so vital safety concern is yes even though the proteome shows no enrichment.\"}},{\"id\":\"g11v0\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g11v0.r13\",\"g11v0.r08\",\"g11v0.r02\"],\"rationale\":\"ENTITY_09 surface call is 'surface'. Vital-organ IHC level is 3 (cerebellum), which is >=2, so vital safety concern is yes. Records for ENTITY_49 and ENTITY_04 were ignored.\"}},{\"id\":\"g12v0\",\"surface_accessible\":\"no\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g12v0.r19\",\"g12v0.r03\",\"g12v0.r10\"],\"rationale\":\"Surface call is 'internal', so not surface accessible. Vital-organ IHC level is 2 (heart muscle), which meets the >=2 threshold, so vital safety concern is yes. ENTITY_10 record ignored.\"}}]}",
+ "stderr": "",
+ "error": "JSONDecodeError: Expecting ',' delimiter: line 1 column 389 (char 388)",
+ "elapsed_s": 23.1,
+ "previous_attempt": {
+  "status": "failed",
+  "error": "JSONDecodeError: Expecting ',' delimiter: line 1 column 382 (char 381)",
+  "cost_usd": 0.021934,
+  "elapsed_s": 11.0
+ }
+}

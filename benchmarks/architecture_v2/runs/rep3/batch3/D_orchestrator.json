@@ -1,0 +1,76 @@
+{
+ "study_hash": "593b0de44496ae2a",
+ "prompt_sha256": "f5621cfcd8998a433299a6b8daa5163ba1b9c87b2d4c98e263f32be93c9a2d41",
+ "status": "failed",
+ "case_ids": [
+  "g03v0",
+  "g02v0",
+  "g01v0",
+  "g10v0"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.15083200000000002,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 14826,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 1753,
+  "output_tokens_details": {
+   "thinking_tokens": 635
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 14826,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1753,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 14826,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 14826
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 1753,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 14826,
+   "webSearchRequests": 0,
+   "costUSD": 0.076838,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 635,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 14826,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g03v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"no\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"needs_more_data\",\"evidence_ids\":[\"g03v0.r25\",\"g03v0.r15\",\"g03v0.r09\",\"g03v0.r12\",\"g03v0.r24\",\"g03v0.r21\",\"g03v0.r16\",\"g03v0.r05\",\"g03v0.r11\"],\"rationale\":\"Protein and RNA are up and replicated in TCGA and the confirmatory protein cohort. RCC has the largest transcript share and the purity interval is above 0. The surface call is internal and liver IHC is level 3. DepMap has 0 dependent lines. No verdict rule is met.\"}},{\"id\":\"g02v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"no\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"insufficient\",\"selective_dependency\":\"no\",\"verdict\":\"infiltration_signal\",\"evidence_ids\":[\"g02v0.r12\",\"g02v0.r06\",\"g02v0.r26\",\"g02v0.r24\",\"g02v0.r27\",\"g02v0.r17\",\"g02v0.r14\",\"g02v0.r13\"],\"rationale\":\"Protein is up and RNA is replicated in TCGA. CD8_T share (0.533) exceeds RCC (0.345), so tumour_intrinsic is no. The surface call is surface. IHC was not measured and the proteome shows no enrichment. DepMap has 0 dependent lines. Verdict is infiltration_signal.\"}},{\"id\":\"g01v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"needs_more_data\",\"evidence_ids\":[\"g01v0.r09\",\"g01v0.r10\",\"g01v0.r26\",\"g01v0.r23\",\"g01v0.r01\",\"g01v0.r19\",\"g01v0.r28\",\"g01v0.r21\",\"g01v0.r16\"],\"rationale\":\"Protein is up and RNA is replicated in TCGA. RCC has the largest share and the purity interval is above 0. The surface call is surface. Stomach IHC is level 3 and the proteome reports vital enrichment, so there is a safety concern. DepMap has 0 dependent lines.\"}},{\"id\":\"g10v0\",\"protein_up\":\"no\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"insufficient\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"loss_biomarker\",\"evidence_ids\":[\"g10v0.r12\",\"g10v0.r13\",\"g10v0.r21\",\"g10v0.r19\",\"g10v0.r10\",\"g10v0.r17\",\"g10v0.r26\",\"g10v0.r03\"],\"rationale\":\"Protein is down and RNA is down in CPTAC, TCGA and the confirmatory protein cohort, so replicated is yes. The purity interval (-2.928-1.96*1.029) is below 0. No surface record exists for the target. The proteome reports vital enrichment. DepMap has 0 dependent lines. Verdict is loss_biomarker.\"}]}",
+ "stderr": "",
+ "error": "JSONDecodeError: Expecting ',' delimiter: line 1 column 605 (char 604)",
+ "elapsed_s": 33.6,
+ "previous_attempt": {
+  "status": "ok",
+  "error": null,
+  "cost_usd": 0.073994,
+  "elapsed_s": 16.4
+ }
+}

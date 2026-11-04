@@ -1,0 +1,107 @@
+{
+ "study_hash": "e16667c009c8f276",
+ "prompt_sha256": "932d682791ed20ac7cec4076e60e76c249322086b6327e95ca53476f8738f83a",
+ "status": "ok",
+ "returncode": 0,
+ "cost_usd": 0.028572,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 4777,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 946,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 4777,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 946,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 4777,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 4777
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 946,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 4777,
+   "webSearchRequests": 0,
+   "costUSD": 0.028572,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 4777,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g09v0\",\"tumour_intrinsic\":\"no\",\"evidence_ids\":[\"g09v0.r03\"],\"rationale\":\"CD8_T share (0.737) exceeds RCC share (0.072), so a non-RCC group has a larger transcript share than RCC. The purity record is negative as well.\"}, {\"id\":\"g02v0\",\"tumour_intrinsic\":\"no\",\"evidence_ids\":[\"g02v0.r24\",\"g02v0.r03\"],\"rationale\":\"CD8_T share (0.533) exceeds RCC share (0.345) in the target's single-cell record, so a non-RCC group is larger. The purity record is positive but does not change this.\"}, {\"id\":\"g04v0\",\"tumour_intrinsic\":\"no\",\"evidence_ids\":[\"g04v0.r13\",\"g04v0.r17\"],\"rationale\":\"For ENTITY_02, RCC share is 0.327 vs Macrophage 0.272, so RCC is largest. Purity LFC 3.821 - 1.96*0.33 = 3.17 > 0. Yes.\"}, {\"id\":\"g01v0\",\"tumour_intrinsic\":\"yes\",\"evidence_ids\":[\"g01v0.r23\",\"g01v0.r01\"],\"rationale\":\"RCC share 0.976 is the largest. Purity LFC 7.787 - 1.96*0.579 = 6.65 > 0, so the interval excludes 0.\"}]}\n\nCorrection: g04v0 should be \"yes\", not \"no\" — the rationale shows RCC has the largest share and the purity interval is above 0.\n\n```json\n{\"answers\":[{\"id\":\"g09v0\",\"tumour_intrinsic\":\"no\",\"evidence_ids\":[\"g09v0.r03\"],\"rationale\":\"CD8_T share (0.737) exceeds RCC share (0.072), so a non-RCC group has a larger transcript share than RCC.\"},{\"id\":\"g02v0\",\"tumour_intrinsic\":\"no\",\"evidence_ids\":[\"g02v0.r24\"],\"rationale\":\"CD8_T share (0.533) exceeds RCC share (0.345) in the target's single-cell record, so a non-RCC group is larger.\"},{\"id\":\"g04v0\",\"tumour_intrinsic\":\"yes\",\"evidence_ids\":[\"g04v0.r13\",\"g04v0.r17\"],\"rationale\":\"RCC share 0.327 is the largest (Macrophage 0.272). Purity LFC 3.821 - 1.96*0.33 = 3.17 > 0, so the interval excludes 0.\"},{\"id\":\"g01v0\",\"tumour_intrinsic\":\"yes\",\"evidence_ids\":[\"g01v0.r23\",\"g01v0.r01\"],\"rationale\":\"RCC share 0.976 is the largest. Purity LFC 7.787 - 1.96*0.579 = 6.65 > 0, so the interval excludes 0.\"}]}\n```",
+ "stderr": "",
+ "elapsed_s": 13.5,
+ "case_ids": [
+  "g09v0",
+  "g02v0",
+  "g04v0",
+  "g01v0"
+ ],
+ "answers": [
+  {
+   "id": "g09v0",
+   "tumour_intrinsic": "no",
+   "evidence_ids": [
+    "g09v0.r03"
+   ],
+   "rationale": "CD8_T share (0.737) exceeds RCC share (0.072), so a non-RCC group has a larger transcript share than RCC. The purity record is negative as well."
+  },
+  {
+   "id": "g02v0",
+   "tumour_intrinsic": "no",
+   "evidence_ids": [
+    "g02v0.r24",
+    "g02v0.r03"
+   ],
+   "rationale": "CD8_T share (0.533) exceeds RCC share (0.345) in the target's single-cell record, so a non-RCC group is larger. The purity record is positive but does not change this."
+  },
+  {
+   "id": "g04v0",
+   "tumour_intrinsic": "no",
+   "evidence_ids": [
+    "g04v0.r13",
+    "g04v0.r17"
+   ],
+   "rationale": "For ENTITY_02, RCC share is 0.327 vs Macrophage 0.272, so RCC is largest. Purity LFC 3.821 - 1.96*0.33 = 3.17 > 0. Yes."
+  },
+  {
+   "id": "g01v0",
+   "tumour_intrinsic": "yes",
+   "evidence_ids": [
+    "g01v0.r23",
+    "g01v0.r01"
+   ],
+   "rationale": "RCC share 0.976 is the largest. Purity LFC 7.787 - 1.96*0.579 = 6.65 > 0, so the interval excludes 0."
+  }
+ ],
+ "reparsed": true
+}

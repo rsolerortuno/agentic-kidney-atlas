@@ -1,0 +1,111 @@
+{
+ "study_hash": "e16667c009c8f276",
+ "prompt_sha256": "26644aa08f7be6776c18cfe17a1a70842b542b1ecf9170e1c869983f6979a0bd",
+ "status": "ok",
+ "returncode": 0,
+ "cost_usd": 0.01968,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 3574,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 538,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 3574,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 538,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 3574,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 3574
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 538,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 3574,
+   "webSearchRequests": 0,
+   "costUSD": 0.01968,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 3574,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g04v0\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g04v0.r21\",\"g04v0.r09\",\"g04v0.r02\"],\"rationale\":\"Target surface_call is surface. Target IHC measured vital-organ staining level 3 (Adrenal gland), which is >=2, so vital safety concern is yes, though the proteome reports no enrichment. Records of other entities were ignored.\"},{\"id\":\"g06v0\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"no\",\"evidence_ids\":[\"g06v0.r24\",\"g06v0.r13\"],\"rationale\":\"Target surface_call is surface. Target IHC was measured with vital max level 1 (<=1). No target proteome record reports enrichment (the enriched record belongs to another entity), so vital safety concern is no.\"},{\"id\":\"g09v0\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g09v0.r16\"],\"rationale\":\"No surface record for the target (the surface record belongs to another entity), so insufficient. Target proteome reports vital_protein_enriched true (Brain Cortex), so vital safety concern is yes.\"},{\"id\":\"g08v0\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"insufficient\",\"evidence_ids\":[\"g08v0.r16\",\"g08v0.r01\"],\"rationale\":\"Surface call is unknown, so insufficient. IHC was not measured and there is no proteome record reporting enrichment, so vital safety concern is insufficient.\"}]}",
+ "stderr": "",
+ "answers": [
+  {
+   "id": "g04v0",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g04v0.r21",
+    "g04v0.r09",
+    "g04v0.r02"
+   ],
+   "rationale": "Target surface_call is surface. Target IHC measured vital-organ staining level 3 (Adrenal gland), which is >=2, so vital safety concern is yes, though the proteome reports no enrichment. Records of other entities were ignored."
+  },
+  {
+   "id": "g06v0",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "no",
+   "evidence_ids": [
+    "g06v0.r24",
+    "g06v0.r13"
+   ],
+   "rationale": "Target surface_call is surface. Target IHC was measured with vital max level 1 (<=1). No target proteome record reports enrichment (the enriched record belongs to another entity), so vital safety concern is no."
+  },
+  {
+   "id": "g09v0",
+   "surface_accessible": "insufficient",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g09v0.r16"
+   ],
+   "rationale": "No surface record for the target (the surface record belongs to another entity), so insufficient. Target proteome reports vital_protein_enriched true (Brain Cortex), so vital safety concern is yes."
+  },
+  {
+   "id": "g08v0",
+   "surface_accessible": "insufficient",
+   "vital_safety_concern": "insufficient",
+   "evidence_ids": [
+    "g08v0.r16",
+    "g08v0.r01"
+   ],
+   "rationale": "Surface call is unknown, so insufficient. IHC was not measured and there is no proteome record reporting enrichment, so vital safety concern is insufficient."
+  }
+ ],
+ "elapsed_s": 12.9,
+ "case_ids": [
+  "g04v0",
+  "g06v0",
+  "g09v0",
+  "g08v0"
+ ]
+}

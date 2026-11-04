@@ -1,0 +1,155 @@
+{
+ "study_hash": "e16667c009c8f276",
+ "prompt_sha256": "746aff35d1b18b8a63fe3162f51a030fd502734e275e8cc4bb76a209b57d5a07",
+ "status": "ok",
+ "returncode": 0,
+ "cost_usd": 0.06906999999999999,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 12319,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 1979,
+  "output_tokens_details": {
+   "thinking_tokens": 872
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 12319,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1979,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 12319,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 12319
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 1979,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 12319,
+   "webSearchRequests": 0,
+   "costUSD": 0.06906999999999999,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 872,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 12319,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g11v1\",\"protein_up\":\"no\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"no\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"loss_biomarker\",\"evidence_ids\":[\"g11v1.r22\",\"g11v1.r25\",\"g11v1.r12\",\"g11v1.r17\",\"g11v1.r26\",\"g11v1.r13\",\"g11v1.r06\"],\"rationale\":\"Protein is down (padj 1e-10). The CPTAC RNA reference is down and TCGA RNA agrees, so replicated is yes. Macrophages hold the largest transcript share. Vital IHC level is 3. DepMap has no dependent lines. Protein_up=no with replicated=yes gives loss_biomarker.\"},{\"id\":\"g05v1\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"no\",\"selective_dependency\":\"no\",\"verdict\":\"surface_target_candidate\",\"evidence_ids\":[\"g05v1.r09\",\"g05v1.r18\",\"g05v1.r21\",\"g05v1.r04\",\"g05v1.r25\",\"g05v1.r20\",\"g05v1.r15\",\"g05v1.r11\",\"g05v1.r10\",\"g05v1.r13\"],\"rationale\":\"Protein is up and RNA is replicated in TCGA and the confirmatory protein cohort. RCC has the largest share (0.949) and the purity bound is 3.97, above 0. The call is surface. Vital IHC level is 1 with no proteome enrichment. DepMap has no dependent lines.\"},{\"id\":\"g03v1\",\"protein_up\":\"no\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"no\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"loss_biomarker\",\"evidence_ids\":[\"g03v1.r02\",\"g03v1.r06\",\"g03v1.r11\",\"g03v1.r18\",\"g03v1.r16\",\"g03v1.r05\",\"g03v1.r25\",\"g03v1.r20\"],\"rationale\":\"Protein is down. RNA is down in CPTAC and TCGA, so replicated is yes. RCC has the largest share and the purity bound is above 0. The surface call is internal. Liver IHC level is 3. DepMap selectivity is negative and no lines are dependent. Verdict is loss_biomarker.\"},{\"id\":\"g06v1\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"no\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"no\",\"selective_dependency\":\"no\",\"verdict\":\"infiltration_signal\",\"evidence_ids\":[\"g06v1.r05\",\"g06v1.r22\",\"g06v1.r26\",\"g06v1.r16\",\"g06v1.r13\",\"g06v1.r12\",\"g06v1.r02\"],\"rationale\":\"Protein is up and TCGA RNA replicates the CPTAC RNA. CD8_T has a larger transcript share (0.6) than RCC (0.2), so tumour_intrinsic is no. The call is surface. Vital IHC level is 1 and no proteome enrichment is reported. DepMap has no dependent lines. Verdict is infiltration_signal.\"}]}",
+ "stderr": "",
+ "answers": [
+  {
+   "id": "g11v1",
+   "protein_up": "no",
+   "replicated": "yes",
+   "tumour_intrinsic": "no",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "yes",
+   "selective_dependency": "no",
+   "verdict": "loss_biomarker",
+   "evidence_ids": [
+    "g11v1.r22",
+    "g11v1.r25",
+    "g11v1.r12",
+    "g11v1.r17",
+    "g11v1.r26",
+    "g11v1.r13",
+    "g11v1.r06"
+   ],
+   "rationale": "Protein is down (padj 1e-10). The CPTAC RNA reference is down and TCGA RNA agrees, so replicated is yes. Macrophages hold the largest transcript share. Vital IHC level is 3. DepMap has no dependent lines. Protein_up=no with replicated=yes gives loss_biomarker."
+  },
+  {
+   "id": "g05v1",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "yes",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "no",
+   "selective_dependency": "no",
+   "verdict": "surface_target_candidate",
+   "evidence_ids": [
+    "g05v1.r09",
+    "g05v1.r18",
+    "g05v1.r21",
+    "g05v1.r04",
+    "g05v1.r25",
+    "g05v1.r20",
+    "g05v1.r15",
+    "g05v1.r11",
+    "g05v1.r10",
+    "g05v1.r13"
+   ],
+   "rationale": "Protein is up and RNA is replicated in TCGA and the confirmatory protein cohort. RCC has the largest share (0.949) and the purity bound is 3.97, above 0. The call is surface. Vital IHC level is 1 with no proteome enrichment. DepMap has no dependent lines."
+  },
+  {
+   "id": "g03v1",
+   "protein_up": "no",
+   "replicated": "yes",
+   "tumour_intrinsic": "yes",
+   "surface_accessible": "no",
+   "vital_safety_concern": "yes",
+   "selective_dependency": "no",
+   "verdict": "loss_biomarker",
+   "evidence_ids": [
+    "g03v1.r02",
+    "g03v1.r06",
+    "g03v1.r11",
+    "g03v1.r18",
+    "g03v1.r16",
+    "g03v1.r05",
+    "g03v1.r25",
+    "g03v1.r20"
+   ],
+   "rationale": "Protein is down. RNA is down in CPTAC and TCGA, so replicated is yes. RCC has the largest share and the purity bound is above 0. The surface call is internal. Liver IHC level is 3. DepMap selectivity is negative and no lines are dependent. Verdict is loss_biomarker."
+  },
+  {
+   "id": "g06v1",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "no",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "no",
+   "selective_dependency": "no",
+   "verdict": "infiltration_signal",
+   "evidence_ids": [
+    "g06v1.r05",
+    "g06v1.r22",
+    "g06v1.r26",
+    "g06v1.r16",
+    "g06v1.r13",
+    "g06v1.r12",
+    "g06v1.r02"
+   ],
+   "rationale": "Protein is up and TCGA RNA replicates the CPTAC RNA. CD8_T has a larger transcript share (0.6) than RCC (0.2), so tumour_intrinsic is no. The call is surface. Vital IHC level is 1 and no proteome enrichment is reported. DepMap has no dependent lines. Verdict is infiltration_signal."
+  }
+ ],
+ "elapsed_s": 21.6,
+ "case_ids": [
+  "g11v1",
+  "g05v1",
+  "g03v1",
+  "g06v1"
+ ]
+}

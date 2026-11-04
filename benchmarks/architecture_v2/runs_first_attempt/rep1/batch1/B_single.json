@@ -1,0 +1,156 @@
+{
+ "study_hash": "e16667c009c8f276",
+ "prompt_sha256": "a883c399a0adf634cc3483a7cf7fe19e8f3fe672b0304f0f82eab5ef5424205b",
+ "status": "ok",
+ "returncode": 0,
+ "cost_usd": 0.069448,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 12681,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 1872,
+  "output_tokens_details": {
+   "thinking_tokens": 804
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 12681,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1872,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 12681,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 12681
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 1872,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 12681,
+   "webSearchRequests": 0,
+   "costUSD": 0.069448,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 804,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 12681,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g11v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"no\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"infiltration_signal\",\"evidence_ids\":[\"g11v0.r01\",\"g11v0.r19\",\"g11v0.r15\",\"g11v0.r25\",\"g11v0.r18\",\"g11v0.r13\",\"g11v0.r08\",\"g11v0.r03\"],\"rationale\":\"Protein is up and replicated in TCGA RNA and the confirmatory protein cohort. Macrophages and CD8 T cells have larger transcript shares than RCC, so it is not tumour-intrinsic. Cerebellum staining is level 3. DepMap shows no dependent lines.\"},{\"id\":\"g10v0\",\"protein_up\":\"no\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"insufficient\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"loss_biomarker\",\"evidence_ids\":[\"g10v0.r12\",\"g10v0.r13\",\"g10v0.r21\",\"g10v0.r19\",\"g10v0.r10\",\"g10v0.r17\",\"g10v0.r26\",\"g10v0.r03\"],\"rationale\":\"Protein is down, and RNA is down in CPTAC and TCGA, with the confirmatory protein also down. RCC has the largest transcript share, but the purity-adjusted interval is below 0. No surface record. Vital protein is enriched. DepMap shows no dependent lines.\"},{\"id\":\"g08v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"insufficient\",\"selective_dependency\":\"no\",\"verdict\":\"needs_more_data\",\"evidence_ids\":[\"g08v0.r09\",\"g08v0.r11\",\"g08v0.r04\",\"g08v0.r06\",\"g08v0.r26\",\"g08v0.r16\",\"g08v0.r01\",\"g08v0.r19\"],\"rationale\":\"Protein is up, and TCGA RNA replicates the CPTAC RNA direction. RCC has the largest share and the purity interval is above 0. Surface call is unknown. IHC was not measured and there is no proteome record. DepMap shows no dependent lines. Surface and safety are unresolved.\"},{\"id\":\"g07v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"insufficient\",\"selective_dependency\":\"no\",\"verdict\":\"needs_more_data\",\"evidence_ids\":[\"g07v0.r16\",\"g07v0.r17\",\"g07v0.r04\",\"g07v0.r23\",\"g07v0.r20\",\"g07v0.r05\",\"g07v0.r19\",\"g07v0.r26\",\"g07v0.r07\"],\"rationale\":\"Protein is up and TCGA RNA replicates. RCC has the largest share and the purity interval is above 0. Surface call is surface. IHC was not measured and the proteome shows no enrichment, so safety is insufficient. DepMap shows no dependent lines.\"}]}",
+ "stderr": "",
+ "answers": [
+  {
+   "id": "g11v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "no",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "yes",
+   "selective_dependency": "no",
+   "verdict": "infiltration_signal",
+   "evidence_ids": [
+    "g11v0.r01",
+    "g11v0.r19",
+    "g11v0.r15",
+    "g11v0.r25",
+    "g11v0.r18",
+    "g11v0.r13",
+    "g11v0.r08",
+    "g11v0.r03"
+   ],
+   "rationale": "Protein is up and replicated in TCGA RNA and the confirmatory protein cohort. Macrophages and CD8 T cells have larger transcript shares than RCC, so it is not tumour-intrinsic. Cerebellum staining is level 3. DepMap shows no dependent lines."
+  },
+  {
+   "id": "g10v0",
+   "protein_up": "no",
+   "replicated": "yes",
+   "tumour_intrinsic": "insufficient",
+   "surface_accessible": "insufficient",
+   "vital_safety_concern": "yes",
+   "selective_dependency": "no",
+   "verdict": "loss_biomarker",
+   "evidence_ids": [
+    "g10v0.r12",
+    "g10v0.r13",
+    "g10v0.r21",
+    "g10v0.r19",
+    "g10v0.r10",
+    "g10v0.r17",
+    "g10v0.r26",
+    "g10v0.r03"
+   ],
+   "rationale": "Protein is down, and RNA is down in CPTAC and TCGA, with the confirmatory protein also down. RCC has the largest transcript share, but the purity-adjusted interval is below 0. No surface record. Vital protein is enriched. DepMap shows no dependent lines."
+  },
+  {
+   "id": "g08v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "yes",
+   "surface_accessible": "insufficient",
+   "vital_safety_concern": "insufficient",
+   "selective_dependency": "no",
+   "verdict": "needs_more_data",
+   "evidence_ids": [
+    "g08v0.r09",
+    "g08v0.r11",
+    "g08v0.r04",
+    "g08v0.r06",
+    "g08v0.r26",
+    "g08v0.r16",
+    "g08v0.r01",
+    "g08v0.r19"
+   ],
+   "rationale": "Protein is up, and TCGA RNA replicates the CPTAC RNA direction. RCC has the largest share and the purity interval is above 0. Surface call is unknown. IHC was not measured and there is no proteome record. DepMap shows no dependent lines. Surface and safety are unresolved."
+  },
+  {
+   "id": "g07v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "yes",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "insufficient",
+   "selective_dependency": "no",
+   "verdict": "needs_more_data",
+   "evidence_ids": [
+    "g07v0.r16",
+    "g07v0.r17",
+    "g07v0.r04",
+    "g07v0.r23",
+    "g07v0.r20",
+    "g07v0.r05",
+    "g07v0.r19",
+    "g07v0.r26",
+    "g07v0.r07"
+   ],
+   "rationale": "Protein is up and TCGA RNA replicates. RCC has the largest share and the purity interval is above 0. Surface call is surface. IHC was not measured and the proteome shows no enrichment, so safety is insufficient. DepMap shows no dependent lines."
+  }
+ ],
+ "elapsed_s": 19.4,
+ "case_ids": [
+  "g11v0",
+  "g10v0",
+  "g08v0",
+  "g07v0"
+ ]
+}

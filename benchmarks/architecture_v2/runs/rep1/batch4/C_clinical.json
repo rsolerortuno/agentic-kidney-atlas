@@ -1,0 +1,103 @@
+{
+ "study_hash": "e16667c009c8f276",
+ "prompt_sha256": "9a93f7853516da0aaf97a5fe5418bd0c67b56c83b85add17c22952ecd8d0bef8",
+ "status": "ok",
+ "returncode": 0,
+ "cost_usd": 0.027066,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 5703,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 425,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 5703,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 425,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 5703,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 5703
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 425,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 5703,
+   "webSearchRequests": 0,
+   "costUSD": 0.027066,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 5703,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g11v1\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g11v1.r06\"],\"rationale\":\"Target ENTITY_57 DepMap record exists: n_ccrcc_dependent=0 (<3) and padj=0.466 (>=0.1), so conditions fail.\"},{\"id\":\"g07v1\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g07v1.r26\"],\"rationale\":\"Target ENTITY_19 DepMap record exists: n_ccrcc_dependent=0 (<3) and padj=0.5598 (>=0.1), so conditions fail.\"},{\"id\":\"g06v1\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g06v1.r02\"],\"rationale\":\"Target ENTITY_26 DepMap record exists: n_ccrcc_dependent=0 (<3) and padj=0.3868 (>=0.1), so conditions fail.\"},{\"id\":\"g09v1\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g09v1.r18\"],\"rationale\":\"Target ENTITY_45 DepMap record: n_ccrcc_dependent=3 meets threshold, but padj=0.404 (>=0.1) fails, so not a selective dependency.\"}]}",
+ "stderr": "",
+ "answers": [
+  {
+   "id": "g11v1",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g11v1.r06"
+   ],
+   "rationale": "Target ENTITY_57 DepMap record exists: n_ccrcc_dependent=0 (<3) and padj=0.466 (>=0.1), so conditions fail."
+  },
+  {
+   "id": "g07v1",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g07v1.r26"
+   ],
+   "rationale": "Target ENTITY_19 DepMap record exists: n_ccrcc_dependent=0 (<3) and padj=0.5598 (>=0.1), so conditions fail."
+  },
+  {
+   "id": "g06v1",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g06v1.r02"
+   ],
+   "rationale": "Target ENTITY_26 DepMap record exists: n_ccrcc_dependent=0 (<3) and padj=0.3868 (>=0.1), so conditions fail."
+  },
+  {
+   "id": "g09v1",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g09v1.r18"
+   ],
+   "rationale": "Target ENTITY_45 DepMap record: n_ccrcc_dependent=3 meets threshold, but padj=0.404 (>=0.1) fails, so not a selective dependency."
+  }
+ ],
+ "elapsed_s": 10.5,
+ "case_ids": [
+  "g11v1",
+  "g07v1",
+  "g06v1",
+  "g09v1"
+ ]
+}

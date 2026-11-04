@@ -1,0 +1,6856 @@
+[
+ {
+  "id": "g01v0",
+  "target_entity": "ENTITY_96",
+  "records": [
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": 7.787,
+    "rna_lfc_at_purity1_se": 0.579,
+    "rna_purity_rho": 0.245,
+    "entity": "ENTITY_96",
+    "id": "g01v0.r01"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": 0.133,
+    "padj": 0.9994,
+    "entity": "ENTITY_99",
+    "id": "g01v0.r02"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": 0.057,
+    "padj": 0.922,
+    "entity": "ENTITY_96",
+    "id": "g01v0.r03"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": -0.063,
+    "padj": 0.9613,
+    "entity": "ENTITY_96",
+    "id": "g01v0.r04"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo",
+    "log_hr_per_sd": -0.212,
+    "padj": 0.6809,
+    "entity": "ENTITY_96",
+    "id": "g01v0.r05"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": -0.0089,
+    "padj": 0.9326,
+    "entity": "ENTITY_96",
+    "id": "g01v0.r06"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": 0.12,
+    "padj": 0.9994,
+    "entity": "ENTITY_96",
+    "id": "g01v0.r07"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "phospho",
+    "log2fc": 1.9096,
+    "padj": 5.18e-30,
+    "n_pairs": 84,
+    "entity": "ENTITY_96",
+    "id": "g01v0.r08"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": 2.2686,
+    "padj": 9.9e-43,
+    "n_pairs": 84,
+    "entity": "ENTITY_96",
+    "id": "g01v0.r09"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": 6.3123,
+    "padj": 1.72e-49,
+    "n_pairs": 75,
+    "entity": "ENTITY_96",
+    "id": "g01v0.r10"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": 0.105,
+    "padj": 0.9994,
+    "entity": "ENTITY_97",
+    "id": "g01v0.r11"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo_bev",
+    "log_hr_per_sd": -0.181,
+    "padj": 0.5073,
+    "entity": "ENTITY_99",
+    "id": "g01v0.r12"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo",
+    "log_hr_per_sd": -0.277,
+    "padj": 0.3941,
+    "entity": "ENTITY_99",
+    "id": "g01v0.r13"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "IMmotion150",
+    "arm": "atezo_bev_vs_sunitinib",
+    "log_hr_per_sd": 0.119,
+    "padj": 0.9175,
+    "entity": "ENTITY_96",
+    "id": "g01v0.r14"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo_bev",
+    "log_hr_per_sd": -0.112,
+    "padj": 0.6658,
+    "entity": "ENTITY_96",
+    "id": "g01v0.r15"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": 0.031,
+    "padj": 0.4417,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.051,
+    "entity": "ENTITY_96",
+    "id": "g01v0.r16"
+   },
+   {
+    "type": "normal_tissue_ihc",
+    "measured": true,
+    "vital_max_level": 3.0,
+    "vital_max_tissue": "Lung",
+    "kidney_max_level": 3.0,
+    "entity": "ENTITY_97",
+    "id": "g01v0.r17"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 14,
+    "vital_protein_ts_max": 2.18,
+    "vital_protein_ts_tissue": "Heart Atrial",
+    "vital_protein_enriched": false,
+    "entity": "ENTITY_97",
+    "id": "g01v0.r18"
+   },
+   {
+    "type": "surface_annotation",
+    "surface_call": "surface",
+    "evidence": "UniProt: Cell membrane; Cell projection, microvillus membrane; Nucleus; Nucleus, nucleolus | SURFY: not classified | CSPA: not observed",
+    "transmembrane_segments": 1,
+    "entity": "ENTITY_96",
+    "id": "g01v0.r19"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": -0.117,
+    "padj": 0.9124,
+    "entity": "ENTITY_97",
+    "id": "g01v0.r20"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 16,
+    "vital_protein_ts_max": 5.19,
+    "vital_protein_ts_tissue": "Stomach",
+    "vital_protein_enriched": true,
+    "entity": "ENTITY_96",
+    "id": "g01v0.r21"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": 0.047,
+    "padj": 0.3748,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.233,
+    "entity": "ENTITY_99",
+    "id": "g01v0.r22"
+   },
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.976,
+      "pct_expressing": 54.7
+     },
+     {
+      "cell_group": "CD8_T",
+      "share_of_tumour_transcripts": 0.009,
+      "pct_expressing": 0.2
+     },
+     {
+      "cell_group": "NK",
+      "share_of_tumour_transcripts": 0.007,
+      "pct_expressing": 0.4
+     },
+     {
+      "cell_group": "Macrophage",
+      "share_of_tumour_transcripts": 0.002,
+      "pct_expressing": 0.1
+     },
+     {
+      "cell_group": "T_other",
+      "share_of_tumour_transcripts": 0.001,
+      "pct_expressing": 0.2
+     }
+    ],
+    "entity": "ENTITY_96",
+    "id": "g01v0.r23"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "sunitinib",
+    "log_hr_per_sd": -0.336,
+    "padj": 0.3321,
+    "entity": "ENTITY_96",
+    "id": "g01v0.r24"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": 1.6903,
+    "padj": 1.07e-26,
+    "n_pairs": 76,
+    "entity": "ENTITY_99",
+    "id": "g01v0.r25"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": 9.7117,
+    "padj": 2.58e-30,
+    "n_pairs": 72,
+    "entity": "ENTITY_96",
+    "id": "g01v0.r26"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "IMmotion150",
+    "arm": "atezo_bev_vs_sunitinib",
+    "log_hr_per_sd": 0.419,
+    "padj": 0.6251,
+    "entity": "ENTITY_99",
+    "id": "g01v0.r27"
+   },
+   {
+    "type": "normal_tissue_ihc",
+    "measured": true,
+    "vital_max_level": 3.0,
+    "vital_max_tissue": "Stomach",
+    "kidney_max_level": 0.0,
+    "entity": "ENTITY_96",
+    "id": "g01v0.r28"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": 0.6623,
+    "padj": 8.62e-08,
+    "n_pairs": 24,
+    "entity": "ENTITY_97",
+    "id": "g01v0.r29"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": -0.018,
+    "padj": 0.9776,
+    "entity": "ENTITY_97",
+    "id": "g01v0.r30"
+   }
+  ]
+ },
+ {
+  "id": "g01v1",
+  "target_entity": "ENTITY_36",
+  "records": [
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": 0.12,
+    "padj": 0.9994,
+    "entity": "ENTITY_36",
+    "id": "g01v1.r01"
+   },
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.976,
+      "pct_expressing": 54.7
+     },
+     {
+      "cell_group": "CD8_T",
+      "share_of_tumour_transcripts": 0.009,
+      "pct_expressing": 0.2
+     },
+     {
+      "cell_group": "NK",
+      "share_of_tumour_transcripts": 0.007,
+      "pct_expressing": 0.4
+     },
+     {
+      "cell_group": "Macrophage",
+      "share_of_tumour_transcripts": 0.002,
+      "pct_expressing": 0.1
+     },
+     {
+      "cell_group": "T_other",
+      "share_of_tumour_transcripts": 0.001,
+      "pct_expressing": 0.2
+     }
+    ],
+    "entity": "ENTITY_36",
+    "id": "g01v1.r02"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": -0.063,
+    "padj": 0.9613,
+    "entity": "ENTITY_36",
+    "id": "g01v1.r03"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": -0.054,
+    "padj": 0.2614,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.202,
+    "entity": "ENTITY_97",
+    "id": "g01v1.r04"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": 2.2686,
+    "padj": 9.9e-43,
+    "n_pairs": 84,
+    "entity": "ENTITY_36",
+    "id": "g01v1.r05"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": 3.5988,
+    "padj": 8.4e-26,
+    "n_pairs": 72,
+    "entity": "ENTITY_97",
+    "id": "g01v1.r06"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": 3.3839,
+    "padj": 6.6e-32,
+    "n_pairs": 75,
+    "entity": "ENTITY_99",
+    "id": "g01v1.r07"
+   },
+   {
+    "type": "surface_annotation",
+    "surface_call": "surface",
+    "evidence": "UniProt: Cell membrane; Cell projection, microvillus membrane; Nucleus; Nucleus, nucleolus | SURFY: not classified | CSPA: not observed",
+    "transmembrane_segments": 1,
+    "entity": "ENTITY_36",
+    "id": "g01v1.r08"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": -0.015,
+    "padj": 0.9994,
+    "entity": "ENTITY_97",
+    "id": "g01v1.r09"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo_bev",
+    "log_hr_per_sd": -0.112,
+    "padj": 0.6658,
+    "entity": "ENTITY_36",
+    "id": "g01v1.r10"
+   },
+   {
+    "type": "confirmatory_protein",
+    "log2fc": 2.1423,
+    "padj": 2.81e-27,
+    "n_pairs": 87,
+    "entity": "ENTITY_97",
+    "id": "g01v1.r11"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": -0.14,
+    "padj": 0.8811,
+    "entity": "ENTITY_97",
+    "id": "g01v1.r12"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": 0.047,
+    "padj": 0.3748,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.233,
+    "entity": "ENTITY_99",
+    "id": "g01v1.r13"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": 6.3123,
+    "padj": 1.72e-49,
+    "n_pairs": 75,
+    "entity": "ENTITY_36",
+    "id": "g01v1.r14"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": 0.031,
+    "padj": 0.4417,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.051,
+    "entity": "ENTITY_36",
+    "id": "g01v1.r15"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "phospho",
+    "log2fc": 1.9096,
+    "padj": 5.18e-30,
+    "n_pairs": 84,
+    "entity": "ENTITY_36",
+    "id": "g01v1.r16"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "sunitinib",
+    "log_hr_per_sd": -0.336,
+    "padj": 0.3321,
+    "entity": "ENTITY_36",
+    "id": "g01v1.r17"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 16,
+    "vital_protein_ts_max": 1.1,
+    "vital_protein_ts_tissue": "Stomach",
+    "vital_protein_enriched": false,
+    "entity": "ENTITY_36",
+    "id": "g01v1.r18"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": 7.787,
+    "rna_lfc_at_purity1_se": 0.579,
+    "rna_purity_rho": 0.245,
+    "entity": "ENTITY_36",
+    "id": "g01v1.r19"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": 0.133,
+    "padj": 0.9994,
+    "entity": "ENTITY_99",
+    "id": "g01v1.r20"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo",
+    "log_hr_per_sd": -0.212,
+    "padj": 0.6809,
+    "entity": "ENTITY_36",
+    "id": "g01v1.r21"
+   },
+   {
+    "type": "normal_tissue_ihc",
+    "measured": true,
+    "vital_max_level": 1.0,
+    "vital_max_tissue": "Colon",
+    "kidney_max_level": 0.0,
+    "entity": "ENTITY_99",
+    "id": "g01v1.r22"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": 9.7117,
+    "padj": 2.58e-30,
+    "n_pairs": 72,
+    "entity": "ENTITY_36",
+    "id": "g01v1.r23"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": 3.6053,
+    "padj": 2.69e-34,
+    "n_pairs": 75,
+    "entity": "ENTITY_97",
+    "id": "g01v1.r24"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": -0.0089,
+    "padj": 0.9326,
+    "entity": "ENTITY_36",
+    "id": "g01v1.r25"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": 0.057,
+    "padj": 0.922,
+    "entity": "ENTITY_36",
+    "id": "g01v1.r26"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": 0.027,
+    "padj": 0.9778,
+    "entity": "ENTITY_99",
+    "id": "g01v1.r27"
+   },
+   {
+    "type": "normal_tissue_ihc",
+    "measured": true,
+    "vital_max_level": 1.0,
+    "vital_max_tissue": "lung",
+    "kidney_max_level": 0.0,
+    "entity": "ENTITY_36",
+    "id": "g01v1.r28"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": 4.376,
+    "rna_lfc_at_purity1_se": 0.608,
+    "rna_purity_rho": -0.061,
+    "entity": "ENTITY_99",
+    "id": "g01v1.r29"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "IMmotion150",
+    "arm": "atezo_bev_vs_sunitinib",
+    "log_hr_per_sd": 0.119,
+    "padj": 0.9175,
+    "entity": "ENTITY_36",
+    "id": "g01v1.r30"
+   }
+  ]
+ },
+ {
+  "id": "g02v0",
+  "target_entity": "ENTITY_52",
+  "records": [
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 16,
+    "vital_protein_ts_max": 4.93,
+    "vital_protein_ts_tissue": "Adrenal Gland",
+    "vital_protein_enriched": true,
+    "entity": "ENTITY_12",
+    "id": "g02v0.r01"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": -4.371,
+    "rna_lfc_at_purity1_se": 0.985,
+    "rna_purity_rho": -0.019,
+    "entity": "ENTITY_87",
+    "id": "g02v0.r02"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": 4.278,
+    "rna_lfc_at_purity1_se": 0.724,
+    "rna_purity_rho": -0.108,
+    "entity": "ENTITY_52",
+    "id": "g02v0.r03"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": 0.2536,
+    "padj": 0.002,
+    "entity": "ENTITY_87",
+    "id": "g02v0.r04"
+   },
+   {
+    "type": "confirmatory_protein",
+    "log2fc": 5.3431,
+    "padj": 5.82e-51,
+    "n_pairs": 85,
+    "entity": "ENTITY_12",
+    "id": "g02v0.r05"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": 4.4637,
+    "padj": 4.13e-35,
+    "n_pairs": 75,
+    "entity": "ENTITY_52",
+    "id": "g02v0.r06"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": -5.1744,
+    "padj": 1.97e-17,
+    "n_pairs": 72,
+    "entity": "ENTITY_87",
+    "id": "g02v0.r07"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": 0.037,
+    "padj": 0.9994,
+    "entity": "ENTITY_12",
+    "id": "g02v0.r08"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "phospho",
+    "log2fc": -1.3507,
+    "padj": 3.42e-30,
+    "n_pairs": 84,
+    "entity": "ENTITY_87",
+    "id": "g02v0.r09"
+   },
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.862,
+      "pct_expressing": 26.8
+     },
+     {
+      "cell_group": "Macrophage",
+      "share_of_tumour_transcripts": 0.112,
+      "pct_expressing": 1.3
+     },
+     {
+      "cell_group": "CD8_T",
+      "share_of_tumour_transcripts": 0.007,
+      "pct_expressing": 0.1
+     },
+     {
+      "cell_group": "NK",
+      "share_of_tumour_transcripts": 0.006,
+      "pct_expressing": 0.4
+     },
+     {
+      "cell_group": "PT",
+      "share_of_tumour_transcripts": 0.006,
+      "pct_expressing": 48.7
+     }
+    ],
+    "entity": "ENTITY_87",
+    "id": "g02v0.r10"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": 2.9196,
+    "padj": 1.94e-20,
+    "n_pairs": 72,
+    "entity": "ENTITY_12",
+    "id": "g02v0.r11"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": 2.4207,
+    "padj": 1.94e-38,
+    "n_pairs": 84,
+    "entity": "ENTITY_52",
+    "id": "g02v0.r12"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": 0.006,
+    "padj": 0.9287,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.251,
+    "entity": "ENTITY_52",
+    "id": "g02v0.r13"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 6,
+    "vital_protein_ts_max": 0.34,
+    "vital_protein_ts_tissue": "Stomach",
+    "vital_protein_enriched": false,
+    "entity": "ENTITY_52",
+    "id": "g02v0.r14"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": 0.1265,
+    "padj": 0.1747,
+    "entity": "ENTITY_52",
+    "id": "g02v0.r15"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "sunitinib",
+    "log_hr_per_sd": -0.262,
+    "padj": 0.434,
+    "entity": "ENTITY_52",
+    "id": "g02v0.r16"
+   },
+   {
+    "type": "normal_tissue_ihc",
+    "measured": false,
+    "vital_max_level": null,
+    "vital_max_tissue": null,
+    "kidney_max_level": null,
+    "entity": "ENTITY_52",
+    "id": "g02v0.r17"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo_bev",
+    "log_hr_per_sd": -0.383,
+    "padj": 0.1657,
+    "entity": "ENTITY_52",
+    "id": "g02v0.r18"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": -0.143,
+    "padj": 0.9994,
+    "entity": "ENTITY_52",
+    "id": "g02v0.r19"
+   },
+   {
+    "type": "confirmatory_protein",
+    "log2fc": -4.446,
+    "padj": 1.25e-41,
+    "n_pairs": 87,
+    "entity": "ENTITY_87",
+    "id": "g02v0.r20"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "IMmotion150",
+    "arm": "atezo_bev_vs_sunitinib",
+    "log_hr_per_sd": -0.113,
+    "padj": 0.9335,
+    "entity": "ENTITY_52",
+    "id": "g02v0.r21"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": 0.015,
+    "padj": 0.9816,
+    "entity": "ENTITY_52",
+    "id": "g02v0.r22"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo",
+    "log_hr_per_sd": -0.166,
+    "padj": 0.7654,
+    "entity": "ENTITY_52",
+    "id": "g02v0.r23"
+   },
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "CD8_T",
+      "share_of_tumour_transcripts": 0.533,
+      "pct_expressing": 14.2
+     },
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.345,
+      "pct_expressing": 45.9
+     },
+     {
+      "cell_group": "Treg",
+      "share_of_tumour_transcripts": 0.036,
+      "pct_expressing": 16.3
+     },
+     {
+      "cell_group": "CD4_T",
+      "share_of_tumour_transcripts": 0.031,
+      "pct_expressing": 4.5
+     },
+     {
+      "cell_group": "T_other",
+      "share_of_tumour_transcripts": 0.029,
+      "pct_expressing": 8.5
+     }
+    ],
+    "entity": "ENTITY_52",
+    "id": "g02v0.r24"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": 0.152,
+    "padj": 0.8908,
+    "entity": "ENTITY_52",
+    "id": "g02v0.r25"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": 7.0902,
+    "padj": 6.45e-25,
+    "n_pairs": 72,
+    "entity": "ENTITY_52",
+    "id": "g02v0.r26"
+   },
+   {
+    "type": "surface_annotation",
+    "surface_call": "surface",
+    "evidence": "UniProt: Cell membrane | SURFY: surface | CSPA: 2 - putative",
+    "transmembrane_segments": 1,
+    "entity": "ENTITY_52",
+    "id": "g02v0.r27"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": 2.6203,
+    "padj": 2.37e-26,
+    "n_pairs": 75,
+    "entity": "ENTITY_12",
+    "id": "g02v0.r28"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": 0.006,
+    "padj": 0.9934,
+    "entity": "ENTITY_12",
+    "id": "g02v0.r29"
+   }
+  ]
+ },
+ {
+  "id": "g02v1",
+  "target_entity": "ENTITY_67",
+  "records": [
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": 4.278,
+    "rna_lfc_at_purity1_se": 0.724,
+    "rna_purity_rho": -0.108,
+    "entity": "ENTITY_67",
+    "id": "g02v1.r01"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo_bev",
+    "log_hr_per_sd": -0.383,
+    "padj": 0.1657,
+    "entity": "ENTITY_67",
+    "id": "g02v1.r02"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "sunitinib",
+    "log_hr_per_sd": -0.262,
+    "padj": 0.434,
+    "entity": "ENTITY_67",
+    "id": "g02v1.r03"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "IMmotion150",
+    "arm": "atezo_bev_vs_sunitinib",
+    "log_hr_per_sd": -0.284,
+    "padj": 0.7367,
+    "entity": "ENTITY_87",
+    "id": "g02v1.r04"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": -10.3102,
+    "padj": 7.2e-67,
+    "n_pairs": 75,
+    "entity": "ENTITY_87",
+    "id": "g02v1.r05"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "IMmotion150",
+    "arm": "atezo_bev_vs_sunitinib",
+    "log_hr_per_sd": -0.113,
+    "padj": 0.9335,
+    "entity": "ENTITY_67",
+    "id": "g02v1.r06"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": -7.0902,
+    "padj": 1e-08,
+    "n_pairs": 72,
+    "entity": "ENTITY_67",
+    "id": "g02v1.r07"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": -0.143,
+    "padj": 0.9994,
+    "entity": "ENTITY_67",
+    "id": "g02v1.r08"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "sunitinib",
+    "log_hr_per_sd": 0.203,
+    "padj": 0.6025,
+    "entity": "ENTITY_87",
+    "id": "g02v1.r09"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": 0.1265,
+    "padj": 0.1747,
+    "entity": "ENTITY_67",
+    "id": "g02v1.r10"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": 0.152,
+    "padj": 0.8908,
+    "entity": "ENTITY_67",
+    "id": "g02v1.r11"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": -4.4637,
+    "padj": 1e-10,
+    "n_pairs": 75,
+    "entity": "ENTITY_67",
+    "id": "g02v1.r12"
+   },
+   {
+    "type": "surface_annotation",
+    "surface_call": "surface",
+    "evidence": "UniProt: Cell membrane | SURFY: surface | CSPA: 2 - putative",
+    "transmembrane_segments": 1,
+    "entity": "ENTITY_67",
+    "id": "g02v1.r13"
+   },
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.956,
+      "pct_expressing": 19.2
+     },
+     {
+      "cell_group": "CD8_T",
+      "share_of_tumour_transcripts": 0.02,
+      "pct_expressing": 0.1
+     },
+     {
+      "cell_group": "Endothelial",
+      "share_of_tumour_transcripts": 0.006,
+      "pct_expressing": 1.6
+     },
+     {
+      "cell_group": "NK",
+      "share_of_tumour_transcripts": 0.005,
+      "pct_expressing": 0.1
+     },
+     {
+      "cell_group": "T_other",
+      "share_of_tumour_transcripts": 0.005,
+      "pct_expressing": 0.3
+     }
+    ],
+    "entity": "ENTITY_12",
+    "id": "g02v1.r14"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": 0.006,
+    "padj": 0.9287,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.251,
+    "entity": "ENTITY_67",
+    "id": "g02v1.r15"
+   },
+   {
+    "type": "surface_annotation",
+    "surface_call": "surface",
+    "evidence": "UniProt: Secreted; Secreted, extracellular space | SURFY: not classified | CSPA: 1 - high confidence",
+    "transmembrane_segments": 0,
+    "entity": "ENTITY_12",
+    "id": "g02v1.r16"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": -13.1391,
+    "padj": 6.4e-32,
+    "n_pairs": 72,
+    "entity": "ENTITY_87",
+    "id": "g02v1.r17"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": 3.787,
+    "rna_lfc_at_purity1_se": 0.588,
+    "rna_purity_rho": -0.12,
+    "entity": "ENTITY_12",
+    "id": "g02v1.r18"
+   },
+   {
+    "type": "normal_tissue_ihc",
+    "measured": false,
+    "vital_max_level": null,
+    "vital_max_tissue": null,
+    "kidney_max_level": null,
+    "entity": "ENTITY_67",
+    "id": "g02v1.r19"
+   },
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "CD8_T",
+      "share_of_tumour_transcripts": 0.533,
+      "pct_expressing": 14.2
+     },
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.345,
+      "pct_expressing": 45.9
+     },
+     {
+      "cell_group": "Treg",
+      "share_of_tumour_transcripts": 0.036,
+      "pct_expressing": 16.3
+     },
+     {
+      "cell_group": "CD4_T",
+      "share_of_tumour_transcripts": 0.031,
+      "pct_expressing": 4.5
+     },
+     {
+      "cell_group": "T_other",
+      "share_of_tumour_transcripts": 0.029,
+      "pct_expressing": 8.5
+     }
+    ],
+    "entity": "ENTITY_67",
+    "id": "g02v1.r20"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": -0.09,
+    "padj": 0.9994,
+    "entity": "ENTITY_12",
+    "id": "g02v1.r21"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": -2.4207,
+    "padj": 1e-10,
+    "n_pairs": 84,
+    "entity": "ENTITY_67",
+    "id": "g02v1.r22"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": 3.0028,
+    "padj": 7.13e-30,
+    "n_pairs": 75,
+    "entity": "ENTITY_12",
+    "id": "g02v1.r23"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": 0.015,
+    "padj": 0.9816,
+    "entity": "ENTITY_67",
+    "id": "g02v1.r24"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 6,
+    "vital_protein_ts_max": 0.34,
+    "vital_protein_ts_tissue": "Stomach",
+    "vital_protein_enriched": false,
+    "entity": "ENTITY_67",
+    "id": "g02v1.r25"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": 0.045,
+    "padj": 0.9469,
+    "entity": "ENTITY_12",
+    "id": "g02v1.r26"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo",
+    "log_hr_per_sd": -0.166,
+    "padj": 0.7654,
+    "entity": "ENTITY_67",
+    "id": "g02v1.r27"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo_bev",
+    "log_hr_per_sd": -0.08,
+    "padj": 0.8852,
+    "entity": "ENTITY_87",
+    "id": "g02v1.r28"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": 0.058,
+    "padj": 0.473,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.007,
+    "entity": "ENTITY_87",
+    "id": "g02v1.r29"
+   }
+  ]
+ },
+ {
+  "id": "g03v0",
+  "target_entity": "ENTITY_22",
+  "records": [
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": 0.083,
+    "padj": 0.8804,
+    "entity": "ENTITY_22",
+    "id": "g03v0.r01"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": 2.9196,
+    "padj": 1.94e-20,
+    "n_pairs": 72,
+    "entity": "ENTITY_90",
+    "id": "g03v0.r02"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 5,
+    "vital_protein_ts_max": null,
+    "vital_protein_ts_tissue": NaN,
+    "vital_protein_enriched": false,
+    "entity": "ENTITY_85",
+    "id": "g03v0.r03"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "sunitinib",
+    "log_hr_per_sd": 0.203,
+    "padj": 0.6025,
+    "entity": "ENTITY_85",
+    "id": "g03v0.r04"
+   },
+   {
+    "type": "normal_tissue_ihc",
+    "measured": true,
+    "vital_max_level": 3.0,
+    "vital_max_tissue": "Liver",
+    "kidney_max_level": 3.0,
+    "entity": "ENTITY_22",
+    "id": "g03v0.r05"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 16,
+    "vital_protein_ts_max": 3.94,
+    "vital_protein_ts_tissue": "Liver",
+    "vital_protein_enriched": false,
+    "entity": "ENTITY_22",
+    "id": "g03v0.r06"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": -0.029,
+    "padj": 0.977,
+    "entity": "ENTITY_90",
+    "id": "g03v0.r07"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": -0.0871,
+    "padj": 0.368,
+    "entity": "ENTITY_85",
+    "id": "g03v0.r08"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": 4.6846,
+    "padj": 5.62e-27,
+    "n_pairs": 72,
+    "entity": "ENTITY_22",
+    "id": "g03v0.r09"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": -10.801,
+    "rna_lfc_at_purity1_se": 0.539,
+    "rna_purity_rho": 0.049,
+    "entity": "ENTITY_85",
+    "id": "g03v0.r10"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": -0.075,
+    "padj": 0.0725,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.316,
+    "entity": "ENTITY_22",
+    "id": "g03v0.r11"
+   },
+   {
+    "type": "confirmatory_protein",
+    "log2fc": 4.7764,
+    "padj": 3.07e-46,
+    "n_pairs": 86,
+    "entity": "ENTITY_22",
+    "id": "g03v0.r12"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": 0.143,
+    "padj": 0.9124,
+    "entity": "ENTITY_22",
+    "id": "g03v0.r13"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo_bev",
+    "log_hr_per_sd": -0.08,
+    "padj": 0.8852,
+    "entity": "ENTITY_85",
+    "id": "g03v0.r14"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": 4.6697,
+    "padj": 2.04e-40,
+    "n_pairs": 75,
+    "entity": "ENTITY_22",
+    "id": "g03v0.r15"
+   },
+   {
+    "type": "surface_annotation",
+    "surface_call": "internal",
+    "evidence": "UniProt: Cytoplasm | SURFY: not classified | CSPA: not observed",
+    "transmembrane_segments": 0,
+    "entity": "ENTITY_22",
+    "id": "g03v0.r16"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": -0.1875,
+    "padj": 0.0101,
+    "entity": "ENTITY_90",
+    "id": "g03v0.r17"
+   },
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.333,
+      "pct_expressing": 0.0
+     },
+     {
+      "cell_group": "Fibroblast",
+      "share_of_tumour_transcripts": 0.333,
+      "pct_expressing": 0.2
+     },
+     {
+      "cell_group": "T_other",
+      "share_of_tumour_transcripts": 0.333,
+      "pct_expressing": 0.0
+     },
+     {
+      "cell_group": "Epi_other",
+      "share_of_tumour_transcripts": 0.0,
+      "pct_expressing": 0.0
+     },
+     {
+      "cell_group": "PT",
+      "share_of_tumour_transcripts": 0.0,
+      "pct_expressing": 0.0
+     }
+    ],
+    "entity": "ENTITY_85",
+    "id": "g03v0.r18"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": -0.084,
+    "padj": 0.9994,
+    "entity": "ENTITY_22",
+    "id": "g03v0.r19"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": 2.6203,
+    "padj": 2.37e-26,
+    "n_pairs": 75,
+    "entity": "ENTITY_90",
+    "id": "g03v0.r20"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": 5.256,
+    "rna_lfc_at_purity1_se": 0.617,
+    "rna_purity_rho": -0.03,
+    "entity": "ENTITY_22",
+    "id": "g03v0.r21"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": 0.3005,
+    "padj": 0.0048,
+    "entity": "ENTITY_22",
+    "id": "g03v0.r22"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": -0.033,
+    "padj": 0.5584,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.138,
+    "entity": "ENTITY_90",
+    "id": "g03v0.r23"
+   },
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.97,
+      "pct_expressing": 84.8
+     },
+     {
+      "cell_group": "Endothelial",
+      "share_of_tumour_transcripts": 0.009,
+      "pct_expressing": 31.1
+     },
+     {
+      "cell_group": "NK",
+      "share_of_tumour_transcripts": 0.006,
+      "pct_expressing": 2.2
+     },
+     {
+      "cell_group": "CD8_T",
+      "share_of_tumour_transcripts": 0.004,
+      "pct_expressing": 0.6
+     },
+     {
+      "cell_group": "Fibroblast",
+      "share_of_tumour_transcripts": 0.004,
+      "pct_expressing": 32.7
+     }
+    ],
+    "entity": "ENTITY_22",
+    "id": "g03v0.r24"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": 2.709,
+    "padj": 1.23e-43,
+    "n_pairs": 84,
+    "entity": "ENTITY_22",
+    "id": "g03v0.r25"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": 0.037,
+    "padj": 0.9994,
+    "entity": "ENTITY_90",
+    "id": "g03v0.r26"
+   }
+  ]
+ },
+ {
+  "id": "g03v1",
+  "target_entity": "ENTITY_69",
+  "records": [
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "Macrophage",
+      "share_of_tumour_transcripts": 0.344,
+      "pct_expressing": 40.7
+     },
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.303,
+      "pct_expressing": 72.7
+     },
+     {
+      "cell_group": "Fibroblast",
+      "share_of_tumour_transcripts": 0.089,
+      "pct_expressing": 86.6
+     },
+     {
+      "cell_group": "CD4_T",
+      "share_of_tumour_transcripts": 0.072,
+      "pct_expressing": 29.1
+     },
+     {
+      "cell_group": "Monocyte",
+      "share_of_tumour_transcripts": 0.038,
+      "pct_expressing": 76.3
+     }
+    ],
+    "entity": "ENTITY_90",
+    "id": "g03v1.r01"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": -2.709,
+    "padj": 1e-10,
+    "n_pairs": 84,
+    "entity": "ENTITY_69",
+    "id": "g03v1.r02"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": 0.07,
+    "padj": 0.9994,
+    "entity": "ENTITY_90",
+    "id": "g03v1.r03"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": 0.3005,
+    "padj": 0.0048,
+    "entity": "ENTITY_69",
+    "id": "g03v1.r04"
+   },
+   {
+    "type": "surface_annotation",
+    "surface_call": "internal",
+    "evidence": "UniProt: Cytoplasm | SURFY: not classified | CSPA: not observed",
+    "transmembrane_segments": 0,
+    "entity": "ENTITY_69",
+    "id": "g03v1.r05"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": -4.6697,
+    "padj": 1e-10,
+    "n_pairs": 75,
+    "entity": "ENTITY_69",
+    "id": "g03v1.r06"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo",
+    "log_hr_per_sd": -0.276,
+    "padj": 0.5585,
+    "entity": "ENTITY_85",
+    "id": "g03v1.r07"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": -3.221,
+    "padj": 8.81e-06,
+    "n_pairs": 72,
+    "entity": "ENTITY_85",
+    "id": "g03v1.r08"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": -0.026,
+    "padj": 0.7768,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.208,
+    "entity": "ENTITY_85",
+    "id": "g03v1.r09"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": 0.083,
+    "padj": 0.8804,
+    "entity": "ENTITY_69",
+    "id": "g03v1.r10"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": -4.6846,
+    "padj": 1e-08,
+    "n_pairs": 72,
+    "entity": "ENTITY_69",
+    "id": "g03v1.r11"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": 0.1431,
+    "padj": 0.0731,
+    "n_pairs": 84,
+    "entity": "ENTITY_90",
+    "id": "g03v1.r12"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": 0.066,
+    "padj": 0.9598,
+    "entity": "ENTITY_90",
+    "id": "g03v1.r13"
+   },
+   {
+    "type": "surface_annotation",
+    "surface_call": "surface",
+    "evidence": "UniProt: Secreted | SURFY: not classified | CSPA: 1 - high confidence",
+    "transmembrane_segments": 0,
+    "entity": "ENTITY_90",
+    "id": "g03v1.r14"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "IMmotion150",
+    "arm": "atezo_bev_vs_sunitinib",
+    "log_hr_per_sd": 0.045,
+    "padj": 0.9833,
+    "entity": "ENTITY_85",
+    "id": "g03v1.r15"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": 5.256,
+    "rna_lfc_at_purity1_se": 0.617,
+    "rna_purity_rho": -0.03,
+    "entity": "ENTITY_69",
+    "id": "g03v1.r16"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": -0.4558,
+    "padj": 1.07e-07,
+    "entity": "ENTITY_85",
+    "id": "g03v1.r17"
+   },
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.97,
+      "pct_expressing": 84.8
+     },
+     {
+      "cell_group": "Endothelial",
+      "share_of_tumour_transcripts": 0.009,
+      "pct_expressing": 31.1
+     },
+     {
+      "cell_group": "NK",
+      "share_of_tumour_transcripts": 0.006,
+      "pct_expressing": 2.2
+     },
+     {
+      "cell_group": "CD8_T",
+      "share_of_tumour_transcripts": 0.004,
+      "pct_expressing": 0.6
+     },
+     {
+      "cell_group": "Fibroblast",
+      "share_of_tumour_transcripts": 0.004,
+      "pct_expressing": 32.7
+     }
+    ],
+    "entity": "ENTITY_69",
+    "id": "g03v1.r18"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": -0.084,
+    "padj": 0.9994,
+    "entity": "ENTITY_69",
+    "id": "g03v1.r19"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": -0.075,
+    "padj": 0.0725,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.316,
+    "entity": "ENTITY_69",
+    "id": "g03v1.r20"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": 0.147,
+    "padj": 0.7434,
+    "entity": "ENTITY_90",
+    "id": "g03v1.r21"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": 0.143,
+    "padj": 0.9124,
+    "entity": "ENTITY_69",
+    "id": "g03v1.r22"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "sunitinib",
+    "log_hr_per_sd": -0.048,
+    "padj": 0.9242,
+    "entity": "ENTITY_85",
+    "id": "g03v1.r23"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 16,
+    "vital_protein_ts_max": 3.94,
+    "vital_protein_ts_tissue": "Liver",
+    "vital_protein_enriched": false,
+    "entity": "ENTITY_69",
+    "id": "g03v1.r24"
+   },
+   {
+    "type": "normal_tissue_ihc",
+    "measured": true,
+    "vital_max_level": 3.0,
+    "vital_max_tissue": "Liver",
+    "kidney_max_level": 3.0,
+    "entity": "ENTITY_69",
+    "id": "g03v1.r25"
+   }
+  ]
+ },
+ {
+  "id": "g04v0",
+  "target_entity": "ENTITY_02",
+  "records": [
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": 4.0057,
+    "padj": 7.4e-38,
+    "n_pairs": 75,
+    "entity": "ENTITY_68",
+    "id": "g04v0.r01"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 16,
+    "vital_protein_ts_max": 1.43,
+    "vital_protein_ts_tissue": "Esophagus Muscle",
+    "vital_protein_enriched": false,
+    "entity": "ENTITY_02",
+    "id": "g04v0.r02"
+   },
+   {
+    "type": "normal_tissue_ihc",
+    "measured": true,
+    "vital_max_level": 1.0,
+    "vital_max_tissue": "Colon",
+    "kidney_max_level": 0.0,
+    "entity": "ENTITY_94",
+    "id": "g04v0.r03"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": 0.076,
+    "padj": 0.8994,
+    "entity": "ENTITY_68",
+    "id": "g04v0.r04"
+   },
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "Endothelial",
+      "share_of_tumour_transcripts": 0.929,
+      "pct_expressing": 53.1
+     },
+     {
+      "cell_group": "CD8_T",
+      "share_of_tumour_transcripts": 0.048,
+      "pct_expressing": 0.4
+     },
+     {
+      "cell_group": "T_other",
+      "share_of_tumour_transcripts": 0.007,
+      "pct_expressing": 0.4
+     },
+     {
+      "cell_group": "CD4_T",
+      "share_of_tumour_transcripts": 0.007,
+      "pct_expressing": 0.2
+     },
+     {
+      "cell_group": "NK",
+      "share_of_tumour_transcripts": 0.004,
+      "pct_expressing": 0.1
+     },
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.001,
+      "pct_expressing": 0.0
+     }
+    ],
+    "entity": "ENTITY_94",
+    "id": "g04v0.r05"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": 2.2792,
+    "padj": 5.43e-47,
+    "n_pairs": 84,
+    "entity": "ENTITY_02",
+    "id": "g04v0.r06"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": 1.6903,
+    "padj": 1.07e-26,
+    "n_pairs": 76,
+    "entity": "ENTITY_94",
+    "id": "g04v0.r07"
+   },
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.96,
+      "pct_expressing": 25.2
+     },
+     {
+      "cell_group": "CD8_T",
+      "share_of_tumour_transcripts": 0.013,
+      "pct_expressing": 0.1
+     },
+     {
+      "cell_group": "NK",
+      "share_of_tumour_transcripts": 0.007,
+      "pct_expressing": 0.1
+     },
+     {
+      "cell_group": "PT",
+      "share_of_tumour_transcripts": 0.005,
+      "pct_expressing": 25.6
+     },
+     {
+      "cell_group": "Macrophage",
+      "share_of_tumour_transcripts": 0.004,
+      "pct_expressing": 0.1
+     }
+    ],
+    "entity": "ENTITY_68",
+    "id": "g04v0.r08"
+   },
+   {
+    "type": "normal_tissue_ihc",
+    "measured": true,
+    "vital_max_level": 3.0,
+    "vital_max_tissue": "Adrenal gland",
+    "kidney_max_level": 2.0,
+    "entity": "ENTITY_02",
+    "id": "g04v0.r09"
+   },
+   {
+    "type": "confirmatory_protein",
+    "log2fc": 3.5507,
+    "padj": 1.48e-20,
+    "n_pairs": 41,
+    "entity": "ENTITY_02",
+    "id": "g04v0.r10"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": 0.173,
+    "padj": 0.6786,
+    "entity": "ENTITY_94",
+    "id": "g04v0.r11"
+   },
+   {
+    "type": "surface_annotation",
+    "surface_call": "secreted",
+    "evidence": "UniProt: Secreted | SURFY: not classified | CSPA: not observed",
+    "transmembrane_segments": 0,
+    "entity": "ENTITY_94",
+    "id": "g04v0.r12"
+   },
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.327,
+      "pct_expressing": 52.8
+     },
+     {
+      "cell_group": "Macrophage",
+      "share_of_tumour_transcripts": 0.272,
+      "pct_expressing": 36.7
+     },
+     {
+      "cell_group": "CD8_T",
+      "share_of_tumour_transcripts": 0.183,
+      "pct_expressing": 8.0
+     },
+     {
+      "cell_group": "NK",
+      "share_of_tumour_transcripts": 0.111,
+      "pct_expressing": 15.7
+     },
+     {
+      "cell_group": "CD4_T",
+      "share_of_tumour_transcripts": 0.034,
+      "pct_expressing": 6.9
+     }
+    ],
+    "entity": "ENTITY_02",
+    "id": "g04v0.r13"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": -0.008,
+    "padj": 0.9288,
+    "common_essential": false,
+    "mean_effect_ccrcc": -0.015,
+    "entity": "ENTITY_02",
+    "id": "g04v0.r14"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": 3.4346,
+    "padj": 3.3e-49,
+    "n_pairs": 75,
+    "entity": "ENTITY_02",
+    "id": "g04v0.r15"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": 3.2905,
+    "padj": 7.66e-28,
+    "n_pairs": 72,
+    "entity": "ENTITY_02",
+    "id": "g04v0.r16"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": 3.821,
+    "rna_lfc_at_purity1_se": 0.33,
+    "rna_purity_rho": 0.085,
+    "entity": "ENTITY_02",
+    "id": "g04v0.r17"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": 0.197,
+    "padj": 0.6661,
+    "entity": "ENTITY_02",
+    "id": "g04v0.r18"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": 0.1,
+    "padj": 0.9994,
+    "entity": "ENTITY_02",
+    "id": "g04v0.r19"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": 6.431,
+    "padj": 1.02e-27,
+    "n_pairs": 72,
+    "entity": "ENTITY_68",
+    "id": "g04v0.r20"
+   },
+   {
+    "type": "surface_annotation",
+    "surface_call": "surface",
+    "evidence": "UniProt: Basolateral cell membrane; Cell membrane | SURFY: not classified | CSPA: not observed",
+    "transmembrane_segments": 12,
+    "entity": "ENTITY_02",
+    "id": "g04v0.r21"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": 3.3839,
+    "padj": 6.6e-32,
+    "n_pairs": 75,
+    "entity": "ENTITY_94",
+    "id": "g04v0.r22"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": 0.118,
+    "padj": 0.9198,
+    "entity": "ENTITY_02",
+    "id": "g04v0.r23"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "phospho",
+    "log2fc": 1.4796,
+    "padj": 1.65e-31,
+    "n_pairs": 84,
+    "entity": "ENTITY_02",
+    "id": "g04v0.r24"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": 0.161,
+    "padj": 0.9994,
+    "entity": "ENTITY_68",
+    "id": "g04v0.r25"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 16,
+    "vital_protein_ts_max": 5.49,
+    "vital_protein_ts_tissue": "Small Intestine",
+    "vital_protein_enriched": true,
+    "entity": "ENTITY_68",
+    "id": "g04v0.r26"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": 0.1855,
+    "padj": 0.0887,
+    "entity": "ENTITY_02",
+    "id": "g04v0.r27"
+   }
+  ]
+ },
+ {
+  "id": "g04v1",
+  "target_entity": "ENTITY_08",
+  "records": [
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": -10.801,
+    "rna_lfc_at_purity1_se": 0.539,
+    "rna_purity_rho": 0.049,
+    "entity": "ENTITY_94",
+    "id": "g04v1.r01"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "phospho",
+    "log2fc": 1.4796,
+    "padj": 1.65e-31,
+    "n_pairs": 84,
+    "entity": "ENTITY_08",
+    "id": "g04v1.r02"
+   },
+   {
+    "type": "confirmatory_protein",
+    "log2fc": -5.5804,
+    "padj": 1.11e-13,
+    "n_pairs": 29,
+    "entity": "ENTITY_94",
+    "id": "g04v1.r03"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": 0.1,
+    "padj": 0.9994,
+    "entity": "ENTITY_08",
+    "id": "g04v1.r04"
+   },
+   {
+    "type": "confirmatory_protein",
+    "log2fc": 3.5507,
+    "padj": 1.48e-20,
+    "n_pairs": 41,
+    "entity": "ENTITY_08",
+    "id": "g04v1.r05"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": -2.2351,
+    "padj": 3.18e-33,
+    "n_pairs": 84,
+    "entity": "ENTITY_94",
+    "id": "g04v1.r06"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": -5.1744,
+    "padj": 1.97e-17,
+    "n_pairs": 72,
+    "entity": "ENTITY_68",
+    "id": "g04v1.r07"
+   },
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.327,
+      "pct_expressing": 52.8
+     },
+     {
+      "cell_group": "Macrophage",
+      "share_of_tumour_transcripts": 0.272,
+      "pct_expressing": 36.7
+     },
+     {
+      "cell_group": "CD8_T",
+      "share_of_tumour_transcripts": 0.183,
+      "pct_expressing": 8.0
+     },
+     {
+      "cell_group": "NK",
+      "share_of_tumour_transcripts": 0.111,
+      "pct_expressing": 15.7
+     },
+     {
+      "cell_group": "CD4_T",
+      "share_of_tumour_transcripts": 0.034,
+      "pct_expressing": 6.9
+     }
+    ],
+    "entity": "ENTITY_08",
+    "id": "g04v1.r08"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": -4.371,
+    "rna_lfc_at_purity1_se": 0.985,
+    "rna_purity_rho": -0.019,
+    "entity": "ENTITY_68",
+    "id": "g04v1.r09"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": 2.2792,
+    "padj": 5.43e-47,
+    "n_pairs": 84,
+    "entity": "ENTITY_08",
+    "id": "g04v1.r10"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo",
+    "log_hr_per_sd": -0.027,
+    "padj": 0.9789,
+    "entity": "ENTITY_94",
+    "id": "g04v1.r11"
+   },
+   {
+    "type": "normal_tissue_ihc",
+    "measured": true,
+    "vital_max_level": 1.0,
+    "vital_max_tissue": "lung",
+    "kidney_max_level": 2.0,
+    "entity": "ENTITY_08",
+    "id": "g04v1.r12"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": 3.2905,
+    "padj": 7.66e-28,
+    "n_pairs": 72,
+    "entity": "ENTITY_08",
+    "id": "g04v1.r13"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": 0.118,
+    "padj": 0.9198,
+    "entity": "ENTITY_08",
+    "id": "g04v1.r14"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": 0.108,
+    "padj": 0.9206,
+    "entity": "ENTITY_68",
+    "id": "g04v1.r15"
+   },
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.862,
+      "pct_expressing": 26.8
+     },
+     {
+      "cell_group": "Macrophage",
+      "share_of_tumour_transcripts": 0.112,
+      "pct_expressing": 1.3
+     },
+     {
+      "cell_group": "CD8_T",
+      "share_of_tumour_transcripts": 0.007,
+      "pct_expressing": 0.1
+     },
+     {
+      "cell_group": "NK",
+      "share_of_tumour_transcripts": 0.006,
+      "pct_expressing": 0.4
+     },
+     {
+      "cell_group": "PT",
+      "share_of_tumour_transcripts": 0.006,
+      "pct_expressing": 48.7
+     }
+    ],
+    "entity": "ENTITY_68",
+    "id": "g04v1.r16"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "sunitinib",
+    "log_hr_per_sd": 0.203,
+    "padj": 0.6025,
+    "entity": "ENTITY_94",
+    "id": "g04v1.r17"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": -0.008,
+    "padj": 0.9288,
+    "common_essential": false,
+    "mean_effect_ccrcc": -0.015,
+    "entity": "ENTITY_08",
+    "id": "g04v1.r18"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 16,
+    "vital_protein_ts_max": 1.1,
+    "vital_protein_ts_tissue": "Esophagus Muscle",
+    "vital_protein_enriched": false,
+    "entity": "ENTITY_08",
+    "id": "g04v1.r19"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": 0.197,
+    "padj": 0.6661,
+    "entity": "ENTITY_08",
+    "id": "g04v1.r20"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": 3.4346,
+    "padj": 3.3e-49,
+    "n_pairs": 75,
+    "entity": "ENTITY_08",
+    "id": "g04v1.r21"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": 3.821,
+    "rna_lfc_at_purity1_se": 0.33,
+    "rna_purity_rho": 0.085,
+    "entity": "ENTITY_08",
+    "id": "g04v1.r22"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo_bev",
+    "log_hr_per_sd": -0.08,
+    "padj": 0.8852,
+    "entity": "ENTITY_94",
+    "id": "g04v1.r23"
+   },
+   {
+    "type": "surface_annotation",
+    "surface_call": "surface",
+    "evidence": "UniProt: Basolateral cell membrane; Cell membrane | SURFY: not classified | CSPA: not observed",
+    "transmembrane_segments": 12,
+    "entity": "ENTITY_08",
+    "id": "g04v1.r24"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": -3.0873,
+    "padj": 1.91e-30,
+    "n_pairs": 84,
+    "entity": "ENTITY_68",
+    "id": "g04v1.r25"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": 0.1855,
+    "padj": 0.0887,
+    "entity": "ENTITY_08",
+    "id": "g04v1.r26"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": 0.2536,
+    "padj": 0.002,
+    "entity": "ENTITY_68",
+    "id": "g04v1.r27"
+   }
+  ]
+ },
+ {
+  "id": "g05v0",
+  "target_entity": "ENTITY_29",
+  "records": [
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "sunitinib",
+    "log_hr_per_sd": 0.193,
+    "padj": 0.7,
+    "entity": "ENTITY_41",
+    "id": "g05v0.r01"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": -0.154,
+    "padj": 0.8821,
+    "entity": "ENTITY_29",
+    "id": "g05v0.r02"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": 3.521,
+    "rna_lfc_at_purity1_se": 0.603,
+    "rna_purity_rho": -0.134,
+    "entity": "ENTITY_65",
+    "id": "g05v0.r03"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo_bev",
+    "log_hr_per_sd": 0.101,
+    "padj": 0.8528,
+    "entity": "ENTITY_41",
+    "id": "g05v0.r04"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": 3.8951,
+    "padj": 5.72e-33,
+    "n_pairs": 75,
+    "entity": "ENTITY_29",
+    "id": "g05v0.r05"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": 0.082,
+    "padj": 0.8994,
+    "entity": "ENTITY_29",
+    "id": "g05v0.r06"
+   },
+   {
+    "type": "surface_annotation",
+    "surface_call": "surface",
+    "evidence": "UniProt: Apical cell membrane; Cell membrane; Secreted | SURFY: not classified | CSPA: 1 - high confidence",
+    "transmembrane_segments": 1,
+    "entity": "ENTITY_29",
+    "id": "g05v0.r07"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "phospho",
+    "log2fc": 1.7828,
+    "padj": 8.91e-34,
+    "n_pairs": 84,
+    "entity": "ENTITY_29",
+    "id": "g05v0.r08"
+   },
+   {
+    "type": "confirmatory_protein",
+    "log2fc": 1.9008,
+    "padj": 1.56e-25,
+    "n_pairs": 76,
+    "entity": "ENTITY_29",
+    "id": "g05v0.r09"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": -5.1744,
+    "padj": 1.97e-17,
+    "n_pairs": 72,
+    "entity": "ENTITY_41",
+    "id": "g05v0.r10"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "phospho",
+    "log2fc": -1.3507,
+    "padj": 3.42e-30,
+    "n_pairs": 84,
+    "entity": "ENTITY_41",
+    "id": "g05v0.r11"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": 0.108,
+    "padj": 0.9206,
+    "entity": "ENTITY_41",
+    "id": "g05v0.r12"
+   },
+   {
+    "type": "normal_tissue_ihc",
+    "measured": true,
+    "vital_max_level": 3.0,
+    "vital_max_tissue": "Duodenum",
+    "kidney_max_level": 3.0,
+    "entity": "ENTITY_29",
+    "id": "g05v0.r13"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 5,
+    "vital_protein_ts_max": 0.0,
+    "vital_protein_ts_tissue": "Colon Transverse",
+    "vital_protein_enriched": false,
+    "entity": "ENTITY_29",
+    "id": "g05v0.r14"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": 5.5569,
+    "padj": 1.66e-22,
+    "n_pairs": 72,
+    "entity": "ENTITY_29",
+    "id": "g05v0.r15"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": 3.6053,
+    "padj": 2.69e-34,
+    "n_pairs": 75,
+    "entity": "ENTITY_65",
+    "id": "g05v0.r16"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": -0.1269,
+    "padj": 0.09,
+    "entity": "ENTITY_29",
+    "id": "g05v0.r17"
+   },
+   {
+    "type": "confirmatory_protein",
+    "log2fc": 2.1423,
+    "padj": 2.81e-27,
+    "n_pairs": 87,
+    "entity": "ENTITY_65",
+    "id": "g05v0.r18"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo",
+    "log_hr_per_sd": -0.286,
+    "padj": 0.4872,
+    "entity": "ENTITY_29",
+    "id": "g05v0.r19"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": -0.14,
+    "padj": 0.8811,
+    "entity": "ENTITY_65",
+    "id": "g05v0.r20"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo",
+    "log_hr_per_sd": 0.02,
+    "padj": 0.9833,
+    "entity": "ENTITY_41",
+    "id": "g05v0.r21"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": 5.278,
+    "rna_lfc_at_purity1_se": 0.665,
+    "rna_purity_rho": 0.134,
+    "entity": "ENTITY_29",
+    "id": "g05v0.r22"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": 0.241,
+    "padj": 0.9994,
+    "entity": "ENTITY_29",
+    "id": "g05v0.r23"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": -0.015,
+    "padj": 0.9994,
+    "entity": "ENTITY_65",
+    "id": "g05v0.r24"
+   },
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.949,
+      "pct_expressing": 35.2
+     },
+     {
+      "cell_group": "CD8_T",
+      "share_of_tumour_transcripts": 0.019,
+      "pct_expressing": 0.2
+     },
+     {
+      "cell_group": "Mast",
+      "share_of_tumour_transcripts": 0.011,
+      "pct_expressing": 15.1
+     },
+     {
+      "cell_group": "NK",
+      "share_of_tumour_transcripts": 0.008,
+      "pct_expressing": 0.3
+     },
+     {
+      "cell_group": "T_other",
+      "share_of_tumour_transcripts": 0.004,
+      "pct_expressing": 0.4
+     }
+    ],
+    "entity": "ENTITY_29",
+    "id": "g05v0.r25"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": 0.026,
+    "padj": 0.6265,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.091,
+    "entity": "ENTITY_29",
+    "id": "g05v0.r26"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "sunitinib",
+    "log_hr_per_sd": -0.382,
+    "padj": 0.1153,
+    "entity": "ENTITY_29",
+    "id": "g05v0.r27"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": 1.5438,
+    "padj": 3.02e-37,
+    "n_pairs": 84,
+    "entity": "ENTITY_29",
+    "id": "g05v0.r28"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": -0.054,
+    "padj": 0.2614,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.202,
+    "entity": "ENTITY_65",
+    "id": "g05v0.r29"
+   }
+  ]
+ },
+ {
+  "id": "g05v1",
+  "target_entity": "ENTITY_07",
+  "records": [
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo_bev",
+    "log_hr_per_sd": -0.192,
+    "padj": 0.5705,
+    "entity": "ENTITY_41",
+    "id": "g05v1.r01"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "sunitinib",
+    "log_hr_per_sd": -0.382,
+    "padj": 0.1153,
+    "entity": "ENTITY_07",
+    "id": "g05v1.r02"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": 0.082,
+    "padj": 0.8994,
+    "entity": "ENTITY_07",
+    "id": "g05v1.r03"
+   },
+   {
+    "type": "confirmatory_protein",
+    "log2fc": 1.9008,
+    "padj": 1.56e-25,
+    "n_pairs": 76,
+    "entity": "ENTITY_07",
+    "id": "g05v1.r04"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": -0.154,
+    "padj": 0.8821,
+    "entity": "ENTITY_07",
+    "id": "g05v1.r05"
+   },
+   {
+    "type": "surface_annotation",
+    "surface_call": "unknown",
+    "evidence": "UniProt: Cytoplasm; Membrane | SURFY: not classified | CSPA: not observed",
+    "transmembrane_segments": 0,
+    "entity": "ENTITY_41",
+    "id": "g05v1.r06"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo_bev",
+    "log_hr_per_sd": -0.008,
+    "padj": 0.9909,
+    "entity": "ENTITY_65",
+    "id": "g05v1.r07"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": -0.1269,
+    "padj": 0.09,
+    "entity": "ENTITY_07",
+    "id": "g05v1.r08"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": 1.5438,
+    "padj": 3.02e-37,
+    "n_pairs": 84,
+    "entity": "ENTITY_07",
+    "id": "g05v1.r09"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 5,
+    "vital_protein_ts_max": 1.1,
+    "vital_protein_ts_tissue": "Colon Transverse",
+    "vital_protein_enriched": false,
+    "entity": "ENTITY_07",
+    "id": "g05v1.r10"
+   },
+   {
+    "type": "normal_tissue_ihc",
+    "measured": true,
+    "vital_max_level": 1.0,
+    "vital_max_tissue": "lung",
+    "kidney_max_level": 3.0,
+    "entity": "ENTITY_07",
+    "id": "g05v1.r11"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": -4.879,
+    "rna_lfc_at_purity1_se": 1.0,
+    "rna_purity_rho": 0.000753,
+    "entity": "ENTITY_65",
+    "id": "g05v1.r12"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": 0.026,
+    "padj": 0.6265,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.091,
+    "entity": "ENTITY_07",
+    "id": "g05v1.r13"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": 0.076,
+    "padj": 0.8994,
+    "entity": "ENTITY_41",
+    "id": "g05v1.r14"
+   },
+   {
+    "type": "surface_annotation",
+    "surface_call": "surface",
+    "evidence": "UniProt: Apical cell membrane; Cell membrane; Secreted | SURFY: not classified | CSPA: 1 - high confidence",
+    "transmembrane_segments": 1,
+    "entity": "ENTITY_07",
+    "id": "g05v1.r15"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo",
+    "log_hr_per_sd": -0.286,
+    "padj": 0.4872,
+    "entity": "ENTITY_07",
+    "id": "g05v1.r16"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 16,
+    "vital_protein_ts_max": 10.0,
+    "vital_protein_ts_tissue": "Small Intestine",
+    "vital_protein_enriched": true,
+    "entity": "ENTITY_65",
+    "id": "g05v1.r17"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": 3.8951,
+    "padj": 5.72e-33,
+    "n_pairs": 75,
+    "entity": "ENTITY_07",
+    "id": "g05v1.r18"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": -4.5736,
+    "padj": 2.03e-27,
+    "n_pairs": 75,
+    "entity": "ENTITY_65",
+    "id": "g05v1.r19"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": 5.278,
+    "rna_lfc_at_purity1_se": 0.665,
+    "rna_purity_rho": 0.134,
+    "entity": "ENTITY_07",
+    "id": "g05v1.r20"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": 5.5569,
+    "padj": 1.66e-22,
+    "n_pairs": 72,
+    "entity": "ENTITY_07",
+    "id": "g05v1.r21"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "sunitinib",
+    "log_hr_per_sd": -0.311,
+    "padj": 0.1514,
+    "entity": "ENTITY_41",
+    "id": "g05v1.r22"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": 0.033,
+    "padj": 0.4684,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.233,
+    "entity": "ENTITY_41",
+    "id": "g05v1.r23"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": -1.48,
+    "padj": 4.46e-29,
+    "n_pairs": 84,
+    "entity": "ENTITY_65",
+    "id": "g05v1.r24"
+   },
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.949,
+      "pct_expressing": 35.2
+     },
+     {
+      "cell_group": "CD8_T",
+      "share_of_tumour_transcripts": 0.019,
+      "pct_expressing": 0.2
+     },
+     {
+      "cell_group": "Mast",
+      "share_of_tumour_transcripts": 0.011,
+      "pct_expressing": 15.1
+     },
+     {
+      "cell_group": "NK",
+      "share_of_tumour_transcripts": 0.008,
+      "pct_expressing": 0.3
+     },
+     {
+      "cell_group": "T_other",
+      "share_of_tumour_transcripts": 0.004,
+      "pct_expressing": 0.4
+     }
+    ],
+    "entity": "ENTITY_07",
+    "id": "g05v1.r25"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": -0.026,
+    "padj": 0.7768,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.208,
+    "entity": "ENTITY_65",
+    "id": "g05v1.r26"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "phospho",
+    "log2fc": 1.7828,
+    "padj": 8.91e-34,
+    "n_pairs": 84,
+    "entity": "ENTITY_07",
+    "id": "g05v1.r27"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": 0.1714,
+    "padj": 0.074,
+    "entity": "ENTITY_41",
+    "id": "g05v1.r28"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": 0.241,
+    "padj": 0.9994,
+    "entity": "ENTITY_07",
+    "id": "g05v1.r29"
+   }
+  ]
+ },
+ {
+  "id": "g06v0",
+  "target_entity": "ENTITY_51",
+  "records": [
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": 2.7132,
+    "padj": 2.53e-11,
+    "n_pairs": 72,
+    "entity": "ENTITY_51",
+    "id": "g06v0.r01"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "sunitinib",
+    "log_hr_per_sd": -0.311,
+    "padj": 0.1514,
+    "entity": "ENTITY_28",
+    "id": "g06v0.r02"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "sunitinib",
+    "log_hr_per_sd": -0.079,
+    "padj": 0.8613,
+    "entity": "ENTITY_51",
+    "id": "g06v0.r03"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "phospho",
+    "log2fc": 1.9004,
+    "padj": 2.17e-30,
+    "n_pairs": 84,
+    "entity": "ENTITY_75",
+    "id": "g06v0.r04"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": 2.667,
+    "padj": 7.99e-44,
+    "n_pairs": 84,
+    "entity": "ENTITY_75",
+    "id": "g06v0.r05"
+   },
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.823,
+      "pct_expressing": 10.9
+     },
+     {
+      "cell_group": "CD8_T",
+      "share_of_tumour_transcripts": 0.099,
+      "pct_expressing": 0.2
+     },
+     {
+      "cell_group": "NK",
+      "share_of_tumour_transcripts": 0.025,
+      "pct_expressing": 0.2
+     },
+     {
+      "cell_group": "CD4_T",
+      "share_of_tumour_transcripts": 0.016,
+      "pct_expressing": 0.2
+     },
+     {
+      "cell_group": "Treg",
+      "share_of_tumour_transcripts": 0.013,
+      "pct_expressing": 0.6
+     }
+    ],
+    "entity": "ENTITY_51",
+    "id": "g06v0.r06"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": 0.037,
+    "padj": 0.9994,
+    "entity": "ENTITY_75",
+    "id": "g06v0.r07"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": -0.1115,
+    "padj": 0.1624,
+    "entity": "ENTITY_51",
+    "id": "g06v0.r08"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": -0.033,
+    "padj": 0.5584,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.138,
+    "entity": "ENTITY_75",
+    "id": "g06v0.r09"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": 4.0057,
+    "padj": 7.4e-38,
+    "n_pairs": 75,
+    "entity": "ENTITY_28",
+    "id": "g06v0.r10"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo_bev",
+    "log_hr_per_sd": -0.192,
+    "padj": 0.5705,
+    "entity": "ENTITY_28",
+    "id": "g06v0.r11"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": 1.8323,
+    "padj": 2.23e-27,
+    "n_pairs": 80,
+    "entity": "ENTITY_51",
+    "id": "g06v0.r12"
+   },
+   {
+    "type": "normal_tissue_ihc",
+    "measured": true,
+    "vital_max_level": 1.0,
+    "vital_max_tissue": "Small intestine",
+    "kidney_max_level": 2.0,
+    "entity": "ENTITY_51",
+    "id": "g06v0.r13"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": -0.1875,
+    "padj": 0.0101,
+    "entity": "ENTITY_75",
+    "id": "g06v0.r14"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": 0.109,
+    "padj": 0.817,
+    "entity": "ENTITY_51",
+    "id": "g06v0.r15"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": 0.058,
+    "padj": 0.9629,
+    "entity": "ENTITY_51",
+    "id": "g06v0.r16"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": 0.042,
+    "padj": 0.3868,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.145,
+    "entity": "ENTITY_51",
+    "id": "g06v0.r17"
+   },
+   {
+    "type": "surface_annotation",
+    "surface_call": "unknown",
+    "evidence": "UniProt: Lipid droplet; Membrane | SURFY: not classified | CSPA: not observed",
+    "transmembrane_segments": 0,
+    "entity": "ENTITY_75",
+    "id": "g06v0.r18"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": 2.057,
+    "rna_lfc_at_purity1_se": 0.853,
+    "rna_purity_rho": -0.017,
+    "entity": "ENTITY_51",
+    "id": "g06v0.r19"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": 5.453,
+    "rna_lfc_at_purity1_se": 0.559,
+    "rna_purity_rho": 0.054,
+    "entity": "ENTITY_28",
+    "id": "g06v0.r20"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo",
+    "log_hr_per_sd": -0.101,
+    "padj": 0.8806,
+    "entity": "ENTITY_28",
+    "id": "g06v0.r21"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 16,
+    "vital_protein_ts_max": 5.49,
+    "vital_protein_ts_tissue": "Small Intestine",
+    "vital_protein_enriched": true,
+    "entity": "ENTITY_28",
+    "id": "g06v0.r22"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": 1.8772,
+    "padj": 2.99e-12,
+    "n_pairs": 75,
+    "entity": "ENTITY_51",
+    "id": "g06v0.r23"
+   },
+   {
+    "type": "surface_annotation",
+    "surface_call": "surface",
+    "evidence": "UniProt: Cell membrane; Cell projection, phagocytic cup; Cytoplasmic vesicle, phagosome | SURFY: surface | CSPA: not observed",
+    "transmembrane_segments": 1,
+    "entity": "ENTITY_51",
+    "id": "g06v0.r24"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": 0.061,
+    "padj": 0.9994,
+    "entity": "ENTITY_51",
+    "id": "g06v0.r25"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "phospho",
+    "log2fc": 1.5316,
+    "padj": 2.2e-27,
+    "n_pairs": 84,
+    "entity": "ENTITY_51",
+    "id": "g06v0.r26"
+   }
+  ]
+ },
+ {
+  "id": "g06v1",
+  "target_entity": "ENTITY_26",
+  "records": [
+   {
+    "type": "normal_tissue_ihc",
+    "measured": true,
+    "vital_max_level": 3.0,
+    "vital_max_tissue": "Cerebral cortex",
+    "kidney_max_level": 0.0,
+    "entity": "ENTITY_28",
+    "id": "g06v1.r01"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": 0.042,
+    "padj": 0.3868,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.145,
+    "entity": "ENTITY_26",
+    "id": "g06v1.r02"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": 2.057,
+    "rna_lfc_at_purity1_se": 0.853,
+    "rna_purity_rho": -0.017,
+    "entity": "ENTITY_26",
+    "id": "g06v1.r03"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "sunitinib",
+    "log_hr_per_sd": -0.079,
+    "padj": 0.8613,
+    "entity": "ENTITY_26",
+    "id": "g06v1.r04"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": 1.8323,
+    "padj": 2.23e-27,
+    "n_pairs": 80,
+    "entity": "ENTITY_26",
+    "id": "g06v1.r05"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": 0.061,
+    "padj": 0.9994,
+    "entity": "ENTITY_26",
+    "id": "g06v1.r06"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": 3.6053,
+    "padj": 2.69e-34,
+    "n_pairs": 75,
+    "entity": "ENTITY_28",
+    "id": "g06v1.r07"
+   },
+   {
+    "type": "surface_annotation",
+    "surface_call": "surface",
+    "evidence": "UniProt: Secreted; Secreted, extracellular space, extracellular matrix | SURFY: not classified | CSPA: 1 - high confidence",
+    "transmembrane_segments": 0,
+    "entity": "ENTITY_28",
+    "id": "g06v1.r08"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": -2.2351,
+    "padj": 3.18e-33,
+    "n_pairs": 84,
+    "entity": "ENTITY_75",
+    "id": "g06v1.r09"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": 0.109,
+    "padj": 0.817,
+    "entity": "ENTITY_26",
+    "id": "g06v1.r10"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": 0.058,
+    "padj": 0.473,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.007,
+    "entity": "ENTITY_75",
+    "id": "g06v1.r11"
+   },
+   {
+    "type": "normal_tissue_ihc",
+    "measured": true,
+    "vital_max_level": 1.0,
+    "vital_max_tissue": "Small intestine",
+    "kidney_max_level": 2.0,
+    "entity": "ENTITY_26",
+    "id": "g06v1.r12"
+   },
+   {
+    "type": "surface_annotation",
+    "surface_call": "surface",
+    "evidence": "UniProt: Cell membrane; Cell projection, phagocytic cup; Cytoplasmic vesicle, phagosome | SURFY: surface | CSPA: not observed",
+    "transmembrane_segments": 1,
+    "entity": "ENTITY_26",
+    "id": "g06v1.r13"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": -0.1115,
+    "padj": 0.1624,
+    "entity": "ENTITY_26",
+    "id": "g06v1.r14"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 16,
+    "vital_protein_ts_max": 0.82,
+    "vital_protein_ts_tissue": "Lung",
+    "vital_protein_enriched": false,
+    "entity": "ENTITY_28",
+    "id": "g06v1.r15"
+   },
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.2,
+      "pct_expressing": 70.0
+     },
+     {
+      "cell_group": "CD8_T",
+      "share_of_tumour_transcripts": 0.6,
+      "pct_expressing": 0.2
+     },
+     {
+      "cell_group": "NK",
+      "share_of_tumour_transcripts": 0.025,
+      "pct_expressing": 0.2
+     },
+     {
+      "cell_group": "CD4_T",
+      "share_of_tumour_transcripts": 0.016,
+      "pct_expressing": 0.2
+     },
+     {
+      "cell_group": "Treg",
+      "share_of_tumour_transcripts": 0.013,
+      "pct_expressing": 0.6
+     }
+    ],
+    "entity": "ENTITY_26",
+    "id": "g06v1.r16"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": -0.0871,
+    "padj": 0.368,
+    "entity": "ENTITY_75",
+    "id": "g06v1.r17"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": -0.3972,
+    "padj": 1.97e-07,
+    "entity": "ENTITY_28",
+    "id": "g06v1.r18"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": -10.3102,
+    "padj": 7.2e-67,
+    "n_pairs": 75,
+    "entity": "ENTITY_75",
+    "id": "g06v1.r19"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 5,
+    "vital_protein_ts_max": null,
+    "vital_protein_ts_tissue": NaN,
+    "vital_protein_enriched": false,
+    "entity": "ENTITY_75",
+    "id": "g06v1.r20"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": 0.058,
+    "padj": 0.9629,
+    "entity": "ENTITY_26",
+    "id": "g06v1.r21"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": 1.8772,
+    "padj": 2.99e-12,
+    "n_pairs": 75,
+    "entity": "ENTITY_26",
+    "id": "g06v1.r22"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": 3.521,
+    "rna_lfc_at_purity1_se": 0.603,
+    "rna_purity_rho": -0.134,
+    "entity": "ENTITY_28",
+    "id": "g06v1.r23"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "phospho",
+    "log2fc": 1.5316,
+    "padj": 2.2e-27,
+    "n_pairs": 84,
+    "entity": "ENTITY_26",
+    "id": "g06v1.r24"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": -10.801,
+    "rna_lfc_at_purity1_se": 0.539,
+    "rna_purity_rho": 0.049,
+    "entity": "ENTITY_75",
+    "id": "g06v1.r25"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": 2.7132,
+    "padj": 2.53e-11,
+    "n_pairs": 72,
+    "entity": "ENTITY_26",
+    "id": "g06v1.r26"
+   }
+  ]
+ },
+ {
+  "id": "g07v0",
+  "target_entity": "ENTITY_74",
+  "records": [
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": -2.2351,
+    "padj": 3.18e-33,
+    "n_pairs": 84,
+    "entity": "ENTITY_38",
+    "id": "g07v0.r01"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": -4.7409,
+    "padj": 6.57e-11,
+    "n_pairs": 72,
+    "entity": "ENTITY_37",
+    "id": "g07v0.r02"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": -0.1231,
+    "padj": 0.1017,
+    "entity": "ENTITY_74",
+    "id": "g07v0.r03"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": 5.8291,
+    "padj": 4.7e-29,
+    "n_pairs": 72,
+    "entity": "ENTITY_74",
+    "id": "g07v0.r04"
+   },
+   {
+    "type": "surface_annotation",
+    "surface_call": "surface",
+    "evidence": "UniProt: Cell membrane | SURFY: nonsurface | CSPA: not observed",
+    "transmembrane_segments": 1,
+    "entity": "ENTITY_74",
+    "id": "g07v0.r05"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo",
+    "log_hr_per_sd": -0.394,
+    "padj": 0.2789,
+    "entity": "ENTITY_74",
+    "id": "g07v0.r06"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": 0.047,
+    "padj": 0.5598,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.167,
+    "entity": "ENTITY_74",
+    "id": "g07v0.r07"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": -7.0284,
+    "padj": 9.42e-31,
+    "n_pairs": 75,
+    "entity": "ENTITY_37",
+    "id": "g07v0.r08"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "sunitinib",
+    "log_hr_per_sd": 0.123,
+    "padj": 0.7755,
+    "entity": "ENTITY_37",
+    "id": "g07v0.r09"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 5,
+    "vital_protein_ts_max": null,
+    "vital_protein_ts_tissue": NaN,
+    "vital_protein_enriched": false,
+    "entity": "ENTITY_38",
+    "id": "g07v0.r10"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo_bev",
+    "log_hr_per_sd": -0.144,
+    "padj": 0.7563,
+    "entity": "ENTITY_74",
+    "id": "g07v0.r11"
+   },
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.88,
+      "pct_expressing": 5.4
+     },
+     {
+      "cell_group": "PT",
+      "share_of_tumour_transcripts": 0.06,
+      "pct_expressing": 28.2
+     },
+     {
+      "cell_group": "CD8_T",
+      "share_of_tumour_transcripts": 0.022,
+      "pct_expressing": 0.0
+     },
+     {
+      "cell_group": "NK",
+      "share_of_tumour_transcripts": 0.021,
+      "pct_expressing": 0.1
+     },
+     {
+      "cell_group": "CD4_T",
+      "share_of_tumour_transcripts": 0.007,
+      "pct_expressing": 0.1
+     }
+    ],
+    "entity": "ENTITY_37",
+    "id": "g07v0.r12"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": 0.058,
+    "padj": 0.473,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.007,
+    "entity": "ENTITY_38",
+    "id": "g07v0.r13"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo_bev",
+    "log_hr_per_sd": 0.087,
+    "padj": 0.8776,
+    "entity": "ENTITY_37",
+    "id": "g07v0.r14"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": -6.302,
+    "rna_lfc_at_purity1_se": 1.344,
+    "rna_purity_rho": 0.117,
+    "entity": "ENTITY_37",
+    "id": "g07v0.r15"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": 2.5122,
+    "padj": 1.37e-28,
+    "n_pairs": 75,
+    "entity": "ENTITY_74",
+    "id": "g07v0.r16"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": 4.0687,
+    "padj": 2.16e-37,
+    "n_pairs": 75,
+    "entity": "ENTITY_74",
+    "id": "g07v0.r17"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": 0.083,
+    "padj": 0.878,
+    "entity": "ENTITY_74",
+    "id": "g07v0.r18"
+   },
+   {
+    "type": "normal_tissue_ihc",
+    "measured": false,
+    "vital_max_level": null,
+    "vital_max_tissue": null,
+    "kidney_max_level": null,
+    "entity": "ENTITY_74",
+    "id": "g07v0.r19"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": 4.88,
+    "rna_lfc_at_purity1_se": 0.598,
+    "rna_purity_rho": 0.081,
+    "entity": "ENTITY_74",
+    "id": "g07v0.r20"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": -10.3102,
+    "padj": 7.2e-67,
+    "n_pairs": 75,
+    "entity": "ENTITY_38",
+    "id": "g07v0.r21"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": -13.1391,
+    "padj": 6.4e-32,
+    "n_pairs": 72,
+    "entity": "ENTITY_38",
+    "id": "g07v0.r22"
+   },
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.881,
+      "pct_expressing": 17.1
+     },
+     {
+      "cell_group": "NK",
+      "share_of_tumour_transcripts": 0.055,
+      "pct_expressing": 0.7
+     },
+     {
+      "cell_group": "CD8_T",
+      "share_of_tumour_transcripts": 0.033,
+      "pct_expressing": 0.1
+     },
+     {
+      "cell_group": "Macrophage",
+      "share_of_tumour_transcripts": 0.01,
+      "pct_expressing": 0.1
+     },
+     {
+      "cell_group": "T_other",
+      "share_of_tumour_transcripts": 0.005,
+      "pct_expressing": 0.2
+     }
+    ],
+    "entity": "ENTITY_74",
+    "id": "g07v0.r23"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": -0.197,
+    "padj": 0.8507,
+    "entity": "ENTITY_74",
+    "id": "g07v0.r24"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo_bev",
+    "log_hr_per_sd": -0.08,
+    "padj": 0.8852,
+    "entity": "ENTITY_38",
+    "id": "g07v0.r25"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 16,
+    "vital_protein_ts_max": 0.0,
+    "vital_protein_ts_tissue": "Adrenal Gland",
+    "vital_protein_enriched": false,
+    "entity": "ENTITY_74",
+    "id": "g07v0.r26"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "IMmotion150",
+    "arm": "atezo_bev_vs_sunitinib",
+    "log_hr_per_sd": 0.161,
+    "padj": 0.8948,
+    "entity": "ENTITY_74",
+    "id": "g07v0.r27"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": 0.298,
+    "padj": 0.9994,
+    "entity": "ENTITY_74",
+    "id": "g07v0.r28"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "sunitinib",
+    "log_hr_per_sd": -0.319,
+    "padj": 0.3227,
+    "entity": "ENTITY_74",
+    "id": "g07v0.r29"
+   }
+  ]
+ },
+ {
+  "id": "g07v1",
+  "target_entity": "ENTITY_19",
+  "records": [
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.881,
+      "pct_expressing": 17.1
+     },
+     {
+      "cell_group": "NK",
+      "share_of_tumour_transcripts": 0.055,
+      "pct_expressing": 0.7
+     },
+     {
+      "cell_group": "CD8_T",
+      "share_of_tumour_transcripts": 0.033,
+      "pct_expressing": 0.1
+     },
+     {
+      "cell_group": "Macrophage",
+      "share_of_tumour_transcripts": 0.01,
+      "pct_expressing": 0.1
+     },
+     {
+      "cell_group": "T_other",
+      "share_of_tumour_transcripts": 0.005,
+      "pct_expressing": 0.2
+     }
+    ],
+    "entity": "ENTITY_19",
+    "id": "g07v1.r01"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": 3.521,
+    "rna_lfc_at_purity1_se": 0.603,
+    "rna_purity_rho": -0.134,
+    "entity": "ENTITY_37",
+    "id": "g07v1.r02"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": -0.197,
+    "padj": 0.8507,
+    "entity": "ENTITY_19",
+    "id": "g07v1.r03"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 16,
+    "vital_protein_ts_max": 0.0,
+    "vital_protein_ts_tissue": "Adrenal Gland",
+    "vital_protein_enriched": false,
+    "entity": "ENTITY_19",
+    "id": "g07v1.r04"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": -0.1231,
+    "padj": 0.1017,
+    "entity": "ENTITY_19",
+    "id": "g07v1.r05"
+   },
+   {
+    "type": "surface_annotation",
+    "surface_call": "surface",
+    "evidence": "UniProt: Secreted; Secreted, extracellular space, extracellular matrix | SURFY: not classified | CSPA: 1 - high confidence",
+    "transmembrane_segments": 0,
+    "entity": "ENTITY_37",
+    "id": "g07v1.r06"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": 1.4804,
+    "padj": 2.16e-28,
+    "n_pairs": 84,
+    "entity": "ENTITY_38",
+    "id": "g07v1.r07"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": 0.298,
+    "padj": 0.9994,
+    "entity": "ENTITY_19",
+    "id": "g07v1.r08"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": 4.88,
+    "rna_lfc_at_purity1_se": 0.598,
+    "rna_purity_rho": 0.081,
+    "entity": "ENTITY_19",
+    "id": "g07v1.r09"
+   },
+   {
+    "type": "surface_annotation",
+    "surface_call": "surface",
+    "evidence": "UniProt: Cell membrane | SURFY: nonsurface | CSPA: not observed",
+    "transmembrane_segments": 1,
+    "entity": "ENTITY_19",
+    "id": "g07v1.r10"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": -2.5122,
+    "padj": 1e-10,
+    "n_pairs": 75,
+    "entity": "ENTITY_19",
+    "id": "g07v1.r11"
+   },
+   {
+    "type": "normal_tissue_ihc",
+    "measured": false,
+    "vital_max_level": null,
+    "vital_max_tissue": null,
+    "kidney_max_level": null,
+    "entity": "ENTITY_19",
+    "id": "g07v1.r12"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 16,
+    "vital_protein_ts_max": 0.82,
+    "vital_protein_ts_tissue": "Lung",
+    "vital_protein_enriched": false,
+    "entity": "ENTITY_37",
+    "id": "g07v1.r13"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 16,
+    "vital_protein_ts_max": 0.99,
+    "vital_protein_ts_tissue": "Heart Atrial",
+    "vital_protein_enriched": false,
+    "entity": "ENTITY_38",
+    "id": "g07v1.r14"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": 0.083,
+    "padj": 0.878,
+    "entity": "ENTITY_19",
+    "id": "g07v1.r15"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": -0.14,
+    "padj": 0.8811,
+    "entity": "ENTITY_37",
+    "id": "g07v1.r16"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": -0.09,
+    "padj": 0.9994,
+    "entity": "ENTITY_38",
+    "id": "g07v1.r17"
+   },
+   {
+    "type": "normal_tissue_ihc",
+    "measured": true,
+    "vital_max_level": 3.0,
+    "vital_max_tissue": "Cerebral cortex",
+    "kidney_max_level": 0.0,
+    "entity": "ENTITY_37",
+    "id": "g07v1.r18"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo",
+    "log_hr_per_sd": -0.394,
+    "padj": 0.2789,
+    "entity": "ENTITY_19",
+    "id": "g07v1.r19"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": 0.1609,
+    "padj": 0.0788,
+    "entity": "ENTITY_38",
+    "id": "g07v1.r20"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo_bev",
+    "log_hr_per_sd": -0.144,
+    "padj": 0.7563,
+    "entity": "ENTITY_19",
+    "id": "g07v1.r21"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": -5.8291,
+    "padj": 1e-08,
+    "n_pairs": 72,
+    "entity": "ENTITY_19",
+    "id": "g07v1.r22"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "sunitinib",
+    "log_hr_per_sd": -0.319,
+    "padj": 0.3227,
+    "entity": "ENTITY_19",
+    "id": "g07v1.r23"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": 3.5988,
+    "padj": 8.4e-26,
+    "n_pairs": 72,
+    "entity": "ENTITY_37",
+    "id": "g07v1.r24"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "IMmotion150",
+    "arm": "atezo_bev_vs_sunitinib",
+    "log_hr_per_sd": 0.161,
+    "padj": 0.8948,
+    "entity": "ENTITY_19",
+    "id": "g07v1.r25"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": 0.047,
+    "padj": 0.5598,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.167,
+    "entity": "ENTITY_19",
+    "id": "g07v1.r26"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": 0.045,
+    "padj": 0.9469,
+    "entity": "ENTITY_38",
+    "id": "g07v1.r27"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": -4.0687,
+    "padj": 1e-10,
+    "n_pairs": 75,
+    "entity": "ENTITY_19",
+    "id": "g07v1.r28"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": 3.93,
+    "padj": 3.35e-18,
+    "n_pairs": 72,
+    "entity": "ENTITY_38",
+    "id": "g07v1.r29"
+   }
+  ]
+ },
+ {
+  "id": "g08v0",
+  "target_entity": "ENTITY_77",
+  "records": [
+   {
+    "type": "normal_tissue_ihc",
+    "measured": false,
+    "vital_max_level": null,
+    "vital_max_tissue": null,
+    "kidney_max_level": null,
+    "entity": "ENTITY_77",
+    "id": "g08v0.r01"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "IMmotion150",
+    "arm": "atezo_bev_vs_sunitinib",
+    "log_hr_per_sd": -0.054,
+    "padj": 0.9787,
+    "entity": "ENTITY_15",
+    "id": "g08v0.r02"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": 0.0581,
+    "padj": 0.5384,
+    "entity": "ENTITY_77",
+    "id": "g08v0.r03"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": 4.3712,
+    "padj": 4.01e-25,
+    "n_pairs": 72,
+    "entity": "ENTITY_77",
+    "id": "g08v0.r04"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": -0.3584,
+    "padj": 2.3e-05,
+    "entity": "ENTITY_15",
+    "id": "g08v0.r05"
+   },
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.627,
+      "pct_expressing": 11.6
+     },
+     {
+      "cell_group": "Macrophage",
+      "share_of_tumour_transcripts": 0.319,
+      "pct_expressing": 4.0
+     },
+     {
+      "cell_group": "CD8_T",
+      "share_of_tumour_transcripts": 0.022,
+      "pct_expressing": 0.1
+     },
+     {
+      "cell_group": "NK",
+      "share_of_tumour_transcripts": 0.012,
+      "pct_expressing": 0.2
+     },
+     {
+      "cell_group": "cDC",
+      "share_of_tumour_transcripts": 0.009,
+      "pct_expressing": 0.8
+     }
+    ],
+    "entity": "ENTITY_77",
+    "id": "g08v0.r06"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": 4.376,
+    "rna_lfc_at_purity1_se": 0.608,
+    "rna_purity_rho": -0.061,
+    "entity": "ENTITY_31",
+    "id": "g08v0.r07"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "sunitinib",
+    "log_hr_per_sd": 0.123,
+    "padj": 0.7755,
+    "entity": "ENTITY_15",
+    "id": "g08v0.r08"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": 1.8977,
+    "padj": 8.7e-26,
+    "n_pairs": 68,
+    "entity": "ENTITY_77",
+    "id": "g08v0.r09"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo_bev",
+    "log_hr_per_sd": -0.202,
+    "padj": 0.5532,
+    "entity": "ENTITY_77",
+    "id": "g08v0.r10"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": 3.1113,
+    "padj": 3.73e-29,
+    "n_pairs": 75,
+    "entity": "ENTITY_77",
+    "id": "g08v0.r11"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": 0.027,
+    "padj": 0.9778,
+    "entity": "ENTITY_31",
+    "id": "g08v0.r12"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "sunitinib",
+    "log_hr_per_sd": 0.008,
+    "padj": 0.9915,
+    "entity": "ENTITY_77",
+    "id": "g08v0.r13"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": 0.173,
+    "padj": 0.6786,
+    "entity": "ENTITY_31",
+    "id": "g08v0.r14"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo",
+    "log_hr_per_sd": -0.239,
+    "padj": 0.6502,
+    "entity": "ENTITY_15",
+    "id": "g08v0.r15"
+   },
+   {
+    "type": "surface_annotation",
+    "surface_call": "unknown",
+    "evidence": "UniProt: Membrane | SURFY: not classified | CSPA: not observed",
+    "transmembrane_segments": 0,
+    "entity": "ENTITY_77",
+    "id": "g08v0.r16"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "IMmotion150",
+    "arm": "atezo_bev_vs_sunitinib",
+    "log_hr_per_sd": -0.227,
+    "padj": 0.8167,
+    "entity": "ENTITY_77",
+    "id": "g08v0.r17"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": 0.023,
+    "padj": 0.9723,
+    "entity": "ENTITY_77",
+    "id": "g08v0.r18"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": 0.026,
+    "padj": 0.8221,
+    "common_essential": false,
+    "mean_effect_ccrcc": -0.075,
+    "entity": "ENTITY_77",
+    "id": "g08v0.r19"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": -0.084,
+    "padj": 0.9994,
+    "entity": "ENTITY_77",
+    "id": "g08v0.r20"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": 0.007,
+    "padj": 0.9914,
+    "entity": "ENTITY_15",
+    "id": "g08v0.r21"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": -4.7409,
+    "padj": 6.57e-11,
+    "n_pairs": 72,
+    "entity": "ENTITY_15",
+    "id": "g08v0.r22"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "IMmotion150",
+    "arm": "atezo_bev_vs_sunitinib",
+    "log_hr_per_sd": 0.419,
+    "padj": 0.6251,
+    "entity": "ENTITY_31",
+    "id": "g08v0.r23"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "sunitinib",
+    "log_hr_per_sd": -0.451,
+    "padj": 0.1171,
+    "entity": "ENTITY_31",
+    "id": "g08v0.r24"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": 0.103,
+    "padj": 0.9209,
+    "entity": "ENTITY_77",
+    "id": "g08v0.r25"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": 3.189,
+    "rna_lfc_at_purity1_se": 0.635,
+    "rna_purity_rho": -0.046,
+    "entity": "ENTITY_77",
+    "id": "g08v0.r26"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": 4.0748,
+    "padj": 1.56e-25,
+    "n_pairs": 72,
+    "entity": "ENTITY_31",
+    "id": "g08v0.r27"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo",
+    "log_hr_per_sd": 0.171,
+    "padj": 0.8027,
+    "entity": "ENTITY_77",
+    "id": "g08v0.r28"
+   }
+  ]
+ },
+ {
+  "id": "g08v1",
+  "target_entity": "ENTITY_46",
+  "records": [
+   {
+    "type": "treatment_interaction",
+    "study": "IMmotion150",
+    "arm": "atezo_bev_vs_sunitinib",
+    "log_hr_per_sd": -0.227,
+    "padj": 0.8167,
+    "entity": "ENTITY_46",
+    "id": "g08v1.r01"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": 1.8977,
+    "padj": 8.7e-26,
+    "n_pairs": 68,
+    "entity": "ENTITY_46",
+    "id": "g08v1.r02"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": 0.0581,
+    "padj": 0.5384,
+    "entity": "ENTITY_46",
+    "id": "g08v1.r03"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": 0.161,
+    "padj": 0.9994,
+    "entity": "ENTITY_31",
+    "id": "g08v1.r04"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": 5.453,
+    "rna_lfc_at_purity1_se": 0.559,
+    "rna_purity_rho": 0.054,
+    "entity": "ENTITY_31",
+    "id": "g08v1.r05"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": -0.14,
+    "padj": 0.8811,
+    "entity": "ENTITY_15",
+    "id": "g08v1.r06"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": 0.023,
+    "padj": 0.9723,
+    "entity": "ENTITY_46",
+    "id": "g08v1.r07"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": 4.3712,
+    "padj": 4.01e-25,
+    "n_pairs": 72,
+    "entity": "ENTITY_46",
+    "id": "g08v1.r08"
+   },
+   {
+    "type": "normal_tissue_ihc",
+    "measured": true,
+    "vital_max_level": 3.0,
+    "vital_max_tissue": "Cerebral cortex",
+    "kidney_max_level": 0.0,
+    "entity": "ENTITY_15",
+    "id": "g08v1.r09"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo",
+    "log_hr_per_sd": -0.101,
+    "padj": 0.8806,
+    "entity": "ENTITY_31",
+    "id": "g08v1.r10"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": 1.2843,
+    "padj": 7.63e-31,
+    "n_pairs": 84,
+    "entity": "ENTITY_15",
+    "id": "g08v1.r11"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": -0.084,
+    "padj": 0.9994,
+    "entity": "ENTITY_46",
+    "id": "g08v1.r12"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": 3.1113,
+    "padj": 3.73e-29,
+    "n_pairs": 75,
+    "entity": "ENTITY_46",
+    "id": "g08v1.r13"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo",
+    "log_hr_per_sd": 0.171,
+    "padj": 0.8027,
+    "entity": "ENTITY_46",
+    "id": "g08v1.r14"
+   },
+   {
+    "type": "normal_tissue_ihc",
+    "measured": false,
+    "vital_max_level": null,
+    "vital_max_tissue": null,
+    "kidney_max_level": null,
+    "entity": "ENTITY_46",
+    "id": "g08v1.r15"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": 0.076,
+    "padj": 0.8994,
+    "entity": "ENTITY_31",
+    "id": "g08v1.r16"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo_bev",
+    "log_hr_per_sd": -0.202,
+    "padj": 0.5532,
+    "entity": "ENTITY_46",
+    "id": "g08v1.r17"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 16,
+    "vital_protein_ts_max": 0.82,
+    "vital_protein_ts_tissue": "Lung",
+    "vital_protein_enriched": false,
+    "entity": "ENTITY_15",
+    "id": "g08v1.r18"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "sunitinib",
+    "log_hr_per_sd": 0.008,
+    "padj": 0.9915,
+    "entity": "ENTITY_46",
+    "id": "g08v1.r19"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": 0.026,
+    "padj": 0.8221,
+    "common_essential": false,
+    "mean_effect_ccrcc": -0.075,
+    "entity": "ENTITY_46",
+    "id": "g08v1.r20"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": 3.189,
+    "rna_lfc_at_purity1_se": 0.635,
+    "rna_purity_rho": -0.046,
+    "entity": "ENTITY_46",
+    "id": "g08v1.r21"
+   },
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "Endothelial",
+      "share_of_tumour_transcripts": 0.978,
+      "pct_expressing": 75.9
+     },
+     {
+      "cell_group": "NK",
+      "share_of_tumour_transcripts": 0.005,
+      "pct_expressing": 0.2
+     },
+     {
+      "cell_group": "CD8_T",
+      "share_of_tumour_transcripts": 0.004,
+      "pct_expressing": 0.1
+     },
+     {
+      "cell_group": "Fibroblast",
+      "share_of_tumour_transcripts": 0.004,
+      "pct_expressing": 1.9
+     },
+     {
+      "cell_group": "Macrophage",
+      "share_of_tumour_transcripts": 0.003,
+      "pct_expressing": 0.2
+     },
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.002,
+      "pct_expressing": 0.1
+     }
+    ],
+    "entity": "ENTITY_15",
+    "id": "g08v1.r22"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": 0.103,
+    "padj": 0.9209,
+    "entity": "ENTITY_46",
+    "id": "g08v1.r23"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": -0.174,
+    "padj": 0.7307,
+    "entity": "ENTITY_15",
+    "id": "g08v1.r24"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo_bev",
+    "log_hr_per_sd": -0.192,
+    "padj": 0.5705,
+    "entity": "ENTITY_31",
+    "id": "g08v1.r25"
+   },
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.2,
+      "pct_expressing": 70.0
+     },
+     {
+      "cell_group": "Macrophage",
+      "share_of_tumour_transcripts": 0.6,
+      "pct_expressing": 4.0
+     },
+     {
+      "cell_group": "CD8_T",
+      "share_of_tumour_transcripts": 0.022,
+      "pct_expressing": 0.1
+     },
+     {
+      "cell_group": "NK",
+      "share_of_tumour_transcripts": 0.012,
+      "pct_expressing": 0.2
+     },
+     {
+      "cell_group": "cDC",
+      "share_of_tumour_transcripts": 0.009,
+      "pct_expressing": 0.8
+     }
+    ],
+    "entity": "ENTITY_46",
+    "id": "g08v1.r26"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": 1.9208,
+    "padj": 4.61e-19,
+    "n_pairs": 80,
+    "entity": "ENTITY_31",
+    "id": "g08v1.r27"
+   },
+   {
+    "type": "surface_annotation",
+    "surface_call": "unknown",
+    "evidence": "UniProt: Membrane | SURFY: not classified | CSPA: not observed",
+    "transmembrane_segments": 0,
+    "entity": "ENTITY_46",
+    "id": "g08v1.r28"
+   }
+  ]
+ },
+ {
+  "id": "g09v0",
+  "target_entity": "ENTITY_06",
+  "records": [
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 3,
+    "selectivity": 0.082,
+    "padj": 0.404,
+    "common_essential": false,
+    "mean_effect_ccrcc": -0.181,
+    "entity": "ENTITY_06",
+    "id": "g09v0.r01"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": -3.224,
+    "rna_lfc_at_purity1_se": 0.78,
+    "rna_purity_rho": 0.015,
+    "entity": "ENTITY_06",
+    "id": "g09v0.r02"
+   },
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "CD8_T",
+      "share_of_tumour_transcripts": 0.737,
+      "pct_expressing": 4.4
+     },
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.072,
+      "pct_expressing": 2.3
+     },
+     {
+      "cell_group": "CD4_T",
+      "share_of_tumour_transcripts": 0.06,
+      "pct_expressing": 1.7
+     },
+     {
+      "cell_group": "T_other",
+      "share_of_tumour_transcripts": 0.047,
+      "pct_expressing": 2.8
+     },
+     {
+      "cell_group": "Treg",
+      "share_of_tumour_transcripts": 0.033,
+      "pct_expressing": 3.6
+     }
+    ],
+    "entity": "ENTITY_06",
+    "id": "g09v0.r03"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": 3.5988,
+    "padj": 8.4e-26,
+    "n_pairs": 72,
+    "entity": "ENTITY_71",
+    "id": "g09v0.r04"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": 0.022,
+    "padj": 0.9994,
+    "entity": "ENTITY_06",
+    "id": "g09v0.r05"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": -1.9635,
+    "padj": 1.77e-33,
+    "n_pairs": 84,
+    "entity": "ENTITY_06",
+    "id": "g09v0.r06"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": -0.015,
+    "padj": 0.9994,
+    "entity": "ENTITY_71",
+    "id": "g09v0.r07"
+   },
+   {
+    "type": "confirmatory_protein",
+    "log2fc": -3.9457,
+    "padj": 9.71e-23,
+    "n_pairs": 69,
+    "entity": "ENTITY_06",
+    "id": "g09v0.r08"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": -0.14,
+    "padj": 0.8811,
+    "entity": "ENTITY_71",
+    "id": "g09v0.r09"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": -2.9737,
+    "padj": 1.45e-11,
+    "n_pairs": 72,
+    "entity": "ENTITY_06",
+    "id": "g09v0.r10"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": 0.204,
+    "padj": 0.6699,
+    "entity": "ENTITY_06",
+    "id": "g09v0.r11"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": -3.8667,
+    "padj": 2.54e-29,
+    "n_pairs": 75,
+    "entity": "ENTITY_06",
+    "id": "g09v0.r12"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": 0.07,
+    "padj": 0.9994,
+    "entity": "ENTITY_61",
+    "id": "g09v0.r13"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": 1.352,
+    "rna_lfc_at_purity1_se": 0.389,
+    "rna_purity_rho": -0.54,
+    "entity": "ENTITY_61",
+    "id": "g09v0.r14"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": 0.189,
+    "padj": 0.8808,
+    "entity": "ENTITY_06",
+    "id": "g09v0.r15"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 16,
+    "vital_protein_ts_max": 5.07,
+    "vital_protein_ts_tissue": "Brain Cortex",
+    "vital_protein_enriched": true,
+    "entity": "ENTITY_06",
+    "id": "g09v0.r16"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": -0.004,
+    "padj": 0.9546,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.217,
+    "entity": "ENTITY_61",
+    "id": "g09v0.r17"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "phospho",
+    "log2fc": -2.3669,
+    "padj": 3.65e-30,
+    "n_pairs": 84,
+    "entity": "ENTITY_06",
+    "id": "g09v0.r18"
+   },
+   {
+    "type": "confirmatory_protein",
+    "log2fc": 2.1423,
+    "padj": 2.81e-27,
+    "n_pairs": 87,
+    "entity": "ENTITY_71",
+    "id": "g09v0.r19"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": 0.4994,
+    "padj": 2.45e-09,
+    "entity": "ENTITY_61",
+    "id": "g09v0.r20"
+   },
+   {
+    "type": "confirmatory_protein",
+    "log2fc": 0.7675,
+    "padj": 1.28e-06,
+    "n_pairs": 76,
+    "entity": "ENTITY_61",
+    "id": "g09v0.r21"
+   },
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "Macrophage",
+      "share_of_tumour_transcripts": 0.344,
+      "pct_expressing": 40.7
+     },
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.303,
+      "pct_expressing": 72.7
+     },
+     {
+      "cell_group": "Fibroblast",
+      "share_of_tumour_transcripts": 0.089,
+      "pct_expressing": 86.6
+     },
+     {
+      "cell_group": "CD4_T",
+      "share_of_tumour_transcripts": 0.072,
+      "pct_expressing": 29.1
+     },
+     {
+      "cell_group": "Monocyte",
+      "share_of_tumour_transcripts": 0.038,
+      "pct_expressing": 76.3
+     }
+    ],
+    "entity": "ENTITY_61",
+    "id": "g09v0.r22"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": 0.43,
+    "padj": 5.66e-07,
+    "entity": "ENTITY_06",
+    "id": "g09v0.r23"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": -0.054,
+    "padj": 0.2614,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.202,
+    "entity": "ENTITY_71",
+    "id": "g09v0.r24"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo",
+    "log_hr_per_sd": 0.164,
+    "padj": 0.8298,
+    "entity": "ENTITY_06",
+    "id": "g09v0.r25"
+   },
+   {
+    "type": "surface_annotation",
+    "surface_call": "surface",
+    "evidence": "UniProt: Secreted; Secreted, extracellular space, extracellular matrix | SURFY: not classified | CSPA: 1 - high confidence",
+    "transmembrane_segments": 0,
+    "entity": "ENTITY_71",
+    "id": "g09v0.r26"
+   }
+  ]
+ },
+ {
+  "id": "g09v1",
+  "target_entity": "ENTITY_45",
+  "records": [
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": -3.224,
+    "rna_lfc_at_purity1_se": 0.78,
+    "rna_purity_rho": 0.015,
+    "entity": "ENTITY_45",
+    "id": "g09v1.r01"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": 0.022,
+    "padj": 0.9994,
+    "entity": "ENTITY_45",
+    "id": "g09v1.r02"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": 0.189,
+    "padj": 0.8808,
+    "entity": "ENTITY_45",
+    "id": "g09v1.r03"
+   },
+   {
+    "type": "normal_tissue_ihc",
+    "measured": true,
+    "vital_max_level": 3.0,
+    "vital_max_tissue": "Cerebral cortex",
+    "kidney_max_level": 0.0,
+    "entity": "ENTITY_61",
+    "id": "g09v1.r04"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 16,
+    "vital_protein_ts_max": 0.99,
+    "vital_protein_ts_tissue": "Heart Atrial",
+    "vital_protein_enriched": false,
+    "entity": "ENTITY_71",
+    "id": "g09v1.r05"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": 3.5988,
+    "padj": 8.4e-26,
+    "n_pairs": 72,
+    "entity": "ENTITY_61",
+    "id": "g09v1.r06"
+   },
+   {
+    "type": "normal_tissue_ihc",
+    "measured": false,
+    "vital_max_level": null,
+    "vital_max_tissue": null,
+    "kidney_max_level": null,
+    "entity": "ENTITY_71",
+    "id": "g09v1.r07"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": 3.6053,
+    "padj": 2.69e-34,
+    "n_pairs": 75,
+    "entity": "ENTITY_61",
+    "id": "g09v1.r08"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": -2.9737,
+    "padj": 1.45e-11,
+    "n_pairs": 72,
+    "entity": "ENTITY_45",
+    "id": "g09v1.r09"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": 3.0028,
+    "padj": 7.13e-30,
+    "n_pairs": 75,
+    "entity": "ENTITY_71",
+    "id": "g09v1.r10"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": 0.43,
+    "padj": 5.66e-07,
+    "entity": "ENTITY_45",
+    "id": "g09v1.r11"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo",
+    "log_hr_per_sd": 0.164,
+    "padj": 0.8298,
+    "entity": "ENTITY_45",
+    "id": "g09v1.r12"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 16,
+    "vital_protein_ts_max": 5.07,
+    "vital_protein_ts_tissue": "Brain Cortex",
+    "vital_protein_enriched": true,
+    "entity": "ENTITY_45",
+    "id": "g09v1.r13"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": 1.4804,
+    "padj": 2.16e-28,
+    "n_pairs": 84,
+    "entity": "ENTITY_71",
+    "id": "g09v1.r14"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": -3.8667,
+    "padj": 2.54e-29,
+    "n_pairs": 75,
+    "entity": "ENTITY_45",
+    "id": "g09v1.r15"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": -0.14,
+    "padj": 0.8811,
+    "entity": "ENTITY_61",
+    "id": "g09v1.r16"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": 0.045,
+    "padj": 0.9469,
+    "entity": "ENTITY_71",
+    "id": "g09v1.r17"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 3,
+    "selectivity": 0.082,
+    "padj": 0.404,
+    "common_essential": false,
+    "mean_effect_ccrcc": -0.181,
+    "entity": "ENTITY_45",
+    "id": "g09v1.r18"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": 0.1609,
+    "padj": 0.0788,
+    "entity": "ENTITY_71",
+    "id": "g09v1.r19"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 16,
+    "vital_protein_ts_max": 0.82,
+    "vital_protein_ts_tissue": "Lung",
+    "vital_protein_enriched": false,
+    "entity": "ENTITY_61",
+    "id": "g09v1.r20"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "phospho",
+    "log2fc": -2.3669,
+    "padj": 3.65e-30,
+    "n_pairs": 84,
+    "entity": "ENTITY_45",
+    "id": "g09v1.r21"
+   },
+   {
+    "type": "confirmatory_protein",
+    "log2fc": -3.9457,
+    "padj": 9.71e-23,
+    "n_pairs": 69,
+    "entity": "ENTITY_45",
+    "id": "g09v1.r22"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": -0.054,
+    "padj": 0.2614,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.202,
+    "entity": "ENTITY_61",
+    "id": "g09v1.r23"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": 0.204,
+    "padj": 0.6699,
+    "entity": "ENTITY_45",
+    "id": "g09v1.r24"
+   },
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "CD8_T",
+      "share_of_tumour_transcripts": 0.737,
+      "pct_expressing": 4.4
+     },
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.072,
+      "pct_expressing": 2.3
+     },
+     {
+      "cell_group": "CD4_T",
+      "share_of_tumour_transcripts": 0.06,
+      "pct_expressing": 1.7
+     },
+     {
+      "cell_group": "T_other",
+      "share_of_tumour_transcripts": 0.047,
+      "pct_expressing": 2.8
+     },
+     {
+      "cell_group": "Treg",
+      "share_of_tumour_transcripts": 0.033,
+      "pct_expressing": 3.6
+     }
+    ],
+    "entity": "ENTITY_45",
+    "id": "g09v1.r25"
+   }
+  ]
+ },
+ {
+  "id": "g10v0",
+  "target_entity": "ENTITY_63",
+  "records": [
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": -0.064,
+    "padj": 0.9627,
+    "entity": "ENTITY_63",
+    "id": "g10v0.r01"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": 0.066,
+    "padj": 0.9598,
+    "entity": "ENTITY_21",
+    "id": "g10v0.r02"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": -0.037,
+    "padj": 0.4069,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.109,
+    "entity": "ENTITY_63",
+    "id": "g10v0.r03"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": 3.787,
+    "rna_lfc_at_purity1_se": 0.588,
+    "rna_purity_rho": -0.12,
+    "entity": "ENTITY_58",
+    "id": "g10v0.r04"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo_bev",
+    "log_hr_per_sd": 0.22,
+    "padj": 0.5731,
+    "entity": "ENTITY_63",
+    "id": "g10v0.r05"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": 0.147,
+    "padj": 0.7434,
+    "entity": "ENTITY_21",
+    "id": "g10v0.r06"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo",
+    "log_hr_per_sd": -0.129,
+    "padj": 0.8453,
+    "entity": "ENTITY_63",
+    "id": "g10v0.r07"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "sunitinib",
+    "log_hr_per_sd": -0.069,
+    "padj": 0.8888,
+    "entity": "ENTITY_63",
+    "id": "g10v0.r08"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": -0.002,
+    "padj": 0.9882,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.249,
+    "entity": "ENTITY_58",
+    "id": "g10v0.r09"
+   },
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.964,
+      "pct_expressing": 12.0
+     },
+     {
+      "cell_group": "PT",
+      "share_of_tumour_transcripts": 0.013,
+      "pct_expressing": 33.3
+     },
+     {
+      "cell_group": "NK",
+      "share_of_tumour_transcripts": 0.006,
+      "pct_expressing": 0.1
+     },
+     {
+      "cell_group": "CD8_T",
+      "share_of_tumour_transcripts": 0.005,
+      "pct_expressing": 0.0
+     },
+     {
+      "cell_group": "CD4_T",
+      "share_of_tumour_transcripts": 0.004,
+      "pct_expressing": 0.1
+     }
+    ],
+    "entity": "ENTITY_63",
+    "id": "g10v0.r10"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": 0.1609,
+    "padj": 0.0788,
+    "entity": "ENTITY_58",
+    "id": "g10v0.r11"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": -1.8592,
+    "padj": 1.08e-32,
+    "n_pairs": 84,
+    "entity": "ENTITY_63",
+    "id": "g10v0.r12"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": -4.4236,
+    "padj": 1.52e-25,
+    "n_pairs": 75,
+    "entity": "ENTITY_63",
+    "id": "g10v0.r13"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": -0.415,
+    "padj": 1.91e-07,
+    "entity": "ENTITY_63",
+    "id": "g10v0.r14"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": 0.07,
+    "padj": 0.9994,
+    "entity": "ENTITY_21",
+    "id": "g10v0.r15"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "phospho",
+    "log2fc": -1.7745,
+    "padj": 4.73e-28,
+    "n_pairs": 84,
+    "entity": "ENTITY_63",
+    "id": "g10v0.r16"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": -2.928,
+    "rna_lfc_at_purity1_se": 1.029,
+    "rna_purity_rho": 0.189,
+    "entity": "ENTITY_63",
+    "id": "g10v0.r17"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": 0.4994,
+    "padj": 2.45e-09,
+    "entity": "ENTITY_21",
+    "id": "g10v0.r18"
+   },
+   {
+    "type": "confirmatory_protein",
+    "log2fc": -4.819,
+    "padj": 3.53e-27,
+    "n_pairs": 69,
+    "entity": "ENTITY_63",
+    "id": "g10v0.r19"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": 3.0028,
+    "padj": 7.13e-30,
+    "n_pairs": 75,
+    "entity": "ENTITY_58",
+    "id": "g10v0.r20"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": -3.0795,
+    "padj": 3.03e-09,
+    "n_pairs": 72,
+    "entity": "ENTITY_63",
+    "id": "g10v0.r21"
+   },
+   {
+    "type": "surface_annotation",
+    "surface_call": "surface",
+    "evidence": "UniProt: Secreted | SURFY: not classified | CSPA: 1 - high confidence",
+    "transmembrane_segments": 0,
+    "entity": "ENTITY_21",
+    "id": "g10v0.r22"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "IMmotion150",
+    "arm": "atezo_bev_vs_sunitinib",
+    "log_hr_per_sd": 0.278,
+    "padj": 0.7688,
+    "entity": "ENTITY_63",
+    "id": "g10v0.r23"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": 0.045,
+    "padj": 0.9469,
+    "entity": "ENTITY_58",
+    "id": "g10v0.r24"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": -0.091,
+    "padj": 0.9994,
+    "entity": "ENTITY_63",
+    "id": "g10v0.r25"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 16,
+    "vital_protein_ts_max": 4.05,
+    "vital_protein_ts_tissue": "Liver",
+    "vital_protein_enriched": true,
+    "entity": "ENTITY_63",
+    "id": "g10v0.r26"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": 1.352,
+    "rna_lfc_at_purity1_se": 0.389,
+    "rna_purity_rho": -0.54,
+    "entity": "ENTITY_21",
+    "id": "g10v0.r27"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": -0.169,
+    "padj": 0.7036,
+    "entity": "ENTITY_63",
+    "id": "g10v0.r28"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": 3.93,
+    "padj": 3.35e-18,
+    "n_pairs": 72,
+    "entity": "ENTITY_58",
+    "id": "g10v0.r29"
+   }
+  ]
+ },
+ {
+  "id": "g10v1",
+  "target_entity": "ENTITY_73",
+  "records": [
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": -0.174,
+    "padj": 0.7307,
+    "entity": "ENTITY_21",
+    "id": "g10v1.r01"
+   },
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.964,
+      "pct_expressing": 12.0
+     },
+     {
+      "cell_group": "PT",
+      "share_of_tumour_transcripts": 0.013,
+      "pct_expressing": 33.3
+     },
+     {
+      "cell_group": "NK",
+      "share_of_tumour_transcripts": 0.006,
+      "pct_expressing": 0.1
+     },
+     {
+      "cell_group": "CD8_T",
+      "share_of_tumour_transcripts": 0.005,
+      "pct_expressing": 0.0
+     },
+     {
+      "cell_group": "CD4_T",
+      "share_of_tumour_transcripts": 0.004,
+      "pct_expressing": 0.1
+     }
+    ],
+    "entity": "ENTITY_73",
+    "id": "g10v1.r02"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": 5.763,
+    "padj": 5.67e-30,
+    "n_pairs": 72,
+    "entity": "ENTITY_58",
+    "id": "g10v1.r03"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": 5.5668,
+    "padj": 1.02e-38,
+    "n_pairs": 75,
+    "entity": "ENTITY_58",
+    "id": "g10v1.r04"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 16,
+    "vital_protein_ts_max": 4.05,
+    "vital_protein_ts_tissue": "Liver",
+    "vital_protein_enriched": true,
+    "entity": "ENTITY_73",
+    "id": "g10v1.r05"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": 3.5988,
+    "padj": 8.4e-26,
+    "n_pairs": 72,
+    "entity": "ENTITY_21",
+    "id": "g10v1.r06"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": -4.4236,
+    "padj": 1.52e-25,
+    "n_pairs": 75,
+    "entity": "ENTITY_73",
+    "id": "g10v1.r07"
+   },
+   {
+    "type": "normal_tissue_ihc",
+    "measured": true,
+    "vital_max_level": 3.0,
+    "vital_max_tissue": "Cerebral cortex",
+    "kidney_max_level": 0.0,
+    "entity": "ENTITY_21",
+    "id": "g10v1.r08"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "sunitinib",
+    "log_hr_per_sd": -0.069,
+    "padj": 0.8888,
+    "entity": "ENTITY_73",
+    "id": "g10v1.r09"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": -0.015,
+    "padj": 0.9994,
+    "entity": "ENTITY_21",
+    "id": "g10v1.r10"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": -0.091,
+    "padj": 0.9994,
+    "entity": "ENTITY_73",
+    "id": "g10v1.r11"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": -0.064,
+    "padj": 0.9627,
+    "entity": "ENTITY_73",
+    "id": "g10v1.r12"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo",
+    "log_hr_per_sd": -0.129,
+    "padj": 0.8453,
+    "entity": "ENTITY_73",
+    "id": "g10v1.r13"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": -0.037,
+    "padj": 0.4069,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.109,
+    "entity": "ENTITY_73",
+    "id": "g10v1.r14"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": -2.928,
+    "rna_lfc_at_purity1_se": 1.029,
+    "rna_purity_rho": 0.189,
+    "entity": "ENTITY_73",
+    "id": "g10v1.r15"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": -0.415,
+    "padj": 1.91e-07,
+    "entity": "ENTITY_73",
+    "id": "g10v1.r16"
+   },
+   {
+    "type": "confirmatory_protein",
+    "log2fc": 2.1423,
+    "padj": 2.81e-27,
+    "n_pairs": 87,
+    "entity": "ENTITY_21",
+    "id": "g10v1.r17"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "IMmotion150",
+    "arm": "atezo_bev_vs_sunitinib",
+    "log_hr_per_sd": 0.278,
+    "padj": 0.7688,
+    "entity": "ENTITY_73",
+    "id": "g10v1.r18"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "phospho",
+    "log2fc": -1.7745,
+    "padj": 4.73e-28,
+    "n_pairs": 84,
+    "entity": "ENTITY_73",
+    "id": "g10v1.r19"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": 0.001,
+    "padj": 0.9937,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.142,
+    "entity": "ENTITY_58",
+    "id": "g10v1.r20"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 15,
+    "vital_protein_ts_max": 0.45,
+    "vital_protein_ts_tissue": "Heart Atrial",
+    "vital_protein_enriched": false,
+    "entity": "ENTITY_58",
+    "id": "g10v1.r21"
+   },
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.96,
+      "pct_expressing": 70.3
+     },
+     {
+      "cell_group": "Macrophage",
+      "share_of_tumour_transcripts": 0.013,
+      "pct_expressing": 1.5
+     },
+     {
+      "cell_group": "NK",
+      "share_of_tumour_transcripts": 0.007,
+      "pct_expressing": 1.6
+     },
+     {
+      "cell_group": "CD8_T",
+      "share_of_tumour_transcripts": 0.006,
+      "pct_expressing": 0.4
+     },
+     {
+      "cell_group": "Fibroblast",
+      "share_of_tumour_transcripts": 0.005,
+      "pct_expressing": 26.6
+     }
+    ],
+    "entity": "ENTITY_58",
+    "id": "g10v1.r22"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": -1.8592,
+    "padj": 1.08e-32,
+    "n_pairs": 84,
+    "entity": "ENTITY_73",
+    "id": "g10v1.r23"
+   },
+   {
+    "type": "surface_annotation",
+    "surface_call": "surface",
+    "evidence": "UniProt: Secreted; Secreted, extracellular space, extracellular matrix | SURFY: not classified | CSPA: 1 - high confidence",
+    "transmembrane_segments": 0,
+    "entity": "ENTITY_21",
+    "id": "g10v1.r24"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": -0.169,
+    "padj": 0.7036,
+    "entity": "ENTITY_73",
+    "id": "g10v1.r25"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": -0.0032,
+    "padj": 0.9768,
+    "entity": "ENTITY_58",
+    "id": "g10v1.r26"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": 3.0795,
+    "padj": 1e-08,
+    "n_pairs": 72,
+    "entity": "ENTITY_73",
+    "id": "g10v1.r27"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo_bev",
+    "log_hr_per_sd": 0.22,
+    "padj": 0.5731,
+    "entity": "ENTITY_73",
+    "id": "g10v1.r28"
+   }
+  ]
+ },
+ {
+  "id": "g11v0",
+  "target_entity": "ENTITY_09",
+  "records": [
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": 0.9352,
+    "padj": 2.28e-25,
+    "n_pairs": 84,
+    "entity": "ENTITY_09",
+    "id": "g11v0.r01"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 16,
+    "vital_protein_ts_max": 3.08,
+    "vital_protein_ts_tissue": "Spleen",
+    "vital_protein_enriched": false,
+    "entity": "ENTITY_09",
+    "id": "g11v0.r02"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": 0.05,
+    "padj": 0.466,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.184,
+    "entity": "ENTITY_09",
+    "id": "g11v0.r03"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": 0.561,
+    "rna_lfc_at_purity1_se": 0.351,
+    "rna_purity_rho": -0.557,
+    "entity": "ENTITY_09",
+    "id": "g11v0.r04"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": 3.3839,
+    "padj": 6.6e-32,
+    "n_pairs": 75,
+    "entity": "ENTITY_49",
+    "id": "g11v0.r05"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "phospho",
+    "log2fc": 0.9035,
+    "padj": 4.06e-20,
+    "n_pairs": 84,
+    "entity": "ENTITY_09",
+    "id": "g11v0.r06"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": -0.032,
+    "padj": 0.9994,
+    "entity": "ENTITY_09",
+    "id": "g11v0.r07"
+   },
+   {
+    "type": "normal_tissue_ihc",
+    "measured": true,
+    "vital_max_level": 3.0,
+    "vital_max_tissue": "Cerebellum",
+    "kidney_max_level": 2.0,
+    "entity": "ENTITY_09",
+    "id": "g11v0.r08"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": 0.047,
+    "padj": 0.3748,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.233,
+    "entity": "ENTITY_49",
+    "id": "g11v0.r09"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "phospho",
+    "log2fc": 0.3575,
+    "padj": 6.52e-08,
+    "n_pairs": 84,
+    "entity": "ENTITY_04",
+    "id": "g11v0.r10"
+   },
+   {
+    "type": "surface_annotation",
+    "surface_call": "secreted",
+    "evidence": "UniProt: Secreted | SURFY: not classified | CSPA: not observed",
+    "transmembrane_segments": 0,
+    "entity": "ENTITY_49",
+    "id": "g11v0.r11"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": 1.2635,
+    "padj": 3.52e-15,
+    "n_pairs": 75,
+    "entity": "ENTITY_04",
+    "id": "g11v0.r12"
+   },
+   {
+    "type": "surface_annotation",
+    "surface_call": "surface",
+    "evidence": "UniProt: Cell membrane; Endoplasmic reticulum membrane; Endosome; Golgi apparatus, trans-Golgi network; Late endosome; Lysosome; Secreted | SURFY: surface | CSPA: 1 - high confidence",
+    "transmembrane_segments": 1,
+    "entity": "ENTITY_09",
+    "id": "g11v0.r13"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 14,
+    "vital_protein_ts_max": 2.18,
+    "vital_protein_ts_tissue": "Heart Atrial",
+    "vital_protein_enriched": false,
+    "entity": "ENTITY_04",
+    "id": "g11v0.r14"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": 1.6661,
+    "padj": 4.84e-19,
+    "n_pairs": 72,
+    "entity": "ENTITY_09",
+    "id": "g11v0.r15"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": 0.1092,
+    "padj": 0.2165,
+    "entity": "ENTITY_09",
+    "id": "g11v0.r16"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": 0.173,
+    "padj": 0.6786,
+    "entity": "ENTITY_49",
+    "id": "g11v0.r17"
+   },
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "Macrophage",
+      "share_of_tumour_transcripts": 0.436,
+      "pct_expressing": 99.5
+     },
+     {
+      "cell_group": "CD8_T",
+      "share_of_tumour_transcripts": 0.345,
+      "pct_expressing": 95.5
+     },
+     {
+      "cell_group": "cDC",
+      "share_of_tumour_transcripts": 0.114,
+      "pct_expressing": 100.0
+     },
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.023,
+      "pct_expressing": 66.8
+     },
+     {
+      "cell_group": "B",
+      "share_of_tumour_transcripts": 0.021,
+      "pct_expressing": 100.0
+     }
+    ],
+    "entity": "ENTITY_09",
+    "id": "g11v0.r18"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": 1.7751,
+    "padj": 6.76e-28,
+    "n_pairs": 75,
+    "entity": "ENTITY_09",
+    "id": "g11v0.r19"
+   },
+   {
+    "type": "surface_annotation",
+    "surface_call": "surface",
+    "evidence": "UniProt: Cell junction; Cell membrane; Cytoplasm; Cytoplasmic vesicle; Early endosome; Endoplasmic reticulum; Nucleus; Secreted | SURFY: surface | CSPA: not observed",
+    "transmembrane_segments": 1,
+    "entity": "ENTITY_04",
+    "id": "g11v0.r20"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": 1.2374,
+    "padj": 1.32e-10,
+    "n_pairs": 72,
+    "entity": "ENTITY_04",
+    "id": "g11v0.r21"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": 0.103,
+    "padj": 0.931,
+    "entity": "ENTITY_09",
+    "id": "g11v0.r22"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": 4.376,
+    "rna_lfc_at_purity1_se": 0.608,
+    "rna_purity_rho": -0.061,
+    "entity": "ENTITY_49",
+    "id": "g11v0.r23"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": -0.208,
+    "padj": 0.0038,
+    "entity": "ENTITY_49",
+    "id": "g11v0.r24"
+   },
+   {
+    "type": "confirmatory_protein",
+    "log2fc": 1.0481,
+    "padj": 1.2e-15,
+    "n_pairs": 87,
+    "entity": "ENTITY_09",
+    "id": "g11v0.r25"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": -0.027,
+    "padj": 0.7625,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.079,
+    "entity": "ENTITY_04",
+    "id": "g11v0.r26"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": 0.068,
+    "padj": 0.8994,
+    "entity": "ENTITY_09",
+    "id": "g11v0.r27"
+   }
+  ]
+ },
+ {
+  "id": "g11v1",
+  "target_entity": "ENTITY_57",
+  "records": [
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": 0.1092,
+    "padj": 0.2165,
+    "entity": "ENTITY_57",
+    "id": "g11v1.r01"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "sunitinib",
+    "log_hr_per_sd": 0.203,
+    "padj": 0.6025,
+    "entity": "ENTITY_49",
+    "id": "g11v1.r02"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "phospho",
+    "log2fc": 0.9035,
+    "padj": 4.06e-20,
+    "n_pairs": 84,
+    "entity": "ENTITY_57",
+    "id": "g11v1.r03"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": 0.058,
+    "padj": 0.473,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.007,
+    "entity": "ENTITY_49",
+    "id": "g11v1.r04"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": -10.3102,
+    "padj": 7.2e-67,
+    "n_pairs": 75,
+    "entity": "ENTITY_49",
+    "id": "g11v1.r05"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": 0.05,
+    "padj": 0.466,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.184,
+    "entity": "ENTITY_57",
+    "id": "g11v1.r06"
+   },
+   {
+    "type": "surface_annotation",
+    "surface_call": "unknown",
+    "evidence": "UniProt: Cytoplasm; Membrane | SURFY: not classified | CSPA: not observed",
+    "transmembrane_segments": 0,
+    "entity": "ENTITY_04",
+    "id": "g11v1.r07"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 5,
+    "vital_protein_ts_max": null,
+    "vital_protein_ts_tissue": NaN,
+    "vital_protein_enriched": false,
+    "entity": "ENTITY_49",
+    "id": "g11v1.r08"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": 6.431,
+    "padj": 1.02e-27,
+    "n_pairs": 72,
+    "entity": "ENTITY_04",
+    "id": "g11v1.r09"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": 0.161,
+    "padj": 0.9994,
+    "entity": "ENTITY_04",
+    "id": "g11v1.r10"
+   },
+   {
+    "type": "confirmatory_protein",
+    "log2fc": -5.5804,
+    "padj": 1.11e-13,
+    "n_pairs": 29,
+    "entity": "ENTITY_49",
+    "id": "g11v1.r11"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": -1.6661,
+    "padj": 1e-08,
+    "n_pairs": 72,
+    "entity": "ENTITY_57",
+    "id": "g11v1.r12"
+   },
+   {
+    "type": "normal_tissue_ihc",
+    "measured": true,
+    "vital_max_level": 3.0,
+    "vital_max_tissue": "Cerebellum",
+    "kidney_max_level": 2.0,
+    "entity": "ENTITY_57",
+    "id": "g11v1.r13"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": 0.561,
+    "rna_lfc_at_purity1_se": 0.351,
+    "rna_purity_rho": -0.557,
+    "entity": "ENTITY_57",
+    "id": "g11v1.r14"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": 0.1714,
+    "padj": 0.074,
+    "entity": "ENTITY_04",
+    "id": "g11v1.r15"
+   },
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.96,
+      "pct_expressing": 25.2
+     },
+     {
+      "cell_group": "CD8_T",
+      "share_of_tumour_transcripts": 0.013,
+      "pct_expressing": 0.1
+     },
+     {
+      "cell_group": "NK",
+      "share_of_tumour_transcripts": 0.007,
+      "pct_expressing": 0.1
+     },
+     {
+      "cell_group": "PT",
+      "share_of_tumour_transcripts": 0.005,
+      "pct_expressing": 25.6
+     },
+     {
+      "cell_group": "Macrophage",
+      "share_of_tumour_transcripts": 0.004,
+      "pct_expressing": 0.1
+     }
+    ],
+    "entity": "ENTITY_04",
+    "id": "g11v1.r16"
+   },
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "Macrophage",
+      "share_of_tumour_transcripts": 0.436,
+      "pct_expressing": 99.5
+     },
+     {
+      "cell_group": "CD8_T",
+      "share_of_tumour_transcripts": 0.345,
+      "pct_expressing": 95.5
+     },
+     {
+      "cell_group": "cDC",
+      "share_of_tumour_transcripts": 0.114,
+      "pct_expressing": 100.0
+     },
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.023,
+      "pct_expressing": 66.8
+     },
+     {
+      "cell_group": "B",
+      "share_of_tumour_transcripts": 0.021,
+      "pct_expressing": 100.0
+     }
+    ],
+    "entity": "ENTITY_57",
+    "id": "g11v1.r17"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": -0.032,
+    "padj": 0.9994,
+    "entity": "ENTITY_57",
+    "id": "g11v1.r18"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 16,
+    "vital_protein_ts_max": 3.08,
+    "vital_protein_ts_tissue": "Spleen",
+    "vital_protein_enriched": false,
+    "entity": "ENTITY_57",
+    "id": "g11v1.r19"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": 0.068,
+    "padj": 0.8994,
+    "entity": "ENTITY_57",
+    "id": "g11v1.r20"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo",
+    "log_hr_per_sd": -0.027,
+    "padj": 0.9789,
+    "entity": "ENTITY_49",
+    "id": "g11v1.r21"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": -0.9352,
+    "padj": 1e-10,
+    "n_pairs": 84,
+    "entity": "ENTITY_57",
+    "id": "g11v1.r22"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": 1.9208,
+    "padj": 4.61e-19,
+    "n_pairs": 80,
+    "entity": "ENTITY_04",
+    "id": "g11v1.r23"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": 0.103,
+    "padj": 0.931,
+    "entity": "ENTITY_57",
+    "id": "g11v1.r24"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": -1.7751,
+    "padj": 1e-10,
+    "n_pairs": 75,
+    "entity": "ENTITY_57",
+    "id": "g11v1.r25"
+   },
+   {
+    "type": "surface_annotation",
+    "surface_call": "surface",
+    "evidence": "UniProt: Cell membrane; Endoplasmic reticulum membrane; Endosome; Golgi apparatus, trans-Golgi network; Late endosome; Lysosome; Secreted | SURFY: surface | CSPA: 1 - high confidence",
+    "transmembrane_segments": 1,
+    "entity": "ENTITY_57",
+    "id": "g11v1.r26"
+   }
+  ]
+ },
+ {
+  "id": "g12v0",
+  "target_entity": "ENTITY_18",
+  "records": [
+   {
+    "type": "confirmatory_protein",
+    "log2fc": -0.2562,
+    "padj": 0.0738,
+    "n_pairs": 86,
+    "entity": "ENTITY_18",
+    "id": "g12v0.r01"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": 3.9745,
+    "padj": 4.35e-29,
+    "n_pairs": 72,
+    "entity": "ENTITY_18",
+    "id": "g12v0.r02"
+   },
+   {
+    "type": "normal_tissue_ihc",
+    "measured": true,
+    "vital_max_level": 2.0,
+    "vital_max_tissue": "Heart muscle",
+    "kidney_max_level": 2.0,
+    "entity": "ENTITY_18",
+    "id": "g12v0.r03"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 16,
+    "vital_protein_ts_max": 2.39,
+    "vital_protein_ts_tissue": "Liver",
+    "vital_protein_enriched": false,
+    "entity": "ENTITY_10",
+    "id": "g12v0.r04"
+   },
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "Macrophage",
+      "share_of_tumour_transcripts": 0.574,
+      "pct_expressing": 7.5
+     },
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.233,
+      "pct_expressing": 5.3
+     },
+     {
+      "cell_group": "CD8_T",
+      "share_of_tumour_transcripts": 0.06,
+      "pct_expressing": 0.2
+     },
+     {
+      "cell_group": "CD4_T",
+      "share_of_tumour_transcripts": 0.035,
+      "pct_expressing": 0.7
+     },
+     {
+      "cell_group": "cDC",
+      "share_of_tumour_transcripts": 0.031,
+      "pct_expressing": 3.1
+     }
+    ],
+    "entity": "ENTITY_18",
+    "id": "g12v0.r05"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "IMmotion150",
+    "arm": "atezo_bev_vs_sunitinib",
+    "log_hr_per_sd": -0.284,
+    "padj": 0.7367,
+    "entity": "ENTITY_59",
+    "id": "g12v0.r06"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": 3.3512,
+    "padj": 4.6e-42,
+    "n_pairs": 75,
+    "entity": "ENTITY_18",
+    "id": "g12v0.r07"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "IMmotion150",
+    "arm": "atezo_bev_vs_sunitinib",
+    "log_hr_per_sd": -0.069,
+    "padj": 0.9737,
+    "entity": "ENTITY_10",
+    "id": "g12v0.r08"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo_bev",
+    "log_hr_per_sd": -0.08,
+    "padj": 0.8852,
+    "entity": "ENTITY_59",
+    "id": "g12v0.r09"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 16,
+    "vital_protein_ts_max": 2.55,
+    "vital_protein_ts_tissue": "Colon Transverse",
+    "vital_protein_enriched": false,
+    "entity": "ENTITY_18",
+    "id": "g12v0.r10"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo_bev",
+    "log_hr_per_sd": 0.101,
+    "padj": 0.8528,
+    "entity": "ENTITY_10",
+    "id": "g12v0.r11"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": -5.8777,
+    "padj": 8.35e-34,
+    "n_pairs": 75,
+    "entity": "ENTITY_10",
+    "id": "g12v0.r12"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": 3.989,
+    "rna_lfc_at_purity1_se": 0.413,
+    "rna_purity_rho": -0.059,
+    "entity": "ENTITY_18",
+    "id": "g12v0.r13"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 1,
+    "selectivity": -0.073,
+    "padj": 0.4459,
+    "common_essential": false,
+    "mean_effect_ccrcc": -0.123,
+    "entity": "ENTITY_18",
+    "id": "g12v0.r14"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": 0.223,
+    "padj": 0.61,
+    "entity": "ENTITY_18",
+    "id": "g12v0.r15"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": 0.245,
+    "padj": 0.9994,
+    "entity": "ENTITY_18",
+    "id": "g12v0.r16"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": -2.2351,
+    "padj": 3.18e-33,
+    "n_pairs": 84,
+    "entity": "ENTITY_59",
+    "id": "g12v0.r17"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": 2.1063,
+    "padj": 1.13e-45,
+    "n_pairs": 84,
+    "entity": "ENTITY_18",
+    "id": "g12v0.r18"
+   },
+   {
+    "type": "surface_annotation",
+    "surface_call": "internal",
+    "evidence": "UniProt: Cytoplasm, cytosol; Mitochondrion outer membrane | SURFY: not classified | CSPA: not observed",
+    "transmembrane_segments": 0,
+    "entity": "ENTITY_18",
+    "id": "g12v0.r19"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": -10.3102,
+    "padj": 7.2e-67,
+    "n_pairs": 75,
+    "entity": "ENTITY_59",
+    "id": "g12v0.r20"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo",
+    "log_hr_per_sd": 0.02,
+    "padj": 0.9833,
+    "entity": "ENTITY_10",
+    "id": "g12v0.r21"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": -0.029,
+    "padj": 0.9774,
+    "entity": "ENTITY_18",
+    "id": "g12v0.r22"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": 0.058,
+    "padj": 0.473,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.007,
+    "entity": "ENTITY_59",
+    "id": "g12v0.r23"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": -10.801,
+    "rna_lfc_at_purity1_se": 0.539,
+    "rna_purity_rho": 0.049,
+    "entity": "ENTITY_59",
+    "id": "g12v0.r24"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": 0.1083,
+    "padj": 0.2531,
+    "entity": "ENTITY_18",
+    "id": "g12v0.r25"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 22,
+    "n_ccrcc_dependent": 1,
+    "selectivity": -0.028,
+    "padj": 0.7939,
+    "common_essential": false,
+    "mean_effect_ccrcc": -0.162,
+    "entity": "ENTITY_10",
+    "id": "g12v0.r26"
+   }
+  ]
+ },
+ {
+  "id": "g12v1",
+  "target_entity": "ENTITY_55",
+  "records": [
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 1,
+    "selectivity": -0.073,
+    "padj": 0.4459,
+    "common_essential": false,
+    "mean_effect_ccrcc": -0.123,
+    "entity": "ENTITY_55",
+    "id": "g12v1.r01"
+   },
+   {
+    "type": "purity_adjustment",
+    "rna_lfc_at_purity1": 3.989,
+    "rna_lfc_at_purity1_se": 0.413,
+    "rna_purity_rho": -0.059,
+    "entity": "ENTITY_55",
+    "id": "g12v1.r02"
+   },
+   {
+    "type": "normal_proteome",
+    "vital_tissues_detected": 16,
+    "vital_protein_ts_max": 2.55,
+    "vital_protein_ts_tissue": "Colon Transverse",
+    "vital_protein_enriched": false,
+    "entity": "ENTITY_55",
+    "id": "g12v1.r03"
+   },
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "Endothelial",
+      "share_of_tumour_transcripts": 0.929,
+      "pct_expressing": 53.1
+     },
+     {
+      "cell_group": "CD8_T",
+      "share_of_tumour_transcripts": 0.048,
+      "pct_expressing": 0.4
+     },
+     {
+      "cell_group": "T_other",
+      "share_of_tumour_transcripts": 0.007,
+      "pct_expressing": 0.4
+     },
+     {
+      "cell_group": "CD4_T",
+      "share_of_tumour_transcripts": 0.007,
+      "pct_expressing": 0.2
+     },
+     {
+      "cell_group": "NK",
+      "share_of_tumour_transcripts": 0.004,
+      "pct_expressing": 0.1
+     },
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.001,
+      "pct_expressing": 0.0
+     }
+    ],
+    "entity": "ENTITY_59",
+    "id": "g12v1.r04"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": -3.3512,
+    "padj": 1e-10,
+    "n_pairs": 75,
+    "entity": "ENTITY_55",
+    "id": "g12v1.r05"
+   },
+   {
+    "type": "depmap",
+    "n_ccrcc_lines": 24,
+    "n_ccrcc_dependent": 0,
+    "selectivity": -0.026,
+    "padj": 0.7768,
+    "common_essential": false,
+    "mean_effect_ccrcc": 0.208,
+    "entity": "ENTITY_10",
+    "id": "g12v1.r06"
+   },
+   {
+    "type": "surface_annotation",
+    "surface_call": "internal",
+    "evidence": "UniProt: Cytoplasm, cytosol; Mitochondrion outer membrane | SURFY: not classified | CSPA: not observed",
+    "transmembrane_segments": 0,
+    "entity": "ENTITY_55",
+    "id": "g12v1.r07"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "CheckMate025",
+    "arm": "nivolumab_vs_everolimus",
+    "log_hr_per_sd": 0.245,
+    "padj": 0.9994,
+    "entity": "ENTITY_55",
+    "id": "g12v1.r08"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": -1.48,
+    "padj": 4.46e-29,
+    "n_pairs": 84,
+    "entity": "ENTITY_10",
+    "id": "g12v1.r09"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": -0.029,
+    "padj": 0.9774,
+    "entity": "ENTITY_55",
+    "id": "g12v1.r10"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo",
+    "log_hr_per_sd": -0.276,
+    "padj": 0.5585,
+    "entity": "ENTITY_10",
+    "id": "g12v1.r11"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "phospho",
+    "log2fc": -1.7408,
+    "padj": 3.48e-25,
+    "n_pairs": 84,
+    "entity": "ENTITY_10",
+    "id": "g12v1.r12"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "rna",
+    "log2fc": -4.5736,
+    "padj": 2.03e-27,
+    "n_pairs": 75,
+    "entity": "ENTITY_10",
+    "id": "g12v1.r13"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "nivolumab_cm025",
+    "log_hr_per_sd": 0.223,
+    "padj": 0.61,
+    "entity": "ENTITY_55",
+    "id": "g12v1.r14"
+   },
+   {
+    "type": "tcga_survival",
+    "log_hr_per_sd": 0.1083,
+    "padj": 0.2531,
+    "entity": "ENTITY_55",
+    "id": "g12v1.r15"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": -3.9745,
+    "padj": 1e-08,
+    "n_pairs": 72,
+    "entity": "ENTITY_55",
+    "id": "g12v1.r16"
+   },
+   {
+    "type": "surface_annotation",
+    "surface_call": "secreted",
+    "evidence": "UniProt: Secreted | SURFY: not classified | CSPA: not observed",
+    "transmembrane_segments": 0,
+    "entity": "ENTITY_59",
+    "id": "g12v1.r17"
+   },
+   {
+    "type": "normal_tissue_ihc",
+    "measured": true,
+    "vital_max_level": 2.0,
+    "vital_max_tissue": "Heart muscle",
+    "kidney_max_level": 2.0,
+    "entity": "ENTITY_55",
+    "id": "g12v1.r18"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "CheckMate025",
+    "arm": "everolimus_cm025",
+    "log_hr_per_sd": 0.027,
+    "padj": 0.9778,
+    "entity": "ENTITY_59",
+    "id": "g12v1.r19"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "IMmotion150",
+    "arm": "atezo_bev_vs_sunitinib",
+    "log_hr_per_sd": 0.419,
+    "padj": 0.6251,
+    "entity": "ENTITY_59",
+    "id": "g12v1.r20"
+   },
+   {
+    "type": "treatment_interaction",
+    "study": "IMmotion150",
+    "arm": "atezo_bev_vs_sunitinib",
+    "log_hr_per_sd": 0.045,
+    "padj": 0.9833,
+    "entity": "ENTITY_10",
+    "id": "g12v1.r21"
+   },
+   {
+    "type": "single_cell_tumour",
+    "groups": [
+     {
+      "cell_group": "Macrophage",
+      "share_of_tumour_transcripts": 0.574,
+      "pct_expressing": 7.5
+     },
+     {
+      "cell_group": "RCC",
+      "share_of_tumour_transcripts": 0.233,
+      "pct_expressing": 5.3
+     },
+     {
+      "cell_group": "CD8_T",
+      "share_of_tumour_transcripts": 0.06,
+      "pct_expressing": 0.2
+     },
+     {
+      "cell_group": "CD4_T",
+      "share_of_tumour_transcripts": 0.035,
+      "pct_expressing": 0.7
+     },
+     {
+      "cell_group": "cDC",
+      "share_of_tumour_transcripts": 0.031,
+      "pct_expressing": 3.1
+     }
+    ],
+    "entity": "ENTITY_55",
+    "id": "g12v1.r22"
+   },
+   {
+    "type": "treatment_within_arm",
+    "study": "IMmotion150",
+    "arm": "atezo_bev",
+    "log_hr_per_sd": -0.181,
+    "padj": 0.5073,
+    "entity": "ENTITY_59",
+    "id": "g12v1.r23"
+   },
+   {
+    "type": "tcga_expression",
+    "layer": "rna",
+    "log2fc": 4.0748,
+    "padj": 1.56e-25,
+    "n_pairs": 72,
+    "entity": "ENTITY_59",
+    "id": "g12v1.r24"
+   },
+   {
+    "type": "cptac_expression",
+    "layer": "protein",
+    "log2fc": -2.1063,
+    "padj": 1e-10,
+    "n_pairs": 84,
+    "entity": "ENTITY_55",
+    "id": "g12v1.r25"
+   }
+  ]
+ }
+]

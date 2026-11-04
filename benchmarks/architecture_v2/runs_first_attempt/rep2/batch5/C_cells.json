@@ -1,0 +1,105 @@
+{
+ "study_hash": "e16667c009c8f276",
+ "prompt_sha256": "e24a5fc6fa0987962e317f4b2eccc6e8066399ea0eed3348b58aca2d262007c9",
+ "status": "ok",
+ "returncode": 0,
+ "cost_usd": 0.027202,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 4962,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 735,
+  "output_tokens_details": {
+   "thinking_tokens": 242
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 4962,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 735,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 4962,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 4962
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 735,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 4962,
+   "webSearchRequests": 0,
+   "costUSD": 0.027202,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 242,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 4962,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g08v1\",\"tumour_intrinsic\":\"no\",\"evidence_ids\":[\"g08v1.r26\"],\"rationale\":\"In ENTITY_46's single-cell record, Macrophage has a transcript share of 0.6, higher than RCC at 0.2. A non-RCC group exceeds RCC, so the answer is no.\"},{\"id\":\"g10v1\",\"tumour_intrinsic\":\"insufficient\",\"evidence_ids\":[\"g10v1.r02\",\"g10v1.r15\"],\"rationale\":\"RCC has the largest transcript share (0.964). The purity interval is -2.928 ± 1.96*1.029, with an upper bound below 0 and a lower bound well below 0, so it does not exceed 0. Insufficient.\"},{\"id\":\"g02v1\",\"tumour_intrinsic\":\"no\",\"evidence_ids\":[\"g02v1.r20\"],\"rationale\":\"In ENTITY_67's single-cell record, CD8_T has a share of 0.533, larger than RCC at 0.345. A non-RCC group exceeds RCC, so the answer is no.\"},{\"id\":\"g04v1\",\"tumour_intrinsic\":\"yes\",\"evidence_ids\":[\"g04v1.r08\",\"g04v1.r22\"],\"rationale\":\"RCC has the largest share (0.327 vs Macrophage 0.272). The purity lower bound is 3.821 - 1.96*0.33 ≈ 3.17, which is above 0. Both conditions hold.\"}]}",
+ "stderr": "",
+ "answers": [
+  {
+   "id": "g08v1",
+   "tumour_intrinsic": "no",
+   "evidence_ids": [
+    "g08v1.r26"
+   ],
+   "rationale": "In ENTITY_46's single-cell record, Macrophage has a transcript share of 0.6, higher than RCC at 0.2. A non-RCC group exceeds RCC, so the answer is no."
+  },
+  {
+   "id": "g10v1",
+   "tumour_intrinsic": "insufficient",
+   "evidence_ids": [
+    "g10v1.r02",
+    "g10v1.r15"
+   ],
+   "rationale": "RCC has the largest transcript share (0.964). The purity interval is -2.928 ± 1.96*1.029, with an upper bound below 0 and a lower bound well below 0, so it does not exceed 0. Insufficient."
+  },
+  {
+   "id": "g02v1",
+   "tumour_intrinsic": "no",
+   "evidence_ids": [
+    "g02v1.r20"
+   ],
+   "rationale": "In ENTITY_67's single-cell record, CD8_T has a share of 0.533, larger than RCC at 0.345. A non-RCC group exceeds RCC, so the answer is no."
+  },
+  {
+   "id": "g04v1",
+   "tumour_intrinsic": "yes",
+   "evidence_ids": [
+    "g04v1.r08",
+    "g04v1.r22"
+   ],
+   "rationale": "RCC has the largest share (0.327 vs Macrophage 0.272). The purity lower bound is 3.821 - 1.96*0.33 ≈ 3.17, which is above 0. Both conditions hold."
+  }
+ ],
+ "elapsed_s": 12.8,
+ "case_ids": [
+  "g08v1",
+  "g10v1",
+  "g02v1",
+  "g04v1"
+ ]
+}

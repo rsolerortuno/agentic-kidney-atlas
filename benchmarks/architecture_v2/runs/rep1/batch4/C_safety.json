@@ -1,0 +1,112 @@
+{
+ "study_hash": "e16667c009c8f276",
+ "prompt_sha256": "dbeda063599b189bf3eac6b83032a2111b46761331ca4b6bfb486dc5676f90b4",
+ "status": "ok",
+ "returncode": 0,
+ "cost_usd": 0.02309,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 4479,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 517,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 4479,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 517,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 4479,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 4479
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 517,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 4479,
+   "webSearchRequests": 0,
+   "costUSD": 0.02309,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 4479,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g11v1\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g11v1.r26\",\"g11v1.r13\",\"g11v1.r19\"],\"rationale\":\"Target surface_call is surface. IHC measured vital-organ staining level 3 (Cerebellum), which is >=2, so a vital safety concern exists, though the proteome reports no enrichment.\"},{\"id\":\"g07v1\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"insufficient\",\"evidence_ids\":[\"g07v1.r10\",\"g07v1.r12\",\"g07v1.r04\"],\"rationale\":\"Target surface_call is surface. IHC was not measured and the proteome reports no vital-protein enrichment, so vital safety is insufficient.\"},{\"id\":\"g06v1\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"no\",\"evidence_ids\":[\"g06v1.r13\",\"g06v1.r12\"],\"rationale\":\"Target surface_call is surface. IHC measured with vital max level 1 (<=1). No target proteome record reports enrichment, so no vital safety concern. Kidney staining is ignored.\"},{\"id\":\"g09v1\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g09v1.r13\"],\"rationale\":\"No surface record for the target, so accessibility is insufficient. The target proteome reports vital_protein_enriched true (Brain Cortex), which meets the criterion for a vital safety concern.\"}]}",
+ "stderr": "",
+ "answers": [
+  {
+   "id": "g11v1",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g11v1.r26",
+    "g11v1.r13",
+    "g11v1.r19"
+   ],
+   "rationale": "Target surface_call is surface. IHC measured vital-organ staining level 3 (Cerebellum), which is >=2, so a vital safety concern exists, though the proteome reports no enrichment."
+  },
+  {
+   "id": "g07v1",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "insufficient",
+   "evidence_ids": [
+    "g07v1.r10",
+    "g07v1.r12",
+    "g07v1.r04"
+   ],
+   "rationale": "Target surface_call is surface. IHC was not measured and the proteome reports no vital-protein enrichment, so vital safety is insufficient."
+  },
+  {
+   "id": "g06v1",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "no",
+   "evidence_ids": [
+    "g06v1.r13",
+    "g06v1.r12"
+   ],
+   "rationale": "Target surface_call is surface. IHC measured with vital max level 1 (<=1). No target proteome record reports enrichment, so no vital safety concern. Kidney staining is ignored."
+  },
+  {
+   "id": "g09v1",
+   "surface_accessible": "insufficient",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g09v1.r13"
+   ],
+   "rationale": "No surface record for the target, so accessibility is insufficient. The target proteome reports vital_protein_enriched true (Brain Cortex), which meets the criterion for a vital safety concern."
+  }
+ ],
+ "elapsed_s": 12.1,
+ "case_ids": [
+  "g11v1",
+  "g07v1",
+  "g06v1",
+  "g09v1"
+ ]
+}

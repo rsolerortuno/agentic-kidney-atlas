@@ -1,0 +1,158 @@
+{
+ "study_hash": "e16667c009c8f276",
+ "prompt_sha256": "073b71fe61f9ce254958618e6706e31229f68bfd96ccc5cfedc81212f7ea162e",
+ "status": "ok",
+ "returncode": 0,
+ "cost_usd": 0.069886,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 12563,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 1963,
+  "output_tokens_details": {
+   "thinking_tokens": 949
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 12563,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1963,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 12563,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 12563
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 1963,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 12563,
+   "webSearchRequests": 0,
+   "costUSD": 0.069886,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 949,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 12563,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g05v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"needs_more_data\",\"evidence_ids\":[\"g05v0.r28\",\"g05v0.r05\",\"g05v0.r15\",\"g05v0.r09\",\"g05v0.r25\",\"g05v0.r22\",\"g05v0.r07\",\"g05v0.r13\",\"g05v0.r14\",\"g05v0.r26\"],\"rationale\":\"Protein up, replicated in TCGA and confirmatory cohorts, RCC-dominant with positive purity interval, surface. Duodenum staining level 3 raises a vital safety concern, so the candidate rule fails. No DepMap dependency.\"},{\"id\":\"g01v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"needs_more_data\",\"evidence_ids\":[\"g01v0.r09\",\"g01v0.r10\",\"g01v0.r26\",\"g01v0.r23\",\"g01v0.r01\",\"g01v0.r19\",\"g01v0.r28\",\"g01v0.r21\",\"g01v0.r16\"],\"rationale\":\"Protein up, TCGA RNA replicates, RCC-dominant with positive purity interval, surface. Stomach staining level 3 and vital protein enrichment give a safety concern. DepMap shows no selective dependency.\"},{\"id\":\"g06v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"no\",\"selective_dependency\":\"no\",\"verdict\":\"surface_target_candidate\",\"evidence_ids\":[\"g06v0.r12\",\"g06v0.r23\",\"g06v0.r01\",\"g06v0.r06\",\"g06v0.r19\",\"g06v0.r24\",\"g06v0.r13\",\"g06v0.r17\"],\"rationale\":\"Protein up, TCGA RNA replicates, RCC has the largest share and purity lower bound is 0.385 (>0). Surface. Vital staining is level 1 and no enrichment is reported for the target. No selective dependency.\"},{\"id\":\"g11v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"no\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"infiltration_signal\",\"evidence_ids\":[\"g11v0.r01\",\"g11v0.r19\",\"g11v0.r15\",\"g11v0.r25\",\"g11v0.r18\",\"g11v0.r13\",\"g11v0.r08\",\"g11v0.r03\"],\"rationale\":\"Protein up and replicated, but macrophages and CD8 T cells have larger transcript shares than RCC, so not tumour-intrinsic. Surface-accessible. Cerebellum staining level 3 is a vital concern. No selective dependency.\"}]}",
+ "stderr": "",
+ "answers": [
+  {
+   "id": "g05v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "yes",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "yes",
+   "selective_dependency": "no",
+   "verdict": "needs_more_data",
+   "evidence_ids": [
+    "g05v0.r28",
+    "g05v0.r05",
+    "g05v0.r15",
+    "g05v0.r09",
+    "g05v0.r25",
+    "g05v0.r22",
+    "g05v0.r07",
+    "g05v0.r13",
+    "g05v0.r14",
+    "g05v0.r26"
+   ],
+   "rationale": "Protein up, replicated in TCGA and confirmatory cohorts, RCC-dominant with positive purity interval, surface. Duodenum staining level 3 raises a vital safety concern, so the candidate rule fails. No DepMap dependency."
+  },
+  {
+   "id": "g01v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "yes",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "yes",
+   "selective_dependency": "no",
+   "verdict": "needs_more_data",
+   "evidence_ids": [
+    "g01v0.r09",
+    "g01v0.r10",
+    "g01v0.r26",
+    "g01v0.r23",
+    "g01v0.r01",
+    "g01v0.r19",
+    "g01v0.r28",
+    "g01v0.r21",
+    "g01v0.r16"
+   ],
+   "rationale": "Protein up, TCGA RNA replicates, RCC-dominant with positive purity interval, surface. Stomach staining level 3 and vital protein enrichment give a safety concern. DepMap shows no selective dependency."
+  },
+  {
+   "id": "g06v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "yes",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "no",
+   "selective_dependency": "no",
+   "verdict": "surface_target_candidate",
+   "evidence_ids": [
+    "g06v0.r12",
+    "g06v0.r23",
+    "g06v0.r01",
+    "g06v0.r06",
+    "g06v0.r19",
+    "g06v0.r24",
+    "g06v0.r13",
+    "g06v0.r17"
+   ],
+   "rationale": "Protein up, TCGA RNA replicates, RCC has the largest share and purity lower bound is 0.385 (>0). Surface. Vital staining is level 1 and no enrichment is reported for the target. No selective dependency."
+  },
+  {
+   "id": "g11v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "no",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "yes",
+   "selective_dependency": "no",
+   "verdict": "infiltration_signal",
+   "evidence_ids": [
+    "g11v0.r01",
+    "g11v0.r19",
+    "g11v0.r15",
+    "g11v0.r25",
+    "g11v0.r18",
+    "g11v0.r13",
+    "g11v0.r08",
+    "g11v0.r03"
+   ],
+   "rationale": "Protein up and replicated, but macrophages and CD8 T cells have larger transcript shares than RCC, so not tumour-intrinsic. Surface-accessible. Cerebellum staining level 3 is a vital concern. No selective dependency."
+  }
+ ],
+ "elapsed_s": 21.8,
+ "case_ids": [
+  "g05v0",
+  "g01v0",
+  "g06v0",
+  "g11v0"
+ ]
+}

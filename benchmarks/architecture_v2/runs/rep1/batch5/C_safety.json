@@ -1,0 +1,114 @@
+{
+ "study_hash": "e16667c009c8f276",
+ "prompt_sha256": "4f2994edd62095e44d4264a7d70077bf652b521f816a8c4a4e30bd5af53fdc10",
+ "status": "ok",
+ "returncode": 0,
+ "cost_usd": 0.020263999999999997,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 3675,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 556,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 3675,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 556,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 3675,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 3675
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 556,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 3675,
+   "webSearchRequests": 0,
+   "costUSD": 0.020263999999999997,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 3675,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g12v0\",\"surface_accessible\":\"no\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g12v0.r19\",\"g12v0.r03\",\"g12v0.r10\"],\"rationale\":\"Surface call is internal. Vital-organ IHC staining level is 2 (Heart muscle), meeting the threshold of >=2, so vital safety concern is yes despite the proteome not reporting enrichment.\"}, {\"id\":\"g06v0\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"no\",\"evidence_ids\":[\"g06v0.r24\",\"g06v0.r13\"],\"rationale\":\"Surface call is surface. IHC measured with vital max level 1 (<=1). The enriched proteome record belongs to ENTITY_28, not the target, so it is ignored; no target proteome enrichment reported.\"}, {\"id\":\"g05v0\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g05v0.r07\",\"g05v0.r13\",\"g05v0.r14\"],\"rationale\":\"Surface call is surface. Vital-organ IHC staining level is 3 (Duodenum), which is >=2, so vital safety concern is yes even though the proteome is not enriched.\"}, {\"id\":\"g03v0\",\"surface_accessible\":\"no\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g03v0.r16\",\"g03v0.r05\",\"g03v0.r06\"],\"rationale\":\"Surface call is internal. Vital-organ IHC staining level is 3 (Liver), meeting >=2, so vital safety concern is yes; proteome enrichment is false but does not override.\"}]}",
+ "stderr": "",
+ "answers": [
+  {
+   "id": "g12v0",
+   "surface_accessible": "no",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g12v0.r19",
+    "g12v0.r03",
+    "g12v0.r10"
+   ],
+   "rationale": "Surface call is internal. Vital-organ IHC staining level is 2 (Heart muscle), meeting the threshold of >=2, so vital safety concern is yes despite the proteome not reporting enrichment."
+  },
+  {
+   "id": "g06v0",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "no",
+   "evidence_ids": [
+    "g06v0.r24",
+    "g06v0.r13"
+   ],
+   "rationale": "Surface call is surface. IHC measured with vital max level 1 (<=1). The enriched proteome record belongs to ENTITY_28, not the target, so it is ignored; no target proteome enrichment reported."
+  },
+  {
+   "id": "g05v0",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g05v0.r07",
+    "g05v0.r13",
+    "g05v0.r14"
+   ],
+   "rationale": "Surface call is surface. Vital-organ IHC staining level is 3 (Duodenum), which is >=2, so vital safety concern is yes even though the proteome is not enriched."
+  },
+  {
+   "id": "g03v0",
+   "surface_accessible": "no",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g03v0.r16",
+    "g03v0.r05",
+    "g03v0.r06"
+   ],
+   "rationale": "Surface call is internal. Vital-organ IHC staining level is 3 (Liver), meeting >=2, so vital safety concern is yes; proteome enrichment is false but does not override."
+  }
+ ],
+ "elapsed_s": 11.9,
+ "case_ids": [
+  "g12v0",
+  "g06v0",
+  "g05v0",
+  "g03v0"
+ ]
+}

@@ -1,0 +1,319 @@
+{
+ "agent": "agente-omico",
+ "findings": [
+  {
+   "gene": "CA9",
+   "role": "target_and_biomarker",
+   "statement": "CA9 is the top convergence gene: RNA is up in tumour [gene=CA9; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; log2fc=6.312], protein confirms it [gene=CA9; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=2.269], and TCGA-KIRC replicates [gene=CA9; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=9.712]. Caveat: GTEx vital-organ proteome shows stomach enrichment [gene=CA9; type=normal_proteome; source=DATASET:GTEX-PROTEOME; vital_protein_ts_max=5.19], an on-target off-tumour consideration; it is not prognostic in TCGA.",
+   "evidence_ids": [
+    "EV:omics_de:b269736afdb0",
+    "EV:omics_de:5afe18b4024b",
+    "EV:tcga_de:225a767ebcb5",
+    "EV:normal_proteome:225a767ebcb5"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:omics_de:b269736afdb0",
+     "field": [
+      "log2fc"
+     ],
+     "display": "6.312",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:5afe18b4024b",
+     "field": [
+      "log2fc"
+     ],
+     "display": "2.269",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:225a767ebcb5",
+     "field": [
+      "log2fc"
+     ],
+     "display": "9.712",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:normal_proteome:225a767ebcb5",
+     "field": [
+      "vital_protein_ts_max"
+     ],
+     "display": "5.19",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "CD70",
+   "role": "target",
+   "statement": "CD70 is a membrane target with protein up in tumour [gene=CD70; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=2.421], replicated in TCGA [gene=CD70; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=7.09], and with low tissue specificity in vital organs [gene=CD70; type=normal_proteome; source=DATASET:GTEX-PROTEOME; vital_protein_ts_max=0.34], a favourable safety signal. Antibody-based agents (cusatuzumab, vorsetuzumab) exist; the gene is tumour-intrinsic after purity extrapolation.",
+   "evidence_ids": [
+    "EV:omics_de:8a1dc0572ead",
+    "EV:tcga_de:908e84663f6a",
+    "EV:normal_proteome:908e84663f6a"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:omics_de:8a1dc0572ead",
+     "field": [
+      "log2fc"
+     ],
+     "display": "2.421",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:908e84663f6a",
+     "field": [
+      "log2fc"
+     ],
+     "display": "7.09",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:normal_proteome:908e84663f6a",
+     "field": [
+      "vital_protein_ts_max"
+     ],
+     "display": "0.34",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "ENPP3",
+   "role": "target",
+   "statement": "ENPP3, a surface enzyme with an antibody-drug conjugate in clinical development (AGS-16C3F, phase 2), is up at protein level [gene=ENPP3; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=1.544] and RNA [gene=ENPP3; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; log2fc=3.895], with a tumour-intrinsic purity signal.",
+   "evidence_ids": [
+    "EV:omics_de:fad29d44ef95",
+    "EV:omics_de:d540450c23e1"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:omics_de:fad29d44ef95",
+     "field": [
+      "log2fc"
+     ],
+     "display": "1.544",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:d540450c23e1",
+     "field": [
+      "log2fc"
+     ],
+     "display": "3.895",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "SCARB1",
+   "role": "target",
+   "statement": "SCARB1 ranks first in the target profile: protein up [gene=SCARB1; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=1.837] and RNA up [gene=SCARB1; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; log2fc=2.974], tumour-intrinsic and replicated in TCGA; it has no clinical-stage drug in the graph and is not a DepMap dependency, so it is a lipid-uptake hypothesis rather than a validated target.",
+   "evidence_ids": [
+    "EV:omics_de:cd4a629b011f",
+    "EV:omics_de:36b227bd1fb6"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:omics_de:cd4a629b011f",
+     "field": [
+      "log2fc"
+     ],
+     "display": "1.837",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:36b227bd1fb6",
+     "field": [
+      "log2fc"
+     ],
+     "display": "2.974",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "NNMT",
+   "role": "target_and_biomarker",
+   "statement": "NNMT is strongly up at protein [gene=NNMT; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=2.709] and RNA [gene=NNMT; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; log2fc=4.67], tumour-intrinsic, and higher expression predicts worse survival in TCGA [gene=NNMT; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=0.301]. It is the best-scoring gene in the biomarker profile among up-regulated genes.",
+   "evidence_ids": [
+    "EV:omics_de:de39cc0c5ed8",
+    "EV:omics_de:aefc373d6072",
+    "EV:tcga_survival:7dbf93860d9f"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:omics_de:de39cc0c5ed8",
+     "field": [
+      "log2fc"
+     ],
+     "display": "2.709",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:aefc373d6072",
+     "field": [
+      "log2fc"
+     ],
+     "display": "4.67",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:7dbf93860d9f",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "0.301",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "SLC16A3",
+   "role": "target",
+   "statement": "SLC16A3 (MCT4, lactate exporter and a HIF-driven glycolysis gene) is up in TCGA-KIRC [gene=SLC16A3; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=3.291], and is a tumour-intrinsic, druggable membrane transporter in the target profile.",
+   "evidence_ids": [
+    "EV:tcga_de:11298113327b"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:tcga_de:11298113327b",
+     "field": [
+      "log2fc"
+     ],
+     "display": "3.291",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "VHL",
+   "role": "mechanism",
+   "statement": "VHL is the disease driver: recurrently mutated [gene=VHL; type=somatic_recurrence; source=DATASET:SOMATIC-CPTAC-TCGA; freq=48.34%] and lost with its 3p arm [gene=VHL; type=omics_cnv; source=DATASET:CPTAC-CCRCC-CNV; arm=3p; loss_freq=79.1%], with a positive cis copy-number effect on RNA. Loss drives the HIF-target signature (CA9, NNMT, ANGPTL4, SLC16A3 and others); it is mechanism, not a direct drug target.",
+   "evidence_ids": [
+    "EV:somatic_recurrence:52e5aeb6c197",
+    "EV:omics_cnv:52e5aeb6c197"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:somatic_recurrence:52e5aeb6c197",
+     "field": [
+      "freq"
+     ],
+     "display": "48.34",
+     "unit": "percent"
+    },
+    {
+     "evidence_id": "EV:omics_cnv:52e5aeb6c197",
+     "field": [
+      "loss_freq"
+     ],
+     "display": "79.1",
+     "unit": "percent"
+    }
+   ]
+  },
+  {
+   "gene": "PSAT1",
+   "role": "biomarker",
+   "statement": "PSAT1 is the top biomarker-profile gene and is down in tumour at protein [gene=PSAT1; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=-1.963]; in TCGA, high expression predicts worse survival [gene=PSAT1; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=0.43]. Direction is down, so this is a prognostic tissue biomarker, not a target.",
+   "evidence_ids": [
+    "EV:omics_de:8fa49cbb1760",
+    "EV:tcga_survival:58119698ea36"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:omics_de:8fa49cbb1760",
+     "field": [
+      "log2fc"
+     ],
+     "display": "-1.963",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:58119698ea36",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "0.43",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "ALDOB",
+   "role": "biomarker",
+   "statement": "ALDOB, a proximal-tubule identity gene, is lost in tumour in TCGA [gene=ALDOB; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=-4.741], and higher expression is associated with better survival [gene=ALDOB; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=-0.358]. It reflects loss of normal tubule identity, so it is a diagnostic/prognostic biomarker rather than a target.",
+   "evidence_ids": [
+    "EV:tcga_de:a46f337f2987",
+    "EV:tcga_survival:a46f337f2987"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:tcga_de:a46f337f2987",
+     "field": [
+      "log2fc"
+     ],
+     "display": "-4.741",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:a46f337f2987",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "-0.358",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "PCK1",
+   "role": "biomarker",
+   "statement": "PCK1 (gluconeogenesis, proximal tubule) is down in tumour and ranks second in the biomarker profile; higher expression associates with better survival in TCGA [gene=PCK1; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=-0.415], consistent with metabolic de-differentiation tracking aggressiveness.",
+   "evidence_ids": [
+    "EV:tcga_survival:fd99b19fe8a6"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:tcga_survival:fd99b19fe8a6",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "-0.415",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "UMOD",
+   "role": "biomarker",
+   "statement": "UMOD, a thick ascending limb marker, shows one of the largest tumour-versus-normal drops in TCGA [gene=UMOD; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=-13.139]; it is a normal-nephron identity marker (tissue-of-origin/diagnostic) with no therapeutic rationale, and it is not prognostic.",
+   "evidence_ids": [
+    "EV:tcga_de:02b14e357cef"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:tcga_de:02b14e357cef",
+     "field": [
+      "log2fc"
+     ],
+     "display": "-13.139",
+     "unit": "native"
+    }
+   ]
+  }
+ ],
+ "caveats": [
+  "Rankings are deterministic score integrations; high rank is not clinical validation.",
+  "Down-regulated tubule genes (ALDOB, UMOD, PCK1) reflect loss of normal cell identity and partly composition differences between tumour and adjacent normal.",
+  "CA9 shows stomach enrichment in the GTEx vital-organ proteome (kidney is absent from that proteome), so safety of CA9-directed agents needs checking.",
+  "DepMap and PRISM 2D cell-line layers miss HIF-2 biology; no target here is a selective ccRCC dependency in DepMap.",
+  "I did not run phosphosite, kinase-activity or per-gene purity calls separately; purity, cis-copy-number and tractability statements come from the convergence_ranking components.",
+  "Several statements about drugs (cusatuzumab, AGS-16C3F) come from the graph's drug annotations, and the SLC16A3 and ENPP3 survival and DepMap results were not examined individually."
+ ]
+}

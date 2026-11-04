@@ -1,0 +1,112 @@
+{
+ "study_hash": "e16667c009c8f276",
+ "prompt_sha256": "21296ff9afa7c8441fab7b59ac9ebbf9a7746968baee170d356bc25c69e1e0f1",
+ "status": "ok",
+ "returncode": 0,
+ "cost_usd": 0.020728,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 3891,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 516,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 3891,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 516,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 3891,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 3891
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 516,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 3891,
+   "webSearchRequests": 0,
+   "costUSD": 0.020728,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 3891,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g10v1\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g10v1.r05\"],\"rationale\":\"No surface record exists for ENTITY_73 (the surface record belongs to ENTITY_21), so surface accessibility is insufficient. The proteome reports vital_protein_enriched true, so vital safety concern is yes regardless of the missing IHC.\"}, {\"id\":\"g04v1\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"no\",\"evidence_ids\":[\"g04v1.r24\",\"g04v1.r12\",\"g04v1.r19\"],\"rationale\":\"Surface call is surface. IHC measured vital max level 1 (kidney not counted) and the proteome reports no enrichment, so no vital safety concern.\"}, {\"id\":\"g06v1\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"no\",\"evidence_ids\":[\"g06v1.r13\",\"g06v1.r12\"],\"rationale\":\"ENTITY_26 surface call is surface. IHC measured with vital max level 1, and no proteome record for ENTITY_26 reports enrichment, so no vital safety concern.\"}, {\"id\":\"g01v1\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"no\",\"evidence_ids\":[\"g01v1.r08\",\"g01v1.r28\",\"g01v1.r18\"],\"rationale\":\"Surface call is surface. IHC vital max level 1 and the proteome shows no enrichment, so no vital safety concern.\"}]}",
+ "stderr": "",
+ "answers": [
+  {
+   "id": "g10v1",
+   "surface_accessible": "insufficient",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g10v1.r05"
+   ],
+   "rationale": "No surface record exists for ENTITY_73 (the surface record belongs to ENTITY_21), so surface accessibility is insufficient. The proteome reports vital_protein_enriched true, so vital safety concern is yes regardless of the missing IHC."
+  },
+  {
+   "id": "g04v1",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "no",
+   "evidence_ids": [
+    "g04v1.r24",
+    "g04v1.r12",
+    "g04v1.r19"
+   ],
+   "rationale": "Surface call is surface. IHC measured vital max level 1 (kidney not counted) and the proteome reports no enrichment, so no vital safety concern."
+  },
+  {
+   "id": "g06v1",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "no",
+   "evidence_ids": [
+    "g06v1.r13",
+    "g06v1.r12"
+   ],
+   "rationale": "ENTITY_26 surface call is surface. IHC measured with vital max level 1, and no proteome record for ENTITY_26 reports enrichment, so no vital safety concern."
+  },
+  {
+   "id": "g01v1",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "no",
+   "evidence_ids": [
+    "g01v1.r08",
+    "g01v1.r28",
+    "g01v1.r18"
+   ],
+   "rationale": "Surface call is surface. IHC vital max level 1 and the proteome shows no enrichment, so no vital safety concern."
+  }
+ ],
+ "elapsed_s": 11.7,
+ "case_ids": [
+  "g10v1",
+  "g04v1",
+  "g06v1",
+  "g01v1"
+ ]
+}

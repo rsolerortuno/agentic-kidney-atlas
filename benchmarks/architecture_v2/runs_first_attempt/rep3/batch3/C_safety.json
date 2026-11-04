@@ -1,0 +1,70 @@
+{
+ "study_hash": "e16667c009c8f276",
+ "prompt_sha256": "1c870f2709645ab3c54900d6e0d084b92aba6eaa8e352e42ab4c35eef2b67ebb",
+ "status": "failed",
+ "returncode": 0,
+ "cost_usd": 0.019544,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 3630,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 502,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 3630,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 502,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 3630,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 3630
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 502,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 3630,
+   "webSearchRequests": 0,
+   "costUSD": 0.019544,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 3630,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g03v0\",\"surface_accessible\":\"no\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g03v0.r16\",\"g03v0.r05\",\"g03v0.r06\"],\"rationale\":\"Surface call is internal, so not accessible. Liver IHC vital staining level 3 (>=2) indicates vital safety concern, though proteome reports no enrichment.\"}]},{\"id\":\"g02v0\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"insufficient\",\"evidence_ids\":[\"g02v0.r27\",\"g02v0.r17\",\"g02v0.r14\"],\"rationale\":\"Surface call is surface. IHC was not measured and proteome does not report vital enrichment, so vital safety is insufficient.\"},{\"id\":\"g01v0\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g01v0.r19\",\"g01v0.r21\",\"g01v0.r28\"],\"rationale\":\"Surface call is surface. Stomach IHC level 3 and vital_protein_enriched true indicate vital safety concern. Records of ENTITY_97 ignored.\"}]},{\"id\":\"g10v0\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g10v0.r26\"],\"rationale\":\"No surface record for the target (the surface record belongs to another entity), so insufficient. Proteome reports vital protein enrichment (liver), so vital safety concern is yes.\"}]}",
+ "stderr": "",
+ "error": "ValueError: missing case ids: ['g01v0', 'g02v0', 'g10v0']",
+ "elapsed_s": 11.6,
+ "case_ids": [
+  "g03v0",
+  "g02v0",
+  "g01v0",
+  "g10v0"
+ ]
+}

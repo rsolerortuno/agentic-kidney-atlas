@@ -1,0 +1,164 @@
+{
+ "study_hash": "593b0de44496ae2a",
+ "prompt_sha256": "3f9eab578e8b1559c2c93a40dbf41f67237da1866b64dd8fd22a3eade5f38d7f",
+ "status": "ok",
+ "case_ids": [
+  "g12v0",
+  "g08v0",
+  "g02v0",
+  "g03v0"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.151368,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 14558,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 1786,
+  "output_tokens_details": {
+   "thinking_tokens": 679
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 14558,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1786,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 14558,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 14558
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 1786,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 14558,
+   "webSearchRequests": 0,
+   "costUSD": 0.076096,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 679,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 14558,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g12v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"no\",\"surface_accessible\":\"no\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"infiltration_signal\",\"evidence_ids\":[\"g12v0.r18\",\"g12v0.r07\",\"g12v0.r02\",\"g12v0.r01\",\"g12v0.r05\",\"g12v0.r19\",\"g12v0.r03\",\"g12v0.r10\",\"g12v0.r14\"],\"rationale\":\"Protein and RNA are up. TCGA RNA replicates, and the confirmatory protein is not significant. Macrophages carry a larger transcript share than RCC, so the signal is not tumour-intrinsic. The surface call is internal. Heart IHC is level 2. The DepMap record fails its conditions.\"},{\"id\":\"g08v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"insufficient\",\"selective_dependency\":\"no\",\"verdict\":\"needs_more_data\",\"evidence_ids\":[\"g08v0.r09\",\"g08v0.r11\",\"g08v0.r04\",\"g08v0.r06\",\"g08v0.r26\",\"g08v0.r16\",\"g08v0.r01\",\"g08v0.r19\"],\"rationale\":\"Protein is up and TCGA RNA replicates. RCC has the largest share and the purity lower bound is 1.94, so tumour_intrinsic is yes. The surface call is unknown. IHC was not measured and there is no proteome record. DepMap fails, so the verdict is needs_more_data.\"},{\"id\":\"g02v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"no\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"insufficient\",\"selective_dependency\":\"no\",\"verdict\":\"infiltration_signal\",\"evidence_ids\":[\"g02v0.r12\",\"g02v0.r06\",\"g02v0.r26\",\"g02v0.r24\",\"g02v0.r27\",\"g02v0.r17\",\"g02v0.r14\",\"g02v0.r13\"],\"rationale\":\"Protein is up and TCGA RNA replicates. CD8_T has a larger share (0.533) than RCC (0.345), so tumour_intrinsic is no. The surface call is surface. IHC was not measured and there is no proteome enrichment. DepMap fails, so the verdict is infiltration_signal.\"},{\"id\":\"g03v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"no\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"needs_more_data\",\"evidence_ids\":[\"g03v0.r25\",\"g03v0.r15\",\"g03v0.r09\",\"g03v0.r12\",\"g03v0.r24\",\"g03v0.r21\",\"g03v0.r16\",\"g03v0.r05\",\"g03v0.r06\",\"g03v0.r11\"],\"rationale\":\"Protein is up and both independent cohorts replicate. RCC dominates the share and the purity lower bound is 4.05. The surface call is internal. Liver IHC is level 3. DepMap fails because n_ccrcc_dependent is 0 and selectivity is negative. No earlier verdict applies.\"}]}",
+ "stderr": "",
+ "answers": [
+  {
+   "id": "g12v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "no",
+   "surface_accessible": "no",
+   "vital_safety_concern": "yes",
+   "selective_dependency": "no",
+   "verdict": "infiltration_signal",
+   "evidence_ids": [
+    "g12v0.r18",
+    "g12v0.r07",
+    "g12v0.r02",
+    "g12v0.r01",
+    "g12v0.r05",
+    "g12v0.r19",
+    "g12v0.r03",
+    "g12v0.r10",
+    "g12v0.r14"
+   ],
+   "rationale": "Protein and RNA are up. TCGA RNA replicates, and the confirmatory protein is not significant. Macrophages carry a larger transcript share than RCC, so the signal is not tumour-intrinsic. The surface call is internal. Heart IHC is level 2. The DepMap record fails its conditions."
+  },
+  {
+   "id": "g08v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "yes",
+   "surface_accessible": "insufficient",
+   "vital_safety_concern": "insufficient",
+   "selective_dependency": "no",
+   "verdict": "needs_more_data",
+   "evidence_ids": [
+    "g08v0.r09",
+    "g08v0.r11",
+    "g08v0.r04",
+    "g08v0.r06",
+    "g08v0.r26",
+    "g08v0.r16",
+    "g08v0.r01",
+    "g08v0.r19"
+   ],
+   "rationale": "Protein is up and TCGA RNA replicates. RCC has the largest share and the purity lower bound is 1.94, so tumour_intrinsic is yes. The surface call is unknown. IHC was not measured and there is no proteome record. DepMap fails, so the verdict is needs_more_data."
+  },
+  {
+   "id": "g02v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "no",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "insufficient",
+   "selective_dependency": "no",
+   "verdict": "infiltration_signal",
+   "evidence_ids": [
+    "g02v0.r12",
+    "g02v0.r06",
+    "g02v0.r26",
+    "g02v0.r24",
+    "g02v0.r27",
+    "g02v0.r17",
+    "g02v0.r14",
+    "g02v0.r13"
+   ],
+   "rationale": "Protein is up and TCGA RNA replicates. CD8_T has a larger share (0.533) than RCC (0.345), so tumour_intrinsic is no. The surface call is surface. IHC was not measured and there is no proteome enrichment. DepMap fails, so the verdict is infiltration_signal."
+  },
+  {
+   "id": "g03v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "yes",
+   "surface_accessible": "no",
+   "vital_safety_concern": "yes",
+   "selective_dependency": "no",
+   "verdict": "needs_more_data",
+   "evidence_ids": [
+    "g03v0.r25",
+    "g03v0.r15",
+    "g03v0.r09",
+    "g03v0.r12",
+    "g03v0.r24",
+    "g03v0.r21",
+    "g03v0.r16",
+    "g03v0.r05",
+    "g03v0.r06",
+    "g03v0.r11"
+   ],
+   "rationale": "Protein is up and both independent cohorts replicate. RCC dominates the share and the purity lower bound is 4.05. The surface call is internal. Liver IHC is level 3. DepMap fails because n_ccrcc_dependent is 0 and selectivity is negative. No earlier verdict applies."
+  }
+ ],
+ "elapsed_s": 36.2,
+ "previous_attempt": {
+  "status": "ok",
+  "error": null,
+  "cost_usd": 0.075272,
+  "elapsed_s": 17.8
+ }
+}

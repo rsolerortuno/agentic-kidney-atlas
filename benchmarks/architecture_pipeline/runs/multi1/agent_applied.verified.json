@@ -1,0 +1,408 @@
+{
+ "agent": "agente-aplicado",
+ "findings": [
+  {
+   "gene": "CA9",
+   "role": "target_and_biomarker",
+   "layer": "treatment",
+   "statement": "CA9 is associated with longer benefit with higher expression in the sunitinib and atezolizumab plus bevacizumab arms, but none of these associations is significant and the combination-versus-sunitinib difference has an adjusted p-value [gene=CA9; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.difference_between_arms.padj=0.917]. In the CheckMate nivolumab-versus-everolimus comparison it also shows no separation, so CA9 is not a treatment-selection marker.",
+   "evidence_ids": [
+    "EV:treatment_response:225a767ebcb5"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:treatment_response:225a767ebcb5",
+     "field": [
+      "arms",
+      "difference_between_arms",
+      "padj"
+     ],
+     "display": "0.917",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "CD70",
+   "role": "target",
+   "layer": "treatment",
+   "statement": "CD70 shows the strongest trend of the candidates checked: higher expression is associated with longer benefit on atezolizumab plus bevacizumab, yet the adjusted p-value is not significant [gene=CD70; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.atezolizumab_bevacizumab.padj=0.166], so this is a lead from a single arm, not a predictor. The difference from sunitinib and the CheckMate nivolumab-versus-everolimus difference are not significant.",
+   "evidence_ids": [
+    "EV:treatment_response:908e84663f6a"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:treatment_response:908e84663f6a",
+     "field": [
+      "arms",
+      "atezolizumab_bevacizumab",
+      "padj"
+     ],
+     "display": "0.166",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "SCARB1",
+   "role": "target",
+   "layer": "treatment",
+   "statement": "SCARB1 has no usable treatment signal: the nivolumab-versus-everolimus difference has an adjusted p-value [gene=SCARB1; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.difference_nivolumab_vs_everolimus.padj=0.999]. The small nivolumab cohort gives direction only and is not informative.",
+   "evidence_ids": [
+    "EV:treatment_response:2d66f8e78d0c"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:treatment_response:2d66f8e78d0c",
+     "field": [
+      "arms",
+      "difference_nivolumab_vs_everolimus",
+      "padj"
+     ],
+     "display": "0.999",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "NNMT",
+   "role": "target_and_biomarker",
+   "layer": "treatment",
+   "statement": "NNMT is associated with earlier progression with higher expression in both CheckMate arms and in the small nivolumab cohort (direction only), but the nivolumab-versus-everolimus difference is not significant after correction and the IMmotion arms returned no record for this gene. NNMT is a prognostic marker in TCGA rather than a treatment-selection marker.",
+   "evidence_ids": [
+    "EV:treatment_response:7dbf93860d9f"
+   ],
+   "numeric_claims": []
+  },
+  {
+   "gene": "PSAT1",
+   "role": "biomarker",
+   "layer": "subtype",
+   "statement": "PSAT1 is lower in tumours (it is a down-in-tumour biomarker) and is higher in BAP1-mutant tumours in TCGA RNA, with a mutant-minus-wildtype difference [gene=PSAT1; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; BAP1.tcga_rna.mutant_minus_wildtype_log2=1.711]. The CPTAC protein difference is not significant and the tool does not flag a subgroup target candidate, and the ccB-versus-ccA difference is positive in all three layers.",
+   "evidence_ids": [
+    "EV:subtype_profile:58119698ea36"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:subtype_profile:58119698ea36",
+     "field": [
+      "BAP1",
+      "tcga_rna",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "1.711",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "CA9",
+   "role": "target_and_biomarker",
+   "layer": "subtype",
+   "statement": "CA9 is flagged as a subgroup target candidate for PBRM1 mutation: it is higher in mutants in CPTAC RNA, CPTAC protein and TCGA, with a TCGA RNA difference [gene=CA9; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; PBRM1.tcga_rna.mutant_minus_wildtype_log2=1.148]. The protein difference is modest and CA9 is lower in ccB than ccA, so the effect is a tendency and not a clean genetic subgroup.",
+   "evidence_ids": [
+    "EV:subtype_profile:225a767ebcb5"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:subtype_profile:225a767ebcb5",
+     "field": [
+      "PBRM1",
+      "tcga_rna",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "1.148",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "EPAS1",
+   "role": "mechanism",
+   "layer": "subtype",
+   "statement": "EPAS1 (HIF-2 alpha) is part of what defines the ccA/ccB split and is lower in ccB, with a TCGA RNA ccB-minus-ccA difference [gene=EPAS1; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; ccA_ccB.tcga_rna.ccB_minus_ccA_log2=-0.935]. Because the gene defines the split, the difference is partly circular, and the tool flags no mutation-based subgroup target.",
+   "evidence_ids": [
+    "EV:subtype_profile:6a657326c9fd"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:subtype_profile:6a657326c9fd",
+     "field": [
+      "ccA_ccB",
+      "tcga_rna",
+      "ccB_minus_ccA_log2"
+     ],
+     "display": "-0.935",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "PCK1",
+   "role": "biomarker",
+   "layer": "subtype",
+   "statement": "PCK1 is not a mutation-defined subgroup target: the VHL, BAP1 and SETD2 comparisons are not significant after correction and no layer meets the subgroup-candidate rule. It is clearly lower in ccB than ccA at RNA level in both CPTAC and TCGA, but the CPTAC protein difference between ccB and ccA is not significant.",
+   "evidence_ids": [
+    "EV:subtype_profile:fd99b19fe8a6"
+   ],
+   "numeric_claims": []
+  },
+  {
+   "gene": "CA9",
+   "role": "target",
+   "layer": "adc",
+   "statement": "CA9 is a surface protein and a known conjugate and radioligand target, but it has high staining in the stomach and the proteome flags vital-organ enrichment, which is an off-tumour concern. In the weakest quarter of donors only a minority of tumour cells express it [gene=CA9; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; tumour_cells_expressing_pct_weakest_quarter_of_donors=24.3%], and CSPA did not observe it at the surface. The score cannot show that a conjugate would work.",
+   "evidence_ids": [
+    "EV:adc_profile:225a767ebcb5"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:adc_profile:225a767ebcb5",
+     "field": [
+      "tumour_cells_expressing_pct_weakest_quarter_of_donors"
+     ],
+     "display": "24.3",
+     "unit": "native_percent"
+    }
+   ]
+  },
+  {
+   "gene": "CD70",
+   "role": "target",
+   "layer": "adc",
+   "statement": "CD70 ranks very high for conjugate suitability (a known target control) with surface support from UniProt and SURFY and no vital-organ proteome enrichment, but Human Protein Atlas staining data are not available, so normal-tissue safety is unresolved. In the weakest quarter of donors only a minority of tumour cells express it [gene=CD70; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; tumour_cells_expressing_pct_weakest_quarter_of_donors=17.7%], which suggests patchy expression in some tumours.",
+   "evidence_ids": [
+    "EV:adc_profile:908e84663f6a"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:adc_profile:908e84663f6a",
+     "field": [
+      "tumour_cells_expressing_pct_weakest_quarter_of_donors"
+     ],
+     "display": "17.7",
+     "unit": "native_percent"
+    }
+   ]
+  },
+  {
+   "gene": "SCARB1",
+   "role": "target",
+   "layer": "adc",
+   "statement": "SCARB1 is the top-ranked tumour-up gene in the target profile but is a weak conjugate candidate: staining is high in the adrenal gland, kidney staining is moderate, and the proteome flags vital-organ enrichment. Few tumour cells express it in the weakest quarter of donors [gene=SCARB1; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; tumour_cells_expressing_pct_weakest_quarter_of_donors=7.1%], and it is not an established conjugate target.",
+   "evidence_ids": [
+    "EV:adc_profile:2d66f8e78d0c"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:adc_profile:2d66f8e78d0c",
+     "field": [
+      "tumour_cells_expressing_pct_weakest_quarter_of_donors"
+     ],
+     "display": "7.1",
+     "unit": "native_percent"
+    }
+   ]
+  },
+  {
+   "gene": "SLC16A3",
+   "role": "target",
+   "layer": "adc",
+   "statement": "SLC16A3 (MCT4) has the most uniform tumour expression among these candidates (share of tumour cells expressing it in the weakest quarter of donors [gene=SLC16A3; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; tumour_cells_expressing_pct_weakest_quarter_of_donors=43.7%]) but is a multi-pass transporter with little exposed sequence, high adrenal staining, and no CSPA surface observation. It may suit small-molecule inhibition better than an antibody conjugate.",
+   "evidence_ids": [
+    "EV:adc_profile:11298113327b"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:adc_profile:11298113327b",
+     "field": [
+      "tumour_cells_expressing_pct_weakest_quarter_of_donors"
+     ],
+     "display": "43.7",
+     "unit": "native_percent"
+    }
+   ]
+  },
+  {
+   "gene": "ENPP3",
+   "role": "target",
+   "layer": "adc",
+   "statement": "ENPP3 is a known conjugate target (an antibody-drug conjugate reached phase two) with a large extracellular domain and no vital-organ proteome enrichment, but kidney staining is at the highest level and duodenum staining is also high, so on-target toxicity in normal kidney is a concern. Its score places it in the middle of the ranking.",
+   "evidence_ids": [
+    "EV:adc_profile:d5aee88146ed"
+   ],
+   "numeric_claims": []
+  },
+  {
+   "gene": "CD70",
+   "role": "microenvironment",
+   "layer": "immune",
+   "statement": "A large part of CD70 tumour transcripts comes from immune cells: the immune-cell share [gene=CD70; type=immune_profile; source=CPTAC CIBERSORT and xCell immune deconvolution; immune_cell_share_of_tumour_transcripts=0.654]. It correlates positively with CD8 and regulatory T cells and is not correlated with M2 macrophages, so tumour-up CD70 partly reflects infiltration and a conjugate would also meet CD70-positive lymphocytes.",
+   "evidence_ids": [
+    "EV:immune_profile:908e84663f6a"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:immune_profile:908e84663f6a",
+     "field": [
+      "immune_cell_share_of_tumour_transcripts"
+     ],
+     "display": "0.654",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "FCGR3A",
+   "role": "microenvironment",
+   "layer": "immune",
+   "statement": "FCGR3A is an immune-cell gene, not a tumour-intrinsic one: nearly all of its tumour transcripts are immune-derived and its correlation with the immune score [gene=FCGR3A; type=immune_profile; source=CPTAC CIBERSORT and xCell immune deconvolution; rho_with_immune_score=0.795]. Its tumour-up signal is an infiltration read-out (it also falls sharply in purity-adjusted RNA), so it fits a microenvironment biomarker but not a tumour-cell target.",
+   "evidence_ids": [
+    "EV:immune_profile:af56881a4234"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:immune_profile:af56881a4234",
+     "field": [
+      "rho_with_immune_score"
+     ],
+     "display": "0.795",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "NNMT",
+   "role": "target_and_biomarker",
+   "layer": "replication",
+   "statement": "The cell-type call for NNMT holds in the second single-cell dataset: tumour (RCC) cells are the dominant group in both Li and Zhang, and the tumour-cell share in Zhang [gene=NNMT; type=sc_replication; source=Zhang et al. 2021 ccRCC single-cell RNA-seq (CZ CELLxGENE); zhang2021_tumour_cell_share=0.948]. The tumour-versus-proximal-tubule contrast is positive in both, and the Zhang pairing rests on a handful of donors.",
+   "evidence_ids": [
+    "EV:sc_replication:7dbf93860d9f"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:sc_replication:7dbf93860d9f",
+     "field": [
+      "zhang2021_tumour_cell_share"
+     ],
+     "display": "0.948",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "SCARB1",
+   "role": "target",
+   "layer": "replication",
+   "statement": "The cell attribution of SCARB1 does not replicate: myeloid cells dominate in Li, with a tumour-cell share [gene=SCARB1; type=sc_replication; source=Zhang et al. 2021 ccRCC single-cell RNA-seq (CZ CELLxGENE); li2022_tumour_cell_share=0.336], whereas tumour cells dominate in Zhang. A tumour-intrinsic call for SCARB1 is therefore uncertain.",
+   "evidence_ids": [
+    "EV:sc_replication:2d66f8e78d0c"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:sc_replication:2d66f8e78d0c",
+     "field": [
+      "li2022_tumour_cell_share"
+     ],
+     "display": "0.336",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "SLC16A3",
+   "role": "target",
+   "layer": "replication",
+   "statement": "SLC16A3 gives a discordant cell call: T and NK cells dominate in Li but tumour cells dominate in Zhang, with a tumour-cell share there [gene=SLC16A3; type=sc_replication; source=Zhang et al. 2021 ccRCC single-cell RNA-seq (CZ CELLxGENE); zhang2021_tumour_cell_share=0.809]. The tumour-over-tubule contrast is strongly positive in both datasets, so the tumour increase is robust even though the dominant cell group is not.",
+   "evidence_ids": [
+    "EV:sc_replication:11298113327b"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:sc_replication:11298113327b",
+     "field": [
+      "zhang2021_tumour_cell_share"
+     ],
+     "display": "0.809",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "CA9",
+   "role": "target_and_biomarker",
+   "layer": "replication",
+   "statement": "CA9 is tumour-cell dominated in both single-cell datasets (RCC is the dominant group in Li and in Zhang, with a very high tumour-cell share in each) and the tumour-versus-tubule contrast is strongly positive in both, so the tumour-intrinsic call replicates. The Zhang comparison rests on a handful of paired donors.",
+   "evidence_ids": [
+    "EV:sc_replication:225a767ebcb5"
+   ],
+   "numeric_claims": []
+  },
+  {
+   "gene": "SCARB1",
+   "role": "target",
+   "layer": "confirmatory",
+   "statement": "The SCARB1 protein increase replicates in the confirmatory CPTAC cohort (different patients, label-free DIA), with a protein log2 fold change [gene=SCARB1; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); protein_conf_log2fc=2.334] and a very small adjusted p-value. Direction and significance match the discovery data.",
+   "evidence_ids": [
+    "EV:confirmatory_replication:2d66f8e78d0c"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:confirmatory_replication:2d66f8e78d0c",
+     "field": [
+      "protein_conf_log2fc"
+     ],
+     "display": "2.334",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "PSAT1",
+   "role": "biomarker",
+   "layer": "confirmatory",
+   "statement": "The PSAT1 protein decrease replicates in the confirmatory cohort, with a protein log2 fold change [gene=PSAT1; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); protein_conf_log2fc=-3.946]. The one phosphosite measured in both cohorts did not replicate, so the signal is protein-level only.",
+   "evidence_ids": [
+    "EV:confirmatory_replication:58119698ea36"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:confirmatory_replication:58119698ea36",
+     "field": [
+      "protein_conf_log2fc"
+     ],
+     "display": "-3.946",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "SLC16A3",
+   "role": "target",
+   "layer": "confirmatory",
+   "statement": "The SLC16A3 protein increase replicates in the confirmatory cohort with a very small adjusted p-value, and the one phosphosite measured in both cohorts also replicates. The confirmatory fold change is larger than in the discovery data, which is expected from the different technology and should not be read as a stronger effect.",
+   "evidence_ids": [
+    "EV:confirmatory_replication:11298113327b"
+   ],
+   "numeric_claims": []
+  },
+  {
+   "gene": "PCK1",
+   "role": "biomarker",
+   "layer": "confirmatory",
+   "statement": "The PCK1 protein decrease replicates in the confirmatory cohort and both phosphosites measured in both cohorts replicate, making it one of the better confirmed down-in-tumour markers. This supports a diagnostic or prognostic role, not a therapeutic target, because a lost protein cannot be targeted directly.",
+   "evidence_ids": [
+    "EV:confirmatory_replication:fd99b19fe8a6"
+   ],
+   "numeric_claims": []
+  }
+ ],
+ "caveats": [
+  "No gene differs between trial arms after correction (IMmotion and CheckMate), so all treatment statements are associations from single arms of modest size and are leads only; the small nivolumab cohort gives direction only.",
+  "CA9 was not tested in the confirmatory CPTAC cohort (fewer than the required matched tumour-normal pairs), which is a coverage gap and not a failure to replicate; no confirmatory finding is made for it.",
+  "ADC and radioligand scores come from topology and staining data; a high score does not show that a conjugate would work. CD70 has no staining data. SCARB1 and SLC16A3 had discordant cell attribution between the two single-cell datasets.",
+  "ENPP3, ANGPTL4, FABP6, CYP2J2, HK2 and the other lower-ranked target-profile genes, as well as EPAS1 treatment data, were not profiled across all layers because of the tool-call budget.",
+  "Down-in-tumour biomarkers (PSAT1, PCK1, ALDH6A1, SLC6A19) are not therapeutic targets by themselves.",
+  "Subtype differences for immune genes may reflect infiltration, and the Zhang dataset has only a few paired donors."
+ ]
+}

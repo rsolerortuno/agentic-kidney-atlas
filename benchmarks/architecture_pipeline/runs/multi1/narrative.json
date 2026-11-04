@@ -1,0 +1,253 @@
+{
+ "summary": [
+  {"text": "The strongest convergent candidate is CA9. Its RNA is up in tumour [gene=CA9; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; log2fc=6.312], the protein confirms it [gene=CA9; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=2.269], TCGA-KIRC replicates it [gene=CA9; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=9.712] and almost all of its tumour transcripts come from the cancer cells themselves [gene=CA9; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=RCC; tissue=tumor; share_of_tumor_transcripts=0.976]. The literature (CA9-PET as an imaging proof of concept) and the external layer (girentuximab in late clinical development) agree. CA9 is a surface antigen and imaging target, not a dependency: ccRCC cell lines do not need it and it is not prognostic in TCGA.",
+   "gene": "CA9",
+   "evidence_ids": ["EV:omics_de:b269736afdb0", "EV:omics_de:5afe18b4024b", "EV:tcga_de:225a767ebcb5", "EV:sc_expr:35b84fee998f", "EV:literature:534430b0156d", "EV:open_targets_drug:646a0aec5b64", "EV:depmap_dependency:225a767ebcb5"],
+   "numeric_claims": [
+    {"evidence_id": "EV:omics_de:b269736afdb0", "field": ["log2fc"], "display": "6.312", "unit": "native"},
+    {"evidence_id": "EV:omics_de:5afe18b4024b", "field": ["log2fc"], "display": "2.269", "unit": "native"},
+    {"evidence_id": "EV:tcga_de:225a767ebcb5", "field": ["log2fc"], "display": "9.712", "unit": "native"},
+    {"evidence_id": "EV:sc_expr:35b84fee998f", "field": ["share_of_tumor_transcripts"], "display": "0.976", "unit": "native"}
+   ]},
+  {"text": "Beyond CA9, the target profile is led by a small group of tumour-up surface or enzyme genes that keep their position under random re-weighting: SCARB1, CD70, NNMT, SLC16A3 and ENPP3. CD70 and ENPP3 already have antibody or conjugate programmes. SCARB1 has the top target-profile score and its protein increase replicates in the confirmatory CPTAC cohort, but its cell of origin differs between the two single-cell datasets and it has no drug or literature support in this corpus. NNMT combines tumour-intrinsic upregulation with adverse prognosis in TCGA and concordant literature, which makes it both a biomarker and an enzyme-target hypothesis. No leading candidate is a selective ccRCC dependency in DepMap, and no gene separates the main treatment arms in the trial data.",
+   "evidence_ids": ["EV:omics_de:cd4a629b011f", "EV:confirmatory_replication:2d66f8e78d0c", "EV:sc_replication:2d66f8e78d0c", "EV:omics_de:8a1dc0572ead", "EV:open_targets_drug:0a02c566ec75", "EV:omics_de:de39cc0c5ed8", "EV:tcga_survival:7dbf93860d9f", "EV:literature:111b19cdfe29", "EV:tcga_de:11298113327b", "EV:omics_de:fad29d44ef95", "EV:adc_profile:d5aee88146ed"]},
+  {"text": "The best biomarkers are genes lost in the tumour. PSAT1 and PCK1 are the most robust biomarker-profile genes; their protein decrease replicates in the confirmatory cohort and both carry a TCGA survival association. ALDOB, SLC22A8 and UMOD rank high in the overall convergence score because the tumour loses the proximal tubule and nephron identity they mark, so they are diagnostic or prognostic markers, not targets. COXFA4L2 (NDUFA4L2) is strongly up in tumour and HIF-induced in the literature, but it lacks a selective drug and its literature survival claim is not reproduced in TCGA, so it is best read as a biomarker.",
+   "evidence_ids": ["EV:confirmatory_replication:58119698ea36", "EV:tcga_survival:58119698ea36", "EV:confirmatory_replication:fd99b19fe8a6", "EV:tcga_survival:fd99b19fe8a6", "EV:tcga_de:a46f337f2987", "EV:tcga_survival:de6aa3b720b1", "EV:tcga_de:02b14e357cef", "EV:literature:1f4e8bd4d272", "EV:open_targets_drug:5ffdf87227c5"]},
+  {"text": "Unexplored candidates identified and prioritised for experimental validation: the convergence score rewards literature and existing drugs, so little-studied genes come from the separate discovery screen. The best tumour-cell candidate is COL23A1. It is made mainly by the cancer cells [gene=COL23A1; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=tumor; source_share=0.881], replicates in TCGA and stays up after extrapolation to a pure tumour [gene=COL23A1; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=tumor; rna_lfc_at_purity1=4.88], has no vital-organ protein enrichment and is annotated as a membrane protein. What is missing is confirmation of an antibody-accessible epitope (the surface databases do not support it), any selective dependency, confirmatory-cohort data and a check of heterogeneity across tumour cells; surface proteomics and a knockdown study in ccRCC models would test it. The second tumour-track candidate is RAB42, also made mostly by cancer cells [gene=RAB42; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=tumor; source_share=0.627] and replicated in TCGA, but it is an intracellular protein without functional data, so a genetic loss-of-function study is the first step. The strongest stroma-track candidate is the fibroblast gene OLFML2A; the immune-track leaders (LILRB4, MILR1) are infiltration-driven macrophage genes. Here novel means few ccRCC papers and no clinical drug; the literature agent did not review these genes, and the analysis does not show that targeting any of them would help a patient.",
+   "evidence_ids": ["EV:discovery:e1532aa1b09c", "EV:tcga_de:e1532aa1b09c", "EV:purity:e1532aa1b09c", "EV:normal_proteome:e1532aa1b09c", "EV:discovery:f53feb0aa597", "EV:tcga_de:f53feb0aa597", "EV:discovery:eb3ffaa04212", "EV:discovery:3c9bb849285e", "EV:discovery:bba941fb5229"],
+   "numeric_claims": [
+    {"evidence_id": "EV:discovery:e1532aa1b09c", "field": ["source_share"], "display": "0.881", "unit": "native"},
+    {"evidence_id": "EV:discovery:e1532aa1b09c", "field": ["rna_lfc_at_purity1"], "display": "4.88", "unit": "native"},
+    {"evidence_id": "EV:discovery:f53feb0aa597", "field": ["source_share"], "display": "0.627", "unit": "native"}
+   ]},
+  {"text": "The disease mechanism behind the leading signal is VHL loss. VHL is recurrently mutated [gene=VHL; type=somatic_recurrence; source=DATASET:SOMATIC-CPTAC-TCGA; freq=48.34%] and lost with its chromosome arm [gene=VHL; type=omics_cnv; source=DATASET:CPTAC-CCRCC-CNV; arm=3p; loss_freq=79.1%], which stabilises HIF and drives the CA9, NNMT and SLC16A3 programme. VHL itself is not druggable; the established downstream targets are EPAS1 (belzutifan, a partial ccRCC dependency in cell lines) and the endothelial VEGF receptor KDR, which a cell-line screen cannot see.",
+   "gene": "VHL",
+   "evidence_ids": ["EV:somatic_recurrence:52e5aeb6c197", "EV:omics_cnv:52e5aeb6c197"],
+   "numeric_claims": [
+    {"evidence_id": "EV:somatic_recurrence:52e5aeb6c197", "field": ["freq"], "display": "48.34", "unit": "percent"},
+    {"evidence_id": "EV:omics_cnv:52e5aeb6c197", "field": ["loss_freq"], "display": "79.1", "unit": "percent"}
+   ]}
+ ],
+ "sections": {
+  "omics": [
+   {"text": "CD70 protein is up in tumour [gene=CD70; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=2.421] and TCGA replicates the increase [gene=CD70; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=7.09]. Its tissue specificity in the vital-organ proteome is low [gene=CD70; type=normal_proteome; source=DATASET:GTEX-PROTEOME; vital_protein_ts_max=0.34], a favourable sign for an antibody approach, whereas CA9 is enriched in stomach in the same proteome.",
+    "gene": "CD70",
+    "evidence_ids": ["EV:omics_de:8a1dc0572ead", "EV:tcga_de:908e84663f6a", "EV:normal_proteome:908e84663f6a"],
+    "numeric_claims": [
+     {"evidence_id": "EV:omics_de:8a1dc0572ead", "field": ["log2fc"], "display": "2.421", "unit": "native"},
+     {"evidence_id": "EV:tcga_de:908e84663f6a", "field": ["log2fc"], "display": "7.09", "unit": "native"},
+     {"evidence_id": "EV:normal_proteome:908e84663f6a", "field": ["vital_protein_ts_max"], "display": "0.34", "unit": "native"}
+    ]},
+   {"text": "NNMT is strongly up at protein [gene=NNMT; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=2.709] and RNA [gene=NNMT; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; log2fc=4.67], is tumour-intrinsic, and higher expression predicts worse survival in TCGA [gene=NNMT; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=0.301]. SCARB1 and ENPP3 are also up at both RNA and protein level, and SLC16A3 replicates in TCGA.",
+    "gene": "NNMT",
+    "evidence_ids": ["EV:omics_de:de39cc0c5ed8", "EV:omics_de:aefc373d6072", "EV:tcga_survival:7dbf93860d9f"],
+    "numeric_claims": [
+     {"evidence_id": "EV:omics_de:de39cc0c5ed8", "field": ["log2fc"], "display": "2.709", "unit": "native"},
+     {"evidence_id": "EV:omics_de:aefc373d6072", "field": ["log2fc"], "display": "4.67", "unit": "native"},
+     {"evidence_id": "EV:tcga_survival:7dbf93860d9f", "field": ["log_hr_per_sd"], "display": "0.301", "unit": "native"}
+    ]},
+   {"text": "On the down side, PSAT1 protein is lower in tumour [gene=PSAT1; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=-1.963], yet in TCGA higher expression predicts worse survival [gene=PSAT1; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=0.43], so it is a prognostic tissue biomarker rather than a target. Tubule identity genes such as ALDOB, PCK1 and UMOD fall sharply in tumour and track favourable prognosis.",
+    "gene": "PSAT1",
+    "evidence_ids": ["EV:omics_de:8fa49cbb1760", "EV:tcga_survival:58119698ea36"],
+    "numeric_claims": [
+     {"evidence_id": "EV:omics_de:8fa49cbb1760", "field": ["log2fc"], "display": "-1.963", "unit": "native"},
+     {"evidence_id": "EV:tcga_survival:58119698ea36", "field": ["log_hr_per_sd"], "display": "0.43", "unit": "native"}
+    ]}
+  ],
+  "literature": [
+   {"text": "Literature and data converge best for CA9, CD70, COXFA4L2 (NDUFA4L2), NNMT and ENO2. For CA9 the corpus describes tumour-cell enrichment with low normal-kidney background and CA9-PET as a proof of concept that still needs prospective validation. For NNMT the published adverse-prognosis claim matches the TCGA survival association in the data, one of the better concordant prognostic claims. For CD70 and NDUFA4L2 the papers report survival associations that TCGA does not reproduce. Nearly all of this literature is single-study, preclinical or bioinformatic.",
+    "evidence_ids": ["EV:literature:534430b0156d", "EV:literature:687723b4e539", "EV:literature:111b19cdfe29", "EV:literature:c57be95f20a6", "EV:literature:92dc16d8b33c", "EV:literature:1f4e8bd4d272", "EV:literature:cfa400884c1b"]},
+   {"text": "The literature also flags contradictions. MT1G is lower in tumour than in normal tissue, yet higher levels are tied to advanced stage, and ABAT is described both as a tumour suppressor and as a poor-prognosis gene, while the data link lower ABAT to worse survival; an ABAT inhibitor would act in the wrong direction. SCARB1 and PIGR rank high on the data but have no literature relations in this corpus, so they are data-only candidates.",
+    "evidence_ids": ["EV:literature:01828633a99d", "EV:literature:f6c45de2c4dd", "EV:literature:24b33107cb4e", "EV:literature:22349683c148"]}
+  ],
+  "external": [
+   {"text": "Open Targets, UniProt and DepMap separate the candidates by modality. CA9 and CD70 are membrane proteins with clinical antibody programmes (girentuximab for CA9; cusatuzumab and vorsetuzumab for CD70), but neither is a ccRCC dependency, so their case rests on surface expression for antibodies, conjugates or imaging. NNMT is a cytoplasmic enzyme that is small-molecule tractable without a clinical drug, and SCARB1 is tractable by antibody and small molecule with no listed drug; it is the only leading gene with a genetic-association component.",
+    "evidence_ids": ["EV:open_targets_tract:225a767ebcb5", "EV:open_targets_drug:646a0aec5b64", "EV:open_targets_tract:908e84663f6a", "EV:open_targets_drug:0a02c566ec75", "EV:open_targets_tract:7dbf93860d9f", "EV:open_targets_tract:2d66f8e78d0c", "EV:open_targets_assoc:ee2e17841173"]},
+   {"text": "The established ccRCC targets behave as expected controls. EPAS1 (belzutifan, approved) shows positive ccRCC selectivity in DepMap [gene=EPAS1; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; selectivity=0.3] and is not common essential, although only a fraction of lines depend on it and two-dimensional culture understates HIF biology. MTOR is a strong dependency but common essential, and KDR is an endothelial target invisible to a cell-line screen.",
+    "gene": "EPAS1",
+    "evidence_ids": ["EV:open_targets_drug:199c475802ce", "EV:depmap_dependency:6a657326c9fd"],
+    "numeric_claims": [
+     {"evidence_id": "EV:depmap_dependency:6a657326c9fd", "field": ["selectivity"], "display": "0.3", "unit": "native"}
+    ]}
+  ],
+  "cells": [
+   {"text": "CA9, MET, CD70 and NNMT are tumour-intrinsic in the single-cell data. MET is mostly tumour-cell derived [gene=MET; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=RCC; tissue=tumor; share_of_tumor_transcripts=0.935], but only a minority of cancer cells express it, so it is a heterogeneous target. CD70 is made mainly by cancer cells, with regulatory T cells and other lymphocytes also expressing it, and the NNMT cell call replicates in the second single-cell dataset.",
+    "gene": "MET",
+    "evidence_ids": ["EV:sc_expr:114c287fd103", "EV:sc_summary:8314520758de"],
+    "numeric_claims": [
+     {"evidence_id": "EV:sc_expr:114c287fd103", "field": ["share_of_tumor_transcripts"], "display": "0.935", "unit": "native"}
+    ]},
+   {"text": "Several bulk signals are not tumour-intrinsic. EPAS1 is expressed by most endothelial cells [gene=EPAS1; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=Endothelial; tissue=tumor; pct_expressing=81.3] but by few cancer cells [gene=EPAS1; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=RCC; tissue=tumor; pct_expressing=4.9], though droplet single-cell methods may understate it in tumour cells. KDR is endothelial, and CD74 and CXCR4 are immune-cell genes whose bulk increase reflects infiltration.",
+    "gene": "EPAS1",
+    "evidence_ids": ["EV:sc_expr:d00e4a293c7f", "EV:sc_expr:ffb74b11de1d", "EV:sc_summary:6a657326c9fd"],
+    "numeric_claims": [
+     {"evidence_id": "EV:sc_expr:d00e4a293c7f", "field": ["pct_expressing"], "display": "81.3", "unit": "native"},
+     {"evidence_id": "EV:sc_expr:ffb74b11de1d", "field": ["pct_expressing"], "display": "4.9", "unit": "native"}
+    ]},
+   {"text": "The cell attribution of SCARB1 does not replicate across datasets: myeloid cells dominate in the Li data, with a modest tumour-cell share [gene=SCARB1; type=sc_replication; source=Zhang et al. 2021 ccRCC single-cell RNA-seq (CZ CELLxGENE); li2022_tumour_cell_share=0.336], whereas tumour cells dominate in the Zhang data. A tumour-intrinsic call for SCARB1 is therefore uncertain.",
+    "gene": "SCARB1",
+    "evidence_ids": ["EV:sc_replication:2d66f8e78d0c"],
+    "numeric_claims": [
+     {"evidence_id": "EV:sc_replication:2d66f8e78d0c", "field": ["li2022_tumour_cell_share"], "display": "0.336", "unit": "native"}
+    ]}
+  ],
+  "spatial": [
+   {"text": "In Visium sections, the neighbours of high-CA9 spots are enriched in cancer cells [gene=CA9; type=spatial_neighborhood; source=DATASET:LI2022-VISIUM; cell_group=RCC; log2_enrichment=0.381] and, more weakly, in macrophages; composition-corrected attribution places essentially all spot expression on cancer cells, consistent with the single-cell result. Spatial context was not run for the other leading candidates.",
+    "gene": "CA9",
+    "evidence_ids": ["EV:spatial_nb:35b84fee998f", "EV:spatial_summary:225a767ebcb5"],
+    "numeric_claims": [
+     {"evidence_id": "EV:spatial_nb:35b84fee998f", "field": ["log2_enrichment"], "display": "0.381", "unit": "native"}
+    ]}
+  ],
+  "structure": [
+   {"text": "The predicted CA9 monomer has moderate confidence (mean pLDDT [gene=CA9; type=alphafold_model; source=DATASET:ALPHAFOLD-DB; mean_plddt=76.56]) and a computationally detected cavity [gene=CA9; type=structural_context; source=DATASET:ALPHAFOLD-DB; volume_a3=126.8] cubic angstroms in volume with one nearby accessible lysine. This is a descriptive heuristic on a predicted monomer and is not evidence of a degron, ligase compatibility or a degrader.",
+    "gene": "CA9",
+    "evidence_ids": ["EV:alphafold:6b2a466ed88e", "EV:structural_context:cacfae1940f6"],
+    "numeric_claims": [
+     {"evidence_id": "EV:alphafold:6b2a466ed88e", "field": ["mean_plddt"], "display": "76.56", "unit": "native"},
+     {"evidence_id": "EV:structural_context:cacfae1940f6", "field": ["volume_a3"], "display": "126.8", "unit": "native"}
+    ]},
+   {"text": "The COL23A1 model has low confidence (mean pLDDT [gene=COL23A1; type=alphafold_model; source=DATASET:ALPHAFOLD-DB; mean_plddt=58.91]) and only a tiny, shallow cavity, so a small-molecule route looks unlikely from this monomer; an antibody or other biologic would be more plausible if surface display is confirmed.",
+    "gene": "COL23A1",
+    "evidence_ids": ["EV:alphafold:4f8072787076", "EV:structural_context:3a4161457d4f"],
+    "numeric_claims": [
+     {"evidence_id": "EV:alphafold:4f8072787076", "field": ["mean_plddt"], "display": "58.91", "unit": "native"}
+    ]}
+  ],
+  "discovery": [
+   {"text": "COL23A1, a transmembrane collagen, leads the tumour track. Cancer cells carry most of its transcripts [gene=COL23A1; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=tumor; source_share=0.881]. The increase replicates in TCGA and survives extrapolation to a pure tumour [gene=COL23A1; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=tumor; rna_lfc_at_purity1=4.88]. It has no adverse survival signal and no vital-organ protein enrichment. It is novel in the sense of few ccRCC papers and no clinical drug. What is missing is a selective dependency, confirmation that the protein is exposed at the cell surface (the surface databases do not support it), confirmatory-cohort data and its literature, which was counted by gene symbol only.",
+    "gene": "COL23A1",
+    "evidence_ids": ["EV:discovery:e1532aa1b09c", "EV:tcga_de:e1532aa1b09c", "EV:purity:e1532aa1b09c", "EV:tcga_survival:e1532aa1b09c", "EV:normal_proteome:e1532aa1b09c"],
+    "numeric_claims": [
+     {"evidence_id": "EV:discovery:e1532aa1b09c", "field": ["source_share"], "display": "0.881", "unit": "native"},
+     {"evidence_id": "EV:discovery:e1532aa1b09c", "field": ["rna_lfc_at_purity1"], "display": "4.88", "unit": "native"}
+    ]},
+   {"text": "RAB42, a small GTPase, is the second tumour-track candidate. Cancer cells are its main source [gene=RAB42; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=tumor; source_share=0.627], and its increase replicates in TCGA and is robust to purity. It has few ccRCC papers and no clinical drug, but it is an intracellular protein that antibodies cannot reach, and it has no dependency or functional evidence.",
+    "gene": "RAB42",
+    "evidence_ids": ["EV:discovery:f53feb0aa597", "EV:tcga_de:f53feb0aa597", "EV:purity:f53feb0aa597", "EV:tcga_survival:f53feb0aa597"],
+    "numeric_claims": [
+     {"evidence_id": "EV:discovery:f53feb0aa597", "field": ["source_share"], "display": "0.627", "unit": "native"}
+    ]},
+   {"text": "OLFML2A, a secreted extracellular protein, leads the stroma track. Fibroblasts carry most of its transcripts [gene=OLFML2A; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=stroma; source_share=0.647]. It replicates in TCGA and is robust to purity, but it is expressed in colon and has no dependency data, so any target would be a fibroblast microenvironment hypothesis. The endothelial Notch ligand JAG2 is a second stroma candidate with a modest effect and expression in heart.",
+    "gene": "OLFML2A",
+    "evidence_ids": ["EV:discovery:eb3ffaa04212", "EV:tcga_de:eb3ffaa04212", "EV:purity:eb3ffaa04212"],
+    "numeric_claims": [
+     {"evidence_id": "EV:discovery:eb3ffaa04212", "field": ["source_share"], "display": "0.647", "unit": "native"}
+    ]},
+   {"text": "The immune track is led by the macrophage receptor LILRB4, but its increase largely vanishes when extrapolated to a pure tumour [gene=LILRB4; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=immune; rna_lfc_at_purity1=0.508], so the bulk signal is infiltration-driven. MILR1 behaves the same way. These are tumour-associated macrophage genes, not tumour-cell targets. All discovery candidates are data-ranked hypotheses, and none is a selective dependency.",
+    "gene": "LILRB4",
+    "evidence_ids": ["EV:discovery:3c9bb849285e", "EV:purity:3c9bb849285e"],
+    "numeric_claims": [
+     {"evidence_id": "EV:discovery:3c9bb849285e", "field": ["rna_lfc_at_purity1"], "display": "0.508", "unit": "native"}
+    ]}
+  ],
+  "validation": [
+   {"text": "The independent layers strengthen CA9, CD70, NNMT, SCARB1 and SLC16A3. All of them replicate in TCGA-KIRC and keep their increase after purity extrapolation, so they are tumour signals rather than infiltration. NNMT is the only up-regulated leader with an adverse TCGA prognosis. None of the leaders is a somatic driver or a selective DepMap dependency. Kinase activity does not apply, because none of them is a kinase. Somatic driver status belongs to VHL, PBRM1, BAP1 and SETD2, which are tumour suppressors and not directly druggable.",
+    "evidence_ids": ["EV:tcga_de:225a767ebcb5", "EV:purity:225a767ebcb5", "EV:tcga_de:908e84663f6a", "EV:purity:908e84663f6a", "EV:tcga_survival:7dbf93860d9f", "EV:purity:7dbf93860d9f", "EV:tcga_de:11298113327b", "EV:depmap_dependency:225a767ebcb5", "EV:depmap_dependency:2d66f8e78d0c", "EV:somatic_recurrence:07b6205e67e5"]},
+   {"text": "The SCARB1 protein increase replicates in the confirmatory CPTAC cohort, with different patients and label-free DIA proteomics [gene=SCARB1; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); protein_conf_log2fc=2.334]. The SLC16A3 increase and the PCK1 decrease also replicate there. CA9 had too few matched pairs to be tested, which is a coverage gap, not a failure to replicate. HK2 was not profiled in this run.",
+    "gene": "SCARB1",
+    "evidence_ids": ["EV:confirmatory_replication:2d66f8e78d0c"],
+    "numeric_claims": [
+     {"evidence_id": "EV:confirmatory_replication:2d66f8e78d0c", "field": ["protein_conf_log2fc"], "display": "2.334", "unit": "native"}
+    ]},
+   {"text": "The PSAT1 protein decrease replicates in the confirmatory cohort [gene=PSAT1; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); protein_conf_log2fc=-3.946]. The one phosphosite measured in both cohorts did not replicate, so the signal holds at protein level only. This strengthens PSAT1 as a tissue biomarker.",
+    "gene": "PSAT1",
+    "evidence_ids": ["EV:confirmatory_replication:58119698ea36"],
+    "numeric_claims": [
+     {"evidence_id": "EV:confirmatory_replication:58119698ea36", "field": ["protein_conf_log2fc"], "display": "-3.946", "unit": "native"}
+    ]}
+  ],
+  "robustness": [
+   {"text": "In the overall convergence ranking, only CA9 and COXFA4L2 stay among the leaders under nearly all random re-weightings, with narrow rank intervals. ALDOB, CD70 and SLC22A8 are fairly stable. PIGR, VHL and MT1G have very wide intervals and depend on the chosen weights; VHL in particular can drop far down the ranking. In the target profile, SCARB1 and CA9 are the most robust, followed by SLC16A3, CD70, NNMT, ENPP3 and FABP6, while HK2 and ANGPTL4 depend more on the weights.",
+    "evidence_ids": ["EV:omics_de:b269736afdb0", "EV:omics_de:cd4a629b011f", "EV:omics_de:8a1dc0572ead", "EV:somatic_recurrence:52e5aeb6c197"]},
+   {"text": "In the biomarker profile, PSAT1 is the most stable gene, followed by PCK1 and SLC6A19. NNMT, ALDH6A1 and PPP1R1A reach the top under some weightings but have wider intervals, and SLPI, DUSP9, VWF and L1CAM depend on the prognosis or omics weight. The weighting therefore matters for biomarker calls more than for the leading target calls.",
+    "evidence_ids": ["EV:omics_de:8fa49cbb1760", "EV:tcga_survival:fd99b19fe8a6", "EV:omics_de:de39cc0c5ed8"]}
+  ],
+  "treatment": [
+   {"text": "In the IMmotion data, higher CA9 is associated with longer benefit in the sunitinib and atezolizumab plus bevacizumab arms, but none of these associations is significant, and the difference between the combination and sunitinib has an adjusted p-value [gene=CA9; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.difference_between_arms.padj=0.917] that shows no separation. CA9 is not a treatment-selection marker.",
+    "gene": "CA9",
+    "evidence_ids": ["EV:treatment_response:225a767ebcb5"],
+    "numeric_claims": [
+     {"evidence_id": "EV:treatment_response:225a767ebcb5", "field": ["arms", "difference_between_arms", "padj"], "display": "0.917", "unit": "native"}
+    ]},
+   {"text": "CD70 shows the strongest trend: higher expression is associated with longer benefit on atezolizumab plus bevacizumab, but the adjusted p-value is not significant [gene=CD70; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.atezolizumab_bevacizumab.padj=0.166]. This is a lead from a single arm, not a predictor. No gene separates the two main arms, and NNMT and SCARB1 show no usable treatment signal.",
+    "gene": "CD70",
+    "evidence_ids": ["EV:treatment_response:908e84663f6a"],
+    "numeric_claims": [
+     {"evidence_id": "EV:treatment_response:908e84663f6a", "field": ["arms", "atezolizumab_bevacizumab", "padj"], "display": "0.166", "unit": "native"}
+    ]}
+  ],
+  "subtypes": [
+   {"text": "CA9 is flagged as a subgroup target candidate for PBRM1 mutation. It is higher in mutants in CPTAC RNA, CPTAC protein and TCGA, with a TCGA RNA difference [gene=CA9; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; PBRM1.tcga_rna.mutant_minus_wildtype_log2=1.148], which agrees with the literature link between high CA9-PET uptake and PBRM1 loss. The protein difference is modest and CA9 is lower in ccB than in ccA, so this is a tendency rather than a clean genetic subgroup.",
+    "gene": "CA9",
+    "evidence_ids": ["EV:subtype_profile:225a767ebcb5"],
+    "numeric_claims": [
+     {"evidence_id": "EV:subtype_profile:225a767ebcb5", "field": ["PBRM1", "tcga_rna", "mutant_minus_wildtype_log2"], "display": "1.148", "unit": "native"}
+    ]},
+   {"text": "PSAT1 is higher in BAP1-mutant tumours in TCGA RNA [gene=PSAT1; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; BAP1.tcga_rna.mutant_minus_wildtype_log2=1.711], but the protein difference is not significant and it is not flagged as a subgroup candidate. PCK1 does not change with any driver mutation and is lower in ccB at RNA level, and EPAS1 differs between ccA and ccB partly because it helps define that split. Subtype differences for immune genes may reflect infiltration.",
+    "gene": "PSAT1",
+    "evidence_ids": ["EV:subtype_profile:58119698ea36"],
+    "numeric_claims": [
+     {"evidence_id": "EV:subtype_profile:58119698ea36", "field": ["BAP1", "tcga_rna", "mutant_minus_wildtype_log2"], "display": "1.711", "unit": "native"}
+    ]}
+  ],
+  "adc": [
+   {"text": "CA9 is a surface protein and a known conjugate and radioligand target, but it stains strongly in stomach, and expression is patchy in the weakest quarter of donors [gene=CA9; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; tumour_cells_expressing_pct_weakest_quarter_of_donors=24.3%]. CD70 is a known conjugate control with surface support and no vital-organ enrichment, but it has no staining data and is also patchy [gene=CD70; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; tumour_cells_expressing_pct_weakest_quarter_of_donors=17.7%]. ENPP3, another known conjugate target, has the highest kidney staining level, which raises a normal-kidney toxicity concern.",
+    "evidence_ids": ["EV:adc_profile:225a767ebcb5", "EV:adc_profile:908e84663f6a", "EV:adc_profile:d5aee88146ed"],
+    "numeric_claims": [
+     {"evidence_id": "EV:adc_profile:225a767ebcb5", "field": ["tumour_cells_expressing_pct_weakest_quarter_of_donors"], "display": "24.3", "unit": "native_percent"},
+     {"evidence_id": "EV:adc_profile:908e84663f6a", "field": ["tumour_cells_expressing_pct_weakest_quarter_of_donors"], "display": "17.7", "unit": "native_percent"}
+    ]},
+   {"text": "SCARB1 is a weak conjugate candidate: it stains strongly in adrenal gland, few tumour cells express it in the weakest donors [gene=SCARB1; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; tumour_cells_expressing_pct_weakest_quarter_of_donors=7.1%], and it is not an established conjugate target. SLC16A3 has the most uniform tumour expression of these candidates, but it is a multi-pass transporter with little exposed sequence, so it suits small-molecule inhibition better than a conjugate. None of these scores shows that a conjugate would work.",
+    "gene": "SCARB1",
+    "evidence_ids": ["EV:adc_profile:2d66f8e78d0c"],
+    "numeric_claims": [
+     {"evidence_id": "EV:adc_profile:2d66f8e78d0c", "field": ["tumour_cells_expressing_pct_weakest_quarter_of_donors"], "display": "7.1", "unit": "native_percent"}
+    ]}
+  ],
+  "immune": [
+   {"text": "A large part of tumour CD70 comes from immune cells [gene=CD70; type=immune_profile; source=CPTAC CIBERSORT and xCell immune deconvolution; immune_cell_share_of_tumour_transcripts=0.654]. CD70 correlates with CD8 and regulatory T cells, so higher CD70 partly marks hot, infiltrated tumours, and a conjugate would also reach CD70-positive lymphocytes.",
+    "gene": "CD70",
+    "evidence_ids": ["EV:immune_profile:908e84663f6a"],
+    "numeric_claims": [
+     {"evidence_id": "EV:immune_profile:908e84663f6a", "field": ["immune_cell_share_of_tumour_transcripts"], "display": "0.654", "unit": "native"}
+    ]},
+   {"text": "FCGR3A is a control immune-cell gene: nearly all of its tumour transcripts are immune-derived, it tracks the immune score [gene=FCGR3A; type=immune_profile; source=CPTAC CIBERSORT and xCell immune deconvolution; rho_with_immune_score=0.795] and it falls sharply after purity adjustment. It suits a microenvironment biomarker of hot tumours, not a tumour-cell target, and the same applies to the immune-track discovery genes LILRB4 and MILR1.",
+    "gene": "FCGR3A",
+    "evidence_ids": ["EV:immune_profile:af56881a4234"],
+    "numeric_claims": [
+     {"evidence_id": "EV:immune_profile:af56881a4234", "field": ["rho_with_immune_score"], "display": "0.795", "unit": "native"}
+    ]}
+  ],
+  "integration": [
+   {"text": "Three groups emerge. The surface targets are CA9, CD70 and ENPP3. Omics, single-cell, literature and clinical programmes agree that they are tumour-cell antigens, and their limits are normal-tissue staining, patchy expression and, for CD70, immune co-expression. The second group is the target hypotheses SCARB1, NNMT and SLC16A3: they are well supported by omics and confirmatory replication but lack drugs, dependency or a consistent cell of origin. The third group is the down-regulated biomarkers PSAT1, PCK1, ALDOB, SLC22A8 and UMOD, which mark loss of tubule identity and prognosis.",
+    "evidence_ids": ["EV:omics_de:5afe18b4024b", "EV:omics_de:8a1dc0572ead", "EV:omics_de:fad29d44ef95", "EV:omics_de:cd4a629b011f", "EV:omics_de:de39cc0c5ed8", "EV:tcga_de:11298113327b", "EV:omics_de:8fa49cbb1760", "EV:tcga_de:a46f337f2987"]},
+   {"text": "The main disagreements are between literature survival claims and TCGA: CD70 and NDUFA4L2 are reported as prognostic in papers but not in TCGA, and ABAT and MT1G have conflicting directions. The data also disagree about the cell of origin of SCARB1 and SLC16A3. VHL, PBRM1, BAP1 and SETD2 are mechanism and stratification genes rather than targets, and EPAS1 and KDR are the established downstream targets that the ranking recovers as controls.",
+    "evidence_ids": ["EV:literature:92dc16d8b33c", "EV:literature:1f4e8bd4d272", "EV:literature:24b33107cb4e", "EV:sc_replication:2d66f8e78d0c", "EV:sc_replication:11298113327b", "EV:somatic_recurrence:52e5aeb6c197", "EV:open_targets_drug:199c475802ce"]}
+  ]
+ },
+ "targets": [
+  {"gene": "CA9", "category": "target_and_biomarker", "rationale": "Top of the convergence ranking and robust in both profiles; tumour-cell intrinsic in single-cell and spatial data, replicated in TCGA, with a late-stage antibody and imaging history. Limits: stomach staining, patchy expression in some donors, no dependency and not tested in the confirmatory cohort.", "evidence_ids": ["EV:omics_de:5afe18b4024b", "EV:tcga_de:225a767ebcb5", "EV:sc_expr:35b84fee998f", "EV:open_targets_drug:646a0aec5b64", "EV:adc_profile:225a767ebcb5"]},
+  {"gene": "CD70", "category": "target", "rationale": "Robust in the target profile; protein up, replicated in TCGA, low vital-organ specificity and several clinical antibody or conjugate programmes. Placed above SCARB1 despite a lower target score because of its clinical validation; limits are immune-cell co-expression and missing staining data.", "evidence_ids": ["EV:omics_de:8a1dc0572ead", "EV:tcga_de:908e84663f6a", "EV:normal_proteome:908e84663f6a", "EV:open_targets_drug:0a02c566ec75", "EV:immune_profile:908e84663f6a"]},
+  {"gene": "SCARB1", "category": "target", "rationale": "Highest and most robust target-profile score, protein increase replicated in the confirmatory cohort and tractable by antibody and small molecule. Ranked below CA9 and CD70 because it has no drug, no literature support in this corpus, a discordant cell of origin and adrenal staining.", "evidence_ids": ["EV:omics_de:cd4a629b011f", "EV:confirmatory_replication:2d66f8e78d0c", "EV:open_targets_tract:2d66f8e78d0c", "EV:sc_replication:2d66f8e78d0c"]},
+  {"gene": "NNMT", "category": "target_and_biomarker", "rationale": "Tumour-intrinsic increase at RNA and protein, adverse TCGA prognosis concordant with the literature, small-molecule tractable and robust in the target profile; as a biomarker it is strong but weight-dependent. No clinical drug and no selective dependency.", "evidence_ids": ["EV:omics_de:de39cc0c5ed8", "EV:tcga_survival:7dbf93860d9f", "EV:open_targets_tract:7dbf93860d9f", "EV:literature:111b19cdfe29", "EV:sc_replication:7dbf93860d9f"]},
+  {"gene": "ENPP3", "category": "target", "rationale": "Robust in the target profile, up at RNA and protein and a known conjugate target with a large extracellular domain; the highest kidney staining level makes normal-kidney toxicity the main concern.", "evidence_ids": ["EV:omics_de:fad29d44ef95", "EV:omics_de:d540450c23e1", "EV:adc_profile:d5aee88146ed"]},
+  {"gene": "SLC16A3", "category": "target", "rationale": "Robust target-profile gene with TCGA replication and confirmatory protein and phosphosite replication; uniform tumour expression but a multi-pass transporter, so a small-molecule rather than conjugate target, and its cell of origin differs between single-cell datasets.", "evidence_ids": ["EV:tcga_de:11298113327b", "EV:confirmatory_replication:11298113327b", "EV:adc_profile:11298113327b", "EV:sc_replication:11298113327b"]},
+  {"gene": "EPAS1", "category": "target", "rationale": "Established downstream target of VHL loss with an approved drug and positive ccRCC selectivity in DepMap; included as a validated control rather than a new candidate, and largely stromal in single-cell data.", "evidence_ids": ["EV:open_targets_drug:199c475802ce", "EV:depmap_dependency:6a657326c9fd", "EV:sc_summary:6a657326c9fd"]},
+  {"gene": "PSAT1", "category": "biomarker", "rationale": "Most robust biomarker-profile gene; protein decrease replicated in the confirmatory cohort and adverse prognosis with higher expression in TCGA. Tissue biomarker only.", "evidence_ids": ["EV:omics_de:8fa49cbb1760", "EV:confirmatory_replication:58119698ea36", "EV:tcga_survival:58119698ea36"]},
+  {"gene": "PCK1", "category": "biomarker", "rationale": "Robust biomarker-profile gene; protein and phosphosite decreases replicate in the confirmatory cohort and higher expression associates with better survival.", "evidence_ids": ["EV:tcga_survival:fd99b19fe8a6", "EV:confirmatory_replication:fd99b19fe8a6"]},
+  {"gene": "ALDOB", "category": "biomarker", "rationale": "High in the convergence ranking; lost in tumour with favourable prognosis when retained, supported by literature, but it marks lost tubule identity and is not a target.", "evidence_ids": ["EV:tcga_de:a46f337f2987", "EV:tcga_survival:a46f337f2987", "EV:literature:dd489b3df02e"]},
+  {"gene": "COXFA4L2", "category": "biomarker", "rationale": "Second in the convergence ranking and robust, strongly tumour-up and HIF-induced in the literature; no selective drug or dependency and the literature survival claim does not replicate in TCGA, so biomarker rather than target.", "evidence_ids": ["EV:open_targets_assoc:acbb0be5791e", "EV:literature:1f4e8bd4d272"]},
+  {"gene": "COL23A1", "category": "target", "rationale": "Exploratory: best tumour-cell discovery candidate (cancer-cell source, TCGA replication, purity-robust, no vital-organ enrichment); the main limitation is that surface exposure, dependency and confirmatory data are all unproven.", "evidence_ids": ["EV:discovery:e1532aa1b09c", "EV:tcga_de:e1532aa1b09c", "EV:purity:e1532aa1b09c", "EV:normal_proteome:e1532aa1b09c"]},
+  {"gene": "RAB42", "category": "target", "rationale": "Exploratory: tumour-cell discovery candidate with TCGA replication and purity-robust increase; the main limitation is that it is intracellular, with no dependency or functional evidence.", "evidence_ids": ["EV:discovery:f53feb0aa597", "EV:tcga_de:f53feb0aa597", "EV:purity:f53feb0aa597"]}
+ ],
+ "limitations": [
+  {"text": "No leading candidate is a selective ccRCC dependency in DepMap, and two-dimensional cell lines miss HIF and microenvironment biology, so target calls rest on expression, replication and tractability rather than functional essentiality."},
+  {"text": "No gene separates the main treatment arms in the trial data; all treatment statements are single-arm associations."},
+  {"text": "Literature support comes from the ingested corpus only (the PubMed connector was not authorised); most papers are single-study or bioinformatic, and the discovery candidates were not reviewed by the literature agent."},
+  {"text": "Agent coverage was partial: spatial context and structural pockets were run only for CA9 and COL23A1, STRING was not queried, and ANGPTL4, FABP6, CYP2J2 and HK2 were not profiled across the applied layers."},
+  {"text": "Several down-regulated biomarkers (ALDOB, SLC22A8, UMOD, FABP1, NPHS2, PIGR) reflect loss of normal tubule identity and composition differences between tumour and adjacent normal tissue."},
+  {"text": "Structural-context scores are descriptive heuristics on predicted monomers and are not evidence of degrons or degraders; conjugate suitability scores do not show that a conjugate would work."},
+  {"text": "Passing the automatic checks is not complete scientific validation; the ranking weights are a modelling choice, and several calls change under re-weighting."}
+ ]
+}

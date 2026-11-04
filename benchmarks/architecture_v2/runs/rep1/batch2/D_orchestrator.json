@@ -1,0 +1,163 @@
+{
+ "study_hash": "593b0de44496ae2a",
+ "prompt_sha256": "09a0541474718a1177e7650982fca822471b3d42b032877048e6e58d986fc69b",
+ "status": "ok",
+ "case_ids": [
+  "g09v0",
+  "g02v0",
+  "g04v0",
+  "g01v0"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.15538400000000002,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 14653,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 1943,
+  "output_tokens_details": {
+   "thinking_tokens": 809
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 14653,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1943,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 14653,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 14653
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 1943,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 14653,
+   "webSearchRequests": 0,
+   "costUSD": 0.078046,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 809,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 14653,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g09v0\",\"protein_up\":\"no\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"no\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"loss_biomarker\",\"evidence_ids\":[\"g09v0.r06\",\"g09v0.r12\",\"g09v0.r10\",\"g09v0.r08\",\"g09v0.r03\",\"g09v0.r16\",\"g09v0.r01\"],\"rationale\":\"Target protein is down (padj 1.8e-33). CPTAC RNA is down, and TCGA RNA and confirmatory protein are also down, so replicated. CD8_T share exceeds RCC share. The only surface record belongs to another entity. Proteome is vital-enriched. DepMap padj is 0.404.\"},{\"id\":\"g02v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"no\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"insufficient\",\"selective_dependency\":\"no\",\"verdict\":\"infiltration_signal\",\"evidence_ids\":[\"g02v0.r12\",\"g02v0.r06\",\"g02v0.r26\",\"g02v0.r24\",\"g02v0.r27\",\"g02v0.r17\",\"g02v0.r14\",\"g02v0.r13\"],\"rationale\":\"Protein is up, and CPTAC RNA and TCGA RNA are up, so replicated. CD8_T share (0.533) exceeds RCC (0.345), so not tumour-intrinsic. Surface call is surface. IHC was not measured and the proteome is not enriched. DepMap fails.\"},{\"id\":\"g04v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"needs_more_data\",\"evidence_ids\":[\"g04v0.r06\",\"g04v0.r15\",\"g04v0.r16\",\"g04v0.r10\",\"g04v0.r13\",\"g04v0.r17\",\"g04v0.r21\",\"g04v0.r09\",\"g04v0.r02\",\"g04v0.r14\"],\"rationale\":\"Protein is up and replicated by TCGA RNA and confirmatory protein. RCC has the largest share (0.327), and purity bound 3.17 > 0, so tumour-intrinsic. Surface call is surface, but IHC vital level 3 means a safety concern. DepMap fails. The specialist's 'no' for tumour_intrinsic was wrong.\"},{\"id\":\"g01v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"needs_more_data\",\"evidence_ids\":[\"g01v0.r09\",\"g01v0.r10\",\"g01v0.r26\",\"g01v0.r23\",\"g01v0.r01\",\"g01v0.r19\",\"g01v0.r28\",\"g01v0.r21\",\"g01v0.r16\"],\"rationale\":\"Protein is up, and CPTAC RNA and TCGA RNA are up. RCC share is 0.976 and the purity bound is 6.65 > 0. Surface call is surface. Vital IHC level 3 (Stomach) and an enriched proteome mean a safety concern, so not a candidate. DepMap has 0 dependent lines.\"}]}",
+ "stderr": "",
+ "answers": [
+  {
+   "id": "g09v0",
+   "protein_up": "no",
+   "replicated": "yes",
+   "tumour_intrinsic": "no",
+   "surface_accessible": "insufficient",
+   "vital_safety_concern": "yes",
+   "selective_dependency": "no",
+   "verdict": "loss_biomarker",
+   "evidence_ids": [
+    "g09v0.r06",
+    "g09v0.r12",
+    "g09v0.r10",
+    "g09v0.r08",
+    "g09v0.r03",
+    "g09v0.r16",
+    "g09v0.r01"
+   ],
+   "rationale": "Target protein is down (padj 1.8e-33). CPTAC RNA is down, and TCGA RNA and confirmatory protein are also down, so replicated. CD8_T share exceeds RCC share. The only surface record belongs to another entity. Proteome is vital-enriched. DepMap padj is 0.404."
+  },
+  {
+   "id": "g02v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "no",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "insufficient",
+   "selective_dependency": "no",
+   "verdict": "infiltration_signal",
+   "evidence_ids": [
+    "g02v0.r12",
+    "g02v0.r06",
+    "g02v0.r26",
+    "g02v0.r24",
+    "g02v0.r27",
+    "g02v0.r17",
+    "g02v0.r14",
+    "g02v0.r13"
+   ],
+   "rationale": "Protein is up, and CPTAC RNA and TCGA RNA are up, so replicated. CD8_T share (0.533) exceeds RCC (0.345), so not tumour-intrinsic. Surface call is surface. IHC was not measured and the proteome is not enriched. DepMap fails."
+  },
+  {
+   "id": "g04v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "yes",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "yes",
+   "selective_dependency": "no",
+   "verdict": "needs_more_data",
+   "evidence_ids": [
+    "g04v0.r06",
+    "g04v0.r15",
+    "g04v0.r16",
+    "g04v0.r10",
+    "g04v0.r13",
+    "g04v0.r17",
+    "g04v0.r21",
+    "g04v0.r09",
+    "g04v0.r02",
+    "g04v0.r14"
+   ],
+   "rationale": "Protein is up and replicated by TCGA RNA and confirmatory protein. RCC has the largest share (0.327), and purity bound 3.17 > 0, so tumour-intrinsic. Surface call is surface, but IHC vital level 3 means a safety concern. DepMap fails. The specialist's 'no' for tumour_intrinsic was wrong."
+  },
+  {
+   "id": "g01v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "yes",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "yes",
+   "selective_dependency": "no",
+   "verdict": "needs_more_data",
+   "evidence_ids": [
+    "g01v0.r09",
+    "g01v0.r10",
+    "g01v0.r26",
+    "g01v0.r23",
+    "g01v0.r01",
+    "g01v0.r19",
+    "g01v0.r28",
+    "g01v0.r21",
+    "g01v0.r16"
+   ],
+   "rationale": "Protein is up, and CPTAC RNA and TCGA RNA are up. RCC share is 0.976 and the purity bound is 6.65 > 0. Surface call is surface. Vital IHC level 3 (Stomach) and an enriched proteome mean a safety concern, so not a candidate. DepMap has 0 dependent lines."
+  }
+ ],
+ "elapsed_s": 35.4,
+ "previous_attempt": {
+  "status": "ok",
+  "error": null,
+  "cost_usd": 0.077338,
+  "elapsed_s": 17.5
+ }
+}

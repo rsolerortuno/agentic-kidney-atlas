@@ -189,6 +189,7 @@ lists candidates and is not a validated ranking.
 | Agents against a model answering from memory | The memory-only model gives the textbook list (60 % clinical targets, nothing citable); the pipeline gives data-backed candidates |
 | Repeat agent runs | Mean overlap (Jaccard) 0.86 between the final target lists of three runs. The overlap mostly reflects the shared deterministic ranking |
 | Agents against a list taken straight from the rankings | Overlap 0.53 with a same-length list alternating target profile, biomarker profile and discovery screen; the agents add ENPP3, EPAS1, COXFA4L2 and ALDOB and leave out ALDH6A1, TNFAIP6, SLC6A19 and FABP6 |
+| Single agent against multi-agent ([interpretation](benchmarks/architecture_v2/README.md), [full pipeline](benchmarks/architecture_pipeline/README.md)) | Interpreting given evidence (24 masked dossiers): one agent answered everything correctly; specialists with or without an orchestrator were never more accurate and cost 1.3–2.9 times as much. Full pipeline with MCP retrieval (2 runs per arm): same quality (0 unsupported statements, 10–12 of 13 checklist facts in both), but the multi-agent pipeline cost about 40 % less ($3.60 vs $5.95) and took 5 instead of 45 minutes |
 
 A control is a known case scored the same way as the candidates. Known antibody targets rank near the top. Known
 immune checkpoints rank unevenly, and the report says so.

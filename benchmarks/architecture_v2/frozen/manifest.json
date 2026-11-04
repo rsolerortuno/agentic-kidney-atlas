@@ -1,0 +1,12 @@
+{
+ "version": 2,
+ "seed": 20261104,
+ "n_cases": 24,
+ "n_genes": 12,
+ "files": {
+  "cases.json": "357375a2d8597bfee35bd4f3e454071b85118d3e47aebee85c82aef5cec378aa",
+  "gold.json": "581f2a936db232d6ad9c7cc3d9b10f08e543cc6bd5e57027f67b2eecd19bcc4b",
+  "provenance.json": "d102a77afb923e16371277e20bc5306d713876350d21d871666487d60aa30acc",
+  "protocol.txt": "3f21a1bac75022c31c9499ad638d2350351dc6971313a9c1ce144e6244968329"
+ }
+}
