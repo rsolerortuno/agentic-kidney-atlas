@@ -106,14 +106,14 @@
     "hk2_not_replicated": false,
     "epas1_selective_dependency": true,
     "no_gene_separates_arms": true,
-    "checkmate025_used": false,
+    "checkmate025_used": true,
     "col23a1_prioritised": true,
     "rab42_prioritised": true,
     "psat1_pck1_biomarkers": true,
     "coxfa4l2_discussed": true,
     "normal_proteome_used": true,
     "surface_location_reasoned": true,
-    "prism_drug_response_used": true
+    "prism_drug_response_used": false
    },
    "checklist_score": 11,
    "checklist_max": 13,

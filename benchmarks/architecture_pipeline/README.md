@@ -26,9 +26,19 @@ evidence itself with the project's MCP tools and write the full analysis, as the
 | **M mean** | 118 / 0 | 10.5 | 29 | 171 | **$3.60** | **4.9 min** | 35 | 31k |
 | **S mean** | 112 / 0 | 11.5 | 32.5 | 148 | $5.95 | 45.2 min | 253 | 95k |
 
-The three published multi-agent runs of 2026-11-03 (no cost data recorded) score 12, 11 and 11 on the checklist, so
+The three published multi-agent runs of 2026-11-03 (no cost data recorded) score 12, 11 and 12 on the checklist, so
 the multi-agent arm's range is 10–12 and the single agent's 11–12. A first single-agent attempt was cut off by the
 usage limit after 34 minutes and $2.52; it is not in the table.
+
+**Checklist correction (after a manual read of the four reports).** Two rules were fixed and all runs rescored; the
+totals of the four benchmark runs did not change. The CheckMate 025 rule now also accepts the trial named by its arms
+(nivolumab vs everolimus), which M2 wrote without the trial name; M1 cited that trial only in a specialist finding, not
+in the report, so it still misses it. The PRISM rule no longer accepts the word "compound", which had matched drug
+names in M2. No run, in either arm or among the published ones, cited the PRISM drug-response data, so 12 of 13 is the
+practical maximum here; that gap is in the instructions, not in one architecture. Items missed: M1 HK2 not
+replicating, CheckMate 025, PRISM; M2 HK2, PRISM; S1 PRISM; S2 PCK1 as a biomarker target, PRISM. The multi-agent
+arm missed the HK2 non-replication in both runs (and in one of the three published runs); the single agent stated it
+both times.
 
 What the numbers say:
 
@@ -56,7 +66,8 @@ What the numbers say:
 
 Two runs per arm; one model pairing (Opus orchestrator / Sonnet specialists vs Opus alone); no gold answer, so
 quality is measured by verification, coverage and a fact checklist, which cannot judge the depth of the reasoning;
-the checklist is regex-based and can miss a fact stated in other words.
+the checklist is regex-based and can miss a fact stated in other words (two rules were corrected after reading the
+reports; see above).
 
 ## Reproduce
 

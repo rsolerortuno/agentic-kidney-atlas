@@ -32,14 +32,16 @@ CHECKS = {
     "hk2_not_replicated": lambda t, tg: _para(t, r"\bHK2\b", r"not replicat|does not replicate|did not replicate|fails? to replicate"),
     "epas1_selective_dependency": lambda t, tg: _para(t, r"\bEPAS1\b", r"dependen"),
     "no_gene_separates_arms": lambda t, tg: bool(re.search(r"no gene[^.]{0,80}(separat|differ|distinguish)", t, re.I)),
-    "checkmate025_used": lambda t, tg: bool(re.search(r"CheckMate", t, re.I)),
+    # CheckMate 025 is the nivolumab-vs-everolimus trial; reports may name the arms without the trial name.
+    "checkmate025_used": lambda t, tg: bool(re.search(r"CheckMate", t, re.I)) or _para(t, r"\bnivolumab\b", r"\beverolimus\b"),
     "col23a1_prioritised": lambda t, tg: "COL23A1" in tg,
     "rab42_prioritised": lambda t, tg: "RAB42" in tg or _para(t, r"\bRAB42\b", r"discover|unexplored|exploratory"),
     "psat1_pck1_biomarkers": lambda t, tg: "PSAT1" in tg and "PCK1" in tg,
     "coxfa4l2_discussed": lambda t, tg: bool(re.search(r"COXFA4L2|NDUFA4L2", t)),
     "normal_proteome_used": lambda t, tg: bool(re.search(r"GTEx|normal[- ]tissue prote|proteome", t, re.I)),
     "surface_location_reasoned": lambda t, tg: bool(re.search(r"\binternal\b|intracellular|inside the cell|not (on|at) the (cell )?surface", t, re.I)),
-    "prism_drug_response_used": lambda t, tg: bool(re.search(r"PRISM|drug[- ]response|compound", t, re.I)),
+    # "compound" alone also matches drug names (e.g. "sulfonamide-class compounds"), so it is not accepted.
+    "prism_drug_response_used": lambda t, tg: bool(re.search(r"\bPRISM\b|drug[- ]response|drug sensitivity", t, re.I)),
 }
 
 
