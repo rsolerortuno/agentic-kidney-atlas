@@ -1,0 +1,159 @@
+{
+ "study_hash": "5b34e637c50dad54",
+ "prompt_sha256": "ef565ae97eeb0dd642b6d12adb31d9e03a523887f3d7a8b0079fd5ebb7259c8e",
+ "status": "ok",
+ "case_ids": [
+  "g01v1",
+  "g09v1",
+  "g07v1",
+  "g12v1"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.024608,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 4871,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 512,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 4871,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 512,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 4871,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 4871
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 512,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 4871,
+   "webSearchRequests": 0,
+   "costUSD": 0.024608,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 4871,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g01v1\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"no\",\"evidence_ids\":[\"g01v1.r08\",\"g01v1.r18\",\"g01v1.r28\"],\"rationale\":\"Target surface_call is surface. IHC measured with vital max level 1 and proteome not enriched, so no vital safety concern.\"},{\"id\":\"g09v1\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g09v1.r13\"],\"rationale\":\"No surface record for the target. Normal proteome reports vital protein enrichment (Brain Cortex), so concern is yes. Target has no IHC record.\"},{\"id\":\"g07v1\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"insufficient\",\"evidence_ids\":[\"g07v1.r10\",\"g07v1.r04\",\"g07v1.r12\"],\"rationale\":\"Surface call is surface (cell membrane). IHC not measured and proteome not enriched, so vital safety is insufficient.\"},{\"id\":\"g12v1\",\"surface_accessible\":\"no\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g12v1.r07\",\"g12v1.r18\",\"g12v1.r03\"],\"rationale\":\"Surface call is internal. Heart muscle IHC level 2 (vital organ) meets the threshold of >=2, so safety concern is yes.\"}]}",
+ "stderr": "",
+ "structured_output": {
+  "answers": [
+   {
+    "id": "g01v1",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "no",
+    "evidence_ids": [
+     "g01v1.r08",
+     "g01v1.r18",
+     "g01v1.r28"
+    ],
+    "rationale": "Target surface_call is surface. IHC measured with vital max level 1 and proteome not enriched, so no vital safety concern."
+   },
+   {
+    "id": "g09v1",
+    "surface_accessible": "insufficient",
+    "vital_safety_concern": "yes",
+    "evidence_ids": [
+     "g09v1.r13"
+    ],
+    "rationale": "No surface record for the target. Normal proteome reports vital protein enrichment (Brain Cortex), so concern is yes. Target has no IHC record."
+   },
+   {
+    "id": "g07v1",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "insufficient",
+    "evidence_ids": [
+     "g07v1.r10",
+     "g07v1.r04",
+     "g07v1.r12"
+    ],
+    "rationale": "Surface call is surface (cell membrane). IHC not measured and proteome not enriched, so vital safety is insufficient."
+   },
+   {
+    "id": "g12v1",
+    "surface_accessible": "no",
+    "vital_safety_concern": "yes",
+    "evidence_ids": [
+     "g12v1.r07",
+     "g12v1.r18",
+     "g12v1.r03"
+    ],
+    "rationale": "Surface call is internal. Heart muscle IHC level 2 (vital organ) meets the threshold of >=2, so safety concern is yes."
+   }
+  ]
+ },
+ "answers": [
+  {
+   "id": "g01v1",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "no",
+   "evidence_ids": [
+    "g01v1.r08",
+    "g01v1.r18",
+    "g01v1.r28"
+   ],
+   "rationale": "Target surface_call is surface. IHC measured with vital max level 1 and proteome not enriched, so no vital safety concern."
+  },
+  {
+   "id": "g09v1",
+   "surface_accessible": "insufficient",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g09v1.r13"
+   ],
+   "rationale": "No surface record for the target. Normal proteome reports vital protein enrichment (Brain Cortex), so concern is yes. Target has no IHC record."
+  },
+  {
+   "id": "g07v1",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "insufficient",
+   "evidence_ids": [
+    "g07v1.r10",
+    "g07v1.r04",
+    "g07v1.r12"
+   ],
+   "rationale": "Surface call is surface (cell membrane). IHC not measured and proteome not enriched, so vital safety is insufficient."
+  },
+  {
+   "id": "g12v1",
+   "surface_accessible": "no",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g12v1.r07",
+    "g12v1.r18",
+    "g12v1.r03"
+   ],
+   "rationale": "Surface call is internal. Heart muscle IHC level 2 (vital organ) meets the threshold of >=2, so safety concern is yes."
+  }
+ ],
+ "elapsed_s": 9.6
+}

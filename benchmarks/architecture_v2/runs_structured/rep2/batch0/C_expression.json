@@ -1,0 +1,167 @@
+{
+ "study_hash": "5b34e637c50dad54",
+ "prompt_sha256": "37cef385e041c224c3dd815c235670e4fbc46cfd5938658fda10b6f069134e6c",
+ "status": "ok",
+ "case_ids": [
+  "g05v0",
+  "g01v0",
+  "g06v0",
+  "g11v0"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.02732,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 5209,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 648,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 5209,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 648,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 5209,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 5209
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 648,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 5209,
+   "webSearchRequests": 0,
+   "costUSD": 0.02732,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 5209,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g05v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"evidence_ids\":[\"g05v0.r28\",\"g05v0.r05\",\"g05v0.r15\",\"g05v0.r09\"],\"rationale\":\"CPTAC protein log2fc 1.54, padj 3e-37 gives yes. CPTAC RNA is up (padj 6e-33). TCGA RNA and confirmatory protein are both up and significant, and none is opposite, so replicated.\"},{\"id\":\"g01v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"evidence_ids\":[\"g01v0.r09\",\"g01v0.r10\",\"g01v0.r26\"],\"rationale\":\"CPTAC protein is up (log2fc 2.27, padj 1e-42). CPTAC RNA is up and significant. TCGA RNA is up and significant, with no opposing cohort, so replicated.\"},{\"id\":\"g06v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"evidence_ids\":[\"g06v0.r12\",\"g06v0.r23\",\"g06v0.r01\"],\"rationale\":\"CPTAC protein is up (log2fc 1.83, padj 2e-27). CPTAC RNA is up and significant. TCGA RNA is up and significant, with no opposing cohort. There is no confirmatory protein record, which doesn't matter because TCGA already replicates.\"},{\"id\":\"g11v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"evidence_ids\":[\"g11v0.r01\",\"g11v0.r19\",\"g11v0.r15\",\"g11v0.r25\"],\"rationale\":\"CPTAC protein is up (log2fc 0.94, padj 2e-25). CPTAC RNA is up and significant. TCGA RNA and confirmatory protein are both up and significant, with none opposite.\"}]}",
+ "stderr": "",
+ "structured_output": {
+  "answers": [
+   {
+    "id": "g05v0",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "evidence_ids": [
+     "g05v0.r28",
+     "g05v0.r05",
+     "g05v0.r15",
+     "g05v0.r09"
+    ],
+    "rationale": "CPTAC protein log2fc 1.54, padj 3e-37 gives yes. CPTAC RNA is up (padj 6e-33). TCGA RNA and confirmatory protein are both up and significant, and none is opposite, so replicated."
+   },
+   {
+    "id": "g01v0",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "evidence_ids": [
+     "g01v0.r09",
+     "g01v0.r10",
+     "g01v0.r26"
+    ],
+    "rationale": "CPTAC protein is up (log2fc 2.27, padj 1e-42). CPTAC RNA is up and significant. TCGA RNA is up and significant, with no opposing cohort, so replicated."
+   },
+   {
+    "id": "g06v0",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "evidence_ids": [
+     "g06v0.r12",
+     "g06v0.r23",
+     "g06v0.r01"
+    ],
+    "rationale": "CPTAC protein is up (log2fc 1.83, padj 2e-27). CPTAC RNA is up and significant. TCGA RNA is up and significant, with no opposing cohort. There is no confirmatory protein record, which doesn't matter because TCGA already replicates."
+   },
+   {
+    "id": "g11v0",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "evidence_ids": [
+     "g11v0.r01",
+     "g11v0.r19",
+     "g11v0.r15",
+     "g11v0.r25"
+    ],
+    "rationale": "CPTAC protein is up (log2fc 0.94, padj 2e-25). CPTAC RNA is up and significant. TCGA RNA and confirmatory protein are both up and significant, with none opposite."
+   }
+  ]
+ },
+ "answers": [
+  {
+   "id": "g05v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "evidence_ids": [
+    "g05v0.r28",
+    "g05v0.r05",
+    "g05v0.r15",
+    "g05v0.r09"
+   ],
+   "rationale": "CPTAC protein log2fc 1.54, padj 3e-37 gives yes. CPTAC RNA is up (padj 6e-33). TCGA RNA and confirmatory protein are both up and significant, and none is opposite, so replicated."
+  },
+  {
+   "id": "g01v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "evidence_ids": [
+    "g01v0.r09",
+    "g01v0.r10",
+    "g01v0.r26"
+   ],
+   "rationale": "CPTAC protein is up (log2fc 2.27, padj 1e-42). CPTAC RNA is up and significant. TCGA RNA is up and significant, with no opposing cohort, so replicated."
+  },
+  {
+   "id": "g06v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "evidence_ids": [
+    "g06v0.r12",
+    "g06v0.r23",
+    "g06v0.r01"
+   ],
+   "rationale": "CPTAC protein is up (log2fc 1.83, padj 2e-27). CPTAC RNA is up and significant. TCGA RNA is up and significant, with no opposing cohort. There is no confirmatory protein record, which doesn't matter because TCGA already replicates."
+  },
+  {
+   "id": "g11v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "evidence_ids": [
+    "g11v0.r01",
+    "g11v0.r19",
+    "g11v0.r15",
+    "g11v0.r25"
+   ],
+   "rationale": "CPTAC protein is up (log2fc 0.94, padj 2e-25). CPTAC RNA is up and significant. TCGA RNA and confirmatory protein are both up and significant, with none opposite."
+  }
+ ],
+ "elapsed_s": 13.2
+}

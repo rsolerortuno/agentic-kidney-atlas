@@ -1,0 +1,165 @@
+{
+ "study_hash": "5b34e637c50dad54",
+ "prompt_sha256": "793c650115b2ea48cfe07e1b6d279fd70ee96429787cd7af553be846fff19cdb",
+ "status": "ok",
+ "case_ids": [
+  "g08v1",
+  "g10v1",
+  "g02v1",
+  "g04v1"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.027778,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 4981,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 785,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 4981,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 785,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 4981,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 4981
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 785,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 4981,
+   "webSearchRequests": 0,
+   "costUSD": 0.027778,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 4981,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g08v1\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"evidence_ids\":[\"g08v1.r02\",\"g08v1.r13\",\"g08v1.r08\"],\"rationale\":\"CPTAC protein log2fc 1.90, padj 8.7e-26 → up. CPTAC RNA up is the reference; TCGA RNA up significantly, no opposing cohort.\"},{\"id\":\"g10v1\",\"protein_up\":\"no\",\"replicated\":\"no\",\"evidence_ids\":[\"g10v1.r23\",\"g10v1.r07\",\"g10v1.r27\"],\"rationale\":\"CPTAC protein log2fc -1.86, padj 1e-32 → down. CPTAC RNA is down (reference); TCGA RNA is up significantly, opposite direction → not replicated. No confirmatory protein for target.\"},{\"id\":\"g02v1\",\"protein_up\":\"no\",\"replicated\":\"yes\",\"evidence_ids\":[\"g02v1.r22\",\"g02v1.r12\",\"g02v1.r07\"],\"rationale\":\"CPTAC protein log2fc -2.42, padj 1e-10 → down. CPTAC RNA down is reference; TCGA RNA down significantly, no opposing cohort → replicated.\"},{\"id\":\"g04v1\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"evidence_ids\":[\"g04v1.r10\",\"g04v1.r21\",\"g04v1.r13\",\"g04v1.r05\"],\"rationale\":\"CPTAC protein log2fc 2.28, padj 5e-47 → up. CPTAC RNA up is reference; TCGA RNA and confirmatory protein both up significantly, none opposing.\"}]}",
+ "stderr": "",
+ "structured_output": {
+  "answers": [
+   {
+    "id": "g08v1",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "evidence_ids": [
+     "g08v1.r02",
+     "g08v1.r13",
+     "g08v1.r08"
+    ],
+    "rationale": "CPTAC protein log2fc 1.90, padj 8.7e-26 → up. CPTAC RNA up is the reference; TCGA RNA up significantly, no opposing cohort."
+   },
+   {
+    "id": "g10v1",
+    "protein_up": "no",
+    "replicated": "no",
+    "evidence_ids": [
+     "g10v1.r23",
+     "g10v1.r07",
+     "g10v1.r27"
+    ],
+    "rationale": "CPTAC protein log2fc -1.86, padj 1e-32 → down. CPTAC RNA is down (reference); TCGA RNA is up significantly, opposite direction → not replicated. No confirmatory protein for target."
+   },
+   {
+    "id": "g02v1",
+    "protein_up": "no",
+    "replicated": "yes",
+    "evidence_ids": [
+     "g02v1.r22",
+     "g02v1.r12",
+     "g02v1.r07"
+    ],
+    "rationale": "CPTAC protein log2fc -2.42, padj 1e-10 → down. CPTAC RNA down is reference; TCGA RNA down significantly, no opposing cohort → replicated."
+   },
+   {
+    "id": "g04v1",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "evidence_ids": [
+     "g04v1.r10",
+     "g04v1.r21",
+     "g04v1.r13",
+     "g04v1.r05"
+    ],
+    "rationale": "CPTAC protein log2fc 2.28, padj 5e-47 → up. CPTAC RNA up is reference; TCGA RNA and confirmatory protein both up significantly, none opposing."
+   }
+  ]
+ },
+ "answers": [
+  {
+   "id": "g08v1",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "evidence_ids": [
+    "g08v1.r02",
+    "g08v1.r13",
+    "g08v1.r08"
+   ],
+   "rationale": "CPTAC protein log2fc 1.90, padj 8.7e-26 → up. CPTAC RNA up is the reference; TCGA RNA up significantly, no opposing cohort."
+  },
+  {
+   "id": "g10v1",
+   "protein_up": "no",
+   "replicated": "no",
+   "evidence_ids": [
+    "g10v1.r23",
+    "g10v1.r07",
+    "g10v1.r27"
+   ],
+   "rationale": "CPTAC protein log2fc -1.86, padj 1e-32 → down. CPTAC RNA is down (reference); TCGA RNA is up significantly, opposite direction → not replicated. No confirmatory protein for target."
+  },
+  {
+   "id": "g02v1",
+   "protein_up": "no",
+   "replicated": "yes",
+   "evidence_ids": [
+    "g02v1.r22",
+    "g02v1.r12",
+    "g02v1.r07"
+   ],
+   "rationale": "CPTAC protein log2fc -2.42, padj 1e-10 → down. CPTAC RNA down is reference; TCGA RNA down significantly, no opposing cohort → replicated."
+  },
+  {
+   "id": "g04v1",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "evidence_ids": [
+    "g04v1.r10",
+    "g04v1.r21",
+    "g04v1.r13",
+    "g04v1.r05"
+   ],
+   "rationale": "CPTAC protein log2fc 2.28, padj 5e-47 → up. CPTAC RNA up is reference; TCGA RNA and confirmatory protein both up significantly, none opposing."
+  }
+ ],
+ "elapsed_s": 10.9
+}

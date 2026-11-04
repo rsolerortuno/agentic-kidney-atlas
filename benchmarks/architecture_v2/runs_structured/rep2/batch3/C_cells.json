@@ -1,0 +1,143 @@
+{
+ "study_hash": "5b34e637c50dad54",
+ "prompt_sha256": "2967187631bad297ce77377d9d418db78efda0626fda1d53233b9c29b2f6b8fe",
+ "status": "ok",
+ "case_ids": [
+  "g04v0",
+  "g07v0",
+  "g10v0",
+  "g09v0"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.02733,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 5659,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 469,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 5659,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 469,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 5659,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 5659
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 469,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 5659,
+   "webSearchRequests": 0,
+   "costUSD": 0.02733,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 5659,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g04v0\",\"tumour_intrinsic\":\"no\",\"evidence_ids\":[\"g04v0.r13\"],\"rationale\":\"For ENTITY_02, RCC share 0.327 is the largest, but Macrophage is 0.272, so RCC is not exceeded... RCC is largest; purity LFC 3.821-1.96*0.33=3.17>0. Yes.\"},{\"id\":\"g07v0\",\"tumour_intrinsic\":\"yes\",\"evidence_ids\":[\"g07v0.r23\",\"g07v0.r20\"],\"rationale\":\"RCC has the largest share (0.881) in ENTITY_74. Purity bound 4.88-1.96*0.598=3.71>0.\"},{\"id\":\"g10v0\",\"tumour_intrinsic\":\"insufficient\",\"evidence_ids\":[\"g10v0.r10\",\"g10v0.r17\"],\"rationale\":\"RCC has the largest share (0.964), but purity LFC -2.928 with SE 1.029 gives a lower bound well below 0.\"},{\"id\":\"g09v0\",\"tumour_intrinsic\":\"no\",\"evidence_ids\":[\"g09v0.r03\"],\"rationale\":\"CD8_T share (0.737) exceeds RCC (0.072), so a non-RCC group has the larger share.\"}]}",
+ "stderr": "",
+ "structured_output": {
+  "answers": [
+   {
+    "id": "g04v0",
+    "tumour_intrinsic": "no",
+    "evidence_ids": [
+     "g04v0.r13"
+    ],
+    "rationale": "For ENTITY_02, RCC share 0.327 is the largest, but Macrophage is 0.272, so RCC is not exceeded... RCC is largest; purity LFC 3.821-1.96*0.33=3.17>0. Yes."
+   },
+   {
+    "id": "g07v0",
+    "tumour_intrinsic": "yes",
+    "evidence_ids": [
+     "g07v0.r23",
+     "g07v0.r20"
+    ],
+    "rationale": "RCC has the largest share (0.881) in ENTITY_74. Purity bound 4.88-1.96*0.598=3.71>0."
+   },
+   {
+    "id": "g10v0",
+    "tumour_intrinsic": "insufficient",
+    "evidence_ids": [
+     "g10v0.r10",
+     "g10v0.r17"
+    ],
+    "rationale": "RCC has the largest share (0.964), but purity LFC -2.928 with SE 1.029 gives a lower bound well below 0."
+   },
+   {
+    "id": "g09v0",
+    "tumour_intrinsic": "no",
+    "evidence_ids": [
+     "g09v0.r03"
+    ],
+    "rationale": "CD8_T share (0.737) exceeds RCC (0.072), so a non-RCC group has the larger share."
+   }
+  ]
+ },
+ "answers": [
+  {
+   "id": "g04v0",
+   "tumour_intrinsic": "no",
+   "evidence_ids": [
+    "g04v0.r13"
+   ],
+   "rationale": "For ENTITY_02, RCC share 0.327 is the largest, but Macrophage is 0.272, so RCC is not exceeded... RCC is largest; purity LFC 3.821-1.96*0.33=3.17>0. Yes."
+  },
+  {
+   "id": "g07v0",
+   "tumour_intrinsic": "yes",
+   "evidence_ids": [
+    "g07v0.r23",
+    "g07v0.r20"
+   ],
+   "rationale": "RCC has the largest share (0.881) in ENTITY_74. Purity bound 4.88-1.96*0.598=3.71>0."
+  },
+  {
+   "id": "g10v0",
+   "tumour_intrinsic": "insufficient",
+   "evidence_ids": [
+    "g10v0.r10",
+    "g10v0.r17"
+   ],
+   "rationale": "RCC has the largest share (0.964), but purity LFC -2.928 with SE 1.029 gives a lower bound well below 0."
+  },
+  {
+   "id": "g09v0",
+   "tumour_intrinsic": "no",
+   "evidence_ids": [
+    "g09v0.r03"
+   ],
+   "rationale": "CD8_T share (0.737) exceeds RCC (0.072), so a non-RCC group has the larger share."
+  }
+ ],
+ "elapsed_s": 9.2
+}

@@ -53,6 +53,48 @@ What the numbers say:
    single Sonnet agent was not tested. Long single sessions are also more exposed to usage limits, as the cut-off
    attempt showed.
 
+## Optimization of the multi-agent pipeline (2026-11-04)
+
+**Diagnosis.** The multi-agent arm did not lose points for lack of evidence: its specialists had found HK2's
+non-replication, the CheckMate 025 results and the PRISM screen, but the orchestrator left them out of the report.
+The narratives cited 57 % and 70 % of the specialists' verified evidence, against 83 % and 76 % for the single agent
+(`finding_evidence_cited_share`). The narrative guidance in `/informe` also predated the newest data layers.
+
+**Changes (general rules, not answers):**
+
+1. Every specialist marks three to five `"key": true` findings, especially negative results (no replication, no
+   selective effect, no difference between arms, immune rather than tumour origin, vital-organ concern), and checks
+   that its JSON parses.
+2. New step 4b: `scripts/coverage.py` lists the key findings whose evidence the narrative does not cite and the evidence
+   types it never uses; the orchestrator integrates each one or gives a reason in `limitations`.
+3. The section guidance names the newer layers (CheckMate 025 next to IMmotion150, the GTEx normal-tissue proteome,
+   PRISM), the applied specialist runs the confirmatory-cohort check for every top-10 gene of both profiles, and every
+   candidate robust in its profile goes into `targets` unless a limitation says why not.
+
+A first improved run was cut off by the usage limit after the report was finished (11 of 13; it missed HK2 because the
+specialist had not queried the confirmatory cohort, which led to the last rule in point 3). It is not in the table.
+
+**Results** (two runs per configuration; the specialists are Sonnet 5.5 in all of them):
+
+| Configuration | Run | Unsupported statements | Checklist (of 13) | Specialist evidence cited | Cost | Wall time | Turns |
+|---|---|---|---|---|---|---|---|
+| Multi-agent, before (Opus orchestrator) | M1 / M2 | 0 / 0 | 10 / 11 | 57 % / 70 % | $3.62 / $3.59 | 4.8 / 5.0 min | 40 / 29 |
+| **Multi-agent, improved (Opus orchestrator)** | opt1 / opt2 | **0 / 0** | **13 / 12** | 81 % / 66 % | $4.29 / $4.42 | 7.2 / 8.9 min | 44 / 75 |
+| Multi-agent, improved, Sonnet orchestrator | cheap1 / cheap2 | **23 / 10** | 11 / 13 | 81 % / 99 % | $2.28 / $2.79 | 3.0 / 5.6 min | 20 / 31 |
+| Single agent (Opus), for reference | S1 / S2 | 0 / 0 | 13 / 11 | 83 % / 76 % | $6.16 / $5.75 | 45.5 / 44.9 min | 256 / 249 |
+
+- **Quality: the improved multi-agent pipeline now matches the single agent** (13 and 12 against 13 and 11, no
+  unsupported statement). Read by hand: both improved runs state HK2's non-replication, use CheckMate 025 and cite PRISM
+  records; opt2 misses only that CD70 is partly made by T cells.
+- **Cost:** about 20 % more than before ($4.35 against $3.60) for the extra coverage step, still about 27 % cheaper and
+  5 to 6 times faster than the single agent.
+- **A Sonnet orchestrator is cheaper ($2.54) and fast, but fails the verification gate.** Both runs ended with
+  unsupported statements (23 and 10) because it did not repair the specialist findings the verifier dropped; the Opus
+  orchestrator repaired them in every run (0 dropped at the agent stage). So the orchestrator stays on Opus; the
+  repair step would have to be scripted or made explicit before a cheaper orchestrator can be used.
+- The single agent was not re-run with the new guidance, so part of the gain may come from documenting the newer
+  layers rather than from the coverage step; with two runs per configuration these are directions, not estimates.
+
 ## Conclusion, together with the interpretation benchmark
 
 - **Interpreting evidence that is already gathered:** a single agent is better: as accurate or more, cheaper, faster
@@ -61,6 +103,8 @@ What the numbers say:
   quality (a tie) but for cost (−40 %) and time (−89 %).
 - For the atlas: keep the multi-agent pipeline; its value is parallel, cheaper retrieval, and the orchestrator's
   integration and correction step should stay with one capable model.
+- After the optimization above, the multi-agent pipeline also matches the single agent's best checklist scores
+  (13 and 12) at about 27 % lower cost and a sixth of the time.
 
 ## Limits
 
@@ -71,7 +115,7 @@ reports; see above).
 
 ## Reproduce
 
-`benchmarks/architecture_pipeline/run_arm.ps1 -Arm multi|single -Run 2026-11-04_<name>` runs one analysis through
+`benchmarks/architecture_pipeline/run_arm.ps1 -Arm multi|single -Run 2026-11-04_<name> [-Model claude-sonnet-5-5]` runs one analysis through
 `claude -p` (Opus 5.5, project MCP servers, JSON result; the multi-agent arm also allows the Agent/Task tools). Move
 `runs/2026-11-04_<name>` to `runs/<name>` here, save its `session_<name>.json` there as `session.json` with an
 `"arm"` field, and run `python -m benchmarks.architecture_pipeline.score`.

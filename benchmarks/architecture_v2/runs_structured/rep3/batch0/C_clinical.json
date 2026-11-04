@@ -1,0 +1,139 @@
+{
+ "study_hash": "5b34e637c50dad54",
+ "prompt_sha256": "7ee23b8515fe209ae87e7411b0f92920f9b4471ab0de12012c3f139cd48481d0",
+ "status": "ok",
+ "case_ids": [
+  "g04v0",
+  "g06v0",
+  "g09v0",
+  "g08v0"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.032698,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 7151,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 409,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 7151,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 409,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 7151,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 7151
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 409,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 7151,
+   "webSearchRequests": 0,
+   "costUSD": 0.032698,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 7151,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g04v0\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g04v0.r14\"],\"rationale\":\"ENTITY_02 DepMap: 24 lines, but 0 dependent, selectivity -0.008, padj 0.93, so conditions fail.\"},{\"id\":\"g06v0\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g06v0.r17\"],\"rationale\":\"ENTITY_51 DepMap: 0 dependent lines, padj 0.387 (>=0.1), so conditions fail.\"},{\"id\":\"g09v0\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g09v0.r01\"],\"rationale\":\"ENTITY_06 DepMap: 3 dependent lines and selectivity 0.082>0, but padj 0.404 >=0.1, so fails.\"},{\"id\":\"g08v0\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g08v0.r19\"],\"rationale\":\"ENTITY_77 DepMap: 0 dependent lines, padj 0.82, so conditions fail.\"}]}",
+ "stderr": "",
+ "structured_output": {
+  "answers": [
+   {
+    "id": "g04v0",
+    "selective_dependency": "no",
+    "evidence_ids": [
+     "g04v0.r14"
+    ],
+    "rationale": "ENTITY_02 DepMap: 24 lines, but 0 dependent, selectivity -0.008, padj 0.93, so conditions fail."
+   },
+   {
+    "id": "g06v0",
+    "selective_dependency": "no",
+    "evidence_ids": [
+     "g06v0.r17"
+    ],
+    "rationale": "ENTITY_51 DepMap: 0 dependent lines, padj 0.387 (>=0.1), so conditions fail."
+   },
+   {
+    "id": "g09v0",
+    "selective_dependency": "no",
+    "evidence_ids": [
+     "g09v0.r01"
+    ],
+    "rationale": "ENTITY_06 DepMap: 3 dependent lines and selectivity 0.082>0, but padj 0.404 >=0.1, so fails."
+   },
+   {
+    "id": "g08v0",
+    "selective_dependency": "no",
+    "evidence_ids": [
+     "g08v0.r19"
+    ],
+    "rationale": "ENTITY_77 DepMap: 0 dependent lines, padj 0.82, so conditions fail."
+   }
+  ]
+ },
+ "answers": [
+  {
+   "id": "g04v0",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g04v0.r14"
+   ],
+   "rationale": "ENTITY_02 DepMap: 24 lines, but 0 dependent, selectivity -0.008, padj 0.93, so conditions fail."
+  },
+  {
+   "id": "g06v0",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g06v0.r17"
+   ],
+   "rationale": "ENTITY_51 DepMap: 0 dependent lines, padj 0.387 (>=0.1), so conditions fail."
+  },
+  {
+   "id": "g09v0",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g09v0.r01"
+   ],
+   "rationale": "ENTITY_06 DepMap: 3 dependent lines and selectivity 0.082>0, but padj 0.404 >=0.1, so fails."
+  },
+  {
+   "id": "g08v0",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g08v0.r19"
+   ],
+   "rationale": "ENTITY_77 DepMap: 0 dependent lines, padj 0.82, so conditions fail."
+  }
+ ],
+ "elapsed_s": 8.8
+}

@@ -1,0 +1,161 @@
+{
+ "study_hash": "5b34e637c50dad54",
+ "prompt_sha256": "04e35d0324e7f129030a4382ffdf8d3625c854de22e78563e0d0ae21cdb53faf",
+ "status": "ok",
+ "case_ids": [
+  "g12v0",
+  "g08v0",
+  "g02v0",
+  "g03v0"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.027279499999999998,
+ "usage": {
+  "input_tokens": 4,
+  "cache_creation_input_tokens": 4874,
+  "cache_read_input_tokens": 4255,
+  "output_tokens": 735,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 4874,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 501,
+    "cache_read_input_tokens": 4255,
+    "cache_creation_input_tokens": 619,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 619
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 4,
+   "outputTokens": 735,
+   "cacheReadInputTokens": 4255,
+   "cacheCreationInputTokens": 4874,
+   "webSearchRequests": 0,
+   "costUSD": 0.027279499999999998,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 4874,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g12v0\",\"surface_accessible\":\"no\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g12v0.r19\",\"g12v0.r03\",\"g12v0.r10\"],\"rationale\":\"Surface call is internal, so not accessible. Heart muscle IHC level 2 (vital organ, >=2) gives a safety concern.\"},{\"id\":\"g08v0\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"insufficient\",\"evidence_ids\":[\"g08v0.r16\",\"g08v0.r01\"],\"rationale\":\"Surface call is unknown. IHC was not measured and there is no proteome record for this entity, so safety is insufficient.\"},{\"id\":\"g02v0\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"insufficient\",\"evidence_ids\":[\"g02v0.r27\",\"g02v0.r17\",\"g02v0.r14\"],\"rationale\":\"Surface call is surface. IHC was not measured and the proteome reports no enrichment, so safety is insufficient.\"},{\"id\":\"g03v0\",\"surface_accessible\":\"no\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g03v0.r16\",\"g03v0.r05\",\"g03v0.r06\"],\"rationale\":\"Surface call is internal. Liver IHC level 3 (vital organ, >=2) gives a safety concern.\"}]}",
+ "stderr": "",
+ "structured_output": {
+  "answers": [
+   {
+    "id": "g12v0",
+    "surface_accessible": "no",
+    "vital_safety_concern": "yes",
+    "evidence_ids": [
+     "g12v0.r19",
+     "g12v0.r03",
+     "g12v0.r10"
+    ],
+    "rationale": "Surface call is internal, so not accessible. Heart muscle IHC level 2 (vital organ, >=2) gives a safety concern."
+   },
+   {
+    "id": "g08v0",
+    "surface_accessible": "insufficient",
+    "vital_safety_concern": "insufficient",
+    "evidence_ids": [
+     "g08v0.r16",
+     "g08v0.r01"
+    ],
+    "rationale": "Surface call is unknown. IHC was not measured and there is no proteome record for this entity, so safety is insufficient."
+   },
+   {
+    "id": "g02v0",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "insufficient",
+    "evidence_ids": [
+     "g02v0.r27",
+     "g02v0.r17",
+     "g02v0.r14"
+    ],
+    "rationale": "Surface call is surface. IHC was not measured and the proteome reports no enrichment, so safety is insufficient."
+   },
+   {
+    "id": "g03v0",
+    "surface_accessible": "no",
+    "vital_safety_concern": "yes",
+    "evidence_ids": [
+     "g03v0.r16",
+     "g03v0.r05",
+     "g03v0.r06"
+    ],
+    "rationale": "Surface call is internal. Liver IHC level 3 (vital organ, >=2) gives a safety concern."
+   }
+  ]
+ },
+ "answers": [
+  {
+   "id": "g12v0",
+   "surface_accessible": "no",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g12v0.r19",
+    "g12v0.r03",
+    "g12v0.r10"
+   ],
+   "rationale": "Surface call is internal, so not accessible. Heart muscle IHC level 2 (vital organ, >=2) gives a safety concern."
+  },
+  {
+   "id": "g08v0",
+   "surface_accessible": "insufficient",
+   "vital_safety_concern": "insufficient",
+   "evidence_ids": [
+    "g08v0.r16",
+    "g08v0.r01"
+   ],
+   "rationale": "Surface call is unknown. IHC was not measured and there is no proteome record for this entity, so safety is insufficient."
+  },
+  {
+   "id": "g02v0",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "insufficient",
+   "evidence_ids": [
+    "g02v0.r27",
+    "g02v0.r17",
+    "g02v0.r14"
+   ],
+   "rationale": "Surface call is surface. IHC was not measured and the proteome reports no enrichment, so safety is insufficient."
+  },
+  {
+   "id": "g03v0",
+   "surface_accessible": "no",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g03v0.r16",
+    "g03v0.r05",
+    "g03v0.r06"
+   ],
+   "rationale": "Surface call is internal. Liver IHC level 3 (vital organ, >=2) gives a safety concern."
+  }
+ ],
+ "elapsed_s": 11.5
+}

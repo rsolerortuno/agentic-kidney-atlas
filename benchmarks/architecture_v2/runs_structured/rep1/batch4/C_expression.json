@@ -1,0 +1,163 @@
+{
+ "study_hash": "3597c924e7fcc874",
+ "prompt_sha256": "173d601c6a216d4a7920c016dddce2e2cfdf67f3c9d09139e3f5a92d1bb3fcf6",
+ "status": "ok",
+ "case_ids": [
+  "g11v1",
+  "g07v1",
+  "g06v1",
+  "g09v1"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.027212,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 5062,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 696,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 5062,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 696,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 5062,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 5062
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 696,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 5062,
+   "webSearchRequests": 0,
+   "costUSD": 0.027212,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 5062,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g11v1\",\"protein_up\":\"no\",\"replicated\":\"no\",\"evidence_ids\":[\"g11v1.r22\",\"g11v1.r25\",\"g11v1.r12\"],\"rationale\":\"CPTAC protein log2fc -0.94, padj 1e-10, so protein down. CPTAC RNA is down (padj 1e-10), so the reference direction is down. TCGA RNA is also down. No independent cohort is opposite, but the confirmatory protein record is for another entity. Replicated would be yes, not no.\"},{\"id\":\"g07v1\",\"protein_up\":\"no\",\"replicated\":\"yes\",\"evidence_ids\":[\"g07v1.r11\",\"g07v1.r28\",\"g07v1.r22\"],\"rationale\":\"CPTAC protein log2fc -2.51, padj 1e-10, so protein down. CPTAC RNA is down (padj 1e-10). TCGA RNA is down (padj 1e-08), which agrees. There is no opposite-direction cohort.\"},{\"id\":\"g06v1\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"evidence_ids\":[\"g06v1.r05\",\"g06v1.r22\",\"g06v1.r26\"],\"rationale\":\"CPTAC protein log2fc +1.83, padj 2.2e-27, so protein up. CPTAC RNA is up (padj 3e-12). TCGA RNA is up (padj 2.5e-11), which agrees. There is no opposite-direction cohort.\"},{\"id\":\"g09v1\",\"protein_up\":\"insufficient\",\"replicated\":\"yes\",\"evidence_ids\":[\"g09v1.r15\",\"g09v1.r09\",\"g09v1.r22\"],\"rationale\":\"There is no CPTAC protein record for the target (only phospho), so protein_up is insufficient. CPTAC RNA is down (padj 2.5e-29). TCGA RNA is down and confirmatory protein is down, both with padj<0.05. Neither is opposite, so replicated is yes.\"}]}",
+ "stderr": "",
+ "structured_output": {
+  "answers": [
+   {
+    "id": "g11v1",
+    "protein_up": "no",
+    "replicated": "no",
+    "evidence_ids": [
+     "g11v1.r22",
+     "g11v1.r25",
+     "g11v1.r12"
+    ],
+    "rationale": "CPTAC protein log2fc -0.94, padj 1e-10, so protein down. CPTAC RNA is down (padj 1e-10), so the reference direction is down. TCGA RNA is also down. No independent cohort is opposite, but the confirmatory protein record is for another entity. Replicated would be yes, not no."
+   },
+   {
+    "id": "g07v1",
+    "protein_up": "no",
+    "replicated": "yes",
+    "evidence_ids": [
+     "g07v1.r11",
+     "g07v1.r28",
+     "g07v1.r22"
+    ],
+    "rationale": "CPTAC protein log2fc -2.51, padj 1e-10, so protein down. CPTAC RNA is down (padj 1e-10). TCGA RNA is down (padj 1e-08), which agrees. There is no opposite-direction cohort."
+   },
+   {
+    "id": "g06v1",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "evidence_ids": [
+     "g06v1.r05",
+     "g06v1.r22",
+     "g06v1.r26"
+    ],
+    "rationale": "CPTAC protein log2fc +1.83, padj 2.2e-27, so protein up. CPTAC RNA is up (padj 3e-12). TCGA RNA is up (padj 2.5e-11), which agrees. There is no opposite-direction cohort."
+   },
+   {
+    "id": "g09v1",
+    "protein_up": "insufficient",
+    "replicated": "yes",
+    "evidence_ids": [
+     "g09v1.r15",
+     "g09v1.r09",
+     "g09v1.r22"
+    ],
+    "rationale": "There is no CPTAC protein record for the target (only phospho), so protein_up is insufficient. CPTAC RNA is down (padj 2.5e-29). TCGA RNA is down and confirmatory protein is down, both with padj<0.05. Neither is opposite, so replicated is yes."
+   }
+  ]
+ },
+ "answers": [
+  {
+   "id": "g11v1",
+   "protein_up": "no",
+   "replicated": "no",
+   "evidence_ids": [
+    "g11v1.r22",
+    "g11v1.r25",
+    "g11v1.r12"
+   ],
+   "rationale": "CPTAC protein log2fc -0.94, padj 1e-10, so protein down. CPTAC RNA is down (padj 1e-10), so the reference direction is down. TCGA RNA is also down. No independent cohort is opposite, but the confirmatory protein record is for another entity. Replicated would be yes, not no."
+  },
+  {
+   "id": "g07v1",
+   "protein_up": "no",
+   "replicated": "yes",
+   "evidence_ids": [
+    "g07v1.r11",
+    "g07v1.r28",
+    "g07v1.r22"
+   ],
+   "rationale": "CPTAC protein log2fc -2.51, padj 1e-10, so protein down. CPTAC RNA is down (padj 1e-10). TCGA RNA is down (padj 1e-08), which agrees. There is no opposite-direction cohort."
+  },
+  {
+   "id": "g06v1",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "evidence_ids": [
+    "g06v1.r05",
+    "g06v1.r22",
+    "g06v1.r26"
+   ],
+   "rationale": "CPTAC protein log2fc +1.83, padj 2.2e-27, so protein up. CPTAC RNA is up (padj 3e-12). TCGA RNA is up (padj 2.5e-11), which agrees. There is no opposite-direction cohort."
+  },
+  {
+   "id": "g09v1",
+   "protein_up": "insufficient",
+   "replicated": "yes",
+   "evidence_ids": [
+    "g09v1.r15",
+    "g09v1.r09",
+    "g09v1.r22"
+   ],
+   "rationale": "There is no CPTAC protein record for the target (only phospho), so protein_up is insufficient. CPTAC RNA is down (padj 2.5e-29). TCGA RNA is down and confirmatory protein is down, both with padj<0.05. Neither is opposite, so replicated is yes."
+  }
+ ],
+ "elapsed_s": 17.6
+}

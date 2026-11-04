@@ -1,0 +1,147 @@
+{
+ "study_hash": "5b34e637c50dad54",
+ "prompt_sha256": "633fa7ead587ecb3e52cc983579d53a238a8f8bc6d9748b94edca85ac42ab03c",
+ "status": "ok",
+ "case_ids": [
+  "g11v1",
+  "g05v1",
+  "g03v1",
+  "g06v1"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.025392,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 5022,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 530,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 5022,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 530,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 5022,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 5022
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 530,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 5022,
+   "webSearchRequests": 0,
+   "costUSD": 0.025392,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 5022,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g11v1\",\"tumour_intrinsic\":\"no\",\"evidence_ids\":[\"g11v1.r17\",\"g11v1.r14\"],\"rationale\":\"Target single-cell record (r17): Macrophage (0.436) and CD8_T (0.345) have larger transcript shares than RCC (0.023). The r16 record belongs to another entity and was ignored.\"},{\"id\":\"g05v1\",\"tumour_intrinsic\":\"yes\",\"evidence_ids\":[\"g05v1.r25\",\"g05v1.r20\"],\"rationale\":\"RCC has the largest transcript share (0.949). Purity-adjusted lower bound is 5.278 - 1.96*0.665 = 3.97, which is above 0.\"},{\"id\":\"g03v1\",\"tumour_intrinsic\":\"yes\",\"evidence_ids\":[\"g03v1.r18\",\"g03v1.r16\"],\"rationale\":\"Target record r18 gives RCC the largest share (0.97). Purity lower bound is 5.256 - 1.96*0.617 = 4.05, which is above 0. Record r01 belongs to another entity and was ignored.\"},{\"id\":\"g06v1\",\"tumour_intrinsic\":\"no\",\"evidence_ids\":[\"g06v1.r16\",\"g06v1.r03\"],\"rationale\":\"CD8_T has a transcript share of 0.6, which is larger than RCC at 0.2. A non-RCC group is larger, so the answer is no despite the positive purity estimate.\"}]}",
+ "stderr": "",
+ "structured_output": {
+  "answers": [
+   {
+    "id": "g11v1",
+    "tumour_intrinsic": "no",
+    "evidence_ids": [
+     "g11v1.r17",
+     "g11v1.r14"
+    ],
+    "rationale": "Target single-cell record (r17): Macrophage (0.436) and CD8_T (0.345) have larger transcript shares than RCC (0.023). The r16 record belongs to another entity and was ignored."
+   },
+   {
+    "id": "g05v1",
+    "tumour_intrinsic": "yes",
+    "evidence_ids": [
+     "g05v1.r25",
+     "g05v1.r20"
+    ],
+    "rationale": "RCC has the largest transcript share (0.949). Purity-adjusted lower bound is 5.278 - 1.96*0.665 = 3.97, which is above 0."
+   },
+   {
+    "id": "g03v1",
+    "tumour_intrinsic": "yes",
+    "evidence_ids": [
+     "g03v1.r18",
+     "g03v1.r16"
+    ],
+    "rationale": "Target record r18 gives RCC the largest share (0.97). Purity lower bound is 5.256 - 1.96*0.617 = 4.05, which is above 0. Record r01 belongs to another entity and was ignored."
+   },
+   {
+    "id": "g06v1",
+    "tumour_intrinsic": "no",
+    "evidence_ids": [
+     "g06v1.r16",
+     "g06v1.r03"
+    ],
+    "rationale": "CD8_T has a transcript share of 0.6, which is larger than RCC at 0.2. A non-RCC group is larger, so the answer is no despite the positive purity estimate."
+   }
+  ]
+ },
+ "answers": [
+  {
+   "id": "g11v1",
+   "tumour_intrinsic": "no",
+   "evidence_ids": [
+    "g11v1.r17",
+    "g11v1.r14"
+   ],
+   "rationale": "Target single-cell record (r17): Macrophage (0.436) and CD8_T (0.345) have larger transcript shares than RCC (0.023). The r16 record belongs to another entity and was ignored."
+  },
+  {
+   "id": "g05v1",
+   "tumour_intrinsic": "yes",
+   "evidence_ids": [
+    "g05v1.r25",
+    "g05v1.r20"
+   ],
+   "rationale": "RCC has the largest transcript share (0.949). Purity-adjusted lower bound is 5.278 - 1.96*0.665 = 3.97, which is above 0."
+  },
+  {
+   "id": "g03v1",
+   "tumour_intrinsic": "yes",
+   "evidence_ids": [
+    "g03v1.r18",
+    "g03v1.r16"
+   ],
+   "rationale": "Target record r18 gives RCC the largest share (0.97). Purity lower bound is 5.256 - 1.96*0.617 = 4.05, which is above 0. Record r01 belongs to another entity and was ignored."
+  },
+  {
+   "id": "g06v1",
+   "tumour_intrinsic": "no",
+   "evidence_ids": [
+    "g06v1.r16",
+    "g06v1.r03"
+   ],
+   "rationale": "CD8_T has a transcript share of 0.6, which is larger than RCC at 0.2. A non-RCC group is larger, so the answer is no despite the positive purity estimate."
+  }
+ ],
+ "elapsed_s": 12.2
+}

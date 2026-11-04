@@ -1,0 +1,163 @@
+{
+ "study_hash": "5b34e637c50dad54",
+ "prompt_sha256": "b26f02d18a2ec4748c9bd3f97d90b4921e15baea2b39747fdb2f64deb140bc5a",
+ "status": "ok",
+ "case_ids": [
+  "g07v0",
+  "g05v0",
+  "g11v0",
+  "g12v0"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.028508200000000004,
+ "usage": {
+  "input_tokens": 4,
+  "cache_creation_input_tokens": 4953,
+  "cache_read_input_tokens": 4682,
+  "output_tokens": 822,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 4953,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 628,
+    "cache_read_input_tokens": 4682,
+    "cache_creation_input_tokens": 271,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 271
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 4,
+   "outputTokens": 822,
+   "cacheReadInputTokens": 4682,
+   "cacheCreationInputTokens": 4953,
+   "webSearchRequests": 0,
+   "costUSD": 0.028508200000000004,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 4953,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g07v0\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"insufficient\",\"evidence_ids\":[\"g07v0.r05\",\"g07v0.r19\",\"g07v0.r26\"],\"rationale\":\"Surface call is surface. IHC was not measured and the proteome reports no vital-protein enrichment, so vital safety is insufficient. The ENTITY_38 record belongs to another entity and was ignored.\"},{\"id\":\"g05v0\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g05v0.r07\",\"g05v0.r13\",\"g05v0.r14\"],\"rationale\":\"Surface call is surface. Vital-organ IHC staining is level 3 (duodenum), which is at least 2, so there is a vital safety concern. The proteome shows no enrichment.\"},{\"id\":\"g11v0\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g11v0.r13\",\"g11v0.r08\",\"g11v0.r02\"],\"rationale\":\"The target's surface call is surface. Vital IHC staining is level 3 (cerebellum), which is at least 2, so there is a concern. Records for ENTITY_49 and ENTITY_04 were ignored.\"},{\"id\":\"g12v0\",\"surface_accessible\":\"no\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g12v0.r19\",\"g12v0.r03\",\"g12v0.r10\"],\"rationale\":\"Surface call is internal, so not accessible. Vital IHC staining is level 2 (heart muscle), which meets the threshold of 2 or more, so there is a concern. The proteome shows no enrichment. The ENTITY_10 record was ignored.\"}]}",
+ "stderr": "",
+ "structured_output": {
+  "answers": [
+   {
+    "id": "g07v0",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "insufficient",
+    "evidence_ids": [
+     "g07v0.r05",
+     "g07v0.r19",
+     "g07v0.r26"
+    ],
+    "rationale": "Surface call is surface. IHC was not measured and the proteome reports no vital-protein enrichment, so vital safety is insufficient. The ENTITY_38 record belongs to another entity and was ignored."
+   },
+   {
+    "id": "g05v0",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "yes",
+    "evidence_ids": [
+     "g05v0.r07",
+     "g05v0.r13",
+     "g05v0.r14"
+    ],
+    "rationale": "Surface call is surface. Vital-organ IHC staining is level 3 (duodenum), which is at least 2, so there is a vital safety concern. The proteome shows no enrichment."
+   },
+   {
+    "id": "g11v0",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "yes",
+    "evidence_ids": [
+     "g11v0.r13",
+     "g11v0.r08",
+     "g11v0.r02"
+    ],
+    "rationale": "The target's surface call is surface. Vital IHC staining is level 3 (cerebellum), which is at least 2, so there is a concern. Records for ENTITY_49 and ENTITY_04 were ignored."
+   },
+   {
+    "id": "g12v0",
+    "surface_accessible": "no",
+    "vital_safety_concern": "yes",
+    "evidence_ids": [
+     "g12v0.r19",
+     "g12v0.r03",
+     "g12v0.r10"
+    ],
+    "rationale": "Surface call is internal, so not accessible. Vital IHC staining is level 2 (heart muscle), which meets the threshold of 2 or more, so there is a concern. The proteome shows no enrichment. The ENTITY_10 record was ignored."
+   }
+  ]
+ },
+ "answers": [
+  {
+   "id": "g07v0",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "insufficient",
+   "evidence_ids": [
+    "g07v0.r05",
+    "g07v0.r19",
+    "g07v0.r26"
+   ],
+   "rationale": "Surface call is surface. IHC was not measured and the proteome reports no vital-protein enrichment, so vital safety is insufficient. The ENTITY_38 record belongs to another entity and was ignored."
+  },
+  {
+   "id": "g05v0",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g05v0.r07",
+    "g05v0.r13",
+    "g05v0.r14"
+   ],
+   "rationale": "Surface call is surface. Vital-organ IHC staining is level 3 (duodenum), which is at least 2, so there is a vital safety concern. The proteome shows no enrichment."
+  },
+  {
+   "id": "g11v0",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g11v0.r13",
+    "g11v0.r08",
+    "g11v0.r02"
+   ],
+   "rationale": "The target's surface call is surface. Vital IHC staining is level 3 (cerebellum), which is at least 2, so there is a concern. Records for ENTITY_49 and ENTITY_04 were ignored."
+  },
+  {
+   "id": "g12v0",
+   "surface_accessible": "no",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g12v0.r19",
+    "g12v0.r03",
+    "g12v0.r10"
+   ],
+   "rationale": "Surface call is internal, so not accessible. Vital IHC staining is level 2 (heart muscle), which meets the threshold of 2 or more, so there is a concern. The proteome shows no enrichment. The ENTITY_10 record was ignored."
+  }
+ ],
+ "elapsed_s": 11.8
+}

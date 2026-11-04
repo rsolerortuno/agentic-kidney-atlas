@@ -1,0 +1,145 @@
+{
+ "study_hash": "3597c924e7fcc874",
+ "prompt_sha256": "6fb50e64e80624c5551e2edea4301292cda0321c2fa6413f5e30a16bb4efb89b",
+ "status": "ok",
+ "case_ids": [
+  "g01v1",
+  "g12v1",
+  "g04v1",
+  "g10v1"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.02625,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 5319,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 497,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 5319,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 497,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 5319,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 5319
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 497,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 5319,
+   "webSearchRequests": 0,
+   "costUSD": 0.02625,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 5319,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g01v1\",\"tumour_intrinsic\":\"yes\",\"evidence_ids\":[\"g01v1.r02\",\"g01v1.r19\"],\"rationale\":\"RCC has the largest transcript share (0.976). Purity lfc 7.787 - 1.96*0.579 = 6.65 > 0.\"},{\"id\":\"g12v1\",\"tumour_intrinsic\":\"no\",\"evidence_ids\":[\"g12v1.r22\"],\"rationale\":\"In the ENTITY_55 record, Macrophage share (0.574) exceeds RCC (0.233). A non-RCC group is larger. The ENTITY_59 record is not the target.\"},{\"id\":\"g04v1\",\"tumour_intrinsic\":\"yes\",\"evidence_ids\":[\"g04v1.r08\",\"g04v1.r22\"],\"rationale\":\"RCC has the largest share (0.327 vs Macrophage 0.272). Purity lfc 3.821 - 1.96*0.33 = 3.17 > 0.\"},{\"id\":\"g10v1\",\"tumour_intrinsic\":\"insufficient\",\"evidence_ids\":[\"g10v1.r02\",\"g10v1.r15\"],\"rationale\":\"RCC has the largest share (0.964), but the purity lfc is -2.928 and its upper bound is below 0. The interval does not exceed 0. The ENTITY_58 record is not the target.\"}]}",
+ "stderr": "",
+ "structured_output": {
+  "answers": [
+   {
+    "id": "g01v1",
+    "tumour_intrinsic": "yes",
+    "evidence_ids": [
+     "g01v1.r02",
+     "g01v1.r19"
+    ],
+    "rationale": "RCC has the largest transcript share (0.976). Purity lfc 7.787 - 1.96*0.579 = 6.65 > 0."
+   },
+   {
+    "id": "g12v1",
+    "tumour_intrinsic": "no",
+    "evidence_ids": [
+     "g12v1.r22"
+    ],
+    "rationale": "In the ENTITY_55 record, Macrophage share (0.574) exceeds RCC (0.233). A non-RCC group is larger. The ENTITY_59 record is not the target."
+   },
+   {
+    "id": "g04v1",
+    "tumour_intrinsic": "yes",
+    "evidence_ids": [
+     "g04v1.r08",
+     "g04v1.r22"
+    ],
+    "rationale": "RCC has the largest share (0.327 vs Macrophage 0.272). Purity lfc 3.821 - 1.96*0.33 = 3.17 > 0."
+   },
+   {
+    "id": "g10v1",
+    "tumour_intrinsic": "insufficient",
+    "evidence_ids": [
+     "g10v1.r02",
+     "g10v1.r15"
+    ],
+    "rationale": "RCC has the largest share (0.964), but the purity lfc is -2.928 and its upper bound is below 0. The interval does not exceed 0. The ENTITY_58 record is not the target."
+   }
+  ]
+ },
+ "answers": [
+  {
+   "id": "g01v1",
+   "tumour_intrinsic": "yes",
+   "evidence_ids": [
+    "g01v1.r02",
+    "g01v1.r19"
+   ],
+   "rationale": "RCC has the largest transcript share (0.976). Purity lfc 7.787 - 1.96*0.579 = 6.65 > 0."
+  },
+  {
+   "id": "g12v1",
+   "tumour_intrinsic": "no",
+   "evidence_ids": [
+    "g12v1.r22"
+   ],
+   "rationale": "In the ENTITY_55 record, Macrophage share (0.574) exceeds RCC (0.233). A non-RCC group is larger. The ENTITY_59 record is not the target."
+  },
+  {
+   "id": "g04v1",
+   "tumour_intrinsic": "yes",
+   "evidence_ids": [
+    "g04v1.r08",
+    "g04v1.r22"
+   ],
+   "rationale": "RCC has the largest share (0.327 vs Macrophage 0.272). Purity lfc 3.821 - 1.96*0.33 = 3.17 > 0."
+  },
+  {
+   "id": "g10v1",
+   "tumour_intrinsic": "insufficient",
+   "evidence_ids": [
+    "g10v1.r02",
+    "g10v1.r15"
+   ],
+   "rationale": "RCC has the largest share (0.964), but the purity lfc is -2.928 and its upper bound is below 0. The interval does not exceed 0. The ENTITY_58 record is not the target."
+  }
+ ],
+ "elapsed_s": 10.0
+}

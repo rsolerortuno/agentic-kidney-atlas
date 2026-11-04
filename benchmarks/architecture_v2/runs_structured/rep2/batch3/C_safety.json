@@ -1,0 +1,155 @@
+{
+ "study_hash": "5b34e637c50dad54",
+ "prompt_sha256": "008809febaba1ccb48cbc449756590e89c9bf1b81aae583c9158f5a76c0810d7",
+ "status": "ok",
+ "case_ids": [
+  "g04v0",
+  "g07v0",
+  "g10v0",
+  "g09v0"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.023998,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 4291,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 683,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 4291,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 683,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 4291,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 4291
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 683,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 4291,
+   "webSearchRequests": 0,
+   "costUSD": 0.023998,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 4291,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g04v0\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g04v0.r21\",\"g04v0.r09\",\"g04v0.r02\"],\"rationale\":\"Target surface record says surface. Target IHC vital max level 3 (Adrenal gland) is >=2, so a safety concern.\"},{\"id\":\"g07v0\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"insufficient\",\"evidence_ids\":[\"g07v0.r05\",\"g07v0.r19\",\"g07v0.r26\"],\"rationale\":\"Target surface_call is surface. IHC was not measured and the proteome reports no vital enrichment, so vital safety is insufficient.\"},{\"id\":\"g10v0\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g10v0.r26\"],\"rationale\":\"No surface record for the target (the surface record belongs to another entity). Proteome reports vital_protein_enriched true (Liver), so a safety concern.\"},{\"id\":\"g09v0\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g09v0.r16\"],\"rationale\":\"No surface record for the target (the one present belongs to another entity). Proteome shows vital enrichment (Brain Cortex), so a safety concern.\"}]}",
+ "stderr": "",
+ "structured_output": {
+  "answers": [
+   {
+    "id": "g04v0",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "yes",
+    "evidence_ids": [
+     "g04v0.r21",
+     "g04v0.r09",
+     "g04v0.r02"
+    ],
+    "rationale": "Target surface record says surface. Target IHC vital max level 3 (Adrenal gland) is >=2, so a safety concern."
+   },
+   {
+    "id": "g07v0",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "insufficient",
+    "evidence_ids": [
+     "g07v0.r05",
+     "g07v0.r19",
+     "g07v0.r26"
+    ],
+    "rationale": "Target surface_call is surface. IHC was not measured and the proteome reports no vital enrichment, so vital safety is insufficient."
+   },
+   {
+    "id": "g10v0",
+    "surface_accessible": "insufficient",
+    "vital_safety_concern": "yes",
+    "evidence_ids": [
+     "g10v0.r26"
+    ],
+    "rationale": "No surface record for the target (the surface record belongs to another entity). Proteome reports vital_protein_enriched true (Liver), so a safety concern."
+   },
+   {
+    "id": "g09v0",
+    "surface_accessible": "insufficient",
+    "vital_safety_concern": "yes",
+    "evidence_ids": [
+     "g09v0.r16"
+    ],
+    "rationale": "No surface record for the target (the one present belongs to another entity). Proteome shows vital enrichment (Brain Cortex), so a safety concern."
+   }
+  ]
+ },
+ "answers": [
+  {
+   "id": "g04v0",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g04v0.r21",
+    "g04v0.r09",
+    "g04v0.r02"
+   ],
+   "rationale": "Target surface record says surface. Target IHC vital max level 3 (Adrenal gland) is >=2, so a safety concern."
+  },
+  {
+   "id": "g07v0",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "insufficient",
+   "evidence_ids": [
+    "g07v0.r05",
+    "g07v0.r19",
+    "g07v0.r26"
+   ],
+   "rationale": "Target surface_call is surface. IHC was not measured and the proteome reports no vital enrichment, so vital safety is insufficient."
+  },
+  {
+   "id": "g10v0",
+   "surface_accessible": "insufficient",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g10v0.r26"
+   ],
+   "rationale": "No surface record for the target (the surface record belongs to another entity). Proteome reports vital_protein_enriched true (Liver), so a safety concern."
+  },
+  {
+   "id": "g09v0",
+   "surface_accessible": "insufficient",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g09v0.r16"
+   ],
+   "rationale": "No surface record for the target (the one present belongs to another entity). Proteome shows vital enrichment (Brain Cortex), so a safety concern."
+  }
+ ],
+ "elapsed_s": 10.4
+}

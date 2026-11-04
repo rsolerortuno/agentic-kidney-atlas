@@ -1,0 +1,139 @@
+{
+ "study_hash": "5b34e637c50dad54",
+ "prompt_sha256": "d2a0bfd6d23818d94bf0ccb25bdd300076babd8bf4e2a71cb5482e8b97c9e95b",
+ "status": "ok",
+ "case_ids": [
+  "g04v0",
+  "g07v0",
+  "g10v0",
+  "g09v0"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.032656,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 7088,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 430,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 7088,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 430,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 7088,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 7088
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 430,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 7088,
+   "webSearchRequests": 0,
+   "costUSD": 0.032656,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 7088,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g04v0\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g04v0.r14\"],\"rationale\":\"DepMap record exists for ENTITY_02: 0 dependent ccRCC lines, selectivity -0.008, padj 0.93, so conditions fail.\"},{\"id\":\"g07v0\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g07v0.r07\"],\"rationale\":\"DepMap record for ENTITY_74 shows 0 dependent lines, padj 0.56 (>=0.1), so conditions fail.\"},{\"id\":\"g10v0\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g10v0.r03\"],\"rationale\":\"DepMap record for ENTITY_63: selectivity negative (-0.037), 0 dependent lines, padj 0.41, so conditions fail.\"},{\"id\":\"g09v0\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g09v0.r01\"],\"rationale\":\"ENTITY_06 has 24 lines, 3 dependent, selectivity 0.082, but padj 0.404 (>=0.1), so the condition fails.\"}]}",
+ "stderr": "",
+ "structured_output": {
+  "answers": [
+   {
+    "id": "g04v0",
+    "selective_dependency": "no",
+    "evidence_ids": [
+     "g04v0.r14"
+    ],
+    "rationale": "DepMap record exists for ENTITY_02: 0 dependent ccRCC lines, selectivity -0.008, padj 0.93, so conditions fail."
+   },
+   {
+    "id": "g07v0",
+    "selective_dependency": "no",
+    "evidence_ids": [
+     "g07v0.r07"
+    ],
+    "rationale": "DepMap record for ENTITY_74 shows 0 dependent lines, padj 0.56 (>=0.1), so conditions fail."
+   },
+   {
+    "id": "g10v0",
+    "selective_dependency": "no",
+    "evidence_ids": [
+     "g10v0.r03"
+    ],
+    "rationale": "DepMap record for ENTITY_63: selectivity negative (-0.037), 0 dependent lines, padj 0.41, so conditions fail."
+   },
+   {
+    "id": "g09v0",
+    "selective_dependency": "no",
+    "evidence_ids": [
+     "g09v0.r01"
+    ],
+    "rationale": "ENTITY_06 has 24 lines, 3 dependent, selectivity 0.082, but padj 0.404 (>=0.1), so the condition fails."
+   }
+  ]
+ },
+ "answers": [
+  {
+   "id": "g04v0",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g04v0.r14"
+   ],
+   "rationale": "DepMap record exists for ENTITY_02: 0 dependent ccRCC lines, selectivity -0.008, padj 0.93, so conditions fail."
+  },
+  {
+   "id": "g07v0",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g07v0.r07"
+   ],
+   "rationale": "DepMap record for ENTITY_74 shows 0 dependent lines, padj 0.56 (>=0.1), so conditions fail."
+  },
+  {
+   "id": "g10v0",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g10v0.r03"
+   ],
+   "rationale": "DepMap record for ENTITY_63: selectivity negative (-0.037), 0 dependent lines, padj 0.41, so conditions fail."
+  },
+  {
+   "id": "g09v0",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g09v0.r01"
+   ],
+   "rationale": "ENTITY_06 has 24 lines, 3 dependent, selectivity 0.082, but padj 0.404 (>=0.1), so the condition fails."
+  }
+ ],
+ "elapsed_s": 10.8
+}

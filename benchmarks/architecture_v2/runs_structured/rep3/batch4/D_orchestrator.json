@@ -1,0 +1,253 @@
+{
+ "study_hash": "5b34e637c50dad54",
+ "prompt_sha256": "0141b610b2b80664f01e279e2d8b89fbf460eb04a7a53f8b33d929dca2e27cf9",
+ "status": "ok",
+ "case_ids": [
+  "g05v1",
+  "g07v1",
+  "g03v1",
+  "g12v1"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.0878122,
+ "usage": {
+  "input_tokens": 4,
+  "cache_creation_input_tokens": 16023,
+  "cache_read_input_tokens": 16522,
+  "output_tokens": 2206,
+  "output_tokens_details": {
+   "thinking_tokens": 511
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 16023,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1111,
+    "cache_read_input_tokens": 15515,
+    "cache_creation_input_tokens": 1515,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 1515
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 4,
+   "outputTokens": 2206,
+   "cacheReadInputTokens": 16522,
+   "cacheCreationInputTokens": 16023,
+   "webSearchRequests": 0,
+   "costUSD": 0.0878122,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 511,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 16023,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g05v1\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"no\",\"selective_dependency\":\"no\",\"verdict\":\"surface_target_candidate\",\"evidence_ids\":[\"g05v1.r09\",\"g05v1.r18\",\"g05v1.r21\",\"g05v1.r04\",\"g05v1.r25\",\"g05v1.r20\",\"g05v1.r15\",\"g05v1.r11\",\"g05v1.r10\",\"g05v1.r13\"],\"rationale\":\"Protein and RNA up; TCGA and confirmatory protein agree. RCC share 0.949, purity bound 3.97>0. Surface; vital IHC level 1, no enrichment. DepMap has 0 dependent lines, padj 0.63, so not selective.\"},{\"id\":\"g07v1\",\"protein_up\":\"no\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"insufficient\",\"selective_dependency\":\"no\",\"verdict\":\"loss_biomarker\",\"evidence_ids\":[\"g07v1.r11\",\"g07v1.r28\",\"g07v1.r22\",\"g07v1.r01\",\"g07v1.r09\",\"g07v1.r10\",\"g07v1.r12\",\"g07v1.r04\",\"g07v1.r26\"],\"rationale\":\"Protein down; CPTAC RNA and TCGA RNA down, so replicated. RCC dominant, purity bound positive. Surface. IHC not measured, no enrichment. DepMap fails. Protein down plus replicated gives loss biomarker.\"},{\"id\":\"g03v1\",\"protein_up\":\"no\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"no\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"loss_biomarker\",\"evidence_ids\":[\"g03v1.r02\",\"g03v1.r06\",\"g03v1.r11\",\"g03v1.r18\",\"g03v1.r16\",\"g03v1.r05\",\"g03v1.r25\",\"g03v1.r24\",\"g03v1.r20\"],\"rationale\":\"Protein down; RNA down in CPTAC and TCGA. RCC share 0.97, purity bound 4.05. Internal. Liver IHC level 3. DepMap selectivity negative, no dependent lines. Loss biomarker.\"},{\"id\":\"g12v1\",\"protein_up\":\"no\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"no\",\"surface_accessible\":\"no\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"loss_biomarker\",\"evidence_ids\":[\"g12v1.r25\",\"g12v1.r05\",\"g12v1.r16\",\"g12v1.r22\",\"g12v1.r02\",\"g12v1.r07\",\"g12v1.r18\",\"g12v1.r03\",\"g12v1.r01\"],\"rationale\":\"Protein down; CPTAC and TCGA RNA down. Macrophage share 0.574 exceeds RCC 0.233, so not tumour-intrinsic. Internal. Heart IHC level 2. DepMap selectivity negative. Loss_biomarker rule precedes infiltration.\"}]}",
+ "stderr": "",
+ "structured_output": {
+  "answers": [
+   {
+    "id": "g05v1",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "tumour_intrinsic": "yes",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "no",
+    "selective_dependency": "no",
+    "verdict": "surface_target_candidate",
+    "evidence_ids": [
+     "g05v1.r09",
+     "g05v1.r18",
+     "g05v1.r21",
+     "g05v1.r04",
+     "g05v1.r25",
+     "g05v1.r20",
+     "g05v1.r15",
+     "g05v1.r11",
+     "g05v1.r10",
+     "g05v1.r13"
+    ],
+    "rationale": "Protein and RNA up; TCGA and confirmatory protein agree. RCC share 0.949, purity bound 3.97>0. Surface; vital IHC level 1, no enrichment. DepMap has 0 dependent lines, padj 0.63, so not selective."
+   },
+   {
+    "id": "g07v1",
+    "protein_up": "no",
+    "replicated": "yes",
+    "tumour_intrinsic": "yes",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "insufficient",
+    "selective_dependency": "no",
+    "verdict": "loss_biomarker",
+    "evidence_ids": [
+     "g07v1.r11",
+     "g07v1.r28",
+     "g07v1.r22",
+     "g07v1.r01",
+     "g07v1.r09",
+     "g07v1.r10",
+     "g07v1.r12",
+     "g07v1.r04",
+     "g07v1.r26"
+    ],
+    "rationale": "Protein down; CPTAC RNA and TCGA RNA down, so replicated. RCC dominant, purity bound positive. Surface. IHC not measured, no enrichment. DepMap fails. Protein down plus replicated gives loss biomarker."
+   },
+   {
+    "id": "g03v1",
+    "protein_up": "no",
+    "replicated": "yes",
+    "tumour_intrinsic": "yes",
+    "surface_accessible": "no",
+    "vital_safety_concern": "yes",
+    "selective_dependency": "no",
+    "verdict": "loss_biomarker",
+    "evidence_ids": [
+     "g03v1.r02",
+     "g03v1.r06",
+     "g03v1.r11",
+     "g03v1.r18",
+     "g03v1.r16",
+     "g03v1.r05",
+     "g03v1.r25",
+     "g03v1.r24",
+     "g03v1.r20"
+    ],
+    "rationale": "Protein down; RNA down in CPTAC and TCGA. RCC share 0.97, purity bound 4.05. Internal. Liver IHC level 3. DepMap selectivity negative, no dependent lines. Loss biomarker."
+   },
+   {
+    "id": "g12v1",
+    "protein_up": "no",
+    "replicated": "yes",
+    "tumour_intrinsic": "no",
+    "surface_accessible": "no",
+    "vital_safety_concern": "yes",
+    "selective_dependency": "no",
+    "verdict": "loss_biomarker",
+    "evidence_ids": [
+     "g12v1.r25",
+     "g12v1.r05",
+     "g12v1.r16",
+     "g12v1.r22",
+     "g12v1.r02",
+     "g12v1.r07",
+     "g12v1.r18",
+     "g12v1.r03",
+     "g12v1.r01"
+    ],
+    "rationale": "Protein down; CPTAC and TCGA RNA down. Macrophage share 0.574 exceeds RCC 0.233, so not tumour-intrinsic. Internal. Heart IHC level 2. DepMap selectivity negative. Loss_biomarker rule precedes infiltration."
+   }
+  ]
+ },
+ "answers": [
+  {
+   "id": "g05v1",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "yes",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "no",
+   "selective_dependency": "no",
+   "verdict": "surface_target_candidate",
+   "evidence_ids": [
+    "g05v1.r09",
+    "g05v1.r18",
+    "g05v1.r21",
+    "g05v1.r04",
+    "g05v1.r25",
+    "g05v1.r20",
+    "g05v1.r15",
+    "g05v1.r11",
+    "g05v1.r10",
+    "g05v1.r13"
+   ],
+   "rationale": "Protein and RNA up; TCGA and confirmatory protein agree. RCC share 0.949, purity bound 3.97>0. Surface; vital IHC level 1, no enrichment. DepMap has 0 dependent lines, padj 0.63, so not selective."
+  },
+  {
+   "id": "g07v1",
+   "protein_up": "no",
+   "replicated": "yes",
+   "tumour_intrinsic": "yes",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "insufficient",
+   "selective_dependency": "no",
+   "verdict": "loss_biomarker",
+   "evidence_ids": [
+    "g07v1.r11",
+    "g07v1.r28",
+    "g07v1.r22",
+    "g07v1.r01",
+    "g07v1.r09",
+    "g07v1.r10",
+    "g07v1.r12",
+    "g07v1.r04",
+    "g07v1.r26"
+   ],
+   "rationale": "Protein down; CPTAC RNA and TCGA RNA down, so replicated. RCC dominant, purity bound positive. Surface. IHC not measured, no enrichment. DepMap fails. Protein down plus replicated gives loss biomarker."
+  },
+  {
+   "id": "g03v1",
+   "protein_up": "no",
+   "replicated": "yes",
+   "tumour_intrinsic": "yes",
+   "surface_accessible": "no",
+   "vital_safety_concern": "yes",
+   "selective_dependency": "no",
+   "verdict": "loss_biomarker",
+   "evidence_ids": [
+    "g03v1.r02",
+    "g03v1.r06",
+    "g03v1.r11",
+    "g03v1.r18",
+    "g03v1.r16",
+    "g03v1.r05",
+    "g03v1.r25",
+    "g03v1.r24",
+    "g03v1.r20"
+   ],
+   "rationale": "Protein down; RNA down in CPTAC and TCGA. RCC share 0.97, purity bound 4.05. Internal. Liver IHC level 3. DepMap selectivity negative, no dependent lines. Loss biomarker."
+  },
+  {
+   "id": "g12v1",
+   "protein_up": "no",
+   "replicated": "yes",
+   "tumour_intrinsic": "no",
+   "surface_accessible": "no",
+   "vital_safety_concern": "yes",
+   "selective_dependency": "no",
+   "verdict": "loss_biomarker",
+   "evidence_ids": [
+    "g12v1.r25",
+    "g12v1.r05",
+    "g12v1.r16",
+    "g12v1.r22",
+    "g12v1.r02",
+    "g12v1.r07",
+    "g12v1.r18",
+    "g12v1.r03",
+    "g12v1.r01"
+   ],
+   "rationale": "Protein down; CPTAC and TCGA RNA down. Macrophage share 0.574 exceeds RCC 0.233, so not tumour-intrinsic. Internal. Heart IHC level 2. DepMap selectivity negative. Loss_biomarker rule precedes infiltration."
+  }
+ ],
+ "elapsed_s": 19.1
+}

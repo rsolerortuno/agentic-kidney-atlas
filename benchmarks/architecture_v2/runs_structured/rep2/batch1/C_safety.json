@@ -1,0 +1,161 @@
+{
+ "study_hash": "5b34e637c50dad54",
+ "prompt_sha256": "b453ef596c342350cd202177e72e71024309d00c15be8d290fd4dcf8f77f5052",
+ "status": "ok",
+ "case_ids": [
+  "g11v1",
+  "g05v1",
+  "g03v1",
+  "g06v1"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.032768399999999996,
+ "usage": {
+  "input_tokens": 4,
+  "cache_creation_input_tokens": 5709,
+  "cache_read_input_tokens": 4944,
+  "output_tokens": 943,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 5709,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 572,
+    "cache_read_input_tokens": 4944,
+    "cache_creation_input_tokens": 765,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 765
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 4,
+   "outputTokens": 943,
+   "cacheReadInputTokens": 4944,
+   "cacheCreationInputTokens": 5709,
+   "webSearchRequests": 0,
+   "costUSD": 0.032768399999999996,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 5709,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g11v1\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g11v1.r26\",\"g11v1.r13\",\"g11v1.r19\"],\"rationale\":\"Target surface record is surface. Measured vital-organ IHC level 3 (Cerebellum) >=2, so concern is yes despite no proteome enrichment.\"},{\"id\":\"g05v1\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"no\",\"evidence_ids\":[\"g05v1.r15\",\"g05v1.r11\",\"g05v1.r10\"],\"rationale\":\"Target surface_call is surface. Vital IHC level 1 (lung) and target proteome not enriched; the enriched record belongs to another entity. Kidney staining excluded.\"},{\"id\":\"g03v1\",\"surface_accessible\":\"no\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g03v1.r05\",\"g03v1.r25\",\"g03v1.r24\"],\"rationale\":\"Target surface_call is internal, so not accessible. Measured vital IHC level 3 (Liver) >=2, giving a safety concern. The surface record belongs to another entity.\"},{\"id\":\"g06v1\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"no\",\"evidence_ids\":[\"g06v1.r13\",\"g06v1.r12\"],\"rationale\":\"Target surface_call is surface. Vital IHC measured at level 1 (small intestine). No target proteome record, so no enrichment reported; kidney level 2 is not vital. Other-entity records ignored.\"}]}",
+ "stderr": "",
+ "structured_output": {
+  "answers": [
+   {
+    "id": "g11v1",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "yes",
+    "evidence_ids": [
+     "g11v1.r26",
+     "g11v1.r13",
+     "g11v1.r19"
+    ],
+    "rationale": "Target surface record is surface. Measured vital-organ IHC level 3 (Cerebellum) >=2, so concern is yes despite no proteome enrichment."
+   },
+   {
+    "id": "g05v1",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "no",
+    "evidence_ids": [
+     "g05v1.r15",
+     "g05v1.r11",
+     "g05v1.r10"
+    ],
+    "rationale": "Target surface_call is surface. Vital IHC level 1 (lung) and target proteome not enriched; the enriched record belongs to another entity. Kidney staining excluded."
+   },
+   {
+    "id": "g03v1",
+    "surface_accessible": "no",
+    "vital_safety_concern": "yes",
+    "evidence_ids": [
+     "g03v1.r05",
+     "g03v1.r25",
+     "g03v1.r24"
+    ],
+    "rationale": "Target surface_call is internal, so not accessible. Measured vital IHC level 3 (Liver) >=2, giving a safety concern. The surface record belongs to another entity."
+   },
+   {
+    "id": "g06v1",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "no",
+    "evidence_ids": [
+     "g06v1.r13",
+     "g06v1.r12"
+    ],
+    "rationale": "Target surface_call is surface. Vital IHC measured at level 1 (small intestine). No target proteome record, so no enrichment reported; kidney level 2 is not vital. Other-entity records ignored."
+   }
+  ]
+ },
+ "answers": [
+  {
+   "id": "g11v1",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g11v1.r26",
+    "g11v1.r13",
+    "g11v1.r19"
+   ],
+   "rationale": "Target surface record is surface. Measured vital-organ IHC level 3 (Cerebellum) >=2, so concern is yes despite no proteome enrichment."
+  },
+  {
+   "id": "g05v1",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "no",
+   "evidence_ids": [
+    "g05v1.r15",
+    "g05v1.r11",
+    "g05v1.r10"
+   ],
+   "rationale": "Target surface_call is surface. Vital IHC level 1 (lung) and target proteome not enriched; the enriched record belongs to another entity. Kidney staining excluded."
+  },
+  {
+   "id": "g03v1",
+   "surface_accessible": "no",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g03v1.r05",
+    "g03v1.r25",
+    "g03v1.r24"
+   ],
+   "rationale": "Target surface_call is internal, so not accessible. Measured vital IHC level 3 (Liver) >=2, giving a safety concern. The surface record belongs to another entity."
+  },
+  {
+   "id": "g06v1",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "no",
+   "evidence_ids": [
+    "g06v1.r13",
+    "g06v1.r12"
+   ],
+   "rationale": "Target surface_call is surface. Vital IHC measured at level 1 (small intestine). No target proteome record, so no enrichment reported; kidney level 2 is not vital. Other-entity records ignored."
+  }
+ ],
+ "elapsed_s": 17.5
+}

@@ -1,0 +1,79 @@
+{
+ "agent": "agente-celular",
+ "findings": [
+  {
+   "gene": "CA9",
+   "role": "biomarker",
+   "statement": "Against normal proximal tubule (the cell of origin), paired by donor, CA9 in tumor cells is far higher, log2FC 7.739 [gene=CA9; type=sc_tumor_vs_pt; source=DATASET:LI2022-SCRNA; log2fc=7.739], so the signal is tumor-cell specific and not stromal.",
+   "evidence_ids": [
+    "EV:sc_tvp:225a767ebcb5"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:sc_tvp:225a767ebcb5",
+     "field": [
+      "log2fc"
+     ],
+     "display": "7.739",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "RAB42",
+   "role": "discovery",
+   "statement": "RAB42 is a second tumor-track candidate made mostly by RCC cells, replicated in TCGA and purity-robust, with very few ccRCC papers and no clinical drug; but it is an internal (non-surface) protein so not antibody-accessible, has no selective dependency and no survival signal, so it is a weak candidate until functional evidence appears.",
+   "evidence_ids": [
+    "EV:discovery:f53feb0aa597",
+    "EV:tcga_de:f53feb0aa597",
+    "EV:purity:f53feb0aa597",
+    "EV:tcga_survival:f53feb0aa597"
+   ],
+   "numeric_claims": []
+  },
+  {
+   "gene": "JAG2",
+   "role": "discovery",
+   "statement": "JAG2 is an endothelial stroma-track Notch ligand, surface/secreted, replicated in TCGA and purity-robust, no clinical drug in the screen, but with moderate literature in ccRCC and no selective dependency; it is an angiogenic-niche hypothesis whose safety in heart muscle and other tissues is unresolved.",
+   "evidence_ids": [
+    "EV:discovery:85b9825a2b63",
+    "EV:tcga_de:85b9825a2b63",
+    "EV:purity:85b9825a2b63",
+    "EV:tcga_survival:85b9825a2b63"
+   ],
+   "numeric_claims": []
+  },
+  {
+   "gene": "GAL3ST4",
+   "role": "discovery",
+   "statement": "GAL3ST4 is a macrophage-made immune-track enzyme that is replicated in TCGA, purity-robust and linked to adverse survival, with very few ccRCC papers; it is an internal enzyme (not antibody-accessible) with no dependency data, so only a prognostic or myeloid-state marker hypothesis at present.",
+   "evidence_ids": [
+    "EV:discovery:b3f34d2662ac",
+    "EV:tcga_de:b3f34d2662ac",
+    "EV:purity:b3f34d2662ac",
+    "EV:tcga_survival:b3f34d2662ac"
+   ],
+   "numeric_claims": []
+  },
+  {
+   "gene": "LILRB4",
+   "role": "discovery",
+   "statement": "LILRB4 is a macrophage surface checkpoint-like receptor; its tumor-up signal is infiltration-driven (vanishes in a pure tumor) and replicates in TCGA, with moderate ccRCC literature; a microenvironment immunotherapy hypothesis, not a tumor-cell target.",
+   "evidence_ids": [
+    "EV:discovery:3c9bb849285e",
+    "EV:tcga_de:3c9bb849285e",
+    "EV:purity:3c9bb849285e",
+    "EV:tcga_survival:3c9bb849285e"
+   ],
+   "numeric_claims": []
+  }
+ ],
+ "caveats": [
+  "EPAS1, MET and EGFR were not queried in this run; only CA9, KDR, CD74, CXCR4, CD70 and the top-ranked genes were covered.",
+  "Discovery candidates are data-ranked hypotheses; none has selective DepMap dependency or functional evidence, and literature is counted by gene symbol.",
+  "Single-cell captures are unbalanced (many T cells), so transcript shares depend on cell counts; cpm_share was not used for most claims. Some RCC cell groups come from few donors.",
+  "Structural scores are monomer heuristics and do not identify degrons, ligase compatibility or predict degradation.",
+  "For CD70 the quoted shares come from a record without an evidence id for the RCC group; only purity/TCGA/omics ids are cited.",
+  "ALDOB and NNMT statements rely on convergence_ranking outputs; details are in the cited purity and survival records."
+ ]
+}

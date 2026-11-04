@@ -1,0 +1,361 @@
+{
+ "study_hash": "d5366b4962be6b4d",
+ "prompt_sha256": "479e1a92c8279802b189635f80a0bfcdf415124e0536dca67974fab747310c30",
+ "status": "ok",
+ "case_ids": [
+  "g12v0",
+  "g06v0",
+  "g05v0",
+  "g03v0",
+  "g11v0",
+  "g10v0",
+  "g08v0",
+  "g07v0",
+  "g09v0",
+  "g02v0",
+  "g04v0",
+  "g01v0"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.05287,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 9834,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 1353,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 9834,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1353,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 9834,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 9834
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 1353,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 9834,
+   "webSearchRequests": 0,
+   "costUSD": 0.05287,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 9834,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g12v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"evidence_ids\":[\"g12v0.r18\",\"g12v0.r07\",\"g12v0.r02\",\"g12v0.r01\"],\"rationale\":\"CPTAC protein up (padj 1e-45). CPTAC RNA up significant; TCGA RNA up significant; confirmatory protein not significant (padj 0.074), so no opposite result.\"},{\"id\":\"g06v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"evidence_ids\":[\"g06v0.r12\",\"g06v0.r23\",\"g06v0.r01\"],\"rationale\":\"Protein up significantly; CPTAC RNA up; TCGA RNA up significant; no confirmatory protein record, no opposite.\"},{\"id\":\"g05v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"evidence_ids\":[\"g05v0.r28\",\"g05v0.r05\",\"g05v0.r15\",\"g05v0.r09\"],\"rationale\":\"Protein up; RNA up; TCGA RNA and confirmatory protein both up significantly.\"},{\"id\":\"g03v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"evidence_ids\":[\"g03v0.r25\",\"g03v0.r15\",\"g03v0.r09\",\"g03v0.r12\"],\"rationale\":\"Protein and RNA up; TCGA RNA and confirmatory protein up significantly.\"},{\"id\":\"g11v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"evidence_ids\":[\"g11v0.r01\",\"g11v0.r19\",\"g11v0.r15\",\"g11v0.r25\"],\"rationale\":\"Protein and RNA up; TCGA and confirmatory protein replicate upward.\"},{\"id\":\"g10v0\",\"protein_up\":\"no\",\"replicated\":\"yes\",\"evidence_ids\":[\"g10v0.r12\",\"g10v0.r13\",\"g10v0.r21\",\"g10v0.r19\"],\"rationale\":\"Protein down significantly; RNA down; TCGA RNA and confirmatory protein down, same direction.\"},{\"id\":\"g08v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"evidence_ids\":[\"g08v0.r09\",\"g08v0.r11\",\"g08v0.r04\"],\"rationale\":\"Protein up; CPTAC RNA up; TCGA RNA up significantly; no opposite record.\"},{\"id\":\"g07v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"evidence_ids\":[\"g07v0.r16\",\"g07v0.r17\",\"g07v0.r04\"],\"rationale\":\"Protein up; CPTAC RNA up; TCGA RNA up significantly; no opposite.\"},{\"id\":\"g09v0\",\"protein_up\":\"no\",\"replicated\":\"yes\",\"evidence_ids\":[\"g09v0.r06\",\"g09v0.r12\",\"g09v0.r10\",\"g09v0.r08\"],\"rationale\":\"Protein down significantly; RNA down; TCGA RNA and confirmatory protein down.\"},{\"id\":\"g02v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"evidence_ids\":[\"g02v0.r12\",\"g02v0.r06\",\"g02v0.r26\"],\"rationale\":\"Protein up; CPTAC RNA up; TCGA RNA up significantly; no confirmatory record for target.\"},{\"id\":\"g04v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"evidence_ids\":[\"g04v0.r06\",\"g04v0.r15\",\"g04v0.r16\",\"g04v0.r10\"],\"rationale\":\"Protein and RNA up; TCGA RNA and confirmatory protein up.\"},{\"id\":\"g01v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"evidence_ids\":[\"g01v0.r09\",\"g01v0.r10\",\"g01v0.r26\"],\"rationale\":\"Protein up; CPTAC RNA up; TCGA RNA up significantly; no opposite.\"}]}",
+ "stderr": "",
+ "structured_output": {
+  "answers": [
+   {
+    "id": "g12v0",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "evidence_ids": [
+     "g12v0.r18",
+     "g12v0.r07",
+     "g12v0.r02",
+     "g12v0.r01"
+    ],
+    "rationale": "CPTAC protein up (padj 1e-45). CPTAC RNA up significant; TCGA RNA up significant; confirmatory protein not significant (padj 0.074), so no opposite result."
+   },
+   {
+    "id": "g06v0",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "evidence_ids": [
+     "g06v0.r12",
+     "g06v0.r23",
+     "g06v0.r01"
+    ],
+    "rationale": "Protein up significantly; CPTAC RNA up; TCGA RNA up significant; no confirmatory protein record, no opposite."
+   },
+   {
+    "id": "g05v0",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "evidence_ids": [
+     "g05v0.r28",
+     "g05v0.r05",
+     "g05v0.r15",
+     "g05v0.r09"
+    ],
+    "rationale": "Protein up; RNA up; TCGA RNA and confirmatory protein both up significantly."
+   },
+   {
+    "id": "g03v0",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "evidence_ids": [
+     "g03v0.r25",
+     "g03v0.r15",
+     "g03v0.r09",
+     "g03v0.r12"
+    ],
+    "rationale": "Protein and RNA up; TCGA RNA and confirmatory protein up significantly."
+   },
+   {
+    "id": "g11v0",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "evidence_ids": [
+     "g11v0.r01",
+     "g11v0.r19",
+     "g11v0.r15",
+     "g11v0.r25"
+    ],
+    "rationale": "Protein and RNA up; TCGA and confirmatory protein replicate upward."
+   },
+   {
+    "id": "g10v0",
+    "protein_up": "no",
+    "replicated": "yes",
+    "evidence_ids": [
+     "g10v0.r12",
+     "g10v0.r13",
+     "g10v0.r21",
+     "g10v0.r19"
+    ],
+    "rationale": "Protein down significantly; RNA down; TCGA RNA and confirmatory protein down, same direction."
+   },
+   {
+    "id": "g08v0",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "evidence_ids": [
+     "g08v0.r09",
+     "g08v0.r11",
+     "g08v0.r04"
+    ],
+    "rationale": "Protein up; CPTAC RNA up; TCGA RNA up significantly; no opposite record."
+   },
+   {
+    "id": "g07v0",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "evidence_ids": [
+     "g07v0.r16",
+     "g07v0.r17",
+     "g07v0.r04"
+    ],
+    "rationale": "Protein up; CPTAC RNA up; TCGA RNA up significantly; no opposite."
+   },
+   {
+    "id": "g09v0",
+    "protein_up": "no",
+    "replicated": "yes",
+    "evidence_ids": [
+     "g09v0.r06",
+     "g09v0.r12",
+     "g09v0.r10",
+     "g09v0.r08"
+    ],
+    "rationale": "Protein down significantly; RNA down; TCGA RNA and confirmatory protein down."
+   },
+   {
+    "id": "g02v0",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "evidence_ids": [
+     "g02v0.r12",
+     "g02v0.r06",
+     "g02v0.r26"
+    ],
+    "rationale": "Protein up; CPTAC RNA up; TCGA RNA up significantly; no confirmatory record for target."
+   },
+   {
+    "id": "g04v0",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "evidence_ids": [
+     "g04v0.r06",
+     "g04v0.r15",
+     "g04v0.r16",
+     "g04v0.r10"
+    ],
+    "rationale": "Protein and RNA up; TCGA RNA and confirmatory protein up."
+   },
+   {
+    "id": "g01v0",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "evidence_ids": [
+     "g01v0.r09",
+     "g01v0.r10",
+     "g01v0.r26"
+    ],
+    "rationale": "Protein up; CPTAC RNA up; TCGA RNA up significantly; no opposite."
+   }
+  ]
+ },
+ "answers": [
+  {
+   "id": "g12v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "evidence_ids": [
+    "g12v0.r18",
+    "g12v0.r07",
+    "g12v0.r02",
+    "g12v0.r01"
+   ],
+   "rationale": "CPTAC protein up (padj 1e-45). CPTAC RNA up significant; TCGA RNA up significant; confirmatory protein not significant (padj 0.074), so no opposite result."
+  },
+  {
+   "id": "g06v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "evidence_ids": [
+    "g06v0.r12",
+    "g06v0.r23",
+    "g06v0.r01"
+   ],
+   "rationale": "Protein up significantly; CPTAC RNA up; TCGA RNA up significant; no confirmatory protein record, no opposite."
+  },
+  {
+   "id": "g05v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "evidence_ids": [
+    "g05v0.r28",
+    "g05v0.r05",
+    "g05v0.r15",
+    "g05v0.r09"
+   ],
+   "rationale": "Protein up; RNA up; TCGA RNA and confirmatory protein both up significantly."
+  },
+  {
+   "id": "g03v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "evidence_ids": [
+    "g03v0.r25",
+    "g03v0.r15",
+    "g03v0.r09",
+    "g03v0.r12"
+   ],
+   "rationale": "Protein and RNA up; TCGA RNA and confirmatory protein up significantly."
+  },
+  {
+   "id": "g11v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "evidence_ids": [
+    "g11v0.r01",
+    "g11v0.r19",
+    "g11v0.r15",
+    "g11v0.r25"
+   ],
+   "rationale": "Protein and RNA up; TCGA and confirmatory protein replicate upward."
+  },
+  {
+   "id": "g10v0",
+   "protein_up": "no",
+   "replicated": "yes",
+   "evidence_ids": [
+    "g10v0.r12",
+    "g10v0.r13",
+    "g10v0.r21",
+    "g10v0.r19"
+   ],
+   "rationale": "Protein down significantly; RNA down; TCGA RNA and confirmatory protein down, same direction."
+  },
+  {
+   "id": "g08v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "evidence_ids": [
+    "g08v0.r09",
+    "g08v0.r11",
+    "g08v0.r04"
+   ],
+   "rationale": "Protein up; CPTAC RNA up; TCGA RNA up significantly; no opposite record."
+  },
+  {
+   "id": "g07v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "evidence_ids": [
+    "g07v0.r16",
+    "g07v0.r17",
+    "g07v0.r04"
+   ],
+   "rationale": "Protein up; CPTAC RNA up; TCGA RNA up significantly; no opposite."
+  },
+  {
+   "id": "g09v0",
+   "protein_up": "no",
+   "replicated": "yes",
+   "evidence_ids": [
+    "g09v0.r06",
+    "g09v0.r12",
+    "g09v0.r10",
+    "g09v0.r08"
+   ],
+   "rationale": "Protein down significantly; RNA down; TCGA RNA and confirmatory protein down."
+  },
+  {
+   "id": "g02v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "evidence_ids": [
+    "g02v0.r12",
+    "g02v0.r06",
+    "g02v0.r26"
+   ],
+   "rationale": "Protein up; CPTAC RNA up; TCGA RNA up significantly; no confirmatory record for target."
+  },
+  {
+   "id": "g04v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "evidence_ids": [
+    "g04v0.r06",
+    "g04v0.r15",
+    "g04v0.r16",
+    "g04v0.r10"
+   ],
+   "rationale": "Protein and RNA up; TCGA RNA and confirmatory protein up."
+  },
+  {
+   "id": "g01v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "evidence_ids": [
+    "g01v0.r09",
+    "g01v0.r10",
+    "g01v0.r26"
+   ],
+   "rationale": "Protein up; CPTAC RNA up; TCGA RNA up significantly; no opposite."
+  }
+ ],
+ "elapsed_s": 13.0
+}

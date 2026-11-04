@@ -1,0 +1,140 @@
+{
+ "agent": "agente-externo",
+ "findings": [
+  {
+   "gene": "CD70",
+   "role": "target",
+   "key": true,
+   "statement": "Rank 4 in the convergence ranking. It is a plasma membrane protein (UniProt), and Open Targets lists advanced-clinical antibody and other-modality tractability. Drugs as returned: CUSATUZUMAB PHASE_2, VORSETUZUMAB PHASE_1, VORSETUZUMAB MAFODOTIN PHASE_1, MDX-1411 PHASE_1. Tumour up-regulation is strong and tumour-intrinsic according to the ranking components. There is no cell-intrinsic dependency [gene=CD70; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=0.251], so the rationale is surface-antigen targeting (ADC, antibody or cell therapy) rather than pathway inhibition. Normal expression is restricted to activated lymphocytes (UniProt: B cell ligand of CD27).",
+   "evidence_ids": [
+    "EV:open_targets_tract:908e84663f6a",
+    "EV:open_targets_drug:0a02c566ec75",
+    "EV:open_targets_drug:fcadbe214e8c",
+    "EV:uniprot:e21e5815e1a4",
+    "EV:depmap_dependency:908e84663f6a",
+    "EV:open_targets_assoc:255532a611b4"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:depmap_dependency:908e84663f6a",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "0.251",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "EPAS1",
+   "role": "target",
+   "key": true,
+   "statement": "Established ccRCC drug target (HIF-2 alpha). Open Targets association [gene=EPAS1; type=open_targets_association; source=Open Targets Platform; score=0.4871] (rank 9 of 1998). Drug as returned: BELZUTIFAN, APPROVAL. DepMap shows the most ccRCC-selective dependency among the established targets here, though it is not common essential [gene=EPAS1; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; selectivity=0.3]. The BH q is borderline and only a minority of ccRCC lines are dependent. 2D cell lines under-represent HIF-2 biology, so this is only supportive.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:61983038a898",
+    "EV:open_targets_drug:199c475802ce",
+    "EV:depmap_dependency:6a657326c9fd"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:open_targets_assoc:61983038a898",
+     "field": [
+      "score"
+     ],
+     "display": "0.4871",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:depmap_dependency:6a657326c9fd",
+     "field": [
+      "selectivity"
+     ],
+     "display": "0.3",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "MTOR",
+   "role": "target",
+   "key": true,
+   "statement": "Established ccRCC drug target. Open Targets lists many clinical inhibitors, including RIDAFOROLIMUS (APPROVAL), GEDATOLISIB (PHASE_3) and DACTOLISIB (PHASE_3). ccRCC lines depend strongly on it [gene=MTOR; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=-1.52]. It is flagged common essential, so this is a toxicity and therapeutic-window risk, not a selective vulnerability, even though selectivity versus other lines is positive. Somatic mutation is recurrent but infrequent.",
+   "evidence_ids": [
+    "EV:depmap_dependency:95bc7fa85685",
+    "EV:open_targets_drug:47a49b68dd99",
+    "EV:open_targets_assoc:900f88933f86",
+    "EV:somatic_recurrence:95bc7fa85685"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:depmap_dependency:95bc7fa85685",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "-1.52",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "NNMT",
+   "role": "biomarker",
+   "statement": "Rank 8 in the convergence ranking, up in tumour and tumour-intrinsic, with prognosis and grade associations in the ranking. It is a cytoplasmic enzyme (UniProt), so not antibody-accessible. Open Targets reports small-molecule tractability but no drugs. Weak case as a target because ccRCC lines do not depend on it [gene=NNMT; type=depmap_dependency; source=DATASET:DEPMAP-26Q1; mean_effect_ccrcc=0.316]. It is more useful as a prognostic biomarker.",
+   "evidence_ids": [
+    "EV:open_targets_tract:7dbf93860d9f",
+    "EV:uniprot:39a9e4ceba83",
+    "EV:depmap_dependency:7dbf93860d9f",
+    "EV:open_targets_assoc:719ce7782338"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:depmap_dependency:7dbf93860d9f",
+     "field": [
+      "mean_effect_ccrcc"
+     ],
+     "display": "0.316",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "SCARB1",
+   "role": "target_and_biomarker",
+   "statement": "Rank 6 in the convergence ranking with an Open Targets genetic association component and a tumour-up, purity-robust signal. It is a plasma membrane and caveolar receptor (UniProt). No drugs are listed, and ccRCC lines show no dependency (mean effect near zero, no selectivity), so it is a tractable but untested surface candidate.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:ee2e17841173",
+    "EV:uniprot:e11b444a7dbb",
+    "EV:depmap_dependency:2d66f8e78d0c"
+   ],
+   "numeric_claims": []
+  },
+  {
+   "gene": "COXFA4L2",
+   "role": "biomarker",
+   "statement": "Rank 2 in the convergence ranking: strongly tumour-up at RNA and protein and tumour-intrinsic. Open Targets lists ME-344 (PHASE_1_2) and metformin (WITHDRAWAL as returned), but these are likely non-specific mitochondrial agents. No ccRCC dependency (not significant, no dependent lines). Biomarker only, with no target case.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:acbb0be5791e",
+    "EV:open_targets_drug:5ffdf87227c5",
+    "EV:depmap_dependency:f0a8d64901b6"
+   ],
+   "numeric_claims": []
+  },
+  {
+   "gene": "ALDOB",
+   "role": "biomarker",
+   "statement": "Rank 3 in the convergence ranking, but down in tumour (proximal tubule marker) with a prognostic association. No drugs and no dependency in ccRCC lines. It is a loss-of-expression biomarker, not a therapeutic target.",
+   "evidence_ids": [
+    "EV:open_targets_assoc:7d82917bd537",
+    "EV:open_targets_tract:a46f337f2987",
+    "EV:depmap_dependency:a46f337f2987"
+   ],
+   "numeric_claims": []
+  }
+ ],
+ "caveats": [
+  "Top-ranked convergence genes (CA9, CD70, COXFA4L2, NNMT, SCARB1) have no selective ccRCC dependency in DepMap, so the strongest cases are biomarkers or surface antigens, not pathway targets. Dependency in 2D lines misses HIF-2 biology.",
+  "Drug stages are Open Targets maximum stages and include withdrawn or non-ccRCC indications; they do not imply ccRCC efficacy.",
+  "The convergence ranking was inspected only for the top 12 genes because of output size, and STRING was not used.",
+  "Several top-ranked down-regulated genes (SLC22A8, UMOD, FABP1, NPHS2, PIGR, MT1G) are renal-tubule markers; their loss reflects lineage and may not be tumour-intrinsic. They were not individually profiled."
+ ]
+}

@@ -1,0 +1,139 @@
+{
+ "study_hash": "5b34e637c50dad54",
+ "prompt_sha256": "ad0f0194c5ec2356b77149e1868d3bc72c8bd6857eb310b83fe6e89b525a0ce1",
+ "status": "ok",
+ "case_ids": [
+  "g08v1",
+  "g10v1",
+  "g02v1",
+  "g04v1"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.034294,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 7405,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 467,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 7405,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 467,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 7405,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 7405
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 467,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 7405,
+   "webSearchRequests": 0,
+   "costUSD": 0.034294,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 7405,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g08v1\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g08v1.r20\"],\"rationale\":\"DepMap record exists for ENTITY_46: 24 lines but 0 dependent, padj 0.82 (≥0.1). Conditions fail, so no.\"},{\"id\":\"g10v1\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g10v1.r14\"],\"rationale\":\"ENTITY_73 DepMap record: 0 dependent lines, selectivity negative, padj 0.41. Conditions fail, so no. The ENTITY_58 depmap record is ignored.\"},{\"id\":\"g02v1\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g02v1.r15\"],\"rationale\":\"ENTITY_67 DepMap record: 0 dependent lines, padj 0.93, selectivity 0.006. Fails the padj and dependent-line conditions, so no. The ENTITY_87 record is ignored.\"},{\"id\":\"g04v1\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g04v1.r18\"],\"rationale\":\"ENTITY_08 DepMap record: 0 dependent lines, negative selectivity, padj 0.93. Conditions fail, so no.\"}]}",
+ "stderr": "",
+ "structured_output": {
+  "answers": [
+   {
+    "id": "g08v1",
+    "selective_dependency": "no",
+    "evidence_ids": [
+     "g08v1.r20"
+    ],
+    "rationale": "DepMap record exists for ENTITY_46: 24 lines but 0 dependent, padj 0.82 (≥0.1). Conditions fail, so no."
+   },
+   {
+    "id": "g10v1",
+    "selective_dependency": "no",
+    "evidence_ids": [
+     "g10v1.r14"
+    ],
+    "rationale": "ENTITY_73 DepMap record: 0 dependent lines, selectivity negative, padj 0.41. Conditions fail, so no. The ENTITY_58 depmap record is ignored."
+   },
+   {
+    "id": "g02v1",
+    "selective_dependency": "no",
+    "evidence_ids": [
+     "g02v1.r15"
+    ],
+    "rationale": "ENTITY_67 DepMap record: 0 dependent lines, padj 0.93, selectivity 0.006. Fails the padj and dependent-line conditions, so no. The ENTITY_87 record is ignored."
+   },
+   {
+    "id": "g04v1",
+    "selective_dependency": "no",
+    "evidence_ids": [
+     "g04v1.r18"
+    ],
+    "rationale": "ENTITY_08 DepMap record: 0 dependent lines, negative selectivity, padj 0.93. Conditions fail, so no."
+   }
+  ]
+ },
+ "answers": [
+  {
+   "id": "g08v1",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g08v1.r20"
+   ],
+   "rationale": "DepMap record exists for ENTITY_46: 24 lines but 0 dependent, padj 0.82 (≥0.1). Conditions fail, so no."
+  },
+  {
+   "id": "g10v1",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g10v1.r14"
+   ],
+   "rationale": "ENTITY_73 DepMap record: 0 dependent lines, selectivity negative, padj 0.41. Conditions fail, so no. The ENTITY_58 depmap record is ignored."
+  },
+  {
+   "id": "g02v1",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g02v1.r15"
+   ],
+   "rationale": "ENTITY_67 DepMap record: 0 dependent lines, padj 0.93, selectivity 0.006. Fails the padj and dependent-line conditions, so no. The ENTITY_87 record is ignored."
+  },
+  {
+   "id": "g04v1",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g04v1.r18"
+   ],
+   "rationale": "ENTITY_08 DepMap record: 0 dependent lines, negative selectivity, padj 0.93. Conditions fail, so no."
+  }
+ ],
+ "elapsed_s": 10.0
+}

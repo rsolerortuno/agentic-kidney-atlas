@@ -1,0 +1,147 @@
+{
+ "study_hash": "5b34e637c50dad54",
+ "prompt_sha256": "d191ac8f8303fa6ba24a15b27439266b747af237d25542dead58f42f02cd9462",
+ "status": "ok",
+ "case_ids": [
+  "g05v1",
+  "g07v1",
+  "g03v1",
+  "g12v1"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.025042000000000002,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 4982,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 511,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 4982,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 511,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 4982,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 4982
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 511,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 4982,
+   "webSearchRequests": 0,
+   "costUSD": 0.025042000000000002,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 4982,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g05v1\",\"tumour_intrinsic\":\"yes\",\"evidence_ids\":[\"g05v1.r25\",\"g05v1.r20\"],\"rationale\":\"RCC has the largest transcript share (0.949). Purity lfc 5.278 - 1.96*0.665 = 3.97 > 0.\"},{\"id\":\"g07v1\",\"tumour_intrinsic\":\"yes\",\"evidence_ids\":[\"g07v1.r01\",\"g07v1.r09\"],\"rationale\":\"RCC has the largest share (0.881). Purity lfc 4.88 - 1.96*0.598 = 3.71 > 0.\"},{\"id\":\"g03v1\",\"tumour_intrinsic\":\"yes\",\"evidence_ids\":[\"g03v1.r18\",\"g03v1.r16\"],\"rationale\":\"The target's single-cell record (r18) shows RCC with the largest share (0.97). Purity lfc 5.256 - 1.96*0.617 = 4.05 > 0. The record with a macrophage-dominant profile belongs to another entity.\"},{\"id\":\"g12v1\",\"tumour_intrinsic\":\"no\",\"evidence_ids\":[\"g12v1.r22\",\"g12v1.r02\"],\"rationale\":\"In the target's single-cell record, Macrophage share (0.574) is larger than RCC (0.233), so a non-RCC group exceeds RCC. The purity record is positive but doesn't change this.\"}]}",
+ "stderr": "",
+ "structured_output": {
+  "answers": [
+   {
+    "id": "g05v1",
+    "tumour_intrinsic": "yes",
+    "evidence_ids": [
+     "g05v1.r25",
+     "g05v1.r20"
+    ],
+    "rationale": "RCC has the largest transcript share (0.949). Purity lfc 5.278 - 1.96*0.665 = 3.97 > 0."
+   },
+   {
+    "id": "g07v1",
+    "tumour_intrinsic": "yes",
+    "evidence_ids": [
+     "g07v1.r01",
+     "g07v1.r09"
+    ],
+    "rationale": "RCC has the largest share (0.881). Purity lfc 4.88 - 1.96*0.598 = 3.71 > 0."
+   },
+   {
+    "id": "g03v1",
+    "tumour_intrinsic": "yes",
+    "evidence_ids": [
+     "g03v1.r18",
+     "g03v1.r16"
+    ],
+    "rationale": "The target's single-cell record (r18) shows RCC with the largest share (0.97). Purity lfc 5.256 - 1.96*0.617 = 4.05 > 0. The record with a macrophage-dominant profile belongs to another entity."
+   },
+   {
+    "id": "g12v1",
+    "tumour_intrinsic": "no",
+    "evidence_ids": [
+     "g12v1.r22",
+     "g12v1.r02"
+    ],
+    "rationale": "In the target's single-cell record, Macrophage share (0.574) is larger than RCC (0.233), so a non-RCC group exceeds RCC. The purity record is positive but doesn't change this."
+   }
+  ]
+ },
+ "answers": [
+  {
+   "id": "g05v1",
+   "tumour_intrinsic": "yes",
+   "evidence_ids": [
+    "g05v1.r25",
+    "g05v1.r20"
+   ],
+   "rationale": "RCC has the largest transcript share (0.949). Purity lfc 5.278 - 1.96*0.665 = 3.97 > 0."
+  },
+  {
+   "id": "g07v1",
+   "tumour_intrinsic": "yes",
+   "evidence_ids": [
+    "g07v1.r01",
+    "g07v1.r09"
+   ],
+   "rationale": "RCC has the largest share (0.881). Purity lfc 4.88 - 1.96*0.598 = 3.71 > 0."
+  },
+  {
+   "id": "g03v1",
+   "tumour_intrinsic": "yes",
+   "evidence_ids": [
+    "g03v1.r18",
+    "g03v1.r16"
+   ],
+   "rationale": "The target's single-cell record (r18) shows RCC with the largest share (0.97). Purity lfc 5.256 - 1.96*0.617 = 4.05 > 0. The record with a macrophage-dominant profile belongs to another entity."
+  },
+  {
+   "id": "g12v1",
+   "tumour_intrinsic": "no",
+   "evidence_ids": [
+    "g12v1.r22",
+    "g12v1.r02"
+   ],
+   "rationale": "In the target's single-cell record, Macrophage share (0.574) is larger than RCC (0.233), so a non-RCC group exceeds RCC. The purity record is positive but doesn't change this."
+  }
+ ],
+ "elapsed_s": 9.3
+}

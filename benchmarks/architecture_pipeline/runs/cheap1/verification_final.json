@@ -1,0 +1,393 @@
+{
+ "file": "runs/2026-11-04_cheap1/findings.json",
+ "statements": 109,
+ "unsupported": 23,
+ "interpretation": "Automatic checks detected failures",
+ "scope": "Evidence linkage, metric bindings, numeric precision and limited direction checks; not complete scientific validation",
+ "semantic_failures": 23,
+ "stale": 0,
+ "basis": {
+  "started_utc": "2026-11-04T10:46:07+00:00",
+  "evidence": 1404
+ },
+ "detail": [
+  {
+   "location": "dropped earlier (agent_omics.json)",
+   "text": "Safety caveat for CA9 as a therapeutic target: the GTEx vital-organ proteome flags it as enriched in stomach [gene=CA9; type=normal_proteome; source=DATASET:GTE",
+   "gene": "CA9",
+   "cited": 1,
+   "nonexistent": [],
+   "not_linked_to_gene": [],
+   "kept": false,
+   "unmatched_numbers": [
+    "4"
+   ],
+   "direction_contradiction": null,
+   "numeric_binding_errors": [],
+   "semantic_failure": true,
+   "where": "agent_omics.json"
+  },
+  {
+   "location": "dropped earlier (agent_literature.json)",
+   "text": "PMID:41399267: NNMT was up-regulated in ccRCC tumours, and high NNMT correlated with worse overall and disease-specific survival (HILPDA had no prognostic impac",
+   "gene": "NNMT",
+   "cited": 4,
+   "nonexistent": [],
+   "not_linked_to_gene": [],
+   "kept": false,
+   "unmatched_numbers": [
+    "5000"
+   ],
+   "direction_contradiction": null,
+   "numeric_binding_errors": [],
+   "semantic_failure": true,
+   "where": "agent_literature.json"
+  },
+  {
+   "location": "dropped earlier (agent_literature.json)",
+   "text": "COXFA4L2 (NDUFA4L2) is a HIF-driven ccRCC gene: HIF-1alpha induces its expression (PMID:42331208), hypoxic signalling induces it and it raises glycolysis (PMID:",
+   "gene": "COXFA4L2",
+   "cited": 4,
+   "nonexistent": [],
+   "not_linked_to_gene": [],
+   "kept": false,
+   "unmatched_numbers": [
+    "90%"
+   ],
+   "direction_contradiction": null,
+   "numeric_binding_errors": [],
+   "semantic_failure": true,
+   "where": "agent_literature.json"
+  },
+  {
+   "location": "dropped earlier (agent_literature.json)",
+   "text": "ALDOB is down-regulated in ccRCC (IHC lower than adjacent normal, PMID:40852386) and described as an independent prognostic predictor and potential immunotherap",
+   "gene": "ALDOB",
+   "cited": 4,
+   "nonexistent": [],
+   "not_linked_to_gene": [],
+   "kept": false,
+   "unmatched_numbers": [
+    "38655323",
+    "40852386"
+   ],
+   "direction_contradiction": null,
+   "numeric_binding_errors": [],
+   "semantic_failure": true,
+   "where": "agent_literature.json"
+  },
+  {
+   "location": "dropped earlier (agent_external.json)",
+   "text": "Established ccRCC drug target (HIF-2 alpha). BELZUTIFAN is APPROVAL. Open Targets association score 0.4871 [gene=EPAS1; type=open_targets_association; source=Op",
+   "gene": "EPAS1",
+   "cited": 4,
+   "nonexistent": [],
+   "not_linked_to_gene": [],
+   "kept": false,
+   "unmatched_numbers": [
+    "0.4871",
+    "0.3",
+    "0.06"
+   ],
+   "direction_contradiction": null,
+   "numeric_binding_errors": [],
+   "semantic_failure": true,
+   "where": "agent_external.json"
+  },
+  {
+   "location": "dropped earlier (agent_external.json)",
+   "text": "Dominant genetic driver: Open Targets rank 2 for ccRCC association, recurrently mutated in the CPTAC+TCGA cohort at frequency 0.362 [gene=PBRM1; type=somatic_re",
+   "gene": "PBRM1",
+   "cited": 2,
+   "nonexistent": [],
+   "not_linked_to_gene": [],
+   "kept": false,
+   "unmatched_numbers": [
+    "0.362"
+   ],
+   "direction_contradiction": null,
+   "numeric_binding_errors": [],
+   "semantic_failure": true,
+   "where": "agent_external.json"
+  },
+  {
+   "location": "dropped earlier (agent_cells.json)",
+   "text": "CA9 is the top convergence gene and is tumor-intrinsic: RCC cells hold a transcript share of 0.976 [gene=CA9; type=sc_celltype_expression; source=DATASET:LI2022",
+   "gene": "CA9",
+   "cited": 4,
+   "nonexistent": [],
+   "not_linked_to_gene": [],
+   "kept": false,
+   "unmatched_numbers": [
+    "0.976"
+   ],
+   "direction_contradiction": null,
+   "numeric_binding_errors": [],
+   "semantic_failure": true,
+   "where": "agent_cells.json"
+  },
+  {
+   "location": "dropped earlier (agent_cells.json)",
+   "text": "In Visium, CA9-high spots are enriched for RCC neighbours (log2 enrichment 0.381 [gene=CA9; type=spatial_neighborhood; source=DATASET:LI2022-VISIUM; cell_group=",
+   "gene": "CA9",
+   "cited": 2,
+   "nonexistent": [],
+   "not_linked_to_gene": [],
+   "kept": false,
+   "unmatched_numbers": [
+    "0.381"
+   ],
+   "direction_contradiction": null,
+   "numeric_binding_errors": [],
+   "semantic_failure": true,
+   "where": "agent_cells.json"
+  },
+  {
+   "location": "dropped earlier (agent_cells.json)",
+   "text": "AlphaFold model of CA9 has mean pLDDT 76.56 [gene=CA9; type=alphafold_model; source=DATASET:ALPHAFOLD-DB; mean_plddt=76.56]; the top cavity has volume 126.8 [ge",
+   "gene": "CA9",
+   "cited": 3,
+   "nonexistent": [],
+   "not_linked_to_gene": [],
+   "kept": false,
+   "unmatched_numbers": [
+    "76.56",
+    "126.8"
+   ],
+   "direction_contradiction": null,
+   "numeric_binding_errors": [],
+   "semantic_failure": true,
+   "where": "agent_cells.json"
+  },
+  {
+   "location": "dropped earlier (agent_cells.json)",
+   "text": "CD70 is mainly made by RCC cells but not exclusively: RCC cells account for 0.345 of tumor transcripts by tool output, while CD8 T cells (a much larger captured",
+   "gene": "CD70",
+   "cited": 3,
+   "nonexistent": [],
+   "not_linked_to_gene": [],
+   "kept": false,
+   "unmatched_numbers": [
+    "0.345"
+   ],
+   "direction_contradiction": null,
+   "numeric_binding_errors": [],
+   "semantic_failure": true,
+   "where": "agent_cells.json"
+  },
+  {
+   "location": "dropped earlier (agent_cells.json)",
+   "text": "KDR is an endothelial (microenvironment) target, not a tumor-cell target: endothelium holds a transcript share of 0.951 [gene=KDR; type=sc_celltype_expression; ",
+   "gene": "KDR",
+   "cited": 2,
+   "nonexistent": [],
+   "not_linked_to_gene": [],
+   "kept": false,
+   "unmatched_numbers": [
+    "0.951"
+   ],
+   "direction_contradiction": null,
+   "numeric_binding_errors": [],
+   "semantic_failure": true,
+   "where": "agent_cells.json"
+  },
+  {
+   "location": "dropped earlier (agent_cells.json)",
+   "text": "CD74 is an antigen-presentation gene carried by immune cells (cDC, macrophage, B, pDC, monocyte), with macrophages holding a transcript share of 0.436 [gene=CD7",
+   "gene": "CD74",
+   "cited": 2,
+   "nonexistent": [],
+   "not_linked_to_gene": [],
+   "kept": false,
+   "unmatched_numbers": [
+    "0.436"
+   ],
+   "direction_contradiction": null,
+   "numeric_binding_errors": [],
+   "semantic_failure": true,
+   "where": "agent_cells.json"
+  },
+  {
+   "location": "dropped earlier (agent_cells.json)",
+   "text": "CXCR4 is expressed by lymphocytes (CD4, CD8, Treg, B); CD8 T cells alone hold a transcript share of 0.563 [gene=CXCR4; type=sc_celltype_expression; source=DATAS",
+   "gene": "CXCR4",
+   "cited": 2,
+   "nonexistent": [],
+   "not_linked_to_gene": [],
+   "kept": false,
+   "unmatched_numbers": [
+    "0.563"
+   ],
+   "direction_contradiction": null,
+   "numeric_binding_errors": [],
+   "semantic_failure": true,
+   "where": "agent_cells.json"
+  },
+  {
+   "location": "dropped earlier (agent_cells.json)",
+   "text": "NNMT ranks high in convergence with strong tumor-up RNA that stays positive at purity 1 and adverse TCGA survival, a tumor-intrinsic metabolic enzyme; no clinic",
+   "gene": "NNMT",
+   "cited": 2,
+   "nonexistent": [],
+   "not_linked_to_gene": [],
+   "kept": false,
+   "unmatched_numbers": [
+    "1"
+   ],
+   "direction_contradiction": null,
+   "numeric_binding_errors": [],
+   "semantic_failure": true,
+   "where": "agent_cells.json"
+  },
+  {
+   "location": "dropped earlier (agent_cells.json)",
+   "text": "ALDOB is strongly down in tumor (negative change persists at purity 1) and low expression is associated with adverse survival in TCGA; it is a proximal-tubule l",
+   "gene": "ALDOB",
+   "cited": 2,
+   "nonexistent": [],
+   "not_linked_to_gene": [],
+   "kept": false,
+   "unmatched_numbers": [
+    "1"
+   ],
+   "direction_contradiction": null,
+   "numeric_binding_errors": [],
+   "semantic_failure": true,
+   "where": "agent_cells.json"
+  },
+  {
+   "location": "dropped earlier (agent_cells.json)",
+   "text": "COL23A1 is the top tumor-track candidate: RCC cells hold a transcript share of 0.881 [gene=COL23A1; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; ce",
+   "gene": "COL23A1",
+   "cited": 6,
+   "nonexistent": [],
+   "not_linked_to_gene": [],
+   "kept": false,
+   "unmatched_numbers": [
+    "0.881",
+    "1",
+    "4.88"
+   ],
+   "direction_contradiction": null,
+   "numeric_binding_errors": [],
+   "semantic_failure": true,
+   "where": "agent_cells.json"
+  },
+  {
+   "location": "dropped earlier (agent_cells.json)",
+   "text": "The AlphaFold model of COL23A1 is low confidence (mean pLDDT 58.91 [gene=COL23A1; type=alphafold_model; source=DATASET:ALPHAFOLD-DB; mean_plddt=58.91]) and the ",
+   "gene": "COL23A1",
+   "cited": 2,
+   "nonexistent": [],
+   "not_linked_to_gene": [],
+   "kept": false,
+   "unmatched_numbers": [
+    "58.91"
+   ],
+   "direction_contradiction": null,
+   "numeric_binding_errors": [],
+   "semantic_failure": true,
+   "where": "agent_cells.json"
+  },
+  {
+   "location": "dropped earlier (agent_cells.json)",
+   "text": "OLFML2A is a stroma-track candidate carried by fibroblasts (source share 0.647 [gene=OLFML2A; type=discovery_profile; source=Europe PMC + Open Targets + UniProt",
+   "gene": "OLFML2A",
+   "cited": 4,
+   "nonexistent": [],
+   "not_linked_to_gene": [],
+   "kept": false,
+   "unmatched_numbers": [
+    "0.647"
+   ],
+   "direction_contradiction": null,
+   "numeric_binding_errors": [],
+   "semantic_failure": true,
+   "where": "agent_cells.json"
+  },
+  {
+   "location": "dropped earlier (agent_cells.json)",
+   "text": "MILR1 is the top immune-track candidate (macrophage-made, no ccRCC papers, surface, antibody-tractable) and associates with adverse TCGA survival, but its chang",
+   "gene": "MILR1",
+   "cited": 4,
+   "nonexistent": [],
+   "not_linked_to_gene": [],
+   "kept": false,
+   "unmatched_numbers": [
+    "1",
+    "0.414"
+   ],
+   "direction_contradiction": null,
+   "numeric_binding_errors": [],
+   "semantic_failure": true,
+   "where": "agent_cells.json"
+  },
+  {
+   "location": "dropped earlier (agent_applied.json)",
+   "text": "SCARB1 is a surface protein (two transmembrane segments) but is not a known conjugate target, shows high staining in a vital organ (adrenal gland, level 3 of 3)",
+   "gene": "SCARB1",
+   "cited": 1,
+   "nonexistent": [],
+   "not_linked_to_gene": [],
+   "kept": false,
+   "unmatched_numbers": [
+    "3",
+    "3"
+   ],
+   "direction_contradiction": null,
+   "numeric_binding_errors": [],
+   "semantic_failure": true,
+   "where": "agent_applied.json"
+  },
+  {
+   "location": "dropped earlier (agent_applied.json)",
+   "text": "ENPP3 is a surface protein with a large extracellular domain and a known target (control), but kidney staining is [gene=ENPP3; type=adc_profile; source=UniProt ",
+   "gene": "ENPP3",
+   "cited": 1,
+   "nonexistent": [],
+   "not_linked_to_gene": [],
+   "kept": false,
+   "unmatched_numbers": [
+    "0",
+    "3"
+   ],
+   "direction_contradiction": null,
+   "numeric_binding_errors": [],
+   "semantic_failure": true,
+   "where": "agent_applied.json"
+  },
+  {
+   "location": "dropped earlier (agent_applied.json)",
+   "text": "SLC16A3 has the most uniform tumour expression among the candidates checked ([gene=SLC16A3; type=adc_profile; source=UniProt topology, Human Protein Atlas stain",
+   "gene": "SLC16A3",
+   "cited": 1,
+   "nonexistent": [],
+   "not_linked_to_gene": [],
+   "kept": false,
+   "unmatched_numbers": [
+    "3",
+    "2"
+   ],
+   "direction_contradiction": null,
+   "numeric_binding_errors": [],
+   "semantic_failure": true,
+   "where": "agent_applied.json"
+  },
+  {
+   "location": "dropped earlier (agent_applied.json)",
+   "text": "NNMT is associated with earlier progression at higher expression in both arms of the nivolumab-versus-everolimus trial and in the 16-patient nivolumab study, bu",
+   "gene": "NNMT",
+   "cited": 1,
+   "nonexistent": [],
+   "not_linked_to_gene": [],
+   "kept": false,
+   "unmatched_numbers": [
+    "16"
+   ],
+   "direction_contradiction": null,
+   "numeric_binding_errors": [],
+   "semantic_failure": true,
+   "where": "agent_applied.json"
+  }
+ ]
+}
