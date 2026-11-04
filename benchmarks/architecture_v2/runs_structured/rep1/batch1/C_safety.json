@@ -1,0 +1,157 @@
+{
+ "study_hash": "3597c924e7fcc874",
+ "prompt_sha256": "4e14cc2c407f4299fcccbfde5a852d0f08e029fcb1c475981da9b10260c210aa",
+ "status": "ok",
+ "case_ids": [
+  "g11v0",
+  "g10v0",
+  "g08v0",
+  "g07v0"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.023030000000000002,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 4354,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 561,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 4354,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 561,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 4354,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 4354
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 561,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 4354,
+   "webSearchRequests": 0,
+   "costUSD": 0.023030000000000002,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 4354,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g11v0\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g11v0.r13\",\"g11v0.r08\",\"g11v0.r02\"],\"rationale\":\"Target surface record has surface_call=surface. IHC measured vital max level 3.0 (Cerebellum), which is >=2, so vital safety concern is yes even though the proteome reports no enrichment.\"},{\"id\":\"g10v0\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g10v0.r26\"],\"rationale\":\"No surface record exists for the target; the surface record belongs to another entity. The proteome reports vital_protein_enriched=true (Liver), so vital safety concern is yes.\"},{\"id\":\"g08v0\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"insufficient\",\"evidence_ids\":[\"g08v0.r16\",\"g08v0.r01\"],\"rationale\":\"Surface call is unknown, so insufficient. IHC was not measured and there is no proteome record reporting enrichment, so vital safety is insufficient.\"},{\"id\":\"g07v0\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"insufficient\",\"evidence_ids\":[\"g07v0.r05\",\"g07v0.r19\",\"g07v0.r26\"],\"rationale\":\"Surface call is surface, so yes. IHC was not measured and the target proteome reports no enrichment, so vital safety is insufficient. The other entity's proteome record is ignored.\"}]}",
+ "stderr": "",
+ "structured_output": {
+  "answers": [
+   {
+    "id": "g11v0",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "yes",
+    "evidence_ids": [
+     "g11v0.r13",
+     "g11v0.r08",
+     "g11v0.r02"
+    ],
+    "rationale": "Target surface record has surface_call=surface. IHC measured vital max level 3.0 (Cerebellum), which is >=2, so vital safety concern is yes even though the proteome reports no enrichment."
+   },
+   {
+    "id": "g10v0",
+    "surface_accessible": "insufficient",
+    "vital_safety_concern": "yes",
+    "evidence_ids": [
+     "g10v0.r26"
+    ],
+    "rationale": "No surface record exists for the target; the surface record belongs to another entity. The proteome reports vital_protein_enriched=true (Liver), so vital safety concern is yes."
+   },
+   {
+    "id": "g08v0",
+    "surface_accessible": "insufficient",
+    "vital_safety_concern": "insufficient",
+    "evidence_ids": [
+     "g08v0.r16",
+     "g08v0.r01"
+    ],
+    "rationale": "Surface call is unknown, so insufficient. IHC was not measured and there is no proteome record reporting enrichment, so vital safety is insufficient."
+   },
+   {
+    "id": "g07v0",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "insufficient",
+    "evidence_ids": [
+     "g07v0.r05",
+     "g07v0.r19",
+     "g07v0.r26"
+    ],
+    "rationale": "Surface call is surface, so yes. IHC was not measured and the target proteome reports no enrichment, so vital safety is insufficient. The other entity's proteome record is ignored."
+   }
+  ]
+ },
+ "answers": [
+  {
+   "id": "g11v0",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g11v0.r13",
+    "g11v0.r08",
+    "g11v0.r02"
+   ],
+   "rationale": "Target surface record has surface_call=surface. IHC measured vital max level 3.0 (Cerebellum), which is >=2, so vital safety concern is yes even though the proteome reports no enrichment."
+  },
+  {
+   "id": "g10v0",
+   "surface_accessible": "insufficient",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g10v0.r26"
+   ],
+   "rationale": "No surface record exists for the target; the surface record belongs to another entity. The proteome reports vital_protein_enriched=true (Liver), so vital safety concern is yes."
+  },
+  {
+   "id": "g08v0",
+   "surface_accessible": "insufficient",
+   "vital_safety_concern": "insufficient",
+   "evidence_ids": [
+    "g08v0.r16",
+    "g08v0.r01"
+   ],
+   "rationale": "Surface call is unknown, so insufficient. IHC was not measured and there is no proteome record reporting enrichment, so vital safety is insufficient."
+  },
+  {
+   "id": "g07v0",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "insufficient",
+   "evidence_ids": [
+    "g07v0.r05",
+    "g07v0.r19",
+    "g07v0.r26"
+   ],
+   "rationale": "Surface call is surface, so yes. IHC was not measured and the target proteome reports no enrichment, so vital safety is insufficient. The other entity's proteome record is ignored."
+  }
+ ],
+ "elapsed_s": 10.5
+}

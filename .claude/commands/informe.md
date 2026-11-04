@@ -43,14 +43,17 @@ Follow these steps exactly. All numbers come from tools/scripts; you never compu
      (immune genes that vanish at purity 1 are infiltration-driven), survival and DepMap dependency — and keep the caveat
      that they are data-ranked hypotheses (no candidate is a selective dependency).
    - `validation` (2–3 paragraphs): what the independent layers say about the candidates — external replication
-     in TCGA-KIRC and prognosis, somatic driver status, selective DepMap dependency, protein-adjusted kinase activity,
+     in TCGA-KIRC and prognosis, somatic driver status, selective DepMap dependency, PRISM drug response (compounds against the gene's
+     product in cell lines; say that 2D culture misses HIF-2 biology), protein-adjusted kinase activity,
      and the purity check (does a bulk change survive extrapolation to a pure tumour or is it infiltration?). Name the
      candidates these layers strengthen and the ones they weaken.
    - `treatment`, `subtypes`, `adc` and `immune` (1-2 paragraphs each) come from `agent_applied.verified.json`. `treatment`: what
-     IMmotion150 shows for the leading candidates, always as association with the adjusted p-value, and say that no gene
-     separates the two main arms. `subtypes`: which candidates change with VHL, PBRM1, BAP1, SETD2 or ccA/ccB and which are
+     the two trials show for the leading candidates (IMmotion150: atezolizumab + bevacizumab vs sunitinib; CheckMate 025:
+     nivolumab vs everolimus; name each trial), always as association with the adjusted p-value, and say that no gene
+     separates the arms of either trial. `subtypes`: which candidates change with VHL, PBRM1, BAP1, SETD2 or ccA/ccB and which are
      subgroup candidates, with the infiltration caveat. `adc`: which candidates suit an antibody-drug conjugate or radioligand
-     (surface, staining in vital organs, homogeneity) and which known targets act as controls. `immune`: which candidates are
+     (surface, staining in vital organs, protein in vital organs from the GTEx normal-tissue proteome, homogeneity) and
+     which known targets act as controls. `immune`: which candidates are
      immune-cell genes, how they relate to cold and hot tumours, and the controls. Also use `confirmatory_replication` and
      `sc_replication_check` findings in `validation` and `cells`: say which protein calls replicate in the confirmatory cohort
      and which do not (HK2 is an example of a candidate that does not replicate there).
@@ -77,6 +80,8 @@ Follow these steps exactly. All numbers come from tools/scripts; you never compu
    - 3–5 summary paragraphs; 1–3 paragraphs per section; 10–14 entries in `targets` ordered by your judgment of
      strength (you may depart from the numeric ranking, but say why in `rationale`). Use the target profile for
      target calls and the biomarker profile for biomarker calls; the overall convergence score mixes both.
+     Every candidate that is robust in its profile (high `p_top10`, narrow `rank_interval_90`) belongs in `targets`
+     unless you say in `limitations` why it is left out.
    - Read `docs/numeric-claims.md`. Bind every number to its record with the `numeric_annotation` tool (kg-mcp): it
      returns the exact annotation to paste once into the text and the `numeric_claims` entry to add. Copying annotations
      from the verified agent files is fine when the paragraph cites the same evidence id. An annotation replaces its number; do not
@@ -88,6 +93,13 @@ Follow these steps exactly. All numbers come from tools/scripts; you never compu
    - Every summary/section paragraph and every target MUST cite evidence ids copied from the verified agent files
      or from `convergence.json`. A paragraph that discusses one specific gene should carry `"gene": "<symbol>"`
      and cite only that gene's evidence. Limitations need no ids.
+
+4b. Run `uv run python scripts/coverage.py <RUN date>`. It lists the specialists' key findings (marked `"key": true`)
+   whose evidence the narrative does not cite, and the evidence types the agents cited but the narrative never uses.
+   For each key finding listed, add it to the section where it belongs (citing its evidence ids, with its annotations),
+   or, if you decide it does not belong in the report, say why in one `limitations` entry naming the gene. Consider each
+   missing evidence type the same way. Negative results (no replication, no selective effect, no difference between
+   arms) are findings: report them. Re-run the script until no key finding is left uncited without a reason.
 
 5. Run `uv run python scripts/assemble.py <RUN date>` then `uv run python scripts/verify.py final <RUN date>` (the date is
    RUN's folder name; without it the scripts use `runs/.current`).

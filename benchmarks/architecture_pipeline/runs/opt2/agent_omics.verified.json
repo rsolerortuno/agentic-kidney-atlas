@@ -1,0 +1,273 @@
+{
+ "agent": "agente-omico",
+ "findings": [
+  {
+   "gene": "CA9",
+   "role": "target_and_biomarker",
+   "key": true,
+   "statement": "CA9 is the top convergence gene: tumour-up at protein [gene=CA9; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=2.269] and RNA [gene=CA9; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; log2fc=6.312], replicated in TCGA kidney tumour-vs-normal [gene=CA9; type=tcga_de; source=DATASET:TCGA-KIRC-RNA; log2fc=9.712]. The signal survives purity extrapolation and drugs exist (girentuximab antibody, phase 3), but it is not prognostic in TCGA.",
+   "evidence_ids": [
+    "EV:omics_de:5afe18b4024b",
+    "EV:omics_de:b269736afdb0",
+    "EV:tcga_de:225a767ebcb5",
+    "EV:purity:225a767ebcb5"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:omics_de:5afe18b4024b",
+     "field": [
+      "log2fc"
+     ],
+     "display": "2.269",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:b269736afdb0",
+     "field": [
+      "log2fc"
+     ],
+     "display": "6.312",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_de:225a767ebcb5",
+     "field": [
+      "log2fc"
+     ],
+     "display": "9.712",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "CA9",
+   "role": "target",
+   "key": true,
+   "statement": "Safety flag: CA9 protein is tissue-enriched in a vital organ (stomach) in the GTEx proteome, with a tissue-specificity score of [gene=CA9; type=normal_proteome; source=DATASET:GTEX-PROTEOME; vital_protein_ts_max=5.19], above the enrichment threshold. This is an on-target off-tumour concern for cytotoxic CA9 modalities, and no selective ccRCC dependency was found in DepMap.",
+   "evidence_ids": [
+    "EV:normal_proteome:225a767ebcb5"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:normal_proteome:225a767ebcb5",
+     "field": [
+      "vital_protein_ts_max"
+     ],
+     "display": "5.19",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "CD70",
+   "role": "target",
+   "key": true,
+   "statement": "CD70 is protein-confirmed up in tumour [gene=CD70; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=2.421], replicates in TCGA, is tumour-intrinsic by purity, and has antibody programmes in clinical stages. It has no vital-organ enrichment in the GTEx proteome, with a low tissue-specificity score of [gene=CD70; type=normal_proteome; source=DATASET:GTEX-PROTEOME; vital_protein_ts_max=0.34], making it a cleaner surface target than CA9.",
+   "evidence_ids": [
+    "EV:omics_de:8a1dc0572ead",
+    "EV:normal_proteome:908e84663f6a",
+    "EV:tcga_de:908e84663f6a",
+    "EV:purity:908e84663f6a"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:omics_de:8a1dc0572ead",
+     "field": [
+      "log2fc"
+     ],
+     "display": "2.421",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:normal_proteome:908e84663f6a",
+     "field": [
+      "vital_protein_ts_max"
+     ],
+     "display": "0.34",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "ENPP3",
+   "role": "target",
+   "statement": "ENPP3 is a membrane enzyme with protein up in tumour [gene=ENPP3; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=1.544], RNA and TCGA replication, tumour-intrinsic by purity, and an antibody-drug conjugate (AGS-16C3F, phase 2). It ranks high in the target profile but has no prognostic signal.",
+   "evidence_ids": [
+    "EV:omics_de:fad29d44ef95",
+    "EV:omics_de:d540450c23e1",
+    "EV:tcga_de:d5aee88146ed",
+    "EV:purity:d5aee88146ed"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:omics_de:fad29d44ef95",
+     "field": [
+      "log2fc"
+     ],
+     "display": "1.544",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "NNMT",
+   "role": "target_and_biomarker",
+   "statement": "NNMT is strongly up at protein [gene=NNMT; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=2.709], tumour-intrinsic and replicated in TCGA. Higher expression predicts worse overall survival [gene=NNMT; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=0.301], so it is both a prognostic biomarker and a metabolic target, although it is cytosolic and has no approved drug.",
+   "evidence_ids": [
+    "EV:omics_de:de39cc0c5ed8",
+    "EV:tcga_survival:7dbf93860d9f",
+    "EV:tcga_de:7dbf93860d9f"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:omics_de:de39cc0c5ed8",
+     "field": [
+      "log2fc"
+     ],
+     "display": "2.709",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:7dbf93860d9f",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "0.301",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "SCARB1",
+   "role": "target",
+   "key": true,
+   "statement": "SCARB1 ranks first in the target profile (up in tumour, replicated in TCGA, tumour-intrinsic), but its protein is tissue-enriched in a vital organ (adrenal gland) with a tissue-specificity score of [gene=SCARB1; type=normal_proteome; source=DATASET:GTEX-PROTEOME; vital_protein_ts_max=5.08]. This is a safety liability that tempers its target rank, and it has no drug or DepMap dependency.",
+   "evidence_ids": [
+    "EV:normal_proteome:2d66f8e78d0c",
+    "EV:omics_de:36b227bd1fb6",
+    "EV:tcga_de:2d66f8e78d0c"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:normal_proteome:2d66f8e78d0c",
+     "field": [
+      "vital_protein_ts_max"
+     ],
+     "display": "5.08",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "ALDOB",
+   "role": "biomarker",
+   "statement": "ALDOB reflects loss of proximal tubule identity: it is down at protein [gene=ALDOB; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=-2.273] and far more at RNA [gene=ALDOB; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; log2fc=-7.028]. Lower expression is also associated with worse survival in TCGA [gene=ALDOB; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=-0.358]; it is a diagnostic or prognostic marker, not a target.",
+   "evidence_ids": [
+    "EV:omics_de:af15cb07921d",
+    "EV:omics_de:1f7150068d77",
+    "EV:tcga_survival:a46f337f2987"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:omics_de:af15cb07921d",
+     "field": [
+      "log2fc"
+     ],
+     "display": "-2.273",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:1f7150068d77",
+     "field": [
+      "log2fc"
+     ],
+     "display": "-7.028",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:a46f337f2987",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "-0.358",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "ALDH6A1",
+   "role": "biomarker",
+   "statement": "ALDH6A1 is a down-regulated metabolic gene with a frequent copy-number loss and a positive cis effect, and with the strongest favourable prognostic association in the biomarker shortlist: higher expression predicts better survival [gene=ALDH6A1; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=-0.554]. It is a prognostic tissue-loss biomarker, not a target.",
+   "evidence_ids": [
+    "EV:tcga_survival:df75d3108dd0",
+    "EV:omics_de:1c73c0e9eeb3",
+    "EV:omics_cnv:df75d3108dd0",
+    "EV:cis_dosage:df75d3108dd0"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:tcga_survival:df75d3108dd0",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "-0.554",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "FCER1G",
+   "role": "biomarker",
+   "key": true,
+   "statement": "Negative result: FCER1G looks strongly tumour-up in bulk, but its expression tracks purity inversely [gene=FCER1G; type=purity; source=DATASET:CPTAC-CCRCC-PURITY; rna_purity_rho=-0.692], and extrapolated to a pure tumour the RNA change shrinks to [gene=FCER1G; type=purity; source=DATASET:CPTAC-CCRCC-PURITY; rna_lfc_at_purity1=1.061]. The signal is largely immune infiltration, not tumour-cell expression, so it is not a tumour-intrinsic target (the same pattern applies to TYROBP).",
+   "evidence_ids": [
+    "EV:purity:e5780c87a2a7"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:purity:e5780c87a2a7",
+     "field": [
+      "rna_purity_rho"
+     ],
+     "display": "-0.692",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:purity:e5780c87a2a7",
+     "field": [
+      "rna_lfc_at_purity1"
+     ],
+     "display": "1.061",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "VHL",
+   "role": "mechanism",
+   "statement": "VHL is the disease mechanism gene: the short arm of chromosome 3 is lost in a large majority of tumours ([gene=VHL; type=omics_cnv; source=DATASET:CPTAC-CCRCC-CNV; arm=3p; loss_freq=0.791]), with significant somatic recurrence and a positive cis dosage effect on its own RNA. VHL itself is not a drug target, and its loss explains the HIF-driven up-regulation of CA9, ANGPTL4 and related genes.",
+   "evidence_ids": [
+    "EV:omics_cnv:52e5aeb6c197",
+    "EV:somatic_recurrence:52e5aeb6c197",
+    "EV:cis_dosage:52e5aeb6c197"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:omics_cnv:52e5aeb6c197",
+     "field": [
+      "loss_freq"
+     ],
+     "display": "0.791",
+     "unit": "native"
+    }
+   ]
+  }
+ ],
+ "caveats": [
+  "CPTAC discovery cohort is small (110 tumours; 75 RNA and 84 protein normals) and bulk tissue, so stromal and immune contributions need the purity check.",
+  "DepMap shows no selective ccRCC dependency for the leading up-regulated candidates (CA9, CD70, NNMT, SCARB1), and 2D cell lines miss HIF-2 biology, so dependency evidence is absent rather than negative proof.",
+  "GTEX proteome excludes kidney and has detection limits; absence of normal expression is not proof of safety.",
+  "Down-regulated genes (ALDOB, ALDH6A1) reflect loss of tubule identity and are biomarker candidates only.",
+  "Rankings are deterministic composites; literature and drug streams favour well-studied genes (CA9, CD70) over novel ones (ENPP3, SCARB1)."
+ ]
+}

@@ -1,0 +1,281 @@
+{
+ "study_hash": "3caa2711d8a0b057",
+ "prompt_sha256": "b6521eb6ce67aa255f60618b8b3c4854921678cd599c19289d8e056070fd9e48",
+ "status": "ok",
+ "case_ids": [
+  "g03v0",
+  "g02v0",
+  "g01v0",
+  "g10v0",
+  "g07v0",
+  "g05v0",
+  "g11v0",
+  "g12v0",
+  "g04v0",
+  "g06v0",
+  "g09v0",
+  "g08v0"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.07488,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 16439,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 912,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 16439,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 912,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 16439,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 16439
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 912,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 16439,
+   "webSearchRequests": 0,
+   "costUSD": 0.07488,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 16439,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g03v0\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g03v0.r11\"],\"rationale\":\"Target record exists; n_ccrcc_dependent=0 and selectivity<0, so conditions fail.\"},{\"id\":\"g02v0\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g02v0.r13\"],\"rationale\":\"Record exists; n_ccrcc_dependent=0 and padj 0.93, so conditions fail.\"},{\"id\":\"g01v0\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g01v0.r16\"],\"rationale\":\"Record exists; n_ccrcc_dependent=0, padj 0.44, fails.\"},{\"id\":\"g10v0\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g10v0.r03\"],\"rationale\":\"Record exists; no dependent lines, selectivity negative, padj 0.41.\"},{\"id\":\"g07v0\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g07v0.r07\"],\"rationale\":\"Record exists; n_ccrcc_dependent=0, padj 0.56, fails.\"},{\"id\":\"g05v0\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g05v0.r26\"],\"rationale\":\"Record exists; no dependent lines, padj 0.63, fails.\"},{\"id\":\"g11v0\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g11v0.r03\"],\"rationale\":\"Record exists; no dependent lines, padj 0.466, fails.\"},{\"id\":\"g12v0\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g12v0.r14\"],\"rationale\":\"Record exists; only 1 dependent line, selectivity negative, padj 0.45.\"},{\"id\":\"g04v0\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g04v0.r14\"],\"rationale\":\"Record exists; no dependent lines, negative selectivity, padj 0.93.\"},{\"id\":\"g06v0\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g06v0.r17\"],\"rationale\":\"Record exists; no dependent lines, padj 0.39, fails.\"},{\"id\":\"g09v0\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g09v0.r01\"],\"rationale\":\"Record exists; dependent lines 3 and selectivity positive, but padj 0.404 is not <0.1.\"},{\"id\":\"g08v0\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g08v0.r19\"],\"rationale\":\"Record exists; no dependent lines, padj 0.82, fails.\"}]}",
+ "stderr": "",
+ "structured_output": {
+  "answers": [
+   {
+    "id": "g03v0",
+    "selective_dependency": "no",
+    "evidence_ids": [
+     "g03v0.r11"
+    ],
+    "rationale": "Target record exists; n_ccrcc_dependent=0 and selectivity<0, so conditions fail."
+   },
+   {
+    "id": "g02v0",
+    "selective_dependency": "no",
+    "evidence_ids": [
+     "g02v0.r13"
+    ],
+    "rationale": "Record exists; n_ccrcc_dependent=0 and padj 0.93, so conditions fail."
+   },
+   {
+    "id": "g01v0",
+    "selective_dependency": "no",
+    "evidence_ids": [
+     "g01v0.r16"
+    ],
+    "rationale": "Record exists; n_ccrcc_dependent=0, padj 0.44, fails."
+   },
+   {
+    "id": "g10v0",
+    "selective_dependency": "no",
+    "evidence_ids": [
+     "g10v0.r03"
+    ],
+    "rationale": "Record exists; no dependent lines, selectivity negative, padj 0.41."
+   },
+   {
+    "id": "g07v0",
+    "selective_dependency": "no",
+    "evidence_ids": [
+     "g07v0.r07"
+    ],
+    "rationale": "Record exists; n_ccrcc_dependent=0, padj 0.56, fails."
+   },
+   {
+    "id": "g05v0",
+    "selective_dependency": "no",
+    "evidence_ids": [
+     "g05v0.r26"
+    ],
+    "rationale": "Record exists; no dependent lines, padj 0.63, fails."
+   },
+   {
+    "id": "g11v0",
+    "selective_dependency": "no",
+    "evidence_ids": [
+     "g11v0.r03"
+    ],
+    "rationale": "Record exists; no dependent lines, padj 0.466, fails."
+   },
+   {
+    "id": "g12v0",
+    "selective_dependency": "no",
+    "evidence_ids": [
+     "g12v0.r14"
+    ],
+    "rationale": "Record exists; only 1 dependent line, selectivity negative, padj 0.45."
+   },
+   {
+    "id": "g04v0",
+    "selective_dependency": "no",
+    "evidence_ids": [
+     "g04v0.r14"
+    ],
+    "rationale": "Record exists; no dependent lines, negative selectivity, padj 0.93."
+   },
+   {
+    "id": "g06v0",
+    "selective_dependency": "no",
+    "evidence_ids": [
+     "g06v0.r17"
+    ],
+    "rationale": "Record exists; no dependent lines, padj 0.39, fails."
+   },
+   {
+    "id": "g09v0",
+    "selective_dependency": "no",
+    "evidence_ids": [
+     "g09v0.r01"
+    ],
+    "rationale": "Record exists; dependent lines 3 and selectivity positive, but padj 0.404 is not <0.1."
+   },
+   {
+    "id": "g08v0",
+    "selective_dependency": "no",
+    "evidence_ids": [
+     "g08v0.r19"
+    ],
+    "rationale": "Record exists; no dependent lines, padj 0.82, fails."
+   }
+  ]
+ },
+ "answers": [
+  {
+   "id": "g03v0",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g03v0.r11"
+   ],
+   "rationale": "Target record exists; n_ccrcc_dependent=0 and selectivity<0, so conditions fail."
+  },
+  {
+   "id": "g02v0",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g02v0.r13"
+   ],
+   "rationale": "Record exists; n_ccrcc_dependent=0 and padj 0.93, so conditions fail."
+  },
+  {
+   "id": "g01v0",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g01v0.r16"
+   ],
+   "rationale": "Record exists; n_ccrcc_dependent=0, padj 0.44, fails."
+  },
+  {
+   "id": "g10v0",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g10v0.r03"
+   ],
+   "rationale": "Record exists; no dependent lines, selectivity negative, padj 0.41."
+  },
+  {
+   "id": "g07v0",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g07v0.r07"
+   ],
+   "rationale": "Record exists; n_ccrcc_dependent=0, padj 0.56, fails."
+  },
+  {
+   "id": "g05v0",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g05v0.r26"
+   ],
+   "rationale": "Record exists; no dependent lines, padj 0.63, fails."
+  },
+  {
+   "id": "g11v0",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g11v0.r03"
+   ],
+   "rationale": "Record exists; no dependent lines, padj 0.466, fails."
+  },
+  {
+   "id": "g12v0",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g12v0.r14"
+   ],
+   "rationale": "Record exists; only 1 dependent line, selectivity negative, padj 0.45."
+  },
+  {
+   "id": "g04v0",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g04v0.r14"
+   ],
+   "rationale": "Record exists; no dependent lines, negative selectivity, padj 0.93."
+  },
+  {
+   "id": "g06v0",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g06v0.r17"
+   ],
+   "rationale": "Record exists; no dependent lines, padj 0.39, fails."
+  },
+  {
+   "id": "g09v0",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g09v0.r01"
+   ],
+   "rationale": "Record exists; dependent lines 3 and selectivity positive, but padj 0.404 is not <0.1."
+  },
+  {
+   "id": "g08v0",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g08v0.r19"
+   ],
+   "rationale": "Record exists; no dependent lines, padj 0.82, fails."
+  }
+ ],
+ "elapsed_s": 19.2,
+ "previous_attempt": {
+  "status": "failed",
+  "error": "cli error rc=1 subtype=success",
+  "cost_usd": 0,
+  "elapsed_s": 10.1
+ }
+}

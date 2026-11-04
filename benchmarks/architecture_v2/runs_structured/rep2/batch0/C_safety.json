@@ -1,0 +1,161 @@
+{
+ "study_hash": "5b34e637c50dad54",
+ "prompt_sha256": "97a36d0eea942cb4cd8e79ce73095c4c91d46e6d1bb185565acdf96271ae5169",
+ "status": "ok",
+ "case_ids": [
+  "g05v0",
+  "g01v0",
+  "g06v0",
+  "g11v0"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.025234,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 4825,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 593,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 4825,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 593,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 4825,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 4825
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 593,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 4825,
+   "webSearchRequests": 0,
+   "costUSD": 0.025234,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 4825,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g05v0\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g05v0.r07\",\"g05v0.r13\",\"g05v0.r14\"],\"rationale\":\"Surface call is surface. Vital-organ IHC level is 3 (duodenum), which is at least 2, so a safety concern exists even though the proteome reports no enrichment.\"},{\"id\":\"g01v0\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g01v0.r19\",\"g01v0.r21\",\"g01v0.r28\"],\"rationale\":\"Surface call is surface. Stomach IHC level is 3 and vital_protein_enriched is true, so there is a vital-safety concern. ENTITY_97 records were ignored.\"},{\"id\":\"g06v0\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"no\",\"evidence_ids\":[\"g06v0.r24\",\"g06v0.r13\"],\"rationale\":\"Target surface record says surface. Target IHC was measured with vital max level 1, which is at most 1. The only enrichment record belongs to ENTITY_28, so I ignored it. Kidney staining doesn't count.\"},{\"id\":\"g11v0\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g11v0.r13\",\"g11v0.r08\",\"g11v0.r02\"],\"rationale\":\"Target surface call is surface. Cerebellum IHC level is 3, which is at least 2, so there is a vital-safety concern. The proteome shows no enrichment, but the IHC result decides it.\"}]}",
+ "stderr": "",
+ "structured_output": {
+  "answers": [
+   {
+    "id": "g05v0",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "yes",
+    "evidence_ids": [
+     "g05v0.r07",
+     "g05v0.r13",
+     "g05v0.r14"
+    ],
+    "rationale": "Surface call is surface. Vital-organ IHC level is 3 (duodenum), which is at least 2, so a safety concern exists even though the proteome reports no enrichment."
+   },
+   {
+    "id": "g01v0",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "yes",
+    "evidence_ids": [
+     "g01v0.r19",
+     "g01v0.r21",
+     "g01v0.r28"
+    ],
+    "rationale": "Surface call is surface. Stomach IHC level is 3 and vital_protein_enriched is true, so there is a vital-safety concern. ENTITY_97 records were ignored."
+   },
+   {
+    "id": "g06v0",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "no",
+    "evidence_ids": [
+     "g06v0.r24",
+     "g06v0.r13"
+    ],
+    "rationale": "Target surface record says surface. Target IHC was measured with vital max level 1, which is at most 1. The only enrichment record belongs to ENTITY_28, so I ignored it. Kidney staining doesn't count."
+   },
+   {
+    "id": "g11v0",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "yes",
+    "evidence_ids": [
+     "g11v0.r13",
+     "g11v0.r08",
+     "g11v0.r02"
+    ],
+    "rationale": "Target surface call is surface. Cerebellum IHC level is 3, which is at least 2, so there is a vital-safety concern. The proteome shows no enrichment, but the IHC result decides it."
+   }
+  ]
+ },
+ "answers": [
+  {
+   "id": "g05v0",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g05v0.r07",
+    "g05v0.r13",
+    "g05v0.r14"
+   ],
+   "rationale": "Surface call is surface. Vital-organ IHC level is 3 (duodenum), which is at least 2, so a safety concern exists even though the proteome reports no enrichment."
+  },
+  {
+   "id": "g01v0",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g01v0.r19",
+    "g01v0.r21",
+    "g01v0.r28"
+   ],
+   "rationale": "Surface call is surface. Stomach IHC level is 3 and vital_protein_enriched is true, so there is a vital-safety concern. ENTITY_97 records were ignored."
+  },
+  {
+   "id": "g06v0",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "no",
+   "evidence_ids": [
+    "g06v0.r24",
+    "g06v0.r13"
+   ],
+   "rationale": "Target surface record says surface. Target IHC was measured with vital max level 1, which is at most 1. The only enrichment record belongs to ENTITY_28, so I ignored it. Kidney staining doesn't count."
+  },
+  {
+   "id": "g11v0",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g11v0.r13",
+    "g11v0.r08",
+    "g11v0.r02"
+   ],
+   "rationale": "Target surface call is surface. Cerebellum IHC level is 3, which is at least 2, so there is a vital-safety concern. The proteome shows no enrichment, but the IHC result decides it."
+  }
+ ],
+ "elapsed_s": 9.8
+}

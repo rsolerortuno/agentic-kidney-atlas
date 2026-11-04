@@ -1,0 +1,145 @@
+{
+ "study_hash": "5b34e637c50dad54",
+ "prompt_sha256": "815308f224d4d4da6e4ac1525cc47a16600a6b200ce9714c990e55fba372b550",
+ "status": "ok",
+ "case_ids": [
+  "g03v0",
+  "g02v0",
+  "g01v0",
+  "g10v0"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.024952000000000002,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 5112,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 450,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 5112,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 450,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 5112,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 5112
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 450,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 5112,
+   "webSearchRequests": 0,
+   "costUSD": 0.024952000000000002,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 5112,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g03v0\",\"tumour_intrinsic\":\"yes\",\"evidence_ids\":[\"g03v0.r24\",\"g03v0.r21\"],\"rationale\":\"RCC has largest transcript share (0.97); purity LFC 5.256 - 1.96*0.617 = 4.05 > 0.\"},{\"id\":\"g02v0\",\"tumour_intrinsic\":\"no\",\"evidence_ids\":[\"g02v0.r24\"],\"rationale\":\"CD8_T share (0.533) exceeds RCC share (0.345), a non-RCC group larger than RCC.\"},{\"id\":\"g01v0\",\"tumour_intrinsic\":\"yes\",\"evidence_ids\":[\"g01v0.r23\",\"g01v0.r01\"],\"rationale\":\"RCC has largest share (0.976); purity LFC 7.787 - 1.96*0.579 = 6.65 > 0.\"},{\"id\":\"g10v0\",\"tumour_intrinsic\":\"insufficient\",\"evidence_ids\":[\"g10v0.r10\",\"g10v0.r17\"],\"rationale\":\"RCC has largest share (0.964), but purity LFC -2.928 with SE 1.029 gives upper-bound lower limit below 0, so interval is not above 0.\"}]}",
+ "stderr": "",
+ "structured_output": {
+  "answers": [
+   {
+    "id": "g03v0",
+    "tumour_intrinsic": "yes",
+    "evidence_ids": [
+     "g03v0.r24",
+     "g03v0.r21"
+    ],
+    "rationale": "RCC has largest transcript share (0.97); purity LFC 5.256 - 1.96*0.617 = 4.05 > 0."
+   },
+   {
+    "id": "g02v0",
+    "tumour_intrinsic": "no",
+    "evidence_ids": [
+     "g02v0.r24"
+    ],
+    "rationale": "CD8_T share (0.533) exceeds RCC share (0.345), a non-RCC group larger than RCC."
+   },
+   {
+    "id": "g01v0",
+    "tumour_intrinsic": "yes",
+    "evidence_ids": [
+     "g01v0.r23",
+     "g01v0.r01"
+    ],
+    "rationale": "RCC has largest share (0.976); purity LFC 7.787 - 1.96*0.579 = 6.65 > 0."
+   },
+   {
+    "id": "g10v0",
+    "tumour_intrinsic": "insufficient",
+    "evidence_ids": [
+     "g10v0.r10",
+     "g10v0.r17"
+    ],
+    "rationale": "RCC has largest share (0.964), but purity LFC -2.928 with SE 1.029 gives upper-bound lower limit below 0, so interval is not above 0."
+   }
+  ]
+ },
+ "answers": [
+  {
+   "id": "g03v0",
+   "tumour_intrinsic": "yes",
+   "evidence_ids": [
+    "g03v0.r24",
+    "g03v0.r21"
+   ],
+   "rationale": "RCC has largest transcript share (0.97); purity LFC 5.256 - 1.96*0.617 = 4.05 > 0."
+  },
+  {
+   "id": "g02v0",
+   "tumour_intrinsic": "no",
+   "evidence_ids": [
+    "g02v0.r24"
+   ],
+   "rationale": "CD8_T share (0.533) exceeds RCC share (0.345), a non-RCC group larger than RCC."
+  },
+  {
+   "id": "g01v0",
+   "tumour_intrinsic": "yes",
+   "evidence_ids": [
+    "g01v0.r23",
+    "g01v0.r01"
+   ],
+   "rationale": "RCC has largest share (0.976); purity LFC 7.787 - 1.96*0.579 = 6.65 > 0."
+  },
+  {
+   "id": "g10v0",
+   "tumour_intrinsic": "insufficient",
+   "evidence_ids": [
+    "g10v0.r10",
+    "g10v0.r17"
+   ],
+   "rationale": "RCC has largest share (0.964), but purity LFC -2.928 with SE 1.029 gives upper-bound lower limit below 0, so interval is not above 0."
+  }
+ ],
+ "elapsed_s": 8.5
+}

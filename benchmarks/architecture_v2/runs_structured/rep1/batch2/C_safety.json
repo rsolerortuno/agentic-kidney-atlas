@@ -1,0 +1,159 @@
+{
+ "study_hash": "3597c924e7fcc874",
+ "prompt_sha256": "3c446bd10f241b6e492755050ae4ec4bfe5e59675c294db86737cf41ed546564",
+ "status": "ok",
+ "case_ids": [
+  "g09v0",
+  "g02v0",
+  "g04v0",
+  "g01v0"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.0344719,
+ "usage": {
+  "input_tokens": 4,
+  "cache_creation_input_tokens": 5571,
+  "cache_read_input_tokens": 4599,
+  "output_tokens": 1172,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 5571,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 582,
+    "cache_read_input_tokens": 4599,
+    "cache_creation_input_tokens": 972,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 972
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 4,
+   "outputTokens": 1172,
+   "cacheReadInputTokens": 4599,
+   "cacheCreationInputTokens": 5571,
+   "webSearchRequests": 0,
+   "costUSD": 0.0344719,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 5571,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g09v0\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g09v0.r16\"],\"rationale\":\"The only surface record is for ENTITY_71, not the target, so surface is insufficient. The target's proteome reports vital protein enrichment (true), so a vital safety concern is yes.\"},{\"id\":\"g02v0\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"insufficient\",\"evidence_ids\":[\"g02v0.r27\",\"g02v0.r14\",\"g02v0.r17\"],\"rationale\":\"The target's surface call is surface. IHC was not measured and the proteome reports no enrichment, so vital safety is insufficient. The enriched proteome record belongs to ENTITY_12 and was ignored.\"},{\"id\":\"g04v0\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g04v0.r21\",\"g04v0.r09\",\"g04v0.r02\"],\"rationale\":\"The target's surface call is surface. Its IHC shows level 3 staining in the adrenal gland, which is at least 2, so a vital safety concern is yes. Its proteome is not enriched.\"},{\"id\":\"g01v0\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g01v0.r19\",\"g01v0.r28\",\"g01v0.r21\"],\"rationale\":\"The target's surface call is surface. Its IHC shows level 3 staining in the stomach, and its proteome reports vital protein enrichment, so a vital safety concern is yes.\"}]}",
+ "stderr": "",
+ "structured_output": {
+  "answers": [
+   {
+    "id": "g09v0",
+    "surface_accessible": "insufficient",
+    "vital_safety_concern": "yes",
+    "evidence_ids": [
+     "g09v0.r16"
+    ],
+    "rationale": "The only surface record is for ENTITY_71, not the target, so surface is insufficient. The target's proteome reports vital protein enrichment (true), so a vital safety concern is yes."
+   },
+   {
+    "id": "g02v0",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "insufficient",
+    "evidence_ids": [
+     "g02v0.r27",
+     "g02v0.r14",
+     "g02v0.r17"
+    ],
+    "rationale": "The target's surface call is surface. IHC was not measured and the proteome reports no enrichment, so vital safety is insufficient. The enriched proteome record belongs to ENTITY_12 and was ignored."
+   },
+   {
+    "id": "g04v0",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "yes",
+    "evidence_ids": [
+     "g04v0.r21",
+     "g04v0.r09",
+     "g04v0.r02"
+    ],
+    "rationale": "The target's surface call is surface. Its IHC shows level 3 staining in the adrenal gland, which is at least 2, so a vital safety concern is yes. Its proteome is not enriched."
+   },
+   {
+    "id": "g01v0",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "yes",
+    "evidence_ids": [
+     "g01v0.r19",
+     "g01v0.r28",
+     "g01v0.r21"
+    ],
+    "rationale": "The target's surface call is surface. Its IHC shows level 3 staining in the stomach, and its proteome reports vital protein enrichment, so a vital safety concern is yes."
+   }
+  ]
+ },
+ "answers": [
+  {
+   "id": "g09v0",
+   "surface_accessible": "insufficient",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g09v0.r16"
+   ],
+   "rationale": "The only surface record is for ENTITY_71, not the target, so surface is insufficient. The target's proteome reports vital protein enrichment (true), so a vital safety concern is yes."
+  },
+  {
+   "id": "g02v0",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "insufficient",
+   "evidence_ids": [
+    "g02v0.r27",
+    "g02v0.r14",
+    "g02v0.r17"
+   ],
+   "rationale": "The target's surface call is surface. IHC was not measured and the proteome reports no enrichment, so vital safety is insufficient. The enriched proteome record belongs to ENTITY_12 and was ignored."
+  },
+  {
+   "id": "g04v0",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g04v0.r21",
+    "g04v0.r09",
+    "g04v0.r02"
+   ],
+   "rationale": "The target's surface call is surface. Its IHC shows level 3 staining in the adrenal gland, which is at least 2, so a vital safety concern is yes. Its proteome is not enriched."
+  },
+  {
+   "id": "g01v0",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g01v0.r19",
+    "g01v0.r28",
+    "g01v0.r21"
+   ],
+   "rationale": "The target's surface call is surface. Its IHC shows level 3 staining in the stomach, and its proteome reports vital protein enrichment, so a vital safety concern is yes."
+  }
+ ],
+ "elapsed_s": 14.7
+}

@@ -1,6 +1,7 @@
 # One run of the pipeline architecture benchmark. -Arm multi (/informe with subagents) or single (/informe_single).
 # Writes runs/<Run>/ through the normal scripts and Claude Code's JSON result to session_<Run>.json next to this file.
-param([string]$Arm, [string]$Run)
+# -Model sets the orchestrator (or single agent) model; specialists keep the model in their own definition.
+param([string]$Arm, [string]$Run, [string]$Model = "claude-opus-5-5")
 Set-Location (Split-Path -Parent (Split-Path -Parent $PSScriptRoot))
 $env:Path = [Environment]::GetEnvironmentVariable("Path", "User") + ";" + [Environment]::GetEnvironmentVariable("Path", "Machine") + ";" + $env:Path
 $claude = (Get-Command claude -ErrorAction SilentlyContinue).Source
@@ -15,5 +16,5 @@ scripts/integrate.py, assemble.py and verify.py. Do not read, modify or delete a
 Skip step 6 (do not render the report). This run is part of an architecture benchmark.
 "@
 $out = Join-Path $PSScriptRoot "session_${Run}.json"
-& $claude -p $prompt --model claude-opus-5-5 --mcp-config .mcp.json --allowedTools $tools --output-format json --max-budget-usd 40 > $out 2> (Join-Path $PSScriptRoot "session_${Run}.err")
+& $claude -p $prompt --model $Model --mcp-config .mcp.json --allowedTools $tools --output-format json --max-budget-usd 40 > $out 2> (Join-Path $PSScriptRoot "session_${Run}.err")
 "exit=$LASTEXITCODE"

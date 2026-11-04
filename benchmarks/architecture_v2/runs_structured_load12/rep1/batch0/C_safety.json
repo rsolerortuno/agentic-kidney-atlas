@@ -1,0 +1,335 @@
+{
+ "study_hash": "d5366b4962be6b4d",
+ "prompt_sha256": "df73814e7c006d5c98b7bb85ddac76f4463579e9aad60098749919c151e2bc3b",
+ "status": "ok",
+ "case_ids": [
+  "g05v1",
+  "g08v1",
+  "g03v1",
+  "g02v1",
+  "g11v1",
+  "g07v1",
+  "g06v1",
+  "g09v1",
+  "g01v1",
+  "g12v1",
+  "g04v1",
+  "g10v1"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.0674963,
+ "usage": {
+  "input_tokens": 4,
+  "cache_creation_input_tokens": 10078,
+  "cache_read_input_tokens": 8563,
+  "output_tokens": 2632,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 10078,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1318,
+    "cache_read_input_tokens": 8563,
+    "cache_creation_input_tokens": 1515,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 1515
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 4,
+   "outputTokens": 2632,
+   "cacheReadInputTokens": 8563,
+   "cacheCreationInputTokens": 10078,
+   "webSearchRequests": 0,
+   "costUSD": 0.0674963,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 10078,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g05v1\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"no\",\"evidence_ids\":[\"g05v1.r15\",\"g05v1.r11\",\"g05v1.r10\"],\"rationale\":\"Target surface record is surface. Vital IHC level 1 (lung), proteome not enriched, so no concern. Kidney staining ignored.\"},{\"id\":\"g08v1\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"insufficient\",\"evidence_ids\":[\"g08v1.r28\",\"g08v1.r15\"],\"rationale\":\"Surface call unknown. IHC not measured and no target proteome record, so safety is insufficient.\"},{\"id\":\"g03v1\",\"surface_accessible\":\"no\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g03v1.r05\",\"g03v1.r25\",\"g03v1.r24\"],\"rationale\":\"Surface call internal. Liver IHC level 3 (vital organ) gives a safety concern.\"},{\"id\":\"g02v1\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"insufficient\",\"evidence_ids\":[\"g02v1.r13\",\"g02v1.r19\",\"g02v1.r25\"],\"rationale\":\"Surface call surface. IHC not measured and proteome not enriched, so safety is insufficient.\"},{\"id\":\"g11v1\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g11v1.r26\",\"g11v1.r13\",\"g11v1.r19\"],\"rationale\":\"Surface call surface. Cerebellum IHC level 3 is a vital-organ staining level of at least 2.\"},{\"id\":\"g07v1\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"insufficient\",\"evidence_ids\":[\"g07v1.r10\",\"g07v1.r12\",\"g07v1.r04\"],\"rationale\":\"Surface call surface. IHC not measured and proteome not enriched, so safety is insufficient.\"},{\"id\":\"g06v1\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"no\",\"evidence_ids\":[\"g06v1.r13\",\"g06v1.r12\"],\"rationale\":\"Surface call surface. Vital IHC max level 1, measured. No target proteome record reports enrichment, so no concern.\"},{\"id\":\"g09v1\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g09v1.r13\"],\"rationale\":\"No target surface record. Proteome reports vital protein enrichment (brain cortex), so safety concern is yes.\"},{\"id\":\"g01v1\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"no\",\"evidence_ids\":[\"g01v1.r08\",\"g01v1.r28\",\"g01v1.r18\"],\"rationale\":\"Surface call surface. Vital IHC level 1 (lung), proteome not enriched, so no concern.\"},{\"id\":\"g12v1\",\"surface_accessible\":\"no\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g12v1.r07\",\"g12v1.r18\",\"g12v1.r03\"],\"rationale\":\"Surface call internal. Heart muscle IHC level 2 meets the vital-organ threshold of at least 2.\"},{\"id\":\"g04v1\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"no\",\"evidence_ids\":[\"g04v1.r24\",\"g04v1.r12\",\"g04v1.r19\"],\"rationale\":\"Surface call surface. Vital IHC level 1 (lung), proteome not enriched, so no concern.\"},{\"id\":\"g10v1\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g10v1.r05\"],\"rationale\":\"No target surface record. Proteome reports vital protein enrichment (liver), so safety concern is yes.\"}]}",
+ "stderr": "",
+ "structured_output": {
+  "answers": [
+   {
+    "id": "g05v1",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "no",
+    "evidence_ids": [
+     "g05v1.r15",
+     "g05v1.r11",
+     "g05v1.r10"
+    ],
+    "rationale": "Target surface record is surface. Vital IHC level 1 (lung), proteome not enriched, so no concern. Kidney staining ignored."
+   },
+   {
+    "id": "g08v1",
+    "surface_accessible": "insufficient",
+    "vital_safety_concern": "insufficient",
+    "evidence_ids": [
+     "g08v1.r28",
+     "g08v1.r15"
+    ],
+    "rationale": "Surface call unknown. IHC not measured and no target proteome record, so safety is insufficient."
+   },
+   {
+    "id": "g03v1",
+    "surface_accessible": "no",
+    "vital_safety_concern": "yes",
+    "evidence_ids": [
+     "g03v1.r05",
+     "g03v1.r25",
+     "g03v1.r24"
+    ],
+    "rationale": "Surface call internal. Liver IHC level 3 (vital organ) gives a safety concern."
+   },
+   {
+    "id": "g02v1",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "insufficient",
+    "evidence_ids": [
+     "g02v1.r13",
+     "g02v1.r19",
+     "g02v1.r25"
+    ],
+    "rationale": "Surface call surface. IHC not measured and proteome not enriched, so safety is insufficient."
+   },
+   {
+    "id": "g11v1",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "yes",
+    "evidence_ids": [
+     "g11v1.r26",
+     "g11v1.r13",
+     "g11v1.r19"
+    ],
+    "rationale": "Surface call surface. Cerebellum IHC level 3 is a vital-organ staining level of at least 2."
+   },
+   {
+    "id": "g07v1",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "insufficient",
+    "evidence_ids": [
+     "g07v1.r10",
+     "g07v1.r12",
+     "g07v1.r04"
+    ],
+    "rationale": "Surface call surface. IHC not measured and proteome not enriched, so safety is insufficient."
+   },
+   {
+    "id": "g06v1",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "no",
+    "evidence_ids": [
+     "g06v1.r13",
+     "g06v1.r12"
+    ],
+    "rationale": "Surface call surface. Vital IHC max level 1, measured. No target proteome record reports enrichment, so no concern."
+   },
+   {
+    "id": "g09v1",
+    "surface_accessible": "insufficient",
+    "vital_safety_concern": "yes",
+    "evidence_ids": [
+     "g09v1.r13"
+    ],
+    "rationale": "No target surface record. Proteome reports vital protein enrichment (brain cortex), so safety concern is yes."
+   },
+   {
+    "id": "g01v1",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "no",
+    "evidence_ids": [
+     "g01v1.r08",
+     "g01v1.r28",
+     "g01v1.r18"
+    ],
+    "rationale": "Surface call surface. Vital IHC level 1 (lung), proteome not enriched, so no concern."
+   },
+   {
+    "id": "g12v1",
+    "surface_accessible": "no",
+    "vital_safety_concern": "yes",
+    "evidence_ids": [
+     "g12v1.r07",
+     "g12v1.r18",
+     "g12v1.r03"
+    ],
+    "rationale": "Surface call internal. Heart muscle IHC level 2 meets the vital-organ threshold of at least 2."
+   },
+   {
+    "id": "g04v1",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "no",
+    "evidence_ids": [
+     "g04v1.r24",
+     "g04v1.r12",
+     "g04v1.r19"
+    ],
+    "rationale": "Surface call surface. Vital IHC level 1 (lung), proteome not enriched, so no concern."
+   },
+   {
+    "id": "g10v1",
+    "surface_accessible": "insufficient",
+    "vital_safety_concern": "yes",
+    "evidence_ids": [
+     "g10v1.r05"
+    ],
+    "rationale": "No target surface record. Proteome reports vital protein enrichment (liver), so safety concern is yes."
+   }
+  ]
+ },
+ "answers": [
+  {
+   "id": "g05v1",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "no",
+   "evidence_ids": [
+    "g05v1.r15",
+    "g05v1.r11",
+    "g05v1.r10"
+   ],
+   "rationale": "Target surface record is surface. Vital IHC level 1 (lung), proteome not enriched, so no concern. Kidney staining ignored."
+  },
+  {
+   "id": "g08v1",
+   "surface_accessible": "insufficient",
+   "vital_safety_concern": "insufficient",
+   "evidence_ids": [
+    "g08v1.r28",
+    "g08v1.r15"
+   ],
+   "rationale": "Surface call unknown. IHC not measured and no target proteome record, so safety is insufficient."
+  },
+  {
+   "id": "g03v1",
+   "surface_accessible": "no",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g03v1.r05",
+    "g03v1.r25",
+    "g03v1.r24"
+   ],
+   "rationale": "Surface call internal. Liver IHC level 3 (vital organ) gives a safety concern."
+  },
+  {
+   "id": "g02v1",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "insufficient",
+   "evidence_ids": [
+    "g02v1.r13",
+    "g02v1.r19",
+    "g02v1.r25"
+   ],
+   "rationale": "Surface call surface. IHC not measured and proteome not enriched, so safety is insufficient."
+  },
+  {
+   "id": "g11v1",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g11v1.r26",
+    "g11v1.r13",
+    "g11v1.r19"
+   ],
+   "rationale": "Surface call surface. Cerebellum IHC level 3 is a vital-organ staining level of at least 2."
+  },
+  {
+   "id": "g07v1",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "insufficient",
+   "evidence_ids": [
+    "g07v1.r10",
+    "g07v1.r12",
+    "g07v1.r04"
+   ],
+   "rationale": "Surface call surface. IHC not measured and proteome not enriched, so safety is insufficient."
+  },
+  {
+   "id": "g06v1",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "no",
+   "evidence_ids": [
+    "g06v1.r13",
+    "g06v1.r12"
+   ],
+   "rationale": "Surface call surface. Vital IHC max level 1, measured. No target proteome record reports enrichment, so no concern."
+  },
+  {
+   "id": "g09v1",
+   "surface_accessible": "insufficient",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g09v1.r13"
+   ],
+   "rationale": "No target surface record. Proteome reports vital protein enrichment (brain cortex), so safety concern is yes."
+  },
+  {
+   "id": "g01v1",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "no",
+   "evidence_ids": [
+    "g01v1.r08",
+    "g01v1.r28",
+    "g01v1.r18"
+   ],
+   "rationale": "Surface call surface. Vital IHC level 1 (lung), proteome not enriched, so no concern."
+  },
+  {
+   "id": "g12v1",
+   "surface_accessible": "no",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g12v1.r07",
+    "g12v1.r18",
+    "g12v1.r03"
+   ],
+   "rationale": "Surface call internal. Heart muscle IHC level 2 meets the vital-organ threshold of at least 2."
+  },
+  {
+   "id": "g04v1",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "no",
+   "evidence_ids": [
+    "g04v1.r24",
+    "g04v1.r12",
+    "g04v1.r19"
+   ],
+   "rationale": "Surface call surface. Vital IHC level 1 (lung), proteome not enriched, so no concern."
+  },
+  {
+   "id": "g10v1",
+   "surface_accessible": "insufficient",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g10v1.r05"
+   ],
+   "rationale": "No target surface record. Proteome reports vital protein enrichment (liver), so safety concern is yes."
+  }
+ ],
+ "elapsed_s": 36.9
+}

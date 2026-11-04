@@ -1,0 +1,190 @@
+{
+ "agents": {
+  "agent_omics.json": {
+   "submitted": 13,
+   "kept": 12,
+   "dropped": 1,
+   "dropped_detail": [
+    {
+     "text": "Safety caveat for CA9: the GTEx vital-organ proteome detects it in all 16 tissues with stomach enrichment, flagged as an on-target off-tumour concern [gene=CA9;",
+     "gene": "CA9",
+     "cited": 1,
+     "nonexistent": [],
+     "not_linked_to_gene": [],
+     "kept": false,
+     "unmatched_numbers": [
+      "16"
+     ],
+     "direction_contradiction": null,
+     "numeric_binding_errors": [],
+     "semantic_failure": true
+    }
+   ],
+   "semantic_failures": 1,
+   "ids_removed": 0
+  },
+  "agent_literature.json": {
+   "submitted": 10,
+   "kept": 9,
+   "dropped": 1,
+   "dropped_detail": [
+    {
+     "text": "NDUFA4L2 (COXFA4L2) has the broadest mechanistic literature among the top candidates. HIF-1alpha induces its expression and mitochondrial localization, and it s",
+     "gene": "COXFA4L2",
+     "cited": 4,
+     "nonexistent": [],
+     "not_linked_to_gene": [],
+     "kept": false,
+     "unmatched_numbers": [
+      "90%"
+     ],
+     "direction_contradiction": null,
+     "numeric_binding_errors": [],
+     "semantic_failure": true
+    }
+   ],
+   "semantic_failures": 1,
+   "ids_removed": 1
+  },
+  "agent_external.json": {
+   "submitted": 10,
+   "kept": 7,
+   "dropped": 3,
+   "dropped_detail": [
+    {
+     "text": "Rank 1 in the convergence ranking. Open Targets association with ccRCC is modest and the score is of an association-only kind: [gene=CA9; type=open_targets_asso",
+     "gene": "CA9",
+     "cited": 6,
+     "nonexistent": [],
+     "not_linked_to_gene": [],
+     "kept": false,
+     "unmatched_numbers": [
+      "4"
+     ],
+     "direction_contradiction": null,
+     "numeric_binding_errors": [],
+     "semantic_failure": true
+    },
+    {
+     "text": "Driver gene, high genetic association (Open Targets rank 2 of 1998, score 0.6348 in the disease top list). Significantly recurrent in the 511 tumours [gene=PBRM",
+     "gene": "PBRM1",
+     "cited": 2,
+     "nonexistent": [],
+     "not_linked_to_gene": [],
+     "kept": false,
+     "unmatched_numbers": [
+      "0.6348",
+      "511"
+     ],
+     "direction_contradiction": null,
+     "numeric_binding_errors": [],
+     "semantic_failure": true
+    },
+    {
+     "text": "Top Open Targets association with ccRCC and the most frequently mutated gene in the 511-tumour cohort, with extremely high observed over expected ratio and a si",
+     "gene": "VHL",
+     "cited": 2,
+     "nonexistent": [],
+     "not_linked_to_gene": [],
+     "kept": false,
+     "unmatched_numbers": [
+      "511"
+     ],
+     "direction_contradiction": null,
+     "numeric_binding_errors": [],
+     "semantic_failure": true
+    }
+   ],
+   "semantic_failures": 3,
+   "ids_removed": 0
+  },
+  "agent_cells.json": {
+   "submitted": 18,
+   "kept": 15,
+   "dropped": 3,
+   "dropped_detail": [
+    {
+     "text": "In Visium, CA9 high-expression spots are surrounded mainly by RCC-rich neighbours (enriched, adjusted p below 0.01) with a smaller macrophage enrichment; compos",
+     "gene": "CA9",
+     "cited": 2,
+     "nonexistent": [],
+     "not_linked_to_gene": [],
+     "kept": false,
+     "unmatched_numbers": [
+      "0.01"
+     ],
+     "direction_contradiction": null,
+     "numeric_binding_errors": [],
+     "semantic_failure": true
+    },
+    {
+     "text": "MILR1 is the top immune-track candidate (macrophage-derived, no ccRCC papers, no clinical drug, surface protein) and is linked to adverse prognosis, but its bul",
+     "gene": "MILR1",
+     "cited": 4,
+     "nonexistent": [],
+     "not_linked_to_gene": [],
+     "kept": false,
+     "unmatched_numbers": [
+      "0.414"
+     ],
+     "direction_contradiction": null,
+     "numeric_binding_errors": [],
+     "semantic_failure": true
+    },
+    {
+     "text": "LILRB4 is a macrophage-carried surface immune candidate with higher grade association and replicated TCGA increase, but the signal is flagged as infiltration-dr",
+     "gene": "LILRB4",
+     "cited": 4,
+     "nonexistent": [],
+     "not_linked_to_gene": [],
+     "kept": false,
+     "unmatched_numbers": [
+      "1"
+     ],
+     "direction_contradiction": null,
+     "numeric_binding_errors": [],
+     "semantic_failure": true
+    }
+   ],
+   "semantic_failures": 3,
+   "ids_removed": 0
+  },
+  "agent_applied.json": {
+   "submitted": 24,
+   "kept": 22,
+   "dropped": 2,
+   "dropped_detail": [
+    {
+     "text": "In CheckMate 025, NNMT does not differ between nivolumab and everolimus (log hazard ratio difference [gene=NNMT; type=treatment_response; source=IMmotion150 and",
+     "gene": "NNMT",
+     "cited": 1,
+     "nonexistent": [],
+     "not_linked_to_gene": [],
+     "kept": false,
+     "unmatched_numbers": [
+      "025"
+     ],
+     "direction_contradiction": null,
+     "numeric_binding_errors": [],
+     "semantic_failure": true
+    },
+    {
+     "text": "EPAS1 (HIF-2 alpha) is not associated with differential benefit between nivolumab and everolimus in CheckMate 025 (adjusted p [gene=EPAS1; type=treatment_respon",
+     "gene": "EPAS1",
+     "cited": 1,
+     "nonexistent": [],
+     "not_linked_to_gene": [],
+     "kept": false,
+     "unmatched_numbers": [
+      "025"
+     ],
+     "direction_contradiction": null,
+     "numeric_binding_errors": [],
+     "semantic_failure": true
+    }
+   ],
+   "semantic_failures": 2,
+   "ids_removed": 0
+  }
+ }
+}

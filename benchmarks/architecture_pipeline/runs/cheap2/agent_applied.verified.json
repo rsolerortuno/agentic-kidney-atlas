@@ -1,0 +1,579 @@
+{
+ "agent": "agente-aplicado",
+ "findings": [
+  {
+   "gene": "SCARB1",
+   "role": "target",
+   "layer": "adc",
+   "key": true,
+   "statement": "SCARB1 is a surface protein with a modest ADC suitability score [gene=SCARB1; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; suitability=0.558], but it is enriched in the adrenal gland proteome (tissue-specificity score [gene=SCARB1; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; vital_organ_protein_ts_max=5.08]) with high adrenal staining and moderate kidney staining. Only a small share of tumour cells express it in the weakest quarter of donors [gene=SCARB1; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; tumour_cells_expressing_pct_weakest_quarter_of_donors=7.1], so on-target off-tumour risk and patchy expression both weigh against a conjugate; a high score would not show a conjugate works.",
+   "evidence_ids": [
+    "EV:adc_profile:2d66f8e78d0c"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:adc_profile:2d66f8e78d0c",
+     "field": [
+      "suitability"
+     ],
+     "display": "0.558",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:2d66f8e78d0c",
+     "field": [
+      "vital_organ_protein_ts_max"
+     ],
+     "display": "5.08",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:2d66f8e78d0c",
+     "field": [
+      "tumour_cells_expressing_pct_weakest_quarter_of_donors"
+     ],
+     "display": "7.1",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "SCARB1",
+   "role": "target",
+   "layer": "replication",
+   "key": true,
+   "statement": "The cell-type call for SCARB1 does not hold across single-cell datasets: the dominant group is myeloid in Li 2022 but tumour (RCC) in Zhang 2021, with tumour-cell shares of [gene=SCARB1; type=sc_replication; source=Zhang et al. 2021 ccRCC single-cell RNA-seq (CZ CELLxGENE); li2022_tumour_cell_share=0.336] and [gene=SCARB1; type=sc_replication; source=Zhang et al. 2021 ccRCC single-cell RNA-seq (CZ CELLxGENE); zhang2021_tumour_cell_share=0.582]. The top-ranked target may therefore be partly a myeloid signal; only four paired donors back the second dataset.",
+   "evidence_ids": [
+    "EV:sc_replication:2d66f8e78d0c"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:sc_replication:2d66f8e78d0c",
+     "field": [
+      "li2022_tumour_cell_share"
+     ],
+     "display": "0.336",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_replication:2d66f8e78d0c",
+     "field": [
+      "zhang2021_tumour_cell_share"
+     ],
+     "display": "0.582",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "SCARB1",
+   "role": "target",
+   "layer": "confirmatory",
+   "statement": "SCARB1 protein increase replicates in the confirmatory DIA cohort, with a log2 fold change of [gene=SCARB1; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); protein_conf_log2fc=2.334] and adjusted p of [gene=SCARB1; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); protein_conf_padj=3.28e-10].",
+   "evidence_ids": [
+    "EV:confirmatory_replication:2d66f8e78d0c"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:confirmatory_replication:2d66f8e78d0c",
+     "field": [
+      "protein_conf_log2fc"
+     ],
+     "display": "2.334",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:confirmatory_replication:2d66f8e78d0c",
+     "field": [
+      "protein_conf_padj"
+     ],
+     "display": "3.28e-10",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "CA9",
+   "role": "target_and_biomarker",
+   "layer": "adc",
+   "key": true,
+   "statement": "CA9 is a known target with a surface call, but the vital-organ proteome shows stomach enrichment (tissue-specificity score [gene=CA9; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; vital_organ_protein_ts_max=5.19]) with high stomach staining, and it was not observed at the cell surface in CSPA. In the weakest quarter of donors few tumour cells express it [gene=CA9; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; tumour_cells_expressing_pct_weakest_quarter_of_donors=24.3], so stomach safety and heterogeneity are the open questions.",
+   "evidence_ids": [
+    "EV:adc_profile:225a767ebcb5"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:adc_profile:225a767ebcb5",
+     "field": [
+      "vital_organ_protein_ts_max"
+     ],
+     "display": "5.19",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:225a767ebcb5",
+     "field": [
+      "tumour_cells_expressing_pct_weakest_quarter_of_donors"
+     ],
+     "display": "24.3",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "CA9",
+   "role": "target_and_biomarker",
+   "layer": "confirmatory",
+   "statement": "CA9 was not tested in the confirmatory CPTAC cohort (fewer than ten matched tumour-normal pairs there), so its protein change has no independent replication; this is a gap, not a failure to replicate.",
+   "evidence_ids": [
+    "EV:adc_profile:225a767ebcb5"
+   ],
+   "numeric_claims": []
+  },
+  {
+   "gene": "CA9",
+   "role": "target_and_biomarker",
+   "layer": "subtype",
+   "statement": "CA9 is flagged as a subgroup target candidate for PBRM1 mutation, with mutant-minus-wild-type log2 difference of [gene=CA9; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; PBRM1.cptac_rna.mutant_minus_wildtype_log2=0.971] in CPTAC RNA and [gene=CA9; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; PBRM1.tcga_rna.mutant_minus_wildtype_log2=1.148] in TCGA RNA. It is not flagged for VHL, BAP1 or SETD2.",
+   "evidence_ids": [
+    "EV:subtype_profile:225a767ebcb5"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:subtype_profile:225a767ebcb5",
+     "field": [
+      "PBRM1",
+      "cptac_rna",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "0.971",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:subtype_profile:225a767ebcb5",
+     "field": [
+      "PBRM1",
+      "tcga_rna",
+      "mutant_minus_wildtype_log2"
+     ],
+     "display": "1.148",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "CA9",
+   "role": "target_and_biomarker",
+   "layer": "treatment",
+   "key": true,
+   "statement": "CA9 expression is only weakly associated with longer benefit on sunitinib in IMmotion150 (log hazard ratio per SD [gene=CA9; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.sunitinib.log_hr_per_sd=-0.336], adjusted p [gene=CA9; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.sunitinib.padj=0.332]). The difference between combination and sunitinib is not significant (adjusted p [gene=CA9; type=treatment_response; source=IMmotion150 and Choueiri 2016 treatment-response trials (cBioPortal datahub); arms.difference_between_arms.padj=0.917]), so CA9 is not a usable treatment-selection biomarker here.",
+   "evidence_ids": [
+    "EV:treatment_response:225a767ebcb5"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:treatment_response:225a767ebcb5",
+     "field": [
+      "arms",
+      "sunitinib",
+      "log_hr_per_sd"
+     ],
+     "display": "-0.336",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:225a767ebcb5",
+     "field": [
+      "arms",
+      "sunitinib",
+      "padj"
+     ],
+     "display": "0.332",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:treatment_response:225a767ebcb5",
+     "field": [
+      "arms",
+      "difference_between_arms",
+      "padj"
+     ],
+     "display": "0.917",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "CD70",
+   "role": "target",
+   "layer": "adc",
+   "statement": "CD70 has the best ADC suitability among the leading candidates [gene=CD70; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; suitability=0.746], with no vital-organ proteome enrichment (tissue-specificity score [gene=CD70; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; vital_organ_protein_ts_max=0.34]). Staining data are not available, and the weakest-quarter tumour expression is low [gene=CD70; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; tumour_cells_expressing_pct_weakest_quarter_of_donors=17.7], so heterogeneity limits any conjugate.",
+   "evidence_ids": [
+    "EV:adc_profile:908e84663f6a"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:adc_profile:908e84663f6a",
+     "field": [
+      "suitability"
+     ],
+     "display": "0.746",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:908e84663f6a",
+     "field": [
+      "vital_organ_protein_ts_max"
+     ],
+     "display": "0.34",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:908e84663f6a",
+     "field": [
+      "tumour_cells_expressing_pct_weakest_quarter_of_donors"
+     ],
+     "display": "17.7",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "CD70",
+   "role": "target_and_biomarker",
+   "layer": "immune",
+   "key": true,
+   "statement": "Most CD70 tumour transcripts come from immune cells (share [gene=CD70; type=immune_profile; source=CPTAC CIBERSORT and xCell immune deconvolution; immune_cell_share_of_tumour_transcripts=0.654]), and it correlates with CD8 T cells (rho [gene=CD70; type=immune_profile; source=CPTAC CIBERSORT and xCell immune deconvolution; rho_with_cd8_t_cells=0.278]). This weakens it as a tumour-cell-intrinsic ADC target and suggests an immune-microenvironment role; a negative log hazard ratio on atezolizumab plus bevacizumab is reported without adjusted significance.",
+   "evidence_ids": [
+    "EV:immune_profile:908e84663f6a"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:immune_profile:908e84663f6a",
+     "field": [
+      "immune_cell_share_of_tumour_transcripts"
+     ],
+     "display": "0.654",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:immune_profile:908e84663f6a",
+     "field": [
+      "rho_with_cd8_t_cells"
+     ],
+     "display": "0.278",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "CD70",
+   "role": "target",
+   "layer": "confirmatory",
+   "statement": "CD70 was not tested in the confirmatory CPTAC cohort (absent or too sparse there), so its protein change lacks independent replication; this is not a failed replication.",
+   "evidence_ids": [
+    "EV:adc_profile:908e84663f6a"
+   ],
+   "numeric_claims": []
+  },
+  {
+   "gene": "NNMT",
+   "role": "target_and_biomarker",
+   "layer": "replication",
+   "statement": "NNMT is assigned to tumour (RCC) cells in both single-cell datasets, with tumour-cell share [gene=NNMT; type=sc_replication; source=Zhang et al. 2021 ccRCC single-cell RNA-seq (CZ CELLxGENE); li2022_tumour_cell_share=0.97] in Li 2022 and [gene=NNMT; type=sc_replication; source=Zhang et al. 2021 ccRCC single-cell RNA-seq (CZ CELLxGENE); zhang2021_tumour_cell_share=0.948] in Zhang 2021, so the signal is tumour-intrinsic.",
+   "evidence_ids": [
+    "EV:sc_replication:7dbf93860d9f"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:sc_replication:7dbf93860d9f",
+     "field": [
+      "li2022_tumour_cell_share"
+     ],
+     "display": "0.97",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_replication:7dbf93860d9f",
+     "field": [
+      "zhang2021_tumour_cell_share"
+     ],
+     "display": "0.948",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "NNMT",
+   "role": "target_and_biomarker",
+   "layer": "confirmatory",
+   "key": true,
+   "statement": "NNMT protein increase replicates strongly in the confirmatory cohort, log2 fold change [gene=NNMT; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); protein_conf_log2fc=4.776] with adjusted p [gene=NNMT; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); protein_conf_padj=3.07e-46]; direction and significance matter more than the fold-change size across technologies.",
+   "evidence_ids": [
+    "EV:confirmatory_replication:7dbf93860d9f"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:confirmatory_replication:7dbf93860d9f",
+     "field": [
+      "protein_conf_log2fc"
+     ],
+     "display": "4.776",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:confirmatory_replication:7dbf93860d9f",
+     "field": [
+      "protein_conf_padj"
+     ],
+     "display": "3.07e-46",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "NNMT",
+   "role": "target_and_biomarker",
+   "layer": "subtype",
+   "statement": "NNMT is not flagged as a subgroup target candidate for VHL, PBRM1, BAP1 or SETD2 mutation, and does not define the ccA/ccB split, so it would matter across genetic subgroups rather than for one.",
+   "evidence_ids": [
+    "EV:subtype_profile:7dbf93860d9f"
+   ],
+   "numeric_claims": []
+  },
+  {
+   "gene": "PCK1",
+   "role": "biomarker",
+   "layer": "confirmatory",
+   "statement": "PCK1 loss replicates in the confirmatory cohort (log2 fold change [gene=PCK1; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); protein_conf_log2fc=-4.819], adjusted p [gene=PCK1; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); protein_conf_padj=3.53e-27]) and both measured phosphosites replicate too.",
+   "evidence_ids": [
+    "EV:confirmatory_replication:fd99b19fe8a6"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:confirmatory_replication:fd99b19fe8a6",
+     "field": [
+      "protein_conf_log2fc"
+     ],
+     "display": "-4.819",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:confirmatory_replication:fd99b19fe8a6",
+     "field": [
+      "protein_conf_padj"
+     ],
+     "display": "3.53e-27",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "PCK1",
+   "role": "biomarker",
+   "layer": "subtype",
+   "statement": "PCK1 is lower in ccB than ccA tumours at RNA level (TCGA ccB minus ccA log2 difference [gene=PCK1; type=subtype_profile; source=CPTAC and TCGA-KIRC tumours split by driver mutation and ccA/ccB; ccA_ccB.tcga_rna.ccB_minus_ccA_log2=-2.581]) but the CPTAC protein difference is not significant, and no mutation subgroup is flagged. It is a loss marker, not a drug target.",
+   "evidence_ids": [
+    "EV:subtype_profile:fd99b19fe8a6"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:subtype_profile:fd99b19fe8a6",
+     "field": [
+      "ccA_ccB",
+      "tcga_rna",
+      "ccB_minus_ccA_log2"
+     ],
+     "display": "-2.581",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "HK2",
+   "role": "target",
+   "layer": "confirmatory",
+   "key": true,
+   "statement": "HK2 protein increase does not replicate: in the confirmatory cohort the log2 fold change is [gene=HK2; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); protein_conf_log2fc=-0.256] with adjusted p [gene=HK2; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); protein_conf_padj=0.074], against a discovery log2 fold change of [gene=HK2; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); protein_discovery_log2fc=2.106]. A top-ten target candidate rests on discovery data only.",
+   "evidence_ids": [
+    "EV:confirmatory_replication:c5d66c7fafe1"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:confirmatory_replication:c5d66c7fafe1",
+     "field": [
+      "protein_conf_log2fc"
+     ],
+     "display": "-0.256",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:confirmatory_replication:c5d66c7fafe1",
+     "field": [
+      "protein_conf_padj"
+     ],
+     "display": "0.074",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:confirmatory_replication:c5d66c7fafe1",
+     "field": [
+      "protein_discovery_log2fc"
+     ],
+     "display": "2.106",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "PPP1R1A",
+   "role": "biomarker",
+   "layer": "confirmatory",
+   "key": true,
+   "statement": "PPP1R1A protein loss is not significant in the confirmatory cohort (adjusted p [gene=PPP1R1A; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); protein_conf_padj=0.17], few matched pairs), although the direction is the same and one phosphosite replicates. The biomarker case rests on discovery protein and TCGA RNA; FABP6 and DUSP9 were not tested in this cohort.",
+   "evidence_ids": [
+    "EV:confirmatory_replication:3e933275c7cd"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:confirmatory_replication:3e933275c7cd",
+     "field": [
+      "protein_conf_padj"
+     ],
+     "display": "0.17",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "PSAT1",
+   "role": "biomarker",
+   "layer": "confirmatory",
+   "statement": "PSAT1 loss, the top biomarker, replicates in the confirmatory cohort (log2 fold change [gene=PSAT1; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); protein_conf_log2fc=-3.946]), although its one phosphosite significant in discovery does not replicate.",
+   "evidence_ids": [
+    "EV:confirmatory_replication:58119698ea36"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:confirmatory_replication:58119698ea36",
+     "field": [
+      "protein_conf_log2fc"
+     ],
+     "display": "-3.946",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "VWF",
+   "role": "microenvironment",
+   "layer": "immune",
+   "key": true,
+   "statement": "VWF is an endothelial signal, not a tumour-cell one: immune cells contribute little of its tumour transcripts (share [gene=VWF; type=immune_profile; source=CPTAC CIBERSORT and xCell immune deconvolution; immune_cell_share_of_tumour_transcripts=0.016]) and its tumour-cell share in Li 2022 is [gene=VWF; type=sc_replication; source=Zhang et al. 2021 ccRCC single-cell RNA-seq (CZ CELLxGENE); li2022_tumour_cell_share=0.002]. Its tumour rise and prognostic value in the biomarker ranking likely reflect vascularity.",
+   "evidence_ids": [
+    "EV:immune_profile:542bd3ecd7ad",
+    "EV:sc_replication:542bd3ecd7ad"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:immune_profile:542bd3ecd7ad",
+     "field": [
+      "immune_cell_share_of_tumour_transcripts"
+     ],
+     "display": "0.016",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_replication:542bd3ecd7ad",
+     "field": [
+      "li2022_tumour_cell_share"
+     ],
+     "display": "0.002",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "SLC16A3",
+   "role": "target",
+   "layer": "adc",
+   "statement": "SLC16A3 (MCT4) ranks high for ADC suitability [gene=SLC16A3; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; suitability=0.725] and is expressed in a large share of tumour cells even in the weakest quarter of donors [gene=SLC16A3; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; tumour_cells_expressing_pct_weakest_quarter_of_donors=43.7]. Adrenal staining is high and kidney staining moderate, and it has twelve transmembrane segments with a short extracellular part, which limits antibody access.",
+   "evidence_ids": [
+    "EV:adc_profile:11298113327b"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:adc_profile:11298113327b",
+     "field": [
+      "suitability"
+     ],
+     "display": "0.725",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:11298113327b",
+     "field": [
+      "tumour_cells_expressing_pct_weakest_quarter_of_donors"
+     ],
+     "display": "43.7",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "SLC16A3",
+   "role": "target",
+   "layer": "confirmatory",
+   "statement": "SLC16A3 protein increase replicates in the confirmatory cohort (log2 fold change [gene=SLC16A3; type=confirmatory_replication; source=CPTAC ccRCC confirmatory cohort, DIA proteome and phosphoproteome (PDC000411); protein_conf_log2fc=3.551]) and its single measured phosphosite replicates.",
+   "evidence_ids": [
+    "EV:confirmatory_replication:11298113327b"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:confirmatory_replication:11298113327b",
+     "field": [
+      "protein_conf_log2fc"
+     ],
+     "display": "3.551",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "ENPP3",
+   "role": "target",
+   "layer": "adc",
+   "statement": "ENPP3, a known conjugate target, has a lower suitability score [gene=ENPP3; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; suitability=0.578] and high staining in normal kidney [gene=ENPP3; type=adc_profile; source=UniProt topology, Human Protein Atlas staining and scRNA homogeneity; kidney_staining_level=3.0] and duodenum, so on-target kidney toxicity is the main concern despite no vital-organ proteome enrichment. Its protein increase replicates in the confirmatory cohort.",
+   "evidence_ids": [
+    "EV:adc_profile:d5aee88146ed",
+    "EV:confirmatory_replication:d5aee88146ed"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:adc_profile:d5aee88146ed",
+     "field": [
+      "suitability"
+     ],
+     "display": "0.578",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:adc_profile:d5aee88146ed",
+     "field": [
+      "kidney_staining_level"
+     ],
+     "display": "3.0",
+     "unit": "native"
+    }
+   ]
+  }
+ ],
+ "caveats": [
+  "No gene differs between trial arms after correction in IMmotion150 or CheckMate 025; all treatment findings are associations from single arms of modest size and are leads only.",
+  "The ADC score combines topology, staining and expression homogeneity; it does not show that a conjugate or radioligand would work, and CD70 lacks staining data.",
+  "Confirmatory replication covers protein only in a different cohort and technology; CA9, CD70, FABP6 and DUSP9 were not tested there, which is a gap and not a failed replication.",
+  "Second single-cell dataset has only four paired donors; the SCARB1 myeloid versus tumour discrepancy is unresolved.",
+  "PSAT1, ALDH6A1, SLC6A19, SLPI, L1CAM, VWF, PCK1 replicate in direction and significance, but these loss markers are not drug targets. Immune and endothelial genes can differ because of infiltration or vascularity.",
+  "Treatment, subtype and immune layers were run only for a subset of candidates because of the tool-call budget."
+ ]
+}

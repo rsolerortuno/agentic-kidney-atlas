@@ -1,0 +1,157 @@
+{
+ "study_hash": "5b34e637c50dad54",
+ "prompt_sha256": "21296ff9afa7c8441fab7b59ac9ebbf9a7746968baee170d356bc25c69e1e0f1",
+ "status": "ok",
+ "case_ids": [
+  "g10v1",
+  "g04v1",
+  "g06v1",
+  "g01v1"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.025481999999999998,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 4632,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 695,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 4632,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 695,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 4632,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 4632
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 695,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 4632,
+   "webSearchRequests": 0,
+   "costUSD": 0.025481999999999998,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 4632,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g10v1\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g10v1.r05\"],\"rationale\":\"No surface record for ENTITY_73 (the surface record belongs to another entity), so insufficient. Proteome reports vital_protein_enriched true (liver), so vital safety concern yes.\"},{\"id\":\"g04v1\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"no\",\"evidence_ids\":[\"g04v1.r24\",\"g04v1.r12\",\"g04v1.r19\"],\"rationale\":\"Surface call is surface. Vital-organ IHC max level 1 (kidney excluded) and proteome not enriched, so no vital safety concern.\"},{\"id\":\"g06v1\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"no\",\"evidence_ids\":[\"g06v1.r13\",\"g06v1.r12\"],\"rationale\":\"ENTITY_26 surface call is surface. Vital IHC max level 1 (small intestine); no proteome record for this entity reports enrichment, so no concern.\"},{\"id\":\"g01v1\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"no\",\"evidence_ids\":[\"g01v1.r08\",\"g01v1.r28\",\"g01v1.r18\"],\"rationale\":\"Surface call is surface. Vital IHC max level 1 and proteome not enriched, so no vital safety concern.\"}]}",
+ "stderr": "",
+ "structured_output": {
+  "answers": [
+   {
+    "id": "g10v1",
+    "surface_accessible": "insufficient",
+    "vital_safety_concern": "yes",
+    "evidence_ids": [
+     "g10v1.r05"
+    ],
+    "rationale": "No surface record for ENTITY_73 (the surface record belongs to another entity), so insufficient. Proteome reports vital_protein_enriched true (liver), so vital safety concern yes."
+   },
+   {
+    "id": "g04v1",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "no",
+    "evidence_ids": [
+     "g04v1.r24",
+     "g04v1.r12",
+     "g04v1.r19"
+    ],
+    "rationale": "Surface call is surface. Vital-organ IHC max level 1 (kidney excluded) and proteome not enriched, so no vital safety concern."
+   },
+   {
+    "id": "g06v1",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "no",
+    "evidence_ids": [
+     "g06v1.r13",
+     "g06v1.r12"
+    ],
+    "rationale": "ENTITY_26 surface call is surface. Vital IHC max level 1 (small intestine); no proteome record for this entity reports enrichment, so no concern."
+   },
+   {
+    "id": "g01v1",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "no",
+    "evidence_ids": [
+     "g01v1.r08",
+     "g01v1.r28",
+     "g01v1.r18"
+    ],
+    "rationale": "Surface call is surface. Vital IHC max level 1 and proteome not enriched, so no vital safety concern."
+   }
+  ]
+ },
+ "answers": [
+  {
+   "id": "g10v1",
+   "surface_accessible": "insufficient",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g10v1.r05"
+   ],
+   "rationale": "No surface record for ENTITY_73 (the surface record belongs to another entity), so insufficient. Proteome reports vital_protein_enriched true (liver), so vital safety concern yes."
+  },
+  {
+   "id": "g04v1",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "no",
+   "evidence_ids": [
+    "g04v1.r24",
+    "g04v1.r12",
+    "g04v1.r19"
+   ],
+   "rationale": "Surface call is surface. Vital-organ IHC max level 1 (kidney excluded) and proteome not enriched, so no vital safety concern."
+  },
+  {
+   "id": "g06v1",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "no",
+   "evidence_ids": [
+    "g06v1.r13",
+    "g06v1.r12"
+   ],
+   "rationale": "ENTITY_26 surface call is surface. Vital IHC max level 1 (small intestine); no proteome record for this entity reports enrichment, so no concern."
+  },
+  {
+   "id": "g01v1",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "no",
+   "evidence_ids": [
+    "g01v1.r08",
+    "g01v1.r28",
+    "g01v1.r18"
+   ],
+   "rationale": "Surface call is surface. Vital IHC max level 1 and proteome not enriched, so no vital safety concern."
+  }
+ ],
+ "elapsed_s": 9.7
+}

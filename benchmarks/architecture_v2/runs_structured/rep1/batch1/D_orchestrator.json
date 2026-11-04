@@ -1,0 +1,245 @@
+{
+ "study_hash": "3597c924e7fcc874",
+ "prompt_sha256": "914e6fa07b582ead715ed2969bac72313a7d96d2bb766aeee7fee572a8d7d962",
+ "status": "ok",
+ "case_ids": [
+  "g11v0",
+  "g10v0",
+  "g08v0",
+  "g07v0"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.09496139999999999,
+ "usage": {
+  "input_tokens": 4,
+  "cache_creation_input_tokens": 16710,
+  "cache_read_input_tokens": 16634,
+  "output_tokens": 2645,
+  "output_tokens_details": {
+   "thinking_tokens": 519
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 16710,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1056,
+    "cache_read_input_tokens": 15627,
+    "cache_creation_input_tokens": 2090,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 2090
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 4,
+   "outputTokens": 2645,
+   "cacheReadInputTokens": 16634,
+   "cacheCreationInputTokens": 16710,
+   "webSearchRequests": 0,
+   "costUSD": 0.09496139999999999,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 519,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 16710,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g11v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"no\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"infiltration_signal\",\"evidence_ids\":[\"g11v0.r01\",\"g11v0.r19\",\"g11v0.r15\",\"g11v0.r25\",\"g11v0.r18\",\"g11v0.r13\",\"g11v0.r08\",\"g11v0.r03\"],\"rationale\":\"Protein and RNA up, replicated in TCGA and confirmatory protein. Macrophage and CD8_T transcript shares exceed RCC, so not tumour-intrinsic. Surface call; cerebellum IHC level 3 is a vital concern. DepMap has no dependent lines.\"},{\"id\":\"g10v0\",\"protein_up\":\"no\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"insufficient\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"loss_biomarker\",\"evidence_ids\":[\"g10v0.r12\",\"g10v0.r13\",\"g10v0.r21\",\"g10v0.r19\",\"g10v0.r10\",\"g10v0.r17\",\"g10v0.r26\",\"g10v0.r03\"],\"rationale\":\"Protein down; RNA, TCGA and confirmatory protein agree. RCC has top share but the purity interval includes 0. No target surface record. Liver proteome enrichment is true. DepMap conditions fail.\"},{\"id\":\"g08v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"insufficient\",\"selective_dependency\":\"no\",\"verdict\":\"needs_more_data\",\"evidence_ids\":[\"g08v0.r09\",\"g08v0.r11\",\"g08v0.r04\",\"g08v0.r06\",\"g08v0.r26\",\"g08v0.r16\",\"g08v0.r01\",\"g08v0.r19\"],\"rationale\":\"Protein up, TCGA RNA confirms. RCC has top share and purity bound is 1.94. Surface is unknown, IHC not measured and no proteome record. DepMap has no dependent lines. Needs more data.\"},{\"id\":\"g07v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"insufficient\",\"selective_dependency\":\"no\",\"verdict\":\"needs_more_data\",\"evidence_ids\":[\"g07v0.r16\",\"g07v0.r17\",\"g07v0.r04\",\"g07v0.r23\",\"g07v0.r20\",\"g07v0.r05\",\"g07v0.r19\",\"g07v0.r26\",\"g07v0.r07\"],\"rationale\":\"Protein and RNA up, TCGA confirms. RCC has top share, purity bound 3.71. Surface call is surface. IHC not measured and no proteome enrichment, so safety is insufficient. DepMap has no dependent lines.\"}]}",
+ "stderr": "",
+ "structured_output": {
+  "answers": [
+   {
+    "id": "g11v0",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "tumour_intrinsic": "no",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "yes",
+    "selective_dependency": "no",
+    "verdict": "infiltration_signal",
+    "evidence_ids": [
+     "g11v0.r01",
+     "g11v0.r19",
+     "g11v0.r15",
+     "g11v0.r25",
+     "g11v0.r18",
+     "g11v0.r13",
+     "g11v0.r08",
+     "g11v0.r03"
+    ],
+    "rationale": "Protein and RNA up, replicated in TCGA and confirmatory protein. Macrophage and CD8_T transcript shares exceed RCC, so not tumour-intrinsic. Surface call; cerebellum IHC level 3 is a vital concern. DepMap has no dependent lines."
+   },
+   {
+    "id": "g10v0",
+    "protein_up": "no",
+    "replicated": "yes",
+    "tumour_intrinsic": "insufficient",
+    "surface_accessible": "insufficient",
+    "vital_safety_concern": "yes",
+    "selective_dependency": "no",
+    "verdict": "loss_biomarker",
+    "evidence_ids": [
+     "g10v0.r12",
+     "g10v0.r13",
+     "g10v0.r21",
+     "g10v0.r19",
+     "g10v0.r10",
+     "g10v0.r17",
+     "g10v0.r26",
+     "g10v0.r03"
+    ],
+    "rationale": "Protein down; RNA, TCGA and confirmatory protein agree. RCC has top share but the purity interval includes 0. No target surface record. Liver proteome enrichment is true. DepMap conditions fail."
+   },
+   {
+    "id": "g08v0",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "tumour_intrinsic": "yes",
+    "surface_accessible": "insufficient",
+    "vital_safety_concern": "insufficient",
+    "selective_dependency": "no",
+    "verdict": "needs_more_data",
+    "evidence_ids": [
+     "g08v0.r09",
+     "g08v0.r11",
+     "g08v0.r04",
+     "g08v0.r06",
+     "g08v0.r26",
+     "g08v0.r16",
+     "g08v0.r01",
+     "g08v0.r19"
+    ],
+    "rationale": "Protein up, TCGA RNA confirms. RCC has top share and purity bound is 1.94. Surface is unknown, IHC not measured and no proteome record. DepMap has no dependent lines. Needs more data."
+   },
+   {
+    "id": "g07v0",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "tumour_intrinsic": "yes",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "insufficient",
+    "selective_dependency": "no",
+    "verdict": "needs_more_data",
+    "evidence_ids": [
+     "g07v0.r16",
+     "g07v0.r17",
+     "g07v0.r04",
+     "g07v0.r23",
+     "g07v0.r20",
+     "g07v0.r05",
+     "g07v0.r19",
+     "g07v0.r26",
+     "g07v0.r07"
+    ],
+    "rationale": "Protein and RNA up, TCGA confirms. RCC has top share, purity bound 3.71. Surface call is surface. IHC not measured and no proteome enrichment, so safety is insufficient. DepMap has no dependent lines."
+   }
+  ]
+ },
+ "answers": [
+  {
+   "id": "g11v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "no",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "yes",
+   "selective_dependency": "no",
+   "verdict": "infiltration_signal",
+   "evidence_ids": [
+    "g11v0.r01",
+    "g11v0.r19",
+    "g11v0.r15",
+    "g11v0.r25",
+    "g11v0.r18",
+    "g11v0.r13",
+    "g11v0.r08",
+    "g11v0.r03"
+   ],
+   "rationale": "Protein and RNA up, replicated in TCGA and confirmatory protein. Macrophage and CD8_T transcript shares exceed RCC, so not tumour-intrinsic. Surface call; cerebellum IHC level 3 is a vital concern. DepMap has no dependent lines."
+  },
+  {
+   "id": "g10v0",
+   "protein_up": "no",
+   "replicated": "yes",
+   "tumour_intrinsic": "insufficient",
+   "surface_accessible": "insufficient",
+   "vital_safety_concern": "yes",
+   "selective_dependency": "no",
+   "verdict": "loss_biomarker",
+   "evidence_ids": [
+    "g10v0.r12",
+    "g10v0.r13",
+    "g10v0.r21",
+    "g10v0.r19",
+    "g10v0.r10",
+    "g10v0.r17",
+    "g10v0.r26",
+    "g10v0.r03"
+   ],
+   "rationale": "Protein down; RNA, TCGA and confirmatory protein agree. RCC has top share but the purity interval includes 0. No target surface record. Liver proteome enrichment is true. DepMap conditions fail."
+  },
+  {
+   "id": "g08v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "yes",
+   "surface_accessible": "insufficient",
+   "vital_safety_concern": "insufficient",
+   "selective_dependency": "no",
+   "verdict": "needs_more_data",
+   "evidence_ids": [
+    "g08v0.r09",
+    "g08v0.r11",
+    "g08v0.r04",
+    "g08v0.r06",
+    "g08v0.r26",
+    "g08v0.r16",
+    "g08v0.r01",
+    "g08v0.r19"
+   ],
+   "rationale": "Protein up, TCGA RNA confirms. RCC has top share and purity bound is 1.94. Surface is unknown, IHC not measured and no proteome record. DepMap has no dependent lines. Needs more data."
+  },
+  {
+   "id": "g07v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "yes",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "insufficient",
+   "selective_dependency": "no",
+   "verdict": "needs_more_data",
+   "evidence_ids": [
+    "g07v0.r16",
+    "g07v0.r17",
+    "g07v0.r04",
+    "g07v0.r23",
+    "g07v0.r20",
+    "g07v0.r05",
+    "g07v0.r19",
+    "g07v0.r26",
+    "g07v0.r07"
+   ],
+   "rationale": "Protein and RNA up, TCGA confirms. RCC has top share, purity bound 3.71. Surface call is surface. IHC not measured and no proteome enrichment, so safety is insufficient. DepMap has no dependent lines."
+  }
+ ],
+ "elapsed_s": 21.8
+}

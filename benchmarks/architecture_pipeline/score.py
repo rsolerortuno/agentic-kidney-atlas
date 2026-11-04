@@ -27,21 +27,22 @@ def _para(text: str, *patterns: str) -> bool:
 
 
 CHECKS = {
-    "ca9_in_targets": lambda t, tg: "CA9" in tg,
-    "cd70_partly_immune_derived": lambda t, tg: _para(t, r"\bCD70\b", r"\bT[ -]cells?\b|\bCD8\b|lymphocyt|immune"),
-    "hk2_not_replicated": lambda t, tg: _para(t, r"\bHK2\b", r"not replicat|does not replicate|did not replicate|fails? to replicate"),
-    "epas1_selective_dependency": lambda t, tg: _para(t, r"\bEPAS1\b", r"dependen"),
-    "no_gene_separates_arms": lambda t, tg: bool(re.search(r"no gene[^.]{0,80}(separat|differ|distinguish)", t, re.I)),
+    "ca9_in_targets": lambda t, tg, ids: "CA9" in tg,
+    "cd70_partly_immune_derived": lambda t, tg, ids: _para(t, r"\bCD70\b", r"\bT[ -]cells?\b|\bCD8\b|lymphocyt|immune"),
+    "hk2_not_replicated": lambda t, tg, ids: _para(t, r"\bHK2\b", r"not replicat|does not replicate|did not replicate|fails? to replicate"),
+    "epas1_selective_dependency": lambda t, tg, ids: _para(t, r"\bEPAS1\b", r"dependen"),
+    "no_gene_separates_arms": lambda t, tg, ids: bool(re.search(r"no gene[^.]{0,80}(separat|differ|distinguish)", t, re.I)),
     # CheckMate 025 is the nivolumab-vs-everolimus trial; reports may name the arms without the trial name.
-    "checkmate025_used": lambda t, tg: bool(re.search(r"CheckMate", t, re.I)) or _para(t, r"\bnivolumab\b", r"\beverolimus\b"),
-    "col23a1_prioritised": lambda t, tg: "COL23A1" in tg,
-    "rab42_prioritised": lambda t, tg: "RAB42" in tg or _para(t, r"\bRAB42\b", r"discover|unexplored|exploratory"),
-    "psat1_pck1_biomarkers": lambda t, tg: "PSAT1" in tg and "PCK1" in tg,
-    "coxfa4l2_discussed": lambda t, tg: bool(re.search(r"COXFA4L2|NDUFA4L2", t)),
-    "normal_proteome_used": lambda t, tg: bool(re.search(r"GTEx|normal[- ]tissue prote|proteome", t, re.I)),
-    "surface_location_reasoned": lambda t, tg: bool(re.search(r"\binternal\b|intracellular|inside the cell|not (on|at) the (cell )?surface", t, re.I)),
-    # "compound" alone also matches drug names (e.g. "sulfonamide-class compounds"), so it is not accepted.
-    "prism_drug_response_used": lambda t, tg: bool(re.search(r"\bPRISM\b|drug[- ]response|drug sensitivity", t, re.I)),
+    "checkmate025_used": lambda t, tg, ids: bool(re.search(r"CheckMate", t, re.I)) or _para(t, r"\bnivolumab\b", r"\beverolimus\b"),
+    "col23a1_prioritised": lambda t, tg, ids: "COL23A1" in tg,
+    "rab42_prioritised": lambda t, tg, ids: "RAB42" in tg or _para(t, r"\bRAB42\b", r"discover|unexplored|exploratory"),
+    "psat1_pck1_biomarkers": lambda t, tg, ids: "PSAT1" in tg and "PCK1" in tg,
+    "coxfa4l2_discussed": lambda t, tg, ids: bool(re.search(r"COXFA4L2|NDUFA4L2", t)),
+    "normal_proteome_used": lambda t, tg, ids: bool(re.search(r"GTEx|normal[- ]tissue prote|proteome", t, re.I)),
+    "surface_location_reasoned": lambda t, tg, ids: bool(re.search(r"\binternal\b|intracellular|inside the cell|not (on|at) the (cell )?surface", t, re.I)),
+    # PRISM counts when the narrative cites a PRISM record or names the screen; "compound" alone matches drug names.
+    "prism_drug_response_used": lambda t, tg, ids: any(i.startswith("EV:prism_response:") for i in ids)
+        or bool(re.search(r"\bPRISM\b|drug[- ]response|drug sensitivity", t, re.I)),
 }
 
 
@@ -72,7 +73,7 @@ def score_run(run: Path, official_targets: list[str]) -> dict:
     for p in n.get("summary", []) + [p for v in (n.get("sections") or {}).values() for p in v] + n.get("targets", []):
         narr_ids |= set(p.get("evidence_ids", []))
     genes = {x.get("gene") for b in f.get("agent_findings", {}).values() for x in b.get("findings", []) if x.get("gene")}
-    checks = {k: bool(fn(text, targets)) for k, fn in CHECKS.items()}
+    checks = {k: bool(fn(text, targets, narr_ids)) for k, fn in CHECKS.items()}
     jac = len(set(targets) & set(official_targets)) / len(set(targets) | set(official_targets)) if targets else 0
     return {
         "run": run.name, "statements_checked": vf["statements"], "unsupported": vf["unsupported"], "stale": vf["stale"],
@@ -81,6 +82,8 @@ def score_run(run: Path, official_targets: list[str]) -> dict:
         "agent_findings_final": sum(len(b.get("findings", [])) for b in f.get("agent_findings", {}).values()),
         "genes_with_findings": len(genes), "evidence_types_cited": len(evidence_types(ids | narr_ids)),
         "distinct_evidence_ids": len(ids | narr_ids),
+        # integration loss: share of the specialists' verified evidence that the final narrative cites
+        "finding_evidence_cited_share": round(len(ids & narr_ids) / len(ids), 3) if ids else None,
         "sections_filled": sum(1 for s in SECTIONS if (n.get("sections") or {}).get(s)),
         "targets": targets, "jaccard_with_published_run": round(jac, 3),
         "checklist": checks, "checklist_score": sum(checks.values()), "checklist_max": len(CHECKS),

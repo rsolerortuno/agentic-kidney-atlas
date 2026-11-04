@@ -1,0 +1,161 @@
+{
+ "study_hash": "5b34e637c50dad54",
+ "prompt_sha256": "4f2994edd62095e44d4264a7d70077bf652b521f816a8c4a4e30bd5af53fdc10",
+ "status": "ok",
+ "case_ids": [
+  "g12v0",
+  "g06v0",
+  "g05v0",
+  "g03v0"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.0386382,
+ "usage": {
+  "input_tokens": 4,
+  "cache_creation_input_tokens": 6342,
+  "cache_read_input_tokens": 4422,
+  "output_tokens": 1282,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 6342,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 568,
+    "cache_read_input_tokens": 4422,
+    "cache_creation_input_tokens": 1920,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 1920
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 4,
+   "outputTokens": 1282,
+   "cacheReadInputTokens": 4422,
+   "cacheCreationInputTokens": 6342,
+   "webSearchRequests": 0,
+   "costUSD": 0.0386382,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 6342,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g12v0\",\"surface_accessible\":\"no\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g12v0.r19\",\"g12v0.r03\",\"g12v0.r10\"],\"rationale\":\"Surface call is internal, so not accessible. Vital-organ IHC level 2 (heart muscle) meets the >=2 threshold, so safety concern is yes despite no proteome enrichment.\"},{\"id\":\"g06v0\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"no\",\"evidence_ids\":[\"g06v0.r24\",\"g06v0.r13\"],\"rationale\":\"Target surface record says surface. IHC measured with vital max level 1; no target proteome record exists (the enriched one belongs to ENTITY_28), so no enrichment is reported. Result: no concern.\"},{\"id\":\"g05v0\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g05v0.r07\",\"g05v0.r13\",\"g05v0.r14\"],\"rationale\":\"Surface call is surface. Vital-organ IHC level 3 (duodenum) is >=2, so there is a safety concern, though the proteome reports no enrichment.\"},{\"id\":\"g03v0\",\"surface_accessible\":\"no\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g03v0.r16\",\"g03v0.r05\",\"g03v0.r06\"],\"rationale\":\"Surface call is internal (cytoplasm), so not accessible. Liver IHC level 3 is >=2, so there is a vital safety concern.\"}]}",
+ "stderr": "",
+ "structured_output": {
+  "answers": [
+   {
+    "id": "g12v0",
+    "surface_accessible": "no",
+    "vital_safety_concern": "yes",
+    "evidence_ids": [
+     "g12v0.r19",
+     "g12v0.r03",
+     "g12v0.r10"
+    ],
+    "rationale": "Surface call is internal, so not accessible. Vital-organ IHC level 2 (heart muscle) meets the >=2 threshold, so safety concern is yes despite no proteome enrichment."
+   },
+   {
+    "id": "g06v0",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "no",
+    "evidence_ids": [
+     "g06v0.r24",
+     "g06v0.r13"
+    ],
+    "rationale": "Target surface record says surface. IHC measured with vital max level 1; no target proteome record exists (the enriched one belongs to ENTITY_28), so no enrichment is reported. Result: no concern."
+   },
+   {
+    "id": "g05v0",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "yes",
+    "evidence_ids": [
+     "g05v0.r07",
+     "g05v0.r13",
+     "g05v0.r14"
+    ],
+    "rationale": "Surface call is surface. Vital-organ IHC level 3 (duodenum) is >=2, so there is a safety concern, though the proteome reports no enrichment."
+   },
+   {
+    "id": "g03v0",
+    "surface_accessible": "no",
+    "vital_safety_concern": "yes",
+    "evidence_ids": [
+     "g03v0.r16",
+     "g03v0.r05",
+     "g03v0.r06"
+    ],
+    "rationale": "Surface call is internal (cytoplasm), so not accessible. Liver IHC level 3 is >=2, so there is a vital safety concern."
+   }
+  ]
+ },
+ "answers": [
+  {
+   "id": "g12v0",
+   "surface_accessible": "no",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g12v0.r19",
+    "g12v0.r03",
+    "g12v0.r10"
+   ],
+   "rationale": "Surface call is internal, so not accessible. Vital-organ IHC level 2 (heart muscle) meets the >=2 threshold, so safety concern is yes despite no proteome enrichment."
+  },
+  {
+   "id": "g06v0",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "no",
+   "evidence_ids": [
+    "g06v0.r24",
+    "g06v0.r13"
+   ],
+   "rationale": "Target surface record says surface. IHC measured with vital max level 1; no target proteome record exists (the enriched one belongs to ENTITY_28), so no enrichment is reported. Result: no concern."
+  },
+  {
+   "id": "g05v0",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g05v0.r07",
+    "g05v0.r13",
+    "g05v0.r14"
+   ],
+   "rationale": "Surface call is surface. Vital-organ IHC level 3 (duodenum) is >=2, so there is a safety concern, though the proteome reports no enrichment."
+  },
+  {
+   "id": "g03v0",
+   "surface_accessible": "no",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g03v0.r16",
+    "g03v0.r05",
+    "g03v0.r06"
+   ],
+   "rationale": "Surface call is internal (cytoplasm), so not accessible. Liver IHC level 3 is >=2, so there is a vital safety concern."
+  }
+ ],
+ "elapsed_s": 20.0
+}

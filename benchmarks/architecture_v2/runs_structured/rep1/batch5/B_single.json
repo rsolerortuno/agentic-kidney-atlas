@@ -1,0 +1,249 @@
+{
+ "study_hash": "5b34e637c50dad54",
+ "prompt_sha256": "4f07b2d2021e363acc719a474aefb18e11d149c7d0e0644a1fb6f962dd33b924",
+ "status": "ok",
+ "case_ids": [
+  "g12v0",
+  "g06v0",
+  "g05v0",
+  "g03v0"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.070282,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 13142,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 1771,
+  "output_tokens_details": {
+   "thinking_tokens": 707
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 13142,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1771,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 13142,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 13142
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 1771,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 13142,
+   "webSearchRequests": 0,
+   "costUSD": 0.070282,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 707,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 13142,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g12v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"no\",\"surface_accessible\":\"no\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"infiltration_signal\",\"evidence_ids\":[\"g12v0.r18\",\"g12v0.r07\",\"g12v0.r02\",\"g12v0.r01\",\"g12v0.r05\",\"g12v0.r13\",\"g12v0.r19\",\"g12v0.r03\",\"g12v0.r14\"],\"rationale\":\"Protein and RNA up, TCGA RNA replicates. Macrophages have a larger transcript share than RCC, so not tumour-intrinsic. Internal protein; heart IHC level 2; only 1 dependent line, selectivity negative.\"},{\"id\":\"g06v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"no\",\"selective_dependency\":\"no\",\"verdict\":\"surface_target_candidate\",\"evidence_ids\":[\"g06v0.r12\",\"g06v0.r23\",\"g06v0.r01\",\"g06v0.r06\",\"g06v0.r19\",\"g06v0.r24\",\"g06v0.r13\",\"g06v0.r17\"],\"rationale\":\"Protein up, TCGA RNA replicates. RCC share 0.823 is the largest and the purity bound is above 0. Surface call; vital IHC level 1 with no enrichment record. No DepMap dependency, but the verdict rules don't use it.\"},{\"id\":\"g05v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"needs_more_data\",\"evidence_ids\":[\"g05v0.r28\",\"g05v0.r05\",\"g05v0.r15\",\"g05v0.r09\",\"g05v0.r25\",\"g05v0.r22\",\"g05v0.r07\",\"g05v0.r13\",\"g05v0.r26\"],\"rationale\":\"Up, replicated, tumour-intrinsic and surface-accessible, but duodenum IHC level 3 is a vital-organ safety concern. No DepMap dependent lines. Fails the candidate rule, so needs_more_data.\"},{\"id\":\"g03v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"no\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"needs_more_data\",\"evidence_ids\":[\"g03v0.r25\",\"g03v0.r15\",\"g03v0.r09\",\"g03v0.r12\",\"g03v0.r24\",\"g03v0.r21\",\"g03v0.r16\",\"g03v0.r05\",\"g03v0.r11\"],\"rationale\":\"Up and replicated, tumour-intrinsic (RCC 0.97, purity bound >0). Internal protein, liver IHC level 3, and no selective dependency (selectivity negative, 0 dependent lines). Not a candidate.\"}]}",
+ "stderr": "",
+ "structured_output": {
+  "answers": [
+   {
+    "id": "g12v0",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "tumour_intrinsic": "no",
+    "surface_accessible": "no",
+    "vital_safety_concern": "yes",
+    "selective_dependency": "no",
+    "verdict": "infiltration_signal",
+    "evidence_ids": [
+     "g12v0.r18",
+     "g12v0.r07",
+     "g12v0.r02",
+     "g12v0.r01",
+     "g12v0.r05",
+     "g12v0.r13",
+     "g12v0.r19",
+     "g12v0.r03",
+     "g12v0.r14"
+    ],
+    "rationale": "Protein and RNA up, TCGA RNA replicates. Macrophages have a larger transcript share than RCC, so not tumour-intrinsic. Internal protein; heart IHC level 2; only 1 dependent line, selectivity negative."
+   },
+   {
+    "id": "g06v0",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "tumour_intrinsic": "yes",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "no",
+    "selective_dependency": "no",
+    "verdict": "surface_target_candidate",
+    "evidence_ids": [
+     "g06v0.r12",
+     "g06v0.r23",
+     "g06v0.r01",
+     "g06v0.r06",
+     "g06v0.r19",
+     "g06v0.r24",
+     "g06v0.r13",
+     "g06v0.r17"
+    ],
+    "rationale": "Protein up, TCGA RNA replicates. RCC share 0.823 is the largest and the purity bound is above 0. Surface call; vital IHC level 1 with no enrichment record. No DepMap dependency, but the verdict rules don't use it."
+   },
+   {
+    "id": "g05v0",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "tumour_intrinsic": "yes",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "yes",
+    "selective_dependency": "no",
+    "verdict": "needs_more_data",
+    "evidence_ids": [
+     "g05v0.r28",
+     "g05v0.r05",
+     "g05v0.r15",
+     "g05v0.r09",
+     "g05v0.r25",
+     "g05v0.r22",
+     "g05v0.r07",
+     "g05v0.r13",
+     "g05v0.r26"
+    ],
+    "rationale": "Up, replicated, tumour-intrinsic and surface-accessible, but duodenum IHC level 3 is a vital-organ safety concern. No DepMap dependent lines. Fails the candidate rule, so needs_more_data."
+   },
+   {
+    "id": "g03v0",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "tumour_intrinsic": "yes",
+    "surface_accessible": "no",
+    "vital_safety_concern": "yes",
+    "selective_dependency": "no",
+    "verdict": "needs_more_data",
+    "evidence_ids": [
+     "g03v0.r25",
+     "g03v0.r15",
+     "g03v0.r09",
+     "g03v0.r12",
+     "g03v0.r24",
+     "g03v0.r21",
+     "g03v0.r16",
+     "g03v0.r05",
+     "g03v0.r11"
+    ],
+    "rationale": "Up and replicated, tumour-intrinsic (RCC 0.97, purity bound >0). Internal protein, liver IHC level 3, and no selective dependency (selectivity negative, 0 dependent lines). Not a candidate."
+   }
+  ]
+ },
+ "answers": [
+  {
+   "id": "g12v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "no",
+   "surface_accessible": "no",
+   "vital_safety_concern": "yes",
+   "selective_dependency": "no",
+   "verdict": "infiltration_signal",
+   "evidence_ids": [
+    "g12v0.r18",
+    "g12v0.r07",
+    "g12v0.r02",
+    "g12v0.r01",
+    "g12v0.r05",
+    "g12v0.r13",
+    "g12v0.r19",
+    "g12v0.r03",
+    "g12v0.r14"
+   ],
+   "rationale": "Protein and RNA up, TCGA RNA replicates. Macrophages have a larger transcript share than RCC, so not tumour-intrinsic. Internal protein; heart IHC level 2; only 1 dependent line, selectivity negative."
+  },
+  {
+   "id": "g06v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "yes",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "no",
+   "selective_dependency": "no",
+   "verdict": "surface_target_candidate",
+   "evidence_ids": [
+    "g06v0.r12",
+    "g06v0.r23",
+    "g06v0.r01",
+    "g06v0.r06",
+    "g06v0.r19",
+    "g06v0.r24",
+    "g06v0.r13",
+    "g06v0.r17"
+   ],
+   "rationale": "Protein up, TCGA RNA replicates. RCC share 0.823 is the largest and the purity bound is above 0. Surface call; vital IHC level 1 with no enrichment record. No DepMap dependency, but the verdict rules don't use it."
+  },
+  {
+   "id": "g05v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "yes",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "yes",
+   "selective_dependency": "no",
+   "verdict": "needs_more_data",
+   "evidence_ids": [
+    "g05v0.r28",
+    "g05v0.r05",
+    "g05v0.r15",
+    "g05v0.r09",
+    "g05v0.r25",
+    "g05v0.r22",
+    "g05v0.r07",
+    "g05v0.r13",
+    "g05v0.r26"
+   ],
+   "rationale": "Up, replicated, tumour-intrinsic and surface-accessible, but duodenum IHC level 3 is a vital-organ safety concern. No DepMap dependent lines. Fails the candidate rule, so needs_more_data."
+  },
+  {
+   "id": "g03v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "yes",
+   "surface_accessible": "no",
+   "vital_safety_concern": "yes",
+   "selective_dependency": "no",
+   "verdict": "needs_more_data",
+   "evidence_ids": [
+    "g03v0.r25",
+    "g03v0.r15",
+    "g03v0.r09",
+    "g03v0.r12",
+    "g03v0.r24",
+    "g03v0.r21",
+    "g03v0.r16",
+    "g03v0.r05",
+    "g03v0.r11"
+   ],
+   "rationale": "Up and replicated, tumour-intrinsic (RCC 0.97, purity bound >0). Internal protein, liver IHC level 3, and no selective dependency (selectivity negative, 0 dependent lines). Not a candidate."
+  }
+ ],
+ "elapsed_s": 19.2
+}

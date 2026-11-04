@@ -1,0 +1,253 @@
+{
+ "study_hash": "5b34e637c50dad54",
+ "prompt_sha256": "45d745c0a31f5bd7316b7eb2ddbe25cef55badbf3c8379ff40b1cdb650a9bb70",
+ "status": "ok",
+ "case_ids": [
+  "g05v1",
+  "g07v1",
+  "g03v1",
+  "g12v1"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.071722,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 13517,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 1765,
+  "output_tokens_details": {
+   "thinking_tokens": 645
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 13517,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1765,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 13517,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 13517
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 1765,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 13517,
+   "webSearchRequests": 0,
+   "costUSD": 0.071722,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 645,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 13517,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g05v1\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"no\",\"selective_dependency\":\"no\",\"verdict\":\"surface_target_candidate\",\"evidence_ids\":[\"g05v1.r09\",\"g05v1.r18\",\"g05v1.r21\",\"g05v1.r04\",\"g05v1.r25\",\"g05v1.r20\",\"g05v1.r15\",\"g05v1.r11\",\"g05v1.r10\",\"g05v1.r13\"],\"rationale\":\"Protein and RNA up, replicated in TCGA and confirmatory protein. RCC dominates transcripts, purity-adjusted LFC positive. Surface, vital IHC level 1, no enrichment. DepMap has no dependent lines, so not a selective dependency.\"},{\"id\":\"g07v1\",\"protein_up\":\"no\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"insufficient\",\"selective_dependency\":\"no\",\"verdict\":\"loss_biomarker\",\"evidence_ids\":[\"g07v1.r11\",\"g07v1.r28\",\"g07v1.r22\",\"g07v1.r01\",\"g07v1.r09\",\"g07v1.r10\",\"g07v1.r12\",\"g07v1.r04\",\"g07v1.r26\"],\"rationale\":\"Protein is down and RNA is down in CPTAC and TCGA, so the loss is replicated. RCC has the largest share and the purity interval is above 0. Surface call is surface. IHC was not measured. DepMap has no dependent lines. Rule gives loss_biomarker.\"},{\"id\":\"g03v1\",\"protein_up\":\"no\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"no\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"loss_biomarker\",\"evidence_ids\":[\"g03v1.r02\",\"g03v1.r06\",\"g03v1.r11\",\"g03v1.r18\",\"g03v1.r16\",\"g03v1.r05\",\"g03v1.r25\",\"g03v1.r24\",\"g03v1.r20\"],\"rationale\":\"Protein and RNA down in CPTAC, and TCGA RNA is also down, so the loss is replicated. The call is internal. Liver IHC level is 3. DepMap selectivity is negative. Rule gives loss_biomarker.\"},{\"id\":\"g12v1\",\"protein_up\":\"no\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"no\",\"surface_accessible\":\"no\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"loss_biomarker\",\"evidence_ids\":[\"g12v1.r25\",\"g12v1.r05\",\"g12v1.r16\",\"g12v1.r22\",\"g12v1.r02\",\"g12v1.r07\",\"g12v1.r18\",\"g12v1.r03\",\"g12v1.r01\"],\"rationale\":\"Protein is down, and RNA is down in CPTAC and TCGA, so the loss is replicated. Macrophages exceed RCC in transcript share. The call is internal. Heart IHC level is 2. DepMap selectivity is negative. Loss_biomarker comes before infiltration_signal.\"}]}",
+ "stderr": "",
+ "structured_output": {
+  "answers": [
+   {
+    "id": "g05v1",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "tumour_intrinsic": "yes",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "no",
+    "selective_dependency": "no",
+    "verdict": "surface_target_candidate",
+    "evidence_ids": [
+     "g05v1.r09",
+     "g05v1.r18",
+     "g05v1.r21",
+     "g05v1.r04",
+     "g05v1.r25",
+     "g05v1.r20",
+     "g05v1.r15",
+     "g05v1.r11",
+     "g05v1.r10",
+     "g05v1.r13"
+    ],
+    "rationale": "Protein and RNA up, replicated in TCGA and confirmatory protein. RCC dominates transcripts, purity-adjusted LFC positive. Surface, vital IHC level 1, no enrichment. DepMap has no dependent lines, so not a selective dependency."
+   },
+   {
+    "id": "g07v1",
+    "protein_up": "no",
+    "replicated": "yes",
+    "tumour_intrinsic": "yes",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "insufficient",
+    "selective_dependency": "no",
+    "verdict": "loss_biomarker",
+    "evidence_ids": [
+     "g07v1.r11",
+     "g07v1.r28",
+     "g07v1.r22",
+     "g07v1.r01",
+     "g07v1.r09",
+     "g07v1.r10",
+     "g07v1.r12",
+     "g07v1.r04",
+     "g07v1.r26"
+    ],
+    "rationale": "Protein is down and RNA is down in CPTAC and TCGA, so the loss is replicated. RCC has the largest share and the purity interval is above 0. Surface call is surface. IHC was not measured. DepMap has no dependent lines. Rule gives loss_biomarker."
+   },
+   {
+    "id": "g03v1",
+    "protein_up": "no",
+    "replicated": "yes",
+    "tumour_intrinsic": "yes",
+    "surface_accessible": "no",
+    "vital_safety_concern": "yes",
+    "selective_dependency": "no",
+    "verdict": "loss_biomarker",
+    "evidence_ids": [
+     "g03v1.r02",
+     "g03v1.r06",
+     "g03v1.r11",
+     "g03v1.r18",
+     "g03v1.r16",
+     "g03v1.r05",
+     "g03v1.r25",
+     "g03v1.r24",
+     "g03v1.r20"
+    ],
+    "rationale": "Protein and RNA down in CPTAC, and TCGA RNA is also down, so the loss is replicated. The call is internal. Liver IHC level is 3. DepMap selectivity is negative. Rule gives loss_biomarker."
+   },
+   {
+    "id": "g12v1",
+    "protein_up": "no",
+    "replicated": "yes",
+    "tumour_intrinsic": "no",
+    "surface_accessible": "no",
+    "vital_safety_concern": "yes",
+    "selective_dependency": "no",
+    "verdict": "loss_biomarker",
+    "evidence_ids": [
+     "g12v1.r25",
+     "g12v1.r05",
+     "g12v1.r16",
+     "g12v1.r22",
+     "g12v1.r02",
+     "g12v1.r07",
+     "g12v1.r18",
+     "g12v1.r03",
+     "g12v1.r01"
+    ],
+    "rationale": "Protein is down, and RNA is down in CPTAC and TCGA, so the loss is replicated. Macrophages exceed RCC in transcript share. The call is internal. Heart IHC level is 2. DepMap selectivity is negative. Loss_biomarker comes before infiltration_signal."
+   }
+  ]
+ },
+ "answers": [
+  {
+   "id": "g05v1",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "yes",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "no",
+   "selective_dependency": "no",
+   "verdict": "surface_target_candidate",
+   "evidence_ids": [
+    "g05v1.r09",
+    "g05v1.r18",
+    "g05v1.r21",
+    "g05v1.r04",
+    "g05v1.r25",
+    "g05v1.r20",
+    "g05v1.r15",
+    "g05v1.r11",
+    "g05v1.r10",
+    "g05v1.r13"
+   ],
+   "rationale": "Protein and RNA up, replicated in TCGA and confirmatory protein. RCC dominates transcripts, purity-adjusted LFC positive. Surface, vital IHC level 1, no enrichment. DepMap has no dependent lines, so not a selective dependency."
+  },
+  {
+   "id": "g07v1",
+   "protein_up": "no",
+   "replicated": "yes",
+   "tumour_intrinsic": "yes",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "insufficient",
+   "selective_dependency": "no",
+   "verdict": "loss_biomarker",
+   "evidence_ids": [
+    "g07v1.r11",
+    "g07v1.r28",
+    "g07v1.r22",
+    "g07v1.r01",
+    "g07v1.r09",
+    "g07v1.r10",
+    "g07v1.r12",
+    "g07v1.r04",
+    "g07v1.r26"
+   ],
+   "rationale": "Protein is down and RNA is down in CPTAC and TCGA, so the loss is replicated. RCC has the largest share and the purity interval is above 0. Surface call is surface. IHC was not measured. DepMap has no dependent lines. Rule gives loss_biomarker."
+  },
+  {
+   "id": "g03v1",
+   "protein_up": "no",
+   "replicated": "yes",
+   "tumour_intrinsic": "yes",
+   "surface_accessible": "no",
+   "vital_safety_concern": "yes",
+   "selective_dependency": "no",
+   "verdict": "loss_biomarker",
+   "evidence_ids": [
+    "g03v1.r02",
+    "g03v1.r06",
+    "g03v1.r11",
+    "g03v1.r18",
+    "g03v1.r16",
+    "g03v1.r05",
+    "g03v1.r25",
+    "g03v1.r24",
+    "g03v1.r20"
+   ],
+   "rationale": "Protein and RNA down in CPTAC, and TCGA RNA is also down, so the loss is replicated. The call is internal. Liver IHC level is 3. DepMap selectivity is negative. Rule gives loss_biomarker."
+  },
+  {
+   "id": "g12v1",
+   "protein_up": "no",
+   "replicated": "yes",
+   "tumour_intrinsic": "no",
+   "surface_accessible": "no",
+   "vital_safety_concern": "yes",
+   "selective_dependency": "no",
+   "verdict": "loss_biomarker",
+   "evidence_ids": [
+    "g12v1.r25",
+    "g12v1.r05",
+    "g12v1.r16",
+    "g12v1.r22",
+    "g12v1.r02",
+    "g12v1.r07",
+    "g12v1.r18",
+    "g12v1.r03",
+    "g12v1.r01"
+   ],
+   "rationale": "Protein is down, and RNA is down in CPTAC and TCGA, so the loss is replicated. Macrophages exceed RCC in transcript share. The call is internal. Heart IHC level is 2. DepMap selectivity is negative. Loss_biomarker comes before infiltration_signal."
+  }
+ ],
+ "elapsed_s": 16.5
+}

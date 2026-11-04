@@ -1,0 +1,139 @@
+{
+ "study_hash": "5b34e637c50dad54",
+ "prompt_sha256": "85326845b08b82afc31bf37452096a92d8782367e97b9d3b622929a417ba7c3f",
+ "status": "ok",
+ "case_ids": [
+  "g07v0",
+  "g05v0",
+  "g11v0",
+  "g12v0"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.032298,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 7061,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 405,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 7061,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 405,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 7061,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 7061
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 405,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 7061,
+   "webSearchRequests": 0,
+   "costUSD": 0.032298,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 7061,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g07v0\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g07v0.r07\"],\"rationale\":\"Target ENTITY_74 DepMap record exists with 24 lines but 0 dependent lines and padj 0.56, so the conditions fail.\"},{\"id\":\"g05v0\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g05v0.r26\"],\"rationale\":\"ENTITY_29 DepMap record: 0 dependent lines, padj 0.63, so the conditions fail.\"},{\"id\":\"g11v0\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g11v0.r03\"],\"rationale\":\"ENTITY_09 DepMap record: 0 dependent lines, padj 0.466 (>=0.1), so the conditions fail.\"},{\"id\":\"g12v0\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g12v0.r14\"],\"rationale\":\"ENTITY_18 DepMap record: only 1 dependent line, negative selectivity, padj 0.446, so the conditions fail.\"}]}",
+ "stderr": "",
+ "structured_output": {
+  "answers": [
+   {
+    "id": "g07v0",
+    "selective_dependency": "no",
+    "evidence_ids": [
+     "g07v0.r07"
+    ],
+    "rationale": "Target ENTITY_74 DepMap record exists with 24 lines but 0 dependent lines and padj 0.56, so the conditions fail."
+   },
+   {
+    "id": "g05v0",
+    "selective_dependency": "no",
+    "evidence_ids": [
+     "g05v0.r26"
+    ],
+    "rationale": "ENTITY_29 DepMap record: 0 dependent lines, padj 0.63, so the conditions fail."
+   },
+   {
+    "id": "g11v0",
+    "selective_dependency": "no",
+    "evidence_ids": [
+     "g11v0.r03"
+    ],
+    "rationale": "ENTITY_09 DepMap record: 0 dependent lines, padj 0.466 (>=0.1), so the conditions fail."
+   },
+   {
+    "id": "g12v0",
+    "selective_dependency": "no",
+    "evidence_ids": [
+     "g12v0.r14"
+    ],
+    "rationale": "ENTITY_18 DepMap record: only 1 dependent line, negative selectivity, padj 0.446, so the conditions fail."
+   }
+  ]
+ },
+ "answers": [
+  {
+   "id": "g07v0",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g07v0.r07"
+   ],
+   "rationale": "Target ENTITY_74 DepMap record exists with 24 lines but 0 dependent lines and padj 0.56, so the conditions fail."
+  },
+  {
+   "id": "g05v0",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g05v0.r26"
+   ],
+   "rationale": "ENTITY_29 DepMap record: 0 dependent lines, padj 0.63, so the conditions fail."
+  },
+  {
+   "id": "g11v0",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g11v0.r03"
+   ],
+   "rationale": "ENTITY_09 DepMap record: 0 dependent lines, padj 0.466 (>=0.1), so the conditions fail."
+  },
+  {
+   "id": "g12v0",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g12v0.r14"
+   ],
+   "rationale": "ENTITY_18 DepMap record: only 1 dependent line, negative selectivity, padj 0.446, so the conditions fail."
+  }
+ ],
+ "elapsed_s": 9.4
+}

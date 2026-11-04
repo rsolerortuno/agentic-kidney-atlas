@@ -1,0 +1,141 @@
+{
+ "study_hash": "3597c924e7fcc874",
+ "prompt_sha256": "588036aaf381a1209822203c8c5c6d3d689b2c3ead7c01d462b1dd6354319b83",
+ "status": "ok",
+ "case_ids": [
+  "g11v1",
+  "g07v1",
+  "g06v1",
+  "g09v1"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.023552,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 4767,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 448,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 4767,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 448,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 4767,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 4767
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 448,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 4767,
+   "webSearchRequests": 0,
+   "costUSD": 0.023552,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 4767,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g11v1\",\"tumour_intrinsic\":\"no\",\"evidence_ids\":[\"g11v1.r17\"],\"rationale\":\"Target ENTITY_57 single-cell record: Macrophage (0.436) and CD8_T (0.345) have larger transcript share than RCC (0.023), so non-RCC exceeds RCC. The ENTITY_04 record is not the target's.\"},{\"id\":\"g07v1\",\"tumour_intrinsic\":\"yes\",\"evidence_ids\":[\"g07v1.r01\",\"g07v1.r09\"],\"rationale\":\"RCC has the largest share (0.881). Purity lfc 4.88 - 1.96*0.598 = 3.71 > 0.\"},{\"id\":\"g06v1\",\"tumour_intrinsic\":\"no\",\"evidence_ids\":[\"g06v1.r16\"],\"rationale\":\"CD8_T share (0.6) exceeds RCC share (0.2), so a non-RCC group is larger.\"},{\"id\":\"g09v1\",\"tumour_intrinsic\":\"no\",\"evidence_ids\":[\"g09v1.r25\"],\"rationale\":\"CD8_T share (0.737) exceeds RCC (0.072), so a non-RCC group is larger.\"}]}",
+ "stderr": "",
+ "structured_output": {
+  "answers": [
+   {
+    "id": "g11v1",
+    "tumour_intrinsic": "no",
+    "evidence_ids": [
+     "g11v1.r17"
+    ],
+    "rationale": "Target ENTITY_57 single-cell record: Macrophage (0.436) and CD8_T (0.345) have larger transcript share than RCC (0.023), so non-RCC exceeds RCC. The ENTITY_04 record is not the target's."
+   },
+   {
+    "id": "g07v1",
+    "tumour_intrinsic": "yes",
+    "evidence_ids": [
+     "g07v1.r01",
+     "g07v1.r09"
+    ],
+    "rationale": "RCC has the largest share (0.881). Purity lfc 4.88 - 1.96*0.598 = 3.71 > 0."
+   },
+   {
+    "id": "g06v1",
+    "tumour_intrinsic": "no",
+    "evidence_ids": [
+     "g06v1.r16"
+    ],
+    "rationale": "CD8_T share (0.6) exceeds RCC share (0.2), so a non-RCC group is larger."
+   },
+   {
+    "id": "g09v1",
+    "tumour_intrinsic": "no",
+    "evidence_ids": [
+     "g09v1.r25"
+    ],
+    "rationale": "CD8_T share (0.737) exceeds RCC (0.072), so a non-RCC group is larger."
+   }
+  ]
+ },
+ "answers": [
+  {
+   "id": "g11v1",
+   "tumour_intrinsic": "no",
+   "evidence_ids": [
+    "g11v1.r17"
+   ],
+   "rationale": "Target ENTITY_57 single-cell record: Macrophage (0.436) and CD8_T (0.345) have larger transcript share than RCC (0.023), so non-RCC exceeds RCC. The ENTITY_04 record is not the target's."
+  },
+  {
+   "id": "g07v1",
+   "tumour_intrinsic": "yes",
+   "evidence_ids": [
+    "g07v1.r01",
+    "g07v1.r09"
+   ],
+   "rationale": "RCC has the largest share (0.881). Purity lfc 4.88 - 1.96*0.598 = 3.71 > 0."
+  },
+  {
+   "id": "g06v1",
+   "tumour_intrinsic": "no",
+   "evidence_ids": [
+    "g06v1.r16"
+   ],
+   "rationale": "CD8_T share (0.6) exceeds RCC share (0.2), so a non-RCC group is larger."
+  },
+  {
+   "id": "g09v1",
+   "tumour_intrinsic": "no",
+   "evidence_ids": [
+    "g09v1.r25"
+   ],
+   "rationale": "CD8_T share (0.737) exceeds RCC (0.072), so a non-RCC group is larger."
+  }
+ ],
+ "elapsed_s": 15.4
+}

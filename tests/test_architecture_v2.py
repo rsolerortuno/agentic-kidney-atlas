@@ -87,3 +87,14 @@ def test_bootstrap_pairs_by_gene():
     rows = [{"gene": g, "arm": arm, "v": float(arm == "B")} for g in range(4) for arm in "BC" for _ in range(3)]
     out = bootstrap(rows, "C", "B", "v", n=200)
     assert out["genes"] == 4 and out["diff"] == -1.0 and out["ci95"] == [-1.0, -1.0]
+
+
+def test_structured_schema_fixes_ids_labels_and_count():
+    from benchmarks.architecture_v2.run import json_schema
+    s = json_schema(["a", "b"], ["protein_up"], True)
+    arr = s["properties"]["answers"]
+    assert arr["minItems"] == arr["maxItems"] == 2
+    item = arr["items"]
+    assert item["properties"]["id"]["enum"] == ["a", "b"]
+    assert item["properties"]["protein_up"]["enum"] == ["insufficient", "no", "yes"]
+    assert "verdict" in item["required"] and item["additionalProperties"] is False

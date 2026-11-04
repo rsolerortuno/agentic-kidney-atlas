@@ -1,0 +1,247 @@
+{
+ "study_hash": "5b34e637c50dad54",
+ "prompt_sha256": "d72135f8cd3451d78f7816c65b9ee2312c16e8b6388f8a6cc1ff79ab72f51f40",
+ "status": "ok",
+ "case_ids": [
+  "g08v1",
+  "g10v1",
+  "g02v1",
+  "g04v1"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.0771587,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 15071,
+  "cache_read_input_tokens": 1007,
+  "output_tokens": 1677,
+  "output_tokens_details": {
+   "thinking_tokens": 585
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 15071,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1677,
+    "cache_read_input_tokens": 1007,
+    "cache_creation_input_tokens": 15071,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 15071
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 1677,
+   "cacheReadInputTokens": 1007,
+   "cacheCreationInputTokens": 15071,
+   "webSearchRequests": 0,
+   "costUSD": 0.0771587,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 585,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 15071,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g08v1\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"no\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"insufficient\",\"selective_dependency\":\"no\",\"verdict\":\"infiltration_signal\",\"evidence_ids\":[\"g08v1.r02\",\"g08v1.r13\",\"g08v1.r08\",\"g08v1.r26\",\"g08v1.r21\",\"g08v1.r28\",\"g08v1.r15\",\"g08v1.r20\"],\"rationale\":\"Protein and RNA up, replicated in TCGA. Macrophage transcript share (0.6) exceeds RCC (0.2), so not tumour-intrinsic. Surface unknown; IHC not measured; no dependency (0 dependent lines, padj 0.82). Infiltration signal.\"},{\"id\":\"g10v1\",\"protein_up\":\"no\",\"replicated\":\"no\",\"tumour_intrinsic\":\"insufficient\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"needs_more_data\",\"evidence_ids\":[\"g10v1.r23\",\"g10v1.r07\",\"g10v1.r27\",\"g10v1.r02\",\"g10v1.r15\",\"g10v1.r05\",\"g10v1.r14\"],\"rationale\":\"Protein down; CPTAC RNA down but TCGA RNA significantly up, so not replicated. RCC top share but purity lower bound below 0. No target surface record. Liver enrichment flagged. No dependency. No rule fits, so needs more data.\"},{\"id\":\"g02v1\",\"protein_up\":\"no\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"no\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"insufficient\",\"selective_dependency\":\"no\",\"verdict\":\"loss_biomarker\",\"evidence_ids\":[\"g02v1.r22\",\"g02v1.r12\",\"g02v1.r07\",\"g02v1.r20\",\"g02v1.r01\",\"g02v1.r13\",\"g02v1.r19\",\"g02v1.r25\",\"g02v1.r15\"],\"rationale\":\"Protein down; CPTAC and TCGA RNA both down, so replicated. CD8_T share exceeds RCC. Surface call is surface. IHC not measured, proteome not enriched. No dependency. Loss biomarker rule applies first.\"},{\"id\":\"g04v1\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"no\",\"selective_dependency\":\"no\",\"verdict\":\"surface_target_candidate\",\"evidence_ids\":[\"g04v1.r10\",\"g04v1.r21\",\"g04v1.r13\",\"g04v1.r05\",\"g04v1.r08\",\"g04v1.r22\",\"g04v1.r24\",\"g04v1.r12\",\"g04v1.r19\",\"g04v1.r18\"],\"rationale\":\"Protein and RNA up, replicated in TCGA and confirmatory protein. RCC has top share and purity lower bound is about 3.17. Surface. Vital IHC level 1, no enrichment. No selective dependency, which the verdict doesn't use.\"}]}",
+ "stderr": "",
+ "structured_output": {
+  "answers": [
+   {
+    "id": "g08v1",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "tumour_intrinsic": "no",
+    "surface_accessible": "insufficient",
+    "vital_safety_concern": "insufficient",
+    "selective_dependency": "no",
+    "verdict": "infiltration_signal",
+    "evidence_ids": [
+     "g08v1.r02",
+     "g08v1.r13",
+     "g08v1.r08",
+     "g08v1.r26",
+     "g08v1.r21",
+     "g08v1.r28",
+     "g08v1.r15",
+     "g08v1.r20"
+    ],
+    "rationale": "Protein and RNA up, replicated in TCGA. Macrophage transcript share (0.6) exceeds RCC (0.2), so not tumour-intrinsic. Surface unknown; IHC not measured; no dependency (0 dependent lines, padj 0.82). Infiltration signal."
+   },
+   {
+    "id": "g10v1",
+    "protein_up": "no",
+    "replicated": "no",
+    "tumour_intrinsic": "insufficient",
+    "surface_accessible": "insufficient",
+    "vital_safety_concern": "yes",
+    "selective_dependency": "no",
+    "verdict": "needs_more_data",
+    "evidence_ids": [
+     "g10v1.r23",
+     "g10v1.r07",
+     "g10v1.r27",
+     "g10v1.r02",
+     "g10v1.r15",
+     "g10v1.r05",
+     "g10v1.r14"
+    ],
+    "rationale": "Protein down; CPTAC RNA down but TCGA RNA significantly up, so not replicated. RCC top share but purity lower bound below 0. No target surface record. Liver enrichment flagged. No dependency. No rule fits, so needs more data."
+   },
+   {
+    "id": "g02v1",
+    "protein_up": "no",
+    "replicated": "yes",
+    "tumour_intrinsic": "no",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "insufficient",
+    "selective_dependency": "no",
+    "verdict": "loss_biomarker",
+    "evidence_ids": [
+     "g02v1.r22",
+     "g02v1.r12",
+     "g02v1.r07",
+     "g02v1.r20",
+     "g02v1.r01",
+     "g02v1.r13",
+     "g02v1.r19",
+     "g02v1.r25",
+     "g02v1.r15"
+    ],
+    "rationale": "Protein down; CPTAC and TCGA RNA both down, so replicated. CD8_T share exceeds RCC. Surface call is surface. IHC not measured, proteome not enriched. No dependency. Loss biomarker rule applies first."
+   },
+   {
+    "id": "g04v1",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "tumour_intrinsic": "yes",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "no",
+    "selective_dependency": "no",
+    "verdict": "surface_target_candidate",
+    "evidence_ids": [
+     "g04v1.r10",
+     "g04v1.r21",
+     "g04v1.r13",
+     "g04v1.r05",
+     "g04v1.r08",
+     "g04v1.r22",
+     "g04v1.r24",
+     "g04v1.r12",
+     "g04v1.r19",
+     "g04v1.r18"
+    ],
+    "rationale": "Protein and RNA up, replicated in TCGA and confirmatory protein. RCC has top share and purity lower bound is about 3.17. Surface. Vital IHC level 1, no enrichment. No selective dependency, which the verdict doesn't use."
+   }
+  ]
+ },
+ "answers": [
+  {
+   "id": "g08v1",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "no",
+   "surface_accessible": "insufficient",
+   "vital_safety_concern": "insufficient",
+   "selective_dependency": "no",
+   "verdict": "infiltration_signal",
+   "evidence_ids": [
+    "g08v1.r02",
+    "g08v1.r13",
+    "g08v1.r08",
+    "g08v1.r26",
+    "g08v1.r21",
+    "g08v1.r28",
+    "g08v1.r15",
+    "g08v1.r20"
+   ],
+   "rationale": "Protein and RNA up, replicated in TCGA. Macrophage transcript share (0.6) exceeds RCC (0.2), so not tumour-intrinsic. Surface unknown; IHC not measured; no dependency (0 dependent lines, padj 0.82). Infiltration signal."
+  },
+  {
+   "id": "g10v1",
+   "protein_up": "no",
+   "replicated": "no",
+   "tumour_intrinsic": "insufficient",
+   "surface_accessible": "insufficient",
+   "vital_safety_concern": "yes",
+   "selective_dependency": "no",
+   "verdict": "needs_more_data",
+   "evidence_ids": [
+    "g10v1.r23",
+    "g10v1.r07",
+    "g10v1.r27",
+    "g10v1.r02",
+    "g10v1.r15",
+    "g10v1.r05",
+    "g10v1.r14"
+   ],
+   "rationale": "Protein down; CPTAC RNA down but TCGA RNA significantly up, so not replicated. RCC top share but purity lower bound below 0. No target surface record. Liver enrichment flagged. No dependency. No rule fits, so needs more data."
+  },
+  {
+   "id": "g02v1",
+   "protein_up": "no",
+   "replicated": "yes",
+   "tumour_intrinsic": "no",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "insufficient",
+   "selective_dependency": "no",
+   "verdict": "loss_biomarker",
+   "evidence_ids": [
+    "g02v1.r22",
+    "g02v1.r12",
+    "g02v1.r07",
+    "g02v1.r20",
+    "g02v1.r01",
+    "g02v1.r13",
+    "g02v1.r19",
+    "g02v1.r25",
+    "g02v1.r15"
+   ],
+   "rationale": "Protein down; CPTAC and TCGA RNA both down, so replicated. CD8_T share exceeds RCC. Surface call is surface. IHC not measured, proteome not enriched. No dependency. Loss biomarker rule applies first."
+  },
+  {
+   "id": "g04v1",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "yes",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "no",
+   "selective_dependency": "no",
+   "verdict": "surface_target_candidate",
+   "evidence_ids": [
+    "g04v1.r10",
+    "g04v1.r21",
+    "g04v1.r13",
+    "g04v1.r05",
+    "g04v1.r08",
+    "g04v1.r22",
+    "g04v1.r24",
+    "g04v1.r12",
+    "g04v1.r19",
+    "g04v1.r18"
+   ],
+   "rationale": "Protein and RNA up, replicated in TCGA and confirmatory protein. RCC has top share and purity lower bound is about 3.17. Surface. Vital IHC level 1, no enrichment. No selective dependency, which the verdict doesn't use."
+  }
+ ],
+ "elapsed_s": 14.2
+}

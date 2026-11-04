@@ -1,0 +1,319 @@
+{
+ "agent": "agente-celular",
+ "findings": [
+  {
+   "gene": "CA9",
+   "role": "target_and_biomarker",
+   "key": true,
+   "statement": "CA9 is tumor-cell intrinsic: the RCC cluster holds almost all tumor transcripts of the gene [gene=CA9; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=RCC; tissue=tumor; share_of_tumor_transcripts=0.976], and in donor-paired pseudobulk tumor cells are far above proximal tubule [gene=CA9; type=sc_tumor_vs_pt; source=DATASET:LI2022-SCRNA; log2fc=7.739]. It ranks first in the convergence ranking and is purity-robust and replicated in TCGA, but ccRCC DepMap effect is near zero and the gene has no prognostic signal, so it is a biomarker and antibody/imaging target rather than a proven dependency.",
+   "evidence_ids": [
+    "EV:sc_expr:35b84fee998f",
+    "EV:sc_summary:225a767ebcb5",
+    "EV:sc_tvp:225a767ebcb5",
+    "EV:purity:225a767ebcb5",
+    "EV:tcga_de:225a767ebcb5"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:sc_expr:35b84fee998f",
+     "field": [
+      "share_of_tumor_transcripts"
+     ],
+     "display": "0.976",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_tvp:225a767ebcb5",
+     "field": [
+      "log2fc"
+     ],
+     "display": "7.739",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "CA9",
+   "role": "target",
+   "statement": "The AlphaFold model of CA9 is moderately confident overall [gene=CA9; type=alphafold_model; source=DATASET:ALPHAFOLD-DB; mean_plddt=76.56]; its top cavity has a small volume [gene=CA9; type=structural_context; source=DATASET:ALPHAFOLD-DB; volume_a3=126.8] and detected cavities recover about half of experimental ligand-contact residues (recall in ligand_site_validation). This is a descriptive monomer heuristic and says nothing about degrons, ligase compatibility or degradation.",
+   "evidence_ids": [
+    "EV:alphafold:6b2a466ed88e",
+    "EV:structural_context:cacfae1940f6",
+    "EV:ligand_sites:93360ddb9195"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:alphafold:6b2a466ed88e",
+     "field": [
+      "mean_plddt"
+     ],
+     "display": "76.56",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:structural_context:cacfae1940f6",
+     "field": [
+      "volume_a3"
+     ],
+     "display": "126.8",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "CD70",
+   "role": "target_and_biomarker",
+   "statement": "CD70 is highest per cell in RCC cells (largest cpm_share) but Tregs, CD8 T and B cells also express it, and CD8 T cells carry a large share of transcripts only because of their number, so the bulk signal is mixed. It is still tumor-up, replicated in TCGA and purity-robust, and already has clinical anti-CD70 agents; no selective ccRCC dependency is shown.",
+   "evidence_ids": [
+    "EV:purity:908e84663f6a",
+    "EV:tcga_de:908e84663f6a"
+   ],
+   "numeric_claims": []
+  },
+  {
+   "gene": "KDR",
+   "role": "microenvironment",
+   "key": true,
+   "statement": "KDR is an endothelial microenvironment target, not a tumor-cell target: endothelial cells hold nearly all its tumor transcripts [gene=KDR; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=Endothelial; tissue=tumor; share_of_tumor_transcripts=0.951], while RCC cells are not among the expressing groups in the summary.",
+   "evidence_ids": [
+    "EV:sc_expr:801fa5377cb7",
+    "EV:sc_summary:fd47891e1c7f"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:sc_expr:801fa5377cb7",
+     "field": [
+      "share_of_tumor_transcripts"
+     ],
+     "display": "0.951",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "EPAS1",
+   "role": "microenvironment",
+   "key": true,
+   "statement": "EPAS1 (HIF-2a) is not mainly a tumor-cell transcript in this dataset: endothelial cells express it in most cells [gene=EPAS1; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=Endothelial; tissue=tumor; pct_expressing=81.3] whereas RCC cells express it in few cells [gene=EPAS1; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=RCC; tissue=tumor; pct_expressing=4.9]. Bulk EPAS1 signal therefore reflects endothelium and fibroblasts at least as much as tumor cells; this may partly be low dropout-prone detection of a transcription factor.",
+   "evidence_ids": [
+    "EV:sc_expr:d00e4a293c7f",
+    "EV:sc_expr:ffb74b11de1d",
+    "EV:sc_summary:6a657326c9fd"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:sc_expr:d00e4a293c7f",
+     "field": [
+      "pct_expressing"
+     ],
+     "display": "81.3",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_expr:ffb74b11de1d",
+     "field": [
+      "pct_expressing"
+     ],
+     "display": "4.9",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "MET",
+   "role": "target",
+   "statement": "MET transcripts in tumor are mostly in RCC cells [gene=MET; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=RCC; tissue=tumor; share_of_tumor_transcripts=0.935], with a minor endothelial contribution, so it is a tumor-cell-attributed kinase target.",
+   "evidence_ids": [
+    "EV:sc_expr:114c287fd103",
+    "EV:sc_summary:8314520758de"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:sc_expr:114c287fd103",
+     "field": [
+      "share_of_tumor_transcripts"
+     ],
+     "display": "0.935",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "EGFR",
+   "role": "target",
+   "statement": "EGFR transcripts are mostly in RCC cells [gene=EGFR; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=RCC; tissue=tumor; share_of_tumor_transcripts=0.948], but only a minority of RCC cells express it, so expression is heterogeneous across tumor cells.",
+   "evidence_ids": [
+    "EV:sc_expr:232cf512ce32",
+    "EV:sc_summary:6bce27c2d6df"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:sc_expr:232cf512ce32",
+     "field": [
+      "share_of_tumor_transcripts"
+     ],
+     "display": "0.948",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "CD74",
+   "role": "microenvironment",
+   "key": true,
+   "statement": "CD74 is an immune (antigen-presenting) transcript, not tumor-intrinsic: macrophages hold the largest share [gene=CD74; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=Macrophage; tissue=tumor; share_of_tumor_transcripts=0.436], with cDC highest per cell and CD8 T cells contributing a large share by cell number.",
+   "evidence_ids": [
+    "EV:sc_expr:a2ae18752f02",
+    "EV:sc_summary:ee059aa145d0"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:sc_expr:a2ae18752f02",
+     "field": [
+      "share_of_tumor_transcripts"
+     ],
+     "display": "0.436",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "CXCR4",
+   "role": "microenvironment",
+   "statement": "CXCR4 is expressed by lymphocytes, not tumor cells; CD8 T cells hold the largest transcript share [gene=CXCR4; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=CD8_T; tissue=tumor; share_of_tumor_transcripts=0.563], and CD4 T, B, Treg and pDC cells also express it, so it is an immune-microenvironment target.",
+   "evidence_ids": [
+    "EV:sc_expr:52ac4d964066",
+    "EV:sc_summary:a804b568bd15"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:sc_expr:52ac4d964066",
+     "field": [
+      "share_of_tumor_transcripts"
+     ],
+     "display": "0.563",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "COL23A1",
+   "role": "discovery",
+   "key": true,
+   "statement": "COL23A1 is the top tumor-track candidate: RCC cells hold most of its transcripts [gene=COL23A1; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=RCC; tissue=tumor; share_of_tumor_transcripts=0.881], it is replicated in TCGA and remains up in a pure tumour [gene=COL23A1; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=tumor; rna_lfc_at_purity1=4.88]. It has few ccRCC papers, no clinical drug, is annotated as cell-membrane (UniProt only; SURFY and CSPA do not support it) and has no vital-organ protein enrichment, but it has no selective DepMap dependency, no adverse prognosis, and only a minority of RCC cells express it.",
+   "evidence_ids": [
+    "EV:sc_expr:2004e5c49703",
+    "EV:sc_summary:e1532aa1b09c",
+    "EV:discovery:e1532aa1b09c",
+    "EV:tcga_de:e1532aa1b09c",
+    "EV:purity:e1532aa1b09c",
+    "EV:tcga_survival:e1532aa1b09c",
+    "EV:normal_proteome:e1532aa1b09c"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:sc_expr:2004e5c49703",
+     "field": [
+      "share_of_tumor_transcripts"
+     ],
+     "display": "0.881",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:e1532aa1b09c",
+     "field": [
+      "rna_lfc_at_purity1"
+     ],
+     "display": "4.88",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "COL23A1",
+   "role": "discovery",
+   "statement": "The COL23A1 AlphaFold model is low confidence overall [gene=COL23A1; type=alphafold_model; source=DATASET:ALPHAFOLD-DB; mean_plddt=58.91] and its only detected cavity is tiny and shallow with a low structural-context score, so small-molecule tractability is poor; an antibody against the extracellular domain is the more plausible modality, and this heuristic does not exclude other approaches.",
+   "evidence_ids": [
+    "EV:alphafold:4f8072787076",
+    "EV:structural_context:3a4161457d4f"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:alphafold:4f8072787076",
+     "field": [
+      "mean_plddt"
+     ],
+     "display": "58.91",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "RAB42",
+   "role": "discovery",
+   "statement": "RAB42 is a second tumor-track hypothesis: RCC cells hold most of its transcripts, it is replicated in TCGA and purity-robust, has very few ccRCC papers and no clinical drug, but is internal (not antibody-accessible), has no selective dependency or prognostic signal, and its model is well folded [gene=RAB42; type=alphafold_model; source=DATASET:ALPHAFOLD-DB; mean_plddt=85.31] with only small cavities.",
+   "evidence_ids": [
+    "EV:discovery:f53feb0aa597",
+    "EV:tcga_de:f53feb0aa597",
+    "EV:purity:f53feb0aa597",
+    "EV:tcga_survival:f53feb0aa597",
+    "EV:alphafold:c7726f37155e",
+    "EV:structural_context:99d1b16599f0"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:alphafold:c7726f37155e",
+     "field": [
+      "mean_plddt"
+     ],
+     "display": "85.31",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "OLFML2A",
+   "role": "discovery",
+   "statement": "OLFML2A is a stroma-track candidate carried by fibroblasts, secreted, with very few ccRCC papers and no clinical drug; it is replicated in TCGA and purity-robust with no adverse survival, but expression in colon and other organs and the lack of a dependency or functional evidence limit it to a hypothesis on a secreted stromal marker.",
+   "evidence_ids": [
+    "EV:discovery:eb3ffaa04212",
+    "EV:tcga_de:eb3ffaa04212",
+    "EV:purity:eb3ffaa04212",
+    "EV:tcga_survival:eb3ffaa04212"
+   ],
+   "numeric_claims": []
+  },
+  {
+   "gene": "COX4I2",
+   "role": "discovery",
+   "statement": "COX4I2 is a stroma-track hypothesis made mostly by fibroblasts; it is replicated in TCGA and purity-robust with no adverse survival, but it is an internal mitochondrial protein (not antibody-accessible) with high lung expression, so it is unlikely to be a clean therapeutic target.",
+   "evidence_ids": [
+    "EV:discovery:f7469609a880",
+    "EV:tcga_de:f7469609a880",
+    "EV:purity:f7469609a880",
+    "EV:tcga_survival:f7469609a880"
+   ],
+   "numeric_claims": []
+  },
+  {
+   "gene": "GAL3ST4",
+   "role": "discovery",
+   "statement": "GAL3ST4 is a macrophage-derived internal enzyme with almost no ccRCC literature and an adverse-prognosis direction that remains after purity adjustment, but it is not surface-accessible and has no dependency or functional data, so it is only a biomarker-type hypothesis.",
+   "evidence_ids": [
+    "EV:discovery:b3f34d2662ac",
+    "EV:tcga_de:b3f34d2662ac",
+    "EV:purity:b3f34d2662ac",
+    "EV:tcga_survival:b3f34d2662ac"
+   ],
+   "numeric_claims": []
+  }
+ ],
+ "caveats": [
+  "Single-cell attribution comes from 12 donors; endothelial, fibroblast and PT groups have few cells or donors, so shares are unstable. Transcript share depends on how many cells of each type were captured.",
+  "EPAS1 and other transcription factors are poorly detected in scRNA-seq, which may understate tumor-cell expression.",
+  "Discovery candidates are data-ranked hypotheses with no dependency or functional evidence; literature is counted by gene symbol.",
+  "Structural-context scores describe predicted monomer cavities and do not identify degrons, ligase compatibility or predict degradation.",
+  "The CD70 single-cell record had no evidence id, so its cell attribution is stated in words only; CD74 and CXCR4 purity checks and ccRCC-specific DepMap data for the microenvironment genes were not run; the EPAS1 tumor-versus-PT test was not run.",
+  "The PubMed connector requires authorization and was not used."
+ ]
+}

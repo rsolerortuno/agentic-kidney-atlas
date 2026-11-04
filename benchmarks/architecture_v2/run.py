@@ -29,7 +29,7 @@ from .build import FROZEN, QUESTIONS, VERDICTS, verdict
 HERE = Path(__file__).parent
 RUNS = HERE / "runs"
 SETTINGS = {"model": "claude-sonnet-5-5", "effort": "medium", "max_output_tokens": 16000, "budget_usd_per_call": 2.0,
-            "timeout_s": 1200, "batch_size": 4, "parallel_calls": 4}
+            "timeout_s": 1200, "batch_size": 4, "parallel_calls": 4, "structured": False}
 SPECIALISTS = {
     "expression": (["cptac_expression", "tcga_expression", "confirmatory_protein"], ["protein_up", "replicated"]),
     "cells": (["single_cell_tumour", "purity_adjustment"], ["tumour_intrinsic"]),
@@ -67,6 +67,20 @@ def _schema(questions: list[str], with_verdict: bool) -> str:
     return ('Return {"answers": [{"id": "case id", ' + fields + v +
             ', "evidence_ids": ["ids of the target-entity records you relied on"], "rationale": "at most 60 words"}]} '
             "with one entry per case and no other text.")
+
+
+def json_schema(ids, questions: list[str], with_verdict: bool) -> dict:
+    """JSON Schema for --json-schema (structured output): the CLI validates the answer, so it cannot be malformed."""
+    item = {"id": {"type": "string", "enum": list(ids)}}
+    item.update({q: {"type": "string", "enum": sorted(LABELS)} for q in questions})
+    if with_verdict:
+        item["verdict"] = {"type": "string", "enum": list(VERDICTS)}
+    item["evidence_ids"] = {"type": "array", "items": {"type": "string"}}
+    item["rationale"] = {"type": "string"}
+    return {"type": "object", "additionalProperties": False, "required": ["answers"],
+            "properties": {"answers": {"type": "array", "minItems": len(ids), "maxItems": len(ids),
+                                       "items": {"type": "object", "additionalProperties": False,
+                                                 "required": list(item), "properties": item}}}}
 
 
 def prompt_full(batch, role_line, extra=""):
@@ -120,13 +134,15 @@ def call(claude: Path, path: Path, prompt: str, ids, questions, with_verdict, h:
     env.pop("CCRCC_RUN_DIR", None)
     rec = {"study_hash": h, "prompt_sha256": hashlib.sha256(prompt.encode()).hexdigest(), "status": "failed",
            "case_ids": list(ids)}
-    with tempfile.TemporaryDirectory(prefix="arch-v2-") as tmp:
+    with tempfile.TemporaryDirectory(prefix="arch-v2-", ignore_cleanup_errors=True) as tmp:
         mcp = Path(tmp) / "mcp.json"
         mcp.write_text('{"mcpServers":{}}', encoding="utf-8")
         cmd = [str(claude), "-p", "--model", SETTINGS["model"], "--effort", SETTINGS["effort"], "--output-format", "json",
                "--tools", "", "--strict-mcp-config", "--mcp-config", str(mcp), "--disable-slash-commands",
                "--setting-sources", "", "--no-session-persistence", "--system-prompt", SYSTEM,
                "--max-budget-usd", str(SETTINGS["budget_usd_per_call"])]
+        if SETTINGS["structured"]:
+            cmd += ["--json-schema", json.dumps(json_schema(ids, questions, with_verdict), separators=(",", ":"))]
         try:
             p = subprocess.run(cmd, input=prompt, text=True, encoding="utf-8", capture_output=True, cwd=tmp, env=env,
                                timeout=SETTINGS["timeout_s"])
@@ -135,12 +151,15 @@ def call(claude: Path, path: Path, prompt: str, ids, questions, with_verdict, h:
                        model_usage=raw.get("modelUsage", {}), subtype=raw.get("subtype"), result=raw.get("result", ""),
                        stderr=(p.stderr or "")[-2000:])
             low = (p.stdout + p.stderr).lower()
-            if any(s in low for s in ("usage limit", "hit your limit", "out of extra usage")):
+            if any(s in low for s in ("usage limit", "hit your limit", "out of extra usage", "5-hour limit", "usage_limit_reached")):
                 rec["status"] = "quota"
             elif raw.get("is_error") or p.returncode:
                 rec["error"] = f"cli error rc={p.returncode} subtype={raw.get('subtype')}"
             else:
-                rec["answers"] = parse(rec["result"], ids, questions, with_verdict)
+                out = raw.get("structured_output") if SETTINGS["structured"] else None
+                if out is not None:
+                    rec["structured_output"] = out
+                rec["answers"] = parse(out if out is not None else rec["result"], ids, questions, with_verdict)
                 rec["status"] = "ok"
         except (ValueError, KeyError, TypeError, json.JSONDecodeError, subprocess.TimeoutExpired) as e:
             rec["error"] = f"{type(e).__name__}: {e}"
@@ -242,8 +261,13 @@ def main():
     ap.add_argument("--batches", type=int, nargs="*", help="only these batch indices (smoke tests)")
     ap.add_argument("--batch-size", type=int, default=4, help="dossiers per context (load condition: 12)")
     ap.add_argument("--reparse", action="store_true", help="re-parse saved responses, rebuild answers; no model calls")
+    ap.add_argument("--structured", action="store_true",
+                    help="validated structured output (--json-schema); writes to runs_structured*")
     a = ap.parse_args()
     root = RUNS if a.batch_size == 4 else RUNS.parent / f"runs_load{a.batch_size}"
+    if a.structured:
+        SETTINGS["structured"] = True
+        root = root.parent / root.name.replace("runs", "runs_structured", 1)
     SETTINGS["batch_size"] = a.batch_size
     if a.reparse:
         print("re-parsed:", reparse(root))

@@ -1,0 +1,159 @@
+{
+ "study_hash": "5b34e637c50dad54",
+ "prompt_sha256": "1c870f2709645ab3c54900d6e0d084b92aba6eaa8e352e42ab4c35eef2b67ebb",
+ "status": "ok",
+ "case_ids": [
+  "g03v0",
+  "g02v0",
+  "g01v0",
+  "g10v0"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.023714,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 4370,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 623,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 4370,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 623,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 4370,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 4370
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 623,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 4370,
+   "webSearchRequests": 0,
+   "costUSD": 0.023714,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 4370,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g03v0\",\"surface_accessible\":\"no\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g03v0.r16\",\"g03v0.r05\",\"g03v0.r06\"],\"rationale\":\"Surface call is internal (cytoplasm). IHC measured vital-organ (liver) staining level 3, which is >=2, so vital safety concern is yes. The ENTITY_85 proteome record is ignored because it belongs to another entity.\"},{\"id\":\"g02v0\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"insufficient\",\"evidence_ids\":[\"g02v0.r27\",\"g02v0.r17\",\"g02v0.r14\"],\"rationale\":\"Surface call is surface. IHC was not measured and the target's proteome does not report enrichment (false), so vital safety is insufficient. The ENTITY_12 enrichment is ignored because it belongs to another entity.\"},{\"id\":\"g01v0\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g01v0.r19\",\"g01v0.r28\",\"g01v0.r21\"],\"rationale\":\"Surface call is surface. Stomach IHC level is 3 (>=2) and the proteome reports vital protein enrichment as true, so vital safety concern is yes. ENTITY_97 records are ignored because they belong to another entity.\"},{\"id\":\"g10v0\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g10v0.r26\"],\"rationale\":\"The only surface record belongs to ENTITY_21, so the target has no surface record. The target's proteome reports vital protein enrichment as true (liver), so vital safety concern is yes.\"}]}",
+ "stderr": "",
+ "structured_output": {
+  "answers": [
+   {
+    "id": "g03v0",
+    "surface_accessible": "no",
+    "vital_safety_concern": "yes",
+    "evidence_ids": [
+     "g03v0.r16",
+     "g03v0.r05",
+     "g03v0.r06"
+    ],
+    "rationale": "Surface call is internal (cytoplasm). IHC measured vital-organ (liver) staining level 3, which is >=2, so vital safety concern is yes. The ENTITY_85 proteome record is ignored because it belongs to another entity."
+   },
+   {
+    "id": "g02v0",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "insufficient",
+    "evidence_ids": [
+     "g02v0.r27",
+     "g02v0.r17",
+     "g02v0.r14"
+    ],
+    "rationale": "Surface call is surface. IHC was not measured and the target's proteome does not report enrichment (false), so vital safety is insufficient. The ENTITY_12 enrichment is ignored because it belongs to another entity."
+   },
+   {
+    "id": "g01v0",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "yes",
+    "evidence_ids": [
+     "g01v0.r19",
+     "g01v0.r28",
+     "g01v0.r21"
+    ],
+    "rationale": "Surface call is surface. Stomach IHC level is 3 (>=2) and the proteome reports vital protein enrichment as true, so vital safety concern is yes. ENTITY_97 records are ignored because they belong to another entity."
+   },
+   {
+    "id": "g10v0",
+    "surface_accessible": "insufficient",
+    "vital_safety_concern": "yes",
+    "evidence_ids": [
+     "g10v0.r26"
+    ],
+    "rationale": "The only surface record belongs to ENTITY_21, so the target has no surface record. The target's proteome reports vital protein enrichment as true (liver), so vital safety concern is yes."
+   }
+  ]
+ },
+ "answers": [
+  {
+   "id": "g03v0",
+   "surface_accessible": "no",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g03v0.r16",
+    "g03v0.r05",
+    "g03v0.r06"
+   ],
+   "rationale": "Surface call is internal (cytoplasm). IHC measured vital-organ (liver) staining level 3, which is >=2, so vital safety concern is yes. The ENTITY_85 proteome record is ignored because it belongs to another entity."
+  },
+  {
+   "id": "g02v0",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "insufficient",
+   "evidence_ids": [
+    "g02v0.r27",
+    "g02v0.r17",
+    "g02v0.r14"
+   ],
+   "rationale": "Surface call is surface. IHC was not measured and the target's proteome does not report enrichment (false), so vital safety is insufficient. The ENTITY_12 enrichment is ignored because it belongs to another entity."
+  },
+  {
+   "id": "g01v0",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g01v0.r19",
+    "g01v0.r28",
+    "g01v0.r21"
+   ],
+   "rationale": "Surface call is surface. Stomach IHC level is 3 (>=2) and the proteome reports vital protein enrichment as true, so vital safety concern is yes. ENTITY_97 records are ignored because they belong to another entity."
+  },
+  {
+   "id": "g10v0",
+   "surface_accessible": "insufficient",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g10v0.r26"
+   ],
+   "rationale": "The only surface record belongs to ENTITY_21, so the target has no surface record. The target's proteome reports vital protein enrichment as true (liver), so vital safety concern is yes."
+  }
+ ],
+ "elapsed_s": 10.8
+}

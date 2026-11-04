@@ -1,0 +1,245 @@
+{
+ "study_hash": "5b34e637c50dad54",
+ "prompt_sha256": "5a9b8af98c83cfb8960fb9aed53a824026c62dd7e0099f9768942bb36dc5b34e",
+ "status": "ok",
+ "case_ids": [
+  "g10v1",
+  "g04v1",
+  "g06v1",
+  "g01v1"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.074626,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 13643,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 2005,
+  "output_tokens_details": {
+   "thinking_tokens": 839
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 13643,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 2005,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 13643,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 13643
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 2005,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 13643,
+   "webSearchRequests": 0,
+   "costUSD": 0.074626,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 839,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 13643,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g10v1\",\"protein_up\":\"no\",\"replicated\":\"no\",\"tumour_intrinsic\":\"insufficient\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"needs_more_data\",\"evidence_ids\":[\"g10v1.r23\",\"g10v1.r07\",\"g10v1.r27\",\"g10v1.r02\",\"g10v1.r15\",\"g10v1.r05\",\"g10v1.r14\"],\"rationale\":\"Protein and CPTAC RNA are down, but TCGA RNA is significantly up (opposite), so not replicated. Purity interval includes 0, so tumour origin is uncertain. The proteome reports vital enrichment. There is no surface record. DepMap has no dependent lines. Loss biomarker and infiltration rules both fail.\"},{\"id\":\"g04v1\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"no\",\"selective_dependency\":\"no\",\"verdict\":\"surface_target_candidate\",\"evidence_ids\":[\"g04v1.r10\",\"g04v1.r21\",\"g04v1.r13\",\"g04v1.r05\",\"g04v1.r08\",\"g04v1.r22\",\"g04v1.r24\",\"g04v1.r12\",\"g04v1.r19\",\"g04v1.r18\"],\"rationale\":\"Protein, CPTAC RNA, TCGA RNA and confirmatory protein are all up. RCC has the largest transcript share and the purity lower bound is above 0. The protein is on the surface. Vital IHC level is 1 with no proteome enrichment. DepMap shows no dependent lines.\"},{\"id\":\"g06v1\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"no\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"no\",\"selective_dependency\":\"no\",\"verdict\":\"infiltration_signal\",\"evidence_ids\":[\"g06v1.r05\",\"g06v1.r22\",\"g06v1.r26\",\"g06v1.r16\",\"g06v1.r13\",\"g06v1.r12\",\"g06v1.r02\"],\"rationale\":\"Protein is up, and CPTAC and TCGA RNA are up. CD8_T has a larger transcript share (0.6) than RCC (0.2), so it is not tumour-intrinsic. The protein is on the surface. Vital IHC level is 1. DepMap has no dependent lines. Protein is up, so the verdict is infiltration signal.\"},{\"id\":\"g01v1\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"no\",\"selective_dependency\":\"no\",\"verdict\":\"surface_target_candidate\",\"evidence_ids\":[\"g01v1.r05\",\"g01v1.r14\",\"g01v1.r23\",\"g01v1.r02\",\"g01v1.r19\",\"g01v1.r08\",\"g01v1.r28\",\"g01v1.r18\",\"g01v1.r15\"],\"rationale\":\"Protein is up, CPTAC RNA is up, and TCGA RNA is up. RCC has a 0.976 share and the purity lower bound is above 0. The protein is on the surface. Vital IHC level is 1 with no proteome enrichment. DepMap shows no dependent lines, so there is no selective dependency.\"}]}",
+ "stderr": "",
+ "structured_output": {
+  "answers": [
+   {
+    "id": "g10v1",
+    "protein_up": "no",
+    "replicated": "no",
+    "tumour_intrinsic": "insufficient",
+    "surface_accessible": "insufficient",
+    "vital_safety_concern": "yes",
+    "selective_dependency": "no",
+    "verdict": "needs_more_data",
+    "evidence_ids": [
+     "g10v1.r23",
+     "g10v1.r07",
+     "g10v1.r27",
+     "g10v1.r02",
+     "g10v1.r15",
+     "g10v1.r05",
+     "g10v1.r14"
+    ],
+    "rationale": "Protein and CPTAC RNA are down, but TCGA RNA is significantly up (opposite), so not replicated. Purity interval includes 0, so tumour origin is uncertain. The proteome reports vital enrichment. There is no surface record. DepMap has no dependent lines. Loss biomarker and infiltration rules both fail."
+   },
+   {
+    "id": "g04v1",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "tumour_intrinsic": "yes",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "no",
+    "selective_dependency": "no",
+    "verdict": "surface_target_candidate",
+    "evidence_ids": [
+     "g04v1.r10",
+     "g04v1.r21",
+     "g04v1.r13",
+     "g04v1.r05",
+     "g04v1.r08",
+     "g04v1.r22",
+     "g04v1.r24",
+     "g04v1.r12",
+     "g04v1.r19",
+     "g04v1.r18"
+    ],
+    "rationale": "Protein, CPTAC RNA, TCGA RNA and confirmatory protein are all up. RCC has the largest transcript share and the purity lower bound is above 0. The protein is on the surface. Vital IHC level is 1 with no proteome enrichment. DepMap shows no dependent lines."
+   },
+   {
+    "id": "g06v1",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "tumour_intrinsic": "no",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "no",
+    "selective_dependency": "no",
+    "verdict": "infiltration_signal",
+    "evidence_ids": [
+     "g06v1.r05",
+     "g06v1.r22",
+     "g06v1.r26",
+     "g06v1.r16",
+     "g06v1.r13",
+     "g06v1.r12",
+     "g06v1.r02"
+    ],
+    "rationale": "Protein is up, and CPTAC and TCGA RNA are up. CD8_T has a larger transcript share (0.6) than RCC (0.2), so it is not tumour-intrinsic. The protein is on the surface. Vital IHC level is 1. DepMap has no dependent lines. Protein is up, so the verdict is infiltration signal."
+   },
+   {
+    "id": "g01v1",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "tumour_intrinsic": "yes",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "no",
+    "selective_dependency": "no",
+    "verdict": "surface_target_candidate",
+    "evidence_ids": [
+     "g01v1.r05",
+     "g01v1.r14",
+     "g01v1.r23",
+     "g01v1.r02",
+     "g01v1.r19",
+     "g01v1.r08",
+     "g01v1.r28",
+     "g01v1.r18",
+     "g01v1.r15"
+    ],
+    "rationale": "Protein is up, CPTAC RNA is up, and TCGA RNA is up. RCC has a 0.976 share and the purity lower bound is above 0. The protein is on the surface. Vital IHC level is 1 with no proteome enrichment. DepMap shows no dependent lines, so there is no selective dependency."
+   }
+  ]
+ },
+ "answers": [
+  {
+   "id": "g10v1",
+   "protein_up": "no",
+   "replicated": "no",
+   "tumour_intrinsic": "insufficient",
+   "surface_accessible": "insufficient",
+   "vital_safety_concern": "yes",
+   "selective_dependency": "no",
+   "verdict": "needs_more_data",
+   "evidence_ids": [
+    "g10v1.r23",
+    "g10v1.r07",
+    "g10v1.r27",
+    "g10v1.r02",
+    "g10v1.r15",
+    "g10v1.r05",
+    "g10v1.r14"
+   ],
+   "rationale": "Protein and CPTAC RNA are down, but TCGA RNA is significantly up (opposite), so not replicated. Purity interval includes 0, so tumour origin is uncertain. The proteome reports vital enrichment. There is no surface record. DepMap has no dependent lines. Loss biomarker and infiltration rules both fail."
+  },
+  {
+   "id": "g04v1",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "yes",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "no",
+   "selective_dependency": "no",
+   "verdict": "surface_target_candidate",
+   "evidence_ids": [
+    "g04v1.r10",
+    "g04v1.r21",
+    "g04v1.r13",
+    "g04v1.r05",
+    "g04v1.r08",
+    "g04v1.r22",
+    "g04v1.r24",
+    "g04v1.r12",
+    "g04v1.r19",
+    "g04v1.r18"
+   ],
+   "rationale": "Protein, CPTAC RNA, TCGA RNA and confirmatory protein are all up. RCC has the largest transcript share and the purity lower bound is above 0. The protein is on the surface. Vital IHC level is 1 with no proteome enrichment. DepMap shows no dependent lines."
+  },
+  {
+   "id": "g06v1",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "no",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "no",
+   "selective_dependency": "no",
+   "verdict": "infiltration_signal",
+   "evidence_ids": [
+    "g06v1.r05",
+    "g06v1.r22",
+    "g06v1.r26",
+    "g06v1.r16",
+    "g06v1.r13",
+    "g06v1.r12",
+    "g06v1.r02"
+   ],
+   "rationale": "Protein is up, and CPTAC and TCGA RNA are up. CD8_T has a larger transcript share (0.6) than RCC (0.2), so it is not tumour-intrinsic. The protein is on the surface. Vital IHC level is 1. DepMap has no dependent lines. Protein is up, so the verdict is infiltration signal."
+  },
+  {
+   "id": "g01v1",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "yes",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "no",
+   "selective_dependency": "no",
+   "verdict": "surface_target_candidate",
+   "evidence_ids": [
+    "g01v1.r05",
+    "g01v1.r14",
+    "g01v1.r23",
+    "g01v1.r02",
+    "g01v1.r19",
+    "g01v1.r08",
+    "g01v1.r28",
+    "g01v1.r18",
+    "g01v1.r15"
+   ],
+   "rationale": "Protein is up, CPTAC RNA is up, and TCGA RNA is up. RCC has a 0.976 share and the purity lower bound is above 0. The protein is on the surface. Vital IHC level is 1 with no proteome enrichment. DepMap shows no dependent lines, so there is no selective dependency."
+  }
+ ],
+ "elapsed_s": 17.8
+}

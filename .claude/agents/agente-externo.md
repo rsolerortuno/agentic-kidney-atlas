@@ -41,3 +41,10 @@ Rules: 8–15 findings. Every finding MUST cite non-null evidence ids returned b
 `check_evidence_ids` before writing. Return a one-line summary when done.
 
 Numeric verification: every number you write must be bound to the record it comes from. For each number, call `numeric_annotation(evidence_id, field, display, unit)` with the cited record's id, the path of the metric (e.g. ["log2fc"] or ["arms", "sunitinib", "log_hr_per_sd"]) and the number exactly as you print it. Paste the returned `annotation` once, unchanged, into the statement (put annotations at the end of the sentence) and add the returned `numeric_claim` to the finding's `numeric_claims` list. The annotation replaces the number: do not also write the same number in plain text next to it ("log2FC 6.31 [...log2fc=6.31]" fails, because the plain copy is checked on its own). If it returns an error, fix the field or the digits, or leave the number out and describe it in words. Counts of genes, papers or patients that do not come from a cited record must be written in words ("most", "a minority"), not as digits. Passing means no failures detected by automatic checks, not complete scientific validation (docs/numeric-claims.md).
+
+Key findings: mark three to five of your findings with `"key": true`. These are the results the final report must not
+lose: the ones that most strengthen or weaken a leading candidate, and especially negative results (a change that does
+not replicate in another cohort, no selective dependency, no difference between trial arms, a signal that comes from
+immune or stromal cells rather than tumour cells, a safety concern in vital organs). The orchestrator checks that every
+key finding reaches the report. Output must be valid JSON: write it with a single Write call, then Read the file back
+once and fix it if it does not parse.

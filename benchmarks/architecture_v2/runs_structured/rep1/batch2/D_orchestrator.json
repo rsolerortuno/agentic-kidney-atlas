@@ -1,0 +1,245 @@
+{
+ "study_hash": "3597c924e7fcc874",
+ "prompt_sha256": "611c26929d415464bab04f9a7555808440d71b4e5945b5a70558fd384174bdb9",
+ "status": "ok",
+ "case_ids": [
+  "g09v0",
+  "g02v0",
+  "g04v0",
+  "g01v0"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.0768967,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 15153,
+  "cache_read_input_tokens": 1007,
+  "output_tokens": 1618,
+  "output_tokens_details": {
+   "thinking_tokens": 561
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 15153,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1618,
+    "cache_read_input_tokens": 1007,
+    "cache_creation_input_tokens": 15153,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 15153
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 1618,
+   "cacheReadInputTokens": 1007,
+   "cacheCreationInputTokens": 15153,
+   "webSearchRequests": 0,
+   "costUSD": 0.0768967,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 561,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 15153,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g09v0\",\"protein_up\":\"no\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"no\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"loss_biomarker\",\"evidence_ids\":[\"g09v0.r06\",\"g09v0.r12\",\"g09v0.r10\",\"g09v0.r08\",\"g09v0.r03\",\"g09v0.r16\",\"g09v0.r01\"],\"rationale\":\"Protein down (padj<0.05). RNA down in CPTAC, TCGA and confirmatory protein, so replicated. CD8_T share exceeds RCC. No target surface record. Proteome enriched. DepMap padj 0.404 fails. Loss biomarker.\"},{\"id\":\"g02v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"no\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"insufficient\",\"selective_dependency\":\"no\",\"verdict\":\"infiltration_signal\",\"evidence_ids\":[\"g02v0.r12\",\"g02v0.r06\",\"g02v0.r26\",\"g02v0.r24\",\"g02v0.r27\",\"g02v0.r17\",\"g02v0.r14\",\"g02v0.r13\"],\"rationale\":\"Protein up, RNA replicated in TCGA. CD8_T share 0.533 exceeds RCC 0.345. Surface call surface. IHC unmeasured, proteome not enriched. DepMap fails. Infiltration signal.\"},{\"id\":\"g04v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"needs_more_data\",\"evidence_ids\":[\"g04v0.r06\",\"g04v0.r15\",\"g04v0.r16\",\"g04v0.r10\",\"g04v0.r13\",\"g04v0.r17\",\"g04v0.r21\",\"g04v0.r09\",\"g04v0.r14\"],\"rationale\":\"Protein up and replicated. RCC has the largest share, purity lower bound ~3.17. Surface. Adrenal IHC level 3 is a vital concern. DepMap fails. No rule fits, so needs more data.\"},{\"id\":\"g01v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"needs_more_data\",\"evidence_ids\":[\"g01v0.r09\",\"g01v0.r10\",\"g01v0.r26\",\"g01v0.r23\",\"g01v0.r01\",\"g01v0.r19\",\"g01v0.r28\",\"g01v0.r21\",\"g01v0.r16\"],\"rationale\":\"Protein up and replicated. RCC share 0.976, purity bound ~6.65. Surface. Stomach IHC level 3 and proteome enrichment give a vital concern. DepMap fails (0 dependent lines). Needs more data.\"}]}",
+ "stderr": "",
+ "structured_output": {
+  "answers": [
+   {
+    "id": "g09v0",
+    "protein_up": "no",
+    "replicated": "yes",
+    "tumour_intrinsic": "no",
+    "surface_accessible": "insufficient",
+    "vital_safety_concern": "yes",
+    "selective_dependency": "no",
+    "verdict": "loss_biomarker",
+    "evidence_ids": [
+     "g09v0.r06",
+     "g09v0.r12",
+     "g09v0.r10",
+     "g09v0.r08",
+     "g09v0.r03",
+     "g09v0.r16",
+     "g09v0.r01"
+    ],
+    "rationale": "Protein down (padj<0.05). RNA down in CPTAC, TCGA and confirmatory protein, so replicated. CD8_T share exceeds RCC. No target surface record. Proteome enriched. DepMap padj 0.404 fails. Loss biomarker."
+   },
+   {
+    "id": "g02v0",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "tumour_intrinsic": "no",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "insufficient",
+    "selective_dependency": "no",
+    "verdict": "infiltration_signal",
+    "evidence_ids": [
+     "g02v0.r12",
+     "g02v0.r06",
+     "g02v0.r26",
+     "g02v0.r24",
+     "g02v0.r27",
+     "g02v0.r17",
+     "g02v0.r14",
+     "g02v0.r13"
+    ],
+    "rationale": "Protein up, RNA replicated in TCGA. CD8_T share 0.533 exceeds RCC 0.345. Surface call surface. IHC unmeasured, proteome not enriched. DepMap fails. Infiltration signal."
+   },
+   {
+    "id": "g04v0",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "tumour_intrinsic": "yes",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "yes",
+    "selective_dependency": "no",
+    "verdict": "needs_more_data",
+    "evidence_ids": [
+     "g04v0.r06",
+     "g04v0.r15",
+     "g04v0.r16",
+     "g04v0.r10",
+     "g04v0.r13",
+     "g04v0.r17",
+     "g04v0.r21",
+     "g04v0.r09",
+     "g04v0.r14"
+    ],
+    "rationale": "Protein up and replicated. RCC has the largest share, purity lower bound ~3.17. Surface. Adrenal IHC level 3 is a vital concern. DepMap fails. No rule fits, so needs more data."
+   },
+   {
+    "id": "g01v0",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "tumour_intrinsic": "yes",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "yes",
+    "selective_dependency": "no",
+    "verdict": "needs_more_data",
+    "evidence_ids": [
+     "g01v0.r09",
+     "g01v0.r10",
+     "g01v0.r26",
+     "g01v0.r23",
+     "g01v0.r01",
+     "g01v0.r19",
+     "g01v0.r28",
+     "g01v0.r21",
+     "g01v0.r16"
+    ],
+    "rationale": "Protein up and replicated. RCC share 0.976, purity bound ~6.65. Surface. Stomach IHC level 3 and proteome enrichment give a vital concern. DepMap fails (0 dependent lines). Needs more data."
+   }
+  ]
+ },
+ "answers": [
+  {
+   "id": "g09v0",
+   "protein_up": "no",
+   "replicated": "yes",
+   "tumour_intrinsic": "no",
+   "surface_accessible": "insufficient",
+   "vital_safety_concern": "yes",
+   "selective_dependency": "no",
+   "verdict": "loss_biomarker",
+   "evidence_ids": [
+    "g09v0.r06",
+    "g09v0.r12",
+    "g09v0.r10",
+    "g09v0.r08",
+    "g09v0.r03",
+    "g09v0.r16",
+    "g09v0.r01"
+   ],
+   "rationale": "Protein down (padj<0.05). RNA down in CPTAC, TCGA and confirmatory protein, so replicated. CD8_T share exceeds RCC. No target surface record. Proteome enriched. DepMap padj 0.404 fails. Loss biomarker."
+  },
+  {
+   "id": "g02v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "no",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "insufficient",
+   "selective_dependency": "no",
+   "verdict": "infiltration_signal",
+   "evidence_ids": [
+    "g02v0.r12",
+    "g02v0.r06",
+    "g02v0.r26",
+    "g02v0.r24",
+    "g02v0.r27",
+    "g02v0.r17",
+    "g02v0.r14",
+    "g02v0.r13"
+   ],
+   "rationale": "Protein up, RNA replicated in TCGA. CD8_T share 0.533 exceeds RCC 0.345. Surface call surface. IHC unmeasured, proteome not enriched. DepMap fails. Infiltration signal."
+  },
+  {
+   "id": "g04v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "yes",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "yes",
+   "selective_dependency": "no",
+   "verdict": "needs_more_data",
+   "evidence_ids": [
+    "g04v0.r06",
+    "g04v0.r15",
+    "g04v0.r16",
+    "g04v0.r10",
+    "g04v0.r13",
+    "g04v0.r17",
+    "g04v0.r21",
+    "g04v0.r09",
+    "g04v0.r14"
+   ],
+   "rationale": "Protein up and replicated. RCC has the largest share, purity lower bound ~3.17. Surface. Adrenal IHC level 3 is a vital concern. DepMap fails. No rule fits, so needs more data."
+  },
+  {
+   "id": "g01v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "yes",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "yes",
+   "selective_dependency": "no",
+   "verdict": "needs_more_data",
+   "evidence_ids": [
+    "g01v0.r09",
+    "g01v0.r10",
+    "g01v0.r26",
+    "g01v0.r23",
+    "g01v0.r01",
+    "g01v0.r19",
+    "g01v0.r28",
+    "g01v0.r21",
+    "g01v0.r16"
+   ],
+   "rationale": "Protein up and replicated. RCC share 0.976, purity bound ~6.65. Surface. Stomach IHC level 3 and proteome enrichment give a vital concern. DepMap fails (0 dependent lines). Needs more data."
+  }
+ ],
+ "elapsed_s": 14.8
+}

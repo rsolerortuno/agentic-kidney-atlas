@@ -1,0 +1,247 @@
+{
+ "study_hash": "5b34e637c50dad54",
+ "prompt_sha256": "501469bcf4ce2acf5267f87fd14c5a96a9dd96afe779a271e19ac147a63ad3f0",
+ "status": "ok",
+ "case_ids": [
+  "g03v0",
+  "g02v0",
+  "g01v0",
+  "g10v0"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.075216,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 13818,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 1994,
+  "output_tokens_details": {
+   "thinking_tokens": 873
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 13818,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1994,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 13818,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 13818
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 1994,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 13818,
+   "webSearchRequests": 0,
+   "costUSD": 0.075216,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 873,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 13818,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g03v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"no\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"needs_more_data\",\"evidence_ids\":[\"g03v0.r25\",\"g03v0.r15\",\"g03v0.r09\",\"g03v0.r12\",\"g03v0.r24\",\"g03v0.r21\",\"g03v0.r16\",\"g03v0.r05\",\"g03v0.r11\"],\"rationale\":\"Protein up and replicated in TCGA RNA and confirmatory protein. RCC dominates the transcript share and the purity interval is above 0. Call is internal, liver IHC is level 3, and selectivity is negative. Not a surface candidate.\"},{\"id\":\"g02v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"no\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"insufficient\",\"selective_dependency\":\"no\",\"verdict\":\"infiltration_signal\",\"evidence_ids\":[\"g02v0.r12\",\"g02v0.r06\",\"g02v0.r26\",\"g02v0.r24\",\"g02v0.r27\",\"g02v0.r17\",\"g02v0.r14\",\"g02v0.r13\"],\"rationale\":\"Protein and RNA are up, with TCGA RNA replicating. CD8_T has a larger transcript share (0.533) than RCC (0.345), so it is not tumour-intrinsic. Surface call is surface. IHC not measured and no enrichment, so safety is insufficient. DepMap padj 0.93.\"},{\"id\":\"g01v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"needs_more_data\",\"evidence_ids\":[\"g01v0.r09\",\"g01v0.r10\",\"g01v0.r26\",\"g01v0.r23\",\"g01v0.r01\",\"g01v0.r19\",\"g01v0.r28\",\"g01v0.r21\",\"g01v0.r16\"],\"rationale\":\"Protein up, replicated in TCGA RNA, RCC-dominant with a positive purity bound, and surface. Vital stomach IHC is level 3 and the proteome is enriched, so there is a safety concern. DepMap padj 0.44 fails. Not a candidate.\"},{\"id\":\"g10v0\",\"protein_up\":\"no\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"insufficient\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"loss_biomarker\",\"evidence_ids\":[\"g10v0.r12\",\"g10v0.r13\",\"g10v0.r21\",\"g10v0.r19\",\"g10v0.r10\",\"g10v0.r17\",\"g10v0.r26\",\"g10v0.r03\"],\"rationale\":\"Protein is down (log2fc -1.86) and RNA is down. TCGA RNA and confirmatory protein replicate the decrease. The purity interval includes 0, so tumour-intrinsic is insufficient. Vital proteome is enriched. No surface record. DepMap fails. Loss biomarker.\"}]}",
+ "stderr": "",
+ "structured_output": {
+  "answers": [
+   {
+    "id": "g03v0",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "tumour_intrinsic": "yes",
+    "surface_accessible": "no",
+    "vital_safety_concern": "yes",
+    "selective_dependency": "no",
+    "verdict": "needs_more_data",
+    "evidence_ids": [
+     "g03v0.r25",
+     "g03v0.r15",
+     "g03v0.r09",
+     "g03v0.r12",
+     "g03v0.r24",
+     "g03v0.r21",
+     "g03v0.r16",
+     "g03v0.r05",
+     "g03v0.r11"
+    ],
+    "rationale": "Protein up and replicated in TCGA RNA and confirmatory protein. RCC dominates the transcript share and the purity interval is above 0. Call is internal, liver IHC is level 3, and selectivity is negative. Not a surface candidate."
+   },
+   {
+    "id": "g02v0",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "tumour_intrinsic": "no",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "insufficient",
+    "selective_dependency": "no",
+    "verdict": "infiltration_signal",
+    "evidence_ids": [
+     "g02v0.r12",
+     "g02v0.r06",
+     "g02v0.r26",
+     "g02v0.r24",
+     "g02v0.r27",
+     "g02v0.r17",
+     "g02v0.r14",
+     "g02v0.r13"
+    ],
+    "rationale": "Protein and RNA are up, with TCGA RNA replicating. CD8_T has a larger transcript share (0.533) than RCC (0.345), so it is not tumour-intrinsic. Surface call is surface. IHC not measured and no enrichment, so safety is insufficient. DepMap padj 0.93."
+   },
+   {
+    "id": "g01v0",
+    "protein_up": "yes",
+    "replicated": "yes",
+    "tumour_intrinsic": "yes",
+    "surface_accessible": "yes",
+    "vital_safety_concern": "yes",
+    "selective_dependency": "no",
+    "verdict": "needs_more_data",
+    "evidence_ids": [
+     "g01v0.r09",
+     "g01v0.r10",
+     "g01v0.r26",
+     "g01v0.r23",
+     "g01v0.r01",
+     "g01v0.r19",
+     "g01v0.r28",
+     "g01v0.r21",
+     "g01v0.r16"
+    ],
+    "rationale": "Protein up, replicated in TCGA RNA, RCC-dominant with a positive purity bound, and surface. Vital stomach IHC is level 3 and the proteome is enriched, so there is a safety concern. DepMap padj 0.44 fails. Not a candidate."
+   },
+   {
+    "id": "g10v0",
+    "protein_up": "no",
+    "replicated": "yes",
+    "tumour_intrinsic": "insufficient",
+    "surface_accessible": "insufficient",
+    "vital_safety_concern": "yes",
+    "selective_dependency": "no",
+    "verdict": "loss_biomarker",
+    "evidence_ids": [
+     "g10v0.r12",
+     "g10v0.r13",
+     "g10v0.r21",
+     "g10v0.r19",
+     "g10v0.r10",
+     "g10v0.r17",
+     "g10v0.r26",
+     "g10v0.r03"
+    ],
+    "rationale": "Protein is down (log2fc -1.86) and RNA is down. TCGA RNA and confirmatory protein replicate the decrease. The purity interval includes 0, so tumour-intrinsic is insufficient. Vital proteome is enriched. No surface record. DepMap fails. Loss biomarker."
+   }
+  ]
+ },
+ "answers": [
+  {
+   "id": "g03v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "yes",
+   "surface_accessible": "no",
+   "vital_safety_concern": "yes",
+   "selective_dependency": "no",
+   "verdict": "needs_more_data",
+   "evidence_ids": [
+    "g03v0.r25",
+    "g03v0.r15",
+    "g03v0.r09",
+    "g03v0.r12",
+    "g03v0.r24",
+    "g03v0.r21",
+    "g03v0.r16",
+    "g03v0.r05",
+    "g03v0.r11"
+   ],
+   "rationale": "Protein up and replicated in TCGA RNA and confirmatory protein. RCC dominates the transcript share and the purity interval is above 0. Call is internal, liver IHC is level 3, and selectivity is negative. Not a surface candidate."
+  },
+  {
+   "id": "g02v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "no",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "insufficient",
+   "selective_dependency": "no",
+   "verdict": "infiltration_signal",
+   "evidence_ids": [
+    "g02v0.r12",
+    "g02v0.r06",
+    "g02v0.r26",
+    "g02v0.r24",
+    "g02v0.r27",
+    "g02v0.r17",
+    "g02v0.r14",
+    "g02v0.r13"
+   ],
+   "rationale": "Protein and RNA are up, with TCGA RNA replicating. CD8_T has a larger transcript share (0.533) than RCC (0.345), so it is not tumour-intrinsic. Surface call is surface. IHC not measured and no enrichment, so safety is insufficient. DepMap padj 0.93."
+  },
+  {
+   "id": "g01v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "yes",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "yes",
+   "selective_dependency": "no",
+   "verdict": "needs_more_data",
+   "evidence_ids": [
+    "g01v0.r09",
+    "g01v0.r10",
+    "g01v0.r26",
+    "g01v0.r23",
+    "g01v0.r01",
+    "g01v0.r19",
+    "g01v0.r28",
+    "g01v0.r21",
+    "g01v0.r16"
+   ],
+   "rationale": "Protein up, replicated in TCGA RNA, RCC-dominant with a positive purity bound, and surface. Vital stomach IHC is level 3 and the proteome is enriched, so there is a safety concern. DepMap padj 0.44 fails. Not a candidate."
+  },
+  {
+   "id": "g10v0",
+   "protein_up": "no",
+   "replicated": "yes",
+   "tumour_intrinsic": "insufficient",
+   "surface_accessible": "insufficient",
+   "vital_safety_concern": "yes",
+   "selective_dependency": "no",
+   "verdict": "loss_biomarker",
+   "evidence_ids": [
+    "g10v0.r12",
+    "g10v0.r13",
+    "g10v0.r21",
+    "g10v0.r19",
+    "g10v0.r10",
+    "g10v0.r17",
+    "g10v0.r26",
+    "g10v0.r03"
+   ],
+   "rationale": "Protein is down (log2fc -1.86) and RNA is down. TCGA RNA and confirmatory protein replicate the decrease. The purity interval includes 0, so tumour-intrinsic is insufficient. Vital proteome is enriched. No surface record. DepMap fails. Loss biomarker."
+  }
+ ],
+ "elapsed_s": 17.6
+}

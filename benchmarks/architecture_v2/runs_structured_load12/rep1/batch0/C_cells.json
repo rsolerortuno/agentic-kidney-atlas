@@ -1,0 +1,287 @@
+{
+ "study_hash": "d5366b4962be6b4d",
+ "prompt_sha256": "3f92c5e4490a3906bb994187a7ee451241ad90ac01ff376fea993b34060dd86e",
+ "status": "ok",
+ "case_ids": [
+  "g05v1",
+  "g08v1",
+  "g03v1",
+  "g02v1",
+  "g11v1",
+  "g07v1",
+  "g06v1",
+  "g09v1",
+  "g01v1",
+  "g12v1",
+  "g04v1",
+  "g10v1"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.050631999999999996,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 9932,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 1090,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 9932,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1090,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 9932,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 9932
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 1090,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 9932,
+   "webSearchRequests": 0,
+   "costUSD": 0.050631999999999996,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 9932,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g05v1\",\"tumour_intrinsic\":\"yes\",\"evidence_ids\":[\"g05v1.r25\",\"g05v1.r20\"],\"rationale\":\"RCC share 0.949 is largest; purity LFC 5.278-1.96*0.665=3.97>0.\"},{\"id\":\"g08v1\",\"tumour_intrinsic\":\"no\",\"evidence_ids\":[\"g08v1.r26\"],\"rationale\":\"Target record: Macrophage share 0.6 exceeds RCC 0.2. Endothelial record belongs to another entity.\"},{\"id\":\"g03v1\",\"tumour_intrinsic\":\"yes\",\"evidence_ids\":[\"g03v1.r18\",\"g03v1.r16\"],\"rationale\":\"RCC share 0.97 largest; purity LFC 5.256-1.96*0.617=4.05>0. Macrophage record is another entity.\"},{\"id\":\"g02v1\",\"tumour_intrinsic\":\"no\",\"evidence_ids\":[\"g02v1.r20\"],\"rationale\":\"Target record: CD8_T share 0.533 exceeds RCC 0.345.\"},{\"id\":\"g11v1\",\"tumour_intrinsic\":\"no\",\"evidence_ids\":[\"g11v1.r17\"],\"rationale\":\"Target record: Macrophage 0.436 and CD8_T 0.345 exceed RCC 0.023.\"},{\"id\":\"g07v1\",\"tumour_intrinsic\":\"yes\",\"evidence_ids\":[\"g07v1.r01\",\"g07v1.r09\"],\"rationale\":\"RCC share 0.881 largest; purity LFC 4.88-1.96*0.598=3.71>0.\"},{\"id\":\"g06v1\",\"tumour_intrinsic\":\"no\",\"evidence_ids\":[\"g06v1.r16\"],\"rationale\":\"CD8_T share 0.6 exceeds RCC 0.2.\"},{\"id\":\"g09v1\",\"tumour_intrinsic\":\"no\",\"evidence_ids\":[\"g09v1.r25\"],\"rationale\":\"CD8_T share 0.737 exceeds RCC 0.072.\"},{\"id\":\"g01v1\",\"tumour_intrinsic\":\"yes\",\"evidence_ids\":[\"g01v1.r02\",\"g01v1.r19\"],\"rationale\":\"RCC share 0.976 largest; purity LFC 7.787-1.96*0.579=6.65>0.\"},{\"id\":\"g12v1\",\"tumour_intrinsic\":\"no\",\"evidence_ids\":[\"g12v1.r22\"],\"rationale\":\"Target record: Macrophage 0.574 exceeds RCC 0.233.\"},{\"id\":\"g04v1\",\"tumour_intrinsic\":\"insufficient\",\"evidence_ids\":[\"g04v1.r08\",\"g04v1.r22\"],\"rationale\":\"Target: RCC 0.327 is largest, so not no. Purity LFC 3.821-1.96*0.33=3.17>0, so yes by the rule.\"},{\"id\":\"g10v1\",\"tumour_intrinsic\":\"insufficient\",\"evidence_ids\":[\"g10v1.r02\",\"g10v1.r15\"],\"rationale\":\"RCC largest share, but purity LFC -2.928-1.96*1.029 is below 0.\"}]}",
+ "stderr": "",
+ "structured_output": {
+  "answers": [
+   {
+    "id": "g05v1",
+    "tumour_intrinsic": "yes",
+    "evidence_ids": [
+     "g05v1.r25",
+     "g05v1.r20"
+    ],
+    "rationale": "RCC share 0.949 is largest; purity LFC 5.278-1.96*0.665=3.97>0."
+   },
+   {
+    "id": "g08v1",
+    "tumour_intrinsic": "no",
+    "evidence_ids": [
+     "g08v1.r26"
+    ],
+    "rationale": "Target record: Macrophage share 0.6 exceeds RCC 0.2. Endothelial record belongs to another entity."
+   },
+   {
+    "id": "g03v1",
+    "tumour_intrinsic": "yes",
+    "evidence_ids": [
+     "g03v1.r18",
+     "g03v1.r16"
+    ],
+    "rationale": "RCC share 0.97 largest; purity LFC 5.256-1.96*0.617=4.05>0. Macrophage record is another entity."
+   },
+   {
+    "id": "g02v1",
+    "tumour_intrinsic": "no",
+    "evidence_ids": [
+     "g02v1.r20"
+    ],
+    "rationale": "Target record: CD8_T share 0.533 exceeds RCC 0.345."
+   },
+   {
+    "id": "g11v1",
+    "tumour_intrinsic": "no",
+    "evidence_ids": [
+     "g11v1.r17"
+    ],
+    "rationale": "Target record: Macrophage 0.436 and CD8_T 0.345 exceed RCC 0.023."
+   },
+   {
+    "id": "g07v1",
+    "tumour_intrinsic": "yes",
+    "evidence_ids": [
+     "g07v1.r01",
+     "g07v1.r09"
+    ],
+    "rationale": "RCC share 0.881 largest; purity LFC 4.88-1.96*0.598=3.71>0."
+   },
+   {
+    "id": "g06v1",
+    "tumour_intrinsic": "no",
+    "evidence_ids": [
+     "g06v1.r16"
+    ],
+    "rationale": "CD8_T share 0.6 exceeds RCC 0.2."
+   },
+   {
+    "id": "g09v1",
+    "tumour_intrinsic": "no",
+    "evidence_ids": [
+     "g09v1.r25"
+    ],
+    "rationale": "CD8_T share 0.737 exceeds RCC 0.072."
+   },
+   {
+    "id": "g01v1",
+    "tumour_intrinsic": "yes",
+    "evidence_ids": [
+     "g01v1.r02",
+     "g01v1.r19"
+    ],
+    "rationale": "RCC share 0.976 largest; purity LFC 7.787-1.96*0.579=6.65>0."
+   },
+   {
+    "id": "g12v1",
+    "tumour_intrinsic": "no",
+    "evidence_ids": [
+     "g12v1.r22"
+    ],
+    "rationale": "Target record: Macrophage 0.574 exceeds RCC 0.233."
+   },
+   {
+    "id": "g04v1",
+    "tumour_intrinsic": "insufficient",
+    "evidence_ids": [
+     "g04v1.r08",
+     "g04v1.r22"
+    ],
+    "rationale": "Target: RCC 0.327 is largest, so not no. Purity LFC 3.821-1.96*0.33=3.17>0, so yes by the rule."
+   },
+   {
+    "id": "g10v1",
+    "tumour_intrinsic": "insufficient",
+    "evidence_ids": [
+     "g10v1.r02",
+     "g10v1.r15"
+    ],
+    "rationale": "RCC largest share, but purity LFC -2.928-1.96*1.029 is below 0."
+   }
+  ]
+ },
+ "answers": [
+  {
+   "id": "g05v1",
+   "tumour_intrinsic": "yes",
+   "evidence_ids": [
+    "g05v1.r25",
+    "g05v1.r20"
+   ],
+   "rationale": "RCC share 0.949 is largest; purity LFC 5.278-1.96*0.665=3.97>0."
+  },
+  {
+   "id": "g08v1",
+   "tumour_intrinsic": "no",
+   "evidence_ids": [
+    "g08v1.r26"
+   ],
+   "rationale": "Target record: Macrophage share 0.6 exceeds RCC 0.2. Endothelial record belongs to another entity."
+  },
+  {
+   "id": "g03v1",
+   "tumour_intrinsic": "yes",
+   "evidence_ids": [
+    "g03v1.r18",
+    "g03v1.r16"
+   ],
+   "rationale": "RCC share 0.97 largest; purity LFC 5.256-1.96*0.617=4.05>0. Macrophage record is another entity."
+  },
+  {
+   "id": "g02v1",
+   "tumour_intrinsic": "no",
+   "evidence_ids": [
+    "g02v1.r20"
+   ],
+   "rationale": "Target record: CD8_T share 0.533 exceeds RCC 0.345."
+  },
+  {
+   "id": "g11v1",
+   "tumour_intrinsic": "no",
+   "evidence_ids": [
+    "g11v1.r17"
+   ],
+   "rationale": "Target record: Macrophage 0.436 and CD8_T 0.345 exceed RCC 0.023."
+  },
+  {
+   "id": "g07v1",
+   "tumour_intrinsic": "yes",
+   "evidence_ids": [
+    "g07v1.r01",
+    "g07v1.r09"
+   ],
+   "rationale": "RCC share 0.881 largest; purity LFC 4.88-1.96*0.598=3.71>0."
+  },
+  {
+   "id": "g06v1",
+   "tumour_intrinsic": "no",
+   "evidence_ids": [
+    "g06v1.r16"
+   ],
+   "rationale": "CD8_T share 0.6 exceeds RCC 0.2."
+  },
+  {
+   "id": "g09v1",
+   "tumour_intrinsic": "no",
+   "evidence_ids": [
+    "g09v1.r25"
+   ],
+   "rationale": "CD8_T share 0.737 exceeds RCC 0.072."
+  },
+  {
+   "id": "g01v1",
+   "tumour_intrinsic": "yes",
+   "evidence_ids": [
+    "g01v1.r02",
+    "g01v1.r19"
+   ],
+   "rationale": "RCC share 0.976 largest; purity LFC 7.787-1.96*0.579=6.65>0."
+  },
+  {
+   "id": "g12v1",
+   "tumour_intrinsic": "no",
+   "evidence_ids": [
+    "g12v1.r22"
+   ],
+   "rationale": "Target record: Macrophage 0.574 exceeds RCC 0.233."
+  },
+  {
+   "id": "g04v1",
+   "tumour_intrinsic": "insufficient",
+   "evidence_ids": [
+    "g04v1.r08",
+    "g04v1.r22"
+   ],
+   "rationale": "Target: RCC 0.327 is largest, so not no. Purity LFC 3.821-1.96*0.33=3.17>0, so yes by the rule."
+  },
+  {
+   "id": "g10v1",
+   "tumour_intrinsic": "insufficient",
+   "evidence_ids": [
+    "g10v1.r02",
+    "g10v1.r15"
+   ],
+   "rationale": "RCC largest share, but purity LFC -2.928-1.96*1.029 is below 0."
+  }
+ ],
+ "elapsed_s": 11.5
+}

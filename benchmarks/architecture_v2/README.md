@@ -73,6 +73,27 @@ What the numbers say:
    price of more calls.
 5. **Load did not change the picture** up to about 360 records per context: B stayed at 100 %, specialists got worse.
 
+## Fix for broken outputs: structured output (2026-11-04)
+
+All the multi-agent failures above were malformed JSON. The same benchmark was re-run (same frozen cases, model,
+batches and replicates) with `--structured`: each call passes a JSON Schema to the CLI (`--json-schema`; case ids,
+answer labels and verdicts as enumerations, exactly one entry per case), so the answer is validated before it is
+returned. Results in `runs_structured*`.
+
+| Arm | Verdict correct, before (after retry) | Verdict correct, structured | Failed calls, before (first attempt, both conditions) | Failed calls, structured (both conditions) | Cost per dossier, before → structured |
+|---|---|---|---|---|---|
+| B single agent | 100 % | 100 % | 0 / 24 | 0 / 24 | $0.018 → $0.019 |
+| C specialists | 82 % | 97 % | 11 / 96 | 0 / 96 | $0.026 → $0.028 |
+| D specialists + orchestrator | 89 % | **100 %** | 14 / 120 | 0 / 120 | $0.052 → $0.048 |
+| *12 dossiers per context:* B / C / D | 100 / 76 / 83 % | 100 / 96 / **100 %** | — | 0 / 0 / 0 | $0.015 / 0.020 / 0.040 → $0.016 / 0.019 / 0.036 |
+
+No call needed a retry for format. (Fourteen calls of the 12-dossier condition were stopped by the account's usage
+limit before any model output and were simply run again; they cost nothing and are marked `previous_attempt`.)
+With structured output the orchestrator design ties the single agent at 100 %, and the specialists-only design makes
+fewer confident errors (0.03 per dossier in both conditions, from 0.03 and 0.08). The single agent stays the cheapest
+(the orchestrator arm costs 2.2–2.5 times as much), so the recommendation below holds for cost, but the accuracy and
+reliability gap was a formatting problem, not a reasoning one.
+
 ## Recommendation for the atlas
 
 **Update (pipeline benchmark, `../architecture_pipeline`):** with retrieval included, multi-agent tied on quality and

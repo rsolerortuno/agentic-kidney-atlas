@@ -1,0 +1,260 @@
+{
+ "agent": "agente-omico",
+ "findings": [
+  {
+   "gene": "CA9",
+   "role": "target_and_biomarker",
+   "key": true,
+   "statement": "CA9 is the top convergence gene: RNA is up in tumour vs normal [gene=CA9; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; log2fc=6.312] and protein is confirmed [gene=CA9; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=2.269]. It replicates in TCGA-KIRC and survives purity extrapolation (tumour-intrinsic), and has antibody (girentuximab) and small-molecule history.",
+   "evidence_ids": [
+    "EV:omics_de:b269736afdb0",
+    "EV:omics_de:5afe18b4024b",
+    "EV:tcga_de:225a767ebcb5",
+    "EV:purity:225a767ebcb5"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:omics_de:b269736afdb0",
+     "field": [
+      "log2fc"
+     ],
+     "display": "6.312",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:5afe18b4024b",
+     "field": [
+      "log2fc"
+     ],
+     "display": "2.269",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "CD70",
+   "role": "target",
+   "statement": "CD70 is strongly up at protein level [gene=CD70; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=2.421] and RNA [gene=CD70; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; log2fc=4.464]. It replicates in TCGA-KIRC, is tumour-intrinsic after purity correction, and has clinical-stage antibody/ADC programmes (cusatuzumab, vorsetuzumab). It is a leading membrane-target candidate, not prognostic and not a DepMap dependency.",
+   "evidence_ids": [
+    "EV:omics_de:8a1dc0572ead",
+    "EV:omics_de:97c97f6d7d62",
+    "EV:tcga_de:908e84663f6a"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:omics_de:8a1dc0572ead",
+     "field": [
+      "log2fc"
+     ],
+     "display": "2.421",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:97c97f6d7d62",
+     "field": [
+      "log2fc"
+     ],
+     "display": "4.464",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "ENPP3",
+   "role": "target",
+   "statement": "ENPP3 is a tumour-up membrane enzyme with protein support [gene=ENPP3; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=1.544] and a larger RNA change [gene=ENPP3; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; log2fc=3.895]. It is ranked 6th in the target profile, replicates in TCGA and has an ADC (AGS-16C3F, phase 2).",
+   "evidence_ids": [
+    "EV:omics_de:fad29d44ef95",
+    "EV:omics_de:d540450c23e1"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:omics_de:fad29d44ef95",
+     "field": [
+      "log2fc"
+     ],
+     "display": "1.544",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:omics_de:d540450c23e1",
+     "field": [
+      "log2fc"
+     ],
+     "display": "3.895",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "SCARB1",
+   "role": "target",
+   "key": true,
+   "statement": "SCARB1 ranks first in the target profile (tumour-up, protein-confirmed [gene=SCARB1; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=1.837], purity-robust, TCGA-replicated, Open Targets genetic association). However, it is enriched in a vital organ (adrenal) in the GTEx proteome [gene=SCARB1; type=normal_proteome; source=DATASET:GTEX-PROTEOME; vital_protein_ts_max=5.08], a safety concern, and it has no drugs or selective dependency.",
+   "evidence_ids": [
+    "EV:omics_de:cd4a629b011f",
+    "EV:normal_proteome:2d66f8e78d0c"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:omics_de:cd4a629b011f",
+     "field": [
+      "log2fc"
+     ],
+     "display": "1.837",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:normal_proteome:2d66f8e78d0c",
+     "field": [
+      "vital_protein_ts_max"
+     ],
+     "display": "5.08",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "NNMT",
+   "role": "target_and_biomarker",
+   "statement": "NNMT is up at protein level [gene=NNMT; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=2.709], is tumour-intrinsic and replicates in TCGA. Higher expression predicts worse survival [gene=NNMT; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=0.301], making it a prognostic biomarker candidate. It is an intracellular enzyme, so a small-molecule rather than antibody strategy applies.",
+   "evidence_ids": [
+    "EV:omics_de:de39cc0c5ed8",
+    "EV:tcga_survival:7dbf93860d9f"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:omics_de:de39cc0c5ed8",
+     "field": [
+      "log2fc"
+     ],
+     "display": "2.709",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:7dbf93860d9f",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "0.301",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "FCER1G",
+   "role": "biomarker",
+   "key": true,
+   "statement": "Negative result: FCER1G is up in bulk tumour (rank 16 convergence) but tracks immune infiltration. Its RNA correlates negatively with purity [gene=FCER1G; type=purity; source=DATASET:CPTAC-CCRCC-PURITY; rna_purity_rho=-0.692] and the change shrinks in a pure tumour [gene=FCER1G; type=purity; source=DATASET:CPTAC-CCRCC-PURITY; rna_lfc_at_purity1=1.061]. TYROBP behaves similarly, so these are immune-cell signals and not tumour-cell targets.",
+   "evidence_ids": [
+    "EV:purity:e5780c87a2a7"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:purity:e5780c87a2a7",
+     "field": [
+      "rna_purity_rho"
+     ],
+     "display": "-0.692",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:purity:e5780c87a2a7",
+     "field": [
+      "rna_lfc_at_purity1"
+     ],
+     "display": "1.061",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "PSAT1",
+   "role": "biomarker",
+   "statement": "PSAT1 is the top biomarker-profile gene and is down in tumour at protein level [gene=PSAT1; type=omics_de; source=DATASET:CPTAC-CCRCC-PROTEOME; layer=protein; log2fc=-1.963]. Higher expression is associated with worse overall survival in TCGA [gene=PSAT1; type=tcga_survival; source=DATASET:TCGA-KIRC-RNA; log_hr_per_sd=0.43], so it is a prognostic tissue biomarker, not a target (down-regulated).",
+   "evidence_ids": [
+    "EV:omics_de:8fa49cbb1760",
+    "EV:tcga_survival:58119698ea36"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:omics_de:8fa49cbb1760",
+     "field": [
+      "log2fc"
+     ],
+     "display": "-1.963",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:tcga_survival:58119698ea36",
+     "field": [
+      "log_hr_per_sd"
+     ],
+     "display": "0.43",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "UMOD",
+   "role": "biomarker",
+   "statement": "UMOD shows loss of normal tubule identity, with a massive RNA drop [gene=UMOD; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; log2fc=-10.31], replicated in TCGA. Similar strong down-regulation is seen for SLC12A1, ALDOB and SLC22A8. These are diagnostic or lineage biomarkers, not targets.",
+   "evidence_ids": [
+    "EV:omics_de:27277024a169"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:omics_de:27277024a169",
+     "field": [
+      "log2fc"
+     ],
+     "display": "-10.31",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "SLC16A3",
+   "role": "target",
+   "statement": "SLC16A3 (MCT4, lactate exporter) is up in RNA [gene=SLC16A3; type=omics_de; source=DATASET:CPTAC-CCRCC-RNA; layer=rna; log2fc=3.435], with protein support, a cis copy-number effect and purity robustness. It is a Warburg-metabolism membrane target, though it has no drug history here and no selective dependency in ccRCC lines.",
+   "evidence_ids": [
+    "EV:omics_de:545c6eb28bce"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:omics_de:545c6eb28bce",
+     "field": [
+      "log2fc"
+     ],
+     "display": "3.435",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "VHL",
+   "role": "mechanism",
+   "statement": "VHL is the disease-mechanism anchor: 3p copy-number loss is frequent [gene=VHL; type=omics_cnv; source=DATASET:CPTAC-CCRCC-CNV; arm=3p; loss_freq=0.791] and the gene is significantly recurrently mutated in the combined cohort. Its own RNA/protein change is modest, so it is a driver and not a differential-expression target.",
+   "evidence_ids": [
+    "EV:omics_cnv:52e5aeb6c197"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:omics_cnv:52e5aeb6c197",
+     "field": [
+      "loss_freq"
+     ],
+     "display": "0.791",
+     "unit": "native"
+    }
+   ]
+  }
+ ],
+ "caveats": [
+  "Evidence is bulk CPTAC (110 tumours) plus TCGA RNA replication; no independent protein validation.",
+  "The GTEx vital-organ proteome has no kidney and a limited detection range; absence is not safety.",
+  "No candidate shows a selective ccRCC dependency in DepMap/PRISM, and 2D cell lines miss HIF-2 biology.",
+  "Rankings are heuristic; robustness intervals for lower-ranked genes are wide.",
+  "Literature and PubMed context were not queried; only omics-layer evidence is reported."
+ ]
+}
