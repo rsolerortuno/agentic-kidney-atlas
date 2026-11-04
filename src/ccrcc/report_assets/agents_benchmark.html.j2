@@ -1,0 +1,283 @@
+{#- "Agent benchmark" tab: one agent vs several, how it was tested and how the pipeline was improved.
+    Every number comes from ab = agents_benchmark.build() (the benchmark result files). -#}
+{% set A = ab.by %}
+{% set m4 = A.runs %}{% set f4 = A.runs_first_attempt %}{% set m12 = A.runs_load12 %}
+{% set s4 = A.runs_structured %}{% set s12 = A.runs_structured_load12 %}
+{% set P = {} %}{% for x in ab.pipeline %}{% set _ = P.update({x.arm: x}) %}{% endfor %}
+<style>
+.ab-k{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+.ab-B{background:var(--s1)}.ab-O{background:var(--s4)}.ab-C{background:var(--s3)}.ab-D{background:var(--s2)}.ab-S{background:var(--s7)}
+.ab-bars{display:grid;gap:5px;margin:8px 0}
+.ab-row{display:grid;grid-template-columns:minmax(120px,210px) 1fr 74px;gap:10px;align-items:center;font-size:.82rem}
+.ab-row .lab{color:var(--ink2)}.ab-row .val{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink)}
+.ab-row .track{background:var(--chip);border-radius:4px;height:14px;overflow:hidden}
+.ab-row .fill{height:100%;border-radius:0 4px 4px 0}
+@media (max-width:640px){.ab-row{grid-template-columns:1fr 64px;row-gap:2px}.ab-row .lab{grid-column:1/-1}}
+.ab-grp{font-size:.78rem;font-weight:600;color:var(--muted);margin:12px 0 2px;text-transform:uppercase;letter-spacing:.04em}
+.ab-steps{counter-reset:s;list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.ab-steps>li{counter-increment:s;position:relative;padding-left:44px;max-width:100ch}
+.ab-steps>li::before{content:counter(s);position:absolute;left:0;top:0;width:30px;height:30px;border-radius:50%;background:var(--s1);color:#fff;font-weight:700;display:grid;place-items:center;font-size:.9rem}
+.ab-steps h3{margin:.15em 0 .3em}
+.ab-opts{grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr))}
+.ab-opts .card h3{margin:.1em 0 .4em;font-size:1rem}.ab-opts .card p{margin:.35em 0;font-size:.87rem;color:var(--ink2)}
+.ab-res{font-weight:600;color:var(--ink)!important}
+pre.ab-code{background:var(--chip);border-radius:8px;padding:10px 12px;font-size:.76rem;overflow-x:auto;white-space:pre-wrap;word-break:break-word;margin:.5em 0}
+.ab-yes{color:var(--good);font-weight:700}.ab-no{color:var(--bad);font-weight:700}
+</style>
+{% macro bars(rows, max, fmt) -%}
+<div class="ab-bars">{% for r in rows %}
+<div class="ab-row"><span class="lab"><span class="ab-k ab-{{ r[0] }}"></span>{{ r[1] }}</span>
+<span class="track"><span class="fill ab-{{ r[0] }}" style="display:block;width:{{ [100 * r[2] / max, 0.6] | max }}%"></span></span>
+<span class="val">{{ fmt.format(r[2]) }}</span></div>{% endfor %}</div>
+{%- endmacro %}
+
+<section class="panel" id="tab-agents" data-name="agents">
+{{ plain('agents') }}
+<h2>One agent or a team of agents?</h2>
+<p class="lede">This atlas is written by a team of AI agents: five specialists gather evidence with their own tools and an
+orchestrator writes the report. A team costs more calls than one agent, so two experiments tested whether it is worth
+it, and a third round fixed what the experiments showed was wrong. This tab explains every step in plain words.</p>
+
+<div class="kpis">
+  <div class="kpi"><b>{{ s4.arms.D.accuracy }} %</b><span>team answers correct after the fix (was {{ m4.arms.D.accuracy }} %)</span></div>
+  <div class="kpi"><b>{{ s4.arms.D.failed + s12.arms.D.failed }}</b><span>team calls with a broken answer after the fix, of {{ s4.arms.D.calls + s12.arms.D.calls }} (before: {{ f4.arms.D.failed }} of {{ f4.arms.D.calls }} on the first try)</span></div>
+  <div class="kpi"><b>{{ P.multi_improved.runs | map(attribute='checklist_score') | join(" and ") }}</b><span>facts of {{ ab.checklist_max }} in the improved team's reports (one agent: {{ P.single.runs | map(attribute='checklist_score') | join(" and ") }})</span></div>
+  <div class="kpi"><b>${{ "%.2f" | format(P.multi_improved.cost) }}</b><span>per full analysis with the improved team (one agent: ${{ "%.2f" | format(P.single.cost) }})</span></div>
+  <div class="kpi"><b>{{ "%.0f" | format(P.multi_improved.minutes) }} min</b><span>per full analysis with the improved team (one agent: {{ "%.0f" | format(P.single.minutes) }} min)</span></div>
+</div>
+
+<div class="howbox"><h4>The short answer</h4><ul>
+<li><strong>When the evidence is already collected</strong> and only needs reading, one agent is enough. A team only
+matched it after its answers were forced into a checked format, and it still costs two to two and a half times as much.</li>
+<li><strong>When the evidence has to be found</strong> with dozens of database queries, as in this atlas, the team wins:
+after the improvements it writes reports as complete as one agent's, for about {{ "%.0f" | format(100 * (1 - P.multi_improved.cost / P.single.cost)) }} % less money and about
+{{ "%.0f" | format(P.single.minutes / P.multi_improved.minutes) }} times faster, because the specialists search in parallel on a cheaper model.</li>
+</ul></div>
+
+<h2>Experiment 1: reading evidence that is already collected</h2>
+<p class="lede">Here every option received the same evidence and had to draw the same conclusions from it. This isolates
+the reasoning: no searching, no tools.</p>
+<ol class="ab-steps">
+<li><h3>Build the test cases</h3>
+<p>Twelve genes from the atlas (CA9, CD70, NNMT, SLC16A3, ENPP3, HAVCR1, COL23A1, RAB42, PSAT1, PCK1, CD74, HK2) were
+turned into 24 evidence files ("dossiers"). Each holds 13 to 18 real records about one gene from 11 kinds of data:
+tumour vs normal RNA and protein, a second patient cohort, single-cell data, tumour purity, cell-surface location,
+staining in normal organs, the normal-tissue proteome, cancer cell-line dependency, survival and two drug trials.</p>
+<p>Three things make the cases hard on purpose:</p>
+<ul>
+<li><strong>Names are hidden.</strong> Each gene becomes a code such as <code>ENTITY_96</code>, so the model cannot answer from
+memory and has to read the records.</li>
+<li><strong>Look-alike records.</strong> Each dossier also holds 12 records about two other hidden genes, which must be
+ignored.</li>
+<li><strong>Altered copies.</strong> Twelve of the 24 dossiers are copies with one decisive record changed (for example a
+protein that no longer goes up, or a safety concern added), so the right answer changes. These copies are synthetic
+tests, not biology.</li>
+</ul>
+<p>One record looks like this:</p>
+<pre class="ab-code">{"type": "treatment_within_arm", "study": "CheckMate025", "arm": "nivolumab_cm025", "log_hr_per_sd": 0.057, "padj": 0.922, "entity": "ENTITY_96"}</pre></li>
+
+<li><h3>Ask the same seven questions, with written rules</h3>
+<p>For each dossier the options answer six yes / no / not-enough-data questions and give a verdict:</p>
+<div class="tw"><table><thead><tr><th>Question</th><th>Rule in short</th></tr></thead><tbody>
+<tr><td>Is the protein up in tumours?</td><td>Yes if the tumour-vs-normal protein change is significant and positive.</td></tr>
+<tr><td>Does it replicate?</td><td>Yes if a second cohort (TCGA or the confirmatory protein cohort) shows the same direction.</td></tr>
+<tr><td>Is it made by tumour cells?</td><td>Yes if tumour cells hold the largest share of its transcripts and the change survives in a pure tumour.</td></tr>
+<tr><td>Is it on the cell surface?</td><td>Yes if the surface annotation says surface.</td></tr>
+<tr><td>Is there a safety concern in vital organs?</td><td>Yes if staining in a vital organ is at least moderate or the normal proteome marks it as enriched there.</td></tr>
+<tr><td>Do cancer cells depend on it selectively?</td><td>Yes if kidney-cancer cell lines need it clearly more than other cancer lines.</td></tr>
+<tr><td><strong>Verdict</strong></td><td>Surface target candidate, loss biomarker, infiltration signal or needs more data, from the six answers.</td></tr>
+</tbody></table></div>
+<p>Missing data always means "not enough data", never "no". The rules are given to every option, so the test measures
+whether they apply them correctly, not whether they agree with our taste.</p></li>
+
+<li><h3>Compare four options</h3>
+<div class="grid ab-opts">
+<div class="card"><h3>A. Rules, no AI</h3><p>A short program applies the written rules exactly.</p>
+<p>It cannot be wrong by construction, so it is not a competitor: <strong>its answers are the answer key</strong> the
+others are marked against.</p></div>
+<div class="card"><h3><span class="ab-k ab-B"></span>B. One agent</h3><p>One AI reads the whole dossier and answers all
+seven questions.</p><p class="ab-res">{{ m4.arms.B.accuracy }} % correct, ${{ "%.3f" | format(m4.arms.B.cost_case) }} per dossier.</p></div>
+<div class="card"><h3><span class="ab-k ab-C"></span>C. Specialists only</h3><p>Four AIs split the data (expression;
+cells; safety; dependency and clinic). Each sees only its own records and answers only its own questions. A fixed rule
+combines their answers into the verdict; nobody looks at the whole.</p>
+<p class="ab-res">{{ m4.arms.C.accuracy }} % correct, ${{ "%.3f" | format(m4.arms.C.cost_case) }} per dossier.</p></div>
+<div class="card"><h3><span class="ab-k ab-D"></span>D. Specialists + orchestrator</h3><p>The same four specialists, then
+an orchestrator reads the whole dossier and their answers, checks them and gives the final answers. This is the atlas's
+own design.</p><p class="ab-res">{{ m4.arms.D.accuracy }} % correct, ${{ "%.3f" | format(m4.arms.D.cost_case) }} per dossier.</p></div>
+</div>
+<p class="small">All options used the same model (Sonnet 5.5, medium effort) with no tools, web access or memory.
+Option D's cost includes the specialists it relies on.</p></li>
+
+<li><h3>Run it several times, in two sizes</h3>
+<p>Each option answered every dossier three times (three replicates) with 4 dossiers per call, and again with 12
+dossiers per call (about 360 records at once) to see whether a long context hurts. Two altered versions of the same
+gene were never in the same call. A call whose answer could not be read was retried once; results are shown both
+before and after that retry.</p></li>
+
+<li><h3>Mark the answers</h3>
+<ul>
+<li><strong>Verdict accuracy:</strong> share of dossiers with the correct verdict. A lost answer counts as wrong.</li>
+<li><strong>Confident errors:</strong> a firm yes or no where the key says otherwise. These are worse than saying "not
+enough data".</li>
+<li><strong>Cost and time:</strong> the API price and the clock time reported by Claude Code for every call.</li>
+<li><strong>Uncertainty:</strong> differences between options come with a 95 % interval, resampling by gene so that two
+versions of one gene are not counted as independent.</li>
+</ul></li>
+</ol>
+
+<h3>Results</h3>
+<div class="grid two">
+<div class="card"><h4 style="margin:.1em 0">Verdicts correct</h4>
+<div class="ab-grp">4 dossiers per call, first attempt</div>
+{{ bars([("B", ab.arms.B, f4.arms.B.accuracy), ("C", ab.arms.C, f4.arms.C.accuracy), ("D", ab.arms.D, f4.arms.D.accuracy)], 100, "{} %") }}
+<div class="ab-grp">4 dossiers per call, after one retry</div>
+{{ bars([("B", ab.arms.B, m4.arms.B.accuracy), ("C", ab.arms.C, m4.arms.C.accuracy), ("D", ab.arms.D, m4.arms.D.accuracy)], 100, "{} %") }}
+<div class="ab-grp">12 dossiers per call, after one retry</div>
+{{ bars([("B", ab.arms.B, m12.arms.B.accuracy), ("C", ab.arms.C, m12.arms.C.accuracy), ("D", ab.arms.D, m12.arms.D.accuracy)], 100, "{} %") }}
+<p class="small">Always guessing the most common verdict would score {{ m4.majority }} %.</p></div>
+<div class="card"><h4 style="margin:.1em 0">Price per dossier</h4>
+<div class="ab-grp">4 dossiers per call</div>
+{{ bars([("B", ab.arms.B, m4.arms.B.cost_case), ("C", ab.arms.C, m4.arms.C.cost_case), ("D", ab.arms.D, m4.arms.D.cost_case)], 0.06, "${:.3f}") }}
+<div class="ab-grp">12 dossiers per call</div>
+{{ bars([("B", ab.arms.B, m12.arms.B.cost_case), ("C", ab.arms.C, m12.arms.C.cost_case), ("D", ab.arms.D, m12.arms.D.cost_case)], 0.06, "${:.3f}") }}
+<p class="small">US dollars of API use. Time per dossier, 4 per call: B {{ "%.1f" | format(m4.arms.B.wall_case) }} s, C {{ "%.1f" | format(m4.arms.C.wall_case) }} s, D {{ "%.1f" | format(m4.arms.D.wall_case) }} s.</p></div>
+</div>
+
+<h3>What the errors were</h3>
+<div class="grid">
+<div class="card"><h4 style="margin:.1em 0">1. Broken answers</h4>
+<p class="small" style="color:var(--ink2)">Each option must reply in a fixed format (JSON) that a program reads. When the reply
+breaks the format the program cannot read it, so every case in it is lost, even if the reasoning was right. Real
+examples: a stray <code>&lt;/br&gt;</code> or an extra <code>}</code> inside the reply, two replies in one, or cases
+left out. First attempts that broke: B {{ f4.arms.B.failed }} of {{ f4.arms.B.calls }} calls, C {{ f4.arms.C.failed }} of {{ f4.arms.C.calls }}, D {{ f4.arms.D.failed }} of {{ f4.arms.D.calls }} (4 per call).
+More calls means more chances to break: a team makes four or five calls where one agent makes one.</p></div>
+<div class="card"><h4 style="margin:.1em 0">2. Reasoning with a narrow view</h4>
+<p class="small" style="color:var(--ink2)">Specialists that see only their slice made real mistakes, some of them confident
+(a wrong firm yes or no): {{ "%.2f" | format(m4.arms.C.confident_errors) }} per dossier with 4 per call and {{ "%.2f" | format(m12.arms.C.confident_errors) }} with 12. In option C a fixed rule
+passes such a mistake straight into the verdict. Option D's orchestrator, which sees everything, corrected every one it
+saw: it never made a reasoning error.</p></div>
+<div class="card"><h4 style="margin:.1em 0">3. One weak link</h4>
+<p class="small" style="color:var(--ink2)">In option D everything ends in one orchestrator call. When that call broke, all
+dossiers in it were lost at once. That is why D, which reasoned perfectly, still scored {{ m4.arms.D.accuracy }} % instead of 100 %.</p></div>
+</div>
+<p><strong>Conclusion of experiment 1:</strong> one agent was right every time and was the cheapest. The team's losses came
+mostly from broken answers, and partly from specialists reasoning without the full picture.</p>
+
+<h2>Experiment 2: the real pipeline, where the evidence has to be found</h2>
+<p class="lede">In real use nobody hands the evidence over. The agents query the atlas's databases (gene changes,
+single-cell data, trials, drug screens, literature and more: about 50 tools) and write the full report.</p>
+<ol class="ab-steps">
+<li><h3>Two set-ups, same everything else</h3>
+<p><span class="ab-k ab-D"></span><strong>Team</strong> (the published <code>/informe</code>): an orchestrator (Opus 5.5) launches five
+specialists (Sonnet 5.5, a cheaper model) at the same time; each searches its own area and writes its findings; the
+orchestrator checks them and writes the report.</p>
+<p><span class="ab-k ab-S"></span><strong>One agent</strong> (<code>/informe_single</code>): one Opus 5.5 agent does all five specialists' work itself, one
+query after another, with the same tools, then writes the report.</p>
+<p>Same question, data, tools and rules; two runs each, alternated.</p></li>
+<li><h3>Mark the reports</h3>
+<p>An open report has no single right answer, so four measures were fixed before the runs:</p>
+<ul>
+<li><strong>Automatic verification.</strong> Every sentence must cite evidence records; a checker confirms each record
+exists, belongs to that gene and matches every number quoted. A sentence that fails is "unsupported".</li>
+<li><strong>Coverage.</strong> How many kinds of evidence and how many records the report cites.</li>
+<li><strong>A checklist of {{ ab.checklist_max }} facts</strong> the data establish and a complete report should state (list below).</li>
+<li><strong>Cost, time and number of steps</strong> from Claude Code's own records.</li>
+</ul></li>
+</ol>
+
+<h3>Results</h3>
+<div class="tw"><table><thead><tr><th>Set-up</th><th>Run</th><th class="num">Unsupported sentences</th><th class="num">Checklist (of {{ ab.checklist_max }})</th><th class="num">Cost</th><th class="num">Time</th><th class="num">Steps</th></tr></thead><tbody>
+{% for arm in ["multi", "single"] %}{% for r in P[arm].runs %}
+<tr><td><span class="ab-k ab-{{ 'D' if arm == 'multi' else 'S' }}"></span>{{ "Team" if arm == "multi" else "One agent" }}</td><td>{{ loop.index }}</td><td class="num">{{ r.unsupported }}</td><td class="num">{{ r.checklist_score }}</td><td class="num">${{ "%.2f" | format(r.cost_usd) }}</td><td class="num">{{ r.duration_min }} min</td><td class="num">{{ r.turns }}</td></tr>
+{% endfor %}{% endfor %}
+</tbody></table></div>
+<p>Both set-ups passed verification with no unsupported sentence. One agent cost about
+{{ "%.0f" | format(100 * (P.single.cost / P.multi.cost - 1)) }} % more and took {{ "%.0f" | format(P.single.minutes / P.multi.minutes) }} times as long, because it does some 250 steps one after another
+where the specialists work in parallel. But one agent stated slightly more of the checklist ({{ P.single.runs | map(attribute='checklist_score') | join(" and ") }} against
+{{ P.multi.runs | map(attribute='checklist_score') | join(" and ") }}).</p>
+
+<h2>How the team was improved</h2>
+<p class="lede">The goal: keep the team's speed and low cost, and make its answers as good as one agent's.</p>
+<ol class="ab-steps">
+<li><h3>Fix the broken answers: a checked format</h3>
+<p>Each call now gives Claude Code a schema of the reply: which case ids must appear, exactly once each, and which
+answers are allowed. The reply is checked before it comes back, so it cannot be malformed or leave a case out.
+Experiment 1 was then run again with the same cases, model and batches.</p></li>
+<li><h3>Find why the team's reports missed facts</h3>
+<p>Reading the reports showed the specialists <em>had</em> found the missing facts (HK2 failing to replicate, the CheckMate 025
+trial, the PRISM drug screen) but the orchestrator left them out when writing. The team's reports cited only
+{% for r in P.multi.runs %}{{ (100 * r.finding_evidence_cited_share + 0.001) | round | int }} %{{ " and " if not loop.last }}{% endfor %} of the evidence its specialists had collected; one agent's cited
+{% for r in P.single.runs %}{{ (100 * r.finding_evidence_cited_share + 0.001) | round | int }} %{{ " and " if not loop.last }}{% endfor %}.</p></li>
+<li><h3>Make sure key findings reach the report</h3>
+<ul>
+<li>Each specialist marks its three to five <strong>key findings</strong>, especially negative ones: a change that does not
+replicate, no selective dependency, no difference between trial arms, a signal from immune cells rather than tumour
+cells, a safety concern.</li>
+<li>A new check (<code>scripts/coverage.py</code>) lists every key finding the report does not cite. The orchestrator must
+add it or explain in the limitations why it left it out.</li>
+<li>The writing instructions now name the newest data (CheckMate 025, the normal-tissue proteome, PRISM), the
+replication check runs for every top-10 gene, and every candidate that is stable in the ranking must appear in the
+target list or be explained.</li>
+</ul>
+<p>These are general rules about not losing findings, not answers to the checklist.</p></li>
+<li><h3>Try a cheaper orchestrator</h3>
+<p>The orchestrator (Opus) was about 60 % of the team's cost, so the improved team was also run with Sonnet as
+orchestrator.</p></li>
+</ol>
+
+<h3>Results after the improvements</h3>
+<div class="grid two">
+<div class="card"><h4 style="margin:.1em 0">Experiment 1 again, with the checked format</h4>
+<div class="ab-grp">4 dossiers per call</div>
+{{ bars([("B", ab.arms.B, s4.arms.B.accuracy), ("C", ab.arms.C, s4.arms.C.accuracy), ("D", ab.arms.D, s4.arms.D.accuracy)], 100, "{} %") }}
+<div class="ab-grp">12 dossiers per call</div>
+{{ bars([("B", ab.arms.B, s12.arms.B.accuracy), ("C", ab.arms.C, s12.arms.C.accuracy), ("D", ab.arms.D, s12.arms.D.accuracy)], 100, "{} %") }}
+<p class="small">Broken answers: {{ s4.arms.D.failed + s12.arms.D.failed }} of {{ s4.arms.D.calls + s12.arms.D.calls }} team calls and {{ s4.arms.B.failed + s12.arms.B.failed }} of {{ s4.arms.B.calls + s12.arms.B.calls }} single-agent calls; no retry was needed.
+Price per dossier (4 per call): B ${{ "%.3f" | format(s4.arms.B.cost_case) }}, C ${{ "%.3f" | format(s4.arms.C.cost_case) }}, D ${{ "%.3f" | format(s4.arms.D.cost_case) }}.</p></div>
+<div class="card"><h4 style="margin:.1em 0">The real pipeline, average of two runs</h4>
+<div class="ab-grp">Checklist facts (of {{ ab.checklist_max }})</div>
+{{ bars([("D", "Team, before", P.multi.checklist), ("D", "Team, improved", P.multi_improved.checklist), ("O", "Improved, Sonnet orchestrator", P.multi_improved_sonnet.checklist), ("S", "One agent", P.single.checklist)], ab.checklist_max, "{:.1f}") }}
+<div class="ab-grp">Cost per analysis</div>
+{{ bars([("D", "Team, before", P.multi.cost), ("D", "Team, improved", P.multi_improved.cost), ("O", "Improved, Sonnet orchestrator", P.multi_improved_sonnet.cost), ("S", "One agent", P.single.cost)], 7, "${:.2f}") }}
+<div class="ab-grp">Minutes per analysis</div>
+{{ bars([("D", "Team, before", P.multi.minutes), ("D", "Team, improved", P.multi_improved.minutes), ("O", "Improved, Sonnet orchestrator", P.multi_improved_sonnet.minutes), ("S", "One agent", P.single.minutes)], 50, "{:.1f}") }}
+</div>
+</div>
+
+<div class="tw" style="margin-top:14px"><table><thead><tr><th>Set-up</th><th class="num">Unsupported sentences</th><th class="num">Checklist per run</th><th class="num">Evidence from specialists cited</th><th class="num">Cost per run</th><th class="num">Time per run</th></tr></thead><tbody>
+{% for x in ab.pipeline %}
+<tr><td>{{ x.label }}</td><td class="num">{{ x.runs | map(attribute='unsupported') | join(" · ") }}</td><td class="num">{{ x.runs | map(attribute='checklist_score') | join(" · ") }}</td>
+<td class="num">{% for r in x.runs %}{{ (100 * r.finding_evidence_cited_share + 0.001) | round | int }} %{{ " · " if not loop.last }}{% endfor %}</td>
+<td class="num">{% for r in x.runs %}${{ "%.2f" | format(r.cost_usd) }}{{ " · " if not loop.last }}{% endfor %}</td>
+<td class="num">{% for r in x.runs %}{{ r.duration_min }} min{{ " · " if not loop.last }}{% endfor %}</td></tr>
+{% endfor %}</tbody></table></div>
+
+<div class="howbox"><h4>What the improvements achieved</h4><ul>
+<li><strong>No more broken answers.</strong> With the checked format the team (option D) answered every dossier correctly,
+like one agent. The specialists-only option also improved, to {{ s4.arms.C.accuracy }} %.</li>
+<li><strong>Reports as complete as one agent's.</strong> The improved team stated {{ P.multi_improved.runs | map(attribute='checklist_score') | join(" and ") }} of the {{ ab.checklist_max }} facts
+(one agent: {{ P.single.runs | map(attribute='checklist_score') | join(" and ") }}), with no unsupported sentence. Read by hand: both reports say HK2 does not
+replicate and use CheckMate 025 and PRISM; one of them misses that CD70 is partly made by T cells.</li>
+<li><strong>Still cheaper and faster.</strong> ${{ "%.2f" | format(P.multi_improved.cost) }} and {{ "%.0f" | format(P.multi_improved.minutes) }} minutes per analysis, against ${{ "%.2f" | format(P.single.cost) }} and
+{{ "%.0f" | format(P.single.minutes) }} minutes for one agent. The coverage check adds about {{ "%.0f" | format(100 * (P.multi_improved.cost / P.multi.cost - 1)) }} % to the team's earlier cost.</li>
+<li><strong>The cheaper orchestrator did not pass.</strong> With Sonnet as orchestrator the analysis cost ${{ "%.2f" | format(P.multi_improved_sonnet.cost) }}, but its reports
+ended with {{ P.multi_improved_sonnet.runs | map(attribute='unsupported') | join(" and ") }} unsupported sentences: it did not repair the specialist findings the checker
+rejected, which Opus always did. The orchestrator therefore stays on Opus.</li>
+</ul></div>
+
+<details style="margin:14px 0"><summary><strong>The {{ ab.checklist_max }} checklist facts, run by run</strong></summary>
+<div class="tw" style="margin-top:8px"><table><thead><tr><th>Fact</th>{% for r in ab.pipe_runs %}<th class="num">{{ r.run }}</th>{% endfor %}</tr></thead><tbody>
+{% for k in ab.checks %}<tr><td>{{ ab.check_labels.get(k, k) }}</td>{% for r in ab.pipe_runs %}<td class="num">{% if r.checklist[k] %}<span class="ab-yes">✓</span>{% else %}<span class="ab-no">✗</span>{% endif %}</td>{% endfor %}</tr>
+{% endfor %}</tbody></table></div>
+<p class="small">multi = team before, opt = improved team, cheap = improved team with a Sonnet orchestrator, single = one agent.
+The facts are found by text patterns (and, for PRISM, by the records cited), checked by reading the reports.</p></details>
+
+<div class="note"><strong>Limits.</strong> Two runs per set-up in the real pipeline, so small differences are noise.
+One agent was not re-run with the new writing instructions, so part of the gain may come from naming the newest data
+rather than from the coverage check. Experiment 1 gives the rules explicitly and uses one model; it measures careful
+reading, not open-ended scientific judgement, and its altered dossiers are synthetic. Model use for these tests cost
+about ${{ "%.0f" | format(ab.spend_v2) }} (experiment 1, all conditions) and ${{ "%.0f" | format(ab.spend_pipe) }} (pipeline runs). Nothing here
+validates any target.</div>
+<p class="small">Full protocols, raw outputs and scripts: <a href="https://github.com/rsolerortuno/agentic-kidney-atlas/tree/main/benchmarks/architecture_v2">benchmarks/architecture_v2</a>
+(experiment 1) and <a href="https://github.com/rsolerortuno/agentic-kidney-atlas/tree/main/benchmarks/architecture_pipeline">benchmarks/architecture_pipeline</a> (experiment 2 and the improvements).</p>
+</section>
