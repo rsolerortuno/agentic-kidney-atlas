@@ -34,3 +34,17 @@ TOUR: list[tuple[str, str, str]] = [
     ("agents", "Agent benchmark", "Is a team of AI agents better than one? Two experiments, the costs, the errors and the fixes."),
     ("methods", "Methods & evidence", "Datasets, limits and every cited evidence record."),
 ]
+
+# The section menu at the top of the report: category -> subcategory -> tabs (keys of the report panels).
+# Every tab appears exactly once; titles and one-line descriptions come from TOUR.
+NAV: list[tuple[str, list[tuple[str, list[str]]]]] = [
+    ("Start", [("Start here", ["overview"])]),
+    ("Findings", [("Ranking", ["candidates"]), ("New targets", ["discovery"])]),
+    ("Evidence", [("Molecular data", ["omics"]), ("Cells and tissue", ["cells", "viewer"]),
+                  ("Protein structure", ["structure"])]),
+    ("Clinical use", [("Patients and trials", ["response"]), ("Drug types", ["adcimmune"]),
+                      ("What is already known", ["literature", "network"])]),
+    ("Trust and methods", [("Checks", ["validation"]), ("How the atlas was made", ["agents", "methods"])]),
+]
+NAV_TEXT: dict[str, tuple[str, str]] = {"overview": ("Overview", "What the atlas is, how it was built and a guided tour.")}
+NAV_TEXT.update({k: (title, text) for k, title, text in TOUR})

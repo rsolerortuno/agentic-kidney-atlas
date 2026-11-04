@@ -1,5 +1,5 @@
 <h2>A guided tour of the tabs</h2>
-<p class="lede">Each tab answers one question. Click a card to open it. Every figure, table and counter has a round <button class="q" type="button" style="pointer-events:none">?</button> button that explains the axes, how to read it and what we see.</p>
+<p class="lede">Each tab answers one question. Click a card to open it, or use the <b>Sections</b> menu at the top, where the tabs are grouped by theme; the arrows next to it step to the previous or next tab. Every figure, table and counter has a round <button class="q" type="button" style="pointer-events:none">?</button> button that explains the axes, how to read it and what we see.</p>
 <div class="grid tour">
 {% for key, title, text in tour %}
 <button type="button" class="card tourcard" data-go="{{ key }}"><h3>{{ title }}</h3><p>{{ text }}</p></button>
