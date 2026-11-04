@@ -1,0 +1,112 @@
+{
+ "study_hash": "593b0de44496ae2a",
+ "prompt_sha256": "6fb50e64e80624c5551e2edea4301292cda0321c2fa6413f5e30a16bb4efb89b",
+ "status": "ok",
+ "case_ids": [
+  "g01v1",
+  "g12v1",
+  "g04v1",
+  "g10v1"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.0347263,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 632,
+  "cache_read_input_tokens": 3983,
+  "output_tokens": 457,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 632,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 457,
+    "cache_read_input_tokens": 3983,
+    "cache_creation_input_tokens": 632,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 632
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 457,
+   "cacheReadInputTokens": 3983,
+   "cacheCreationInputTokens": 632,
+   "webSearchRequests": 0,
+   "costUSD": 0.0075003,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 632,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g01v1\",\"tumour_intrinsic\":\"yes\",\"evidence_ids\":[\"g01v1.r02\",\"g01v1.r19\"],\"rationale\":\"RCC has the largest transcript share (0.976). Purity lower bound 7.787-1.96*0.579=6.65>0, so yes.\"},{\"id\":\"g12v1\",\"tumour_intrinsic\":\"no\",\"evidence_ids\":[\"g12v1.r22\"],\"rationale\":\"For ENTITY_55, Macrophage share (0.574) exceeds RCC (0.233), so a non-RCC group is larger. The Endothelial record belongs to ENTITY_59 and was not used.\"},{\"id\":\"g04v1\",\"tumour_intrinsic\":\"yes\",\"evidence_ids\":[\"g04v1.r08\",\"g04v1.r22\"],\"rationale\":\"RCC has the largest share (0.327 vs Macrophage 0.272). Purity lower bound 3.821-1.96*0.33=3.17>0, so yes.\"},{\"id\":\"g10v1\",\"tumour_intrinsic\":\"insufficient\",\"evidence_ids\":[\"g10v1.r02\",\"g10v1.r15\"],\"rationale\":\"RCC has the largest share (0.964), but the purity lfc is -2.928 with SE 1.029, so the upper end is below 0 and the lower bound is not >0. Insufficient.\"}]}",
+ "stderr": "",
+ "answers": [
+  {
+   "id": "g01v1",
+   "tumour_intrinsic": "yes",
+   "evidence_ids": [
+    "g01v1.r02",
+    "g01v1.r19"
+   ],
+   "rationale": "RCC has the largest transcript share (0.976). Purity lower bound 7.787-1.96*0.579=6.65>0, so yes."
+  },
+  {
+   "id": "g12v1",
+   "tumour_intrinsic": "no",
+   "evidence_ids": [
+    "g12v1.r22"
+   ],
+   "rationale": "For ENTITY_55, Macrophage share (0.574) exceeds RCC (0.233), so a non-RCC group is larger. The Endothelial record belongs to ENTITY_59 and was not used."
+  },
+  {
+   "id": "g04v1",
+   "tumour_intrinsic": "yes",
+   "evidence_ids": [
+    "g04v1.r08",
+    "g04v1.r22"
+   ],
+   "rationale": "RCC has the largest share (0.327 vs Macrophage 0.272). Purity lower bound 3.821-1.96*0.33=3.17>0, so yes."
+  },
+  {
+   "id": "g10v1",
+   "tumour_intrinsic": "insufficient",
+   "evidence_ids": [
+    "g10v1.r02",
+    "g10v1.r15"
+   ],
+   "rationale": "RCC has the largest share (0.964), but the purity lfc is -2.928 with SE 1.029, so the upper end is below 0 and the lower bound is not >0. Insufficient."
+  }
+ ],
+ "elapsed_s": 23.3,
+ "previous_attempt": {
+  "status": "failed",
+  "error": "ValueError: missing case ids: ['g10v1']",
+  "cost_usd": 0.027226,
+  "elapsed_s": 12.9
+ }
+}

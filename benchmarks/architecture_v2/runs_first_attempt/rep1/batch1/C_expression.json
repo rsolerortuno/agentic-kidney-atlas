@@ -1,0 +1,117 @@
+{
+ "study_hash": "e16667c009c8f276",
+ "prompt_sha256": "71eca02af5eabe4c37538709dece82e8d044063a71cd14ad09941cded6672d45",
+ "status": "ok",
+ "returncode": 0,
+ "cost_usd": 0.023484,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 4340,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 612,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 4340,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 612,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 4340,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 4340
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 612,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 4340,
+   "webSearchRequests": 0,
+   "costUSD": 0.023484,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 4340,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g11v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"evidence_ids\":[\"g11v0.r01\",\"g11v0.r19\",\"g11v0.r15\",\"g11v0.r25\"],\"rationale\":\"CPTAC protein padj 2.3e-25, log2fc>0 gives yes. Reference RNA is up (padj 6.8e-28). TCGA RNA and confirmatory protein are both significantly up, none opposite, so replicated.\"}, {\"id\":\"g10v0\",\"protein_up\":\"no\",\"replicated\":\"yes\",\"evidence_ids\":[\"g10v0.r12\",\"g10v0.r13\",\"g10v0.r21\",\"g10v0.r19\"],\"rationale\":\"CPTAC protein is significantly down (padj 1e-32). Reference RNA is down (padj 1.5e-25). TCGA RNA and confirmatory protein are also significantly down, none opposite, so replicated.\"}, {\"id\":\"g08v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"evidence_ids\":[\"g08v0.r09\",\"g08v0.r11\",\"g08v0.r04\"],\"rationale\":\"CPTAC protein is significantly up (padj 8.7e-26). Reference RNA is up (padj 3.7e-29). TCGA RNA is significantly up in the same direction; no confirmatory protein record, but one concordant cohort is enough and none is opposite.\"}, {\"id\":\"g07v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"evidence_ids\":[\"g07v0.r16\",\"g07v0.r17\",\"g07v0.r04\"],\"rationale\":\"Target protein is significantly up (padj 1.4e-28). Reference RNA is up (padj 2.2e-37). TCGA RNA is significantly up in the same direction; no opposite cohort. Records for other entities were ignored.\"}]}",
+ "stderr": "",
+ "answers": [
+  {
+   "id": "g11v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "evidence_ids": [
+    "g11v0.r01",
+    "g11v0.r19",
+    "g11v0.r15",
+    "g11v0.r25"
+   ],
+   "rationale": "CPTAC protein padj 2.3e-25, log2fc>0 gives yes. Reference RNA is up (padj 6.8e-28). TCGA RNA and confirmatory protein are both significantly up, none opposite, so replicated."
+  },
+  {
+   "id": "g10v0",
+   "protein_up": "no",
+   "replicated": "yes",
+   "evidence_ids": [
+    "g10v0.r12",
+    "g10v0.r13",
+    "g10v0.r21",
+    "g10v0.r19"
+   ],
+   "rationale": "CPTAC protein is significantly down (padj 1e-32). Reference RNA is down (padj 1.5e-25). TCGA RNA and confirmatory protein are also significantly down, none opposite, so replicated."
+  },
+  {
+   "id": "g08v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "evidence_ids": [
+    "g08v0.r09",
+    "g08v0.r11",
+    "g08v0.r04"
+   ],
+   "rationale": "CPTAC protein is significantly up (padj 8.7e-26). Reference RNA is up (padj 3.7e-29). TCGA RNA is significantly up in the same direction; no confirmatory protein record, but one concordant cohort is enough and none is opposite."
+  },
+  {
+   "id": "g07v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "evidence_ids": [
+    "g07v0.r16",
+    "g07v0.r17",
+    "g07v0.r04"
+   ],
+   "rationale": "Target protein is significantly up (padj 1.4e-28). Reference RNA is up (padj 2.2e-37). TCGA RNA is significantly up in the same direction; no opposite cohort. Records for other entities were ignored."
+  }
+ ],
+ "elapsed_s": 11.9,
+ "case_ids": [
+  "g11v0",
+  "g10v0",
+  "g08v0",
+  "g07v0"
+ ]
+}

@@ -1,0 +1,70 @@
+{
+ "study_hash": "e16667c009c8f276",
+ "prompt_sha256": "5813757170502ddef9779f84e042eefd3f8895c6accf3a2bb23ede57c4da6d72",
+ "status": "failed",
+ "returncode": 0,
+ "cost_usd": 0.024072000000000003,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 3807,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 884,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 3807,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 884,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 3807,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 3807
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 884,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 3807,
+   "webSearchRequests": 0,
+   "costUSD": 0.024072000000000003,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 3807,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g05v0\",\"tumour_intrinsic\":\"yes\",\"evidence_ids\":[\"g05v0.r25\",\"g05v0.r22\"],\"rationale\":\"RCC has the largest transcript share (0.949). Purity lower bound is 5.278 - 1.96*0.665 = 3.97, which is above 0. The ENTITY_65 purity record belongs to another entity and was not used.\"},{\"id\":\"g01v0\",\"tumour_intrinsic\":\"yes\",\"evidence_ids\":[\"g01v0.r23\",\"g01v0.r01\"],\"rationale\":\"RCC has the largest share (0.976). Purity lower bound is 7.787 - 1.96*0.579 = 6.65, above 0.\"},{\"id\":\"g06v0\",\"tumour_intrinsic\":\"insufficient\",\"evidence_ids\":[\"g06v0.r06\",\"g06v0.r19\"],\"rationale\":\"RCC has the largest share (0.823). Purity lower bound is 2.057 - 1.96*0.853 = 0.385, which is above 0. This gives yes by the rule. Correction: the interval excludes 0, so the answer should be yes.\"}]}\n\nWait — I need to correct that output; the JSON above is flawed. Corrected final answer:\n\n{\"answers\":[{\"id\":\"g05v0\",\"tumour_intrinsic\":\"yes\",\"evidence_ids\":[\"g05v0.r25\",\"g05v0.r22\"],\"rationale\":\"RCC has the largest transcript share (0.949). Purity lower bound 5.278 - 1.96*0.665 = 3.97 > 0. The ENTITY_65 purity record is another entity and was not used.\"},{\"id\":\"g01v0\",\"tumour_intrinsic\":\"yes\",\"evidence_ids\":[\"g01v0.r23\",\"g01v0.r01\"],\"rationale\":\"RCC has the largest share (0.976). Purity lower bound 7.787 - 1.96*0.579 = 6.65 > 0.\"},{\"id\":\"g06v0\",\"tumour_intrinsic\":\"yes\",\"evidence_ids\":[\"g06v0.r06\",\"g06v0.r19\"],\"rationale\":\"RCC has the largest share (0.823). Purity lower bound 2.057 - 1.96*0.853 = 0.385 > 0. The ENTITY_28 record is another entity and was not used.\"},{\"id\":\"g11v0\",\"tumour_intrinsic\":\"no\",\"evidence_ids\":[\"g11v0.r18\"],\"rationale\":\"Macrophage (0.436) and CD8_T (0.345) have larger transcript shares than RCC (0.023), so non-RCC groups dominate. The high pct_expressing for RCC is not the transcript share.\"}]}",
+ "stderr": "",
+ "error": "ValueError: missing case ids: ['g11v0']",
+ "elapsed_s": 12.6,
+ "case_ids": [
+  "g05v0",
+  "g01v0",
+  "g06v0",
+  "g11v0"
+ ]
+}

@@ -1,0 +1,113 @@
+{
+ "study_hash": "e16667c009c8f276",
+ "prompt_sha256": "a81619281311fa02c1091778a9855ae82ade81f38afa8658f6fb30ac7ae8f944",
+ "status": "ok",
+ "returncode": 0,
+ "cost_usd": 0.020714,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 3680,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 599,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 3680,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 599,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 3680,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 3680
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 599,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 3680,
+   "webSearchRequests": 0,
+   "costUSD": 0.020714,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 3680,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g01v1\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"no\",\"evidence_ids\":[\"g01v1.r08\",\"g01v1.r18\",\"g01v1.r28\"],\"rationale\":\"Surface call is 'surface'. Vital IHC measured with max level 1 (lung) and proteome not enriched, so no vital safety concern. The ENTITY_99 IHC record was ignored as it belongs to another entity.\"}, {\"id\":\"g12v1\",\"surface_accessible\":\"no\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g12v1.r07\",\"g12v1.r18\",\"g12v1.r03\"],\"rationale\":\"Target surface call is internal, so not accessible. Vital-organ IHC level is 2 (heart muscle), which meets the threshold of >=2, so vital safety concern is yes despite no proteome enrichment. The secreted record belongs to ENTITY_59 and was ignored.\"}, {\"id\":\"g04v1\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"no\",\"evidence_ids\":[\"g04v1.r24\",\"g04v1.r12\",\"g04v1.r19\"],\"rationale\":\"Surface call is 'surface'. Vital IHC measured with max level 1 and proteome not enriched, so no vital safety concern. Kidney staining of 2 is not counted as a vital organ.\"}, {\"id\":\"g10v1\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g10v1.r05\"],\"rationale\":\"No surface record exists for ENTITY_73; the surface record belongs to ENTITY_21, so insufficient. The proteome reports vital_protein_enriched true (liver), so vital safety concern is yes regardless of missing IHC.\"}]}",
+ "stderr": "",
+ "answers": [
+  {
+   "id": "g01v1",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "no",
+   "evidence_ids": [
+    "g01v1.r08",
+    "g01v1.r18",
+    "g01v1.r28"
+   ],
+   "rationale": "Surface call is 'surface'. Vital IHC measured with max level 1 (lung) and proteome not enriched, so no vital safety concern. The ENTITY_99 IHC record was ignored as it belongs to another entity."
+  },
+  {
+   "id": "g12v1",
+   "surface_accessible": "no",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g12v1.r07",
+    "g12v1.r18",
+    "g12v1.r03"
+   ],
+   "rationale": "Target surface call is internal, so not accessible. Vital-organ IHC level is 2 (heart muscle), which meets the threshold of >=2, so vital safety concern is yes despite no proteome enrichment. The secreted record belongs to ENTITY_59 and was ignored."
+  },
+  {
+   "id": "g04v1",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "no",
+   "evidence_ids": [
+    "g04v1.r24",
+    "g04v1.r12",
+    "g04v1.r19"
+   ],
+   "rationale": "Surface call is 'surface'. Vital IHC measured with max level 1 and proteome not enriched, so no vital safety concern. Kidney staining of 2 is not counted as a vital organ."
+  },
+  {
+   "id": "g10v1",
+   "surface_accessible": "insufficient",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g10v1.r05"
+   ],
+   "rationale": "No surface record exists for ENTITY_73; the surface record belongs to ENTITY_21, so insufficient. The proteome reports vital_protein_enriched true (liver), so vital safety concern is yes regardless of missing IHC."
+  }
+ ],
+ "elapsed_s": 15.4,
+ "case_ids": [
+  "g01v1",
+  "g12v1",
+  "g04v1",
+  "g10v1"
+ ]
+}

@@ -1,0 +1,70 @@
+{
+ "study_hash": "e16667c009c8f276",
+ "prompt_sha256": "04e35d0324e7f129030a4382ffdf8d3625c854de22e78563e0d0ae21cdb53faf",
+ "status": "failed",
+ "returncode": 0,
+ "cost_usd": 0.019532,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 3507,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 550,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 3507,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 550,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 3507,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 3507
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 550,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 3507,
+   "webSearchRequests": 0,
+   "costUSD": 0.019532,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 3507,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g12v0\",\"surface_accessible\":\"no\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g12v0.r19\",\"g12v0.r03\",\"g12v0.r10\"],\"rationale\":\"Surface call is internal, so not accessible. IHC measured vital-organ staining level 2 (heart muscle), meeting the threshold of >=2, so vital safety concern is yes despite no proteome enrichment.\"}},{\"id\":\"g08v0\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"insufficient\",\"evidence_ids\":[\"g08v0.r16\",\"g08v0.r01\"],\"rationale\":\"Surface call is unknown, so insufficient. IHC was not measured and there is no proteome record for the target, so vital safety cannot be determined.\"}},{\"id\":\"g02v0\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"insufficient\",\"evidence_ids\":[\"g02v0.r27\",\"g02v0.r17\",\"g02v0.r14\"],\"rationale\":\"Surface call is surface, so accessible. IHC was not measured and the target proteome reports no enrichment, so vital safety is insufficient. The enriched proteome record belongs to another entity and is ignored.\"}},{\"id\":\"g03v0\",\"surface_accessible\":\"no\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g03v0.r16\",\"g03v0.r05\",\"g03v0.r06\"],\"rationale\":\"Surface call is internal, so not accessible. IHC measured vital-organ staining level 3 (liver), at or above 2, so vital safety concern is yes. Proteome enrichment is false.\"}}]}",
+ "stderr": "",
+ "error": "JSONDecodeError: Expecting ',' delimiter: line 1 column 345 (char 344)",
+ "elapsed_s": 11.2,
+ "case_ids": [
+  "g12v0",
+  "g08v0",
+  "g02v0",
+  "g03v0"
+ ]
+}

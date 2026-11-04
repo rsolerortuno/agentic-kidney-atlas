@@ -1,0 +1,114 @@
+{
+ "study_hash": "e16667c009c8f276",
+ "prompt_sha256": "d74fc1e0fd970e229d89160b274d57db8cfff0b5af83b790e7671e0a610a3ea8",
+ "status": "ok",
+ "returncode": 0,
+ "cost_usd": 0.020594,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 3800,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 539,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 3800,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 539,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 3800,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 3800
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 539,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 3800,
+   "webSearchRequests": 0,
+   "costUSD": 0.020594,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 3800,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g05v1\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"no\",\"evidence_ids\":[\"g05v1.r15\",\"g05v1.r10\",\"g05v1.r11\"],\"rationale\":\"Target surface record says surface. IHC measured with vital max level 1 (lung), and proteome reports no vital enrichment. Records for other entities (r06, r17) ignored.\"}, {\"id\":\"g08v1\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"insufficient\",\"evidence_ids\":[\"g08v1.r28\",\"g08v1.r15\"],\"rationale\":\"Target surface call is unknown, so insufficient. Target IHC was not measured and no target proteome record exists, so vital safety is insufficient. Other entity records ignored.\"}, {\"id\":\"g03v1\",\"surface_accessible\":\"no\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g03v1.r05\",\"g03v1.r25\",\"g03v1.r24\"],\"rationale\":\"Target surface call is internal, so no. Vital-organ IHC staining in liver is level 3 (>=2), giving a vital safety concern despite no proteome enrichment. Record r14 belongs to another entity.\"}, {\"id\":\"g02v1\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"insufficient\",\"evidence_ids\":[\"g02v1.r13\",\"g02v1.r19\",\"g02v1.r25\"],\"rationale\":\"Target surface call is surface. IHC was not measured and the proteome does not report enrichment, so vital safety is insufficient. Record r16 belongs to another entity.\"}]}",
+ "stderr": "",
+ "answers": [
+  {
+   "id": "g05v1",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "no",
+   "evidence_ids": [
+    "g05v1.r15",
+    "g05v1.r10",
+    "g05v1.r11"
+   ],
+   "rationale": "Target surface record says surface. IHC measured with vital max level 1 (lung), and proteome reports no vital enrichment. Records for other entities (r06, r17) ignored."
+  },
+  {
+   "id": "g08v1",
+   "surface_accessible": "insufficient",
+   "vital_safety_concern": "insufficient",
+   "evidence_ids": [
+    "g08v1.r28",
+    "g08v1.r15"
+   ],
+   "rationale": "Target surface call is unknown, so insufficient. Target IHC was not measured and no target proteome record exists, so vital safety is insufficient. Other entity records ignored."
+  },
+  {
+   "id": "g03v1",
+   "surface_accessible": "no",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g03v1.r05",
+    "g03v1.r25",
+    "g03v1.r24"
+   ],
+   "rationale": "Target surface call is internal, so no. Vital-organ IHC staining in liver is level 3 (>=2), giving a vital safety concern despite no proteome enrichment. Record r14 belongs to another entity."
+  },
+  {
+   "id": "g02v1",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "insufficient",
+   "evidence_ids": [
+    "g02v1.r13",
+    "g02v1.r19",
+    "g02v1.r25"
+   ],
+   "rationale": "Target surface call is surface. IHC was not measured and the proteome does not report enrichment, so vital safety is insufficient. Record r16 belongs to another entity."
+  }
+ ],
+ "elapsed_s": 13.7,
+ "case_ids": [
+  "g05v1",
+  "g08v1",
+  "g03v1",
+  "g02v1"
+ ]
+}

@@ -1,0 +1,218 @@
+{
+ "g01v0": {
+  "gene": "CA9",
+  "perturbation": "native",
+  "note": "none",
+  "distractor_genes": [
+   "KDR",
+   "ESM1"
+  ]
+ },
+ "g01v1": {
+  "gene": "CA9",
+  "perturbation": "clear_safety",
+  "note": "vital-organ staining set to level 1 and proteome enrichment removed",
+  "distractor_genes": [
+   "VWF",
+   "ESM1"
+  ]
+ },
+ "g02v0": {
+  "gene": "CD70",
+  "perturbation": "native",
+  "note": "none",
+  "distractor_genes": [
+   "PLIN2",
+   "MT1G"
+  ]
+ },
+ "g02v1": {
+  "gene": "CD70",
+  "perturbation": "protein_down",
+  "note": "discovery RNA, protein and TCGA set significantly down; confirmatory removed",
+  "distractor_genes": [
+   "LOX",
+   "UMOD"
+  ]
+ },
+ "g03v0": {
+  "gene": "NNMT",
+  "perturbation": "native",
+  "note": "none",
+  "distractor_genes": [
+   "UMOD",
+   "PLIN2"
+  ]
+ },
+ "g03v1": {
+  "gene": "NNMT",
+  "perturbation": "protein_down",
+  "note": "discovery RNA, protein and TCGA set significantly down; confirmatory removed",
+  "distractor_genes": [
+   "SLC6A19",
+   "TIMP1"
+  ]
+ },
+ "g04v0": {
+  "gene": "SLC16A3",
+  "perturbation": "native",
+  "note": "none",
+  "distractor_genes": [
+   "FABP6",
+   "ESM1"
+  ]
+ },
+ "g04v1": {
+  "gene": "SLC16A3",
+  "perturbation": "clear_safety",
+  "note": "vital-organ staining set to level 1 and proteome enrichment removed",
+  "distractor_genes": [
+   "MT1G",
+   "UMOD"
+  ]
+ },
+ "g05v0": {
+  "gene": "ENPP3",
+  "perturbation": "native",
+  "note": "none",
+  "distractor_genes": [
+   "VWF",
+   "MT1G"
+  ]
+ },
+ "g05v1": {
+  "gene": "ENPP3",
+  "perturbation": "clear_safety",
+  "note": "vital-organ staining set to level 1 and proteome enrichment removed",
+  "distractor_genes": [
+   "SLC6A19",
+   "FABP6"
+  ]
+ },
+ "g06v0": {
+  "gene": "HAVCR1",
+  "perturbation": "native",
+  "note": "none",
+  "distractor_genes": [
+   "PLIN2",
+   "FABP6"
+  ]
+ },
+ "g06v1": {
+  "gene": "HAVCR1",
+  "perturbation": "rcc_loses_share",
+  "note": "RCC transcript share lowered below another group while RCC pct_expressing raised to 70",
+  "distractor_genes": [
+   "UMOD",
+   "VWF"
+  ]
+ },
+ "g07v0": {
+  "gene": "COL23A1",
+  "perturbation": "native",
+  "note": "none",
+  "distractor_genes": [
+   "UMOD",
+   "ALDOB"
+  ]
+ },
+ "g07v1": {
+  "gene": "COL23A1",
+  "perturbation": "protein_down",
+  "note": "discovery RNA, protein and TCGA set significantly down; confirmatory removed",
+  "distractor_genes": [
+   "LOX",
+   "VWF"
+  ]
+ },
+ "g08v0": {
+  "gene": "RAB42",
+  "perturbation": "native",
+  "note": "none",
+  "distractor_genes": [
+   "ALDOB",
+   "ESM1"
+  ]
+ },
+ "g08v1": {
+  "gene": "RAB42",
+  "perturbation": "rcc_loses_share",
+  "note": "RCC transcript share lowered below another group while RCC pct_expressing raised to 70",
+  "distractor_genes": [
+   "VWF",
+   "FABP6"
+  ]
+ },
+ "g09v0": {
+  "gene": "PSAT1",
+  "perturbation": "native",
+  "note": "none",
+  "distractor_genes": [
+   "TIMP1",
+   "VWF"
+  ]
+ },
+ "g09v1": {
+  "gene": "PSAT1",
+  "perturbation": "protein_gone",
+  "note": "discovery protein record withheld",
+  "distractor_genes": [
+   "VWF",
+   "LOX"
+  ]
+ },
+ "g10v0": {
+  "gene": "PCK1",
+  "perturbation": "native",
+  "note": "none",
+  "distractor_genes": [
+   "TIMP1",
+   "LOX"
+  ]
+ },
+ "g10v1": {
+  "gene": "PCK1",
+  "perturbation": "flip_tcga",
+  "note": "TCGA RNA set significant in the opposite direction; confirmatory record removed",
+  "distractor_genes": [
+   "VWF",
+   "ANGPTL4"
+  ]
+ },
+ "g11v0": {
+  "gene": "CD74",
+  "perturbation": "native",
+  "note": "none",
+  "distractor_genes": [
+   "KDR",
+   "ESM1"
+  ]
+ },
+ "g11v1": {
+  "gene": "CD74",
+  "perturbation": "protein_down",
+  "note": "discovery RNA, protein and TCGA set significantly down; confirmatory removed",
+  "distractor_genes": [
+   "FABP6",
+   "UMOD"
+  ]
+ },
+ "g12v0": {
+  "gene": "HK2",
+  "perturbation": "native",
+  "note": "none",
+  "distractor_genes": [
+   "UMOD",
+   "MT1G"
+  ]
+ },
+ "g12v1": {
+  "gene": "HK2",
+  "perturbation": "protein_down",
+  "note": "discovery RNA, protein and TCGA set significantly down; confirmatory removed",
+  "distractor_genes": [
+   "ESM1",
+   "SLC6A19"
+  ]
+ }
+}

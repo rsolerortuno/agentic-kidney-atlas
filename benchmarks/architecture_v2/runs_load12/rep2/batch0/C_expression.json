@@ -1,0 +1,84 @@
+{
+ "study_hash": "72280c4a4b27a328",
+ "prompt_sha256": "496db1fe21a8ce93632f93c47f69592ab78e31b7fa1025a6f4158991ea127b9c",
+ "status": "failed",
+ "case_ids": [
+  "g11v1",
+  "g05v1",
+  "g03v1",
+  "g06v1",
+  "g08v1",
+  "g10v1",
+  "g02v1",
+  "g04v1",
+  "g01v1",
+  "g09v1",
+  "g07v1",
+  "g12v1"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.07515350000000001,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 628,
+  "cache_read_input_tokens": 7975,
+  "output_tokens": 1701,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 628,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1701,
+    "cache_read_input_tokens": 7975,
+    "cache_creation_input_tokens": 628,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 628
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 1701,
+   "cacheReadInputTokens": 7975,
+   "cacheCreationInputTokens": 628,
+   "webSearchRequests": 0,
+   "costUSD": 0.0203235,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 628,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g11v1\",\"protein_up\":\"no\",\"replicated\":\"no\",\"evidence_ids\":[\"g11v1.r22\",\"g11v1.r25\",\"g11v1.r12\"],\"rationale\":\"CPTAC protein log2fc -0.94, padj 1e-10 → no. Reference RNA is down (padj 1e-10); TCGA RNA is also down in the same direction. No confirmatory protein record for the target, so no independent cohort is opposite, but at least one agrees → yes.\"}]}\n\nCorrection: the entry above is wrong on replicated, so here is the full corrected answer set.\n\n{\"answers\":[{\"id\":\"g11v1\",\"protein_up\":\"no\",\"replicated\":\"yes\",\"evidence_ids\":[\"g11v1.r22\",\"g11v1.r25\",\"g11v1.r12\"],\"rationale\":\"Protein log2fc -0.94, padj 1e-10 → no. Reference RNA down (padj 1e-10); TCGA RNA down (padj 1e-8), same direction, none opposite → yes.\"},{\"id\":\"g05v1\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"evidence_ids\":[\"g05v1.r09\",\"g05v1.r18\",\"g05v1.r21\",\"g05v1.r04\"],\"rationale\":\"Protein up, padj 3e-37. Reference RNA up; TCGA RNA and confirmatory protein both up significantly, none opposite.\"},{\"id\":\"g03v1\",\"protein_up\":\"no\",\"replicated\":\"yes\",\"evidence_ids\":[\"g03v1.r02\",\"g03v1.r06\",\"g03v1.r11\"],\"rationale\":\"Protein down, padj 1e-10. Reference RNA down; TCGA RNA down (padj 1e-8), no opposing cohort.\"},{\"id\":\"g06v1\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"evidence_ids\":[\"g06v1.r05\",\"g06v1.r22\",\"g06v1.r26\"],\"rationale\":\"Protein up, padj 2e-27. Reference RNA up (padj 3e-12); TCGA RNA up (padj 3e-11), no opposing cohort.\"},{\"id\":\"g08v1\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"evidence_ids\":[\"g08v1.r02\",\"g08v1.r13\",\"g08v1.r08\"],\"rationale\":\"Protein up, padj 9e-26. Reference RNA up; TCGA RNA up significantly, no opposing cohort.\"},{\"id\":\"g10v1\",\"protein_up\":\"no\",\"replicated\":\"yes\",\"evidence_ids\":[\"g10v1.r23\",\"g10v1.r07\",\"g10v1.r27\"],\"rationale\":\"Protein down, padj 1e-32. Reference RNA down (padj 2e-25); TCGA RNA is up (padj 1e-8), opposite to the reference → replicated no.\"},{\"id\":\"g02v1\",\"protein_up\":\"no\",\"replicated\":\"yes\",\"evidence_ids\":[\"g02v1.r22\",\"g02v1.r12\",\"g02v1.r07\"],\"rationale\":\"Protein down, padj 1e-10. Reference RNA down; TCGA RNA down (padj 1e-8), no opposing cohort.\"},{\"id\":\"g04v1\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"evidence_ids\":[\"g04v1.r10\",\"g04v1.r21\",\"g04v1.r13\",\"g04v1.r05\"],\"rationale\":\"Protein up, padj 5e-47. Reference RNA up; TCGA RNA and confirmatory protein both up, none opposite.\"},{\"id\":\"g01v1\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"evidence_ids\":[\"g01v1.r05\",\"g01v1.r14\",\"g01v1.r23\"],\"rationale\":\"Protein up, padj 1e-42. Reference RNA up (padj 2e-49); TCGA RNA up (padj 3e-30), no opposing cohort.\"},{\"id\":\"g09v1\",\"protein_up\":\"insufficient\",\"replicated\":\"yes\",\"evidence_ids\":[\"g09v1.r15\",\"g09v1.r09\",\"g09v1.r22\"],\"rationale\":\"No CPTAC protein record for target → insufficient. Reference RNA down; TCGA RNA and confirmatory protein both down, none opposite.\"},{\"id\":\"g07v1\",\"protein_up\":\"no\",\"replicated\":\"yes\",\"evidence_ids\":[\"g07v1.r11\",\"g07v1.r28\",\"g07v1.r22\"],\"rationale\":\"Protein down, padj 1e-10. Reference RNA down; TCGA RNA down (padj 1e-8), no opposing cohort.\"},{\"id\":\"g12v1\",\"protein_up\":\"no\",\"replicated\":\"yes\",\"evidence_ids\":[\"g12v1.r25\",\"g12v1.r05\",\"g12v1.r16\"],\"rationale\":\"Protein down, padj 1e-10. Reference RNA down; TCGA RNA down (padj 1e-8), no opposing cohort.\"}]}\n\nNote: in g10v1 the rationale correctly identifies TCGA RNA as opposite to the reference, so replicated should be \"no\", not \"yes\". The corrected value for g10v1 is protein_up \"no\", replicated \"no\".",
+ "stderr": "",
+ "error": "ValueError: missing case ids: ['g01v1', 'g02v1', 'g03v1', 'g04v1', 'g05v1', 'g06v1', 'g07v1', 'g08v1', 'g09v1', 'g10v1', 'g12v1']",
+ "elapsed_s": 36.3,
+ "previous_attempt": {
+  "status": "failed",
+  "error": "JSONDecodeError: Expecting ',' delimiter: line 2 column 253 (char 265)",
+  "cost_usd": 0.054830000000000004,
+  "elapsed_s": 20.2
+ }
+}

@@ -1,0 +1,76 @@
+{
+ "study_hash": "593b0de44496ae2a",
+ "prompt_sha256": "5c5dd381c922392f09a1816e1fa5ecc1ea64a38d0eec1d0f3d7a9c832434ab48",
+ "status": "failed",
+ "case_ids": [
+  "g11v1",
+  "g09v1",
+  "g08v1",
+  "g02v1"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.1014602,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 637,
+  "cache_read_input_tokens": 14202,
+  "output_tokens": 1959,
+  "output_tokens_details": {
+   "thinking_tokens": 786
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 637,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1959,
+    "cache_read_input_tokens": 14202,
+    "cache_creation_input_tokens": 637,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 637
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 1959,
+   "cacheReadInputTokens": 14202,
+   "cacheCreationInputTokens": 637,
+   "webSearchRequests": 0,
+   "costUSD": 0.0235622,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 786,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 637,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g11v1\",\"protein_up\":\"no\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"no\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"loss_biomarker\",\"evidence_ids\":[\"g11v1.r22\",\"g11v1.r25\",\"g11v1.r12\",\"g11v1.r17\",\"g11v1.r26\",\"g11v1.r13\",\"g11v1.r19\",\"g11v1.r06\"],\"rationale\":\"Protein is down (padj 1e-10). RNA is down in CPTAC and TCGA, so replicated is yes. A macrophage share of 0.436 exceeds RCC at 0.023, so tumour_intrinsic is no. The surface call is surface. Cerebellum IHC level 3 gives a vital concern. DepMap fails on padj and dependent lines. Verdict: loss_biomarker.\"}},{\"id\":\"g09v1\",\"protein_up\":\"insufficient\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"no\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"infiltration_signal\",\"evidence_ids\":[\"g09v1.r21\",\"g09v1.r15\",\"g09v1.r09\",\"g09v1.r22\",\"g09v1.r25\",\"g09v1.r01\",\"g09v1.r13\",\"g09v1.r18\"],\"rationale\":\"The target has only a phospho record, so protein_up is insufficient. RNA is down in CPTAC, TCGA and the confirmatory protein, so replicated is yes. CD8_T share 0.737 exceeds RCC 0.072. There is no surface record. The proteome is vital-enriched. DepMap padj is 0.404. Verdict: infiltration_signal.\"}},{\"id\":\"g08v1\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"no\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"insufficient\",\"selective_dependency\":\"no\",\"verdict\":\"infiltration_signal\",\"evidence_ids\":[\"g08v1.r02\",\"g08v1.r13\",\"g08v1.r08\",\"g08v1.r26\",\"g08v1.r21\",\"g08v1.r28\",\"g08v1.r15\",\"g08v1.r20\"],\"rationale\":\"Protein is up and RNA is up in CPTAC and TCGA. Macrophage share 0.6 exceeds RCC 0.2, so tumour_intrinsic is no. The surface call is unknown. IHC was not measured and there is no target proteome record. DepMap has no dependent lines and padj is 0.82. Verdict: infiltration_signal.\"}},{\"id\":\"g02v1\",\"protein_up\":\"no\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"no\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"insufficient\",\"selective_dependency\":\"no\",\"verdict\":\"loss_biomarker\",\"evidence_ids\":[\"g02v1.r22\",\"g02v1.r12\",\"g02v1.r07\",\"g02v1.r20\",\"g02v1.r13\",\"g02v1.r19\",\"g02v1.r25\",\"g02v1.r15\"],\"rationale\":\"Protein is down (padj 1e-10). RNA is down in CPTAC and TCGA, so replicated is yes. CD8_T share 0.533 exceeds RCC 0.345. The surface call is surface. IHC was not measured and the proteome is not enriched. DepMap fails. Verdict: loss_biomarker.\"}}]}",
+ "stderr": "",
+ "error": "JSONDecodeError: Expecting ',' delimiter: line 1 column 628 (char 627)",
+ "elapsed_s": 34.0,
+ "previous_attempt": {
+  "status": "failed",
+  "error": "JSONDecodeError: Expecting ',' delimiter: line 1 column 604 (char 603)",
+  "cost_usd": 0.077898,
+  "elapsed_s": 17.2
+ }
+}

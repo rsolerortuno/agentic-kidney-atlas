@@ -1,0 +1,115 @@
+{
+ "study_hash": "e16667c009c8f276",
+ "prompt_sha256": "5a66830294fb8b6e5b1583c5128246d67c09341ffd2b4e23a3a99e70d9ddb964",
+ "status": "ok",
+ "returncode": 0,
+ "cost_usd": 0.027236,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 4183,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 1050,
+  "output_tokens_details": {
+   "thinking_tokens": 420
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 4183,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1050,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 4183,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 4183
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 1050,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 4183,
+   "webSearchRequests": 0,
+   "costUSD": 0.027236,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 420,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 4183,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g11v1\",\"protein_up\":\"no\",\"replicated\":\"yes\",\"evidence_ids\":[\"g11v1.r22\",\"g11v1.r25\",\"g11v1.r12\"],\"rationale\":\"CPTAC protein log2fc -0.94 with padj 1e-10 gives no. CPTAC RNA is down (padj 1e-10) and TCGA RNA is also down (padj 1e-8), so replicated is yes. There is no confirmatory protein record for this entity.\"},{\"id\":\"g09v1\",\"protein_up\":\"insufficient\",\"replicated\":\"yes\",\"evidence_ids\":[\"g09v1.r15\",\"g09v1.r09\",\"g09v1.r22\"],\"rationale\":\"The target has no CPTAC protein record (only phospho), so protein_up is insufficient. CPTAC RNA is down (padj 2.5e-29). TCGA RNA and the confirmatory protein are both down and significant, with none opposite, so replicated is yes.\"},{\"id\":\"g08v1\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"evidence_ids\":[\"g08v1.r02\",\"g08v1.r13\",\"g08v1.r08\"],\"rationale\":\"CPTAC protein log2fc +1.90 with padj 8.7e-26 gives yes. CPTAC RNA is up (padj 3.7e-29) and TCGA RNA is up (padj 4e-25) with none opposite, so replicated is yes.\"},{\"id\":\"g02v1\",\"protein_up\":\"no\",\"replicated\":\"yes\",\"evidence_ids\":[\"g02v1.r22\",\"g02v1.r12\",\"g02v1.r07\"],\"rationale\":\"CPTAC protein log2fc -2.42 with padj 1e-10 gives no. CPTAC RNA is down (padj 1e-10) and TCGA RNA is down (padj 1e-8), so replicated is yes. There is no confirmatory protein record.\"}]}",
+ "stderr": "",
+ "answers": [
+  {
+   "id": "g11v1",
+   "protein_up": "no",
+   "replicated": "yes",
+   "evidence_ids": [
+    "g11v1.r22",
+    "g11v1.r25",
+    "g11v1.r12"
+   ],
+   "rationale": "CPTAC protein log2fc -0.94 with padj 1e-10 gives no. CPTAC RNA is down (padj 1e-10) and TCGA RNA is also down (padj 1e-8), so replicated is yes. There is no confirmatory protein record for this entity."
+  },
+  {
+   "id": "g09v1",
+   "protein_up": "insufficient",
+   "replicated": "yes",
+   "evidence_ids": [
+    "g09v1.r15",
+    "g09v1.r09",
+    "g09v1.r22"
+   ],
+   "rationale": "The target has no CPTAC protein record (only phospho), so protein_up is insufficient. CPTAC RNA is down (padj 2.5e-29). TCGA RNA and the confirmatory protein are both down and significant, with none opposite, so replicated is yes."
+  },
+  {
+   "id": "g08v1",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "evidence_ids": [
+    "g08v1.r02",
+    "g08v1.r13",
+    "g08v1.r08"
+   ],
+   "rationale": "CPTAC protein log2fc +1.90 with padj 8.7e-26 gives yes. CPTAC RNA is up (padj 3.7e-29) and TCGA RNA is up (padj 4e-25) with none opposite, so replicated is yes."
+  },
+  {
+   "id": "g02v1",
+   "protein_up": "no",
+   "replicated": "yes",
+   "evidence_ids": [
+    "g02v1.r22",
+    "g02v1.r12",
+    "g02v1.r07"
+   ],
+   "rationale": "CPTAC protein log2fc -2.42 with padj 1e-10 gives no. CPTAC RNA is down (padj 1e-10) and TCGA RNA is down (padj 1e-8), so replicated is yes. There is no confirmatory protein record."
+  }
+ ],
+ "elapsed_s": 15.0,
+ "case_ids": [
+  "g11v1",
+  "g09v1",
+  "g08v1",
+  "g02v1"
+ ]
+}

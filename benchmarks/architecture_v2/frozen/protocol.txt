@@ -1,0 +1,27 @@
+Definitions (apply them to the records of the TARGET entity only; records of other entities are not evidence
+about it). Each sub-question is answered yes, no or insufficient. Missing data are insufficient, never no.
+1 protein_up: CPTAC discovery protein record. yes if padj<0.05 and log2fc>0; no if padj<0.05 and log2fc<0;
+  insufficient if padj>=0.05 or no protein record.
+2 replicated: reference direction = CPTAC discovery RNA, which must have padj<0.05 (otherwise insufficient).
+  Independent cohorts: TCGA RNA and the confirmatory protein cohort. yes if at least one independent cohort has
+  padj<0.05 in the reference direction and none has padj<0.05 in the opposite direction; no if any independent
+  cohort has padj<0.05 opposite to the reference; insufficient otherwise.
+3 tumour_intrinsic: single-cell tumour record (share_of_tumour_transcripts per cell group) and purity record
+  (rna_lfc_at_purity1 with its SE). no if a non-RCC group has a larger transcript share than RCC; yes if RCC has the
+  largest share AND rna_lfc_at_purity1 - 1.96*SE > 0; insufficient otherwise (missing record, or the purity interval
+  includes or is below 0). pct_expressing is the share of cells with any expression and is NOT the transcript share.
+4 surface_accessible: surface record. yes if surface_call = surface; no if internal or secreted; insufficient if
+  unknown or no record.
+5 vital_safety_concern: normal-tissue staining (IHC) and normal proteome records. yes if measured vital-organ staining
+  level >= 2 or vital_protein_enriched is true; no if staining was measured with level <= 1 and the proteome does not
+  report enrichment; insufficient if staining was not measured and the proteome does not report enrichment. Kidney
+  staining is not a vital organ here.
+6 selective_dependency: DepMap record. yes if n_ccrcc_lines>=10, padj<0.1, selectivity>0, n_ccrcc_dependent>=3 and
+  not common_essential; no if a record exists and any condition fails; insufficient if no record.
+verdict (first rule that applies):
+  surface_target_candidate: protein_up=yes, replicated=yes, tumour_intrinsic=yes, surface_accessible=yes and
+    vital_safety_concern=no;
+  loss_biomarker: protein_up=no and replicated=yes;
+  infiltration_signal: tumour_intrinsic=no and protein_up is not no;
+  needs_more_data: otherwise.
+Treatment, survival and within-arm associations are context: none of the definitions uses them.

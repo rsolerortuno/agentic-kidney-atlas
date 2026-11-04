@@ -1,0 +1,155 @@
+{
+ "study_hash": "e16667c009c8f276",
+ "prompt_sha256": "69059eb60e1e08d7adf6b5f657c315c97d4945065476ca3094c35e72cec758fb",
+ "status": "ok",
+ "returncode": 0,
+ "cost_usd": 0.076348,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 13081,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 2402,
+  "output_tokens_details": {
+   "thinking_tokens": 1314
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 13081,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 2402,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 13081,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 13081
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 2402,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 13081,
+   "webSearchRequests": 0,
+   "costUSD": 0.076348,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 1314,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 13081,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g08v1\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"no\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"insufficient\",\"selective_dependency\":\"no\",\"verdict\":\"infiltration_signal\",\"evidence_ids\":[\"g08v1.r02\",\"g08v1.r13\",\"g08v1.r08\",\"g08v1.r26\",\"g08v1.r28\",\"g08v1.r15\",\"g08v1.r20\"],\"rationale\":\"Protein and RNA are up, and TCGA RNA confirms. Macrophages hold a larger transcript share (0.6) than RCC (0.2), so it is not tumour-intrinsic. Surface call is unknown, vital-organ IHC was not measured, and DepMap shows no dependent lines.\"},{\"id\":\"g10v1\",\"protein_up\":\"no\",\"replicated\":\"no\",\"tumour_intrinsic\":\"insufficient\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"needs_more_data\",\"evidence_ids\":[\"g10v1.r23\",\"g10v1.r07\",\"g10v1.r27\",\"g10v1.r02\",\"g10v1.r15\",\"g10v1.r05\",\"g10v1.r14\"],\"rationale\":\"Protein is down. CPTAC RNA is down but TCGA RNA is significantly up, the opposite direction, so replication fails. RCC has the largest share, but the purity-adjusted lfc is negative. The proteome reports vital-organ enrichment. No surface record. DepMap shows no dependent lines.\"},{\"id\":\"g02v1\",\"protein_up\":\"no\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"no\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"insufficient\",\"selective_dependency\":\"no\",\"verdict\":\"loss_biomarker\",\"evidence_ids\":[\"g02v1.r22\",\"g02v1.r12\",\"g02v1.r07\",\"g02v1.r20\",\"g02v1.r13\",\"g02v1.r19\",\"g02v1.r25\",\"g02v1.r15\"],\"rationale\":\"Protein is down. CPTAC RNA is down and TCGA RNA is down in the same direction, so replicated. CD8 T cells have a larger share than RCC. Surface call is surface. IHC was not measured and the proteome shows no enrichment. DepMap shows no dependent lines.\"},{\"id\":\"g04v1\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"no\",\"selective_dependency\":\"no\",\"verdict\":\"surface_target_candidate\",\"evidence_ids\":[\"g04v1.r10\",\"g04v1.r21\",\"g04v1.r13\",\"g04v1.r05\",\"g04v1.r08\",\"g04v1.r22\",\"g04v1.r24\",\"g04v1.r12\",\"g04v1.r19\",\"g04v1.r18\"],\"rationale\":\"Protein is up, and TCGA RNA and confirmatory protein replicate the CPTAC RNA. RCC has the largest transcript share, and the purity lower bound is above 0. Surface call is surface. Vital-organ IHC is level 1 with no proteome enrichment. DepMap shows no dependent lines.\"}]}",
+ "stderr": "",
+ "answers": [
+  {
+   "id": "g08v1",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "no",
+   "surface_accessible": "insufficient",
+   "vital_safety_concern": "insufficient",
+   "selective_dependency": "no",
+   "verdict": "infiltration_signal",
+   "evidence_ids": [
+    "g08v1.r02",
+    "g08v1.r13",
+    "g08v1.r08",
+    "g08v1.r26",
+    "g08v1.r28",
+    "g08v1.r15",
+    "g08v1.r20"
+   ],
+   "rationale": "Protein and RNA are up, and TCGA RNA confirms. Macrophages hold a larger transcript share (0.6) than RCC (0.2), so it is not tumour-intrinsic. Surface call is unknown, vital-organ IHC was not measured, and DepMap shows no dependent lines."
+  },
+  {
+   "id": "g10v1",
+   "protein_up": "no",
+   "replicated": "no",
+   "tumour_intrinsic": "insufficient",
+   "surface_accessible": "insufficient",
+   "vital_safety_concern": "yes",
+   "selective_dependency": "no",
+   "verdict": "needs_more_data",
+   "evidence_ids": [
+    "g10v1.r23",
+    "g10v1.r07",
+    "g10v1.r27",
+    "g10v1.r02",
+    "g10v1.r15",
+    "g10v1.r05",
+    "g10v1.r14"
+   ],
+   "rationale": "Protein is down. CPTAC RNA is down but TCGA RNA is significantly up, the opposite direction, so replication fails. RCC has the largest share, but the purity-adjusted lfc is negative. The proteome reports vital-organ enrichment. No surface record. DepMap shows no dependent lines."
+  },
+  {
+   "id": "g02v1",
+   "protein_up": "no",
+   "replicated": "yes",
+   "tumour_intrinsic": "no",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "insufficient",
+   "selective_dependency": "no",
+   "verdict": "loss_biomarker",
+   "evidence_ids": [
+    "g02v1.r22",
+    "g02v1.r12",
+    "g02v1.r07",
+    "g02v1.r20",
+    "g02v1.r13",
+    "g02v1.r19",
+    "g02v1.r25",
+    "g02v1.r15"
+   ],
+   "rationale": "Protein is down. CPTAC RNA is down and TCGA RNA is down in the same direction, so replicated. CD8 T cells have a larger share than RCC. Surface call is surface. IHC was not measured and the proteome shows no enrichment. DepMap shows no dependent lines."
+  },
+  {
+   "id": "g04v1",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "yes",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "no",
+   "selective_dependency": "no",
+   "verdict": "surface_target_candidate",
+   "evidence_ids": [
+    "g04v1.r10",
+    "g04v1.r21",
+    "g04v1.r13",
+    "g04v1.r05",
+    "g04v1.r08",
+    "g04v1.r22",
+    "g04v1.r24",
+    "g04v1.r12",
+    "g04v1.r19",
+    "g04v1.r18"
+   ],
+   "rationale": "Protein is up, and TCGA RNA and confirmatory protein replicate the CPTAC RNA. RCC has the largest transcript share, and the purity lower bound is above 0. Surface call is surface. Vital-organ IHC is level 1 with no proteome enrichment. DepMap shows no dependent lines."
+  }
+ ],
+ "elapsed_s": 23.1,
+ "case_ids": [
+  "g08v1",
+  "g10v1",
+  "g02v1",
+  "g04v1"
+ ]
+}

@@ -1,0 +1,160 @@
+{
+ "study_hash": "e16667c009c8f276",
+ "prompt_sha256": "4f07b2d2021e363acc719a474aefb18e11d149c7d0e0644a1fb6f962dd33b924",
+ "status": "ok",
+ "returncode": 0,
+ "cost_usd": 0.06954400000000001,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 12170,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 2086,
+  "output_tokens_details": {
+   "thinking_tokens": 953
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 12170,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 2086,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 12170,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 12170
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 2086,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 12170,
+   "webSearchRequests": 0,
+   "costUSD": 0.06954400000000001,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 953,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 12170,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g12v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"no\",\"surface_accessible\":\"no\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"infiltration_signal\",\"evidence_ids\":[\"g12v0.r18\",\"g12v0.r07\",\"g12v0.r02\",\"g12v0.r01\",\"g12v0.r05\",\"g12v0.r19\",\"g12v0.r03\",\"g12v0.r10\",\"g12v0.r14\"],\"rationale\":\"Protein and RNA are up, with TCGA RNA replicating. Macrophages hold a larger transcript share than RCC (0.574 vs 0.233), so not tumour-intrinsic. The target is internal, heart IHC level is 2, and only 1 ccRCC line is dependent. Verdict: infiltration signal.\"},{\"id\":\"g06v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"no\",\"selective_dependency\":\"no\",\"verdict\":\"surface_target_candidate\",\"evidence_ids\":[\"g06v0.r12\",\"g06v0.r23\",\"g06v0.r01\",\"g06v0.r06\",\"g06v0.r19\",\"g06v0.r24\",\"g06v0.r13\",\"g06v0.r17\"],\"rationale\":\"Protein is up and TCGA RNA replicates. RCC has the largest share (0.823) and the purity interval is above 0 (0.385). The target is surface-annotated, and vital IHC is level 1 with no proteome enrichment reported. DepMap shows 0 dependent lines. Meets all candidate criteria.\"},{\"id\":\"g05v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"needs_more_data\",\"evidence_ids\":[\"g05v0.r28\",\"g05v0.r05\",\"g05v0.r15\",\"g05v0.r09\",\"g05v0.r25\",\"g05v0.r22\",\"g05v0.r07\",\"g05v0.r13\",\"g05v0.r14\",\"g05v0.r26\"],\"rationale\":\"Up in protein and replicated in TCGA RNA and the confirmatory protein cohort. RCC share is 0.949 and the purity interval is above 0. The target is surface-annotated, but duodenum IHC is level 3, a vital-organ safety concern. No dependency. Candidate fails on safety, so needs more data.\"},{\"id\":\"g03v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"no\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"needs_more_data\",\"evidence_ids\":[\"g03v0.r25\",\"g03v0.r15\",\"g03v0.r09\",\"g03v0.r12\",\"g03v0.r24\",\"g03v0.r21\",\"g03v0.r16\",\"g03v0.r05\",\"g03v0.r06\",\"g03v0.r11\"],\"rationale\":\"Protein is up and replicated across TCGA RNA and the confirmatory protein cohort. RCC share is 0.97 and the purity interval is above 0. The target is internal, liver IHC is level 3, and no ccRCC lines are dependent. Fails the candidate rule, so needs more data.\"}]}",
+ "stderr": "",
+ "answers": [
+  {
+   "id": "g12v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "no",
+   "surface_accessible": "no",
+   "vital_safety_concern": "yes",
+   "selective_dependency": "no",
+   "verdict": "infiltration_signal",
+   "evidence_ids": [
+    "g12v0.r18",
+    "g12v0.r07",
+    "g12v0.r02",
+    "g12v0.r01",
+    "g12v0.r05",
+    "g12v0.r19",
+    "g12v0.r03",
+    "g12v0.r10",
+    "g12v0.r14"
+   ],
+   "rationale": "Protein and RNA are up, with TCGA RNA replicating. Macrophages hold a larger transcript share than RCC (0.574 vs 0.233), so not tumour-intrinsic. The target is internal, heart IHC level is 2, and only 1 ccRCC line is dependent. Verdict: infiltration signal."
+  },
+  {
+   "id": "g06v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "yes",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "no",
+   "selective_dependency": "no",
+   "verdict": "surface_target_candidate",
+   "evidence_ids": [
+    "g06v0.r12",
+    "g06v0.r23",
+    "g06v0.r01",
+    "g06v0.r06",
+    "g06v0.r19",
+    "g06v0.r24",
+    "g06v0.r13",
+    "g06v0.r17"
+   ],
+   "rationale": "Protein is up and TCGA RNA replicates. RCC has the largest share (0.823) and the purity interval is above 0 (0.385). The target is surface-annotated, and vital IHC is level 1 with no proteome enrichment reported. DepMap shows 0 dependent lines. Meets all candidate criteria."
+  },
+  {
+   "id": "g05v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "yes",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "yes",
+   "selective_dependency": "no",
+   "verdict": "needs_more_data",
+   "evidence_ids": [
+    "g05v0.r28",
+    "g05v0.r05",
+    "g05v0.r15",
+    "g05v0.r09",
+    "g05v0.r25",
+    "g05v0.r22",
+    "g05v0.r07",
+    "g05v0.r13",
+    "g05v0.r14",
+    "g05v0.r26"
+   ],
+   "rationale": "Up in protein and replicated in TCGA RNA and the confirmatory protein cohort. RCC share is 0.949 and the purity interval is above 0. The target is surface-annotated, but duodenum IHC is level 3, a vital-organ safety concern. No dependency. Candidate fails on safety, so needs more data."
+  },
+  {
+   "id": "g03v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "yes",
+   "surface_accessible": "no",
+   "vital_safety_concern": "yes",
+   "selective_dependency": "no",
+   "verdict": "needs_more_data",
+   "evidence_ids": [
+    "g03v0.r25",
+    "g03v0.r15",
+    "g03v0.r09",
+    "g03v0.r12",
+    "g03v0.r24",
+    "g03v0.r21",
+    "g03v0.r16",
+    "g03v0.r05",
+    "g03v0.r06",
+    "g03v0.r11"
+   ],
+   "rationale": "Protein is up and replicated across TCGA RNA and the confirmatory protein cohort. RCC share is 0.97 and the purity interval is above 0. The target is internal, liver IHC is level 3, and no ccRCC lines are dependent. Fails the candidate rule, so needs more data."
+  }
+ ],
+ "elapsed_s": 19.2,
+ "case_ids": [
+  "g12v0",
+  "g06v0",
+  "g05v0",
+  "g03v0"
+ ]
+}

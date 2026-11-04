@@ -39,4 +39,5 @@ packages = ["src/ccrcc"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["."]
 markers = ["network: tests that call external APIs (cached on disk after first run)"]

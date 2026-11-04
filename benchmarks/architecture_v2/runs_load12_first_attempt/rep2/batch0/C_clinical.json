@@ -1,0 +1,175 @@
+{
+ "study_hash": "72280c4a4b27a328",
+ "prompt_sha256": "f88d486c2f1a9b9b03973b406560a7b7c4ce8bd4eb5267805b011fb2753fac11",
+ "status": "ok",
+ "case_ids": [
+  "g11v1",
+  "g05v1",
+  "g03v1",
+  "g06v1",
+  "g08v1",
+  "g10v1",
+  "g02v1",
+  "g04v1",
+  "g01v1",
+  "g09v1",
+  "g07v1",
+  "g12v1"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.073792,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 15072,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 1350,
+  "output_tokens_details": {
+   "thinking_tokens": 318
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 15072,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1350,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 15072,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 15072
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 1350,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 15072,
+   "webSearchRequests": 0,
+   "costUSD": 0.073792,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 318,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 15072,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[\n{\"id\":\"g11v1\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g11v1.r06\"],\"rationale\":\"DepMap record exists, but n_ccrcc_dependent is 0 (needs ≥3) and padj is 0.466 (needs <0.1).\"},\n{\"id\":\"g05v1\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g05v1.r13\"],\"rationale\":\"DepMap record exists, but n_ccrcc_dependent is 0 and padj is 0.6265, so the conditions fail.\"},\n{\"id\":\"g03v1\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g03v1.r20\"],\"rationale\":\"Selectivity is negative (-0.075) and n_ccrcc_dependent is 0. Although padj is 0.0725, the other conditions fail.\"},\n{\"id\":\"g06v1\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g06v1.r02\"],\"rationale\":\"n_ccrcc_dependent is 0 and padj is 0.3868, so the conditions fail.\"},\n{\"id\":\"g08v1\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g08v1.r20\"],\"rationale\":\"n_ccrcc_dependent is 0 and padj is 0.8221, so the conditions fail.\"},\n{\"id\":\"g10v1\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g10v1.r14\"],\"rationale\":\"Selectivity is negative, n_ccrcc_dependent is 0 and padj is 0.4069, so the conditions fail.\"},\n{\"id\":\"g02v1\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g02v1.r15\"],\"rationale\":\"n_ccrcc_dependent is 0 and padj is 0.9287, so the conditions fail.\"},\n{\"id\":\"g04v1\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g04v1.r18\"],\"rationale\":\"Selectivity is negative, n_ccrcc_dependent is 0 and padj is 0.9288, so the conditions fail.\"},\n{\"id\":\"g01v1\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g01v1.r15\"],\"rationale\":\"n_ccrcc_dependent is 0 and padj is 0.4417, so the conditions fail.\"},\n{\"id\":\"g09v1\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g09v1.r18\"],\"rationale\":\"n_ccrcc_dependent is 3 and selectivity is positive, but padj is 0.404 (needs <0.1), so the conditions fail.\"},\n{\"id\":\"g07v1\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g07v1.r26\"],\"rationale\":\"n_ccrcc_dependent is 0 and padj is 0.5598, so the conditions fail.\"},\n{\"id\":\"g12v1\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g12v1.r01\"],\"rationale\":\"Selectivity is negative, n_ccrcc_dependent is 1 and padj is 0.4459, so the conditions fail.\"}\n]}",
+ "stderr": "",
+ "answers": [
+  {
+   "id": "g11v1",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g11v1.r06"
+   ],
+   "rationale": "DepMap record exists, but n_ccrcc_dependent is 0 (needs ≥3) and padj is 0.466 (needs <0.1)."
+  },
+  {
+   "id": "g05v1",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g05v1.r13"
+   ],
+   "rationale": "DepMap record exists, but n_ccrcc_dependent is 0 and padj is 0.6265, so the conditions fail."
+  },
+  {
+   "id": "g03v1",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g03v1.r20"
+   ],
+   "rationale": "Selectivity is negative (-0.075) and n_ccrcc_dependent is 0. Although padj is 0.0725, the other conditions fail."
+  },
+  {
+   "id": "g06v1",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g06v1.r02"
+   ],
+   "rationale": "n_ccrcc_dependent is 0 and padj is 0.3868, so the conditions fail."
+  },
+  {
+   "id": "g08v1",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g08v1.r20"
+   ],
+   "rationale": "n_ccrcc_dependent is 0 and padj is 0.8221, so the conditions fail."
+  },
+  {
+   "id": "g10v1",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g10v1.r14"
+   ],
+   "rationale": "Selectivity is negative, n_ccrcc_dependent is 0 and padj is 0.4069, so the conditions fail."
+  },
+  {
+   "id": "g02v1",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g02v1.r15"
+   ],
+   "rationale": "n_ccrcc_dependent is 0 and padj is 0.9287, so the conditions fail."
+  },
+  {
+   "id": "g04v1",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g04v1.r18"
+   ],
+   "rationale": "Selectivity is negative, n_ccrcc_dependent is 0 and padj is 0.9288, so the conditions fail."
+  },
+  {
+   "id": "g01v1",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g01v1.r15"
+   ],
+   "rationale": "n_ccrcc_dependent is 0 and padj is 0.4417, so the conditions fail."
+  },
+  {
+   "id": "g09v1",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g09v1.r18"
+   ],
+   "rationale": "n_ccrcc_dependent is 3 and selectivity is positive, but padj is 0.404 (needs <0.1), so the conditions fail."
+  },
+  {
+   "id": "g07v1",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g07v1.r26"
+   ],
+   "rationale": "n_ccrcc_dependent is 0 and padj is 0.5598, so the conditions fail."
+  },
+  {
+   "id": "g12v1",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g12v1.r01"
+   ],
+   "rationale": "Selectivity is negative, n_ccrcc_dependent is 1 and padj is 0.4459, so the conditions fail."
+  }
+ ],
+ "elapsed_s": 15.9
+}

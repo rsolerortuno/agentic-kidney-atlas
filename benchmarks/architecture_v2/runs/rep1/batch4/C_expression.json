@@ -1,0 +1,115 @@
+{
+ "study_hash": "e16667c009c8f276",
+ "prompt_sha256": "173d601c6a216d4a7920c016dddce2e2cfdf67f3c9d09139e3f5a92d1bb3fcf6",
+ "status": "ok",
+ "returncode": 0,
+ "cost_usd": 0.024588,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 4331,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 726,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 4331,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 726,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 4331,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 4331
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 726,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 4331,
+   "webSearchRequests": 0,
+   "costUSD": 0.024588,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 4331,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g11v1\",\"protein_up\":\"no\",\"replicated\":\"no\",\"evidence_ids\":[\"g11v1.r22\",\"g11v1.r25\",\"g11v1.r12\"],\"rationale\":\"CPTAC protein log2fc -0.94, padj 1e-10 → down (no). CPTAC RNA is down (padj 1e-10), the reference. TCGA RNA is also down (padj 1e-8), same direction. No confirmatory protein record for this entity. So one independent cohort agrees and none opposes → replicated yes.\"},{\"id\":\"g07v1\",\"protein_up\":\"no\",\"replicated\":\"yes\",\"evidence_ids\":[\"g07v1.r11\",\"g07v1.r28\",\"g07v1.r22\"],\"rationale\":\"CPTAC protein log2fc -2.51, padj 1e-10 → no. CPTAC RNA down (padj 1e-10) is the reference; TCGA RNA is down (padj 1e-8), concordant, none opposite → yes.\"},{\"id\":\"g06v1\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"evidence_ids\":[\"g06v1.r05\",\"g06v1.r22\",\"g06v1.r26\"],\"rationale\":\"CPTAC protein log2fc 1.83, padj 2.2e-27 → up. CPTAC RNA up (padj 3e-12) is the reference; TCGA RNA up (padj 2.5e-11), concordant, no opposite cohort → replicated.\"},{\"id\":\"g09v1\",\"protein_up\":\"insufficient\",\"replicated\":\"yes\",\"evidence_ids\":[\"g09v1.r15\",\"g09v1.r09\",\"g09v1.r22\"],\"rationale\":\"No CPTAC protein record for the target, so protein_up is insufficient. CPTAC RNA down (padj 2.5e-29) is the reference; TCGA RNA down and confirmatory protein down, both padj<0.05, none opposite → yes.\"}]}\n\nCorrection to my first entry: for g11v1 I put \"replicated\":\"no\" in the JSON, but the rationale correctly reasons it should be \"yes\" (TCGA RNA concordant, no opposing cohort). The intended value for g11v1 is replicated = yes.",
+ "stderr": "",
+ "answers": [
+  {
+   "id": "g11v1",
+   "protein_up": "no",
+   "replicated": "no",
+   "evidence_ids": [
+    "g11v1.r22",
+    "g11v1.r25",
+    "g11v1.r12"
+   ],
+   "rationale": "CPTAC protein log2fc -0.94, padj 1e-10 → down (no). CPTAC RNA is down (padj 1e-10), the reference. TCGA RNA is also down (padj 1e-8), same direction. No confirmatory protein record for this entity. So one independent cohort agrees and none opposes → replicated yes."
+  },
+  {
+   "id": "g07v1",
+   "protein_up": "no",
+   "replicated": "yes",
+   "evidence_ids": [
+    "g07v1.r11",
+    "g07v1.r28",
+    "g07v1.r22"
+   ],
+   "rationale": "CPTAC protein log2fc -2.51, padj 1e-10 → no. CPTAC RNA down (padj 1e-10) is the reference; TCGA RNA is down (padj 1e-8), concordant, none opposite → yes."
+  },
+  {
+   "id": "g06v1",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "evidence_ids": [
+    "g06v1.r05",
+    "g06v1.r22",
+    "g06v1.r26"
+   ],
+   "rationale": "CPTAC protein log2fc 1.83, padj 2.2e-27 → up. CPTAC RNA up (padj 3e-12) is the reference; TCGA RNA up (padj 2.5e-11), concordant, no opposite cohort → replicated."
+  },
+  {
+   "id": "g09v1",
+   "protein_up": "insufficient",
+   "replicated": "yes",
+   "evidence_ids": [
+    "g09v1.r15",
+    "g09v1.r09",
+    "g09v1.r22"
+   ],
+   "rationale": "No CPTAC protein record for the target, so protein_up is insufficient. CPTAC RNA down (padj 2.5e-29) is the reference; TCGA RNA down and confirmatory protein down, both padj<0.05, none opposite → yes."
+  }
+ ],
+ "elapsed_s": 13.9,
+ "case_ids": [
+  "g11v1",
+  "g07v1",
+  "g06v1",
+  "g09v1"
+ ]
+}

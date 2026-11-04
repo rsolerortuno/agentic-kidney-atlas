@@ -1,0 +1,103 @@
+{
+ "study_hash": "e16667c009c8f276",
+ "prompt_sha256": "ad0f0194c5ec2356b77149e1868d3bc72c8bd6857eb310b83fe6e89b525a0ce1",
+ "status": "ok",
+ "returncode": 0,
+ "cost_usd": 0.031129999999999998,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 6709,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 429,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 6709,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 429,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 6709,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 6709
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 429,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 6709,
+   "webSearchRequests": 0,
+   "costUSD": 0.031129999999999998,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 6709,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g08v1\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g08v1.r20\"],\"rationale\":\"DepMap record exists for target: n_ccrcc_dependent=0 (<3) and padj=0.82 (>=0.1), so conditions fail.\"},{\"id\":\"g10v1\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g10v1.r14\"],\"rationale\":\"Target DepMap record: n_ccrcc_dependent=0, selectivity negative (-0.037), padj=0.41. Conditions fail. The other depmap record belongs to ENTITY_58 and is ignored.\"},{\"id\":\"g02v1\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g02v1.r15\"],\"rationale\":\"Target DepMap record: n_ccrcc_dependent=0 (<3) and padj=0.93 (>=0.1), so it fails. The ENTITY_87 depmap record is not evidence for the target.\"},{\"id\":\"g04v1\",\"selective_dependency\":\"no\",\"evidence_ids\":[\"g04v1.r18\"],\"rationale\":\"Target DepMap record exists: n_ccrcc_dependent=0, selectivity negative (-0.008), padj=0.93. Multiple conditions fail.\"}]}",
+ "stderr": "",
+ "answers": [
+  {
+   "id": "g08v1",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g08v1.r20"
+   ],
+   "rationale": "DepMap record exists for target: n_ccrcc_dependent=0 (<3) and padj=0.82 (>=0.1), so conditions fail."
+  },
+  {
+   "id": "g10v1",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g10v1.r14"
+   ],
+   "rationale": "Target DepMap record: n_ccrcc_dependent=0, selectivity negative (-0.037), padj=0.41. Conditions fail. The other depmap record belongs to ENTITY_58 and is ignored."
+  },
+  {
+   "id": "g02v1",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g02v1.r15"
+   ],
+   "rationale": "Target DepMap record: n_ccrcc_dependent=0 (<3) and padj=0.93 (>=0.1), so it fails. The ENTITY_87 depmap record is not evidence for the target."
+  },
+  {
+   "id": "g04v1",
+   "selective_dependency": "no",
+   "evidence_ids": [
+    "g04v1.r18"
+   ],
+   "rationale": "Target DepMap record exists: n_ccrcc_dependent=0, selectivity negative (-0.008), padj=0.93. Multiple conditions fail."
+  }
+ ],
+ "elapsed_s": 10.4,
+ "case_ids": [
+  "g08v1",
+  "g10v1",
+  "g02v1",
+  "g04v1"
+ ]
+}

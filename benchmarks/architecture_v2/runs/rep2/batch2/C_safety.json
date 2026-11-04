@@ -1,0 +1,119 @@
+{
+ "study_hash": "593b0de44496ae2a",
+ "prompt_sha256": "ef565ae97eeb0dd642b6d12adb31d9e03a523887f3d7a8b0079fd5ebb7259c8e",
+ "status": "ok",
+ "case_ids": [
+  "g01v1",
+  "g09v1",
+  "g07v1",
+  "g12v1"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.0336252,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 638,
+  "cache_read_input_tokens": 3492,
+  "output_tokens": 511,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 638,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 511,
+    "cache_read_input_tokens": 3492,
+    "cache_creation_input_tokens": 638,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 638
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 511,
+   "cacheReadInputTokens": 3492,
+   "cacheCreationInputTokens": 638,
+   "webSearchRequests": 0,
+   "costUSD": 0.0080152,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 638,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g01v1\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"no\",\"evidence_ids\":[\"g01v1.r08\",\"g01v1.r18\",\"g01v1.r28\"],\"rationale\":\"Target surface_call is surface. Vital IHC measured with max level 1 (lung) and proteome reports no enrichment, so no vital safety concern.\"},{\"id\":\"g09v1\",\"surface_accessible\":\"insufficient\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g09v1.r13\"],\"rationale\":\"No surface record for the target entity. Target proteome reports vital_protein_enriched true (Brain Cortex), which meets the yes criterion regardless of missing IHC.\"},{\"id\":\"g07v1\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"insufficient\",\"evidence_ids\":[\"g07v1.r10\",\"g07v1.r04\",\"g07v1.r12\"],\"rationale\":\"Target surface_call is surface. IHC not measured and proteome shows no enrichment, so vital safety is insufficient. Other entities' records ignored.\"},{\"id\":\"g12v1\",\"surface_accessible\":\"no\",\"vital_safety_concern\":\"yes\",\"evidence_ids\":[\"g12v1.r07\",\"g12v1.r18\",\"g12v1.r03\"],\"rationale\":\"Target surface_call is internal. Heart muscle IHC level 2 meets the vital-organ threshold (>=2), so concern is yes despite no proteome enrichment. Kidney staining not counted.\"}]}",
+ "stderr": "",
+ "answers": [
+  {
+   "id": "g01v1",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "no",
+   "evidence_ids": [
+    "g01v1.r08",
+    "g01v1.r18",
+    "g01v1.r28"
+   ],
+   "rationale": "Target surface_call is surface. Vital IHC measured with max level 1 (lung) and proteome reports no enrichment, so no vital safety concern."
+  },
+  {
+   "id": "g09v1",
+   "surface_accessible": "insufficient",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g09v1.r13"
+   ],
+   "rationale": "No surface record for the target entity. Target proteome reports vital_protein_enriched true (Brain Cortex), which meets the yes criterion regardless of missing IHC."
+  },
+  {
+   "id": "g07v1",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "insufficient",
+   "evidence_ids": [
+    "g07v1.r10",
+    "g07v1.r04",
+    "g07v1.r12"
+   ],
+   "rationale": "Target surface_call is surface. IHC not measured and proteome shows no enrichment, so vital safety is insufficient. Other entities' records ignored."
+  },
+  {
+   "id": "g12v1",
+   "surface_accessible": "no",
+   "vital_safety_concern": "yes",
+   "evidence_ids": [
+    "g12v1.r07",
+    "g12v1.r18",
+    "g12v1.r03"
+   ],
+   "rationale": "Target surface_call is internal. Heart muscle IHC level 2 meets the vital-organ threshold (>=2), so concern is yes despite no proteome enrichment. Kidney staining not counted."
+  }
+ ],
+ "elapsed_s": 26.5,
+ "previous_attempt": {
+  "status": "failed",
+  "error": "JSONDecodeError: Expecting ',' delimiter: line 1 column 344 (char 343)",
+  "cost_usd": 0.02561,
+  "elapsed_s": 16.6
+ }
+}

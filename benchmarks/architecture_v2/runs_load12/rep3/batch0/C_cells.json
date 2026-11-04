@@ -1,0 +1,187 @@
+{
+ "study_hash": "72280c4a4b27a328",
+ "prompt_sha256": "6748b2e778f0994cf69f8f2f787cac906187b5bacd0f3bf1c4760debe0e9c7bf",
+ "status": "ok",
+ "case_ids": [
+  "g10v1",
+  "g04v1",
+  "g06v1",
+  "g01v1",
+  "g05v1",
+  "g07v1",
+  "g03v1",
+  "g12v1",
+  "g11v1",
+  "g09v1",
+  "g08v1",
+  "g02v1"
+ ],
+ "returncode": 0,
+ "cost_usd": 0.049342000000000004,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 9187,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 1259,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 9187,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1259,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 9187,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 9187
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 1259,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 9187,
+   "webSearchRequests": 0,
+   "costUSD": 0.049342000000000004,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 9187,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g10v1\",\"tumour_intrinsic\":\"insufficient\",\"evidence_ids\":[\"g10v1.r02\",\"g10v1.r15\"],\"rationale\":\"RCC has the largest transcript share (0.964), but the purity-adjusted lfc is -2.928 with SE 1.029, so the lower bound is below 0. Insufficient.\"},{\"id\":\"g04v1\",\"tumour_intrinsic\":\"no\",\"evidence_ids\":[\"g04v1.r08\",\"g04v1.r22\"],\"rationale\":\"RCC share is 0.327, which is larger than Macrophage at 0.272, so RCC is the largest. Purity lfc 3.821 with SE 0.33 gives a lower bound of 3.17, above 0. Both conditions hold, so yes.\"},{\"id\":\"g06v1\",\"tumour_intrinsic\":\"no\",\"evidence_ids\":[\"g06v1.r16\",\"g06v1.r03\"],\"rationale\":\"CD8_T share (0.6) exceeds RCC share (0.2), so a non-RCC group has the larger transcript share. Answer is no.\"},{\"id\":\"g01v1\",\"tumour_intrinsic\":\"yes\",\"evidence_ids\":[\"g01v1.r02\",\"g01v1.r19\"],\"rationale\":\"RCC has the largest share (0.976). Purity lfc 7.787 minus 1.96*0.579 is about 6.65, above 0. Yes.\"},{\"id\":\"g05v1\",\"tumour_intrinsic\":\"yes\",\"evidence_ids\":[\"g05v1.r25\",\"g05v1.r20\"],\"rationale\":\"RCC has the largest share (0.949). Purity lfc 5.278 minus 1.96*0.665 is about 3.97, above 0. Yes.\"},{\"id\":\"g07v1\",\"tumour_intrinsic\":\"yes\",\"evidence_ids\":[\"g07v1.r01\",\"g07v1.r09\"],\"rationale\":\"RCC has the largest share (0.881). Purity lfc 4.88 minus 1.96*0.598 is about 3.71, above 0. Yes.\"},{\"id\":\"g03v1\",\"tumour_intrinsic\":\"yes\",\"evidence_ids\":[\"g03v1.r18\",\"g03v1.r16\"],\"rationale\":\"RCC has the largest share (0.97) in the target's record. Purity lfc 5.256 minus 1.96*0.617 is about 4.05, above 0. Yes.\"},{\"id\":\"g12v1\",\"tumour_intrinsic\":\"no\",\"evidence_ids\":[\"g12v1.r22\",\"g12v1.r02\"],\"rationale\":\"Macrophage share (0.574) exceeds RCC share (0.233) in the target's record, so a non-RCC group is larger. No.\"},{\"id\":\"g11v1\",\"tumour_intrinsic\":\"no\",\"evidence_ids\":[\"g11v1.r17\",\"g11v1.r14\"],\"rationale\":\"Macrophage (0.436) and CD8_T (0.345) both exceed RCC (0.023) in the target's record. No.\"},{\"id\":\"g09v1\",\"tumour_intrinsic\":\"no\",\"evidence_ids\":[\"g09v1.r25\",\"g09v1.r01\"],\"rationale\":\"CD8_T share (0.737) exceeds RCC share (0.072), so a non-RCC group is larger. No.\"},{\"id\":\"g08v1\",\"tumour_intrinsic\":\"no\",\"evidence_ids\":[\"g08v1.r26\",\"g08v1.r21\"],\"rationale\":\"Macrophage share (0.6) exceeds RCC share (0.2) in the target's record. No.\"},{\"id\":\"g02v1\",\"tumour_intrinsic\":\"no\",\"evidence_ids\":[\"g02v1.r20\",\"g02v1.r01\"],\"rationale\":\"CD8_T share (0.533) exceeds RCC share (0.345) in the target's record. No.\"}]}",
+ "stderr": "",
+ "answers": [
+  {
+   "id": "g10v1",
+   "tumour_intrinsic": "insufficient",
+   "evidence_ids": [
+    "g10v1.r02",
+    "g10v1.r15"
+   ],
+   "rationale": "RCC has the largest transcript share (0.964), but the purity-adjusted lfc is -2.928 with SE 1.029, so the lower bound is below 0. Insufficient."
+  },
+  {
+   "id": "g04v1",
+   "tumour_intrinsic": "no",
+   "evidence_ids": [
+    "g04v1.r08",
+    "g04v1.r22"
+   ],
+   "rationale": "RCC share is 0.327, which is larger than Macrophage at 0.272, so RCC is the largest. Purity lfc 3.821 with SE 0.33 gives a lower bound of 3.17, above 0. Both conditions hold, so yes."
+  },
+  {
+   "id": "g06v1",
+   "tumour_intrinsic": "no",
+   "evidence_ids": [
+    "g06v1.r16",
+    "g06v1.r03"
+   ],
+   "rationale": "CD8_T share (0.6) exceeds RCC share (0.2), so a non-RCC group has the larger transcript share. Answer is no."
+  },
+  {
+   "id": "g01v1",
+   "tumour_intrinsic": "yes",
+   "evidence_ids": [
+    "g01v1.r02",
+    "g01v1.r19"
+   ],
+   "rationale": "RCC has the largest share (0.976). Purity lfc 7.787 minus 1.96*0.579 is about 6.65, above 0. Yes."
+  },
+  {
+   "id": "g05v1",
+   "tumour_intrinsic": "yes",
+   "evidence_ids": [
+    "g05v1.r25",
+    "g05v1.r20"
+   ],
+   "rationale": "RCC has the largest share (0.949). Purity lfc 5.278 minus 1.96*0.665 is about 3.97, above 0. Yes."
+  },
+  {
+   "id": "g07v1",
+   "tumour_intrinsic": "yes",
+   "evidence_ids": [
+    "g07v1.r01",
+    "g07v1.r09"
+   ],
+   "rationale": "RCC has the largest share (0.881). Purity lfc 4.88 minus 1.96*0.598 is about 3.71, above 0. Yes."
+  },
+  {
+   "id": "g03v1",
+   "tumour_intrinsic": "yes",
+   "evidence_ids": [
+    "g03v1.r18",
+    "g03v1.r16"
+   ],
+   "rationale": "RCC has the largest share (0.97) in the target's record. Purity lfc 5.256 minus 1.96*0.617 is about 4.05, above 0. Yes."
+  },
+  {
+   "id": "g12v1",
+   "tumour_intrinsic": "no",
+   "evidence_ids": [
+    "g12v1.r22",
+    "g12v1.r02"
+   ],
+   "rationale": "Macrophage share (0.574) exceeds RCC share (0.233) in the target's record, so a non-RCC group is larger. No."
+  },
+  {
+   "id": "g11v1",
+   "tumour_intrinsic": "no",
+   "evidence_ids": [
+    "g11v1.r17",
+    "g11v1.r14"
+   ],
+   "rationale": "Macrophage (0.436) and CD8_T (0.345) both exceed RCC (0.023) in the target's record. No."
+  },
+  {
+   "id": "g09v1",
+   "tumour_intrinsic": "no",
+   "evidence_ids": [
+    "g09v1.r25",
+    "g09v1.r01"
+   ],
+   "rationale": "CD8_T share (0.737) exceeds RCC share (0.072), so a non-RCC group is larger. No."
+  },
+  {
+   "id": "g08v1",
+   "tumour_intrinsic": "no",
+   "evidence_ids": [
+    "g08v1.r26",
+    "g08v1.r21"
+   ],
+   "rationale": "Macrophage share (0.6) exceeds RCC share (0.2) in the target's record. No."
+  },
+  {
+   "id": "g02v1",
+   "tumour_intrinsic": "no",
+   "evidence_ids": [
+    "g02v1.r20",
+    "g02v1.r01"
+   ],
+   "rationale": "CD8_T share (0.533) exceeds RCC share (0.345) in the target's record. No."
+  }
+ ],
+ "elapsed_s": 17.0
+}

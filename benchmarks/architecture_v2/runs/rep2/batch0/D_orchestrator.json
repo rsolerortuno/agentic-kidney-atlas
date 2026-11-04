@@ -1,0 +1,159 @@
+{
+ "study_hash": "e16667c009c8f276",
+ "prompt_sha256": "a35dfe1cee515d6748769c706e1b97b8deeb4fcb091395c8474bd720b92f8e35",
+ "status": "ok",
+ "returncode": 0,
+ "cost_usd": 0.074422,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 14332,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 1709,
+  "output_tokens_details": {
+   "thinking_tokens": 569
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 14332,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1709,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 14332,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 14332
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 1709,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 14332,
+   "webSearchRequests": 0,
+   "costUSD": 0.074422,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 569,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 14332,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g05v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"needs_more_data\",\"evidence_ids\":[\"g05v0.r28\",\"g05v0.r05\",\"g05v0.r15\",\"g05v0.r09\",\"g05v0.r25\",\"g05v0.r22\",\"g05v0.r07\",\"g05v0.r13\",\"g05v0.r14\",\"g05v0.r26\"],\"rationale\":\"Protein and RNA up, replicated in TCGA and confirmatory protein. RCC has the top transcript share (0.949) and the purity interval is above 0. Surface protein, but vital IHC level 3 (duodenum) means a safety concern. DepMap fails (0 dependent lines, padj 0.63). Not a candidate.\"},{\"id\":\"g01v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"needs_more_data\",\"evidence_ids\":[\"g01v0.r09\",\"g01v0.r10\",\"g01v0.r26\",\"g01v0.r23\",\"g01v0.r01\",\"g01v0.r19\",\"g01v0.r28\",\"g01v0.r21\",\"g01v0.r16\"],\"rationale\":\"Protein up; RNA replicated in TCGA. RCC share 0.976 and purity lower bound above 0. Surface call. Vital IHC level 3 (stomach) and proteome enrichment true, so safety concern. DepMap fails (0 dependent lines, padj 0.44). Not a candidate.\"},{\"id\":\"g06v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"yes\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"no\",\"selective_dependency\":\"no\",\"verdict\":\"surface_target_candidate\",\"evidence_ids\":[\"g06v0.r12\",\"g06v0.r23\",\"g06v0.r01\",\"g06v0.r06\",\"g06v0.r19\",\"g06v0.r24\",\"g06v0.r13\",\"g06v0.r17\"],\"rationale\":\"Protein up, RNA replicated in TCGA. RCC share 0.823 is largest, and purity lower bound is 2.057-1.672=0.385>0. Surface call. Vital IHC measured at max level 1 with no enrichment reported. DepMap fails (0 dependent lines, padj 0.39). All candidate criteria met.\"},{\"id\":\"g11v0\",\"protein_up\":\"yes\",\"replicated\":\"yes\",\"tumour_intrinsic\":\"no\",\"surface_accessible\":\"yes\",\"vital_safety_concern\":\"yes\",\"selective_dependency\":\"no\",\"verdict\":\"infiltration_signal\",\"evidence_ids\":[\"g11v0.r01\",\"g11v0.r19\",\"g11v0.r15\",\"g11v0.r25\",\"g11v0.r18\",\"g11v0.r13\",\"g11v0.r08\",\"g11v0.r02\",\"g11v0.r03\"],\"rationale\":\"Protein up and replicated. Macrophage (0.436) and CD8_T transcript shares exceed RCC (0.023), so not tumour-intrinsic. Surface call, but vital IHC level 3 (cerebellum). DepMap fails (0 dependent lines, padj 0.47). Infiltration signal.\"}]}",
+ "stderr": "",
+ "answers": [
+  {
+   "id": "g05v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "yes",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "yes",
+   "selective_dependency": "no",
+   "verdict": "needs_more_data",
+   "evidence_ids": [
+    "g05v0.r28",
+    "g05v0.r05",
+    "g05v0.r15",
+    "g05v0.r09",
+    "g05v0.r25",
+    "g05v0.r22",
+    "g05v0.r07",
+    "g05v0.r13",
+    "g05v0.r14",
+    "g05v0.r26"
+   ],
+   "rationale": "Protein and RNA up, replicated in TCGA and confirmatory protein. RCC has the top transcript share (0.949) and the purity interval is above 0. Surface protein, but vital IHC level 3 (duodenum) means a safety concern. DepMap fails (0 dependent lines, padj 0.63). Not a candidate."
+  },
+  {
+   "id": "g01v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "yes",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "yes",
+   "selective_dependency": "no",
+   "verdict": "needs_more_data",
+   "evidence_ids": [
+    "g01v0.r09",
+    "g01v0.r10",
+    "g01v0.r26",
+    "g01v0.r23",
+    "g01v0.r01",
+    "g01v0.r19",
+    "g01v0.r28",
+    "g01v0.r21",
+    "g01v0.r16"
+   ],
+   "rationale": "Protein up; RNA replicated in TCGA. RCC share 0.976 and purity lower bound above 0. Surface call. Vital IHC level 3 (stomach) and proteome enrichment true, so safety concern. DepMap fails (0 dependent lines, padj 0.44). Not a candidate."
+  },
+  {
+   "id": "g06v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "yes",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "no",
+   "selective_dependency": "no",
+   "verdict": "surface_target_candidate",
+   "evidence_ids": [
+    "g06v0.r12",
+    "g06v0.r23",
+    "g06v0.r01",
+    "g06v0.r06",
+    "g06v0.r19",
+    "g06v0.r24",
+    "g06v0.r13",
+    "g06v0.r17"
+   ],
+   "rationale": "Protein up, RNA replicated in TCGA. RCC share 0.823 is largest, and purity lower bound is 2.057-1.672=0.385>0. Surface call. Vital IHC measured at max level 1 with no enrichment reported. DepMap fails (0 dependent lines, padj 0.39). All candidate criteria met."
+  },
+  {
+   "id": "g11v0",
+   "protein_up": "yes",
+   "replicated": "yes",
+   "tumour_intrinsic": "no",
+   "surface_accessible": "yes",
+   "vital_safety_concern": "yes",
+   "selective_dependency": "no",
+   "verdict": "infiltration_signal",
+   "evidence_ids": [
+    "g11v0.r01",
+    "g11v0.r19",
+    "g11v0.r15",
+    "g11v0.r25",
+    "g11v0.r18",
+    "g11v0.r13",
+    "g11v0.r08",
+    "g11v0.r02",
+    "g11v0.r03"
+   ],
+   "rationale": "Protein up and replicated. Macrophage (0.436) and CD8_T transcript shares exceed RCC (0.023), so not tumour-intrinsic. Surface call, but vital IHC level 3 (cerebellum). DepMap fails (0 dependent lines, padj 0.47). Infiltration signal."
+  }
+ ],
+ "elapsed_s": 16.5,
+ "case_ids": [
+  "g05v0",
+  "g01v0",
+  "g06v0",
+  "g11v0"
+ ]
+}

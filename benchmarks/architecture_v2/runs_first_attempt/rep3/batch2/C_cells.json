@@ -1,0 +1,105 @@
+{
+ "study_hash": "e16667c009c8f276",
+ "prompt_sha256": "6c456dd858ffcda0ec7376467ef0cfc1fa26f8b043f0cd82cfca5642a1b5dc7d",
+ "status": "ok",
+ "returncode": 0,
+ "cost_usd": 0.021438,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 4156,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 481,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 4156,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 481,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 4156,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 4156
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model_usage": {
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 481,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 4156,
+   "webSearchRequests": 0,
+   "costUSD": 0.021438,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 4156,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "subtype": "success",
+ "result": "{\"answers\":[{\"id\":\"g07v0\",\"tumour_intrinsic\":\"yes\",\"evidence_ids\":[\"g07v0.r23\",\"g07v0.r20\"],\"rationale\":\"For ENTITY_74, RCC has the largest transcript share (0.881 vs 0.055 for the next group). Purity lfc 4.88 - 1.96*0.598 = 3.71 > 0. Records for ENTITY_37 were ignored.\"}, {\"id\":\"g05v0\",\"tumour_intrinsic\":\"yes\",\"evidence_ids\":[\"g05v0.r25\",\"g05v0.r22\"],\"rationale\":\"For ENTITY_29, RCC has the largest share (0.949). Purity lfc 5.278 - 1.96*0.665 = 3.97 > 0. ENTITY_65 record ignored.\"}, {\"id\":\"g11v0\",\"tumour_intrinsic\":\"no\",\"evidence_ids\":[\"g11v0.r18\"],\"rationale\":\"For ENTITY_09, Macrophage (0.436) and CD8_T (0.345) have larger transcript shares than RCC (0.023), so a non-RCC group exceeds RCC.\"}, {\"id\":\"g12v0\",\"tumour_intrinsic\":\"no\",\"evidence_ids\":[\"g12v0.r05\"],\"rationale\":\"For ENTITY_18, Macrophage share (0.574) exceeds RCC share (0.233), so a non-RCC group is larger than RCC.\"}]}",
+ "stderr": "",
+ "answers": [
+  {
+   "id": "g07v0",
+   "tumour_intrinsic": "yes",
+   "evidence_ids": [
+    "g07v0.r23",
+    "g07v0.r20"
+   ],
+   "rationale": "For ENTITY_74, RCC has the largest transcript share (0.881 vs 0.055 for the next group). Purity lfc 4.88 - 1.96*0.598 = 3.71 > 0. Records for ENTITY_37 were ignored."
+  },
+  {
+   "id": "g05v0",
+   "tumour_intrinsic": "yes",
+   "evidence_ids": [
+    "g05v0.r25",
+    "g05v0.r22"
+   ],
+   "rationale": "For ENTITY_29, RCC has the largest share (0.949). Purity lfc 5.278 - 1.96*0.665 = 3.97 > 0. ENTITY_65 record ignored."
+  },
+  {
+   "id": "g11v0",
+   "tumour_intrinsic": "no",
+   "evidence_ids": [
+    "g11v0.r18"
+   ],
+   "rationale": "For ENTITY_09, Macrophage (0.436) and CD8_T (0.345) have larger transcript shares than RCC (0.023), so a non-RCC group exceeds RCC."
+  },
+  {
+   "id": "g12v0",
+   "tumour_intrinsic": "no",
+   "evidence_ids": [
+    "g12v0.r05"
+   ],
+   "rationale": "For ENTITY_18, Macrophage share (0.574) exceeds RCC share (0.233), so a non-RCC group is larger than RCC."
+  }
+ ],
+ "elapsed_s": 10.6,
+ "case_ids": [
+  "g07v0",
+  "g05v0",
+  "g11v0",
+  "g12v0"
+ ]
+}
