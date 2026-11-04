@@ -75,6 +75,12 @@ What the numbers say:
 
 ## Recommendation for the atlas
 
+**Update (pipeline benchmark, `../architecture_pipeline`):** with retrieval included, multi-agent tied on quality and
+was about 40 % cheaper and 9 times faster, because parallel specialists on a cheaper model gather the evidence. So:
+single agent for interpreting gathered evidence, multi-agent for the tool-heavy pipeline. The text below was written
+before that experiment.
+
+
 For the interpretation and integration step, a single agent with the whole evidence is enough and is cheaper,
 faster and more reliable. Keep the multi-agent pipeline only if a benefit is shown where this benchmark did not look:
 

@@ -14,7 +14,10 @@ from . import provenance, semantic
 from .graph import GraphStore
 from .literature_entities import resolve_gene
 
-AGENT_FILES = ("agent_omics.json", "agent_literature.json", "agent_external.json", "agent_cells.json", "agent_applied.json")
+AGENT_FILES = ("agent_omics.json", "agent_literature.json", "agent_external.json", "agent_cells.json", "agent_applied.json",
+               "agent_single.json")
+# written only by the single-agent arm of the architecture benchmark (benchmarks/architecture_pipeline); absent otherwise
+OPTIONAL_AGENT_FILES = {"agent_single.json"}
 
 
 class Verifier:
@@ -86,7 +89,8 @@ def verify_agents(run_dir: Path) -> dict:
     for name in AGENT_FILES:
         path = run_dir / name
         if not path.exists():
-            report["agents"][name] = {"missing": True}
+            if name not in OPTIONAL_AGENT_FILES:
+                report["agents"][name] = {"missing": True}
             continue
         data = json.loads(path.read_text(encoding="utf-8"))
         kept, logs = [], []

@@ -1,0 +1,359 @@
+{
+ "agent": "agente-celular",
+ "findings": [
+  {
+   "gene": "CA9",
+   "role": "target_and_biomarker",
+   "statement": "CA9 is rank 1 in the convergence ranking and is carried almost entirely by the tumour cells: RCC cells hold a transcript share of [gene=CA9; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=RCC; tissue=tumor; share_of_tumor_transcripts=0.976], so the bulk signal is tumour-intrinsic and the purity-extrapolated log2FC stays large. It already has clinical antibody history (girentuximab), so it is a biomarker/imaging target rather than a novel one.",
+   "evidence_ids": [
+    "EV:sc_expr:35b84fee998f",
+    "EV:sc_summary:225a767ebcb5",
+    "EV:purity:225a767ebcb5",
+    "EV:tcga_de:225a767ebcb5"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:sc_expr:35b84fee998f",
+     "field": [
+      "share_of_tumor_transcripts"
+     ],
+     "display": "0.976",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "CA9",
+   "role": "mechanism",
+   "statement": "In Visium, the neighbours of high-CA9 spots are enriched in RCC cells (log2 enrichment [gene=CA9; type=spatial_neighborhood; source=DATASET:LI2022-VISIUM; cell_group=RCC; log2_enrichment=0.381]) and, more weakly, macrophages; composition-corrected attribution puts essentially all spot expression on RCC, consistent with the single-cell result.",
+   "evidence_ids": [
+    "EV:spatial_nb:35b84fee998f",
+    "EV:spatial_summary:225a767ebcb5"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:spatial_nb:35b84fee998f",
+     "field": [
+      "log2_enrichment"
+     ],
+     "display": "0.381",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "CA9",
+   "role": "target",
+   "statement": "The AlphaFold CA9 model has a mean pLDDT of [gene=CA9; type=alphafold_model; source=DATASET:ALPHAFOLD-DB; mean_plddt=76.56]; its top detected cavity has a volume of [gene=CA9; type=structural_context; source=DATASET:ALPHAFOLD-DB; volume_a3=126.8] A3 with one nearby accessible lysine (K109), and the cavities recover about half of experimental ligand-contact residues. This is a descriptive monomer heuristic only and says nothing about degrons or ligase compatibility.",
+   "evidence_ids": [
+    "EV:alphafold:6b2a466ed88e",
+    "EV:structural_context:cacfae1940f6",
+    "EV:ligand_sites:93360ddb9195"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:alphafold:6b2a466ed88e",
+     "field": [
+      "mean_plddt"
+     ],
+     "display": "76.56",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:structural_context:cacfae1940f6",
+     "field": [
+      "volume_a3"
+     ],
+     "display": "126.8",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "CD70",
+   "role": "target",
+   "statement": "CD70 ranks fourth in convergence with tumour-up expression in CPTAC and TCGA that persists when extrapolated to pure tumour, and RCC cells are the largest per-cell source in the scRNA data, though Treg and other lymphocytes also express it at lower levels. It has early-phase antibody and ADC history, so it is a tumour-cell target with immune co-expression to account for.",
+   "evidence_ids": [
+    "EV:tcga_de:908e84663f6a",
+    "EV:purity:908e84663f6a"
+   ],
+   "numeric_claims": []
+  },
+  {
+   "gene": "MET",
+   "role": "target",
+   "statement": "MET transcripts are mostly tumour-cell derived, with RCC cells holding a share of [gene=MET; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=RCC; tissue=tumor; share_of_tumor_transcripts=0.935], while only a minority of RCC cells express it and endothelium contributes a small part. MET is therefore a tumour-intrinsic but heterogeneous target.",
+   "evidence_ids": [
+    "EV:sc_expr:114c287fd103",
+    "EV:sc_summary:8314520758de"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:sc_expr:114c287fd103",
+     "field": [
+      "share_of_tumor_transcripts"
+     ],
+     "display": "0.935",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "EPAS1",
+   "role": "mechanism",
+   "statement": "EPAS1 (HIF-2a) is not mainly a tumour-cell transcript in this dataset: [gene=EPAS1; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=Endothelial; tissue=tumor; pct_expressing=81.3] percent of endothelial cells express it versus [gene=EPAS1; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=RCC; tissue=tumor; pct_expressing=4.9] percent of RCC cells, and fibroblasts are also high. Bulk EPAS1 signal is therefore largely stromal, and RCC-cell dropout in 10x may understate tumour expression.",
+   "evidence_ids": [
+    "EV:sc_expr:d00e4a293c7f",
+    "EV:sc_expr:ffb74b11de1d",
+    "EV:sc_summary:6a657326c9fd"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:sc_expr:d00e4a293c7f",
+     "field": [
+      "pct_expressing"
+     ],
+     "display": "81.3",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:sc_expr:ffb74b11de1d",
+     "field": [
+      "pct_expressing"
+     ],
+     "display": "4.9",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "KDR",
+   "role": "microenvironment",
+   "statement": "KDR is an endothelial (microenvironment) target, not a tumour-cell target: endothelium holds a transcript share of [gene=KDR; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=Endothelial; tissue=tumor; share_of_tumor_transcripts=0.951], consistent with the anti-angiogenic TKI rationale.",
+   "evidence_ids": [
+    "EV:sc_expr:801fa5377cb7",
+    "EV:sc_summary:fd47891e1c7f"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:sc_expr:801fa5377cb7",
+     "field": [
+      "share_of_tumor_transcripts"
+     ],
+     "display": "0.951",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "CD74",
+   "role": "microenvironment",
+   "statement": "CD74 is an immune/antigen-presenting gene: macrophages hold [gene=CD74; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=Macrophage; tissue=tumor; share_of_tumor_transcripts=0.436] of tumour transcripts, and cDC, B cells and pDC express it in essentially all cells. Bulk elevation reflects infiltration, not tumour-cell expression.",
+   "evidence_ids": [
+    "EV:sc_expr:a2ae18752f02",
+    "EV:sc_summary:ee059aa145d0"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:sc_expr:a2ae18752f02",
+     "field": [
+      "share_of_tumor_transcripts"
+     ],
+     "display": "0.436",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "CXCR4",
+   "role": "microenvironment",
+   "statement": "CXCR4 is a lymphocyte gene: CD8 T cells hold [gene=CXCR4; type=sc_celltype_expression; source=DATASET:LI2022-SCRNA; cell_group=CD8_T; tissue=tumor; share_of_tumor_transcripts=0.563] of transcripts (driven partly by their abundance), with CD4 T, B and pDC cells also expressing it. It is an immune-microenvironment target, not tumour-intrinsic.",
+   "evidence_ids": [
+    "EV:sc_expr:52ac4d964066",
+    "EV:sc_summary:a804b568bd15"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:sc_expr:52ac4d964066",
+     "field": [
+      "share_of_tumor_transcripts"
+     ],
+     "display": "0.563",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "COL23A1",
+   "role": "discovery",
+   "statement": "COL23A1 is the top tumour-track candidate: RCC cells hold a transcript share of [gene=COL23A1; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=tumor; source_share=0.881], it has few ccRCC papers and no clinical drug, is annotated as a cell-membrane protein, replicates in TCGA and stays up at pure tumour (log2FC [gene=COL23A1; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=tumor; rna_lfc_at_purity1=4.88]), has no adverse survival signal, and shows no vital-organ protein enrichment. Missing: any DepMap or functional dependency (ccRCC effect is not selective), antibody-accessible epitope confirmation (SURFY and CSPA do not support surface), and literature counted by gene symbol only.",
+   "evidence_ids": [
+    "EV:discovery:e1532aa1b09c",
+    "EV:tcga_de:e1532aa1b09c",
+    "EV:purity:e1532aa1b09c",
+    "EV:tcga_survival:e1532aa1b09c",
+    "EV:normal_proteome:e1532aa1b09c"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:discovery:e1532aa1b09c",
+     "field": [
+      "source_share"
+     ],
+     "display": "0.881",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:e1532aa1b09c",
+     "field": [
+      "rna_lfc_at_purity1"
+     ],
+     "display": "4.88",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "COL23A1",
+   "role": "discovery",
+   "statement": "The AlphaFold model of COL23A1 has low confidence (mean pLDDT [gene=COL23A1; type=alphafold_model; source=DATASET:ALPHAFOLD-DB; mean_plddt=58.91]) and only a tiny, shallow cavity, so a small-molecule route looks unlikely from this monomer; an antibody or other biologic route is the more plausible one if surface display is confirmed.",
+   "evidence_ids": [
+    "EV:alphafold:4f8072787076",
+    "EV:structural_context:3a4161457d4f"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:alphafold:4f8072787076",
+     "field": [
+      "mean_plddt"
+     ],
+     "display": "58.91",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "RAB42",
+   "role": "discovery",
+   "statement": "RAB42 is a second tumour-track candidate made mainly by RCC cells (transcript share [gene=RAB42; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=tumor; source_share=0.627]), with TCGA replication and purity-robust upregulation, few ccRCC papers and no clinical drug. It is an internal protein, so it is not antibody-accessible, and it has no dependency or functional evidence.",
+   "evidence_ids": [
+    "EV:discovery:f53feb0aa597",
+    "EV:tcga_de:f53feb0aa597",
+    "EV:purity:f53feb0aa597",
+    "EV:tcga_survival:f53feb0aa597"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:discovery:f53feb0aa597",
+     "field": [
+      "source_share"
+     ],
+     "display": "0.627",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "OLFML2A",
+   "role": "discovery",
+   "statement": "OLFML2A is a stroma-track candidate: fibroblasts hold a transcript share of [gene=OLFML2A; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=stroma; source_share=0.647], it is up in TCGA and purity-robust, with few ccRCC papers and no clinical drug. It is a secreted/extracellular protein with notable colon expression, no adverse survival signal and no dependency data, so any target would be a fibroblast microenvironment hypothesis.",
+   "evidence_ids": [
+    "EV:discovery:eb3ffaa04212",
+    "EV:tcga_de:eb3ffaa04212",
+    "EV:purity:eb3ffaa04212",
+    "EV:tcga_survival:eb3ffaa04212"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:discovery:eb3ffaa04212",
+     "field": [
+      "source_share"
+     ],
+     "display": "0.647",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "JAG2",
+   "role": "discovery",
+   "statement": "JAG2 is an endothelial stroma-track candidate (Notch ligand, antibody-tractable, surface/secreted) that replicates in TCGA and is purity-robust, with no clinical drug; the effect size is modest and it has non-trivial heart expression, so endothelial specificity and off-tumour safety are unresolved.",
+   "evidence_ids": [
+    "EV:discovery:85b9825a2b63",
+    "EV:tcga_de:85b9825a2b63",
+    "EV:purity:85b9825a2b63",
+    "EV:tcga_survival:85b9825a2b63"
+   ],
+   "numeric_claims": []
+  },
+  {
+   "gene": "LILRB4",
+   "role": "discovery",
+   "statement": "LILRB4 is a macrophage-carried immune-track candidate (macrophage transcript share [gene=LILRB4; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=immune; source_share=0.933]) but it is flagged infiltration-driven, with log2FC at pure tumour only [gene=LILRB4; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=immune; rna_lfc_at_purity1=0.508]. It is a tumour-associated macrophage target, not a tumour-cell one, with no ccRCC functional or dependency evidence and lung expression to assess.",
+   "evidence_ids": [
+    "EV:discovery:3c9bb849285e",
+    "EV:tcga_de:3c9bb849285e",
+    "EV:purity:3c9bb849285e",
+    "EV:tcga_survival:3c9bb849285e"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:discovery:3c9bb849285e",
+     "field": [
+      "source_share"
+     ],
+     "display": "0.933",
+     "unit": "native"
+    },
+    {
+     "evidence_id": "EV:discovery:3c9bb849285e",
+     "field": [
+      "rna_lfc_at_purity1"
+     ],
+     "display": "0.508",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "MILR1",
+   "role": "discovery",
+   "statement": "MILR1 is a macrophage gene with no ccRCC papers and no clinical drug, up in TCGA and linked to adverse survival, but its signal is infiltration-driven (log2FC at pure tumour only [gene=MILR1; type=discovery_profile; source=Europe PMC + Open Targets + UniProt + CPTAC + scRNA-seq; track=immune; rna_lfc_at_purity1=0.414]). It could mark macrophage abundance rather than a tumour-cell vulnerability; function is untested.",
+   "evidence_ids": [
+    "EV:discovery:bba941fb5229",
+    "EV:tcga_de:bba941fb5229",
+    "EV:purity:bba941fb5229",
+    "EV:tcga_survival:bba941fb5229"
+   ],
+   "numeric_claims": [
+    {
+     "evidence_id": "EV:discovery:bba941fb5229",
+     "field": [
+      "rna_lfc_at_purity1"
+     ],
+     "display": "0.414",
+     "unit": "native"
+    }
+   ]
+  },
+  {
+   "gene": "NNMT",
+   "role": "target_and_biomarker",
+   "statement": "NNMT ranks eighth in convergence with tumour-intrinsic, TCGA-replicated upregulation, adverse prognosis and grade association, and no clinical drug; it is a metabolic enzyme, so it is a biomarker and enzyme-target hypothesis whose ccRCC dependency has not been shown to be selective.",
+   "evidence_ids": [
+    "EV:tcga_de:7dbf93860d9f",
+    "EV:purity:7dbf93860d9f",
+    "EV:tcga_survival:7dbf93860d9f"
+   ],
+   "numeric_claims": []
+  }
+ ],
+ "caveats": [
+  "Discovery candidates are data-ranked hypotheses; none has validated dependency or functional evidence, and literature is counted by gene symbol.",
+  "Single-cell transcript shares depend on how many cells of each type were captured; the RCC-cell dropout in 10x may understate EPAS1 in tumour cells.",
+  "Structural scores are a descriptive monomer heuristic; they do not identify degrons, ligase compatibility or degradation.",
+  "SC data are from 12 donors, some groups (endothelium, PT) come from few donors.",
+  "CD70 and NNMT single-cell records were not cited with numbers because no record id was available or not queried; spatial context and pockets were only run for CA9 and COL23A1.",
+  "Several top biomarkers in the convergence ranking (ALDOB, SLC22A8, UMOD, FABP1, NPHS2, PIGR) are down in tumour and reflect lost proximal tubule identity; they were not examined at the cell level."
+ ]
+}
