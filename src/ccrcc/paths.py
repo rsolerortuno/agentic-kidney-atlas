@@ -6,6 +6,7 @@ DATA = ROOT / "data"
 RAW = DATA / "raw"
 PROCESSED = DATA / "processed"
 CACHE = DATA / "cache"
+AGENT_CACHE = DATA / "cache_agent"   # answers fetched by agent tools; not part of the frozen inputs
 LITERATURE = DATA / "literature"
 GRAPH_DB = DATA / "graph" / "kg.sqlite"
 RUNS = ROOT / "runs"

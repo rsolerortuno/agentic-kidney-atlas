@@ -18,12 +18,20 @@ STRING_URL = "https://string-db.org/api/json/interaction_partners"
 UNIPROT_URL = "https://rest.uniprot.org/uniprotkb/search"
 
 
+# Where a new answer is written. The pipeline writes to data/cache, which is frozen in reproducibility/inputs.json.
+# The agents' tools (mcp_servers/external.py) set this to data/cache_agent: a lookup made during an agent run for a
+# gene the pipeline never queried used to add a file to the frozen tree, after which the input check and `run-all`
+# failed ("unlisted input in frozen tree").
+WRITE_ROOT = CACHE
+
+
 def _cached(source: str, key: str, fetch):
-    d = CACHE / source
-    d.mkdir(parents=True, exist_ok=True)
-    path = d / (hashlib.sha1(key.encode()).hexdigest()[:16] + ".json")
-    if path.exists():
-        return json.loads(path.read_text(encoding="utf-8"))
+    name = hashlib.sha1(key.encode()).hexdigest()[:16] + ".json"
+    for root in dict.fromkeys((CACHE, WRITE_ROOT)):       # the frozen cache is always read first
+        if (root / source / name).exists():
+            return json.loads((root / source / name).read_text(encoding="utf-8"))
+    path = WRITE_ROOT / source / name
+    path.parent.mkdir(parents=True, exist_ok=True)
     data = fetch()
     path.write_text(json.dumps({"key": key, "retrieved_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
                                 "data": data}), encoding="utf-8")

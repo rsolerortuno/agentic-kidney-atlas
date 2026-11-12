@@ -7,10 +7,11 @@ from mcp.server.fastmcp import FastMCP
 from .. import external as ext
 from ..config import load
 from ..graph import evidence_id
-from ..paths import PROCESSED, RAW
+from ..paths import AGENT_CACHE, PROCESSED, RAW
 from .common import canonical_gene, clean, existing
 
 mcp = FastMCP("external-mcp")
+ext.WRITE_ROOT = AGENT_CACHE   # agent lookups never write into the frozen input tree (data/cache)
 
 
 def _ensembl(symbol: str) -> str | None:
