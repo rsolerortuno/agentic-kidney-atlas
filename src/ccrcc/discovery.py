@@ -43,6 +43,17 @@ from .singlecell import CELL_GROUPS
 TODAY = date.today().isoformat()
 IMMUNE = {"CD8_T", "CD4_T", "Treg", "T_other", "NK", "B", "Plasma", "Macrophage", "Monocyte", "cDC", "pDC", "Mast"}
 CLINICAL = {"APPROVAL", "PHASE_4", "PHASE_3", "PHASE_2", "PHASE_1", "PHASE_2_3", "PHASE_1_2"}
+STAGE_ORDER = ("APPROVAL", "PHASE_4", "PHASE_3", "PHASE_2_3", "PHASE_2", "PHASE_1_2", "PHASE_1")   # most advanced first
+
+
+def max_stage(stages) -> str | None:
+    """Most advanced clinical stage; a non-clinical label (WITHDRAWAL, UNKNOWN...) only when there is no clinical one.
+    (Until 2026-11-12 this was an alphabetical maximum, which put APPROVAL below every PHASE_n.)"""
+    stages = {s for s in stages if isinstance(s, str)}
+    for s in STAGE_ORDER:
+        if s in stages:
+            return s
+    return max(stages, default=None)
 
 
 def _gene_terms(symbol: str, hg: pd.DataFrame) -> str:
@@ -134,7 +145,7 @@ def annotate(d: pd.DataFrame) -> pd.DataFrame:
         rec.update({"ot_available": t is not None,
                     "clinical_drugs": [x["name"] for x in drugs if x["max_stage"] in CLINICAL],
                     "any_drugs": [x["name"] for x in drugs],
-                    "max_drug_stage": max((x["max_stage"] for x in drugs), key=lambda s: (s in CLINICAL, s), default=None),
+                    "max_drug_stage": max_stage(x["max_stage"] for x in drugs),
                     "modalities": (t or {}).get("tractable_modalities", []),
                     "ot_ccrcc_score": float(ot_assoc["score"].get(g, 0.0)),
                     "ot_genetic": float(ot_assoc["dt_genetic_association"].get(g, 0.0))})

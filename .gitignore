@@ -6,6 +6,7 @@ __pycache__/
 data/raw/
 data/processed/
 data/cache/
+data/cache_agent/
 data/graph/
 # PubMed titles/abstracts are local inputs; exact replay requires the frozen snapshot
 data/literature/pubtator/
