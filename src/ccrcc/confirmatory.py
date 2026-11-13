@@ -25,7 +25,7 @@ import pandas as pd
 from scipy import stats
 
 from .layers import MIN_PAIRS, bh, paired_de
-from .omics import LAYERS, load_hgnc, read_matrix
+from .omics import LAYERS, build_symbol_map, load_hgnc, read_matrix, to_hgnc
 from .paths import PROCESSED, RAW
 
 CONF = RAW / "confirmatory"
@@ -59,6 +59,11 @@ def proteome() -> pd.DataFrame:
     t, n = _split(raw, disc_cases)
     de = paired_de(t, n).rename(columns={"feature": "gene", "log2fc": "conf_log2fc", "padj": "conf_padj",
                                          "n_pairs": "conf_n_pairs", "pvalue": "conf_pvalue", "t": "conf_t"})
+    # The DIA matrix uses the symbols of its release; the discovery table is keyed on current HGNC symbols. Joined as
+    # they were, 174 tested proteins with a renamed symbol dropped out (AARS1, ADSS1, MMUT ...) (fixed 2026-11-13).
+    # COXFA4L2 (NDUFA4L2) is not one of them: like CA9 it is not detected in normal kidney here, so it has no pairs.
+    # The test and its BH adjustment above cover every protein of the matrix, so existing rows do not change.
+    de = to_hgnc(de, "gene", rank_by="conf_n_pairs")
     d = pd.read_parquet(PROCESSED / "de_results.parquet")
     d = d[d["layer"] == "protein"].dropna(subset=["hgnc_symbol"]).drop_duplicates("hgnc_symbol").set_index("hgnc_symbol")
     out = de.set_index("gene").join(d[["log2fc", "padj"]].rename(columns={"log2fc": "disc_log2fc", "padj": "disc_padj"}),
@@ -74,18 +79,24 @@ def phospho() -> pd.DataFrame:
     disc_cases = set(read_matrix(LAYERS["protein"][0]).columns)
     raw = pd.read_csv(PHOS, sep="\t", index_col=0)
     sym = _symbols()
-    keep, ids = [], []
+    parsed = []
     for name in raw.index:
         parts = str(name).split("_")           # NP_001347480_PABPN1_S19  (accession has an underscore)
-        if len(parts) < 4 or ";" in parts[-1]:
+        if len(parts) < 4 or ";" in parts[-1] or not re.match(r"^[STY]\d+$", parts[-1]):
             continue
-        gene, site = parts[-2], parts[-1]
-        if gene in sym and re.match(r"^[STY]\d+$", site):
-            keep.append(name)
-            ids.append(f"{gene}_{site}")
-    raw = raw.loc[keep]
-    raw.index = ids
-    raw = raw.groupby(level=0).mean(numeric_only=True)
+        parsed.append((name, parts[-2], parts[-1]))
+    # Sites of genes whose symbol changed (153 genes) were dropped; they are now mapped to the current symbol. Rows that
+    # already carry an approved symbol are kept exactly as before; a renamed row is added only for a site they lack.
+    old = sorted({g for _, g, _ in parsed if g not in sym})
+    remap = build_symbol_map(old, load_hgnc()).dropna(subset=["symbol"]).set_index("dataset_symbol")["symbol"].to_dict() if old else {}
+
+    def table(rows):
+        t = raw.loc[[n for n, _ in rows]]
+        t.index = [i for _, i in rows]
+        return t.groupby(level=0).mean(numeric_only=True)
+    approved = table([(n, f"{g}_{s}") for n, g, s in parsed if g in sym])
+    renamed = table([(n, f"{remap[g]}_{s}") for n, g, s in parsed if g not in sym and g in remap])
+    raw = pd.concat([approved, renamed[~renamed.index.isin(approved.index)]])
     t, n = _split(raw, disc_cases)
     de = paired_de(t, n).rename(columns={"feature": "site_id", "log2fc": "conf_log2fc", "padj": "conf_padj",
                                          "n_pairs": "conf_n_pairs", "pvalue": "conf_pvalue", "t": "conf_t"})
@@ -115,7 +126,7 @@ def run() -> dict:
     if not PROT.exists() or not PHOS.exists():
         raise FileNotFoundError("confirmatory matrices missing: run `ccrcc download-extra`")
     p, s = proteome(), phospho()
-    cand = ["CA9", "NDUFA4L2", "ANGPTL4", "CD70", "NNMT", "ENPP3", "SCARB1", "SLC16A3", "HK2", "PSAT1", "PCK1", "SLC6A19",
+    cand = ["CA9", "COXFA4L2", "ANGPTL4", "CD70", "NNMT", "ENPP3", "SCARB1", "SLC16A3", "HK2", "PSAT1", "PCK1", "SLC6A19",
             "ALDH6A1", "EPAS1", "MET", "EGFR", "KDR", "ALDOB", "SLC22A8", "PIGR", "UMOD"]
     pc = p[p["gene"].isin(cand)].set_index("gene")
     summary = {"cohort": {"proteome_tumours": int(p["n_tumour_conf"].iloc[0]), "median_pairs_protein": int(p["conf_n_pairs"].median())},

@@ -600,9 +600,8 @@ These checks do not constitute complete scientific validation.{% endif %}
 <ul>{% for l in f.narrative.limitations %}<li>{{ l.text }}</li>{% endfor %}</ul>
 <h2>What is still missing</h2>
 <ul class="roadmap">
-<li>The confirmatory CPTAC ccRCC cohort would replicate protein and phosphosite changes, which TCGA cannot do. Its proteomics sits in the Proteomic Data Commons, which was not reachable (HTTP 503) when this version was built.</li>
-<li>The treatment-response data are two small trials, and only IMmotion150 has enough patients for gene-level tests. No gene separates the two arms after correction for testing 20,000 genes.</li>
-<li>Visium spots mix several cells and the 23 sections come from a few donors. Higher-resolution spatial data would sharpen the neighbourhood claims.</li>
+<li>The treatment-response data come from three trials. Gene-level tests use IMmotion150 and CheckMate 025; the third has 16 patients. No gene separates the arms of either randomised trial after correction for the number of genes tested.</li>
+<li>Visium spots mix several cells and the {{ cell.spatial.sections }} sections come from {{ cell.spatial.donors }} donors. Higher-resolution spatial data would sharpen the neighbourhood claims.</li>
 <li>The pocket-based scores are only a heuristic for ordering sites in one protein. This version does not extend them.</li>
 <li>"Undrugged" now uses Open Targets and ChEMBL, but not company pipelines, trial registries or full patent text.</li>
 </ul>
