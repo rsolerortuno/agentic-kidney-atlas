@@ -172,6 +172,16 @@ def evidence_view(e: dict) -> dict:
         detail = (f"{e['gene']}: tumour RNA vs ESTIMATE purity ρ {e.get('rna_purity_rho')}; RNA log2FC at purity 1 "
                   f"{e.get('rna_lfc_at_purity1')} ± {e.get('rna_lfc_at_purity1_se')} (protein "
                   f"{e.get('protein_lfc_at_purity1')}), {e['n_tumors']} tumours")
+    elif t == "normal_proteome":
+        detail = (f"{e['gene']} in the GTEx normal-tissue proteome: detected in {e['vital_tissues_detected']} vital tissues; "
+                  f"highest relative abundance {e.get('vital_protein_max_rel')} ({e.get('vital_protein_max_tissue')}); highest "
+                  f"tissue-specificity score {e.get('vital_protein_ts_max')} ({e.get('vital_protein_ts_tissue')}); enriched in a "
+                  f"vital organ (score >= {e.get('ts_enriched_threshold', 4.0)}): {e['vital_protein_enriched']}")
+    elif t == "prism_response":
+        detail = (f"{e['gene']} in the PRISM drug screen: most ccRCC-selective compound {e['compound']} ({e.get('moa') or 'mechanism NA'}; "
+                  f"{e['compound_targets']} annotated targets, {e['n_compounds']} compounds for this gene); selectivity "
+                  f"{e['selectivity']} (mean log2 viability {e['mean_lfc_ccrcc']} in {e['n_ccrcc_lines']} ccRCC lines vs "
+                  f"{e['mean_lfc_other']} in other lines, q {e.get('padj')})")
     elif t == "treatment_response":
         arms = "; ".join(f"{a.replace('_', ' ')}: log HR {v['log_hr_per_sd']} (q {v['padj']}, n {v['n']})" for a, v in e["arms"].items())
         detail = f"{e['gene']} in the treatment trials (log hazard ratio of progression per SD; negative = longer benefit): {arms}"

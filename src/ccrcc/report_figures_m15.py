@@ -157,7 +157,7 @@ def confirmatory_scatter(kind: str) -> str | None:
                                marker=dict(size=3, color=CAT[0], opacity=.55),
                                hovertemplate="%{text}<br>discovery %{x:.2f}<br>confirmatory %{y:.2f}<extra></extra>"))
     if kind == "protein":
-        hl = d[d["gene"].isin(["CA9", "NDUFA4L2", "ENPP3", "NNMT", "SCARB1", "SLC16A3", "HK2", "PSAT1", "PCK1", "ALDOB", "EGFR", "MET"])]
+        hl = d[d["gene"].isin(["CA9", "COXFA4L2", "ENPP3", "NNMT", "SCARB1", "SLC16A3", "HK2", "PSAT1", "PCK1", "ALDOB", "EGFR", "MET"])]
         fig.add_trace(go.Scatter(x=hl["disc_log2fc"], y=hl["conf_log2fc"], mode="markers+text", text=hl["gene"], textposition="top center",
                                  name="candidates", marker=dict(size=8, color=CAT[1], symbol="diamond"),
                                  hovertemplate="%{text}<br>discovery %{x:.2f}<br>confirmatory %{y:.2f}<extra></extra>"))

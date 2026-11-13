@@ -8,7 +8,7 @@ data/processed/spatial_viewer.json with:
   computed on the same spots) and log1p CPM of the analysed genes (quantized),
 - ring-1 neighbours of every spot (the same adjacency used for the neighbourhood statistics),
 - the permutation-tested neighbour enrichment per gene (spatial_neighbors.parquet), so the viewer can show next to the
-  live view which neighbour cell types are significantly enriched across all 23 sections.
+  live view which neighbour cell types are significantly enriched across all 16 sections.
 The browser only recomputes descriptive quantities (top-decile spots of the picked gene, mean neighbour composition);
 the statistics shown as p-values always come from the Python analysis.
 """

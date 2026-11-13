@@ -2,7 +2,7 @@
 
 Deterministic, no LLM. Tumour-vs-normal scores treat immune genes as noise from infiltration; here infiltration is the
 signal. Inputs: CIBERSORT (absolute mode, 22 leukocyte types) and xCell (64 cell types plus immune / stroma scores)
-computed by WashU for the CPTAC discovery tumours (cptac Zenodo record), the scRNA-seq cell attribution, the Visium
+computed by WashU for the 110 CPTAC discovery tumours (cptac Zenodo record; adjacent normal samples are left out), the scRNA-seq cell attribution, the Visium
 neighbourhoods and the IMmotion150 response layer.
 
 1. Tumour immune classes: xCell ImmuneScore tertiles (cold / intermediate / hot), with the CD8 T-cell share and the
@@ -36,10 +36,14 @@ IMMUNE_GROUPS = {"CD8_T", "CD4_T", "Treg", "T_other", "NK", "B", "Plasma", "Macr
 
 
 def deconvolution() -> pd.DataFrame:
+    # The WashU files hold the 110 tumours (-T) and 75 adjacent normal kidney samples (-A). Only tumours are used:
+    # with the normals left in, the "cold" third of the immune classes was made of normal kidney (fixed 2026-11-13).
     cb = pd.read_csv(EXTRA / "cptac_ccrcc_cibersort_abs.txt.gz", sep="\t", index_col=0)
+    cb = cb[cb.index.str.endswith("-T")]
     cb.index = cb.index.str.replace(r"-T$", "", regex=True)
     cb = cb.drop(columns=[c for c in ("P-value", "Correlation", "RMSE", "Absolute score (sig.score)") if c in cb.columns])
     xc = pd.read_csv(EXTRA / "cptac_ccrcc_xcell.txt.gz", sep="\t", index_col=0).T
+    xc = xc[xc.index.str.endswith("-T")]
     xc.index = xc.index.str.replace(r"-T$", "", regex=True)
     cb.columns = ["cibersort:" + c for c in cb.columns]
     xc.columns = ["xcell:" + c for c in xc.columns]

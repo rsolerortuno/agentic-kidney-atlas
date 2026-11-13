@@ -23,7 +23,7 @@
     <div class="card"><h3 style="margin-top:0">Neighbours of the high spots <span class="small" id="v-nhigh"></span></h3><div id="v-bars"></div>
       <p class="small">Orange: mean share in the six neighbours of the high spots. Blue: the same average over every spot in the section.</p></div>
     <div class="card" style="margin-top:14px"><h3 style="margin-top:0">Selected spot</h3><div id="v-sel"><p class="small">Click a spot on the tissue.</p></div></div>
-    <div class="card" style="margin-top:14px"><h3 style="margin-top:0">Tested over all 23 sections</h3><div id="v-stats"></div>
+    <div class="card" style="margin-top:14px"><h3 style="margin-top:0">Tested over all {{ cell.spatial.sections }} sections</h3><div id="v-stats"></div>
       <p class="small">Permutation test, adjusted over genes and cell types. This is the evidence; the live bars above are only a description of the picked section.</p></div>
   </div>
 </div>
@@ -135,11 +135,11 @@
 {% endfor %}
 {% set I = m15.immune_summary %}
 {% if I %}
-<p class="lede">So far immune genes were mostly treated as infiltration noise. Here they are the target. WashU's CIBERSORT and xCell estimates for {{ I.tumours }} CPTAC ccRCC tumours (110 of them are the discovery tumours with RNA, which are used for the gene-level links) sort the tumours into {{ I.classes.cold }} cold, {{ I.classes.intermediate }} intermediate and {{ I.classes.hot }} hot tumours. We then ask which genes follow CD8 T cells, regulatory T cells, M2 macrophages and the immune score across tumours, combine that with the single-cell source, the response on atezolizumab with bevacizumab and tractability, and rank every gene. Seven checkpoint genes serve as controls, and {{ I.controls_in_top100 }} of the seven reach the top 100. Their ranks are {% for g, c in I.controls.items() %}{{ g }} {{ c.rank }}{% if not loop.last %}, {% endif %}{% endfor %} of {{ "{:,}".format(I.universe) }}. So this profile finds immune biology but does not rediscover the best-known checkpoints, and it should be read as a way to list candidates, not as a validated ranking.</p>
+<p class="lede">So far immune genes were mostly treated as infiltration noise. Here they are the target. WashU's CIBERSORT and xCell estimates for the {{ I.tumours }} CPTAC ccRCC discovery tumours sort them into {{ I.classes.cold }} cold, {{ I.classes.intermediate }} intermediate and {{ I.classes.hot }} hot tumours. We then ask which genes follow CD8 T cells, regulatory T cells, M2 macrophages and the immune score across tumours, combine that with the single-cell source, the response on atezolizumab with bevacizumab and tractability, and rank every gene. Seven checkpoint genes serve as controls, and {{ I.controls_in_top100 }} of the seven reach the top 100. Their ranks are {% for g, c in I.controls.items() %}{{ g }} {{ c.rank }}{% if not loop.last %}, {% endif %}{% endfor %} of {{ "{:,}".format(I.universe) }}. So this profile finds immune biology but does not rediscover the best-known checkpoints, and it should be read as a way to list candidates, not as a validated ranking.</p>
 <div class="howbox"><h4>How to read this section</h4><ul>
 <li><strong>Cold, intermediate, hot.</strong> Tumours are split into thirds by their estimated immune content. The chart shows CD8 T cells, regulatory T cells and M2 macrophages in each third, and should rise from cold to hot.</li>
 <li><strong>The table</strong> ranks genes for immune-target potential by adding five parts: how much of the gene's tumour RNA comes from immune cells, how closely it follows immune infiltration across tumours, whether higher expression goes with longer benefit on the combination, whether it is up in tumour, and whether it looks tractable.</li>
-<li><strong>Controls.</strong> Seven known checkpoint genes are scored the same way. Only one reaches the top 100, so use the table to find candidates to look into and not as a finished ranking.</li></ul></div>
+<li><strong>Controls.</strong> Seven known checkpoint genes are scored the same way. {{ I.controls_in_top100 }} of the seven reach{{ 'es' if I.controls_in_top100 == 1 else '' }} the top 100, so use the table to find candidates to look into and not as a finished ranking.</li></ul></div>
 <div class="grid two">
   {{ plot('immune_classes', figs.immune_classes) }}
   <div class="tw"><table><thead><tr><th>#</th><th>Gene</th><th>Score</th><th>Immune share of transcripts</th><th>Coupling</th><th>Response on combo</th><th>RNA log2FC</th></tr></thead><tbody>

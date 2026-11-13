@@ -20,7 +20,7 @@ HELP: dict[str, dict[str, str]] = {
         "read": "Each cell is one dot in the data. More cells make the cell-type shares steadier.",
         "watch": "The number of patients (12) matters more than the number of cells. Tissue is broken up before sequencing, which favours immune cells."},
     "kpi_spots": {
-        "what": "Visium spots: 55 micrometre circles of tissue whose RNA is read together, from 23 tissue sections.",
+        "what": "Visium spots: 55 micrometre circles of tissue whose RNA is read together, from 16 tissue sections.",
         "read": "A spot holds a handful of cells, so it is a local average and not a single cell.",
         "watch": "Neighbouring spots share cells, so they are not independent measurements."},
     "kpi_proteins": {
@@ -227,7 +227,7 @@ HELP: dict[str, dict[str, str]] = {
     "tissue_viewer": {
         "what": "Four real tissue sections with their microscope (H&E) picture and the Visium spots on top.",
         "read": "Choose a gene and a section. Spots in the top tenth of the gene's expression are ringed. Click a spot to outline its six neighbours. Orange bars: mean cell makeup of the neighbours of all ringed spots. Blue bars: the same over the whole section.",
-        "watch": "The p-values under the viewer come from the permutation test over all 23 sections. The live bars only describe the section on screen."},
+        "watch": "The p-values under the viewer come from the permutation test over all 16 sections. The live bars only describe the section on screen."},
     # ------------------------------------------------------------------ confirmatory
     "confirmatory_protein": {
         "what": "A check of every protein change against a second, independent set of patients measured with a different method.",

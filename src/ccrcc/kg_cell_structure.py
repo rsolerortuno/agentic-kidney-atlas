@@ -92,7 +92,11 @@ def load(store: GraphStore | None = None) -> dict:
                                     mean_log2cpm_pt=round(float(r.mean_log2cpm_pt), 3),
                                     comparison="ccRCC tumor cells (tumour) vs proximal tubule (normal kidney), "
                                                "paired donor pseudobulk, BH-adjusted")
-            store.add_claim(gid, "upregulated_in" if r.log2fc > 0 else "downregulated_in", cid, ev)
+            # like the bulk layers: a direction is claimed only when the paired test is significant (fixed 2026-11-13;
+            # before, the sign alone gave "upregulated_in" / "downregulated_in" to 42 of 51 non-significant genes)
+            sig = pd.notna(r.padj) and r.padj < 0.05
+            pred = ("upregulated_in" if r.log2fc > 0 else "downregulated_in") if sig else "not_changed_in"
+            store.add_claim(gid, pred, cid, ev)
             counts["tumor_vs_pt"] += 1
 
         # ------------------------------------------------- scRNA: one gene-level summary (M14)

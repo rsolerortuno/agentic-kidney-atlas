@@ -96,10 +96,10 @@ All data are public. Files are listed with checksums in [reproducibility/inputs.
 | Somatic mutations | cBioPortal: CPTAC and TCGA-KIRC | 511 tumours |
 | RNA and survival in a second cohort | TCGA-KIRC (UCSC Xena) | 72 tumour-normal pairs; 533 patients with survival |
 | Cell-line dependency | DepMap 26Q1 CRISPR screens | 24 ccRCC lines against 1,184 others |
-| Tumour purity, immune cell estimates | CPTAC ESTIMATE, CIBERSORT, xCell (cptac Zenodo record) | 110 tumours for purity; 185 for immune estimates |
+| Tumour purity, immune cell estimates | CPTAC ESTIMATE, CIBERSORT, xCell (cptac Zenodo record) | 110 tumours |
 | Phosphosite and kinase activity | CPTAC phosphosites, OmniPath kinase-substrate links | Site-level tumour vs normal, turned into inferred kinase activity |
 | Single cells | Li et al. 2022 and Zhang et al. 2021 (CZ CELLxGENE) | 178,817 and 20,509 tumour cells |
-| Tissue slices | Li et al. 2022, 10x Visium | 23 sections, 38,836 spots; four sections with the microscope image |
+| Tissue slices | Li et al. 2022, 10x Visium | 16 sections, 38,836 spots; four sections with the microscope image |
 | Treatment response | IMmotion150 (263 patients) and Choueiri 2016 (16 patients), cBioPortal datahub; CheckMate 025 (Braun et al. 2020, 250 patients, nivolumab vs everolimus) | RNA before treatment, progression, response |
 | Literature | PubTator3, Europe PMC | 319 abstracts; 198 relations that were checked word for word |
 | Drugs and druggability | Open Targets 26.09, ChEMBL, UniProt, Human Protein Atlas | Clinical stage, tractability, surface location, normal-tissue staining |

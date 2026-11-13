@@ -288,3 +288,26 @@ the clause-level check raises this to 28 % and 74 % with no new false failures. 
 Ligand" bucket lowers the target-profile AUROC from 0.895 to 0.797 (post-2016: 0.886 to 0.666): much of the headline
 comes from medicinal-chemistry history. The weights were not changed after seeing this. No-agent baseline: overlap 0.53
 with the agents' list. New run `runs/2026-11-03` (118 statements, no failures) and two re-run replicates (Jaccard 0.86).
+
+## Review of the cell, immune and graph layers (2026-11-13)
+
+Three errors found by reading the code and confirmed on the data. (1) The immune classes were computed over all 185
+samples of the WashU CIBERSORT and xCell files, which hold 110 tumours and 75 adjacent normal kidney samples: all 62
+"cold tumours" were normal kidney, and of the 110 tumours 49 were intermediate, 61 hot and none cold. The classes are
+now thirds of the 110 tumours. The gene-level links and the immune-target ranking already used the 110 tumours and do
+not change. (2) The single-cell comparison of tumour cells with proximal tubule wrote "upregulated_in" or
+"downregulated_in" from the sign alone; 42 of the 51 claims had an adjusted p of 0.05 or more. They are now
+"not_changed_in", as in the bulk layers. The evidence records are unchanged. (3) GTEx normal-proteome and PRISM
+records had no description in the evidence list of the report (7 cited records were shown empty).
+
+Second pass, same day. (4) The confirmatory tables were joined on the symbols of the DIA release, so 174 tested
+proteins and 231 phosphosites of genes with a newer HGNC symbol (AARS1, ADSS1, MMUT ...) were missing; they are now
+mapped like every other layer. Rows that already existed are unchanged (protein values identical; phosphosite adjusted
+p-values move by at most 2.5 % because more sites are tested, and no replication call changes). Replication rates stay
+at 79 % (protein) and 73 % (phosphosites). COXFA4L2 is still untested there: it is not detected in normal kidney.
+(5) The report, its help texts and the README spoke of 23 Visium sections; the analysis uses 16 (5 tumour-core and 11
+interface samples, 38,836 spots). (6) "What is still missing" still said that the confirmatory cohort could not be
+downloaded and that only IMmotion150 had enough patients; both were out of date. Found and not changed, because it
+moves the ADC ranks that verified sentences cite and needs an agent re-run: 68 proteins called "surface" by the
+surfaceome rule (TNFRSF4, IL20RB, SIGLEC8 ...) get a surface score of 0 in the ADC screen, which still uses its own
+older location rule.
